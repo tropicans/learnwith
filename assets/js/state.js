@@ -211,6 +211,58 @@ class StateManager {
   }
 
   /**
+   * Get progress for a specific module by prefix (e.g. 'm1-', 'm2-')
+   */
+  getModuleProgress(modulePrefix) {
+    const checklists = this.state.checklists || {};
+    const taskKeys = Object.keys(checklists).filter(k => k.startsWith(modulePrefix));
+    const total = taskKeys.length;
+    const completed = taskKeys.filter(k => checklists[k] === true).length;
+    const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
+    return { completed, total, percentage };
+  }
+
+  /**
+   * Calculate dynamic workshop readiness status
+   */
+  calculateReadiness() {
+    const progress = this.calculateProgress();
+    const cps = this.state.checkpoints || {};
+    const cpValues = Object.values(cps);
+    
+    const hasFailure = cpValues.some(v => v === 'failed');
+    const allCheckpointsPassed = cpValues.length === 3 && cpValues.every(v => v === 'passed');
+    
+    if (hasFailure) {
+      return {
+        status: 'clinic',
+        label: '⚠️ PERLU TECHNICAL CLINIC',
+        badgeClass: 'badge-danger',
+        description: 'Terdapat kendala teknis pada satu atau lebih gerbang checkpoint. Jangan khawatir! Silakan konsultasikan kendala Anda dengan instruktur atau ikuti sesi Technical Clinic sebelum kelas dimulai.',
+        color: 'var(--color-danger)'
+      };
+    }
+
+    if (allCheckpointsPassed && progress.percentage >= 80) {
+      return {
+        status: 'ready',
+        label: '🎉 SIAP MENGIKUTI WORKSHOP',
+        badgeClass: 'badge-success',
+        description: 'Selamat! Seluruh prasyarat dan gerbang checkpoint teknis telah berhasil Anda selesaikan. Laptop Anda 100% siap untuk praktik mengelola Google Calendar melalui Telegram bersama Hermes Agent saat workshop!',
+        color: 'var(--color-success)'
+      };
+    }
+
+    return {
+      status: 'pending',
+      label: '⏳ MENUNGGU PENYELESAIAN LANGKAH',
+      badgeClass: 'badge-warning',
+      description: 'Anda masih memiliki langkah atau verifikasi checkpoint yang belum selesai. Selesaikan Modul 1 sampai 5 dan verifikasi Checkpoint 1, 2, dan 3 untuk mencapai status kesiapan penuh.',
+      color: 'var(--color-warning)'
+    };
+  }
+
+  /**
    * Reset all progress
    */
   resetState() {

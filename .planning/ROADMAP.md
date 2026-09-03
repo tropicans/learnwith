@@ -9,8 +9,8 @@ Transform `PANDUAN-PRE-TRAINING.md` into an interactive, intuitive, and modern w
 |---|-------|------|--------------|------------------|--------|
 | 1 | Core Foundation & Shell | Establish responsive layout, theme tokens, sidebar navigation, search bar, and progress metrics | UI-01, UI-02, UI-03 | 3 | ✅ Completed |
 | 2 | Interactive Modules & Guide Engine | Build the 5 core practical modules with structured steps, 1-click copy commands, glossary popovers, and safety alerts | GUIDE-01, GUIDE-02, GUIDE-03, GUIDE-04, GUIDE-05 | 4 | ✅ Completed |
-| 3 | Checklist & Checkpoint Engine | Implement interactive checkboxes, 3 gated checkpoints, automated readiness calculation, and localStorage sync | CHK-01, CHK-02, CHK-03, CHK-04 | 4 | Ready |
-| 4 | Troubleshooting & Report Exporter | Build error diagnostic search, token redaction helper, and 1-click readiness report generator for WhatsApp/Telegram | TRBL-01, TRBL-02, TRBL-03, RPT-01, RPT-02, RPT-03 | 4 | Pending |
+| 3 | Checklist & Checkpoint Engine | Implement interactive checkboxes, 3 gated checkpoints, automated readiness calculation, and localStorage sync | CHK-01, CHK-02, CHK-03, CHK-04 | 4 | ✅ Completed |
+| 4 | Troubleshooting & Report Exporter | Build error diagnostic search, token redaction helper, and 1-click readiness report generator for WhatsApp/Telegram | TRBL-01, TRBL-02, TRBL-03, RPT-01, RPT-02, RPT-03 | 4 | ✅ Completed |
 
 ---
 

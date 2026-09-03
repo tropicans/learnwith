@@ -259,7 +259,7 @@
           <div class="hero-stat-card">
             <div class="hero-stat-icon" style="background: var(--color-warning-subtle); color: var(--color-warning);">💾</div>
             <div class="hero-stat-info">
-              <h4 id="stat-progress-count">0/13</h4>
+              <h4 id="stat-progress-count">0/20</h4>
               <p>Langkah Selesai</p>
             </div>
           </div>
@@ -582,6 +582,11 @@
                     <p>Jika muncul nomor versi <span class="glossary-term" tabindex="0">LTS<span class="glossary-tooltip"><span class="glossary-tooltip-title">🛡️ LTS (Long Term Support)</span><span class="glossary-tooltip-desc">Versi stabil yang didukung jangka panjang dan paling disarankan.</span></span></span> seperti <code>v24...</code> atau <code>v22...</code>, langsung lanjutkan ke <strong>Langkah C (Periksa npm)</strong>. Jika muncul pesan <code>node is not recognized</code>, hal itu wajar jika laptop Anda belum pernah diinstal Node.js; lanjutkan ke <strong>Langkah B</strong> di bawah ini.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m1-check-node">
+                  <span class="checklist-label">Langkah A selesai: Perintah <code>node --version</code> menghasilkan versi v24/v22</span>
+                </label>
               </div>
 
               <!-- Langkah B -->
@@ -621,6 +626,11 @@
                     <p>Jangan memilih file ZIP atau Source Code. Pastikan selalu menggunakan file installer <strong>.msi</strong> agar konfigurasi PATH berjalan otomatis.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m1-verify-lts">
+                  <span class="checklist-label">Langkah B selesai: Node.js LTS terpasang via installer .msi dengan Add to PATH</span>
+                </label>
               </div>
 
               <!-- Langkah C -->
@@ -652,6 +662,11 @@
                 <div class="command-output-badge">
                   <span>✓ Hasil yang benar:</span> <span>Menampilkan angka versi npm (contoh: <code>10.x.x</code> atau <code>9.x.x</code>)</span>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m1-check-npm">
+                  <span class="checklist-label">Langkah C selesai: Perintah <code>npm --version</code> menghasilkan nomor versi</span>
+                </label>
               </div>
 
               <!-- Checkpoint 1 Preview Card -->
@@ -729,6 +744,11 @@
                     <p>Proses instalasi membutuhkan waktu 1–3 menit. Tulisan bergerak atau pesan <code>npm notice</code> di layar adalah hal yang wajar. <strong>Jangan menutup terminal</strong> sampai PowerShell kembali menampilkan baris perintah <code>PS C:\...&gt;</code>.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m2-install-pkg">
+                  <span class="checklist-label">Langkah A selesai: Perintah <code>npm install -g 9router</code> sukses tanpa error</span>
+                </label>
               </div>
 
               <!-- Langkah B -->
@@ -776,6 +796,11 @@
                     <p>PowerShell harus tetap terbuka di latar belakang agar 9Router terus aktif. <span class="glossary-term" tabindex="0">localhost<span class="glossary-tooltip"><span class="glossary-tooltip-title">💻 Localhost</span><span class="glossary-tooltip-desc">Menandakan aplikasi hanya berjalan lokal di laptop Anda, bukan situs internet publik.</span></span></span> berjalan secara pribadi di laptop Anda. Jika muncul permintaan izin Firewall jaringan publik, batalkan/tutup peringatan tersebut.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m2-start-service">
+                  <span class="checklist-label">Langkah B selesai: Perintah <code>9router</code> berjalan aktif dan jendela terminal tetap terbuka</span>
+                </label>
               </div>
 
               <!-- Langkah C -->
@@ -804,6 +829,11 @@
                     <p><code>123456</code> adalah kata sandi awal instalasi lokal 9Router, <strong>BUKAN kata sandi akun Google atau Telegram Anda</strong>. Jangan mengirimkan kata sandi kepada instruktur atau peserta lain.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m2-open-dashboard">
+                  <span class="checklist-label">Langkah C selesai: Dashboard <code>http://localhost:20128</code> berhasil dibuka dan login <code>123456</code></span>
+                </label>
               </div>
 
               <!-- Langkah D -->
@@ -825,6 +855,11 @@
                 <p class="card-body">
                   Untuk menjalankannya kembali sewaktu-waktu, cukup buka PowerShell baru dan jalankan <code>9router</code>.
                 </p>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m2-verify-local">
+                  <span class="checklist-label">Langkah D selesai: Memahami kendali <code>Ctrl + C</code> untuk menghentikan & menjalankan kembali</span>
+                </label>
               </div>
 
               <!-- Checkpoint 2 Preview Card -->
@@ -900,6 +935,11 @@
                     <p>Banyak akun tiruan yang menggunakan nama serupa tanpa centang biru. Jangan pernah berinteraksi dengan akun selain <strong>@BotFather</strong> yang memiliki lencana centang biru resmi.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m3-start-botfather">
+                  <span class="checklist-label">Langkah A selesai: Membuka akun resmi <code>@BotFather</code> (centang biru)</span>
+                </label>
               </div>
 
               <!-- Langkah B -->
@@ -950,6 +990,11 @@
                     <p>Nama dan username bot dapat dilihat publik di Telegram. Jangan mencantumkan nomor handphone, alamat email pribadi, atau kata sandi pada nama bot Anda.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m3-create-newbot">
+                  <span class="checklist-label">Langkah B selesai: Membuat bot baru dengan <code>/newbot</code> dan username unik berakhiran <code>bot</code></span>
+                </label>
               </div>
 
               <!-- Langkah C -->
@@ -999,6 +1044,11 @@
                 <p class="card-body" style="font-size: var(--font-size-xs); color: var(--text-muted);">
                   Pilih bot Anda, lalu BotFather akan menonaktifkan token lama dan memberikan token baru yang aman.
                 </p>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m3-save-token-secure">
+                  <span class="checklist-label">Langkah C selesai: Bot Token tersimpan aman (tidak pernah dibagikan ke pihak lain)</span>
+                </label>
               </div>
 
               <!-- Langkah D -->
@@ -1072,6 +1122,11 @@
                     <p>Jangan pernah mengirim bot token, password, atau kode login kepada <code>@userinfobot</code>. Anda hanya perlu menekan tombol <strong>Start</strong> dan mencatat nomor ID angka yang ditampilkan.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m3-get-userid">
+                  <span class="checklist-label">Langkah E selesai: Memperoleh nomor Telegram User ID (hanya angka) dari @userinfobot</span>
+                </label>
               </div>
 
               <!-- Checkpoint 3 Preview Card -->
@@ -1141,6 +1196,11 @@
                   <li>Jika muncul jendela persetujuan awal (Terms of Service) dan pemilihan negara, baca lalu setujui jika Anda berkenan untuk melanjutkan.</li>
                   <li>Pastikan Anda berhasil melihat tampilan dashboard utama <span class="glossary-term" tabindex="0">Google Cloud Console<span class="glossary-tooltip"><span class="glossary-tooltip-title">☁️ Google Cloud Console</span><span class="glossary-tooltip-desc">Halaman pengaturan layanan cloud Google yang akan digunakan saat kelas untuk mengaktifkan akses Google Calendar.</span></span></span>.</li>
                 </ol>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m4-open-console">
+                  <span class="checklist-label">Langkah A selesai: Membuka <code>https://console.cloud.google.com</code> di browser</span>
+                </label>
               </div>
 
               <!-- Langkah B -->
@@ -1175,6 +1235,11 @@
                     <p>Disarankan menggunakan akun Google pribadi/latihan atau membuat kalender Google baru khusus workshop, agar kegiatan uji coba kalender AI tidak bercampur dengan kalender kerja atau jadwal pribadi utama Anda.</p>
                   </div>
                 </div>
+
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m4-verify-login">
+                  <span class="checklist-label">Langkah B selesai: Login akun Google terverifikasi & memahami batasan pra-kelas</span>
+                </label>
               </div>
 
             </div>
@@ -1326,6 +1391,756 @@
         </section>
       </div>
 
+      <!-- ==========================================
+           GERBANG CHECKPOINT 1, 2, DAN 3
+           ========================================== -->
+      
+      <!-- CHECKPOINT 1: NODE.JS & NPM -->
+      <section id="sec-checkpoint-1" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: var(--accent-primary-subtle); color: var(--accent-primary); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">📍</div>
+            <div>
+              <h3 class="section-title">Gerbang Checkpoint 1: Node.js & npm Siap</h3>
+              <p class="section-desc">Verifikasi runtime Node.js dan pengelola paket npm terpasang dengan benar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint-gate-card" id="card-cp-1">
+          <div class="checkpoint-header-row">
+            <div class="checkpoint-title-wrap">
+              <div class="checkpoint-badge-icon">1</div>
+              <div>
+                <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                  Verifikasi Node.js & npm
+                </h4>
+                <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Prasyarat dasar sebelum menjalankan 9Router</span>
+              </div>
+            </div>
+            <span id="status-card-cp1" class="badge badge-pill badge-warning">Pending</span>
+          </div>
+
+          <p class="card-body">
+            Gerbang Checkpoint 1 dinyatakan <strong>Lolos Verifikasi</strong> apabila kedua perintah terminal berikut berhasil dijalankan tanpa error:
+          </p>
+
+          <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                <code>node --version</code> menghasilkan output nomor versi LTS (contoh: <code>v24.x.x</code> atau <code>v22.x.x</code>).
+              </div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                <code>npm --version</code> menghasilkan output nomor versi (contoh: <code>10.x.x</code> atau <code>9.x.x</code>).
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick input for participant's node version -->
+          <div class="form-group" style="margin-top: 1rem;">
+            <label for="input-node-version" class="form-label">
+              <span>📟</span> Catat Nomor Versi Node.js yang Tampil (Opsional):
+            </label>
+            <input 
+              type="text" 
+              id="input-node-version" 
+              class="form-input" 
+              placeholder="Contoh: v24.2.0" 
+              data-participant-field="nodeVersion"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="cp-action-btn-group">
+            <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-1" data-status="passed">
+              <span>✓</span> Lolos Verifikasi
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-1" data-status="failed">
+              <span>✕</span> Ada Kendala (Gagal)
+            </button>
+            <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-1" data-status="pending">
+              <span>↺</span> Reset Status
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKPOINT 2: 9ROUTER DASHBOARD -->
+      <section id="sec-checkpoint-2" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: var(--accent-primary-subtle); color: var(--accent-primary); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">📍</div>
+            <div>
+              <h3 class="section-title">Gerbang Checkpoint 2: 9Router Dashboard Berjalan</h3>
+              <p class="section-desc">Verifikasi service lokal 9Router aktif dan antarmuka web dashboard dapat diakses.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint-gate-card" id="card-cp-2">
+          <div class="checkpoint-header-row">
+            <div class="checkpoint-title-wrap">
+              <div class="checkpoint-badge-icon">2</div>
+              <div>
+                <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                  Verifikasi Dashboard 9Router Lokal
+                </h4>
+                <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Perute model AI penghubung Hermes Agent</span>
+              </div>
+            </div>
+            <span id="status-card-cp2" class="badge badge-pill badge-warning">Pending</span>
+          </div>
+
+          <p class="card-body">
+            Gerbang Checkpoint 2 dinyatakan <strong>Lolos Verifikasi</strong> jika seluruh kondisi berikut terpenuhi:
+          </p>
+
+          <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                Jendela PowerShell tempat Anda menjalankan <code>9router</code> <strong>tetap terbuka</strong> dan tidak tertutup.
+              </div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                Alamat <code>http://localhost:20128</code> berhasil terbuka di browser Google Chrome / Microsoft Edge.
+              </div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                Berhasil login menggunakan kata sandi awal <code>123456</code> dan melihat dashboard utama 9Router.
+              </div>
+            </div>
+          </div>
+
+          <div class="cp-action-btn-group">
+            <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-2" data-status="passed">
+              <span>✓</span> Lolos Verifikasi
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-2" data-status="failed">
+              <span>✕</span> Ada Kendala (Gagal)
+            </button>
+            <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-2" data-status="pending">
+              <span>↺</span> Reset Status
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHECKPOINT 3: TELEGRAM BOT & USER ID -->
+      <section id="sec-checkpoint-3" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: var(--accent-primary-subtle); color: var(--accent-primary); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">📍</div>
+            <div>
+              <h3 class="section-title">Gerbang Checkpoint 3: Bot Telegram & User ID Terverifikasi</h3>
+              <p class="section-desc">Verifikasi Bot Telegram siap, token terlindungi aman, dan User ID angka tercatat.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint-gate-card" id="card-cp-3">
+          <div class="checkpoint-header-row">
+            <div class="checkpoint-title-wrap">
+              <div class="checkpoint-badge-icon">3</div>
+              <div>
+                <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                  Verifikasi Bot Telegram & Telegram User ID
+                </h4>
+                <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Kanal antarmuka percakapan perintah jadwal</span>
+              </div>
+            </div>
+            <span id="status-card-cp3" class="badge badge-pill badge-warning">Pending</span>
+          </div>
+
+          <p class="card-body">
+            Gerbang Checkpoint 3 dinyatakan <strong>Lolos Verifikasi</strong> jika seluruh parameter berikut terpenuhi:
+          </p>
+
+          <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                Bot Telegram baru telah dibuat via <code>@BotFather</code> resmi dan tombol <strong>Start</strong> telah ditekan.
+              </div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                Bot Token rahasia tersimpan aman di obrolan pribadi BotFather (tidak pernah disebarkan ke orang lain).
+              </div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">
+                Nomor Telegram User ID (angka murni) telah didapatkan dari <code>@userinfobot</code>.
+              </div>
+            </div>
+          </div>
+
+          <!-- Participant Input Form with Validators -->
+          <div style="background: var(--bg-surface-elevated); padding: 1.25rem; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); margin: 1.25rem 0;">
+            <h5 style="font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); margin-bottom: 0.75rem; color: var(--text-primary);">
+              📝 Formulir Data Verifikasi Checkpoint 3:
+            </h5>
+
+            <div class="form-group">
+              <label for="input-tg-bot-username" class="form-label">
+                <span>🤖</span> Username Bot Telegram Anda:
+              </label>
+              <input 
+                type="text" 
+                id="input-tg-bot-username" 
+                class="form-input" 
+                placeholder="Contoh: @jadwal_budi_2026_bot" 
+                data-participant-field="telegramUsername"
+                autocomplete="off"
+              />
+              <small class="form-validation-msg" id="msg-val-tg-username">Wajib diakhiri kata 'bot' atau '_bot' (contoh: @jadwal_budi_bot).</small>
+            </div>
+
+            <div class="form-group">
+              <label for="input-tg-user-id" class="form-label">
+                <span>🆔</span> Telegram User ID Anda (Hanya Angka Murni):
+              </label>
+              <input 
+                type="text" 
+                id="input-tg-user-id" 
+                class="form-input" 
+                placeholder="Contoh: 123456789" 
+                data-participant-field="telegramUserId"
+                autocomplete="off"
+              />
+              <small class="form-validation-msg" id="msg-val-tg-userid">Hanya boleh berupa angka murni (tanpa huruf, spasi, atau @).</small>
+            </div>
+          </div>
+
+          <div class="cp-action-btn-group">
+            <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-3" data-status="passed">
+              <span>✓</span> Lolos Verifikasi
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-3" data-status="failed">
+              <span>✕</span> Ada Kendala (Gagal)
+            </button>
+            <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-3" data-status="pending">
+              <span>↺</span> Reset Status
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           RANGKUMAN KESIAPAN WORKSHOP
+           ========================================== -->
+      <section id="sec-readiness-summary" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: var(--color-success-subtle); color: var(--color-success); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">🏆</div>
+            <div>
+              <h3 class="section-title">Status Kelayakan Pre-Training Peserta</h3>
+              <p class="section-desc">Evaluasi otomatis kelayakan laptop dan kesiapan akun Anda untuk mengikuti sesi workshop.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glass readiness-status-card" id="card-readiness-status">
+          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🎯</div>
+          <h4 style="font-size: var(--font-size-lg); font-weight: var(--font-weight-extrabold); color: var(--text-primary);">
+            Hasil Evaluasi Kesiapan Mandiri
+          </h4>
+
+          <div>
+            <div id="readiness-status-badge" class="readiness-badge status-pending">
+              ⏳ MENUNGGU PENYELESAIAN LANGKAH
+            </div>
+          </div>
+
+          <p id="readiness-status-desc" class="readiness-desc">
+            Anda masih memiliki langkah atau verifikasi checkpoint yang belum selesai. Selesaikan Modul 1 sampai 5 dan verifikasi Checkpoint 1, 2, dan 3 untuk mencapai status kesiapan penuh.
+          </p>
+
+          <div class="readiness-actions">
+            <a href="#sec-readiness-report" class="btn btn-primary">
+              <span>📋</span> Buka Form Laporan Kesiapan
+            </a>
+            <button type="button" id="btn-open-reset-modal" class="btn btn-outline-danger">
+              <span>🔄</span> Reset Semua Progres
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           PANDUAN TROUBLESHOOTING KENDALA UMUM (TRBL-01, TRBL-02)
+           ========================================== -->
+      <section id="sec-troubleshooting" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: var(--color-warning-subtle); color: var(--color-warning); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">🔧</div>
+            <div>
+              <h3 class="section-title">Pusat Bantuan & Troubleshooting Kendala</h3>
+              <p class="section-desc">Solusi langkah demi langkah untuk kendala teknis umum pada Node.js, 9Router, PowerShell, dan Telegram.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Troubleshooting Search & Category Filter Toolbar -->
+        <div class="troubleshoot-toolbar">
+          <div class="troubleshoot-search-wrap">
+            <span class="troubleshoot-search-icon">🔍</span>
+            <input 
+              type="text" 
+              id="troubleshoot-search-input" 
+              class="troubleshoot-search-input" 
+              placeholder="Cari pesan error atau kata kunci (contoh: EPERM, PATH, scripts disabled, port)..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="troubleshoot-filter-pills" role="tablist">
+            <button type="button" class="troubleshoot-filter-btn active" data-category="all">Semua Kendala (10)</button>
+            <button type="button" class="troubleshoot-filter-btn" data-category="node">Node.js & npm</button>
+            <button type="button" class="troubleshoot-filter-btn" data-category="router">9Router & Dashboard</button>
+            <button type="button" class="troubleshoot-filter-btn" data-category="telegram">Telegram Bot</button>
+          </div>
+        </div>
+
+        <!-- Troubleshooting Cards List -->
+        <div class="troubleshoot-grid" id="troubleshoot-cards-container">
+          
+          <!-- Issue 1 -->
+          <div class="trouble-card" data-trouble-category="node">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">📟</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>node is not recognized</code></h4>
+                  <span class="badge badge-pill badge-neutral">Node.js & npm</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> PowerShell belum menemukan program Node.js karena belum terpasang atau belum terbaca di sistem.
+            </div>
+            <ol class="trouble-steps">
+              <li>Jika Anda belum pernah memasang Node.js, buka kembali <strong>Modul 1</strong> dan unduh installer Node.js versi <strong>LTS</strong> dari situs resmi.</li>
+              <li>Jika sebelumnya sudah pernah memasang Node.js, <strong>jangan langsung menginstal ulang</strong>. Lanjutkan ke solusi perbaikan PATH di bawah ini.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 2 -->
+          <div class="trouble-card" data-trouble-category="node">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🔄</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>npm tidak dikenali</code> / <code>The term 'npm' is not recognized</code></h4>
+                  <span class="badge badge-pill badge-neutral">Node.js & npm</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> Node.js baru saja diinstal namun variabel PATH pada jendela terminal PowerShell yang sedang aktif belum diperbarui.
+            </div>
+            <ol class="trouble-steps">
+              <li>Tutup <strong>seluruh jendela</strong> PowerShell / Windows Terminal (bukan hanya satu tab).</li>
+              <li>Buka PowerShell baru dan uji coba kembali <code>node --version</code> dan <code>npm --version</code>.</li>
+              <li>Jika masih belum dikenali, muat ulang variabel PATH secara langsung di PowerShell dengan menyalin perintah resmi berikut:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">powershell</span>
+                <button type="button" class="btn-copy-code" aria-label="Salin perintah muat ulang PATH">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-powershell">$env:Path = [Environment]::GetEnvironmentVariable('Path','Machine') + ';' + [Environment]::GetEnvironmentVariable('Path','User')</code></pre>
+            </div>
+            <ol class="trouble-steps" start="4">
+              <li>Jalankan kembali <code>node --version</code> dan <code>npm --version</code>. Jika berhasil, restart laptop sebelum workshop agar PATH tersimpan permanen.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 3 -->
+          <div class="trouble-card" data-trouble-category="node">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🛡️</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>running scripts is disabled on this system</code></h4>
+                  <span class="badge badge-pill badge-neutral">PowerShell Security</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> Kebijakan keamanan eksekusi script PowerShell Windows membatasi script lokal.
+            </div>
+            <div class="alert-box alert-warning" style="margin: 0.5rem 0;">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-content">
+                <p><strong>Solusi Paling Aman:</strong> Jangan mengubah pengaturan keamanan PowerShell laptop Anda! Gunakan <strong>Command Prompt (cmd.exe)</strong> bawaan Windows.</p>
+              </div>
+            </div>
+            <ol class="trouble-steps">
+              <li>Tutup PowerShell.</li>
+              <li>Klik tombol <strong>Windows / Start</strong>, ketik <code>Command Prompt</code>, lalu buka aplikasinya.</li>
+              <li>Uji dengan mengetik <code>npm --version</code>.</li>
+              <li>Jalankan instalasi 9Router langsung di Command Prompt:
+                <div class="code-block-wrap" style="margin: 0.5rem 0;">
+                  <div class="code-block-header">
+                    <span class="code-block-lang">cmd</span>
+                    <button type="button" class="btn-copy-code">
+                      <span class="copy-icon">📋</span>
+                      <span class="copy-label">Salin</span>
+                    </button>
+                  </div>
+                  <pre class="code-block-content"><code class="language-powershell">npm install -g 9router</code></pre>
+                </div>
+              </li>
+              <li>Setelah instalasi selesai, jalankan <code>9router</code>.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 4 -->
+          <div class="trouble-card" data-trouble-category="router">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🚀</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>9router tidak dikenali</code></h4>
+                  <span class="badge badge-pill badge-neutral">9Router</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> Perintah instalasi global npm belum termuat ke sesi terminal aktif.
+            </div>
+            <ol class="trouble-steps">
+              <li>Tutup jendela PowerShell.</li>
+              <li>Buka PowerShell baru dan coba ketik <code>9router</code> kembali.</li>
+              <li>Jika masih gagal, salin dan gunakan alat <strong>Sensor Log</strong> untuk menyensor pesan error sebelum mengirimkannya ke instruktur.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 5 -->
+          <div class="trouble-card" data-trouble-category="router">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🌐</div>
+                <div>
+                  <h4 class="trouble-title">Browser tidak dapat menampilkan dashboard (<code>localhost:20128</code>)</h4>
+                  <span class="badge badge-pill badge-neutral">9Router & Port</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> Terminal 9Router tertutup atau browser menggunakan protokol HTTPS.
+            </div>
+            <ol class="trouble-steps">
+              <li>Pastikan jendela terminal tempat Anda menjalankan <code>9router</code> <strong>masih terbuka</strong> dan menampilkan log aktif.</li>
+              <li>Tunggu sekitar 15–30 detik agar service internal selesai bersiap.</li>
+              <li>Buka browser dan ketik alamat secara manual: <code>http://localhost:20128</code>.</li>
+              <li>Jika belum terbuka, coba alamat alternatif IP loopback: <code>http://127.0.0.1:20128</code>.</li>
+              <li><strong>PENTING:</strong> Pastikan Anda tidak menggunakan <code>https://</code> karena service lokal menggunakan protokol HTTP biasa.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 6 -->
+          <div class="trouble-card" data-trouble-category="router">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">⏳</div>
+                <div>
+                  <h4 class="trouble-title">Proses instalasi terlihat berhenti / macet</h4>
+                  <span class="badge badge-pill badge-neutral">Koneksi & npm</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> Proses pengunduhan paket npm memerlukan waktu bergantung pada kestabilan koneksi internet.
+            </div>
+            <ol class="trouble-steps">
+              <li>Tunggu hingga maksimal <strong>10 menit</strong> tanpa menutup terminal.</li>
+              <li>Jika setelah 10 menit tidak ada kemajuan, ambil tangkapan layar (screenshot) hanya pada bagian error terminal saja.</li>
+              <li>Pastikan tidak ada token, kata sandi, atau nama folder akun pribadi yang tampak pada tangkapan layar tersebut.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 7 -->
+          <div class="trouble-card danger" data-trouble-category="router">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🛑</div>
+                <div>
+                  <h4 class="trouble-title">Muncul pesan <code>Access denied</code>, <code>Permission denied</code>, atau <code>EPERM</code></h4>
+                  <span class="badge badge-pill badge-danger">Hak Akses Windows</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> Pengguna biasa tidak memiliki izin menulis di folder modul global Windows.
+            </div>
+            <ol class="trouble-steps">
+              <li>Tutup seluruh jendela PowerShell.</li>
+              <li>Klik tombol <strong>Start / Windows</strong>, lalu ketik <code>PowerShell</code>.</li>
+              <li>Klik kanan pada ikon <strong>Windows PowerShell</strong>, lalu pilih <strong>Run as administrator</strong>.</li>
+              <li>Pilih <strong>Yes</strong> saat muncul dialog konfirmasi User Account Control (UAC).</li>
+              <li>Jalankan perintah instalasi: <code>npm install -g 9router</code>.</li>
+              <li>Setelah instalasi berhasil, segera tutup jendela PowerShell administrator tersebut demi keamanan.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 8 -->
+          <div class="trouble-card" data-trouble-category="telegram">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🤖</div>
+                <div>
+                  <h4 class="trouble-title">Username bot sudah digunakan orang lain</h4>
+                  <span class="badge badge-pill badge-neutral">Telegram</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penyebab:</strong> Username bot di Telegram bersifat global dan unik di seluruh dunia.
+            </div>
+            <ol class="trouble-steps">
+              <li>Tambahkan inisial nama Anda, tahun, atau angka unik (contoh: <code>jadwal_budi_2026_bot</code> atau <code>budi_asisten_v1_bot</code>).</li>
+              <li>Pastikan nama akhiran tetap berupa <code>bot</code> atau <code>_bot</code>.</li>
+            </ol>
+          </div>
+
+          <!-- Issue 9 -->
+          <div class="trouble-card" data-trouble-category="telegram">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">💬</div>
+                <div>
+                  <h4 class="trouble-title">Bot Telegram tidak membalas saat dikirimi pesan</h4>
+                  <span class="badge badge-pill badge-primary">Informasi Normal</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Penjelasan:</strong> Hal ini <strong>sepenuhnya normal</strong> pada tahap pre-training!
+            </div>
+            <p style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6;">
+              Bot baru hanya berupa wadah komunikasi kosong. Otak cerdas (Hermes Agent) baru akan dikonfigurasi dan dihubungkan secara langsung saat sesi workshop berlangsung.
+            </p>
+          </div>
+
+          <!-- Issue 10 -->
+          <div class="trouble-card danger" data-trouble-category="telegram">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">⚠️</div>
+                <div>
+                  <h4 class="trouble-title">Bot token tidak sengaja terkirim ke grup / orang lain</h4>
+                  <span class="badge badge-pill badge-danger">Tindakan Cepat</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Bahaya:</strong> Siapapun yang memegang bot token dapat mengontrol bot dan membaca pesan.
+            </div>
+            <ol class="trouble-steps">
+              <li>Segera buka obrolan dengan <code>@BotFather</code> di Telegram.</li>
+              <li>Kirim perintah: <code>/revoke</code>.</li>
+              <li>Pilih bot yang tokennya sempat terkirim.</li>
+              <li>BotFather akan membatalkan token lama dan memberikan bot token baru.</li>
+              <li>Simpan token baru secara rahasia dan jangan gunakan token lama lagi.</li>
+            </ol>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           ALAT BANTU SENSOR LOG RAHASIA (TRBL-03)
+           ========================================== -->
+      <section id="sec-redaction" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: var(--color-success-subtle); color: var(--color-success); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">🛡️</div>
+            <div>
+              <h3 class="section-title">Alat Bantu Sensor Log Rahasia (Redaction Tool)</h3>
+              <p class="section-desc">Deteksi dan sensor otomatis token bot, API key, email, dan username laptop sebelum dibagikan ke instruktur.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="redaction-workbench">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.2rem;">🔒</span>
+              <strong style="font-size: var(--font-size-sm); color: var(--text-primary);">Editor Privasi & Penyamaran Kredensial</strong>
+            </div>
+            <span id="redaction-count-badge" class="badge badge-pill badge-neutral">0 data terdeteksi</span>
+          </div>
+
+          <div class="redaction-grid">
+            <!-- Left Input -->
+            <div class="redaction-col">
+              <div class="redaction-col-header">
+                <span>Teks Mentah / Pesan Error:</span>
+                <span style="color: var(--text-muted);">Tempel di sini</span>
+              </div>
+              <textarea 
+                id="redaction-input" 
+                class="redaction-textarea" 
+                placeholder="Tempel pesan error, log terminal, atau konfigurasi Anda di sini...&#10;Contoh:&#10;Error connecting bot 123456789:ABCDefGhIjKlMnOpQrStUvWxYz012345678 at C:\Users\john_doe\app..."
+              ></textarea>
+            </div>
+
+            <!-- Right Output -->
+            <div class="redaction-col">
+              <div class="redaction-col-header">
+                <span>Hasil Setelah Disensor (Aman Dibagikan):</span>
+                <span style="color: var(--color-success);">Otomatis terlindungi</span>
+              </div>
+              <textarea 
+                id="redaction-output" 
+                class="redaction-textarea redaction-output" 
+                placeholder="Hasil log yang telah disensor otomatis akan muncul di sini..."
+                readonly
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="redaction-stats">
+            <div class="redaction-pill-list">
+              <span class="redaction-pill">✓ Telegram Bot Token</span>
+              <span class="redaction-pill">✓ OpenAI API Key</span>
+              <span class="redaction-pill">✓ Google Cloud Key</span>
+              <span class="redaction-pill">✓ Bearer Token</span>
+              <span class="redaction-pill">✓ Alamat Email</span>
+              <span class="redaction-pill">✓ Direktori User Windows</span>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" id="btn-trigger-redaction" class="btn btn-secondary btn-sm">
+                <span>🔍</span> Periksa Sekarang
+              </button>
+              <button type="button" id="btn-copy-redacted" class="btn btn-success btn-sm">
+                <span>📋</span> Salin Log Tersensor
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           FORM LAPORAN KESIAPAN (RPT-01, RPT-02, RPT-03)
+           ========================================== -->
+      <section id="sec-readiness-report" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: var(--accent-primary-subtle); color: var(--accent-primary); width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">📋</div>
+            <div>
+              <h3 class="section-title">Form Laporan Kesiapan Peserta</h3>
+              <p class="section-desc">Format resmi pelaporan hasil pre-training untuk dikirimkan kepada instruktur sebelum hari workshop.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="report-workbench">
+          <div class="report-grid">
+            <!-- Left: Editable Form Pane -->
+            <div class="report-form-pane">
+              <h4 style="font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.25rem;">
+                ✏️ Lengkapi Data Pelaporan:
+              </h4>
+
+              <div class="form-group">
+                <label for="input-report-name" class="form-label">
+                  <span>👤</span> Nama Lengkap Peserta:
+                </label>
+                <input 
+                  type="text" 
+                  id="input-report-name" 
+                  class="form-input" 
+                  placeholder="Masukkan nama lengkap Anda..."
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="select-report-os" class="form-label">
+                  <span>💻</span> Sistem Operasi Laptop:
+                </label>
+                <select id="select-report-os" class="form-input" style="cursor: pointer;">
+                  <option value="Windows 11">Windows 11</option>
+                  <option value="Windows 10">Windows 10</option>
+                  <option value="Windows Lainnya / Mac / Linux">Windows Lainnya / Mac / Linux</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="input-report-problem-step" class="form-label">
+                  <span>⚠️</span> Nomor Langkah yang Bermasalah (Jika Ada):
+                </label>
+                <input 
+                  type="text" 
+                  id="input-report-problem-step" 
+                  class="form-input" 
+                  placeholder="Contoh: Modul 2 Langkah B, atau kosongkan / tulis 'Nihil'"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="input-report-error-msg" class="form-label">
+                  <span>🛑</span> Pesan Error Terminal (Opsional, Otomatis Disensor):
+                </label>
+                <textarea 
+                  id="input-report-error-msg" 
+                  class="form-input" 
+                  style="height: 90px; font-family: var(--font-mono); font-size: var(--font-size-xs);" 
+                  placeholder="Jika ada kendala, tempel ringkasan pesan error di sini (token/kunci akan disensor otomatis)..."
+                ></textarea>
+              </div>
+
+              <div class="alert-box alert-info" style="margin-top: 0.5rem; padding: 0.75rem 1rem;">
+                <div class="alert-icon">💡</div>
+                <div class="alert-content">
+                  <p style="font-size: var(--font-size-xs);">
+                    Status Checkpoint 1, 2, 3 dan Google Cloud otomatis diambil dari progres yang Anda centang di atas.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Live Output Preview Pane -->
+            <div class="report-preview-pane">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <h4 style="font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); color: var(--text-primary); margin: 0;">
+                  📄 Pratinjau Teks Laporan:
+                </h4>
+                <span class="badge badge-pill badge-neutral">Sesuai Format Resmi</span>
+              </div>
+
+              <pre id="report-output-preview" class="report-preview-box"></pre>
+
+              <div class="report-btn-group">
+                <button type="button" id="btn-copy-report" class="btn btn-success">
+                  <span>📋</span> Salin Laporan (WhatsApp / Telegram)
+                </button>
+                <button type="button" id="btn-print-report" class="btn btn-secondary">
+                  <span>🖨️</span> Cetak Laporan / PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- FOOTER -->
       <footer class="app-footer">
         <div>
@@ -1336,6 +2151,35 @@
         </div>
       </footer>
     </main>
+  </div>
+
+  <!-- Reset Confirmation Modal Dialog -->
+  <div id="modal-reset-confirm" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-reset-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-reset-title" style="display: flex; align-items: center; gap: 0.5rem; color: var(--color-danger); font-size: var(--font-size-lg);">
+          <span>⚠️</span> Atur Ulang Semua Progres?
+        </h3>
+      </div>
+      <div class="modal-body" style="margin: 1.25rem 0; color: var(--text-secondary); line-height: 1.6; font-size: var(--font-size-sm);">
+        <p>Tindakan ini akan <strong>menghapus seluruh progres</strong> yang tersimpan di browser Anda, termasuk:</p>
+        <ul style="margin: 0.75rem 0 0.75rem 1.25rem;">
+          <li>Semua tanda centang langkah persiapan dan modul praktik.</li>
+          <li>Status kelulusan verifikasi Checkpoint 1, 2, dan 3.</li>
+          <li>Data identitas peserta, versi Node.js, dan Telegram User ID.</li>
+        </ul>
+        <div class="alert-box alert-danger" style="margin: 1rem 0 0 0; padding: 0.75rem 1rem;">
+          <div class="alert-icon">🛑</div>
+          <div class="alert-content">
+            <p style="font-size: var(--font-size-xs); font-weight: 600;">Peringatan: Data yang telah direset tidak dapat dipulihkan kembali.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+        <button type="button" id="btn-cancel-reset" class="btn btn-secondary">Batal</button>
+        <button type="button" id="btn-confirm-reset" class="btn btn-danger">Ya, Reset Semua Progres</button>
+      </div>
+    </div>
   </div>
 
   <!-- Dynamic Toast Container -->
