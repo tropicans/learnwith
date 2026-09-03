@@ -56,22 +56,20 @@ class SearchEngine {
    * Scan DOM and index searchable elements
    */
   buildIndex() {
+    this.clearHighlights();
     this.searchItems = [];
     const elements = document.querySelectorAll('.content-section, .card, .step-card, .module-card, .step-section, .alert-box, .checkpoint-gate-card');
 
     elements.forEach((el, index) => {
-      // Store original HTML for highlight restoration
       if (!el.hasAttribute('data-search-id')) {
         el.setAttribute('data-search-id', `s-item-${index}`);
-        el.dataset.originalHtml = el.innerHTML;
       }
 
       const text = el.innerText || el.textContent || '';
       this.searchItems.push({
         id: `s-item-${index}`,
         element: el,
-        text: text.toLowerCase(),
-        originalHtml: el.dataset.originalHtml
+        text: text.toLowerCase()
       });
     });
   }
@@ -90,9 +88,12 @@ class SearchEngine {
     this.activeQuery = query;
     const lowerQuery = query.toLowerCase();
 
-    // If query is empty, reset all elements to visible and restore original HTML
+    // Remove only highlights created by this engine. This preserves every
+    // indexed element, its live form state, and attached event listeners.
+    this.clearHighlights();
+
+    // If query is empty, reset all elements to visible.
     if (!query) {
-      this.clearHighlights();
       this.searchItems.forEach(item => {
         item.element.style.display = '';
         const parentSection = item.element.closest('.content-section');
@@ -154,28 +155,66 @@ class SearchEngine {
    */
   highlightText(element, query) {
     if (!query) return;
-    const original = element.dataset.originalHtml;
-    if (!original) return;
+    const regex = new RegExp(this.escapeRegExp(query), 'gi');
+    const textNodes = [];
+    const nodeFilter = typeof NodeFilter !== 'undefined'
+      ? NodeFilter
+      : { SHOW_TEXT: 4, FILTER_ACCEPT: 1, FILTER_REJECT: 2 };
+    const walker = document.createTreeWalker(
+      element,
+      nodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || !node.nodeValue || !node.nodeValue.trim()) {
+            return nodeFilter.FILTER_REJECT;
+          }
+          if (parent.closest('script, style, textarea, select, option, input, mark[data-search-highlight]')) {
+            return nodeFilter.FILTER_REJECT;
+          }
+          return nodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
 
-    try {
-      const regex = new RegExp(`(${this.escapeRegExp(query)})`, 'gi');
-      // Simple safe replacer preserving HTML tags
-      element.innerHTML = original.replace(/(>[^<]+<)/g, (match) => {
-        return match.replace(regex, '<mark class="search-highlight">$1</mark>');
-      });
-    } catch (e) {
-      // Fallback
-    }
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+    textNodes.forEach(textNode => {
+      const text = textNode.nodeValue;
+      regex.lastIndex = 0;
+      if (!regex.test(text)) return;
+      regex.lastIndex = 0;
+
+      const fragment = document.createDocumentFragment();
+      let lastIndex = 0;
+      let match;
+      while ((match = regex.exec(text)) !== null) {
+        if (match.index > lastIndex) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+        }
+        const mark = document.createElement('mark');
+        mark.className = 'search-highlight';
+        mark.setAttribute('data-search-highlight', 'true');
+        mark.textContent = match[0];
+        fragment.appendChild(mark);
+        lastIndex = match.index + match[0].length;
+      }
+      if (lastIndex < text.length) {
+        fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
+      textNode.parentNode.replaceChild(fragment, textNode);
+    });
   }
 
   /**
    * Restore elements to original unhighlighted state
    */
   clearHighlights() {
-    this.searchItems.forEach(item => {
-      if (item.element.dataset.originalHtml) {
-        item.element.innerHTML = item.element.dataset.originalHtml;
-      }
+    document.querySelectorAll('mark[data-search-highlight]').forEach(mark => {
+      const parent = mark.parentNode;
+      if (!parent) return;
+      parent.replaceChild(document.createTextNode(mark.textContent || ''), mark);
+      parent.normalize();
     });
   }
 
@@ -197,3 +236,6 @@ class SearchEngine {
 // Global SearchEngine Singleton
 window.SearchEngine = new SearchEngine();
 
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { SearchEngine };
+}

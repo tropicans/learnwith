@@ -323,7 +323,7 @@ function updateProgressUI() {
 /**
  * --- 7. TOAST NOTIFICATION UTILITY ---
  */
-window.showToast = function(message, type = 'info', duration = 3000) {
+function showToast(message, type = 'info', duration = 3000) {
   const container = document.getElementById('toast-container');
   if (!container) return;
 
@@ -331,7 +331,12 @@ window.showToast = function(message, type = 'info', duration = 3000) {
   toast.className = `toast toast-${type}`;
   
   const icon = type === 'success' ? '✅' : type === 'warning' ? '⚠️' : 'ℹ️';
-  toast.innerHTML = `<span>${icon}</span><span>${message}</span>`;
+  const iconSpan = document.createElement('span');
+  iconSpan.textContent = icon;
+  const messageSpan = document.createElement('span');
+  messageSpan.textContent = String(message);
+  toast.appendChild(iconSpan);
+  toast.appendChild(messageSpan);
   
   container.appendChild(toast);
 
@@ -343,7 +348,9 @@ window.showToast = function(message, type = 'info', duration = 3000) {
       }
     }, 300);
   }, duration);
-};
+}
+
+window.showToast = showToast;
 
 /**
  * --- 8. MODULE ACCORDION & COLLAPSIBLE CONTROLLER ---
@@ -858,8 +865,9 @@ function generateReportText(overrides = {}) {
 
   // Node version & telegram info
   const nodeVer = info.nodeVersion ? ` (${info.nodeVersion})` : '';
-  const tgInfo = (info.telegramUsername || info.telegramUserId) 
-    ? ` (@${info.telegramUsername || '-'}, ID: ${info.telegramUserId || '-'})` 
+  const normalizedTelegramUsername = String(info.telegramUsername || '').replace(/^@+/, '');
+  const tgInfo = (normalizedTelegramUsername || info.telegramUserId)
+    ? ` (${normalizedTelegramUsername ? `@${normalizedTelegramUsername}` : '-'}, ID: ${info.telegramUserId || '-'})`
     : '';
 
   return `Nama: ${name}
@@ -877,6 +885,7 @@ ${sanitizedError}`;
 }
 
 window.generateReportText = generateReportText;
+window.setupReadinessReport = setupReadinessReport;
 
 function setupReadinessReport() {
   const nameInput = document.getElementById('input-report-name');
@@ -899,9 +908,6 @@ function setupReadinessReport() {
     previewBox.innerText = generateReportText(overrides);
   }
 
-  // Initial update & bind listeners
-  updatePreview();
-
   if (nameInput) {
     nameInput.value = (window.AppState && window.AppState.getState().participantInfo.name) || '';
     nameInput.addEventListener('input', (e) => {
@@ -909,6 +915,9 @@ function setupReadinessReport() {
       updatePreview();
     });
   }
+
+  // Hydrate persisted participant data before the first preview render.
+  updatePreview();
 
   if (osSelect) osSelect.addEventListener('change', updatePreview);
   if (probStepInput) probStepInput.addEventListener('input', updatePreview);
@@ -950,4 +959,12 @@ function setupReadinessReport() {
   }
 }
 
-
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    REDACTION_RULES,
+    sanitizeLogText,
+    generateReportText,
+    setupReadinessReport,
+    showToast
+  };
+}

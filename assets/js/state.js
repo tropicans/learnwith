@@ -304,3 +304,7 @@ class StateManager {
 
 // Global AppState Singleton
 window.AppState = new StateManager();
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { StateManager, DEFAULT_STATE, STORAGE_KEY };
+}
