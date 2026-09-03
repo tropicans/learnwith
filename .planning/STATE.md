@@ -3,7 +3,7 @@ milestone: v1.0
 milestone_name: "Pre-Training Interactive Web App"
 status: shipped
 stopped_at: "Milestone v1.0 Complete — Ready for v1.1 planning"
-last_activity: "2026-09-03 — Shipped Milestone v1.0 (18/18 requirements, 4 phases, 11 plans, 46 tests)"
+last_activity: "2026-09-03 — Completed quick task 260903-buq: hardened search, reporting, and production-code tests"
 progress:
   total_phases: 4
   completed_phases: 4
@@ -25,7 +25,7 @@ See: `.planning/PROJECT.md` (updated 2026-09-03)
 Phase: Milestone v1.0 Complete & Archived
 Next Action: `/gsd-new-milestone`
 Status: Shipped & Tagged (v1.0)
-Last activity: 2026-09-03 — Milestone v1.0 completed and archived to `.planning/milestones/`
+Last activity: 2026-09-03 — Completed quick task 260903-buq: hardened search, reporting, and production-code tests
 
 ## Milestone Summary
 
@@ -38,3 +38,9 @@ Last activity: 2026-09-03 — Milestone v1.0 completed and archived to `.plannin
 ## Deferred Items
 
 None. All items closed cleanly with full test verification.
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Status | Directory |
+|---|-------------|------|--------|--------|-----------|
+| 260903-buq | Fix reviewed search DOM corruption and XSS, report initialization and Telegram formatting, and make tests exercise production code | 2026-09-03 | e022acd | Needs Review | [260903-buq-fix-reviewed-search-dom-corruption-and-x](./quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/) |
