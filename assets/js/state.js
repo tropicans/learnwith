@@ -7,7 +7,7 @@
 const STORAGE_KEY = 'pretraining_app_state_v1';
 
 const DEFAULT_STATE = {
-  theme: 'dark',
+  theme: 'light',
   checklists: {
     // Prerequisites
     'prereq-laptop': false,
@@ -106,7 +106,7 @@ class StateManager {
    * Initialize state & theme
    */
   init() {
-    const theme = this.state.theme || 'dark';
+    const theme = this.state.theme || 'light';
     this.setTheme(theme, false);
     this.emit('init', this.state);
     return this.state;
