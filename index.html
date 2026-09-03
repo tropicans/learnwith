@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplikasi Web Interaktif Panduan Pre-Training: Workshop Hermes Agent + 9Router (Mengelola Google Calendar via Telegram) untuk Pemula">
+  <title>Panduan Pre-Training: Workshop Hermes Agent + 9Router</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- ==========================================
+         TOP HEADER
+         ========================================== -->
+    <header class="app-header">
+      <div class="header-brand">
+        <button id="btn-mobile-menu" class="btn-mobile-nav" aria-label="Toggle Mobile Navigation">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <div class="header-brand-icon">⚡</div>
+        <div class="header-brand-text">
+          <h1>Pre-Training Workshop</h1>
+          <p>Hermes Agent + 9Router • Pemula</p>
+        </div>
+      </div>
+
+      <!-- Global Real-Time Search -->
+      <div class="header-search-container">
+        <div class="header-search-input-wrapper">
+          <svg class="header-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="search" 
+            id="global-search-input" 
+            class="header-search-input" 
+            placeholder="Cari perintah, modul, solusi error, atau istilah..." 
+            autocomplete="off"
+            aria-label="Cari panduan"
+          />
+          <kbd class="header-search-kbd">Ctrl+K</kbd>
+        </div>
+      </div>
+
+      <!-- Header Actions: Progress & Theme Toggle -->
+      <div class="header-actions">
+        <div class="header-progress-box">
+          <div class="header-progress-label">
+            <span>Kesiapan:</span>
+            <span id="header-progress-text" class="badge badge-pill badge-primary">0%</span>
+          </div>
+          <div class="header-progress-track">
+            <div id="header-progress-bar" class="header-progress-bar"></div>
+          </div>
+        </div>
+
+        <button id="btn-theme-toggle" class="btn btn-icon" aria-label="Ganti Tema (Gelap/Terang)" title="Ganti Tema (Gelap/Terang)">
+          <svg id="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay Backdrop -->
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+
+    <!-- ==========================================
+         SIDEBAR NAVIGATION
+         ========================================== -->
+    <aside id="app-sidebar" class="app-sidebar">
+      
+      <!-- Group 1: Pendahuluan -->
+      <nav class="nav-group" aria-label="Navigasi Pendahuluan">
+        <div class="nav-group-title">Pendahuluan</div>
+        <a href="#sec-target" class="nav-link active">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🎯</span>
+            <span>Target & Alur Kerja</span>
+          </div>
+        </a>
+        <a href="#sec-glosarium" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📖</span>
+            <span>Glosarium Istilah</span>
+          </div>
+        </a>
+        <a href="#sec-security" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🛡️</span>
+            <span>Aturan Keamanan</span>
+          </div>
+        </a>
+        <a href="#sec-prerequisites" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">💻</span>
+            <span>Alat & Persiapan</span>
+          </div>
+        </a>
+        <a href="#sec-powershell" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📟</span>
+            <span>Dasar PowerShell</span>
+          </div>
+        </a>
+      </nav>
+
+      <!-- Group 2: Modul Utama -->
+      <nav class="nav-group" aria-label="Navigasi Modul Utama">
+        <div class="nav-group-title">Modul Praktik</div>
+        <a href="#sec-module-1" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🟢</span>
+            <span>Modul 1: Node.js</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m1">0/3</span>
+        </a>
+        <a href="#sec-module-2" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🚀</span>
+            <span>Modul 2: 9Router</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m2">0/4</span>
+        </a>
+        <a href="#sec-module-3" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🤖</span>
+            <span>Modul 3: Telegram Bot</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m3">0/4</span>
+        </a>
+        <a href="#sec-module-4" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">☁️</span>
+            <span>Modul 4: Google Cloud</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m4">0/2</span>
+        </a>
+        <a href="#sec-module-5" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">⚠️</span>
+            <span>Catatan Sebelum Kelas</span>
+          </div>
+        </a>
+      </nav>
+
+      <!-- Group 3: Checkpoints -->
+      <nav class="nav-group" aria-label="Navigasi Checkpoints">
+        <div class="nav-group-title">Gerbang Checkpoint</div>
+        <a href="#sec-checkpoint-1" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📍</span>
+            <span>Checkpoint 1: Node.js</span>
+          </div>
+          <span class="badge badge-pill badge-warning" id="status-nav-cp1">Pending</span>
+        </a>
+        <a href="#sec-checkpoint-2" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📍</span>
+            <span>Checkpoint 2: 9Router</span>
+          </div>
+          <span class="badge badge-pill badge-warning" id="status-nav-cp2">Pending</span>
+        </a>
+        <a href="#sec-checkpoint-3" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📍</span>
+            <span>Checkpoint 3: Telegram</span>
+          </div>
+          <span class="badge badge-pill badge-warning" id="status-nav-cp3">Pending</span>
+        </a>
+      </nav>
+
+      <!-- Group 4: Bantuan & Laporan -->
+      <nav class="nav-group" aria-label="Navigasi Bantuan dan Laporan">
+        <div class="nav-group-title">Bantuan & Laporan</div>
+        <a href="#sec-troubleshooting" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🛠️</span>
+            <span>Solusi Kendala</span>
+          </div>
+        </a>
+        <a href="#sec-redaction" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🔒</span>
+            <span>Sensor Rahasia</span>
+          </div>
+        </a>
+        <a href="#sec-readiness-report" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📋</span>
+            <span>Laporan Kesiapan</span>
+          </div>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- ==========================================
+         MAIN CONTENT AREA
+         ========================================== -->
+    <main id="main-content" class="app-main">
+      
+      <!-- HERO WELCOME SECTION -->
+      <section class="main-hero">
+        <div class="hero-tag">
+          <span>🎓</span> Workshop Pre-Training Guide • Non-Coding Friendly
+        </div>
+        <h2 class="hero-title">Panduan Pre-Training: Hermes Agent + 9Router</h2>
+        <p class="hero-subtitle">
+          Panduan langkah-demi-langkah interaktif untuk menyiapkan laptop Anda sebelum kelas workshop mengelola <strong>Google Calendar melalui Telegram</strong>. Dilengkapi fitur 1-klik salin perintah, verifikasi checkpoint otomatis, dan sensor token keamanan.
+        </p>
+
+        <div class="hero-stats-grid">
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: var(--accent-primary-subtle); color: var(--accent-primary);">⏱️</div>
+            <div class="hero-stat-info">
+              <h4>45–75 mnt</h4>
+              <p>Estimasi Waktu</p>
+            </div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: var(--color-success-subtle); color: var(--color-success);">🎯</div>
+            <div class="hero-stat-info">
+              <h4>3 Gerbang</h4>
+              <p>Checkpoint Mandiri</p>
+            </div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: var(--color-info-subtle); color: var(--color-info);">💻</div>
+            <div class="hero-stat-info">
+              <h4>0 Coding</h4>
+              <p>Dirancang Bagi Pemula</p>
+            </div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: var(--color-warning-subtle); color: var(--color-warning);">💾</div>
+            <div class="hero-stat-info">
+              <h4 id="stat-progress-count">0/13</h4>
+              <p>Langkah Selesai</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: TARGET PRE-TRAINING -->
+      <section id="sec-target" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-num">1</div>
+            <div>
+              <h3 class="section-title">Target & Alur Pre-Training</h3>
+              <p class="section-desc">Pahami apa saja yang perlu diselesaikan sebelum mengikuti sesi kelas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glass">
+          <div class="card-header">
+            <h4 class="card-title">✨ Kriteria Pre-Training Selesai</h4>
+          </div>
+          <div class="card-body">
+            <p>Pre-training Anda dinyatakan selesai dan siap 100% untuk kelas saat:</p>
+            <div class="step-container">
+              <div class="step-card">
+                <div class="step-num-badge">1</div>
+                <div class="step-main">
+                  <h4>9Router Berhasil Dipasang</h4>
+                  <p>Aplikasi 9Router terpasang di sistem dan perintah <code>npx 9router start</code> dapat dijalankan.</p>
+                </div>
+              </div>
+              <div class="step-card">
+                <div class="step-num-badge">2</div>
+                <div class="step-main">
+                  <h4>Dashboard Lokal Terbuka</h4>
+                  <p>Halaman <code>http://localhost:20042</code> dapat diakses di Chrome/Edge pada laptop Anda.</p>
+                </div>
+              </div>
+              <div class="step-card">
+                <div class="step-num-badge">3</div>
+                <div class="step-main">
+                  <h4>Bot Telegram Dibuat & User ID Dicatat</h4>
+                  <p>Bot Telegram telah dibuat via BotFather, token disimpan secara aman, dan Telegram User ID telah diperoleh.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert-box alert-info">
+              <div class="alert-icon">💡</div>
+              <div class="alert-content">
+                <h5>Belum Perlu Menginstal Hermes Agent!</h5>
+                <p>Hermes Agent, pemilihan model AI/provider, dan penyambungan Google Calendar akan dikonfigurasi bersama instruktur saat kelas workshop berlangsung.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: GLOSARIUM ISTILAH -->
+      <section id="sec-glosarium" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-num">2</div>
+            <div>
+              <h3 class="section-title">Glosarium Istilah Penting</h3>
+              <p class="section-desc">Kamus istilah teknis sederhana agar Anda mudah memahami setiap instruksi.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-grid" id="glossary-container">
+          <!-- Populated dynamically or statically -->
+          <div class="card card-interactive">
+            <h4 class="card-title">🌐 Browser</h4>
+            <p class="card-body">Aplikasi untuk membuka situs internet, misalnya Google Chrome atau Microsoft Edge.</p>
+          </div>
+          <div class="card card-interactive">
+            <h4 class="card-title">📟 PowerShell / Terminal</h4>
+            <p class="card-body">Aplikasi tempat kita mengetikkan perintah langsung kepada sistem komputer laptop.</p>
+          </div>
+          <div class="card card-interactive">
+            <h4 class="card-title">🟢 Node.js & npm</h4>
+            <p class="card-body">Aplikasi lingkungan runtime dan pengelola paket yang dibutuhkan agar 9Router dapat berjalan.</p>
+          </div>
+          <div class="card card-interactive">
+            <h4 class="card-title">🚀 9Router</h4>
+            <p class="card-body">Aplikasi lokal perute model AI yang menghubungkan agen pintar (Hermes) dengan model bahasa AI.</p>
+          </div>
+          <div class="card card-interactive">
+            <h4 class="card-title">🔑 Token / API Key</h4>
+            <p class="card-body">Kode rahasia akses ke suatu layanan AI/Telegram. Wajib dijaga layaknya kata sandi rahasia akun bank.</p>
+          </div>
+          <div class="card card-interactive">
+            <h4 class="card-title">🤖 BotFather</h4>
+            <p class="card-body">Akun resmi dari Telegram (terverifikasi centang biru) yang digunakan untuk membuat dan mengatur bot Telegram baru.</p>
+          </div>
+          <div class="card card-interactive">
+            <h4 class="card-title">🆔 Telegram User ID</h4>
+            <p class="card-body">Nomor unik permanen (angka murni) yang menandai akun Telegram Anda, berbeda dari nama @username.</p>
+          </div>
+          <div class="card card-interactive">
+            <h4 class="card-title">📍 Checkpoint</h4>
+            <p class="card-body">Gerbang konfirmasi bahwa satu tahap berhasil 100% dan Anda diperbolehkan lanjut ke tahap berikutnya.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: ATURAN KEAMANAN -->
+      <section id="sec-security" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-num">3</div>
+            <div>
+              <h3 class="section-title">Aturan Keamanan & Perlindungan Rahasia</h3>
+              <p class="section-desc">Patuhi 4 protokol keamanan berikut demi mencegah kebocoran data rahasia.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glass">
+          <div class="checklist-group">
+            <div class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" id="sec-rule-1" checked disabled>
+              <label for="sec-rule-1" class="checklist-label">
+                <strong>1. DILARANG</strong> mengirim token bot, API key, atau kata sandi ke grup kelas WhatsApp/Telegram.
+              </label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" id="sec-rule-2" checked disabled>
+              <label for="sec-rule-2" class="checklist-label">
+                <strong>2. DILARANG</strong> mengambil screenshot layar jika jendela sedang menampilkan token/kode rahasia secara terbuka.
+              </label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" id="sec-rule-3" checked disabled>
+              <label for="sec-rule-3" class="checklist-label">
+                <strong>3. DILARANG</strong> mengubah konfigurasi jaringan internal, proxy kantor, atau mematikan firewall laptop tanpa arahan.
+              </label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" id="sec-rule-4" checked disabled>
+              <label for="sec-rule-4" class="checklist-label">
+                <strong>4. WAJIB SENSOR</strong> setiap pesan error sebelum dibagikan ke instruktur dengan fitur <em>Sensor Rahasia</em>.
+              </label>
+            </div>
+          </div>
+
+          <div class="alert-box alert-warning">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-content">
+              <h5>Contoh Sensor Token yang Benar</h5>
+              <p>API Key Asli: <code>sk-ant-api03-abcdef123456789-rahasia</code><br>
+              Yang Dikirim: <code>sk-ant-api03-****-rahasia</code></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: ALAT & PERSIAPAN -->
+      <section id="sec-prerequisites" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-num">4</div>
+            <div>
+              <h3 class="section-title">Alat & Persiapan Perangkat</h3>
+              <p class="section-desc">Daftar kelengkapan yang wajib Anda miliki sebelum memulai langkah instalasi.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="checklist-group" id="prereq-checklist">
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" data-task-id="prereq-laptop">
+              <span class="checklist-label">Laptop Windows 10/11 (atau macOS/Linux dengan arahan instruktur)</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" data-task-id="prereq-charger">
+              <span class="checklist-label">Charger laptop siap digunakan</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" data-task-id="prereq-internet">
+              <span class="checklist-label">Koneksi internet stabil (disarankan minimal 10 Mbps)</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" data-task-id="prereq-browser">
+              <span class="checklist-label">Google Chrome atau Microsoft Edge versi terbaru terpasang</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" data-task-id="prereq-admin">
+              <span class="checklist-label">Hak akses memasang aplikasi (Administrator) pada laptop</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" data-task-id="prereq-telegram">
+              <span class="checklist-label">Akun Telegram aktif di ponsel Anda</span>
+            </label>
+            <label class="checklist-item">
+              <input type="checkbox" class="checklist-checkbox" data-task-id="prereq-google">
+              <span class="checklist-label">Akun Google pribadi aktif yang dapat membuka Google Cloud Console</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: DASAR POWERSHELL -->
+      <section id="sec-powershell" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-num">5</div>
+            <div>
+              <h3 class="section-title">Panduan Khusus: Membuka & Menggunakan PowerShell</h3>
+              <p class="section-desc">Langkah mudah membuka jendela terminal PowerShell pada sistem Windows.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glass">
+          <div class="step-container">
+            <div class="step-card">
+              <div class="step-num-badge">1</div>
+              <div class="step-main">
+                <h4>Buka Start Menu</h4>
+                <p>Klik tombol <strong>Start / Windows</strong> di sudut kiri bawah layar Anda.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-num-badge">2</div>
+              <div class="step-main">
+                <h4>Ketikkan "PowerShell"</h4>
+                <p>Ketik kata <code>PowerShell</code> lalu klik aplikasi <strong>Windows PowerShell</strong>.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-num-badge">3</div>
+              <div class="step-main">
+                <h4>Memahami Prompt Perintah</h4>
+                <p>Anda akan melihat baris awal seperti <code>PS C:\Users\NamaAnda&gt;</code>. Teks tersebut normal dan tidak perlu diketik ulang.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-box alert-info">
+            <div class="alert-icon">🖱️</div>
+            <div class="alert-content">
+              <h5>Cara Menyalin dan Menempel Perintah:</h5>
+              <p>Klik tombol <strong>"Salin Perintah"</strong> pada kotak kode di bawah, lalu klik kanan satu kali pada jendela PowerShell untuk menempelkan perintah, lalu tekan tombol <strong>Enter</strong>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MODULE SECTIONS (1-5) & CHECKPOINTS (1-3) & TROUBLESHOOTING & REDACTION & REPORT -->
+      <div id="dynamic-modules-container">
+        
+        <!-- Global Expand/Collapse Module Controls -->
+        <div class="module-controls">
+          <button id="btn-expand-all-modules" class="btn btn-sm btn-outline">
+            <span>📖</span> Buka Semua Modul
+          </button>
+          <button id="btn-collapse-all-modules" class="btn btn-sm btn-outline">
+            <span>📁</span> Tutup Semua Modul
+          </button>
+        </div>
+
+        <!-- ==========================================
+             MODUL 1: PEMERIKSAAN & INSTALASI NODE.JS
+             ========================================== -->
+        <section id="sec-module-1" class="content-section">
+          <div class="module-card">
+            <div class="module-header" role="button" tabindex="0" aria-expanded="true">
+              <div class="module-header-main">
+                <div class="module-icon-badge">🟢</div>
+                <div class="module-title-group">
+                  <h3>Modul 1: Pemeriksaan & Instalasi Node.js</h3>
+                  <p>Aplikasi pendukung wajib agar 9Router dapat berjalan di komputer Anda</p>
+                </div>
+              </div>
+              <div class="module-header-meta">
+                <span class="badge badge-pill badge-primary">3 Langkah</span>
+                <button class="module-chevron" aria-label="Toggle accordion">▼</button>
+              </div>
+            </div>
+
+            <div class="module-body">
+              <!-- Langkah A -->
+              <div class="step-section">
+                <div class="step-section-node">A</div>
+                <div class="step-section-title">
+                  <span>Periksa Apakah Node.js Sudah Terpasang</span>
+                  <span class="badge badge-pill badge-neutral">PowerShell</span>
+                </div>
+                <p class="card-body">
+                  Buka jendela PowerShell, lalu jalankan perintah berikut untuk memeriksa apakah <span class="glossary-term" tabindex="0">Node.js<span class="glossary-tooltip"><span class="glossary-tooltip-title">🟢 Node.js</span><span class="glossary-tooltip-desc">Aplikasi runtime yang dibutuhkan agar 9Router dapat berjalan.</span></span></span> sudah tersedia:
+                </p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <div class="code-dots">
+                      <span class="code-dot red"></span>
+                      <span class="code-dot yellow"></span>
+                      <span class="code-dot green"></span>
+                    </div>
+                    <span class="code-label">PowerShell</span>
+                    <button class="code-copy-btn" aria-label="Salin perintah">
+                      <span>📋 Salin Perintah</span>
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>node --version</code></pre>
+                </div>
+
+                <div class="command-output-badge">
+                  <span>✓ Hasil yang benar:</span> <code>v24.x.x</code> <span>atau</span> <code>v22.x.x</code>
+                </div>
+
+                <div class="alert-box alert-info">
+                  <div class="alert-icon">💡</div>
+                  <div class="alert-content">
+                    <h5>Penjelasan Versi:</h5>
+                    <p>Jika muncul nomor versi <span class="glossary-term" tabindex="0">LTS<span class="glossary-tooltip"><span class="glossary-tooltip-title">🛡️ LTS (Long Term Support)</span><span class="glossary-tooltip-desc">Versi stabil yang didukung jangka panjang dan paling disarankan.</span></span></span> seperti <code>v24...</code> atau <code>v22...</code>, langsung lanjutkan ke <strong>Langkah C (Periksa npm)</strong>. Jika muncul pesan <code>node is not recognized</code>, hal itu wajar jika laptop Anda belum pernah diinstal Node.js; lanjutkan ke <strong>Langkah B</strong> di bawah ini.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah B -->
+              <div class="step-section">
+                <div class="step-section-node">B</div>
+                <div class="step-section-title">
+                  <span>Instal Node.js (Jika Belum Tersedia)</span>
+                  <span class="badge badge-pill badge-warning">Hanya jika belum ada</span>
+                </div>
+                <p class="card-body">
+                  Ikuti langkah-langkah resmi berikut untuk mengunduh dan memasang Node.js pada Windows:
+                </p>
+
+                <ol class="step-instruction-list">
+                  <li>Buka browser (Google Chrome atau Microsoft Edge).</li>
+                  <li>
+                    Kunjungi situs resmi: 
+                    <a href="https://nodejs.org" target="_blank" rel="noopener noreferrer" class="external-link">
+                      https://nodejs.org
+                      <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                  </li>
+                  <li>Pilih versi yang bertuliskan <strong>LTS</strong>, lalu unduh file <strong>Windows Installer (.msi) 64-bit / x64</strong>.</li>
+                  <li>Buka file installer <code>.msi</code> yang telah selesai diunduh.</li>
+                  <li>Klik <strong>Next</strong>, centang persetujuan lisensi (Accept), dan gunakan seluruh opsi bawaan (default).</li>
+                  <li>Pastikan opsi <strong>npm package manager</strong> dan <strong>Add to PATH</strong> tetap dicentang aktif.</li>
+                  <li>Jika sistem Windows meminta izin hak Administrator (UAC), klik <strong>Yes</strong>.</li>
+                  <li>Setelah selesai, klik <strong>Finish</strong>.</li>
+                  <li><strong>Tutup SEMUA jendela PowerShell</strong> yang terbuka, lalu buka jendela PowerShell yang baru.</li>
+                  <li>Jalankan kembali <code>node --version</code> dan <code>npm --version</code> untuk memastikan.</li>
+                </ol>
+
+                <div class="alert-box alert-warning">
+                  <div class="alert-icon">⚠️</div>
+                  <div class="alert-content">
+                    <h5>Perhatian Penting:</h5>
+                    <p>Jangan memilih file ZIP atau Source Code. Pastikan selalu menggunakan file installer <strong>.msi</strong> agar konfigurasi PATH berjalan otomatis.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah C -->
+              <div class="step-section">
+                <div class="step-section-node">C</div>
+                <div class="step-section-title">
+                  <span>Periksa npm (Node Package Manager)</span>
+                  <span class="badge badge-pill badge-neutral">PowerShell</span>
+                </div>
+                <p class="card-body">
+                  Di jendela PowerShell yang baru, periksa ketersediaan <span class="glossary-term" tabindex="0">npm<span class="glossary-tooltip"><span class="glossary-tooltip-title">📦 npm</span><span class="glossary-tooltip-desc">Alat pengelola paket bawaan Node.js untuk mengunduh 9Router.</span></span></span> dengan perintah:
+                </p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <div class="code-dots">
+                      <span class="code-dot red"></span>
+                      <span class="code-dot yellow"></span>
+                      <span class="code-dot green"></span>
+                    </div>
+                    <span class="code-label">PowerShell</span>
+                    <button class="code-copy-btn" aria-label="Salin perintah">
+                      <span>📋 Salin Perintah</span>
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>npm --version</code></pre>
+                </div>
+
+                <div class="command-output-badge">
+                  <span>✓ Hasil yang benar:</span> <span>Menampilkan angka versi npm (contoh: <code>10.x.x</code> atau <code>9.x.x</code>)</span>
+                </div>
+              </div>
+
+              <!-- Checkpoint 1 Preview Card -->
+              <div class="card card-glass" style="border-left: 4px solid var(--color-success); margin-top: 1rem;">
+                <div class="card-header">
+                  <h4 class="card-title" style="color: var(--color-success);">📍 Gerbang Checkpoint 1: Node.js Siap</h4>
+                  <span class="badge badge-pill badge-success">Target Tahap 1</span>
+                </div>
+                <div class="card-body">
+                  <p>Tahap ini berhasil jika kedua perintah di atas menampilkan nomor versi:</p>
+                  <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary);">
+                    <li><code>node --version</code> → menampilkan nomor versi</li>
+                    <li><code>npm --version</code> → menampilkan nomor versi</li>
+                  </ul>
+                  <p style="margin-top: 0.75rem; font-size: var(--font-size-xs); color: var(--text-muted);">
+                    Jika salah satunya gagal atau tidak dikenali, lihat panduan di bagian <strong>Solusi Kendala</strong> atau hubungi tim technical clinic.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             MODUL 2: INSTALASI & MENJALANKAN 9ROUTER
+             ========================================== -->
+        <section id="sec-module-2" class="content-section">
+          <div class="module-card">
+            <div class="module-header" role="button" tabindex="0" aria-expanded="true">
+              <div class="module-header-main">
+                <div class="module-icon-badge">🚀</div>
+                <div class="module-title-group">
+                  <h3>Modul 2: Instalasi & Menjalankan 9Router</h3>
+                  <p>Memasang router model AI lokal dan memastikan dashboard dapat dibuka</p>
+                </div>
+              </div>
+              <div class="module-header-meta">
+                <span class="badge badge-pill badge-primary">4 Langkah</span>
+                <button class="module-chevron" aria-label="Toggle accordion">▼</button>
+              </div>
+            </div>
+
+            <div class="module-body">
+              <!-- Langkah A -->
+              <div class="step-section">
+                <div class="step-section-node">A</div>
+                <div class="step-section-title">
+                  <span>Instalasi Global 9Router</span>
+                  <span class="badge badge-pill badge-neutral">PowerShell</span>
+                </div>
+                <p class="card-body">
+                  Pastikan jendela PowerShell tetap terbuka dan terhubung ke internet. Salin dan jalankan perintah:
+                </p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <div class="code-dots">
+                      <span class="code-dot red"></span>
+                      <span class="code-dot yellow"></span>
+                      <span class="code-dot green"></span>
+                    </div>
+                    <span class="code-label">PowerShell</span>
+                    <button class="code-copy-btn" aria-label="Salin perintah">
+                      <span>📋 Salin Perintah</span>
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>npm install -g 9router</code></pre>
+                </div>
+
+                <div class="alert-box alert-info">
+                  <div class="alert-icon">⏳</div>
+                  <div class="alert-content">
+                    <h5>Proses Pemasangan:</h5>
+                    <p>Proses instalasi membutuhkan waktu 1–3 menit. Tulisan bergerak atau pesan <code>npm notice</code> di layar adalah hal yang wajar. <strong>Jangan menutup terminal</strong> sampai PowerShell kembali menampilkan baris perintah <code>PS C:\...&gt;</code>.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah B -->
+              <div class="step-section">
+                <div class="step-section-node">B</div>
+                <div class="step-section-title">
+                  <span>Menjalankan 9Router & Membuka Dashboard</span>
+                  <span class="badge badge-pill badge-neutral">PowerShell</span>
+                </div>
+                <p class="card-body">
+                  Jalankan aplikasi 9Router dengan mengetikkan:
+                </p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <div class="code-dots">
+                      <span class="code-dot red"></span>
+                      <span class="code-dot yellow"></span>
+                      <span class="code-dot green"></span>
+                    </div>
+                    <span class="code-label">PowerShell</span>
+                    <button class="code-copy-btn" aria-label="Salin perintah">
+                      <span>📋 Salin Perintah</span>
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>9router</code></pre>
+                </div>
+
+                <p class="card-body" style="margin-top: 0.75rem;">
+                  Setelah menekan <code>Enter</code>, tunggu sekitar 10–30 detik. Browser Anda mungkin akan terbuka secara otomatis. Jika tidak terbuka otomatis, buka Google Chrome / Microsoft Edge dan kunjungi:
+                </p>
+
+                <div style="margin: 0.5rem 0 1rem 0;">
+                  <a href="http://localhost:20128" target="_blank" rel="noopener noreferrer" class="external-link" style="font-size: var(--font-size-md);">
+                    🔗 http://localhost:20128
+                    <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                  <span style="font-size: var(--font-size-xs); color: var(--text-muted); margin-left: 0.5rem;">(atau <code>http://127.0.0.1:20128</code>)</span>
+                </div>
+
+                <div class="alert-box alert-warning">
+                  <div class="alert-icon">🛡️</div>
+                  <div class="alert-content">
+                    <h5>Jendela PowerShell Wajib Tetap Terbuka!</h5>
+                    <p>PowerShell harus tetap terbuka di latar belakang agar 9Router terus aktif. <span class="glossary-term" tabindex="0">localhost<span class="glossary-tooltip"><span class="glossary-tooltip-title">💻 Localhost</span><span class="glossary-tooltip-desc">Menandakan aplikasi hanya berjalan lokal di laptop Anda, bukan situs internet publik.</span></span></span> berjalan secara pribadi di laptop Anda. Jika muncul permintaan izin Firewall jaringan publik, batalkan/tutup peringatan tersebut.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah C -->
+              <div class="step-section">
+                <div class="step-section-node">C</div>
+                <div class="step-section-title">
+                  <span>Login Dashboard & Kata Sandi Awal</span>
+                  <span class="badge badge-pill badge-primary">Penting</span>
+                </div>
+                <p class="card-body">
+                  Jika halaman pertama dashboard 9Router meminta <strong>Password / Login</strong>:
+                </p>
+
+                <ol class="step-instruction-list">
+                  <li>Masukkan kata sandi awal default: <code>123456</code>.</li>
+                  <li>Klik tombol <strong>Login / Sign in</strong>.</li>
+                  <li>Jika diminta membuat kata sandi baru, buat kata sandi sederhana yang tidak Anda pakai pada akun lain.</li>
+                  <li>Simpan kata sandi baru tersebut di catatan pribadi Anda.</li>
+                  <li>Pastikan tampilan dashboard utama 9Router telah terlihat.</li>
+                </ol>
+
+                <div class="alert-box alert-info">
+                  <div class="alert-icon">🔑</div>
+                  <div class="alert-content">
+                    <h5>Catatan Keamanan Kata Sandi:</h5>
+                    <p><code>123456</code> adalah kata sandi awal instalasi lokal 9Router, <strong>BUKAN kata sandi akun Google atau Telegram Anda</strong>. Jangan mengirimkan kata sandi kepada instruktur atau peserta lain.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah D -->
+              <div class="step-section">
+                <div class="step-section-node">D</div>
+                <div class="step-section-title">
+                  <span>Cara Menghentikan & Menjalankan Kembali</span>
+                  <span class="badge badge-pill badge-neutral">Opsional</span>
+                </div>
+                <p class="card-body">
+                  Jika Anda ingin menghentikan 9Router sementara:
+                </p>
+                <div class="code-container">
+                  <div class="code-header">
+                    <span class="code-label">Tombol Keyboard</span>
+                  </div>
+                  <pre class="code-content"><code>Ctrl + C</code></pre>
+                </div>
+                <p class="card-body">
+                  Untuk menjalankannya kembali sewaktu-waktu, cukup buka PowerShell baru dan jalankan <code>9router</code>.
+                </p>
+              </div>
+
+              <!-- Checkpoint 2 Preview Card -->
+              <div class="card card-glass" style="border-left: 4px solid var(--color-success); margin-top: 1rem;">
+                <div class="card-header">
+                  <h4 class="card-title" style="color: var(--color-success);">📍 Gerbang Checkpoint 2: Dashboard 9Router Terbuka</h4>
+                  <span class="badge badge-pill badge-success">Target Tahap 2</span>
+                </div>
+                <div class="card-body">
+                  <p>Checkpoint 2 dinyatakan lolos jika halaman <code>http://localhost:20128</code> berhasil terbuka di browser dan menampilkan antarmuka 9Router.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             MODUL 3: PEMBUATAN BOT TELEGRAM & TELEGRAM USER ID
+             ========================================== -->
+        <section id="sec-module-3" class="content-section">
+          <div class="module-card">
+            <div class="module-header" role="button" tabindex="0" aria-expanded="true">
+              <div class="module-header-main">
+                <div class="module-icon-badge">🤖</div>
+                <div class="module-title-group">
+                  <h3>Modul 3: Pembuatan Bot Telegram & Telegram User ID</h3>
+                  <p>Membuat bot Telegram melalui BotFather resmi, mengamankan token bot, dan mencatat nomor Telegram User ID</p>
+                </div>
+              </div>
+              <div class="module-header-meta">
+                <span class="badge badge-pill badge-primary">5 Langkah</span>
+                <button class="module-chevron" aria-label="Toggle accordion">▼</button>
+              </div>
+            </div>
+
+            <div class="module-body">
+              <!-- Langkah A -->
+              <div class="step-section">
+                <div class="step-section-node">A</div>
+                <div class="step-section-title">
+                  <span>Buka Akun Resmi @BotFather di Telegram</span>
+                  <span class="badge badge-pill badge-info">Aplikasi Telegram</span>
+                </div>
+                <p class="card-body">
+                  Buka aplikasi Telegram di ponsel atau laptop Anda. Gunakan fitur pencarian untuk menemukan akun resmi pembuat bot Telegram:
+                </p>
+
+                <ol class="step-instruction-list">
+                  <li>Buka aplikasi Telegram di ponsel Anda.</li>
+                  <li>Tekan ikon pencarian (kaca pembesar) di bagian atas.</li>
+                  <li>Cari akun: <code>@BotFather</code>.</li>
+                  <li>
+                    <strong>PENTING:</strong> Pastikan username yang Anda pilih tepat bertuliskan <strong>@BotFather</strong> dan memiliki <strong>tanda centang biru resmi (verified badge)</strong> dari Telegram.
+                  </li>
+                  <li>Buka ruang percakapan tersebut, lalu tekan tombol <strong>Start</strong> di bagian bawah layar.</li>
+                </ol>
+
+                <div style="margin: 0.5rem 0 1rem 0;">
+                  <a href="https://t.me/BotFather" target="_blank" rel="noopener noreferrer" class="external-link" style="font-size: var(--font-size-md);">
+                    🔗 https://t.me/BotFather
+                    <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  </a>
+                  <div class="link-security-note">
+                    <span>🛡️</span> Tautan resmi Telegram menuju <span class="glossary-term" tabindex="0">BotFather<span class="glossary-tooltip"><span class="glossary-tooltip-title">🤖 BotFather</span><span class="glossary-tooltip-desc">Akun resmi dari Telegram (terverifikasi centang biru) yang digunakan untuk membuat dan mengatur bot Telegram baru.</span></span></span>.
+                  </div>
+                </div>
+
+                <div class="alert-box alert-warning">
+                  <div class="alert-icon">⚠️</div>
+                  <div class="alert-content">
+                    <h5>Waspada Akun Tiruan / Palsu!</h5>
+                    <p>Banyak akun tiruan yang menggunakan nama serupa tanpa centang biru. Jangan pernah berinteraksi dengan akun selain <strong>@BotFather</strong> yang memiliki lencana centang biru resmi.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah B -->
+              <div class="step-section">
+                <div class="step-section-node">B</div>
+                <div class="step-section-title">
+                  <span>Buat Bot Baru dengan Perintah /newbot</span>
+                  <span class="badge badge-pill badge-neutral">Telegram Chat</span>
+                </div>
+                <p class="card-body">
+                  Kirim perintah berikut ke ruang percakapan dengan @BotFather:
+                </p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <div class="code-dots">
+                      <span class="code-dot red"></span>
+                      <span class="code-dot yellow"></span>
+                      <span class="code-dot green"></span>
+                    </div>
+                    <span class="code-label">Perintah Telegram</span>
+                    <button class="code-copy-btn" aria-label="Salin perintah">
+                      <span>📋 Salin Perintah</span>
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>/newbot</code></pre>
+                </div>
+
+                <ol class="step-instruction-list">
+                  <li>Setelah mengirim <code>/newbot</code>, BotFather akan meminta <strong>Nama Tampilan Bot</strong> (Display Name). Ketik nama yang mudah dikenali, contoh: <code>Asisten Jadwal Budi</code>.</li>
+                  <li>
+                    BotFather kemudian akan meminta <strong>Username Bot</strong>. Aturan penulisan username bot:
+                    <ul style="margin: 0.35rem 0 0.35rem 1.25rem;">
+                      <li>Harus <strong>unik</strong> di seluruh dunia (belum pernah dipakai orang lain).</li>
+                      <li><strong>Tidak boleh memakai spasi</strong>.</li>
+                      <li>Hanya boleh memakai huruf, angka, dan garis bawah (<code>_</code>).</li>
+                      <li><strong>Wajib diakhiri dengan kata <code>bot</code></strong> (contoh: <code>jadwal_budi_2026_bot</code> atau <code>asisten_kalender_bot</code>).</li>
+                    </ul>
+                  </li>
+                  <li>Jika muncul pesan <em>"Sorry, this username is already taken"</em>, variasikan username Anda dengan menambahkan angka atau nama Anda sampai diterima.</li>
+                  <li>Jika berhasil, BotFather akan membalas dengan pesan selamat yang berisi tautan ke bot Anda serta <strong>Bot Token</strong> rahasia.</li>
+                </ol>
+
+                <div class="alert-box alert-info">
+                  <div class="alert-icon">💡</div>
+                  <div class="alert-content">
+                    <h5>Privasi Nama & Username:</h5>
+                    <p>Nama dan username bot dapat dilihat publik di Telegram. Jangan mencantumkan nomor handphone, alamat email pribadi, atau kata sandi pada nama bot Anda.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah C -->
+              <div class="step-section">
+                <div class="step-section-node">C</div>
+                <div class="step-section-title">
+                  <span>Simpan Bot Token dengan Aman & Aturan Kerahasiaan</span>
+                  <span class="badge badge-pill badge-danger">Sangat Rahasia</span>
+                </div>
+                <p class="card-body">
+                  <span class="glossary-term" tabindex="0">Bot Token<span class="glossary-tooltip"><span class="glossary-tooltip-title">🔑 Bot Token</span><span class="glossary-tooltip-desc">Kode rahasia panjang yang memungkinkan aplikasi Hermes Agent mengendalikan bot Telegram Anda secara penuh.</span></span></span> terlihat seperti deretan angka dan huruf panjang (contoh: <code>7123456789:AAFlxyz123...</code>). Token setiap peserta berbeda dan unik.
+                </p>
+
+                <div class="alert-box alert-danger">
+                  <div class="alert-icon">🛑</div>
+                  <div class="alert-content">
+                    <h5>DILARANG KERAS MENYEBARKAN BOT TOKEN!</h5>
+                    <p>Siapa pun yang mengetahui bot token dapat mengendalikan bot Anda sepenuhnya. Ikuti aturan wajib ini:</p>
+                    <ul style="margin: 0.5rem 0 0 1.25rem;">
+                      <li><strong>JANGAN</strong> mengirim token ke grup kelas WhatsApp atau Telegram.</li>
+                      <li><strong>JANGAN</strong> mengambil screenshot layar saat token sedang terlihat.</li>
+                      <li><strong>JANGAN</strong> menyimpan token di dokumen atau folder bersama (Google Drive umum, dsb.).</li>
+                      <li>Biarkan token tetap berada di riwayat percakapan pribadi Anda dengan @BotFather (aman), atau simpan di aplikasi Password Manager pribadi Anda.</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p class="card-body" style="margin-top: 1rem;">
+                  <strong>Perintah Pencabutan Darurat (Jika Token Bocor):</strong><br>
+                  Jika Anda tidak sengaja mengirimkan atau memperlihatkan bot token kepada orang lain, segera batalkan token tersebut dengan mengirim perintah berikut ke @BotFather:
+                </p>
+
+                <div class="code-container">
+                  <div class="code-header">
+                    <div class="code-dots">
+                      <span class="code-dot red"></span>
+                      <span class="code-dot yellow"></span>
+                      <span class="code-dot green"></span>
+                    </div>
+                    <span class="code-label">Perintah Darurat BotFather</span>
+                    <button class="code-copy-btn" aria-label="Salin perintah">
+                      <span>📋 Salin Perintah</span>
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>/revoke</code></pre>
+                </div>
+                <p class="card-body" style="font-size: var(--font-size-xs); color: var(--text-muted);">
+                  Pilih bot Anda, lalu BotFather akan menonaktifkan token lama dan memberikan token baru yang aman.
+                </p>
+              </div>
+
+              <!-- Langkah D -->
+              <div class="step-section">
+                <div class="step-section-node">D</div>
+                <div class="step-section-title">
+                  <span>Buka Bot Anda & Tekan Start</span>
+                  <span class="badge badge-pill badge-neutral">Telegram Chat</span>
+                </div>
+                <p class="card-body">
+                  Setelah bot berhasil dibuat di BotFather:
+                </p>
+
+                <ol class="step-instruction-list">
+                  <li>Klik tautan bot yang dikirimkan oleh BotFather (misal: <code>t.me/jadwal_budi_2026_bot</code>).</li>
+                  <li>Ruang obrolan dengan bot baru Anda akan terbuka.</li>
+                  <li>Tekan tombol <strong>Start</strong> (atau Mulai) di bagian bawah obrolan.</li>
+                </ol>
+
+                <div class="alert-box alert-info">
+                  <div class="alert-icon">ℹ️</div>
+                  <div class="alert-content">
+                    <h5>Bot Belum Merespons Adalah Hal Normal!</h5>
+                    <p>Setelah menekan Start, bot Anda <strong>belum akan membalas pesan</strong>. Hal ini sepenuhnya wajar dan normal karena aplikasi <strong>Hermes Agent belum dihubungkan ke bot Anda</strong>. Penyambungan bot ke Hermes akan dilakukan bersama instruktur saat kelas workshop.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Langkah E -->
+              <div class="step-section">
+                <div class="step-section-node">E</div>
+                <div class="step-section-title">
+                  <span>Dapatkan Nomor Telegram User ID Anda via @userinfobot</span>
+                  <span class="badge badge-pill badge-primary">Penting</span>
+                </div>
+                <p class="card-body">
+                  Hermes Agent membutuhkan <span class="glossary-term" tabindex="0">Telegram User ID<span class="glossary-tooltip"><span class="glossary-tooltip-title">🆔 Telegram User ID</span><span class="glossary-tooltip-desc">Nomor angka murni permanen pengenal akun Anda agar hanya Anda yang diizinkan mengendalikan bot.</span></span></span> Anda untuk sistem keamanan, memastikan hanya Anda sendiri yang berhak memerintah bot untuk mengelola kalender:
+                </p>
+
+                <ol class="step-instruction-list">
+                  <li>Di aplikasi Telegram ponsel Anda, cari akun pembantu: <code>@userinfobot</code>.</li>
+                  <li>
+                    Buka percakapan resmi tersebut, atau klik tautan:
+                    <a href="https://t.me/userinfobot" target="_blank" rel="noopener noreferrer" class="external-link" style="margin-left: 0.35rem;">
+                      https://t.me/userinfobot
+                      <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                  </li>
+                  <li>Tekan tombol <strong>Start</strong> di bagian bawah layar.</li>
+                  <li>Bot akan langsung menampilkan rincian profil Anda. Cari baris bertuliskan <strong>Id</strong> atau <strong>User ID</strong> yang <strong>hanya berupa angka</strong> (contoh: <code>123456789</code>).</li>
+                  <li>Catat hanya nomor angka tersebut di catatan pribadi laptop Anda agar siap disalin saat kelas.</li>
+                </ol>
+
+                <div class="comparison-grid">
+                  <div class="comparison-box">
+                    <h5>Username Telegram</h5>
+                    <div class="comparison-value">@nama_pengguna</div>
+                    <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.35rem;">Bisa diubah sewaktu-waktu oleh pengguna, diawali karakter @.</p>
+                  </div>
+                  <div class="comparison-box" style="border-color: var(--accent-primary); background: rgba(79, 70, 229, 0.05);">
+                    <h5>Telegram User ID (Yang Dibutuhkan)</h5>
+                    <div class="comparison-value">123456789</div>
+                    <p style="font-size: var(--font-size-xs); color: var(--color-success-text); margin-top: 0.35rem;">✓ Nomor angka murni permanen bawaan Telegram, tidak pernah berubah.</p>
+                  </div>
+                </div>
+
+                <div class="alert-box alert-warning">
+                  <div class="alert-icon">⚠️</div>
+                  <div class="alert-content">
+                    <h5>Aturan Keamanan @userinfobot:</h5>
+                    <p>Jangan pernah mengirim bot token, password, atau kode login kepada <code>@userinfobot</code>. Anda hanya perlu menekan tombol <strong>Start</strong> dan mencatat nomor ID angka yang ditampilkan.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Checkpoint 3 Preview Card -->
+              <div class="card card-glass" style="border-left: 4px solid var(--color-success); margin-top: 1rem;">
+                <div class="card-header">
+                  <h4 class="card-title" style="color: var(--color-success);">📍 Gerbang Checkpoint 3: Bot Telegram & User ID Siap</h4>
+                  <span class="badge badge-pill badge-success">Target Tahap 3</span>
+                </div>
+                <div class="card-body">
+                  <p>Checkpoint 3 dinyatakan lolos jika keempat syarat berikut terpenuhi:</p>
+                  <ul style="margin: 0.5rem 0 0 1.25rem; color: var(--text-secondary);">
+                    <li>Bot baru sudah dibuat di Telegram dan tombol <strong>Start</strong> sudah ditekan.</li>
+                    <li>Bot token tersimpan aman di obrolan BotFather atau password manager (tidak pernah dibagikan ke publik).</li>
+                    <li>Nomor Telegram User ID (hanya angka) sudah dicatat di catatan pribadi.</li>
+                    <li>Token bot tidak pernah dikirimkan ke orang lain.</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             MODUL 4: PEMERIKSAAN AKUN GOOGLE CLOUD
+             ========================================== -->
+        <section id="sec-module-4" class="content-section">
+          <div class="module-card">
+            <div class="module-header" role="button" tabindex="0" aria-expanded="true">
+              <div class="module-header-main">
+                <div class="module-icon-badge">☁️</div>
+                <div class="module-title-group">
+                  <h3>Modul 4: Pemeriksaan Akun Google Cloud</h3>
+                  <p>Memastikan akun Google pribadi dapat mengakses Google Cloud Console tanpa konfigurasi API atau billing sebelum kelas</p>
+                </div>
+              </div>
+              <div class="module-header-meta">
+                <span class="badge badge-pill badge-primary">2 Langkah</span>
+                <button class="module-chevron" aria-label="Toggle accordion">▼</button>
+              </div>
+            </div>
+
+            <div class="module-body">
+              <!-- Langkah A -->
+              <div class="step-section">
+                <div class="step-section-node">A</div>
+                <div class="step-section-title">
+                  <span>Buka & Login ke Google Cloud Console</span>
+                  <span class="badge badge-pill badge-neutral">Browser</span>
+                </div>
+                <p class="card-body">
+                  Tidak ada konfigurasi rumit yang perlu dilakukan sebelum kelas. Anda hanya perlu memastikan akun Google Anda dapat mengakses halaman utama konsol cloud Google:
+                </p>
+
+                <ol class="step-instruction-list">
+                  <li>Buka browser Anda (Google Chrome atau Microsoft Edge disarankan).</li>
+                  <li>
+                    Kunjungi alamat resmi:
+                    <div style="margin: 0.5rem 0;">
+                      <a href="https://console.cloud.google.com" target="_blank" rel="noopener noreferrer" class="external-link" style="font-size: var(--font-size-md);">
+                        🔗 https://console.cloud.google.com
+                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                      </a>
+                    </div>
+                  </li>
+                  <li>Login menggunakan akun Google pribadi yang Anda siapkan untuk workshop.</li>
+                  <li>Jika muncul jendela persetujuan awal (Terms of Service) dan pemilihan negara, baca lalu setujui jika Anda berkenan untuk melanjutkan.</li>
+                  <li>Pastikan Anda berhasil melihat tampilan dashboard utama <span class="glossary-term" tabindex="0">Google Cloud Console<span class="glossary-tooltip"><span class="glossary-tooltip-title">☁️ Google Cloud Console</span><span class="glossary-tooltip-desc">Halaman pengaturan layanan cloud Google yang akan digunakan saat kelas untuk mengaktifkan akses Google Calendar.</span></span></span>.</li>
+                </ol>
+              </div>
+
+              <!-- Langkah B -->
+              <div class="step-section">
+                <div class="step-section-node">B</div>
+                <div class="step-section-title">
+                  <span>Verifikasi Tampilan & Batasan Penting Pra-Kelas</span>
+                  <span class="badge badge-pill badge-warning">Cukup Buka Saja</span>
+                </div>
+                <p class="card-body">
+                  Setelah halaman Google Cloud Console terbuka dengan profil akun Anda di sudut kanan atas, tugas Anda di tahap ini sudah selesai.
+                </p>
+
+                <div class="alert-box alert-warning">
+                  <div class="alert-icon">⚠️</div>
+                  <div class="alert-content">
+                    <h5>BATASAN PENTING PRA-KELAS GOOGLE CLOUD:</h5>
+                    <p>Demi kenyamanan dan keseragaman latihan saat workshop, patuhi aturan berikut:</p>
+                    <ul style="margin: 0.5rem 0 0 1.25rem;">
+                      <li><strong>JANGAN membuat Project baru</strong> terlebih dahulu.</li>
+                      <li><strong>JANGAN mengaktifkan Google Calendar API</strong> sebelum kelas.</li>
+                      <li><strong>JANGAN memasukkan nomor kartu kredit atau informasi penagihan (Billing)</strong>.</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem;">Seluruh proses pembuatan Project, aktivasi Google Calendar API, dan pengaturan OAuth 2.0 Credentials akan dipandu langsung oleh instruktur langkah demi langkah saat workshop.</p>
+                  </div>
+                </div>
+
+                <div class="alert-box alert-info">
+                  <div class="alert-icon">💡</div>
+                  <div class="alert-content">
+                    <h5>Saran Pemilihan Akun Google:</h5>
+                    <p>Disarankan menggunakan akun Google pribadi/latihan atau membuat kalender Google baru khusus workshop, agar kegiatan uji coba kalender AI tidak bercampur dengan kalender kerja atau jadwal pribadi utama Anda.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             MODUL 5: CATATAN & BATASAN PENTING SEBELUM KELAS
+             ========================================== -->
+        <section id="sec-module-5" class="content-section">
+          <div class="module-card">
+            <div class="module-header" role="button" tabindex="0" aria-expanded="true">
+              <div class="module-header-main">
+                <div class="module-icon-badge">⚠️</div>
+                <div class="module-title-group">
+                  <h3>Modul 5: Catatan & Batasan Penting Sebelum Kelas</h3>
+                  <p>Daftar batasan konfigurasi pra-workshop dan pemahaman diagram alur hubungan sistem Hermes Agent + 9Router</p>
+                </div>
+              </div>
+              <div class="module-header-meta">
+                <span class="badge badge-pill badge-warning">Wajib Dibaca</span>
+                <button class="module-chevron" aria-label="Toggle accordion">▼</button>
+              </div>
+            </div>
+
+            <div class="module-body">
+              
+              <!-- Batasan 1 -->
+              <div class="step-section">
+                <div class="step-section-node">1</div>
+                <div class="step-section-title">
+                  <span>Jangan Memilih Provider atau Model AI Terlebih Dahulu</span>
+                  <span class="badge badge-pill badge-warning">Batasan 9Router</span>
+                </div>
+                <p class="card-body">
+                  Jika dashboard 9Router di <code>http://localhost:20128</code> sudah terbuka, tugas persiapan Anda terkait 9Router sudah 100% selesai.
+                </p>
+
+                <div class="alert-box alert-warning">
+                  <div class="alert-icon">⚠️</div>
+                  <div class="alert-content">
+                    <h5>Sebelum kelas workshop dimulai:</h5>
+                    <ul style="margin: 0.35rem 0 0 1.25rem;">
+                      <li><strong>Jangan membuka atau mengubah menu Providers</strong> di dashboard 9Router.</li>
+                      <li><strong>Jangan memilih model AI</strong> apapun terlebih dahulu.</li>
+                      <li><strong>Jangan melakukan login provider</strong> melalui dashboard 9Router.</li>
+                      <li><strong>Jangan menyalin, membuat, atau membeli API key</strong> sendiri.</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem; font-size: var(--font-size-xs); color: var(--text-secondary);">
+                      <strong>Mengapa?</strong> Pemilihan provider dan model AI dilakukan bersama saat kelas agar semua peserta menggunakan konfigurasi yang seragam dan dapat mengikuti penjelasan instruktur tanpa kendala kompatibilitas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Batasan 2 -->
+              <div class="step-section">
+                <div class="step-section-node">2</div>
+                <div class="step-section-title">
+                  <span>Jangan Menginstal Hermes Agent Terlebih Dahulu</span>
+                  <span class="badge badge-pill badge-danger">Batasan Hermes</span>
+                </div>
+                <p class="card-body">
+                  Instalasi <span class="glossary-term" tabindex="0">Hermes Agent<span class="glossary-tooltip"><span class="glossary-tooltip-title">🤖 Hermes Agent</span><span class="glossary-tooltip-desc">Aplikasi agen cerdas mandiri yang menghubungkan Telegram Anda dengan model AI dan Google Calendar.</span></span></span> serta tahapan <strong>Full Setup</strong> adalah materi praktik utama saat workshop.
+                </p>
+
+                <div class="alert-box alert-danger">
+                  <div class="alert-icon">🛑</div>
+                  <div class="alert-content">
+                    <h5>Larangan Instalasi Mandiri Pra-Kelas:</h5>
+                    <ul style="margin: 0.35rem 0 0 1.25rem;">
+                      <li><strong>Jangan menjalankan installer Hermes</strong>.</li>
+                      <li><strong>Jangan mengetikkan perintah <code>hermes setup</code></strong> di terminal.</li>
+                      <li><strong>Jangan mengetikkan perintah <code>hermes model</code></strong> di terminal.</li>
+                      <li><strong>Jangan mencoba mengaktifkan Google Calendar API</strong> sendiri.</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem; font-size: var(--font-size-xs); color: var(--color-danger-text);">
+                      Mencoba menginstal Hermes secara mandiri sebelum kelas dapat menimbulkan bentrok port atau konfigurasi yang rusak dan membutuhkan reset ulang saat kelas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Diagram Alur Hubungan -->
+              <div class="step-section">
+                <div class="step-section-node">3</div>
+                <div class="step-section-title">
+                  <span>Diagram Alur & Hubungan Antar Komponen</span>
+                  <span class="badge badge-pill badge-primary">Konsep Arsitektur</span>
+                </div>
+                <p class="card-body">
+                  Agar Anda memiliki gambaran menyeluruh, berikut adalah diagram sederhana bagaimana seluruh komponen bekerja sama saat workshop nanti:
+                </p>
+
+                <!-- Interactive Architecture Diagram Flow -->
+                <div class="arch-flow-container">
+                  <div class="arch-node">
+                    <div class="arch-node-icon">📱</div>
+                    <div class="arch-node-title">Telegram Ponsel</div>
+                    <div class="arch-node-desc">Anda mengetik instruksi jadwal meeting ke Bot Telegram</div>
+                  </div>
+
+                  <div class="arch-arrow">
+                    <span class="arch-arrow-label">Kirim Pesan</span>
+                    <span>──▶</span>
+                  </div>
+
+                  <div class="arch-node">
+                    <div class="arch-node-icon">🤖</div>
+                    <div class="arch-node-title">Hermes Agent</div>
+                    <div class="arch-node-desc">Berjalan di laptop Anda sebagai asisten cerdas</div>
+                  </div>
+
+                  <div class="arch-arrow">
+                    <span class="arch-arrow-label">OpenAI Endpoint<br><code>:20128/v1</code></span>
+                    <span>──▶</span>
+                  </div>
+
+                  <div class="arch-node">
+                    <div class="arch-node-icon">🚀</div>
+                    <div class="arch-node-title">9Router</div>
+                    <div class="arch-node-desc">Perute lokal menghubungkan agen ke model AI</div>
+                  </div>
+
+                  <div class="arch-arrow">
+                    <span class="arch-arrow-label">Proses Bahasa</span>
+                    <span>──▶</span>
+                  </div>
+
+                  <div class="arch-node">
+                    <div class="arch-node-icon">🧠</div>
+                    <div class="arch-node-title">Model AI Cloud</div>
+                    <div class="arch-node-desc">Menganalisis jadwal & mengeksekusi Google Calendar</div>
+                  </div>
+                </div>
+
+                <div class="alert-box alert-success" style="margin-top: 1rem;">
+                  <div class="alert-icon">✨</div>
+                  <div class="alert-content">
+                    <h5>Pre-Training Anda Siap!</h5>
+                    <p>Setelah menyelesaikan Modul 1 sampai Modul 5, Anda telah memenuhi seluruh prasyarat teknis. Pastikan Anda mencatat hasil di bagian <strong>Laporan Kesiapan</strong> untuk dilaporkan ke instruktur.</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="app-footer">
+        <div>
+          <strong>Workshop Pre-Training Hermes Agent + 9Router</strong> • Disusun untuk Pelatihan Interaktif
+        </div>
+        <div>
+          Disimpan otomatis di browser lokal (LocalStorage) • Siap digunakan offline
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Dynamic Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Core Scripts -->
+  <script src="assets/js/state.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
