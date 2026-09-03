@@ -80,16 +80,24 @@ function setupMobileDrawer() {
 
   if (!mobileMenuBtn || !sidebar || !backdrop) return;
 
+  const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
   function openDrawer() {
     sidebar.classList.add('open');
     backdrop.classList.add('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    const firstFocusable = sidebar.querySelector(focusableSelector);
+    if (firstFocusable) firstFocusable.focus();
   }
 
-  function closeDrawer() {
+  function closeDrawer(restoreFocus = true) {
+    const wasOpen = sidebar.classList.contains('open');
     sidebar.classList.remove('open');
     backdrop.classList.remove('active');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    if (wasOpen && restoreFocus) mobileMenuBtn.focus();
   }
 
   mobileMenuBtn.addEventListener('click', () => {
@@ -100,7 +108,33 @@ function setupMobileDrawer() {
     }
   });
 
-  backdrop.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', () => closeDrawer());
+
+  document.addEventListener('keydown', (e) => {
+    if (!sidebar.classList.contains('open')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeDrawer();
+      return;
+    }
+
+    if (e.key !== 'Tab') return;
+    const focusable = Array.from(sidebar.querySelectorAll(focusableSelector));
+    if (focusable.length === 0) {
+      e.preventDefault();
+      return;
+    }
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 
   // Close drawer when any nav link is clicked on mobile
   sidebar.querySelectorAll('.nav-link').forEach(link => {
@@ -153,10 +187,10 @@ function setupCodeCopy() {
     const copyBtn = e.target.closest('.code-copy-btn');
     if (!copyBtn) return;
 
-    const codeContainer = copyBtn.closest('.code-container');
+    const codeContainer = copyBtn.closest('.code-container, .code-block-wrap');
     if (!codeContainer) return;
 
-    const codeContent = codeContainer.querySelector('.code-content code, .code-content');
+    const codeContent = codeContainer.querySelector('.code-content code, .code-content, .code-block-content code, .code-block-content');
     if (!codeContent) return;
 
     const rawText = codeContent.innerText || codeContent.textContent || '';
@@ -356,24 +390,31 @@ window.showToast = showToast;
  * --- 8. MODULE ACCORDION & COLLAPSIBLE CONTROLLER ---
  */
 function setupModuleAccordions() {
-  // Toggle individual module accordion
-  document.addEventListener('click', (e) => {
-    const header = e.target.closest('.module-header');
-    if (!header) return;
+  function setModuleExpanded(moduleCard, expanded) {
+    if (!moduleCard) return;
+    moduleCard.classList.toggle('collapsed', !expanded);
+    const moduleHeader = moduleCard.querySelector('.module-header');
+    if (moduleHeader) moduleHeader.setAttribute('aria-expanded', String(expanded));
+  }
 
-    // Ignore clicks if user clicked directly on a button or link inside header
-    if (e.target.closest('button:not(.module-chevron), a')) return;
-
+  function toggleHeader(header) {
     const moduleCard = header.closest('.module-card');
     if (!moduleCard) return;
+    setModuleExpanded(moduleCard, moduleCard.classList.contains('collapsed'));
+  }
 
-    const isCollapsed = moduleCard.classList.toggle('collapsed');
-    const chevron = moduleCard.querySelector('.module-chevron');
-    if (chevron) {
-      chevron.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
-    }
+  // Toggle individual module accordion.
+  document.addEventListener('click', (e) => {
+    const header = e.target.closest('.module-header');
+    if (!header || e.target.closest('a, button')) return;
+    toggleHeader(header);
+  });
 
-    header.setAttribute('aria-expanded', !isCollapsed);
+  document.addEventListener('keydown', (e) => {
+    const header = e.target.closest('.module-header');
+    if (!header || (e.key !== 'Enter' && e.key !== ' ')) return;
+    e.preventDefault();
+    toggleHeader(header);
   });
 
   // Handle URL hash on load or change (auto expand targeted module)
@@ -383,11 +424,7 @@ function setupModuleAccordions() {
     const targetEl = document.querySelector(hash);
     if (targetEl) {
       const parentModule = targetEl.closest('.module-card') || (targetEl.classList.contains('module-card') ? targetEl : null);
-      if (parentModule && parentModule.classList.contains('collapsed')) {
-        parentModule.classList.remove('collapsed');
-        const chevron = parentModule.querySelector('.module-chevron');
-        if (chevron) chevron.style.transform = 'rotate(0deg)';
-      }
+      if (parentModule) setModuleExpanded(parentModule, true);
       setTimeout(() => {
         targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
@@ -405,18 +442,14 @@ function setupModuleAccordions() {
 
     if (expandAllBtn) {
       document.querySelectorAll('.module-card').forEach(card => {
-        card.classList.remove('collapsed');
-        const chevron = card.querySelector('.module-chevron');
-        if (chevron) chevron.style.transform = 'rotate(0deg)';
+        setModuleExpanded(card, true);
       });
       showToast('Semua modul dibuka 📖', 'info', 1800);
     }
 
     if (collapseAllBtn) {
       document.querySelectorAll('.module-card').forEach(card => {
-        card.classList.add('collapsed');
-        const chevron = card.querySelector('.module-chevron');
-        if (chevron) chevron.style.transform = 'rotate(-90deg)';
+        setModuleExpanded(card, false);
       });
       showToast('Semua modul disembunyikan 📁', 'info', 1800);
     }
@@ -686,6 +719,10 @@ function setupTroubleshootingHub() {
   let currentCategory = 'all';
   let searchQuery = '';
 
+  filterBtns.forEach((btn, index) => {
+    btn.tabIndex = btn.classList.contains('active') || (index === 0 && !Array.from(filterBtns).some(item => item.classList.contains('active'))) ? 0 : -1;
+  });
+
   function filterCards() {
     const q = searchQuery.toLowerCase().trim();
 
@@ -706,10 +743,31 @@ function setupTroubleshootingHub() {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+        b.tabIndex = -1;
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      btn.tabIndex = 0;
       currentCategory = btn.getAttribute('data-category') || 'all';
       filterCards();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+      if (!keys.includes(e.key)) return;
+      e.preventDefault();
+      const buttons = Array.from(filterBtns);
+      const currentIndex = buttons.indexOf(btn);
+      let nextIndex = currentIndex;
+      if (e.key === 'Home') nextIndex = 0;
+      if (e.key === 'End') nextIndex = buttons.length - 1;
+      if (e.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      if (e.key === 'ArrowRight') nextIndex = (currentIndex + 1) % buttons.length;
+      buttons.forEach((button, index) => { button.tabIndex = index === nextIndex ? 0 : -1; });
+      buttons[nextIndex].focus();
     });
   });
 
@@ -965,6 +1023,10 @@ if (typeof module !== 'undefined' && module.exports) {
     sanitizeLogText,
     generateReportText,
     setupReadinessReport,
-    showToast
+    showToast,
+    setupMobileDrawer,
+    setupModuleAccordions,
+    setupTroubleshootingHub,
+    setupCodeCopy
   };
 }
