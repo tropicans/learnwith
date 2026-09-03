@@ -193,7 +193,7 @@ body {
   --color-info-text: #bfdbfe;
 
   --action-success: #047857;
-  --action-success-hover: #059669;
+  --action-success-hover: #065f46;
   --action-danger: #be123c;
   --action-danger-hover: #e11d48;
 
@@ -675,6 +675,10 @@ body {
     align-items: center;
     justify-content: center;
     min-width: 44px;
+    min-height: 44px;
+  }
+
+  .nav-link {
     min-height: 44px;
   }
 

@@ -121,10 +121,12 @@
       assert(!/\.header-(?:search-container|progress-box)\s*\{[^}]*display:\s*none/s.test(mainCss), 'search or progress is hidden');
       assert(/\.header-search-container\s*\{[^}]*display:\s*block/s.test(mainCss), 'mobile search is not retained');
       assert(/\.header-progress-box\s*\{[^}]*display:\s*flex/s.test(mainCss), 'mobile percentage is not retained');
+      assert(/@media \(max-width: 768px\)[\s\S]*?\.nav-link\s*\{[^}]*min-height:\s*44px/.test(mainCss), 'mobile navigation links need a 44px minimum height');
       assert(/grid-template-columns:\s*minmax\(0, 1fr\)/.test(allProduction), 'narrow grids need minmax(0, 1fr)');
       assert(/min-(?:width|height):\s*44px/.test(allProduction), '44px touch targets are missing');
       assert(/overflow-x:\s*auto/.test(componentsCss), 'code overflow safeguard is missing');
       assert(/--action-success:\s*#047857/.test(mainCss) && /--action-danger:\s*#be123c/.test(mainCss), 'WCAG-safe filled action colors are missing');
+      assert(/\[data-theme="dark"\][\s\S]*?--action-success-hover:\s*#065f46/.test(mainCss), 'dark success hover must retain WCAG AA contrast with white');
     });
 
     test('all CSS custom properties resolve and the 9Router endpoint is canonical', () => {
