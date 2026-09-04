@@ -342,7 +342,7 @@ function updateProgressUI() {
   // Update Live Class Checkpoint Status in Sidebar
   const liveCpNav = document.getElementById('status-nav-live-cp');
   if (liveCpNav) {
-    const liveCps = ['cp-4', 'cp-5', 'cp-6'];
+    const liveCps = ['cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'];
     const hasLiveFail = liveCps.some(id => cps[id] === 'failed');
     const allLivePass = liveCps.every(id => cps[id] === 'passed');
     if (hasLiveFail) {
@@ -350,7 +350,7 @@ function updateProgressUI() {
       liveCpNav.innerText = 'Ada Kendala';
     } else if (allLivePass) {
       liveCpNav.className = 'badge badge-pill badge-success';
-      liveCpNav.innerText = 'Lolos 4-6 ✓';
+      liveCpNav.innerText = 'Lolos 4-9 ✓';
     } else {
       liveCpNav.className = 'badge badge-pill badge-warning';
       liveCpNav.innerText = 'Pending';
@@ -513,7 +513,7 @@ function setupCheckpointGates() {
   const state = window.AppState.getState();
   const checkpoints = state.checkpoints || {};
 
-  ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6'].forEach(cpId => {
+  ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'].forEach(cpId => {
     updateCheckpointCardUI(cpId, checkpoints[cpId] || 'pending');
   });
 
@@ -720,7 +720,7 @@ function setupResetModal() {
       }
 
       // Reset checkpoint cards
-      ['cp-1', 'cp-2', 'cp-3'].forEach(cpId => {
+      ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'].forEach(cpId => {
         updateCheckpointCardUI(cpId, 'pending');
       });
 

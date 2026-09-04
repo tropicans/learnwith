@@ -48,6 +48,14 @@ const DEFAULT_STATE = {
     'm8-enter-endpoint': false,
     'm8-enter-key': false,
     'm8-test-response': false,
+    // Module 9 (Telegram Gateway & Allowlist)
+    'm9-run-setup': false,
+    'm9-select-telegram': false,
+    'm9-enter-token': false,
+    'm9-enter-allowed': false,
+    'm9-start-gateway': false,
+    'm9-check-status': false,
+    'm9-verify-dm': false,
   },
   checkpoints: {
     'cp-1': 'pending', // 'pending' | 'passed' | 'failed'
@@ -55,7 +63,8 @@ const DEFAULT_STATE = {
     'cp-3': 'pending',
     'cp-4': 'pending',
     'cp-5': 'pending',
-    'cp-6': 'pending'
+    'cp-6': 'pending',
+    'cp-7': 'pending'
   },
   participantInfo: {
     name: '',
@@ -233,16 +242,25 @@ class StateManager {
   }
 
   /**
-   * Calculate overall completion progress
+   * Calculate overall or mode-specific completion progress
    */
-  calculateProgress() {
+  calculateProgress(mode = null) {
     const checklists = this.state.checklists || {};
-    const taskKeys = Object.keys(checklists);
+    let taskKeys = Object.keys(checklists);
+    let cpKeys = Object.keys(this.state.checkpoints || {});
+
+    if (mode === 'pretraining') {
+      taskKeys = taskKeys.filter(k => k.startsWith('prereq-') || k.startsWith('m1-') || k.startsWith('m2-') || k.startsWith('m3-') || k.startsWith('m4-'));
+      cpKeys = cpKeys.filter(k => ['cp-1', 'cp-2', 'cp-3'].includes(k));
+    } else if (mode === 'live-class') {
+      taskKeys = taskKeys.filter(k => k.startsWith('m6-') || k.startsWith('m7-') || k.startsWith('m8-') || k.startsWith('m9-') || k.startsWith('m10-') || k.startsWith('m11-'));
+      cpKeys = cpKeys.filter(k => ['cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'].includes(k));
+    }
+
     const totalTasks = taskKeys.length;
     const completedTasks = taskKeys.filter(k => checklists[k] === true).length;
 
     const checkpoints = this.state.checkpoints || {};
-    const cpKeys = Object.keys(checkpoints);
     const totalCheckpoints = cpKeys.length;
     const passedCheckpoints = cpKeys.filter(k => checkpoints[k] === 'passed').length;
 
@@ -276,7 +294,7 @@ class StateManager {
    * Calculate dynamic workshop readiness status (Pra-Training: Checkpoints 1, 2, 3)
    */
   calculateReadiness() {
-    const progress = this.calculateProgress();
+    const progress = this.calculateProgress('pretraining');
     const cps = this.state.checkpoints || {};
     const pretrainingCpIds = ['cp-1', 'cp-2', 'cp-3'];
     const cpValues = pretrainingCpIds.map(id => cps[id] || 'pending');

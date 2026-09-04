@@ -3076,14 +3076,290 @@
             <div class="section-icon">🤖</div>
             <div>
               <h2 class="section-title">Modul 9: Integrasi Telegram Gateway & Allowlist</h2>
-              <p class="section-desc">Menghubungkan bot dengan pengamanan allowlist Telegram User ID.</p>
+              <p class="section-desc">Menghubungkan bot Hermes dengan pengamanan ketat allowlist Telegram User ID via long polling.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-info">Fase 7</span>
+          <span class="badge badge-pill badge-primary">20 Menit</span>
         </div>
-        <div class="card" style="border-left: 4px solid var(--color-info);">
+
+        <div class="card">
           <div class="card-body">
-            <p>Panduan wizard gateway Telegram dan Checkpoint 7 akan diaktifkan pada Phase 7.</p>
+            <!-- Context Callout: Long Polling & Keamanan Allowlist -->
+            <div class="alert-box alert-info" style="margin-bottom: 1.5rem;">
+              <div class="alert-icon">🔒</div>
+              <div class="alert-content">
+                <h5>Prinsip Keamanan Gateway Telegram:</h5>
+                <p>
+                  Workshop ini menggunakan mode <strong>Long Polling bawaan</strong> yang berjalan 100% lokal dari laptop Anda. <strong>Jangan gunakan webhook publik</strong> atau reverse proxy tunnel (seperti ngrok/cloudflared) selama kelas berlangsung.
+                </p>
+                <p style="margin-top: 0.5rem;">
+                  <strong>PENTING:</strong> Parameter <code>TELEGRAM_ALLOWED_USERS</code> wajib diisi dengan User ID numerik Anda sendiri. Jika dibiarkan kosong, siapa saja yang menemukan username bot Anda dapat mengontrol laptop Anda melalui AI Agent!
+                </p>
+              </div>
+            </div>
+
+            <!-- Langkah 9A: Jalankan Gateway Setup Wizard -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Jalankan Wizard Gateway Setup</span>
+                <span class="badge badge-pill badge-neutral">CLI Wizard</span>
+              </div>
+              <p class="card-body">
+                Jalankan perintah wizard konfigurasi gateway resmi Hermes di terminal PowerShell:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>hermes gateway setup</code></pre>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m9-run-setup">
+                <span class="checklist-label">Langkah A selesai: Menjalankan wizard <code>hermes gateway setup</code> di terminal</span>
+              </label>
+            </div>
+
+            <!-- Langkah 9B: Pilih Platform Telegram -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Pilih Platform Telegram</span>
+                <span class="badge badge-pill badge-neutral">Pilihan Platform</span>
+              </div>
+              <p class="card-body">
+                Ketika wizard menampilkan daftar channel komunikasi yang didukung, pilih <strong>Telegram</strong> (gunakan tombol panah dan tekan Enter).
+              </p>
+
+              <div class="alert-box alert-neutral">
+                <div class="alert-icon">ℹ️</div>
+                <div class="alert-content">
+                  <h5>Pilihan Platform:</h5>
+                  <p>Pilih opsi <code>Telegram</code>. Hermes akan meminta input Token Bot dan daftar User ID yang berhak mengakses bot Anda.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m9-select-telegram">
+                <span class="checklist-label">Langkah B selesai: Memilih platform Telegram pada prompt wizard</span>
+              </label>
+            </div>
+
+            <!-- Langkah 9C: Masukkan Bot Token & Numeric Allowed User ID -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Masukkan Bot Token & ID Allowlist Peserta</span>
+                <span class="badge badge-pill badge-warning">Privat & Rahasia</span>
+              </div>
+              <p class="card-body">
+                Masukkan nilai kredensial Telegram yang telah Anda siapkan pada <strong>Modul 3 (Pra-Training)</strong>:
+              </p>
+
+              <ol class="step-list-ordered" style="margin: 0 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li><strong>Bot Token:</strong> Tempelkan token yang Anda peroleh dari <code>@BotFather</code>.</li>
+                <li><strong>Allowed Users:</strong> Masukkan User ID numerik Anda dari <code>@userinfobot</code> (contoh: <code>123456789</code>).</li>
+              </ol>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">Struktur Konfigurasi Lokal</span>
+                </div>
+                <pre class="code-content"><code>TELEGRAM_BOT_TOKEN=&lt;token-bot-pribadi&gt;
+TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
+              </div>
+
+              <div class="alert-box alert-danger">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                  <h5>Peringatan Privasi:</h5>
+                  <p>Jangan pernah membagikan Token Bot atau User ID ke Zoom chat, WhatsApp group, atau tangkapan layar publik. Token memberikan kendali penuh terhadap bot Anda.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem;">
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m9-enter-token">
+                  <span class="checklist-label">Langkah C-1 selesai: Memasukkan Bot Token secara privat ke terminal</span>
+                </label>
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m9-enter-allowed">
+                  <span class="checklist-label">Langkah C-2 selesai: Memasukkan User ID numerik peserta ke daftar <code>TELEGRAM_ALLOWED_USERS</code></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Langkah 9D: Jalankan & Periksa Gateway Service -->
+            <div class="step-section">
+              <div class="step-section-node">D</div>
+              <div class="step-section-title">
+                <span>Jalankan dan Periksa Status Gateway</span>
+                <span class="badge badge-pill badge-primary">Manajemen Service</span>
+              </div>
+              <p class="card-body">
+                Nyalakan background service Telegram Gateway, lalu verifikasi bahwa statusnya aktif:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell - Menyalakan Gateway</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>hermes gateway start</code></pre>
+              </div>
+
+              <div class="code-container" style="margin-top: 0.75rem;">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell - Memeriksa Status</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>hermes gateway status</code></pre>
+              </div>
+
+              <div class="alert-box alert-neutral">
+                <div class="alert-icon">💡</div>
+                <div class="alert-content">
+                  <h5>Perintah Menghentikan Gateway (Jika Dibutuhkan):</h5>
+                  <p>Bila sesi praktik selesai atau perlu me-restart service: gunakan perintah <code>hermes gateway stop</code>.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem;">
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m9-start-gateway">
+                  <span class="checklist-label">Langkah D-1 selesai: Menjalankan service gateway dengan <code>hermes gateway start</code></span>
+                </label>
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m9-check-status">
+                  <span class="checklist-label">Langkah D-2 selesai: Memverifikasi status aktif dengan <code>hermes gateway status</code></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Langkah 9E: Uji Direct Message & Pengujian Allowlist -->
+            <div class="step-section">
+              <div class="step-section-node">E</div>
+              <div class="step-section-title">
+                <span>Uji Direct Message & Pengamanan Allowlist</span>
+                <span class="badge badge-pill badge-success">Uji Langsung</span>
+              </div>
+              <p class="card-body">
+                Buka aplikasi Telegram di ponsel atau desktop Anda, cari bot Anda, lalu kirimkan pesan Direct Message pertama:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">Pesan Uji Telegram</span>
+                  <button class="code-copy-btn" aria-label="Salin teks">
+                    <span>📋 Salin Teks</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>Halo! Apakah kamu sudah terhubung ke Hermes?</code></pre>
+              </div>
+
+              <div class="alert-box alert-success">
+                <div class="alert-icon">🎉</div>
+                <div class="alert-content">
+                  <h5>Indikator Berhasil:</h5>
+                  <p>Bot akan membalas pesan Anda dalam beberapa detik melalui model yang telah dikonfigurasi pada 9Router.</p>
+                </div>
+              </div>
+
+              <div class="alert-box alert-warning">
+                <div class="alert-icon">🔍</div>
+                <div class="alert-content">
+                  <h5>Troubleshooting Error 'unauthorized':</h5>
+                  <p>Jika bot membalas <code>unauthorized</code>, berarti ID pengirim tidak tercantum di allowlist. Buka kembali bot <code>@userinfobot</code> untuk memastikan ID numerik Anda benar, perbarui nilai <code>TELEGRAM_ALLOWED_USERS</code> di konfigurasi, lalu restart gateway dengan <code>hermes gateway stop</code> dan <code>hermes gateway start</code>.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m9-verify-dm">
+                <span class="checklist-label">Langkah E selesai: Mengirim pesan DM ke bot dan menerima balasan sukses</span>
+              </label>
+            </div>
+
+            <!-- GERBANG CHECKPOINT 7 -->
+            <div class="checkpoint-gate-card" id="card-cp-7" style="margin-top: 1.5rem;">
+              <div class="checkpoint-header-row">
+                <div class="checkpoint-title-wrap">
+                  <div class="checkpoint-badge-icon">7</div>
+                  <div>
+                    <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                      Checkpoint 7: Telegram Gateway & Verifikasi Allowlist
+                    </h4>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Bot aktif via long polling dan hanya merespons akun peserta di allowlist</span>
+                  </div>
+                </div>
+                <span id="status-card-cp7" class="badge badge-pill badge-warning">Pending</span>
+              </div>
+
+              <p class="card-body">
+                Gerbang Checkpoint 7 dinyatakan <strong>Lolos Verifikasi</strong> jika:
+              </p>
+
+              <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Service <code>hermes gateway</code> berjalan aktif via long polling (tanpa webhook publik).</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Parameter <code>TELEGRAM_ALLOWED_USERS</code> memuat ID numerik peserta dari <code>@userinfobot</code>.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Bot Telegram berhasil merespons Direct Message dari akun peserta yang diizinkan.</div>
+                </div>
+              </div>
+
+              <div class="cp-action-btn-group">
+                <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-7" data-status="passed">
+                  <span>✓</span> Lolos Verifikasi
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-7" data-status="failed">
+                  <span>✕</span> Ada Kendala (Gagal)
+                </button>
+                <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-7" data-status="pending">
+                  <span>↺</span> Reset Status
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
