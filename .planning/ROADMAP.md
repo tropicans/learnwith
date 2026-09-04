@@ -11,7 +11,7 @@ Milestone v1.1 expands the web application from its v1.0 preparation baseline (`
 - Phases 5–8: Milestone v1.1 (Live Workshop Guide)
 
 - [x] **Phase 5: Mode Switcher & Dual Workshop Navigation Shell** - Header/sidebar tab switcher toggling between "Pra-Training" and "Hari-H Praktik Kelas" modes.
-- [ ] **Phase 6: 9Router Model Alignment & Hermes Agent Windows Installation** - Guides and Checkpoints 4–6 for 9Router endpoint alignment, Hermes native install, doctor check, and full setup wizard.
+- [x] **Phase 6: 9Router Model Alignment & Hermes Agent Windows Installation** - Guides and Checkpoints 4–6 for 9Router endpoint alignment, Hermes native install, doctor check, and full setup wizard.
 - [ ] **Phase 7: Telegram Allowlist Gateway, Google Calendar OAuth & End-to-End Verification** - Guides and Checkpoints 7–9 for Telegram gateway security, Google Cloud Desktop OAuth, Calendar skill authorization, and live test prompts.
 - [ ] **Phase 8: In-Class Troubleshooting Hub, Completion Status Engine & Final Report Exporter** - Live workshop error cards, Checkpoints 4–9 state engine calculations, and Form Laporan Hasil Praktik Kelas WhatsApp/Telegram export.
 
@@ -46,8 +46,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 06-01: HTML markup and component cards for Modul 6 (9Router alignment) and Modul 7 (Hermes Windows install & doctor).
-- [ ] 06-02: HTML markup and component cards for Modul 8 (Hermes setup wizard) and Checkpoint Gates 4, 5, 6 with state wireup.
+- [x] 06-01: HTML markup and component cards for Modul 6 (9Router alignment) and Modul 7 (Hermes Windows install & doctor).
+- [x] 06-02: HTML markup and component cards for Modul 8 (Hermes setup wizard) and Checkpoint Gates 4, 5, 6 with state wireup.
 
 ---
 
