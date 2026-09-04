@@ -303,8 +303,8 @@ function updateProgressUI() {
     statCount.innerText = `${progress.completedTasks}/${progress.totalTasks}`;
   }
 
-  // Update Module Progress Badges in Sidebar
-  ['m1', 'm2', 'm3', 'm4'].forEach(mod => {
+  // Update Module Progress Badges in Sidebar (Pre-Training & Live Class)
+  ['m1', 'm2', 'm3', 'm4', 'm6', 'm7', 'm8'].forEach(mod => {
     const el = document.getElementById(`badge-nav-${mod}`);
     if (el) {
       const p = window.AppState.getModuleProgress(`${mod}-`);
@@ -338,6 +338,24 @@ function updateProgressUI() {
       }
     }
   });
+
+  // Update Live Class Checkpoint Status in Sidebar
+  const liveCpNav = document.getElementById('status-nav-live-cp');
+  if (liveCpNav) {
+    const liveCps = ['cp-4', 'cp-5', 'cp-6'];
+    const hasLiveFail = liveCps.some(id => cps[id] === 'failed');
+    const allLivePass = liveCps.every(id => cps[id] === 'passed');
+    if (hasLiveFail) {
+      liveCpNav.className = 'badge badge-pill badge-danger';
+      liveCpNav.innerText = 'Ada Kendala';
+    } else if (allLivePass) {
+      liveCpNav.className = 'badge badge-pill badge-success';
+      liveCpNav.innerText = 'Lolos 4-6 ✓';
+    } else {
+      liveCpNav.className = 'badge badge-pill badge-warning';
+      liveCpNav.innerText = 'Pending';
+    }
+  }
 
   // Update Readiness Summary Status Badge & Description
   const readiness = window.AppState.calculateReadiness();
@@ -495,7 +513,7 @@ function setupCheckpointGates() {
   const state = window.AppState.getState();
   const checkpoints = state.checkpoints || {};
 
-  ['cp-1', 'cp-2', 'cp-3'].forEach(cpId => {
+  ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6'].forEach(cpId => {
     updateCheckpointCardUI(cpId, checkpoints[cpId] || 'pending');
   });
 

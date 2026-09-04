@@ -34,11 +34,28 @@ const DEFAULT_STATE = {
     // Module 4 (Google Cloud)
     'm4-open-console': false,
     'm4-verify-login': false,
+    // Module 6 (9Router Model Alignment)
+    'm6-run-router': false,
+    'm6-open-dashboard': false,
+    'm6-select-model': false,
+    'm6-create-key': false,
+    // Module 7 (Hermes Windows Native Install)
+    'm7-install-cli': false,
+    'm7-restart-shell': false,
+    'm7-run-doctor': false,
+    // Module 8 (Hermes Setup Wizard)
+    'm8-run-setup': false,
+    'm8-enter-endpoint': false,
+    'm8-enter-key': false,
+    'm8-test-response': false,
   },
   checkpoints: {
     'cp-1': 'pending', // 'pending' | 'passed' | 'failed'
     'cp-2': 'pending',
-    'cp-3': 'pending'
+    'cp-3': 'pending',
+    'cp-4': 'pending',
+    'cp-5': 'pending',
+    'cp-6': 'pending'
   },
   participantInfo: {
     name: '',
@@ -46,7 +63,9 @@ const DEFAULT_STATE = {
     telegramUsername: '',
     telegramUserId: '',
     nodeVersion: '',
-    routerStatus: ''
+    routerStatus: '',
+    routerProvider: '',
+    routerModel: ''
   },
   activeSection: 'sec-target',
   activeMode: 'pretraining', // 'pretraining' | 'live-class'
@@ -254,15 +273,16 @@ class StateManager {
   }
 
   /**
-   * Calculate dynamic workshop readiness status
+   * Calculate dynamic workshop readiness status (Pra-Training: Checkpoints 1, 2, 3)
    */
   calculateReadiness() {
     const progress = this.calculateProgress();
     const cps = this.state.checkpoints || {};
-    const cpValues = Object.values(cps);
+    const pretrainingCpIds = ['cp-1', 'cp-2', 'cp-3'];
+    const cpValues = pretrainingCpIds.map(id => cps[id] || 'pending');
     
     const hasFailure = cpValues.some(v => v === 'failed');
-    const allCheckpointsPassed = cpValues.length === 3 && cpValues.every(v => v === 'passed');
+    const allCheckpointsPassed = cpValues.every(v => v === 'passed');
     
     if (hasFailure) {
       return {

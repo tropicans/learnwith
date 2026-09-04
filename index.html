@@ -2847,6 +2847,7 @@
         </div>
       </section>
 
+      <!-- MODUL 8: FULL SETUP & KONEKSI 9ROUTER -->
       <section id="sec-module-8" class="content-section" data-section="sec-module-8">
         <div class="section-header">
           <div class="section-title-wrap">
@@ -2856,11 +2857,215 @@
               <p class="section-desc">Konfigurasi wizard Hermes ke endpoint <code>http://localhost:20128/v1</code>.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-primary">Fase 6</span>
+          <span class="badge badge-pill badge-primary">Sesi 09.30–09.45 (15m)</span>
         </div>
-        <div class="card" style="border-left: 4px solid var(--accent-primary);">
-          <div class="card-body">
-            <p>Panduan wizard <code>hermes setup</code> dan Checkpoint 6 akan diaktifkan pada Phase 6.</p>
+
+        <div class="card module-card">
+          <div class="module-header-row">
+            <div class="module-title-wrap">
+              <div class="module-number-badge">8</div>
+              <div>
+                <h3 class="module-title">Konfigurasi Wizard Hermes & Uji Respons Model</h3>
+                <span class="module-duration">⏱️ Alokasi: 15 Menit • Menghubungkan Hermes ke 9Router Lokal</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-content">
+            <div class="alert-box alert-info" style="margin-bottom: 1.25rem;">
+              <div class="alert-icon">💡</div>
+              <div class="alert-content">
+                <h5>Tentang Wizard Setup Hermes:</h5>
+                <p>Wizard <code>hermes setup</code> akan memandu Anda memilih provider model AI, memasukkan base URL lokal, dan API key. Jika sebelumnya sudah ada konfigurasi lama, Anda cukup menekan <strong>Enter</strong> pada setiap pertanyaan untuk mempertahankan nilai yang sudah benar.</p>
+              </div>
+            </div>
+
+            <!-- Langkah 8A: Jalankan hermes setup -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Jalankan Perintah hermes setup di PowerShell</span>
+                <span class="badge badge-pill badge-neutral">PowerShell #2</span>
+              </div>
+              <p class="card-body">
+                Pada jendela PowerShell Hermes (jendela kedua), jalankan perintah konfigurasi wizard:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>hermes setup</code></pre>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m8-run-setup">
+                <span class="checklist-label">Langkah A selesai: Menjalankan wizard <code>hermes setup</code> di terminal</span>
+              </label>
+            </div>
+
+            <!-- Langkah 8B: Masukkan Base URL OpenAI-Compatible -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Pilih Provider & Masukkan Base URL 9Router Lokal</span>
+                <span class="badge badge-pill badge-info">Endpoint URL</span>
+              </div>
+              <p class="card-body">
+                Saat wizard meminta pilihan provider atau base URL:
+              </p>
+
+              <ol class="step-instruction-list">
+                <li>Pilih opsi model / provider yang sesuai dengan arahan instruktur (atau pilih opsi <em>Custom / OpenAI-Compatible</em>).</li>
+                <li>Saat wizard meminta <strong>Base URL</strong> atau <strong>API Endpoint</strong>, masukkan alamat 9Router lokal berikut persis:</li>
+              </ol>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">Base URL (OpenAI-Compatible)</span>
+                  <button class="code-copy-btn" aria-label="Salin alamat">
+                    <span>📋 Salin Alamat</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>http://localhost:20128/v1</code></pre>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m8-enter-endpoint">
+                <span class="checklist-label">Langkah B selesai: Memasukkan endpoint <code>http://localhost:20128/v1</code></span>
+              </label>
+            </div>
+
+            <!-- Langkah 8C: Masukkan API Key & Nama Model -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Masukkan API Key 9Router & Nama Model Kelas</span>
+                <span class="badge badge-pill badge-danger">Kredensial Privat</span>
+              </div>
+              <p class="card-body">
+                Lanjutkan wizard di terminal Anda:
+              </p>
+
+              <ol class="step-instruction-list">
+                <li>Saat wizard meminta <strong>API Key</strong>, tempelkan API key yang Anda buat di dashboard 9Router (dari Modul 6). Kunci ini tetap privat di laptop Anda.</li>
+                <li>Saat wizard meminta <strong>Model Name</strong>, ketik atau tempel nama model persis seperti yang tampil di dashboard 9Router Anda.</li>
+              </ol>
+
+              <div class="alert-box alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                  <h5>Ketelitian Penulisan Nama Model:</h5>
+                  <p>Nama model bersifat <em>case-sensitive</em> dan harus sama persis dengan yang aktif di dashboard 9Router (misalnya jika nama di dashboard adalah <code>llama-3.3-70b-versatile</code>, jangan singkat menjadi <code>llama3</code>).</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m8-enter-key">
+                <span class="checklist-label">Langkah C selesai: Memasukkan API key 9Router lokal dan nama model kelas</span>
+              </label>
+            </div>
+
+            <!-- Langkah 8D: Uji Respons Singkat -->
+            <div class="step-section">
+              <div class="step-section-node">D</div>
+              <div class="step-section-title">
+                <span>Jalankan Uji Respons Singkat dari Hermes</span>
+                <span class="badge badge-pill badge-success">Validasi Koneksi</span>
+              </div>
+              <p class="card-body">
+                Setelah wizard selesai menyimpan konfigurasi, lakukan uji percakapan singkat untuk memastikan Hermes dapat memanggil model melalui 9Router:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>hermes "Halo! Siapa namamu dan apa tugasmu?"</code></pre>
+              </div>
+
+              <div class="alert-box alert-success">
+                <div class="alert-icon">🎉</div>
+                <div class="alert-content">
+                  <h5>Indikator Berhasil:</h5>
+                  <p>Jika Hermes membalas dengan kalimat yang koheren dalam beberapa detik (contoh: <em>"Halo! Saya Hermes Agent..."</em>), berarti konfigurasi perutean model AI dari Hermes menuju 9Router Anda telah <strong>100% Berhasil</strong>!</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m8-test-response">
+                <span class="checklist-label">Langkah D selesai: Menerima respons uji dari Hermes melalui 9Router</span>
+              </label>
+            </div>
+
+            <!-- GERBANG CHECKPOINT 6 -->
+            <div class="checkpoint-gate-card" id="card-cp-6" style="margin-top: 1.5rem;">
+              <div class="checkpoint-header-row">
+                <div class="checkpoint-title-wrap">
+                  <div class="checkpoint-badge-icon">6</div>
+                  <div>
+                    <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                      Checkpoint 6: Konfigurasi Hermes & Respons Uji Model
+                    </h4>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Hermes terhubung ke 9Router lokal dan memberi respons jawaban AI</span>
+                  </div>
+                </div>
+                <span id="status-card-cp6" class="badge badge-pill badge-warning">Pending</span>
+              </div>
+
+              <p class="card-body">
+                Gerbang Checkpoint 6 dinyatakan <strong>Lolos Verifikasi</strong> jika:
+              </p>
+
+              <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Wizard <code>hermes setup</code> selesai tanpa error konfigurasi.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Base URL terarah ke <code>http://localhost:20128/v1</code> dan API key 9Router terpasang.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Hermes berhasil merespons pesan uji singkat melalui terminal.</div>
+                </div>
+              </div>
+
+              <div class="cp-action-btn-group">
+                <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-6" data-status="passed">
+                  <span>✓</span> Lolos Verifikasi
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-6" data-status="failed">
+                  <span>✕</span> Ada Kendala (Gagal)
+                </button>
+                <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-6" data-status="pending">
+                  <span>↺</span> Reset Status
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
