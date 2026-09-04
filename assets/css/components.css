@@ -1910,3 +1910,98 @@ mark.search-highlight {
     text-decoration: underline !important;
   }
 }
+
+/* ==========================================================================
+   MODE SWITCHER (SEGMENTED CONTROL TABS)
+   ========================================================================== */
+.mode-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-surface-subtle);
+  padding: 0.25rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  gap: 0.25rem;
+  position: relative;
+  user-select: none;
+}
+
+.mode-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+  min-height: 40px;
+}
+
+.mode-tab:hover:not(.active) {
+  color: var(--text-primary);
+  background: var(--bg-surface-hover);
+}
+
+.mode-tab.active {
+  background: var(--bg-surface);
+  color: var(--accent-primary);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.mode-tab:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.mode-tab-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Sidebar Mode Switcher Container */
+.sidebar-mode-switcher-container {
+  padding: 0.75rem 0.75rem 1rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 0.75rem;
+}
+
+.sidebar-mode-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+
+.sidebar-mode-switcher {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar-mode-switcher .mode-tab {
+  flex: 1;
+  justify-content: center;
+  min-height: 44px; /* Accessible 44px touch target on mobile */
+  font-size: var(--font-size-xs);
+}
+
+/* Mode Container Animated Transitions */
+.mode-container {
+  animation: fadeInContainer var(--transition-base) ease-in-out;
+}
+
+@keyframes fadeInContainer {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -276,6 +276,11 @@ body {
   font-weight: var(--font-weight-medium);
 }
 
+.header-mode-switcher {
+  margin: 0 1rem;
+  flex-shrink: 0;
+}
+
 .header-search-container {
   flex: 1;
   max-width: 440px;
@@ -704,6 +709,10 @@ body {
     gap: 0 0.5rem;
     height: var(--header-height);
     padding: 6px max(0.75rem, env(safe-area-inset-right)) 6px max(0.75rem, env(safe-area-inset-left));
+  }
+
+  .header-mode-switcher {
+    display: none !important;
   }
 
   .header-brand {

@@ -38,9 +38,21 @@
           <img src="favicon.svg" alt="Agentic AI Robot Logo" class="brand-logo-img">
         </div>
         <div class="header-brand-text">
-          <h1>Pre-Training Workshop</h1>
-          <p>Hermes Agent + 9Router • Pemula</p>
+          <h1 id="header-brand-title">Pre-Training Workshop</h1>
+          <p id="header-brand-subtitle">Hermes Agent + 9Router • Pemula</p>
         </div>
+      </div>
+
+      <!-- Mode Switcher Tabs (Segmented Control) -->
+      <div class="header-mode-switcher mode-switcher" role="tablist" aria-label="Pilihan Sesi Workshop">
+        <button type="button" class="mode-tab active" data-mode="pretraining" role="tab" aria-selected="true" aria-controls="container-pretraining" id="tab-pretraining-header">
+          <span class="mode-tab-icon">📋</span>
+          <span class="mode-tab-label">Pra-Training</span>
+        </button>
+        <button type="button" class="mode-tab" data-mode="live-class" role="tab" aria-selected="false" aria-controls="container-liveclass" id="tab-liveclass-header">
+          <span class="mode-tab-icon">🚀</span>
+          <span class="mode-tab-label">Hari-H Kelas</span>
+        </button>
       </div>
 
       <!-- Global Real-Time Search -->
@@ -101,9 +113,26 @@
          ========================================== -->
     <aside id="app-sidebar" class="app-sidebar">
       
-      <!-- Group 1: Pendahuluan -->
-      <nav class="nav-group" aria-label="Navigasi Pendahuluan">
-        <div class="nav-group-title">Pendahuluan</div>
+      <!-- Sidebar Mode Switcher -->
+      <div class="sidebar-mode-switcher-container">
+        <div class="sidebar-mode-label">Mode Sesi Workshop</div>
+        <div class="sidebar-mode-switcher mode-switcher" role="tablist" aria-label="Pilihan Sesi Workshop (Sidebar)">
+          <button type="button" class="mode-tab active" data-mode="pretraining" role="tab" aria-selected="true" aria-controls="container-pretraining" id="tab-pretraining-sidebar">
+            <span class="mode-tab-icon">📋</span>
+            <span>Pra-Training</span>
+          </button>
+          <button type="button" class="mode-tab" data-mode="live-class" role="tab" aria-selected="false" aria-controls="container-liveclass" id="tab-liveclass-sidebar">
+            <span class="mode-tab-icon">🚀</span>
+            <span>Hari-H Kelas</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mode Group 1: Navigasi Pra-Training -->
+      <div id="nav-group-pretraining" class="sidebar-nav-group active">
+        <!-- Group 1: Pendahuluan -->
+        <nav class="nav-group" aria-label="Navigasi Pendahuluan">
+          <div class="nav-group-title">Pendahuluan</div>
         <a href="#sec-target" class="nav-link active">
           <div class="nav-link-content">
             <span class="nav-link-icon">🎯</span>
@@ -223,15 +252,119 @@
           </div>
         </a>
       </nav>
-    </aside>
+    </div>
+    <!-- /#nav-group-pretraining -->
+
+    <!-- Mode Group 2: Navigasi Hari-H (Praktik Kelas) -->
+    <div id="nav-group-liveclass" class="sidebar-nav-group" style="display: none;">
+      <!-- Group 1: Pendahuluan Kelas -->
+      <nav class="nav-group" aria-label="Navigasi Pendahuluan Hari-H">
+        <div class="nav-group-title">Sesi Live Kelas</div>
+        <a href="#sec-live-intro" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">⏱️</span>
+            <span>Rundown & Alur Praktik</span>
+          </div>
+        </a>
+        <a href="#sec-live-rules" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🛡️</span>
+            <span>Keamanan Kredensial</span>
+          </div>
+        </a>
+      </nav>
+
+      <!-- Group 2: Modul Praktik Hari-H -->
+      <nav class="nav-group" aria-label="Navigasi Modul Praktik Kelas">
+        <div class="nav-group-title">Modul Praktik Kelas</div>
+        <a href="#sec-module-6" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🟢</span>
+            <span>Modul 6: 9Router Provider</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m6">CP-4</span>
+        </a>
+        <a href="#sec-module-7" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">⚡</span>
+            <span>Modul 7: Instalasi Hermes</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m7">CP-5</span>
+        </a>
+        <a href="#sec-module-8" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">⚙️</span>
+            <span>Modul 8: Hermes Full Setup</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m8">CP-6</span>
+        </a>
+        <a href="#sec-module-9" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🤖</span>
+            <span>Modul 9: Telegram Allowlist</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m9">CP-7</span>
+        </a>
+        <a href="#sec-module-10" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📅</span>
+            <span>Modul 10: Google OAuth</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m10">CP-8</span>
+        </a>
+        <a href="#sec-module-11" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🚀</span>
+            <span>Modul 11: Uji End-to-End</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-m11">CP-9</span>
+        </a>
+      </nav>
+
+      <!-- Group 3: Checkpoint Hari-H -->
+      <nav class="nav-group" aria-label="Navigasi Checkpoint Hari-H">
+        <div class="nav-group-title">Gerbang Checkpoint 4–9</div>
+        <a href="#sec-live-checkpoints" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📍</span>
+            <span>Evaluasi Checkpoints</span>
+          </div>
+          <span class="badge badge-pill badge-warning" id="status-nav-live-cp">Pending</span>
+        </a>
+      </nav>
+
+      <!-- Group 4: Bantuan & Laporan Akhir -->
+      <nav class="nav-group" aria-label="Navigasi Bantuan dan Laporan Akhir">
+        <div class="nav-group-title">Bantuan & Laporan Akhir</div>
+        <a href="#sec-live-troubleshooting" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">🛠️</span>
+            <span>Solusi Kendala Kelas</span>
+          </div>
+        </a>
+        <a href="#sec-live-report" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📊</span>
+            <span>Laporan Hasil Praktik</span>
+          </div>
+        </a>
+      </nav>
+    </div>
+    <!-- /#nav-group-liveclass -->
+  </aside>
 
     <!-- ==========================================
          MAIN CONTENT AREA
          ========================================== -->
     <main id="main-content" class="app-main">
       
-      <!-- HERO WELCOME SECTION -->
-      <section class="main-hero">
+      <!-- ==========================================
+           MODE CONTAINER 1: PRA-TRAINING (PERSIAPAN)
+           ========================================== -->
+      <div id="container-pretraining" class="mode-container active" role="tabpanel" aria-labelledby="tab-pretraining-header">
+        
+        <!-- HERO WELCOME SECTION -->
+        <section class="main-hero">
         <div class="hero-tag">
           <span>🎓</span> Workshop Pre-Training Guide • Non-Coding Friendly
         </div>
@@ -2146,6 +2279,345 @@
           </div>
         </div>
       </section>
+    </div>
+    <!-- /#container-pretraining -->
+
+    <!-- ==========================================
+         MODE CONTAINER 2: HARI-H (PRAKTIK KELAS)
+         ========================================== -->
+    <div id="container-liveclass" class="mode-container" role="tabpanel" aria-labelledby="tab-liveclass-header" style="display: none;">
+      
+      <!-- HERO LIVE WORKSHOP -->
+      <section class="main-hero">
+        <div class="hero-tag">
+          <span>🚀</span> Sesi Live Workshop • Praktik Langsung Kelas
+        </div>
+        <h2 class="hero-title">Panduan Praktik Kelas: Hermes Agent + 9Router</h2>
+        <p class="hero-subtitle">
+          Panduan langkah-demi-langkah sesi langsung (08.30–11.00) mengintegrasikan <strong>Hermes AI Agent</strong> dengan local service <strong>9Router</strong>, mengamankan Telegram allowlist, dan mengelola <strong>Google Calendar melalui chat</strong>.
+        </p>
+
+        <!-- Live Workshop Metrics / Highlight Cards -->
+        <div class="hero-stats-grid">
+          <div class="card card-glass hero-stat-card">
+            <div class="hero-stat-icon">🎯</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-value">6 Gerbang</span>
+              <span class="hero-stat-label">Checkpoint 4 s.d. 9</span>
+            </div>
+          </div>
+          <div class="card card-glass hero-stat-card">
+            <div class="hero-stat-icon">🔒</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-value">Long Polling</span>
+              <span class="hero-stat-label">Privat (Tanpa Webhook)</span>
+            </div>
+          </div>
+          <div class="card card-glass hero-stat-card">
+            <div class="hero-stat-icon">🤖</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-value">Hermes Agent</span>
+              <span class="hero-stat-label">Windows Native CLI</span>
+            </div>
+          </div>
+          <div class="card card-glass hero-stat-card">
+            <div class="hero-stat-icon">📅</div>
+            <div class="hero-stat-info">
+              <span class="hero-stat-value">Google OAuth</span>
+              <span class="hero-stat-label">Desktop App Credentials</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: RUNDOWN & ALUR PRAKTIK -->
+      <section id="sec-live-intro" class="content-section" data-section="sec-live-intro">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">⏱️</div>
+            <div>
+              <h2 class="section-title">Rundown & Alur Praktik Kelas</h2>
+              <p class="section-desc">Jadwal resmi sesi live Zoom (08.30–11.00 WIB) sesuai panduan instruktur.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <p style="margin-bottom: 1rem;">
+              Sesi live workshop dipandu langkah demi langkah oleh instruktur. Pastikan Anda telah menyelesaikan seluruh persiapan di mode <strong>Pra-Training</strong> sebelum memulai.
+            </p>
+            <div style="overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: var(--font-size-sm); text-align: left;">
+                <thead>
+                  <tr style="border-bottom: 2px solid var(--border-subtle); background: var(--bg-surface-subtle);">
+                    <th style="padding: 0.75rem 1rem;">Waktu (WIB)</th>
+                    <th style="padding: 0.75rem 1rem;">Fokus Sesi</th>
+                    <th style="padding: 0.75rem 1rem;">Hasil yang Harus Terlihat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">08.30–08.40</td>
+                    <td style="padding: 0.75rem 1rem;">Pembukaan, keamanan, & cek kesiapan</td>
+                    <td style="padding: 0.75rem 1rem;">Peserta paham token rahasia dilarang dikirim ke chat/screen share.</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">08.40–08.50</td>
+                    <td style="padding: 0.75rem 1rem;">Arsitektur & pembagian clinic</td>
+                    <td style="padding: 0.75rem 1rem;">Peserta yang belum lolos Checkpoint 1–3 didampingi di breakout room.</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">08.50–09.05</td>
+                    <td style="padding: 0.75rem 1rem;">9Router: Provider, model, API key lokal</td>
+                    <td style="padding: 0.75rem 1rem;">Dashboard aktif & pilihan model disamakan (<strong>Checkpoint 4</strong>).</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">09.05–09.30</td>
+                    <td style="padding: 0.75rem 1rem;">Instalasi Hermes CLI di Windows</td>
+                    <td style="padding: 0.75rem 1rem;">Perintah <code>hermes doctor</code> lolos verifikasi (<strong>Checkpoint 5</strong>).</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">09.30–09.45</td>
+                    <td style="padding: 0.75rem 1rem;">Hermes Full Setup & koneksi 9Router</td>
+                    <td style="padding: 0.75rem 1rem;">Hermes memberi respons uji melalui 9Router (<strong>Checkpoint 6</strong>).</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">09.45–10.05</td>
+                    <td style="padding: 0.75rem 1rem;">Integrasi Telegram Gateway & Allowlist</td>
+                    <td style="padding: 0.75rem 1rem;">Bot membalas akun dengan user ID yang diizinkan (<strong>Checkpoint 7</strong>).</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">10.05–10.30</td>
+                    <td style="padding: 0.75rem 1rem;">Google Cloud OAuth & Otorisasi Calendar</td>
+                    <td style="padding: 0.75rem 1rem;">OAuth Desktop app aktif & Hermes dapat membaca kalender (<strong>Checkpoint 8</strong>).</td>
+                  </tr>
+                  <tr style="border-bottom: 1px solid var(--border-subtle);">
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">10.30–10.55</td>
+                    <td style="padding: 0.75rem 1rem;">Uji End-to-End Perintah Telegram</td>
+                    <td style="padding: 0.75rem 1rem;">Tindakan Calendar berhasil via Telegram & tampil di Google Calendar (<strong>Checkpoint 9</strong>).</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.75rem 1rem; font-weight: 600;">10.55–11.00</td>
+                    <td style="padding: 0.75rem 1rem;">Pengiriman Laporan Akhir & Penutupan</td>
+                    <td style="padding: 0.75rem 1rem;">Laporan status akhir dikirim ke instruktur tanpa data rahasia.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: KEAMANAN KREDENSIAL HARI-H -->
+      <section id="sec-live-rules" class="content-section" data-section="sec-live-rules">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">🛡️</div>
+            <div>
+              <h2 class="section-title">Aturan Keamanan & Kredensial</h2>
+              <p class="section-desc">Prinsip perlindungan data dan privasi selama sesi praktik berlangsung.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-box alert-danger" style="margin-bottom: 1.5rem;">
+          <div class="alert-icon">🛑</div>
+          <div class="alert-content">
+            <h4 style="font-weight: 700; margin-bottom: 0.35rem;">Larangan Keras Berbagi Kredensial Rahasia</h4>
+            <p style="font-size: var(--font-size-sm); line-height: 1.6;">
+              Jangan pernah mengirim <strong>API Key 9Router</strong>, <strong>Telegram Bot Token</strong>, <strong>Google OAuth Client Secret JSON</strong>, atau <strong>Password</strong> ke ruang obrolan Zoom, grup Telegram/WhatsApp, ataupun memperlihatkannya saat <em>Screen Share</em>.
+            </p>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><span>🔒</span> Mode Long Polling Lokal</h3>
+            </div>
+            <div class="card-body">
+              <p>Hermes Agent berkomunikasi dengan Telegram menggunakan teknik <em>long polling</em> lokal dari laptop Anda. Tidak diperlukan domain publik, SSL certificate luar, ataupun tunneling seperti ngrok.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><span>👤</span> Whitelist User ID Ketat</h3>
+            </div>
+            <div class="card-body">
+              <p>Hanya Telegram User ID numerik milik Anda yang didaftarkan ke <code>TELEGRAM_ALLOWED_USERS</code>. Siapa pun yang mencoba mengirim perintah ke bot Anda dari luar akan ditolak otomatis (<code>unauthorized</code>).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLACEHOLDER MODUL PRAKTIK KELAS (PHASE 6 & 7) -->
+      <section id="sec-module-6" class="content-section" data-section="sec-module-6">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">🟢</div>
+            <div>
+              <h2 class="section-title">Modul 6: Penyelarasan Provider & Model 9Router</h2>
+              <p class="section-desc">Menyamakan endpoint dan model lokal sebelum konfigurasi agent.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-primary">Fase 6</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--accent-primary);">
+          <div class="card-body">
+            <p>Panduan interaktif Modul 6, perintah setup model, dan Checkpoint 4 akan diaktifkan pada Phase 6.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-module-7" class="content-section" data-section="sec-module-7">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">⚡</div>
+            <div>
+              <h2 class="section-title">Modul 7: Instalasi Hermes di Windows</h2>
+              <p class="section-desc">Instalasi native PowerShell dan verifikasi <code>hermes doctor</code>.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-primary">Fase 6</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--accent-primary);">
+          <div class="card-body">
+            <p>Panduan interaktif instalasi Hermes dan Checkpoint 5 akan diaktifkan pada Phase 6.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-module-8" class="content-section" data-section="sec-module-8">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">⚙️</div>
+            <div>
+              <h2 class="section-title">Modul 8: Full Setup & Koneksi 9Router</h2>
+              <p class="section-desc">Konfigurasi wizard Hermes ke endpoint <code>http://localhost:20128/v1</code>.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-primary">Fase 6</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--accent-primary);">
+          <div class="card-body">
+            <p>Panduan wizard <code>hermes setup</code> dan Checkpoint 6 akan diaktifkan pada Phase 6.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-module-9" class="content-section" data-section="sec-module-9">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">🤖</div>
+            <div>
+              <h2 class="section-title">Modul 9: Integrasi Telegram Gateway & Allowlist</h2>
+              <p class="section-desc">Menghubungkan bot dengan pengamanan allowlist Telegram User ID.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-info">Fase 7</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--color-info);">
+          <div class="card-body">
+            <p>Panduan wizard gateway Telegram dan Checkpoint 7 akan diaktifkan pada Phase 7.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-module-10" class="content-section" data-section="sec-module-10">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">📅</div>
+            <div>
+              <h2 class="section-title">Modul 10: Google Calendar & OAuth 2.0 Desktop</h2>
+              <p class="section-desc">Otorisasi kalender latihan melalui OAuth client secret JSON.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-info">Fase 7</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--color-info);">
+          <div class="card-body">
+            <p>Panduan OAuth Google Calendar dan Checkpoint 8 akan diaktifkan pada Phase 7.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-module-11" class="content-section" data-section="sec-module-11">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">🚀</div>
+            <div>
+              <h2 class="section-title">Modul 11: Skenario Uji End-to-End & Operasional</h2>
+              <p class="section-desc">Uji baca dan buat agenda kalender serta urutan restart harian.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-info">Fase 7</span>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--color-info);">
+          <div class="card-body">
+            <p>Panduan pengujian Telegram & Google Calendar dan Checkpoint 9 akan diaktifkan pada Phase 7.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CHECKPOINTS HARI-H -->
+      <section id="sec-live-checkpoints" class="content-section" data-section="sec-live-checkpoints">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">📍</div>
+            <div>
+              <h2 class="section-title">Gerbang Checkpoint Hari-H (CP 4 s.d. 9)</h2>
+              <p class="section-desc">Validasi langkah kunci praktik live workshop.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-secondary">Fase 6–7</span>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>Sistem gerbang checkpoint interaktif 4 s.d. 9 akan terhubung pada Phase 6 dan 7.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: TROUBLESHOOTING HARI-H -->
+      <section id="sec-live-troubleshooting" class="content-section" data-section="sec-live-troubleshooting">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">🛠️</div>
+            <div>
+              <h2 class="section-title">Solusi Kendala Live Workshop</h2>
+              <p class="section-desc">Pusat penanganan error runtime Hermes, 9Router, Telegram, dan OAuth.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-warning">Fase 8</span>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>Pusat solusi kendala live workshop akan diintegrasikan pada Phase 8.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: LAPORAN AKHIR -->
+      <section id="sec-live-report" class="content-section" data-section="sec-live-report">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-icon">📊</div>
+            <div>
+              <h2 class="section-title">Laporan Status Akhir Praktik Kelas</h2>
+              <p class="section-desc">Rekapitulasi pencapaian akhir untuk instruktur via WhatsApp/Telegram.</p>
+            </div>
+          </div>
+          <span class="badge badge-pill badge-success">Fase 8</span>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <p>Generator laporan hasil praktik kelas akan diintegrasikan pada Phase 8.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /#container-liveclass -->
 
       <!-- FOOTER -->
       <footer class="app-footer">
