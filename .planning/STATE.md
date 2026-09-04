@@ -1,14 +1,16 @@
 ---
-milestone: v1.0
-milestone_name: "Pre-Training Interactive Web App"
-status: shipped
-stopped_at: "Milestone v1.0 Complete — Ready for v1.1 planning"
-last_activity: "2026-09-03 — Completed quick task 260903-gsa: improved smartphone layout and accessibility from UI audit"
+gsd_state_version: 1.0
+milestone: v1.1
+milestone_name: Live Workshop Guide (Hari-H Praktik Kelas)
+status: planning
+last_updated: "2026-09-04T08:34:17.382Z"
+last_activity: 2026-09-04
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 11
-  completed_plans: 11
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -22,10 +24,10 @@ See: `.planning/PROJECT.md` (updated 2026-09-03)
 
 ## Current Position
 
-Phase: Milestone v1.0 Complete & Archived
-Next Action: `/gsd-new-milestone`
-Status: Shipped & Tagged (v1.0)
-Last activity: 2026-09-03 — Completed quick task 260903-gsa: improved smartphone layout and accessibility from UI audit
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-09-04 — Milestone v1.1 started
 
 ## Milestone Summary
 
