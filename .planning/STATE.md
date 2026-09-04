@@ -2,13 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Live Workshop Guide (Hari-H Praktik Kelas)
-status: planning
-last_updated: "2026-09-04T08:34:17.382Z"
+status: ready
+last_updated: "2026-09-04T15:39:00.000Z"
 last_activity: 2026-09-04
 progress:
-  total_phases: 0
+  total_phases: 4
   completed_phases: 0
-  total_plans: 0
+  total_plans: 8
   completed_plans: 0
   percent: 0
 ---
@@ -17,29 +17,27 @@ progress:
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-09-03)
+See: `.planning/PROJECT.md` (updated 2026-09-04)
 
-**Core value:** Empower non-technical participants to complete all pre-training prerequisites independently, safely, and without anxiety through clear visual guidance, interactive checklists, and automated readiness reporting.
-**Current focus:** Planning next milestone (v1.1)
+**Core value:** Empower non-technical participants to complete all pre-training prerequisites and live in-class practical exercises independently, safely, and without anxiety through clear visual guidance, interactive checklists, and automated checkpoint reporting.
+**Current focus:** Phase 5 — Mode Switcher & Dual Workshop Navigation Shell
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-09-04 — Milestone v1.1 started
+Phase: Phase 5: Mode Switcher & Dual Workshop Navigation Shell
+Plan: Ready to plan
+Status: Ready to plan Phase 5
+Last activity: 2026-09-04 — Milestone v1.1 roadmap defined (Phases 5-8)
 
 ## Milestone Summary
 
-- **Delivered**: All 4 planned phases (Foundation Shell, Interactive Guide Modules, Checkpoints & State Engine, Troubleshooting Hub & Report Exporter).
-- **Requirements**: 18 of 18 satisfied (100%).
-- **Verification**: 46 automated tests passing with zero failures.
-- **Closeout Type**: `verified_closeout`.
-- **Known verification overrides**: 0 newly acknowledged, 0 carried forward.
+- **Delivered**: Milestone v1.0 complete (Phases 1-4).
+- **Active Scope**: Milestone v1.1 (Phases 5-8, 19 requirements mapped).
+- **Verification**: 62 automated tests passing with zero failures.
 
 ## Deferred Items
 
-None. All items closed cleanly with full test verification.
+None.
 
 ### Quick Tasks Completed
 
