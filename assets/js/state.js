@@ -56,6 +56,19 @@ const DEFAULT_STATE = {
     'm9-start-gateway': false,
     'm9-check-status': false,
     'm9-verify-dm': false,
+    // Module 10 (Google Calendar & OAuth 2.0 Desktop)
+    'm10-open-cloud': false,
+    'm10-enable-calendar': false,
+    'm10-oauth-screen': false,
+    'm10-create-desktop-client': false,
+    'm10-download-secret': false,
+    'm10-auth-hermes': false,
+    // Module 11 (Skenario Uji End-to-End & Operasional)
+    'm11-prompt-read': false,
+    'm11-prompt-create': false,
+    'm11-verify-calendar': false,
+    'm11-clean-dummy': false,
+    'm11-reboot-sequence': false,
   },
   checkpoints: {
     'cp-1': 'pending', // 'pending' | 'passed' | 'failed'
@@ -64,7 +77,9 @@ const DEFAULT_STATE = {
     'cp-4': 'pending',
     'cp-5': 'pending',
     'cp-6': 'pending',
-    'cp-7': 'pending'
+    'cp-7': 'pending',
+    'cp-8': 'pending',
+    'cp-9': 'pending'
   },
   participantInfo: {
     name: '',

@@ -102,6 +102,65 @@
     Object.keys(smReloaded.getState().checklists).forEach(k => smReloaded.updateChecklist(k, true));
     assertEquals(smReloaded.calculateReadiness().status, 'ready', 'Pretraining readiness evaluates to ready when cp 1-3 pass');
 
+    console.log('\n[Suite 5: Phase 7 Modules 9, 10, 11 Checklists & Progress]');
+    assertEquals(sm.getModuleProgress('m9-').total, 7, 'Modul 9 has 7 tasks (setup, telegram, token, allowed, start, status, verify-dm)');
+    assertEquals(sm.getModuleProgress('m10-').total, 6, 'Modul 10 has 6 tasks (open-cloud, enable-calendar, oauth-screen, desktop-client, download-secret, auth-hermes)');
+    assertEquals(sm.getModuleProgress('m11-').total, 5, 'Modul 11 has 5 tasks (prompt-read, prompt-create, verify-calendar, clean-dummy, reboot-sequence)');
+
+    // Completing tasks in Modul 9
+    sm.updateChecklist('m9-run-setup', true);
+    sm.updateChecklist('m9-select-telegram', true);
+    sm.updateChecklist('m9-enter-token', true);
+    sm.updateChecklist('m9-enter-allowed', true);
+    sm.updateChecklist('m9-start-gateway', true);
+    sm.updateChecklist('m9-check-status', true);
+    sm.updateChecklist('m9-verify-dm', true);
+    assertEquals(sm.getModuleProgress('m9-').completed, 7, 'Modul 9 reflects 7 completed tasks');
+    assertEquals(sm.getModuleProgress('m9-').percentage, 100, 'Modul 9 reflects 100% completion');
+
+    // Completing tasks in Modul 10 & 11
+    sm.updateChecklist('m10-open-cloud', true);
+    sm.updateChecklist('m10-enable-calendar', true);
+    sm.updateChecklist('m10-oauth-screen', true);
+    assertEquals(sm.getModuleProgress('m10-').completed, 3, 'Modul 10 reflects 3 completed tasks');
+    assertEquals(sm.getModuleProgress('m10-').percentage, 50, 'Modul 10 reflects 50% completion');
+
+    sm.updateChecklist('m11-prompt-read', true);
+    sm.updateChecklist('m11-prompt-create', true);
+    assertEquals(sm.getModuleProgress('m11-').completed, 2, 'Modul 11 reflects 2 completed tasks');
+    assertEquals(sm.getModuleProgress('m11-').percentage, 40, 'Modul 11 reflects 40% completion');
+
+    console.log('\n[Suite 6: Phase 7 Checkpoint 7, 8, 9 Gates]');
+    assertEquals(sm.getState().checkpoints['cp-7'], 'pending', 'Checkpoint 7 initial status is pending');
+    assertEquals(sm.getState().checkpoints['cp-8'], 'pending', 'Checkpoint 8 initial status is pending');
+    assertEquals(sm.getState().checkpoints['cp-9'], 'pending', 'Checkpoint 9 initial status is pending');
+
+    sm.updateCheckpoint('cp-7', 'passed');
+    assertEquals(sm.getState().checkpoints['cp-7'], 'passed', 'Checkpoint 7 updates to passed');
+
+    sm.updateCheckpoint('cp-8', 'failed');
+    assertEquals(sm.getState().checkpoints['cp-8'], 'failed', 'Checkpoint 8 updates to failed');
+
+    sm.updateCheckpoint('cp-8', 'passed');
+    sm.updateCheckpoint('cp-9', 'passed');
+    assertEquals(sm.getState().checkpoints['cp-8'], 'passed', 'Checkpoint 8 updates to passed');
+    assertEquals(sm.getState().checkpoints['cp-9'], 'passed', 'Checkpoint 9 updates to passed');
+
+    console.log('\n[Suite 7: Phase 7 Persistence Across Sessions]');
+    const smPhase7Reloaded = new ProductionStateManager();
+    assertEquals(smPhase7Reloaded.getState().checkpoints['cp-7'], 'passed', 'Persisted cp-7 is passed after reload');
+    assertEquals(smPhase7Reloaded.getState().checkpoints['cp-8'], 'passed', 'Persisted cp-8 is passed after reload');
+    assertEquals(smPhase7Reloaded.getState().checkpoints['cp-9'], 'passed', 'Persisted cp-9 is passed after reload');
+    assertEquals(smPhase7Reloaded.getModuleProgress('m9-').completed, 7, 'Persisted m9 tasks intact after reload');
+    assertEquals(smPhase7Reloaded.getModuleProgress('m10-').completed, 3, 'Persisted m10 tasks intact after reload');
+    assertEquals(smPhase7Reloaded.getModuleProgress('m11-').completed, 2, 'Persisted m11 tasks intact after reload');
+
+    // Verify live-class progress calculation
+    const liveProgress = smPhase7Reloaded.calculateProgress('live-class');
+    assert(liveProgress.totalTasks > 0, 'Live class progress has totalTasks');
+    assert(liveProgress.totalCheckpoints === 6, 'Live class tracks 6 checkpoints (cp-4..cp-9)');
+    assert(liveProgress.passedCheckpoints === 6, 'All 6 live checkpoints passed');
+
     console.log(`\nTEST SUMMARY: ${passedTests} PASSED, ${failedTests} FAILED\n`);
     if (failedTests > 0 && typeof process !== 'undefined') process.exitCode = 1;
     return { passedTests, failedTests };

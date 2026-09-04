@@ -3370,14 +3370,271 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
             <div class="section-icon">📅</div>
             <div>
               <h2 class="section-title">Modul 10: Google Calendar & OAuth 2.0 Desktop</h2>
-              <p class="section-desc">Otorisasi kalender latihan melalui OAuth client secret JSON.</p>
+              <p class="section-desc">Otorisasi kalender latihan melalui Google Cloud OAuth 2.0 Desktop app dan client secret JSON.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-info">Fase 7</span>
+          <span class="badge badge-pill badge-primary">25 Menit</span>
         </div>
-        <div class="card" style="border-left: 4px solid var(--color-info);">
+
+        <div class="card">
           <div class="card-body">
-            <p>Panduan OAuth Google Calendar dan Checkpoint 8 akan diaktifkan pada Phase 7.</p>
+            <!-- Alert Box: Kalender Latihan Khusus -->
+            <div class="alert-box alert-warning" style="margin-bottom: 1.5rem;">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-content">
+                <h5>Wajib Menggunakan Akun & Kalender Latihan:</h5>
+                <p>
+                  Gunakan akun Google latihan/dummy khusus workshop. <strong>Hindari kalender kerja, kantor, atau email utama produksi</strong> demi keamanan dan privasi data agenda harian Anda.
+                </p>
+              </div>
+            </div>
+
+            <!-- Langkah 10A: Buka Google Cloud Console & Buat Project -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Buka Google Cloud Console & Siapkan Project Latihan</span>
+                <span class="badge badge-pill badge-neutral">Google Cloud</span>
+              </div>
+              <p class="card-body">
+                Buka Google Cloud Console di browser menggunakan akun latihan Anda, lalu buat atau pilih project latihan:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">Tautan Google Cloud Console</span>
+                  <button class="code-copy-btn" aria-label="Salin URL">
+                    <span>📋 Salin URL</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>https://console.cloud.google.com</code></pre>
+              </div>
+
+              <ol class="step-list-ordered" style="margin: 0.75rem 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li>Pastikan akun Google yang aktif di kanan atas adalah akun latihan Anda.</li>
+                <li>Klik dropdown project di bilah navigasi atas, lalu klik <strong>New Project</strong>.</li>
+                <li>Beri nama project (misal: <code>Workshop-Hermes-Calendar</code>), lalu klik <strong>Create</strong>.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m10-open-cloud">
+                <span class="checklist-label">Langkah A selesai: Membuka Google Cloud Console dan membuat/memilih project latihan</span>
+              </label>
+            </div>
+
+            <!-- Langkah 10B: Aktifkan Google Calendar API -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Aktifkan Google Calendar API</span>
+                <span class="badge badge-pill badge-neutral">API Library</span>
+              </div>
+              <p class="card-body">
+                Aktifkan layanan API Google Calendar agar Hermes Agent diizinkan berinteraksi dengan jadwal kalender:
+              </p>
+
+              <ol class="step-list-ordered" style="margin: 0.75rem 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li>Di menu navigasi kiri, pilih <strong>APIs & Services</strong> &gt; <strong>Library</strong>.</li>
+                <li>Ketik <code>Google Calendar API</code> pada kolom pencarian dan tekan Enter.</li>
+                <li>Klik kartu <strong>Google Calendar API</strong>, kemudian klik tombol <strong>Enable</strong>.</li>
+              </ol>
+
+              <div class="alert-box alert-neutral">
+                <div class="alert-icon">ℹ️</div>
+                <div class="alert-content">
+                  <h5>Indikator API Aktif:</h5>
+                  <p>Setelah diaktifkan, halaman akan dialihkan ke dashboard API metrics dengan status API aktif.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m10-enable-calendar">
+                <span class="checklist-label">Langkah B selesai: Mengaktifkan Google Calendar API pada project latihan</span>
+              </label>
+            </div>
+
+            <!-- Langkah 10C: Konfigurasi OAuth Consent Screen -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Konfigurasi OAuth Consent Screen & Daftarkan Test User</span>
+                <span class="badge badge-pill badge-neutral">OAuth Consent</span>
+              </div>
+              <p class="card-body">
+                Atur layar izin persetujuan OAuth agar aplikasi dapat digunakan oleh akun latihan Anda:
+              </p>
+
+              <ol class="step-list-ordered" style="margin: 0.75rem 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li>Pilih <strong>APIs & Services</strong> &gt; <strong>OAuth consent screen</strong>.</li>
+                <li>Pilih <strong>User Type: External</strong>, lalu klik <strong>Create</strong>.</li>
+                <li>Isi <strong>App name</strong> (misal: <code>Hermes Agent Assistant</code>) dan masukkan email latihan Anda pada <em>User support email</em> dan <em>Developer contact</em>. Klik <strong>Save and Continue</strong>.</li>
+                <li>Pada langkah <em>Scopes</em>, klik <strong>Save and Continue</strong> (cakupan akan ditangani otomatis saat otorisasi).</li>
+                <li>Pada langkah <strong>Test users</strong> (Sangat Penting): klik <strong>+ Add Users</strong>, masukkan alamat email latihan Anda, lalu klik <strong>Save and Continue</strong>.</li>
+              </ol>
+
+              <div class="alert-box alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                  <h5>Mengapa Test User Wajib?</h5>
+                  <p>Karena aplikasi masih dalam status "Testing", Google hanya mengizinkan login dari alamat email yang secara eksplisit terdaftar di daftar Test Users.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m10-oauth-screen">
+                <span class="checklist-label">Langkah C selesai: Mengatur OAuth consent screen dan mendaftarkan email latihan sebagai test user</span>
+              </label>
+            </div>
+
+            <!-- Langkah 10D: Buat OAuth Client ID Bertipe Desktop App -->
+            <div class="step-section">
+              <div class="step-section-node">D</div>
+              <div class="step-section-title">
+                <span>Buat Kredensial OAuth Client ID (Tipe Desktop App)</span>
+                <span class="badge badge-pill badge-primary">Pilihan Kunci</span>
+              </div>
+              <p class="card-body">
+                Buat kunci otorisasi OAuth 2.0 khusus untuk aplikasi desktop/CLI Hermes:
+              </p>
+
+              <ol class="step-list-ordered" style="margin: 0.75rem 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li>Pilih <strong>APIs & Services</strong> &gt; <strong>Credentials</strong>.</li>
+                <li>Klik tombol <strong>+ Create Credentials</strong> di bagian atas, lalu pilih <strong>OAuth client ID</strong>.</li>
+                <li>Pada dropdown <strong>Application type</strong>, pilih <strong>Desktop app</strong> (<em>Jangan pilih Web application!</em>).</li>
+                <li>Beri nama client (misal: <code>Hermes Desktop App</code>), lalu klik <strong>Create</strong>.</li>
+              </ol>
+
+              <div class="alert-box alert-info">
+                <div class="alert-icon">💡</div>
+                <div class="alert-content">
+                  <h5>Perbedaan Tipe Aplikasi:</h5>
+                  <p>Memilih tipe <strong>Desktop app</strong> memungkinkan Hermes menerima redirect authorization code melalui port loopback lokal tanpa memerlukan domain web publik atau sertifikat SSL.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m10-create-desktop-client">
+                <span class="checklist-label">Langkah D selesai: Membuat OAuth 2.0 Client ID dengan tipe Desktop app</span>
+              </label>
+            </div>
+
+            <!-- Langkah 10E: Unduh Client Secret JSON -->
+            <div class="step-section">
+              <div class="step-section-node">E</div>
+              <div class="step-section-title">
+                <span>Unduh Client Secret JSON & Simpan Aman</span>
+                <span class="badge badge-pill badge-warning">File Rahasia</span>
+              </div>
+              <p class="card-body">
+                Unduh file kredensial JSON yang baru dibuat dan simpan di direktori kerja laptop Anda:
+              </p>
+
+              <ol class="step-list-ordered" style="margin: 0.75rem 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li>Pada jendela pop-up atau tabel OAuth 2.0 Client IDs, klik tombol <strong>Download JSON</strong> (ikon unduh panah bawah).</li>
+                <li>Simpan file tersebut di laptop Anda (misalnya di folder dokumen atau folder profil pengguna).</li>
+                <li>Pastikan file hanya tersimpan lokal di laptop Anda.</li>
+              </ol>
+
+              <div class="alert-box alert-danger">
+                <div class="alert-icon">🔒</div>
+                <div class="alert-content">
+                  <h5>Peringatan Keamanan Kredensial:</h5>
+                  <p>Jangan pernah membagikan isi file client secret JSON ini ke chat Zoom atau repositori publik GitHub. File ini memuat rahasia otentikasi Google Cloud Anda.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m10-download-secret">
+                <span class="checklist-label">Langkah E selesai: Mengunduh client secret JSON dan menyimpannya secara privat di laptop</span>
+              </label>
+            </div>
+
+            <!-- Langkah 10F: Otorisasi Google Workspace di Hermes -->
+            <div class="step-section">
+              <div class="step-section-node">F</div>
+              <div class="step-section-title">
+                <span>Selesaikan Otorisasi Browser & Hubungkan ke Hermes</span>
+                <span class="badge badge-pill badge-success">Otorisasi Akhir</span>
+              </div>
+              <p class="card-body">
+                Di terminal PowerShell, minta Hermes menyiapkan integrasi Google Workspace atau arahkan ke kredensial yang diunduh:
+              </p>
+
+              <ol class="step-list-ordered" style="margin: 0.75rem 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li>Buka PowerShell dan ikuti alur otorisasi skill Google Workspace di Hermes.</li>
+                <li>Hermes akan menghasilkan <strong>URL Otorisasi Google</strong>.</li>
+                <li>Salin dan buka URL tersebut di browser tempat akun latihan Anda login.</li>
+                <li>Klik <strong>Continue</strong> / <strong>Lanjutkan</strong> saat peringatan <em>"Google hasn't verified this app"</em> muncul (wajar untuk aplikasi testing pribadi).</li>
+                <li>Centang izin akses Google Calendar, lalu klik <strong>Allow</strong>.</li>
+                <li>Salin kode otorisasi atau URL redirect yang muncul kembali ke terminal Hermes bila diminta.</li>
+              </ol>
+
+              <div class="alert-box alert-success">
+                <div class="alert-icon">🎉</div>
+                <div class="alert-content">
+                  <h5>Indikator Berhasil:</h5>
+                  <p>Hermes mengonfirmasi bahwa token OAuth telah tersimpan dan skill Google Calendar siap digunakan.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m10-auth-hermes">
+                <span class="checklist-label">Langkah F selesai: Menyelesaikan otorisasi Google di browser dan mengonfirmasi izin ke Hermes</span>
+              </label>
+            </div>
+
+            <!-- GERBANG CHECKPOINT 8 -->
+            <div class="checkpoint-gate-card" id="card-cp-8" style="margin-top: 1.5rem;">
+              <div class="checkpoint-header-row">
+                <div class="checkpoint-title-wrap">
+                  <div class="checkpoint-badge-icon">8</div>
+                  <div>
+                    <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                      Checkpoint 8: Otorisasi OAuth Google Calendar
+                    </h4>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Hermes terotorisasi OAuth Desktop app dan dapat mengakses kalender latihan</span>
+                  </div>
+                </div>
+                <span id="status-card-cp8" class="badge badge-pill badge-warning">Pending</span>
+              </div>
+
+              <p class="card-body">
+                Gerbang Checkpoint 8 dinyatakan <strong>Lolos Verifikasi</strong> jika:
+              </p>
+
+              <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Project Google Cloud & Calendar API aktif dengan Client ID tipe Desktop app.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">File client secret JSON tersimpan aman di laptop peserta secara privat.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Hermes telah menyelesaikan otorisasi browser dan dapat membaca kalender latihan.</div>
+                </div>
+              </div>
+
+              <div class="cp-action-btn-group">
+                <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-8" data-status="passed">
+                  <span>✓</span> Lolos Verifikasi
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-8" data-status="failed">
+                  <span>✕</span> Ada Kendala (Gagal)
+                </button>
+                <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-8" data-status="pending">
+                  <span>↺</span> Reset Status
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -3388,14 +3645,237 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
             <div class="section-icon">🚀</div>
             <div>
               <h2 class="section-title">Modul 11: Skenario Uji End-to-End & Operasional</h2>
-              <p class="section-desc">Uji baca dan buat agenda kalender serta urutan restart harian.</p>
+              <p class="section-desc">Uji coba manipulasi agenda Google Calendar melalui chat Telegram dan prosedur operasional harian.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-info">Fase 7</span>
+          <span class="badge badge-pill badge-primary">20 Menit</span>
         </div>
-        <div class="card" style="border-left: 4px solid var(--color-info);">
+
+        <div class="card">
           <div class="card-body">
-            <p>Panduan pengujian Telegram & Google Calendar dan Checkpoint 9 akan diaktifkan pada Phase 7.</p>
+            <!-- Context Callout: Rantai Integrasi Penuh -->
+            <div class="alert-box alert-info" style="margin-bottom: 1.5rem;">
+              <div class="alert-icon">🔗</div>
+              <div class="alert-content">
+                <h5>Rantai Integrasi Penuh End-to-End:</h5>
+                <p>
+                  Pada modul ini, seluruh arsitektur yang Anda bangun diuji secara utuh: <strong>Chat Telegram</strong> &rarr; <strong>Hermes Gateway</strong> &rarr; <strong>Model AI 9Router</strong> &rarr; <strong>Google Calendar API</strong> &rarr; <strong>Balasan Kembali ke Telegram</strong>!
+                </p>
+              </div>
+            </div>
+
+            <!-- Langkah 11A: Skenario Uji 1 - Baca Agenda Kalender -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Skenario Uji 1: Membaca Agenda Kalender dari Telegram</span>
+                <span class="badge badge-pill badge-success">Prompt Uji 1</span>
+              </div>
+              <p class="card-body">
+                Kirimkan prompt pendek berikut ke bot Telegram Anda:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">Prompt Telegram</span>
+                  <button class="code-copy-btn" aria-label="Salin prompt">
+                    <span>📋 Salin Prompt</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>Tampilkan agenda saya hari ini.</code></pre>
+              </div>
+
+              <div class="alert-box alert-success">
+                <div class="alert-icon">📅</div>
+                <div class="alert-content">
+                  <h5>Indikator Berhasil:</h5>
+                  <p>Bot akan membalas dengan daftar agenda hari ini atau konfirmasi ramah bahwa tidak ada agenda yang dijadwalkan untuk hari ini pada kalender latihan.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m11-prompt-read">
+                <span class="checklist-label">Langkah A selesai: Mengirim prompt uji baca agenda melalui chat bot Telegram</span>
+              </label>
+            </div>
+
+            <!-- Langkah 11B: Skenario Uji 2 - Buat Agenda Dummy -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Skenario Uji 2: Membuat Agenda Dummy di Google Calendar</span>
+                <span class="badge badge-pill badge-primary">Prompt Uji 2</span>
+              </div>
+              <p class="card-body">
+                Setelah uji baca berhasil, uji kemampuan agent untuk membuat agenda kalender baru melalui chat Telegram:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">Prompt Telegram</span>
+                  <button class="code-copy-btn" aria-label="Salin prompt">
+                    <span>📋 Salin Prompt</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>Buat agenda uji "Workshop Hermes" besok pukul 09.00 selama 15 menit di kalender latihan.</code></pre>
+              </div>
+
+              <div class="alert-box alert-success">
+                <div class="alert-icon">✨</div>
+                <div class="alert-content">
+                  <h5>Indikator Berhasil:</h5>
+                  <p>Bot Telegram akan mengonfirmasi bahwa agenda <em>"Workshop Hermes"</em> telah berhasil dibuat beserta rincian tanggal, waktu, dan durasinya.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m11-prompt-create">
+                <span class="checklist-label">Langkah B selesai: Mengirim prompt pembuatan agenda dummy ke bot Telegram</span>
+              </label>
+            </div>
+
+            <!-- Langkah 11C: Verifikasi Kalender & Bersihkan Agenda Dummy -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Verifikasi di Browser & Bersihkan Agenda Dummy</span>
+                <span class="badge badge-pill badge-neutral">Pembersihan</span>
+              </div>
+              <p class="card-body">
+                Buka Google Calendar di browser laptop Anda untuk memastikan hasil sinkronisasi secara visual:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">URL Google Calendar</span>
+                  <button class="code-copy-btn" aria-label="Salin URL">
+                    <span>📋 Salin URL</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>https://calendar.google.com</code></pre>
+              </div>
+
+              <ol class="step-list-ordered" style="margin: 0.75rem 0 1rem 1.25rem; font-size: var(--font-size-sm); color: var(--text-secondary);">
+                <li>Buka Google Calendar dengan akun latihan Anda.</li>
+                <li>Periksa tanggal besok pada pukul 09.00 — agenda <strong>"Workshop Hermes"</strong> harus terlihat di kalender.</li>
+                <li>Setelah diverifikasi, Anda dapat menghapus agenda dummy tersebut agar kalender tetap rapi.</li>
+              </ol>
+
+              <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem;">
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m11-verify-calendar">
+                  <span class="checklist-label">Langkah C-1 selesai: Memeriksa Google Calendar di browser dan memastikan agenda dummy muncul</span>
+                </label>
+                <label class="step-checklist-action">
+                  <input type="checkbox" class="checklist-checkbox" data-task-id="m11-clean-dummy">
+                  <span class="checklist-label">Langkah C-2 selesai: Menghapus agenda dummy setelah proses verifikasi selesai</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Langkah 11D: Urutan Restart Operasional Pasca-Workshop -->
+            <div class="step-section">
+              <div class="step-section-node">D</div>
+              <div class="step-section-title">
+                <span>Urutan Menyalakan Ulang Pasca-Workshop (5 Langkah)</span>
+                <span class="badge badge-pill badge-primary">SOP Mandiri</span>
+              </div>
+              <p class="card-body">
+                Ketika laptop dimatikan atau Anda ingin menggunakan kembali asisten AI ini di hari-hari berikutnya, lakukan urutan 5 langkah aman berikut:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">SOP Restart Harian</span>
+                </div>
+                <pre class="code-content"><code>1. Jalankan 9Router dan pastikan dashboard lokal terbuka di http://localhost:20128.
+2. Pastikan Hermes masih menggunakan endpoint http://localhost:20128/v1 dan model yang benar.
+3. Jalankan 'hermes gateway start' di terminal PowerShell.
+4. Jalankan 'hermes gateway status' untuk memastikan PID gateway aktif.
+5. Kirim pesan uji sapaan ke bot Telegram Anda.</code></pre>
+              </div>
+
+              <div class="alert-box alert-danger">
+                <div class="alert-icon">🛡️</div>
+                <div class="alert-content">
+                  <h5>Prosedur Darurat Jika Token Bot Bocor:</h5>
+                  <p>Jika bot token Anda tidak sengaja terekspos ke publik: segera buka bot <code>@BotFather</code> di Telegram, ketik perintah <code>/revoke</code>, pilih bot Anda untuk mendapatkan token baru. Masukkan token baru ke konfigurasi lokal Hermes, lalu restart gateway dengan <code>hermes gateway stop</code> dan <code>hermes gateway start</code>.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m11-reboot-sequence">
+                <span class="checklist-label">Langkah D selesai: Memahami 5 urutan menyalakan ulang sistem untuk operasional mandiri hari berikutnya</span>
+              </label>
+            </div>
+
+            <!-- GERBANG CHECKPOINT 9 -->
+            <div class="checkpoint-gate-card" id="card-cp-9" style="margin-top: 1.5rem;">
+              <div class="checkpoint-header-row">
+                <div class="checkpoint-title-wrap">
+                  <div class="checkpoint-badge-icon">9</div>
+                  <div>
+                    <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                      Checkpoint 9: Verifikasi End-to-End & Kesiapan Operasional
+                    </h4>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Tindakan Google Calendar sukses via Telegram dan urutan restart mandiri dikuasai</span>
+                  </div>
+                </div>
+                <span id="status-card-cp9" class="badge badge-pill badge-warning">Pending</span>
+              </div>
+
+              <p class="card-body">
+                Gerbang Checkpoint 9 dinyatakan <strong>Lolos Verifikasi</strong> jika:
+              </p>
+
+              <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Perintah baca agenda berhasil menampilkan data kalender di chat Telegram.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Agenda dummy berhasil dibuat di Google Calendar melalui chat bot Telegram.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Peserta menguasai 5 urutan restart mandiri dan penanganan darurat kebocoran token.</div>
+                </div>
+              </div>
+
+              <div class="cp-action-btn-group">
+                <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-9" data-status="passed">
+                  <span>✓</span> Lolos Verifikasi
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-9" data-status="failed">
+                  <span>✕</span> Ada Kendala (Gagal)
+                </button>
+                <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-9" data-status="pending">
+                  <span>↺</span> Reset Status
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -3407,14 +3887,67 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
             <div class="section-icon">📍</div>
             <div>
               <h2 class="section-title">Gerbang Checkpoint Hari-H (CP 4 s.d. 9)</h2>
-              <p class="section-desc">Validasi langkah kunci praktik live workshop.</p>
+              <p class="section-desc">Ringkasan status validasi gerbang utama praktik live workshop.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-secondary">Fase 6–7</span>
+          <span class="badge badge-pill badge-primary">Fase 6–7 Aktif</span>
         </div>
+
         <div class="card">
           <div class="card-body">
-            <p>Sistem gerbang checkpoint interaktif 4 s.d. 9 akan terhubung pada Phase 6 dan 7.</p>
+            <p style="margin-bottom: 1.25rem;">
+              Gerbang Checkpoint 4 sampai 9 memvalidasi setiap tahapan penting live workshop. Klik tombol di bawah untuk melompat langsung ke kartu verifikasi di modul terkait:
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
+              <div class="card" style="margin-bottom: 0; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong>CP-4: Penyelarasan 9Router</strong>
+                  <a href="#card-cp-4" class="btn btn-outline-primary btn-sm">Buka CP-4</a>
+                </div>
+                <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;">Modul 6: Model & API key lokal aktif.</p>
+              </div>
+
+              <div class="card" style="margin-bottom: 0; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong>CP-5: Instalasi Hermes CLI</strong>
+                  <a href="#card-cp-5" class="btn btn-outline-primary btn-sm">Buka CP-5</a>
+                </div>
+                <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;">Modul 7: PowerShell native & doctor sukses.</p>
+              </div>
+
+              <div class="card" style="margin-bottom: 0; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong>CP-6: Koneksi Hermes ke 9Router</strong>
+                  <a href="#card-cp-6" class="btn btn-outline-primary btn-sm">Buka CP-6</a>
+                </div>
+                <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;">Modul 8: Respons uji model terverifikasi.</p>
+              </div>
+
+              <div class="card" style="margin-bottom: 0; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong>CP-7: Telegram Gateway & Allowlist</strong>
+                  <a href="#card-cp-7" class="btn btn-outline-primary btn-sm">Buka CP-7</a>
+                </div>
+                <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;">Modul 9: Long polling & DM terverifikasi.</p>
+              </div>
+
+              <div class="card" style="margin-bottom: 0; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong>CP-8: Google Calendar OAuth</strong>
+                  <a href="#card-cp-8" class="btn btn-outline-primary btn-sm">Buka CP-8</a>
+                </div>
+                <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;">Modul 10: Desktop app Client ID & secret.</p>
+              </div>
+
+              <div class="card" style="margin-bottom: 0; padding: 1rem; border-left: 4px solid var(--accent-primary);">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <strong>CP-9: Verifikasi E2E & SOP Reboot</strong>
+                  <a href="#card-cp-9" class="btn btn-outline-primary btn-sm">Buka CP-9</a>
+                </div>
+                <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.5rem; margin-bottom: 0;">Modul 11: Tindakan kalender via Telegram.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
