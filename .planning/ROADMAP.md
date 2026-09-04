@@ -63,8 +63,8 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 07-01: HTML markup and interaction wireup for Modul 9 (Telegram Gateway allowlist) and Checkpoint 7 Gate.
-- [ ] 07-02: HTML markup and interaction wireup for Modul 10 (Google Calendar OAuth), Modul 11 (Uji End-to-End & Reboot), and Checkpoint Gates 8 & 9.
+- [x] 07-01: HTML markup and interaction wireup for Modul 9 (Telegram Gateway allowlist) and Checkpoint 7 Gate.
+- [x] 07-02: HTML markup and interaction wireup for Modul 10 (Google Calendar OAuth), Modul 11 (Uji End-to-End & Reboot), and Checkpoint Gates 8 & 9.
 
 ---
 
@@ -95,9 +95,9 @@ Phases execute in numeric order: 5 → 6 → 7 → 8
 | 2. Interactive Guide Modules & 1-Click Execution | 3/3 | Complete ✓ | 2026-09-03 |
 | 3. Checklist Engine, Checkpoint Gates & Local Storage State | 2/2 | Complete ✓ | 2026-09-03 |
 | 4. Troubleshooting Hub, Secret Redaction Helper & Report Exporter | 3/3 | Complete ✓ | 2026-09-03 |
-| 5. Mode Switcher & Dual Workshop Navigation Shell | 0/2 | Not started | - |
-| 6. 9Router Model Alignment & Hermes Agent Windows Installation | 0/2 | Not started | - |
-| 7. Telegram Allowlist Gateway, Google Calendar OAuth & End-to-End Verification | 0/2 | Not started | - |
+| 5. Mode Switcher & Dual Workshop Navigation Shell | 2/2 | Complete ✓ | 2026-09-04 |
+| 6. 9Router Model Alignment & Hermes Agent Windows Installation | 2/2 | Complete ✓ | 2026-09-04 |
+| 7. Telegram Allowlist Gateway, Google Calendar OAuth & End-to-End Verification | 2/2 | Complete ✓ | 2026-09-04 |
 | 8. In-Class Troubleshooting Hub, Completion Status Engine & Final Report Exporter | 0/2 | Not started | - |
 
 ---
