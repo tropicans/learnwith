@@ -2451,39 +2451,398 @@
         </div>
       </section>
 
-      <!-- PLACEHOLDER MODUL PRAKTIK KELAS (PHASE 6 & 7) -->
+      <!-- MODUL 6: PENYELARASAN PROVIDER & MODEL 9ROUTER -->
       <section id="sec-module-6" class="content-section" data-section="sec-module-6">
         <div class="section-header">
           <div class="section-title-wrap">
             <div class="section-icon">🟢</div>
             <div>
               <h2 class="section-title">Modul 6: Penyelarasan Provider & Model 9Router</h2>
-              <p class="section-desc">Menyamakan endpoint dan model lokal sebelum konfigurasi agent.</p>
+              <p class="section-desc">Menyamakan perute model AI lokal ke endpoint <code>http://localhost:20128/v1</code>.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-primary">Fase 6</span>
+          <span class="badge badge-pill badge-primary">Sesi 08.50–09.05 (15m)</span>
         </div>
-        <div class="card" style="border-left: 4px solid var(--accent-primary);">
-          <div class="card-body">
-            <p>Panduan interaktif Modul 6, perintah setup model, dan Checkpoint 4 akan diaktifkan pada Phase 6.</p>
+
+        <div class="card module-card">
+          <div class="module-header-row">
+            <div class="module-title-wrap">
+              <div class="module-number-badge">6</div>
+              <div>
+                <h3 class="module-title">Penyelarasan Model & API Key Lokal 9Router</h3>
+                <span class="module-duration">⏱️ Alokasi: 15 Menit • Wajib Selesai Sebelum Hermes Setup</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-content">
+            <div class="alert-box alert-info" style="margin-bottom: 1.25rem;">
+              <div class="alert-icon">💡</div>
+              <div class="alert-content">
+                <h5>Mengapa 9Router Harus Diselaraskan Bersama?</h5>
+                <p>Seluruh kelas akan menggunakan <strong>satu provider</strong> dan <strong>satu nama model</strong> yang sama persis sesuai pengumuman instruktur. 9Router bertindak sebagai gerbang proksi OpenAI-compatible lokal (<code>http://localhost:20128/v1</code>) agar Hermes Agent dapat berkomunikasi dengan lancar tanpa konfigurasi internet rumit.</p>
+              </div>
+            </div>
+
+            <!-- Langkah 6A: Menjalankan 9Router -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Jalankan 9Router pada Jendela Terminal Terpisah</span>
+                <span class="badge badge-pill badge-neutral">PowerShell #1</span>
+              </div>
+              <p class="card-body">
+                Pastikan Anda membuka satu jendela PowerShell khusus untuk menjalankan service 9Router. Biarkan terminal ini tetap berjalan di latar belakang:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell (Dedicated)</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>9router</code></pre>
+              </div>
+
+              <div class="alert-box alert-warning">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                  <h5>Peringatan Jendela Terminal:</h5>
+                  <p><strong>Jangan menutup jendela PowerShell ini!</strong> Jika ditutup atau dihentikan dengan Ctrl+C, endpoint <code>http://localhost:20128/v1</code> akan mati dan Hermes Agent tidak dapat memanggil model AI.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m6-run-router">
+                <span class="checklist-label">Langkah A selesai: Service <code>9router</code> aktif berjalan di jendela PowerShell terpisah</span>
+              </label>
+            </div>
+
+            <!-- Langkah 6B: Buka Dashboard & Samakan Model -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Buka Dashboard Lokal & Pilih Model Kelas</span>
+                <span class="badge badge-pill badge-info">Browser Web</span>
+              </div>
+              <p class="card-body">
+                Buka browser web Anda dan navigasikan ke alamat dashboard 9Router lokal:
+              </p>
+
+              <div style="margin: 0.5rem 0 1rem 0;">
+                <a href="http://localhost:20128" target="_blank" rel="noopener noreferrer" class="external-link" style="font-size: var(--font-size-md);">
+                  🔗 http://localhost:20128
+                  <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+
+              <ol class="step-instruction-list">
+                <li>Masuk ke antarmuka web dashboard 9Router.</li>
+                <li>Dengarkan arahan instruktur mengenai <strong>Provider</strong> dan <strong>Nama Model</strong> yang disepakati untuk kelas hari ini.</li>
+                <li>Pilih provider dan model tersebut pada daftar dashboard agar aktif.</li>
+                <li>Pastikan status koneksi model di dashboard menunjukkan status hijau / siap melayani kueri.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m6-open-dashboard">
+                <span class="checklist-label">Langkah B1 selesai: Membuka dashboard <code>http://localhost:20128</code></span>
+              </label>
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m6-select-model">
+                <span class="checklist-label">Langkah B2 selesai: Provider & Model AI disamakan sesuai arahan instruktur</span>
+              </label>
+            </div>
+
+            <!-- Langkah 6C: Buat API Key Privat -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Buat API Key Lokal Mandiri di Dashboard</span>
+                <span class="badge badge-pill badge-danger">Kredensial Privat</span>
+              </div>
+              <p class="card-body">
+                Buat satu API key baru melalui menu API Keys di dashboard 9Router. API key ini berfungsi untuk mengautentikasi Hermes Agent ke 9Router lokal:
+              </p>
+
+              <div class="alert-box alert-danger">
+                <div class="alert-icon">🛑</div>
+                <div class="alert-content">
+                  <h5>DILARANG MEMBAGIKAN API KEY!</h5>
+                  <p>Jangan pernah mengirim API key Anda ke ruang obrolan Zoom, WhatsApp, Telegram, ataupun menampilkannya saat <em>Screen Sharing</em>. Kredensial ini hanya untuk dimasukkan langsung di laptop Anda saat setup Hermes.</p>
+                </div>
+              </div>
+
+              <!-- Quick Input untuk Catatan Konfigurasi Peserta -->
+              <div class="form-group" style="margin-top: 1rem;">
+                <label for="input-live-router-provider" class="form-label">
+                  <span>🏷️</span> Nama Provider 9Router yang Dipilih (Catatan Mandiri):
+                </label>
+                <input 
+                  type="text" 
+                  id="input-live-router-provider" 
+                  class="form-input" 
+                  placeholder="Contoh: Groq / OpenRouter / Ollama" 
+                  data-participant-field="routerProvider"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="form-group" style="margin-top: 0.75rem;">
+                <label for="input-live-router-model" class="form-label">
+                  <span>🤖</span> Nama Model di Dashboard (Persis Sesuai Tampilan):
+                </label>
+                <input 
+                  type="text" 
+                  id="input-live-router-model" 
+                  class="form-input" 
+                  placeholder="Contoh: llama-3.3-70b-versatile" 
+                  data-participant-field="routerModel"
+                  autocomplete="off"
+                />
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m6-create-key">
+                <span class="checklist-label">Langkah C selesai: API key 9Router dibuat secara mandiri dan tersimpan aman di catatan pribadi</span>
+              </label>
+            </div>
+
+            <!-- GERBANG CHECKPOINT 4 -->
+            <div class="checkpoint-gate-card" id="card-cp-4" style="margin-top: 1.5rem;">
+              <div class="checkpoint-header-row">
+                <div class="checkpoint-title-wrap">
+                  <div class="checkpoint-badge-icon">4</div>
+                  <div>
+                    <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                      Checkpoint 4: Penyelarasan 9Router & Model Kelas
+                    </h4>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Dashboard aktif, provider/model seragam, API key tersedia privat</span>
+                  </div>
+                </div>
+                <span id="status-card-cp4" class="badge badge-pill badge-warning">Pending</span>
+              </div>
+
+              <p class="card-body">
+                Gerbang Checkpoint 4 dinyatakan <strong>Lolos Verifikasi</strong> jika:
+              </p>
+
+              <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Terminal PowerShell 9Router aktif berjalan tanpa error.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Dashboard <code>http://localhost:20128</code> terbuka dan pilihan model telah diselaraskan dengan instruktur.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">API key 9Router telah dibuat peserta sendiri dan tersimpan aman tanpa dibagikan ke publik.</div>
+                </div>
+              </div>
+
+              <div class="cp-action-btn-group">
+                <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-4" data-status="passed">
+                  <span>✓</span> Lolos Verifikasi
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-4" data-status="failed">
+                  <span>✕</span> Ada Kendala (Gagal)
+                </button>
+                <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-4" data-status="pending">
+                  <span>↺</span> Reset Status
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
+      <!-- MODUL 7: INSTALASI HERMES DI WINDOWS -->
       <section id="sec-module-7" class="content-section" data-section="sec-module-7">
         <div class="section-header">
           <div class="section-title-wrap">
             <div class="section-icon">⚡</div>
             <div>
-              <h2 class="section-title">Modul 7: Instalasi Hermes di Windows</h2>
-              <p class="section-desc">Instalasi native PowerShell dan verifikasi <code>hermes doctor</code>.</p>
+              <h2 class="section-title">Modul 7: Instalasi Hermes di Windows Native</h2>
+              <p class="section-desc">Instalasi command-line interface resmi Hermes dan verifikasi <code>hermes doctor</code>.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-primary">Fase 6</span>
+          <span class="badge badge-pill badge-primary">Sesi 09.05–09.30 (25m)</span>
         </div>
-        <div class="card" style="border-left: 4px solid var(--accent-primary);">
-          <div class="card-body">
-            <p>Panduan interaktif instalasi Hermes dan Checkpoint 5 akan diaktifkan pada Phase 6.</p>
+
+        <div class="card module-card">
+          <div class="module-header-row">
+            <div class="module-title-wrap">
+              <div class="module-number-badge">7</div>
+              <div>
+                <h3 class="module-title">Pemasangan CLI Hermes & Pemeriksaan Diagnostik</h3>
+                <span class="module-duration">⏱️ Alokasi: 25 Menit • Native Windows PowerShell</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-content">
+            <div class="alert-box alert-info" style="margin-bottom: 1.25rem;">
+              <div class="alert-icon">💡</div>
+              <div class="alert-content">
+                <h5>Tentang Hermes Agent CLI:</h5>
+                <p>Hermes Agent adalah agen otonom yang akan menjembatani pesan instruksi dari Telegram menuju Google Calendar. Instalasi resmi untuk Windows dilakukan secara native melalui script PowerShell dari pengembang resmi (Nous Research).</p>
+              </div>
+            </div>
+
+            <!-- Langkah 7A: Jalankan Installer Resmi -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Jalankan Perintah Instalasi Resmi di PowerShell</span>
+                <span class="badge badge-pill badge-neutral">PowerShell #2</span>
+              </div>
+              <p class="card-body">
+                Buka jendela PowerShell <strong>baru</strong> (jendela kedua, terpisah dari jendela 9Router). Salin dan jalankan perintah instalasi satu baris berikut:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell (Baru)</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>iex (irm https://hermes-agent.nousresearch.com/install.ps1)</code></pre>
+              </div>
+
+              <div class="link-security-note">
+                <span>🛡️</span> Script instalasi resmi Nous Research terverifikasi: <a href="https://hermes-agent.nousresearch.com/docs/getting-started/installation" target="_blank" rel="noopener noreferrer">Dokumentasi Instalasi Hermes</a>.
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m7-install-cli">
+                <span class="checklist-label">Langkah A selesai: Menjalankan installer resmi Hermes di PowerShell</span>
+              </label>
+            </div>
+
+            <!-- Langkah 7B: Refresh Lingkungan PowerShell -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Tutup & Buka Ulang PowerShell (Refresh PATH)</span>
+                <span class="badge badge-pill badge-warning">Langkah Kunci</span>
+              </div>
+              <p class="card-body">
+                Setelah proses instalasi selesai dan kembali ke prompt kursor:
+              </p>
+
+              <ol class="step-instruction-list">
+                <li>Tutup jendela PowerShell tempat Anda baru saja menginstal Hermes.</li>
+                <li>Buka jendela PowerShell yang baru. Ini <strong>wajib</strong> dilakukan agar sistem operasi membaca variabel <code>PATH</code> baru yang memuat lokasi binary <code>hermes</code>.</li>
+                <li>(Ingat: Jendela PowerShell yang menjalankan <code>9router</code> tetap dibiarkan menyala di jendela terpisah!).</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m7-restart-shell">
+                <span class="checklist-label">Langkah B selesai: Jendela PowerShell ditutup dan dibuka kembali untuk menyegarkan PATH</span>
+              </label>
+            </div>
+
+            <!-- Langkah 7C: Jalankan hermes doctor -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Jalankan Pemeriksaan Diagnostik: hermes doctor</span>
+                <span class="badge badge-pill badge-success">Diagnostik Sistem</span>
+              </div>
+              <p class="card-body">
+                Pada jendela PowerShell yang baru saja dibuka, jalankan perintah diagnostik kesehatan Hermes:
+              </p>
+
+              <div class="code-container">
+                <div class="code-header">
+                  <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                  </div>
+                  <span class="code-label">PowerShell</span>
+                  <button class="code-copy-btn" aria-label="Salin perintah">
+                    <span>📋 Salin Perintah</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>hermes doctor</code></pre>
+              </div>
+
+              <div class="alert-box alert-info">
+                <div class="alert-icon">🩺</div>
+                <div class="alert-content">
+                  <h5>Membaca Hasil Diagnostik:</h5>
+                  <p>Perintah ini memverifikasi binary Hermes, dependensi internal, dan konfigurasi lingkungan. Pastikan perintah dikenali dan tidak memunculkan pesan error fatal. Jika muncul pesan <em>"The term 'hermes' is not recognized"</em>, jangan panik! Lihat solusi di bagian bantuan bawah atau konsultasikan ke breakout room pendamping.</p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="m7-run-doctor">
+                <span class="checklist-label">Langkah C selesai: Perintah <code>hermes doctor</code> berhasil dieksekusi tanpa kendala kritis</span>
+              </label>
+            </div>
+
+            <!-- GERBANG CHECKPOINT 5 -->
+            <div class="checkpoint-gate-card" id="card-cp-5" style="margin-top: 1.5rem;">
+              <div class="checkpoint-header-row">
+                <div class="checkpoint-title-wrap">
+                  <div class="checkpoint-badge-icon">5</div>
+                  <div>
+                    <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                      Checkpoint 5: Instalasi Hermes & Hasil Diagnostik Doctor
+                    </h4>
+                    <span style="font-size: var(--font-size-xs); color: var(--text-muted);">CLI hermes dikenali sistem dan siap menjalankan wizard konfigurasi</span>
+                  </div>
+                </div>
+                <span id="status-card-cp5" class="badge badge-pill badge-warning">Pending</span>
+              </div>
+
+              <p class="card-body">
+                Gerbang Checkpoint 5 dinyatakan <strong>Lolos Verifikasi</strong> jika:
+              </p>
+
+              <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Perintah <code>hermes doctor</code> dapat dijalankan pada PowerShell tanpa pesan 'command not found'.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Hasil diagnosa tidak menunjukkan error kritis yang menghentikan eksekusi Hermes.</div>
+                </div>
+                <div class="checklist-item" style="cursor: default;">
+                  <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                  <div class="checklist-label">Peserta siap melanjutkan ke tahap konfigurasi model (Modul 8).</div>
+                </div>
+              </div>
+
+              <div class="cp-action-btn-group">
+                <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="cp-5" data-status="passed">
+                  <span>✓</span> Lolos Verifikasi
+                </button>
+                <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="cp-5" data-status="failed">
+                  <span>✕</span> Ada Kendala (Gagal)
+                </button>
+                <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="cp-5" data-status="pending">
+                  <span>↺</span> Reset Status
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
