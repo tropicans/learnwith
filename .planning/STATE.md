@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Live Workshop Guide (Hari-H Praktik Kelas)
-status: ready
-last_updated: "2026-09-04T15:45:00.000Z"
+status: in_progress
+last_updated: "2026-09-04T15:58:00.000Z"
 last_activity: 2026-09-04
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 2
-  completed_plans: 0
-  percent: 0
+  completed_plans: 2
+  percent: 25
 ---
 
 # Project State
@@ -20,14 +20,14 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-09-04)
 
 **Core value:** Empower non-technical participants to complete all pre-training prerequisites and live in-class practical exercises independently, safely, and without anxiety through clear visual guidance, interactive checklists, and automated checkpoint reporting.
-**Current focus:** Phase 5 — Mode Switcher & Dual Workshop Navigation Shell
+**Current focus:** Phase 6 — 9Router Model Alignment & Hermes Agent Windows Installation
 
 ## Current Position
 
-Phase: Phase 5: Mode Switcher & Dual Workshop Navigation Shell
-Plan: 05-01 & 05-02 planned (ready to execute via `/gsd-execute-phase 5`)
-Status: Ready to execute Phase 5
-Last activity: 2026-09-04 — Planned Phase 5 (2 plans created)
+Phase: Phase 5 completed; ready for Phase 6
+Plan: 05-01 & 05-02 completed (100% test pass rate across 5 suites, 85 tests)
+Status: Phase 5 complete
+Last activity: 2026-09-04 — Executed Phase 5 (Mode Switcher & Dual Workshop Navigation Shell)
 
 ## Milestone Summary
 

@@ -10,7 +10,7 @@ Milestone v1.1 expands the web application from its v1.0 preparation baseline (`
 - Phases 1–4: Milestone v1.0 (Shipped 2026-09-03)
 - Phases 5–8: Milestone v1.1 (Live Workshop Guide)
 
-- [ ] **Phase 5: Mode Switcher & Dual Workshop Navigation Shell** - Header/sidebar tab switcher toggling between "Pra-Training" and "Hari-H Praktik Kelas" modes.
+- [x] **Phase 5: Mode Switcher & Dual Workshop Navigation Shell** - Header/sidebar tab switcher toggling between "Pra-Training" and "Hari-H Praktik Kelas" modes.
 - [ ] **Phase 6: 9Router Model Alignment & Hermes Agent Windows Installation** - Guides and Checkpoints 4–6 for 9Router endpoint alignment, Hermes native install, doctor check, and full setup wizard.
 - [ ] **Phase 7: Telegram Allowlist Gateway, Google Calendar OAuth & End-to-End Verification** - Guides and Checkpoints 7–9 for Telegram gateway security, Google Cloud Desktop OAuth, Calendar skill authorization, and live test prompts.
 - [ ] **Phase 8: In-Class Troubleshooting Hub, Completion Status Engine & Final Report Exporter** - Live workshop error cards, Checkpoints 4–9 state engine calculations, and Form Laporan Hasil Praktik Kelas WhatsApp/Telegram export.
@@ -29,8 +29,8 @@ Milestone v1.1 expands the web application from its v1.0 preparation baseline (`
 **Plans**: 2 plans
 
 Plans:
-- [ ] 05-01: Markup and CSS for mode switcher tabs in header and sidebar navigation drawer.
-- [ ] 05-02: StateManager integration and controller wireup for mode switching, section toggling, and search re-indexing.
+- [x] 05-01: Markup and CSS for mode switcher tabs in header and sidebar navigation drawer.
+- [x] 05-02: StateManager integration and controller wireup for mode switching, section toggling, and search re-indexing.
 
 ---
 
