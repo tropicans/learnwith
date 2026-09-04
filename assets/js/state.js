@@ -49,6 +49,7 @@ const DEFAULT_STATE = {
     routerStatus: ''
   },
   activeSection: 'sec-target',
+  activeMode: 'pretraining', // 'pretraining' | 'live-class'
   lastUpdated: null
 };
 
@@ -68,10 +69,16 @@ class StateManager {
         return JSON.parse(JSON.stringify(DEFAULT_STATE));
       }
       const parsed = JSON.parse(serialized);
+      // Validate activeMode
+      const activeMode = (parsed.activeMode === 'live-class' || parsed.activeMode === 'pretraining')
+        ? parsed.activeMode
+        : DEFAULT_STATE.activeMode;
+
       // Merge with default state to handle newly added fields
       return {
         ...DEFAULT_STATE,
         ...parsed,
+        activeMode,
         checklists: { ...DEFAULT_STATE.checklists, ...(parsed.checklists || {}) },
         checkpoints: { ...DEFAULT_STATE.checkpoints, ...(parsed.checkpoints || {}) },
         participantInfo: { ...DEFAULT_STATE.participantInfo, ...(parsed.participantInfo || {}) }
@@ -80,6 +87,30 @@ class StateManager {
       console.warn('Failed to load state from localStorage:', e);
       return JSON.parse(JSON.stringify(DEFAULT_STATE));
     }
+  }
+
+  /**
+   * Get currently active mode ('pretraining' | 'live-class')
+   */
+  getActiveMode() {
+    return this.state.activeMode || 'pretraining';
+  }
+
+  /**
+   * Set active mode and emit modeChange event
+   */
+  setMode(mode) {
+    if (mode !== 'pretraining' && mode !== 'live-class') {
+      console.warn(`Invalid mode: ${mode}. Must be 'pretraining' or 'live-class'.`);
+      return false;
+    }
+    if (this.state.activeMode === mode) {
+      return true;
+    }
+    this.state.activeMode = mode;
+    this.saveState();
+    this.emit('modeChange', mode);
+    return true;
   }
 
   /**

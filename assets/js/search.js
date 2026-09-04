@@ -61,6 +61,12 @@ class SearchEngine {
     const elements = document.querySelectorAll('.content-section, .card, .step-card, .module-card, .step-section, .alert-box, .checkpoint-gate-card');
 
     elements.forEach((el, index) => {
+      // Skip elements that belong to a currently hidden mode container
+      const parentModeContainer = el.closest('#container-pretraining, #container-liveclass');
+      if (parentModeContainer && parentModeContainer.style.display === 'none') {
+        return;
+      }
+
       if (!el.hasAttribute('data-search-id')) {
         el.setAttribute('data-search-id', `s-item-${index}`);
       }

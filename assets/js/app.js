@@ -4,58 +4,63 @@
  * ==========================================================================
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize State and Theme
-  window.AppState.init();
+if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize State and Theme
+    window.AppState.init();
 
-  // 2. Initialize Search Engine
-  window.SearchEngine.init();
+    // 2. Initialize Search Engine
+    window.SearchEngine.init();
 
-  // 3. Setup Theme Switcher
-  setupThemeToggle();
+    // 3. Setup Theme Switcher
+    setupThemeToggle();
 
-  // 4. Setup Mobile Navigation Drawer
-  setupMobileDrawer();
+    // 4. Setup Mobile Navigation Drawer
+    setupMobileDrawer();
 
-  // 5. Setup Active Navigation Link Spy & Smooth Scroll
-  setupNavigationSpy();
+    // 5. Setup Active Navigation Link Spy & Smooth Scroll
+    setupNavigationSpy();
 
-  // 6. Setup Global 1-Click Code Copy Engine
-  setupCodeCopy();
+    // 6. Setup Global 1-Click Code Copy Engine
+    setupCodeCopy();
 
-  // 7. Setup Checkbox Listeners for Interactive Items
-  setupChecklistListeners();
+    // 7. Setup Checkbox Listeners for Interactive Items
+    setupChecklistListeners();
 
-  // 8. Setup Module Accordions & Collapsible Guides
-  setupModuleAccordions();
+    // 8. Setup Module Accordions & Collapsible Guides
+    setupModuleAccordions();
 
-  // 9. Setup Interactive Glossary Tooltips
-  setupGlossaryTooltips();
+    // 9. Setup Interactive Glossary Tooltips
+    setupGlossaryTooltips();
 
-  // 10. Setup Reactive Progress Tracker
-  setupProgressTracker();
+    // 10. Setup Reactive Progress Tracker
+    setupProgressTracker();
 
-  // 11. Setup Checkpoint Gates
-  setupCheckpointGates();
+    // 11. Setup Checkpoint Gates
+    setupCheckpointGates();
 
-  // 12. Setup Participant Form Inputs & Validation
-  setupParticipantInputs();
+    // 12. Setup Participant Form Inputs & Validation
+    setupParticipantInputs();
 
-  // 13. Setup Reset Confirmation Modal
-  setupResetModal();
+    // 13. Setup Reset Confirmation Modal
+    setupResetModal();
 
-  // 14. Setup Troubleshooting Hub Search & Filter
-  setupTroubleshootingHub();
+    // 14. Setup Troubleshooting Hub Search & Filter
+    setupTroubleshootingHub();
 
-  // 15. Setup Sensitive Data Redaction Tool
-  setupRedactionTool();
+    // 15. Setup Sensitive Data Redaction Tool
+    setupRedactionTool();
 
-  // 16. Setup Form Laporan Kesiapan & Export
-  setupReadinessReport();
+    // 16. Setup Form Laporan Kesiapan & Export
+    setupReadinessReport();
 
-  // 17. Initial Progress calculation
-  updateProgressUI();
-});
+    // 17. Setup Dual-Purpose Mode Switcher (Pra-Training vs Hari-H Kelas)
+    setupModeSwitcher();
+
+    // 18. Initial Progress calculation
+    updateProgressUI();
+  });
+}
 
 /**
  * --- 1. THEME TOGGLE CONTROLLER ---
@@ -1017,6 +1022,99 @@ function setupReadinessReport() {
   }
 }
 
+/**
+ * --- 17. DUAL-PURPOSE MODE SWITCHER CONTROLLER ---
+ */
+function updateModeUI(mode, showNotification = true) {
+  const isPretraining = mode === 'pretraining';
+
+  // 1. Update all mode tabs (header & sidebar)
+  const modeTabs = document.querySelectorAll('.mode-tab');
+  modeTabs.forEach(tab => {
+    const tabMode = tab.getAttribute('data-mode');
+    const isActive = tabMode === mode;
+    tab.classList.toggle('active', isActive);
+    tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+
+  // 2. Toggle main content containers
+  const pretrainingContainer = document.getElementById('container-pretraining');
+  const liveclassContainer = document.getElementById('container-liveclass');
+
+  if (pretrainingContainer) {
+    pretrainingContainer.style.display = isPretraining ? '' : 'none';
+    pretrainingContainer.classList.toggle('active', isPretraining);
+  }
+  if (liveclassContainer) {
+    liveclassContainer.style.display = isPretraining ? 'none' : '';
+    liveclassContainer.classList.toggle('active', !isPretraining);
+  }
+
+  // 3. Toggle sidebar navigation groups
+  const pretrainingNav = document.getElementById('nav-group-pretraining');
+  const liveclassNav = document.getElementById('nav-group-liveclass');
+
+  if (pretrainingNav) {
+    pretrainingNav.style.display = isPretraining ? '' : 'none';
+    pretrainingNav.classList.toggle('active', isPretraining);
+  }
+  if (liveclassNav) {
+    liveclassNav.style.display = isPretraining ? 'none' : '';
+    liveclassNav.classList.toggle('active', !isPretraining);
+  }
+
+  // 4. Update header subtitle
+  const headerSubtitle = document.getElementById('header-brand-subtitle');
+  if (headerSubtitle) {
+    headerSubtitle.textContent = isPretraining
+      ? 'Hermes Agent + 9Router • Pemula'
+      : 'Hermes Agent + 9Router • Live Praktik Kelas';
+  }
+
+  // 5. Rebuild search index for active mode
+  if (window.SearchEngine && typeof window.SearchEngine.rebuildIndex === 'function') {
+    window.SearchEngine.rebuildIndex();
+  }
+
+  // 6. Scroll window smoothly to top
+  if (typeof window.scrollTo === 'function') {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 7. Optional notification toast
+  if (showNotification && typeof showToast === 'function') {
+    const modeLabel = isPretraining ? 'Pra-Training (Persiapan)' : 'Hari-H (Praktik Kelas)';
+    showToast(`Mode dialihkan ke: ${modeLabel}`, 'info', 2000);
+  }
+}
+
+function setupModeSwitcher() {
+  const modeTabs = document.querySelectorAll('.mode-tab');
+  if (!modeTabs.length) return;
+
+  // Click handlers on all mode buttons
+  modeTabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetMode = tab.getAttribute('data-mode');
+      if (targetMode && window.AppState) {
+        window.AppState.setMode(targetMode);
+      }
+    });
+  });
+
+  // Listen to state modeChange events
+  if (window.AppState) {
+    window.AppState.on('modeChange', (newMode) => {
+      updateModeUI(newMode, true);
+    });
+
+    // Hydrate initial mode from StateManager without alert toast
+    const initialMode = window.AppState.getActiveMode ? window.AppState.getActiveMode() : 'pretraining';
+    updateModeUI(initialMode, false);
+  }
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     REDACTION_RULES,
@@ -1027,6 +1125,9 @@ if (typeof module !== 'undefined' && module.exports) {
     setupMobileDrawer,
     setupModuleAccordions,
     setupTroubleshootingHub,
-    setupCodeCopy
+    setupCodeCopy,
+    setupModeSwitcher,
+    updateModeUI
   };
 }
+
