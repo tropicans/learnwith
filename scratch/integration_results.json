@@ -1,0 +1,224 @@
+[
+  {
+    "category": "GATEWAY-01",
+    "test": "Default course is AI",
+    "passed": true,
+    "details": "activeCourse=ai"
+  },
+  {
+    "category": "GATEWAY-01",
+    "test": "Container AI is visible, Word is hidden by default",
+    "passed": true,
+    "details": "c_ai=block, c_word=none"
+  },
+  {
+    "category": "GATEWAY-03",
+    "test": "AI course uses learnwith_ai_state_v1",
+    "passed": true,
+    "details": "key=learnwith_ai_state_v1"
+  },
+  {
+    "category": "GATEWAY-02",
+    "test": "Word course is locked by default",
+    "passed": true,
+    "details": "isWordCourseUnlocked=False"
+  },
+  {
+    "category": "GATEWAY-02",
+    "test": "Clicking Word when locked opens passcode modal",
+    "passed": true,
+    "details": "modal_open=True"
+  },
+  {
+    "category": "GATEWAY-02",
+    "test": "Wrong passcode shows error feedback",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "GATEWAY-02",
+    "test": "Passcode 'buka-kata' unlocks Course 2",
+    "passed": true,
+    "details": "course=word, c_word=block, unlocked_storage=true"
+  },
+  {
+    "category": "GATEWAY-03",
+    "test": "Word course uses learnwith_word_state_v1",
+    "passed": true,
+    "details": "key=learnwith_word_state_v1"
+  },
+  {
+    "category": "GATEWAY-02",
+    "test": "URL ?course=word&unlock=dev activates Word course",
+    "passed": true,
+    "details": "unlocked=True, course=word, display=block"
+  },
+  {
+    "category": "GATEWAY-01",
+    "test": "Can switch cleanly back to Course 1",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "WORD-01",
+    "test": "Bab I has 4 checklist tasks",
+    "passed": true,
+    "details": "count=4"
+  },
+  {
+    "category": "WORD-02",
+    "test": "Bab II has 8 checklist tasks",
+    "passed": true,
+    "details": "count=8"
+  },
+  {
+    "category": "WORD-03",
+    "test": "Bab III has 8 checklist tasks",
+    "passed": true,
+    "details": "count=8"
+  },
+  {
+    "category": "WORD-04",
+    "test": "Bab IV has 8 checklist tasks",
+    "passed": true,
+    "details": "count=8"
+  },
+  {
+    "category": "WORD-01..04",
+    "test": "Total 28 Word checklist tasks in state",
+    "passed": true,
+    "details": "total=28"
+  },
+  {
+    "category": "WORD-02",
+    "test": "Checkpoint 1 card exists in DOM",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "WORD-03",
+    "test": "Checkpoint 2 card exists in DOM",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "WORD-04",
+    "test": "Checkpoint 3 card exists in DOM",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "WORD-02",
+    "test": "Checkpoint 1 updates to passed on button click",
+    "passed": true,
+    "details": "status=passed"
+  },
+  {
+    "category": "WORD-05",
+    "test": "1-click copy buttons present in Word course",
+    "passed": true,
+    "details": "found=15"
+  },
+  {
+    "category": "WORD-05",
+    "test": "Clicking copy button triggers 'copied' state visual feedback",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "WORD-05",
+    "test": "Shortcuts and civil service standards sections exist",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "WORD-01..04",
+    "test": "Progress is 100% when all 28 tasks and 3 checkpoints are completed",
+    "passed": true,
+    "details": "prog={'totalTasks': 28, 'completedTasks': 28, 'totalCheckpoints': 3, 'passedCheckpoints': 3, 'percentage': 100}"
+  },
+  {
+    "category": "WORD-01..04",
+    "test": "calculateWordReadiness returns 'ready' with 100% completion",
+    "passed": true,
+    "details": "status=ready, label=\ud83c\udf89 DOKUMEN SESUAI STANDAR DINAS"
+  },
+  {
+    "category": "QUIZ-01",
+    "test": "20 quiz questions available in bank",
+    "passed": true,
+    "details": "len=20"
+  },
+  {
+    "category": "QUIZ-01",
+    "test": "20 quiz cards rendered in DOM",
+    "passed": true,
+    "details": "cards=20"
+  },
+  {
+    "category": "QUIZ-02",
+    "test": "Selecting correct option highlights correct and displays explanation",
+    "passed": true,
+    "details": "answered=B, class=btn-quiz-option quiz-option-btn selected correct, expl_display=block"
+  },
+  {
+    "category": "QUIZ-02",
+    "test": "All 20 correct yields score 100 and passed=true",
+    "passed": true,
+    "details": "score=100"
+  },
+  {
+    "category": "QUIZ-03",
+    "test": "5 self-reflection textareas present in DOM",
+    "passed": true,
+    "details": "count=5"
+  },
+  {
+    "category": "QUIZ-03",
+    "test": "15 rubric checkboxes present (9 QA + 6 portfolio)",
+    "passed": true,
+    "details": "count=15"
+  },
+  {
+    "category": "WORD-RPT-01",
+    "test": "calculateWordGraduation yields 100% finalScore and status 'lulus'",
+    "passed": true,
+    "details": "grad={'quizScore': 100, 'portfolioScore': 100, 'finalScore': 100, 'status': 'lulus', 'label': 'KOMPETEN (LULUS)', 'badgeClass': 'badge-success', 'grade': 'Sangat Memuaskan (A)', 'allCpPassed': True}"
+  },
+  {
+    "category": "WORD-RPT-01",
+    "test": "Certificate slip updates with participant name and verdict",
+    "passed": true,
+    "details": "cert_name=Budi Santoso, S.Kom., verdict=KOMPETEN (LULUS)"
+  },
+  {
+    "category": "WORD-RPT-02",
+    "test": "WhatsApp formatted report includes participant, checkpoints, and scores",
+    "passed": true,
+    "details": "sample=*LAPORAN HASIL EVALUASI & KELULUSAN PELATIHAN*\n*Pengolahan Kata Tingkat Lanjut \u2014 BPSDM DKI Jakarta 2026*\n\n*Data Aparatur..."
+  },
+  {
+    "category": "WORD-RPT-02",
+    "test": "Telegram Markdown formatted report is generated cleanly",
+    "passed": true,
+    "details": "sample=\ud83d\udccb **LAPORAN HASIL EVALUASI & KELULUSAN PELATIHAN**\n**Pengolahan Kata Tingkat Lanjut \u2014 BPSDM DKI Jakarta 2026**\n\n\ud83d\udc64 **Data..."
+  },
+  {
+    "category": "WORD-RPT-02",
+    "test": "Export buttons (WhatsApp, Telegram, Print) exist in DOM",
+    "passed": true,
+    "details": ""
+  },
+  {
+    "category": "SearchEngine",
+    "test": "Search engine indexes elements in Word course",
+    "passed": true,
+    "details": "indexed=94"
+  },
+  {
+    "category": "Console",
+    "test": "Zero JavaScript errors during E2E flow execution",
+    "passed": true,
+    "details": "errors=[]"
+  }
+]
