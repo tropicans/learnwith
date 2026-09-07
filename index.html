@@ -505,6 +505,25 @@
         </a>
       </nav>
 
+      <!-- Sub-Group: Bab IV Otomatisasi & Checkpoint 3 -->
+      <nav class="nav-group" aria-label="Navigasi Otomatisasi & Kolaborasi">
+        <div class="nav-group-title">Bab IV: Mail Merge & Kolaborasi</div>
+        <a href="#sec-word-module-4" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">✉️</span>
+            <span>Modul Bab IV: Merge & Review</span>
+          </div>
+          <span class="badge badge-pill badge-neutral" id="badge-nav-word-b4">0/8</span>
+        </a>
+        <a href="#sec-word-cp-3" class="nav-link">
+          <div class="nav-link-content">
+            <span class="nav-link-icon">📍</span>
+            <span>Checkpoint 3: Bab IV</span>
+          </div>
+          <span class="badge badge-pill badge-warning" id="status-nav-word-cp3">Pending</span>
+        </a>
+      </nav>
+
       <!-- Sub-Group: Diagnosis Masalah -->
       <nav class="nav-group" aria-label="Navigasi Solusi Kendala Dokumen">
         <div class="nav-group-title">Bantuan Kendala</div>
@@ -5743,6 +5762,404 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
             <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="word-cp-2" data-status="pending">
               <span>↺</span> Reset Status
             </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: BAB IV OTOMATISASI DOKUMEN & KOLABORASI
+           ============================================================ -->
+      <section id="sec-word-module-4" class="content-section">
+        <div class="card module-card">
+          <div class="module-header" role="button" tabindex="0" aria-expanded="true" aria-controls="module-body-word-4">
+            <div class="module-header-main">
+              <div class="module-icon-badge" style="background: rgba(99, 102, 241, 0.15); color: #6366f1;">✉️</div>
+              <div class="module-title-group">
+                <h3>Bab IV: Otomatisasi Dokumen & Kolaborasi</h3>
+                <p>Mail Merge massal, aturan IF-THEN-ELSE, sakelar format field, cetak label Tom & Jerry 103, Track Changes, resolusi Modern Comments, dan perbandingan naskah dinas ASN.</p>
+              </div>
+            </div>
+            <div class="module-header-meta">
+              <span class="badge badge-pill badge-primary">8 Langkah Praktik</span>
+              <span class="module-chevron" aria-hidden="true">▼</span>
+            </div>
+          </div>
+
+          <div id="module-body-word-4" class="module-body">
+            <!-- Langkah A -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Persiapan Database Excel & Pembersihan Karakter (Source Data Hygiene)</span>
+                <span class="badge badge-pill badge-neutral">Excel > Data Prep</span>
+              </div>
+              <p class="card-body">
+                Keberhasilan otomatisasi Mail Merge 90% ditentukan oleh kerapian basis data sumber. Buka file <code>03_Database_Peserta.xlsx</code> dan pastikan memenuhi kaidah standar tabel relasional:
+              </p>
+              <ul style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li><strong>Baris Pertama Wajib Header:</strong> Baris 1 hanya boleh memuat nama kolom yang jelas tanpa spasi berlebih atau simbol aneh (contoh: <code>Nama</code>, <code>NIP</code>, <code>Jabatan</code>, <code>Unit_Kerja</code>, <code>Alamat</code>, <code>Status_Kepegawaian</code>).</li>
+                <li><strong>Format Teks Kolom NIP/NIK (Kritis):</strong> Ubah format kolom NIP/NIK ke tipe <strong>Text (<code>@</code>)</strong> atau awali angka dengan tanda petik satu (<code>'0123...</code>) agar digit angka <code>0</code> di awal tidak terhapus otomatis oleh kalkulasi numerik Excel.</li>
+                <li><strong>Bebas Merged Cells:</strong> Dilarang keras menggabungkan sel (<em>Merge & Center</em>) di baris data karena Word akan mendeteksi record sebagai kolom kosong dan gagal membaca urutan baris.</li>
+                <li><strong>Bebas Baris/Kolom Kosong:</strong> Pastikan tidak ada baris atau kolom kosong di tengah-tengah tabel data yang dapat menghentikan proses pembacaan record secara prematur.</li>
+              </ul>
+
+              <div style="overflow-x: auto; margin: 0.75rem 0;">
+                <table class="data-table" style="font-size: var(--font-size-xs);">
+                  <thead>
+                    <tr>
+                      <th>Nama</th>
+                      <th>NIP</th>
+                      <th>Jabatan</th>
+                      <th>Unit_Kerja</th>
+                      <th>Status_Kepegawaian</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ahmad Fauzi, S.STP</td>
+                      <td>198803122010011002</td>
+                      <td>Analis Kebijakan Ahli Muda</td>
+                      <td>BPSDM Provinsi DKI Jakarta</td>
+                      <td>PNS</td>
+                    </tr>
+                    <tr>
+                      <td>Siti Nurhaliza, S.Kom</td>
+                      <td>199407252022212004</td>
+                      <td>Pranata Komputer Ahli Pertama</td>
+                      <td>Dinas Komunikasi, Informatika dan Statistik</td>
+                      <td>PPPK</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-prepare-source">
+                <span class="checklist-label"><strong>Langkah A selesai:</strong> Tabel database Excel telah diverifikasi (header baris 1, kolom NIP format Text, tanpa merged cells, dan tanpa baris kosong).</span>
+              </label>
+            </div>
+
+            <!-- Langkah B -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Penautan Sumber Data Mailings & Recipients (Connect Data Source)</span>
+                <span class="badge badge-pill badge-neutral">Mailings > Select Recipients</span>
+              </div>
+              <p class="card-body">
+                Hubungkan naskah dinas Word (contoh: <code>Surat_Undangan_Pelatihan.docx</code>) ke sumber data Excel yang telah distandardisasi:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Buka naskah dinas di Microsoft Word, lalu pilih tab ribbon <strong>Mailings</strong>.</li>
+                <li>Klik tombol <strong>Start Mail Merge</strong> dan pilih jenis dokumen <strong>Letters</strong> (atau <strong>Labels</strong> untuk pencetakan label undangan).</li>
+                <li>Klik <strong>Select Recipients</strong> &gt; pilih <strong>Use an Existing List...</strong>.</li>
+                <li>Arahkan ke lokasi berkas <code>03_Database_Peserta.xlsx</code> dan klik <em>Open</em>.</li>
+                <li>Pada kotak dialog <em>Select Table</em>, pilih Sheet yang memuat data (misal: <code>Data_Peserta$</code>) dan pastikan opsi <strong>First row of data contains column headers</strong> tercentang aktif. Klik <em>OK</em>.</li>
+                <li>Klik tombol <strong>Edit Recipient List</strong> untuk memeriksa daftar record, melakukan pencarian cepat, atau menyaring (<em>Filter & Sort</em>) berdasarkan kriteria unit kerja tertentu.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-setup-mailmerge">
+                <span class="checklist-label"><strong>Langkah B selesai:</strong> Berkas naskah dinas berhasil terhubung ke database Excel via <code>Select Recipients</code> dan record terverifikasi di <code>Edit Recipient List</code>.</span>
+              </label>
+            </div>
+
+            <!-- Langkah C -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Penyisipan Merge Fields & Format Tampilan (Field Switches)</span>
+                <span class="badge badge-pill badge-neutral">Mailings > Insert Merge Field</span>
+              </div>
+              <p class="card-body">
+                Letakkan kursor pada bagian surat dinas yang akan diisi secara dinamis, lalu sisipkan field yang sesuai:
+              </p>
+              <div style="margin: 0.75rem 0;">
+                <p style="font-size: var(--font-size-sm); margin-bottom: 0.5rem;"><strong>1. Menyisipkan Field Standar:</strong></p>
+                <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-sm); font-size: var(--font-size-sm); border-left: 3px solid #6366f1;">
+                  Kepada Yth.<br>
+                  <strong>&laquo;Nama&raquo;</strong><br>
+                  NIP. <strong>&laquo;NIP&raquo;</strong><br>
+                  Jabatan: <strong>&laquo;Jabatan&raquo;</strong><br>
+                  di <strong>&laquo;Unit_Kerja&raquo;</strong>
+                </div>
+              </div>
+
+              <div style="margin: 0.75rem 0;">
+                <p style="font-size: var(--font-size-sm); margin-bottom: 0.5rem;"><strong>2. Memperbaiki Format Tanggal & Angka via Field Switch:</strong></p>
+                <p style="font-size: var(--font-size-xs); color: var(--text-secondary); margin-bottom: 0.5rem;">
+                  Seringkali Word menampilkan format tanggal Excel dalam format Amerika (<code>M/d/yyyy</code>) atau memotong NIP. Gunakan tombol sakelar (<em>Switch</em>):
+                </p>
+                
+                <div class="code-block-wrap" style="margin-bottom: 0.5rem;">
+                  <div class="code-block-header">
+                    <span class="code-block-title">Sakelar Format Tanggal Indonesia</span>
+                    <button type="button" class="code-copy-btn"><span>📋 Salin</span></button>
+                  </div>
+                  <div class="code-block-content">
+                    <code>{ MERGEFIELD Tanggal_Pelaksanaan \@ "dd MMMM yyyy" }</code>
+                  </div>
+                </div>
+
+                <div class="code-block-wrap">
+                  <div class="code-block-header">
+                    <span class="code-block-title">Sakelar Format 18 Digit NIP Tanpa Hilang Nol</span>
+                    <button type="button" class="code-copy-btn"><span>📋 Salin</span></button>
+                  </div>
+                  <div class="code-block-content">
+                    <code>{ MERGEFIELD NIP \# "000000000000000000" }</code>
+                  </div>
+                </div>
+
+                <p style="font-size: var(--font-size-xs); color: var(--text-secondary); margin-top: 0.5rem;">
+                  <em>Tips:</em> Tekan <kbd>Alt</kbd> + <kbd>F9</kbd> untuk menampilkan Field Code, tambahkan sakelar <code>\@</code> atau <code>\#</code> di dalam kurung kurawal, lalu tekan <kbd>F9</kbd> untuk memperbarui tampilan!
+                </p>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-insert-fields">
+                <span class="checklist-label"><strong>Langkah C selesai:</strong> Field merge berhasil disisipkan pada badan naskah dinas dan sakelar format tanggal/NIP diaplikasikan.</span>
+              </label>
+            </div>
+
+            <!-- Langkah D -->
+            <div class="step-section">
+              <div class="step-section-node">D</div>
+              <div class="step-section-title">
+                <span>Penerapan Aturan Kondisional (Rules: If...Then...Else...)</span>
+                <span class="badge badge-pill badge-warning">Aturan Logika ASN</span>
+              </div>
+              <p class="card-body">
+                Dalam naskah dinas Pemprov DKI, sapaan atau status kepegawaian seringkali berbeda antara PNS dan PPPK. Gunakan logika kondisional Word agar surat menyesuaikan otomatis tanpa perlu membuat template terpisah:
+              </p>
+              
+              <div class="alert-box alert-warning" style="margin: 0.75rem 0;">
+                <div class="alert-icon">⚠️</div>
+                <div class="alert-content">
+                  <strong>PERINGATAN KRUSIAL KURUNG KURAWAL:</strong> Jangan mengetik tanda kurung kurawal <code>{</code> dan <code>}</code> secara manual lewat keyboard! Kurung kurawal field code WAJIB dibuat dengan menekan pintasan <kbd>Ctrl</kbd> + <kbd>F9</kbd> di dalam dokumen Word. Jika diketik manual, Word hanya akan menganggapnya sebagai teks biasa dan aturan logika tidak akan berjalan!
+                </div>
+              </div>
+
+              <div class="code-block-wrap" style="margin: 0.75rem 0;">
+                <div class="code-block-header">
+                  <span class="code-block-title">Contoh Sintaks Aturan Kondisional Status Kepegawaian</span>
+                  <button type="button" class="code-copy-btn"><span>📋 Salin</span></button>
+                </div>
+                <div class="code-block-content">
+                  <code>{ IF { MERGEFIELD Status_Kepegawaian } = "PNS" "Pegawai Negeri Sipil" "Pegawai Pemerintah dengan Perjanjian Kerja (PPPK)" }</code>
+                </div>
+              </div>
+
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Letakkan kursor di posisi teks predikat yang diinginkan.</li>
+                <li>Klik tab <strong>Mailings</strong> &gt; grup <em>Write &amp; Insert Fields</em> &gt; klik <strong>Rules</strong> &gt; pilih <strong>If...Then...Else...</strong>.</li>
+                <li>Atur parameter: Field Name: <code>Status_Kepegawaian</code>, Comparison: <code>Equal to</code>, Compare to: <code>PNS</code>.</li>
+                <li>Isi <em>Insert this text</em> dengan: <code>Pegawai Negeri Sipil</code>, dan <em>Otherwise insert this text</em> dengan: <code>Pegawai Pemerintah dengan Perjanjian Kerja (PPPK)</code>. Klik <em>OK</em>.</li>
+                <li>Tekan <kbd>Alt</kbd> + <kbd>F9</kbd> kapan pun untuk memeriksa dan mengedit logika field code tersebut.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-merge-rules">
+                <span class="checklist-label"><strong>Langkah D selesai:</strong> Aturan kondisional <code>If...Then...Else</code> berhasil disisipkan menggunakan dialog Rules atau kurung kurawal <kbd>Ctrl</kbd>+<kbd>F9</kbd>.</span>
+              </label>
+            </div>
+
+            <!-- Langkah E -->
+            <div class="step-section">
+              <div class="step-section-node">E</div>
+              <div class="step-section-title">
+                <span>Pencetakan Label Massal (Next Record Rule 103) & Ekspor Dokumen</span>
+                <span class="badge badge-pill badge-neutral">Labels & Finish Merge</span>
+              </div>
+              <p class="card-body">
+                Selain surat, Mail Merge lazim digunakan untuk mencetak label stiker undangan dinas (standar Tom &amp; Jerry No. 103: 12 label per lembar).
+              </p>
+
+              <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-sm); font-size: var(--font-size-sm); margin: 0.75rem 0;">
+                <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">Aturan Emas Label: Wajib Menggunakan &laquo;Next Record&raquo;</p>
+                <p style="font-size: var(--font-size-xs); color: var(--text-secondary); margin-bottom: 0.5rem;">
+                  Tanpa field code <code>&laquo;Next Record&raquo;</code>, Word akan mencetak nama orang yang SAMA di seluruh 12 stiker pada lembar tersebut!
+                </p>
+                <ol style="font-size: var(--font-size-xs); color: var(--text-secondary); line-height: 1.5; padding-left: 1.25rem; margin: 0;">
+                  <li>Format sel pertama label dengan field: <code>&laquo;Nama&raquo;</code> lalu baris bawahnya <code>&laquo;Unit_Kerja&raquo;</code>.</li>
+                  <li>Pada sel label kedua dan seterusnya, klik <strong>Rules</strong> &gt; pilih <strong>Next Record</strong>, lalu lanjutkan dengan field <code>&laquo;Nama&raquo;</code>.</li>
+                  <li>Atau cukup klik tombol <strong>Update Labels</strong> di tab Mailings untuk otomatis menduplikasi format sel pertama beserta aturan <em>Next Record</em> ke seluruh sel stiker!</li>
+                </ol>
+              </div>
+
+              <div style="margin: 0.75rem 0;">
+                <p style="font-size: var(--font-size-sm); font-weight: 600; margin-bottom: 0.25rem;">Pratinjau Hasil & Ekspor Dokumen Akhir:</p>
+                <ul style="font-size: var(--font-size-xs); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0;">
+                  <li>Klik tombol <strong>Preview Results</strong> untuk melihat data sesungguhnya di layar dan navigasi tombol panah (<code>&lt;</code>, <code>&gt;</code>) antar record peserta.</li>
+                  <li>Klik <strong>Finish &amp; Merge</strong> &gt; pilih <strong>Edit Individual Documents...</strong> &gt; pilih <em>All</em>. Word akan menghasilkan satu file baru berisi seluruh surat yang telah terisi lengkap siap cetak atau konversi PDF.</li>
+                </ul>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-preview-finish">
+                <span class="checklist-label"><strong>Langkah E selesai:</strong> Label atau surat berhasil dipratinjau dengan <code>Preview Results</code> dan digenerate via <code>Finish &amp; Merge</code>.</span>
+              </label>
+            </div>
+
+            <!-- Langkah F -->
+            <div class="step-section">
+              <div class="step-section-node">F</div>
+              <div class="step-section-title">
+                <span>Pelacakan Perubahan Dokumen (Track Changes & Lock Tracking)</span>
+                <span class="badge badge-pill badge-neutral">Review > Track Changes</span>
+              </div>
+              <p class="card-body">
+                Saat naskah dinas atau draf regulasi diedit bersama lintas bidang atau pimpinan, seluruh coretan revisi wajib terlacak secara akuntabel:
+              </p>
+              
+              <ul style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li><strong>Mengaktifkan Pelacakan:</strong> Buka tab <strong>Review</strong> &gt; klik tombol <strong>Track Changes</strong> atau gunakan pintasan cepat <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>E</kbd>.</li>
+                <li><strong>4 Mode Tampilan Markup:</strong>
+                  <ul style="margin-top: 0.25rem;">
+                    <li><em>Simple Markup:</em> Menampilkan garis vertikal merah di tepi kiri paragraf yang berubah tanpa memenuhi teks dengan coretan warna-warni (cocok untuk membaca nyaman).</li>
+                    <li><em>All Markup:</em> Menampilkan seluruh teks yang dicoret (strikethrough) dan teks sisipan bergaris bawah secara eksplisit (standar telaah formal).</li>
+                    <li><em>No Markup:</em> Menampilkan pratinjau hasil akhir seolah semua revisi telah disetujui.</li>
+                    <li><em>Original:</em> Menampilkan teks dokumen asli sebelum ada revisi apa pun.</li>
+                  </ul>
+                </li>
+                <li><strong>Mengunci Pelacakan dengan Sandi (Lock Tracking):</strong> Klik panah kecil di bawah tombol <em>Track Changes</em> &gt; pilih <strong>Lock Tracking</strong> &gt; masukkan kata sandi pengaman. Hal ini mencegah rekan kerja atau penelaah lain mematikan Track Changes secara diam-diam saat mengedit draf dinas.</li>
+              </ul>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-track-changes">
+                <span class="checklist-label"><strong>Langkah F selesai:</strong> Fitur Track Changes diaktifkan (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>), mode All Markup dipahami, dan Lock Tracking diuji coba.</span>
+              </label>
+            </div>
+
+            <!-- Langkah G -->
+            <div class="step-section">
+              <div class="step-section-node">G</div>
+              <div class="step-section-title">
+                <span>Manajemen Komentar Review & Thread Diskusi ASN (Modern Comments)</span>
+                <span class="badge badge-pill badge-neutral">Review > Comments</span>
+              </div>
+              <p class="card-body">
+                Gunakan fitur komentar untuk mendiskusikan klausul tanpa merusak isi naskah dinas asli:
+              </p>
+              
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Sorot kalimat atau klausul yang memerlukan catatan &gt; tekan pintasan <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>M</kbd> atau klik <strong>Review > New Comment</strong>.</li>
+                <li>Ketik catatan telaah, misalnya: <em>"Mohon dicek kembali dasar hukum Pergub ini apakah masih berlaku?"</em> lalu klik tombol panah kirim (atau tekan <kbd>Ctrl</kbd> + <kbd>Enter</kbd>).</li>
+                <li><strong>Menanggapi Thread Komentar:</strong> Rekan telaah dapat membalas langsung di dalam kotak komentar yang sama (<em>Reply thread</em>) sehingga diskusi terorganisir per topik klausul.</li>
+                <li><strong>Menandai Selesai (Resolve Thread):</strong> Setelah revisi disepakati, klik tanda centang <strong>Resolve</strong> pada komentar. Komentar akan memudar/mengecil tanpa hilang dari riwayat rekam jejak.</li>
+                <li><strong>Etika Kedinasan:</strong> Dilarang menghapus (<em>Delete</em>) komentar atasan/reviewer secara sepihak sebelum mendapatkan disposisi atau persetujuan resmi!</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-comments-resolve">
+                <span class="checklist-label"><strong>Langkah G selesai:</strong> Komentar telaah berhasil disisipkan, dibalas melalui thread diskusi, dan ditandai Resolve setelah perbaikan.</span>
+              </label>
+            </div>
+
+            <!-- Langkah H -->
+            <div class="step-section">
+              <div class="step-section-node">H</div>
+              <div class="step-section-title">
+                <span>Perbandingan Dokumen (Compare) & Pembersihan Metadata (Inspect Document)</span>
+                <span class="badge badge-pill badge-danger">Wajib Sebelum Publikasi</span>
+              </div>
+              <p class="card-body">
+                Ketika Anda menerima berkas revisi dari beberapa pejabat penelaah yang diedit tanpa menyalakan Track Changes, gunakan fitur <em>Compare</em> dan lakukan pembersihan metadata sebelum naskah resmi ditandatangani:
+              </p>
+
+              <div style="background: var(--bg-surface-2); padding: 0.75rem; border-radius: var(--radius-sm); font-size: var(--font-size-sm); margin: 0.75rem 0;">
+                <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">1. Membandingkan Dua Versi Berkas (Compare Documents):</p>
+                <ul style="font-size: var(--font-size-xs); color: var(--text-secondary); line-height: 1.5; padding-left: 1.25rem; margin: 0 0 0.5rem 0;">
+                  <li>Buka Microsoft Word &gt; pilih tab <strong>Review</strong> &gt; klik tombol <strong>Compare</strong> &gt; pilih <strong>Compare...</strong>.</li>
+                  <li>Pilih <strong>Original Document</strong> (naskah awal) dan <strong>Revised Document</strong> (naskah hasil revisi rekan).</li>
+                  <li>Word akan menghasilkan dokumen komparasi ketiga yang menampilkan seluruh selisih kata, perubahan format, dan penyisipan kalimat secara otomatis di panel <em>Reviewing Pane</em>.</li>
+                </ul>
+
+                <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;">2. Pembersihan Metadata Rahasia & Riwayat Revisi (Wajib bagi ASN):</p>
+                <p style="font-size: var(--font-size-xs); color: var(--text-secondary); margin-bottom: 0.5rem;">
+                  Naskah dinas resmi yang akan diunggah ke publik atau dikirim ke instansi luar DILARANG MEMUAT coretan revisi dan komentar internal!
+                </p>
+                <ol style="font-size: var(--font-size-xs); color: var(--text-secondary); line-height: 1.5; padding-left: 1.25rem; margin: 0;">
+                  <li>Di tab <strong>Review</strong>, pastikan seluruh revisi telah di-<strong>Accept All</strong> atau <strong>Reject All</strong>.</li>
+                  <li>Klik menu <strong>File</strong> &gt; pilih <strong>Info</strong> &gt; klik <strong>Check for Issues</strong> &gt; pilih <strong>Inspect Document</strong>.</li>
+                  <li>Centang seluruh elemen (<em>Comments, Revisions, Versions, Document Properties, Personal Information</em>) &gt; klik <strong>Inspect</strong>.</li>
+                  <li>Klik tombol <strong>Remove All</strong> pada bagian <em>Document Properties and Personal Information</em> serta <em>Comments and Revisions</em> untuk menghapus total jejak identitas reviewer sebelum diarsipkan atau dikonversi ke format PDF/A.</li>
+                </ol>
+              </div>
+
+              <!-- Kepatuhan Tata Kelola & Privasi ASN -->
+              <div class="alert-box alert-info" style="margin: 0.75rem 0;">
+                <div class="alert-icon">🛡️</div>
+                <div class="alert-content">
+                  <strong>PANDUAN KEPATUHAN PERGUB DKI NO. 14/2020:</strong><br>
+                  Aparatur dilarang keras menyebarkan atau menyimpan draf naskah dinas yang memuat data pribadi sensitif (NIK, NIP, nomor rekening payroll, riwayat kesehatan) pada repositori cloud publik yang tidak terenkripsi. Selalu jalankan <em>Inspect Document</em> untuk membersihkan metadata author dan terapkan enkripsi dokumen (<em>Protect Document &gt; Encrypt with Password</em>) pada berkas sensitif kedinasan.
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b4-compare-combine">
+                <span class="checklist-label"><strong>Langkah H selesai:</strong> Fitur Compare telah dicoba, seluruh revisi diterima/ditolak, dan metadata dibersihkan via <code>Inspect Document</code>.</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: GERBANG CHECKPOINT 3 (BAB IV)
+           ============================================================ -->
+      <section id="sec-word-cp-3" class="content-section">
+        <div id="card-word-cp-3" class="card card-glass checkpoint-gate-card">
+          <div class="card-header">
+            <div class="card-title-wrap">
+              <div class="card-badge-icon" style="background: rgba(99, 102, 241, 0.15); color: #6366f1;">📍</div>
+              <div>
+                <h3 class="card-title">Gerbang Checkpoint 3: Otomatisasi & Kolaborasi Dokumen</h3>
+                <p class="card-desc">Verifikasi Kelayakan Mail Merge, Logika Kondisional, Track Changes, dan Perbandingan Naskah Dinas ASN</p>
+              </div>
+            </div>
+            <span class="badge badge-pill badge-warning" id="status-card-word-cp3">Pending</span>
+          </div>
+
+          <div class="card-body">
+            <p style="font-size: var(--font-size-sm); color: var(--text-secondary); margin-bottom: 1rem;">
+              Sebelum menuntaskan kursus Pengolahan Kata Tingkat Lanjut, pastikan seluruh kriteria otomatisasi dan kolaborasi naskah dinas berikut telah Anda kuasai dengan benar:
+            </p>
+
+            <div class="checklist-group" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+              <div class="checklist-item" style="cursor: default;">
+                <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                <div class="checklist-label"><strong>Kriteria 1:</strong> Database sumber Excel telah disiapkan dengan header baris pertama, format teks untuk NIP/NIK, dan bebas dari baris kosong atau merged cells.</div>
+              </div>
+              <div class="checklist-item" style="cursor: default;">
+                <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                <div class="checklist-label"><strong>Kriteria 2:</strong> Field Mail Merge (<code>&laquo;Nama&raquo;</code>, <code>&laquo;NIP&raquo;</code>, <code>&laquo;Jabatan&raquo;</code>) dan aturan logika kondisional (<code>If...Then...Else</code>) berfungsi dinamis menghasilkan output surat/undangan yang akurat.</div>
+              </div>
+              <div class="checklist-item" style="cursor: default;">
+                <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                <div class="checklist-label"><strong>Kriteria 3:</strong> Fitur Track Changes diaktifkan dan dikunci dengan sandi (<em>Lock Tracking</em>) saat naskah dinas diedit bersama tim penelaah.</div>
+              </div>
+              <div class="checklist-item" style="cursor: default;">
+                <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                <div class="checklist-label"><strong>Kriteria 4:</strong> Seluruh komentar telaah (<em>Modern Comments</em>) telah ditanggapi dan ditandai <em>Resolve</em> tanpa ada isu yang menggantung.</div>
+              </div>
+              <div class="checklist-item" style="cursor: default;">
+                <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+                <div class="checklist-label"><strong>Kriteria 5:</strong> Dokumen telah diverifikasi perbedaannya menggunakan fitur <em>Compare/Combine</em>, dan seluruh metadata rahasia telah dibersihkan melalui <em>Document Inspector</em>.</div>
+              </div>
+            </div>
+
+            <div class="cp-action-btn-group">
+              <button type="button" id="btn-word-cp-3-passed" class="btn btn-success btn-cp-action" data-checkpoint="word-cp-3" data-status="passed">
+                <span>✓</span> Lolos Verifikasi
+              </button>
+              <button type="button" id="btn-word-cp-3-failed" class="btn btn-outline-danger btn-cp-action" data-checkpoint="word-cp-3" data-status="failed">
+                <span>✕</span> Ada Kendala (Gagal)
+              </button>
+              <button type="button" id="btn-word-cp-3-pending" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="word-cp-3" data-status="pending">
+                <span>↺</span> Reset Status
+              </button>
+            </div>
           </div>
         </div>
       </section>
