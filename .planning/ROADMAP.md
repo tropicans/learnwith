@@ -8,7 +8,7 @@
 
 ## Active Milestone: v2.0 (Phases 9-12)
 
-- [ ] **Phase 9: Multi-Course Architecture & Course Gate Protection**
+- [x] **Phase 9: Multi-Course Architecture & Course Gate Protection**
   - Namespaced state isolation (`learnwith_ai_*` vs `learnwith_word_*`).
   - Zero-risk backward compatibility for public Agentic AI participants.
   - Course 2 developer/instructor protection gate (`buka-kata` or `?course=word&unlock=dev`).
@@ -34,8 +34,8 @@
 **Plans**: 2 plans
 
 Plans:
-- [ ] 09-01: Namespaced StateManager refactoring, migration helper, and backward compatibility layer.
-- [ ] 09-02: Course switcher UI component, developer gate modal with passcode/URL unlock, and course routing.
+- [x] 09-01: Namespaced StateManager refactoring, migration helper, and backward compatibility layer.
+- [x] 09-02: Course switcher UI component, developer gate modal with passcode/URL unlock, and course routing.
 
 ### Phase 10: Interactive Modules Bab I–III (Struktur Dokumen, Styles, TOC & Penomoran Halaman)
 

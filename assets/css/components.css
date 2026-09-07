@@ -2064,7 +2064,7 @@ mark.search-highlight {
 }
 
 /* Mode Container Animated Transitions */
-.mode-container {
+.mode-container, .course-container {
   animation: fadeInContainer var(--transition-base) ease-in-out;
 }
 
@@ -2072,4 +2072,149 @@ mark.search-highlight {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ==========================================================================
+   COURSE SWITCHER DROPDOWN & COURSE GATE STYLES (PHASE 9)
+   ========================================================================== */
+
+.header-course-switcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.course-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.65rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.course-dropdown-btn:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--border-strong);
+}
+
+.course-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 280px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.4rem;
+  list-style: none;
+  z-index: var(--z-dropdown);
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.course-dropdown-menu.show {
+  display: flex;
+}
+
+.course-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.course-dropdown-item:hover {
+  background: var(--bg-surface-hover);
+}
+
+.course-dropdown-item.active {
+  background: var(--accent-primary-subtle);
+  border: 1px solid rgba(79, 70, 229, 0.25);
+}
+
+.course-item-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.course-item-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.course-item-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.course-item-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-lock-badge {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.35rem;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-xs);
+  margin-left: 0.35rem;
+}
+
+.course-lock-badge.unlocked {
+  display: none;
+}
+
+/* Sidebar Course Selector */
+.sidebar-course-selector-container {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface-subtle);
+}
+
+.sidebar-course-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-course-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.sidebar-course-btn:hover {
+  background: var(--bg-surface-hover);
+}
+
 

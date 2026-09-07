@@ -59,7 +59,10 @@ if (typeof document !== 'undefined' && typeof document.addEventListener === 'fun
     // 17. Setup Dual-Purpose Mode Switcher (Pra-Training vs Hari-H Kelas)
     setupModeSwitcher();
 
-    // 18. Initial Progress calculation
+    // 18. Setup Multi-Course Switcher & Developer Gate Protection (Phase 9)
+    setupCourseManager();
+
+    // 19. Initial Progress calculation
     updateProgressUI();
   });
 }
@@ -1535,11 +1538,296 @@ function setupModeSwitcher() {
   }
 }
 
+const WORD_COURSE_UNLOCK_KEY = 'learnwith_word_unlocked';
+const WORD_PASSCODES = ['buka-kata', 'kata-sandi-asn'];
+
+function isWordCourseUnlocked() {
+  // 1. Check URL parameters for ?unlock=word, ?unlock=dev, or ?course=word&unlock=...
+  if (typeof window !== 'undefined' && window.location && window.location.search) {
+    const params = new URLSearchParams(window.location.search);
+    const unlockVal = (params.get('unlock') || '').toLowerCase();
+    if (unlockVal === 'word' || unlockVal === 'dev' || unlockVal === 'instructor' || unlockVal === '1') {
+      try { localStorage.setItem(WORD_COURSE_UNLOCK_KEY, 'true'); } catch (e) {}
+      return true;
+    }
+  }
+
+  // 2. Check localStorage
+  try {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem(WORD_COURSE_UNLOCK_KEY) === 'true') {
+      return true;
+    }
+  } catch (e) {}
+
+  return false;
+}
+
+function setWordCourseUnlocked(unlocked = true) {
+  try {
+    if (unlocked) {
+      localStorage.setItem(WORD_COURSE_UNLOCK_KEY, 'true');
+    } else {
+      localStorage.removeItem(WORD_COURSE_UNLOCK_KEY);
+    }
+  } catch (e) {}
+
+  const badgeWord = document.getElementById('badge-word-locked');
+  const sidebarWordLock = document.getElementById('sidebar-word-locked');
+  if (badgeWord) badgeWord.classList.toggle('unlocked', unlocked);
+  if (sidebarWordLock) sidebarWordLock.classList.toggle('unlocked', unlocked);
+}
+
+function switchCourse(courseId, updateUrl = true, showNotification = true) {
+  const validCourse = (courseId === 'word') ? 'word' : 'ai';
+
+  // 1. Update StateManager if present
+  if (window.AppState && typeof window.AppState.setCourse === 'function') {
+    window.AppState.setCourse(validCourse);
+  }
+
+  // 2. Update Container Visibility
+  const containerAi = document.getElementById('container-course-ai');
+  const containerWord = document.getElementById('container-course-word');
+  const headerModeSwitcher = document.getElementById('header-mode-switcher');
+  const sidebarModeSwitcher = document.getElementById('sidebar-mode-switcher-container');
+  const navGroupPretraining = document.getElementById('nav-group-pretraining');
+  const navGroupLiveclass = document.getElementById('nav-group-liveclass');
+
+  if (validCourse === 'word') {
+    if (containerAi) containerAi.style.display = 'none';
+    if (containerWord) containerWord.style.display = 'block';
+    if (headerModeSwitcher) headerModeSwitcher.style.display = 'none';
+    if (sidebarModeSwitcher) sidebarModeSwitcher.style.display = 'none';
+    if (navGroupPretraining) navGroupPretraining.style.display = 'none';
+    if (navGroupLiveclass) navGroupLiveclass.style.display = 'none';
+  } else {
+    if (containerAi) containerAi.style.display = 'block';
+    if (containerWord) containerWord.style.display = 'none';
+    if (headerModeSwitcher) headerModeSwitcher.style.display = 'flex';
+    if (sidebarModeSwitcher) sidebarModeSwitcher.style.display = 'block';
+    
+    // Restore Course 1 active mode navigation
+    const activeMode = (window.AppState && window.AppState.getActiveMode) ? window.AppState.getActiveMode() : 'pretraining';
+    if (typeof updateModeUI === 'function') {
+      updateModeUI(activeMode, false);
+    }
+  }
+
+  // 3. Update Header & Sidebar UI Titles
+  const brandTitle = document.getElementById('header-brand-title');
+  const brandSubtitle = document.getElementById('header-brand-subtitle');
+  const currentCourseIcon = document.getElementById('current-course-icon');
+  const currentCourseName = document.getElementById('current-course-name');
+  const sidebarCourseIcon = document.getElementById('sidebar-course-icon');
+  const sidebarCourseName = document.getElementById('sidebar-course-name');
+
+  if (validCourse === 'word') {
+    if (brandTitle) brandTitle.textContent = 'Pengolahan Kata Tingkat Lanjut';
+    if (brandSubtitle) brandSubtitle.textContent = 'Pengolahan Kata Tingkat Lanjut • Modul Praktik ASN';
+    if (currentCourseIcon) currentCourseIcon.textContent = '📝';
+    if (currentCourseName) currentCourseName.textContent = 'Pengolahan Kata Lanjut';
+    if (sidebarCourseIcon) sidebarCourseIcon.textContent = '📝';
+    if (sidebarCourseName) sidebarCourseName.textContent = 'Pengolahan Kata Lanjut';
+    document.title = 'Pengolahan Kata Tingkat Lanjut — Modul Praktik Terpadu ASN';
+  } else {
+    if (brandTitle) brandTitle.textContent = 'Hands-on Agentic AI';
+    const activeMode = (window.AppState && window.AppState.getActiveMode) ? window.AppState.getActiveMode() : 'pretraining';
+    const modeLabel = activeMode === 'live-class' ? 'Live Praktik Kelas' : 'Pra-Training';
+    if (brandSubtitle) brandSubtitle.textContent = `Hands-on Agentic AI • ${modeLabel}`;
+    if (currentCourseIcon) currentCourseIcon.textContent = '🤖';
+    if (currentCourseName) currentCourseName.textContent = 'Hands-on Agentic AI';
+    if (sidebarCourseIcon) sidebarCourseIcon.textContent = '🤖';
+    if (sidebarCourseName) sidebarCourseName.textContent = 'Hands-on Agentic AI';
+    document.title = 'Hands-on Agentic AI: Dari Chat ke Kalender — Panduan Praktik Interaktif';
+  }
+
+  // 4. Update Dropdown Items Active State
+  const dropdownItems = document.querySelectorAll('.course-dropdown-item');
+  dropdownItems.forEach(item => {
+    const itemCourse = item.getAttribute('data-course');
+    const isSelected = itemCourse === validCourse;
+    item.classList.toggle('active', isSelected);
+    item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+  });
+
+  // 5. Update URL Parameter without reloading page
+  if (updateUrl && typeof window !== 'undefined' && window.history && window.location) {
+    try {
+      const url = new URL(window.location.href);
+      if (validCourse === 'word') {
+        url.searchParams.set('course', 'word');
+      } else {
+        url.searchParams.delete('course');
+      }
+      window.history.replaceState({}, '', url.toString());
+    } catch (e) {}
+  }
+
+  // 6. Rebuild Search Index for Active Course
+  if (window.SearchEngine && typeof window.SearchEngine.buildIndex === 'function') {
+    window.SearchEngine.buildIndex();
+  }
+
+  // 7. Notification Toast
+  if (showNotification && typeof showToast === 'function') {
+    const courseTitle = (validCourse === 'word') ? 'Pengolahan Kata Tingkat Lanjut (ASN)' : 'Hands-on Agentic AI';
+    showToast(`Beralih ke kursus: ${courseTitle}`, 'info', 2500);
+  }
+}
+
+function setupCourseManager() {
+  const dropdownBtn = document.getElementById('btn-course-dropdown');
+  const dropdownMenu = document.getElementById('course-dropdown-menu');
+  const dropdownItems = document.querySelectorAll('.course-dropdown-item');
+  const sidebarCourseBtn = document.getElementById('btn-sidebar-course-select');
+  const returnAiBtn = document.getElementById('btn-return-course-ai');
+
+  const wordLockedModal = document.getElementById('modal-wordcourse-locked');
+  const closeWordLockedBtn = document.getElementById('btn-close-word-locked');
+  const wordUnlockInput = document.getElementById('input-word-unlock-code');
+  const wordUnlockSubmitBtn = document.getElementById('btn-submit-word-unlock');
+  const wordUnlockFeedback = document.getElementById('word-unlock-feedback');
+
+  function openWordLockedModal() {
+    if (!wordLockedModal) return;
+    wordLockedModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (wordUnlockInput) {
+      wordUnlockInput.value = '';
+      wordUnlockInput.focus();
+    }
+    if (wordUnlockFeedback) wordUnlockFeedback.style.display = 'none';
+  }
+
+  function closeWordLockedModal() {
+    if (!wordLockedModal) return;
+    wordLockedModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (closeWordLockedBtn) {
+    closeWordLockedBtn.addEventListener('click', closeWordLockedModal);
+  }
+
+  if (wordLockedModal) {
+    wordLockedModal.addEventListener('click', (e) => {
+      if (e.target === wordLockedModal) closeWordLockedModal();
+    });
+  }
+
+  function handleWordUnlockSubmit() {
+    if (!wordUnlockInput) return;
+    const code = (wordUnlockInput.value || '').trim().toLowerCase();
+    if (WORD_PASSCODES.includes(code)) {
+      setWordCourseUnlocked(true);
+      closeWordLockedModal();
+      if (typeof showToast === 'function') {
+        showToast('🔓 Modul Pengolahan Kata Tingkat Lanjut berhasil dibuka!', 'success', 3000);
+      }
+      switchCourse('word', true, true);
+    } else {
+      if (wordUnlockFeedback) {
+        wordUnlockFeedback.textContent = 'Kode sandi salah. Gunakan "buka-kata" untuk pratinjau instruktur.';
+        wordUnlockFeedback.style.display = 'block';
+      }
+    }
+  }
+
+  if (wordUnlockSubmitBtn) {
+    wordUnlockSubmitBtn.addEventListener('click', handleWordUnlockSubmit);
+  }
+
+  if (wordUnlockInput) {
+    wordUnlockInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleWordUnlockSubmit();
+      }
+    });
+  }
+
+  // Header Dropdown Toggle
+  if (dropdownBtn && dropdownMenu) {
+    dropdownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dropdownMenu.classList.contains('show');
+      dropdownMenu.classList.toggle('show', !isOpen);
+      dropdownBtn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.remove('show');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // Sidebar Course Toggle
+  if (sidebarCourseBtn) {
+    sidebarCourseBtn.addEventListener('click', () => {
+      const current = (window.AppState && window.AppState.getActiveCourse) ? window.AppState.getActiveCourse() : 'ai';
+      const target = current === 'ai' ? 'word' : 'ai';
+      if (target === 'word' && !isWordCourseUnlocked()) {
+        openWordLockedModal();
+      } else {
+        switchCourse(target, true, true);
+      }
+    });
+  }
+
+  // Return to AI Button
+  if (returnAiBtn) {
+    returnAiBtn.addEventListener('click', () => {
+      switchCourse('ai', true, true);
+    });
+  }
+
+  // Dropdown Item Selection
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const targetCourse = item.getAttribute('data-course');
+      if (dropdownMenu) {
+        dropdownMenu.classList.remove('show');
+        if (dropdownBtn) dropdownBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      if (targetCourse === 'word' && !isWordCourseUnlocked()) {
+        openWordLockedModal();
+        return;
+      }
+
+      switchCourse(targetCourse, true, true);
+    });
+  });
+
+  // Sync initial lock status
+  if (isWordCourseUnlocked()) {
+    setWordCourseUnlocked(true);
+  }
+
+  // Determine initial course from URL or storage
+  let initialCourse = 'ai';
+  if (typeof window !== 'undefined' && window.location && window.location.search) {
+    const params = new URLSearchParams(window.location.search);
+    const courseParam = (params.get('course') || '').toLowerCase();
+    if ((courseParam === 'word' || courseParam === 'kata') && isWordCourseUnlocked()) {
+      initialCourse = 'word';
+    }
+  }
+  switchCourse(initialCourse, false, false);
+}
+
 if (typeof window !== 'undefined') {
   window.updateModeUI = updateModeUI;
   window.isLiveClassUnlocked = isLiveClassUnlocked;
   window.setLiveClassUnlocked = setLiveClassUnlocked;
   window.INSTRUCTOR_PASSCODES = INSTRUCTOR_PASSCODES;
+  window.isWordCourseUnlocked = isWordCourseUnlocked;
+  window.setWordCourseUnlocked = setWordCourseUnlocked;
+  window.switchCourse = switchCourse;
+  window.setupCourseManager = setupCourseManager;
+  window.WORD_PASSCODES = WORD_PASSCODES;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -1560,7 +1848,12 @@ if (typeof module !== 'undefined' && module.exports) {
     updateModeUI,
     isLiveClassUnlocked,
     setLiveClassUnlocked,
-    INSTRUCTOR_PASSCODES
+    INSTRUCTOR_PASSCODES,
+    isWordCourseUnlocked,
+    setWordCourseUnlocked,
+    switchCourse,
+    setupCourseManager,
+    WORD_PASSCODES
   };
 }
 

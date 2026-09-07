@@ -8,9 +8,9 @@
 ## Requirements Traceability
 
 ### Course Isolation & Gate Protection (GATEWAY)
-- [ ] **GATEWAY-01**: Existing Course 1 (`Hands-on Agentic AI`) remains the default public course without breaking URL endpoints, bookmarks, or localStorage keys.
-- [ ] **GATEWAY-02**: Course 2 (`Pengolahan Kata Tingkat Lanjut`) is protected by a developer/instructor gate with passcode verification (`buka-kata`) or URL parameter (`?course=word&unlock=dev`).
-- [ ] **GATEWAY-03**: State storage in `localStorage` is namespaced by course (e.g., `learnwith_ai_*` vs `learnwith_word_*`) to guarantee zero interference between different workshops.
+- [x] **GATEWAY-01**: Existing Course 1 (`Hands-on Agentic AI`) remains the default public course without breaking URL endpoints, bookmarks, or localStorage keys.
+- [x] **GATEWAY-02**: Course 2 (`Pengolahan Kata Tingkat Lanjut`) is protected by a developer/instructor gate with passcode verification (`buka-kata`) or URL parameter (`?course=word&unlock=dev`).
+- [x] **GATEWAY-03**: State storage in `localStorage` is namespaced by course (e.g., `learnwith_ai_*` vs `learnwith_word_*`) to guarantee zero interference between different workshops.
 
 ### Word Processing Interactive Guides (WORD-GUIDE)
 - [ ] **WORD-01**: Bab I (Pendahuluan) interactive briefing, instructional objectives, practice dataset download links, and competency readiness check.

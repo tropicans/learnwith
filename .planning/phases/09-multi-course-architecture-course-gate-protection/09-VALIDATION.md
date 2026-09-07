@@ -1,9 +1,9 @@
 ---
 phase: "9"
 slug: "multi-course-architecture-course-gate-protection"
-status: draft
+status: validated
 nyquist_compliant: true
-wave_0_complete: false
+wave_0_complete: true
 created: "2026-09-07"
 ---
 
@@ -38,10 +38,10 @@ created: "2026-09-07"
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 09-01-01 | 01 | 1 | GATEWAY-01, GATEWAY-03 | T-09-01 | State storage namespaced with zero cross-course bleed; legacy state migrated smoothly | unit | `node tests/multi-course.test.js` | ❌ W0 | ⬜ pending |
-| 09-01-02 | 01 | 1 | GATEWAY-01 | T-09-01 | Legacy `pretraining_app_state_v1` untouched and functional without regression | unit | `node tests/mode-switcher.test.js` | ✅ | ⬜ pending |
-| 09-02-01 | 02 | 2 | GATEWAY-02 | T-09-02 | Course 2 gate modal blocks unauthenticated entry until passcode 'buka-kata' or '?course=word&unlock=dev' | unit / dom | `node tests/multi-course.test.js` | ❌ W0 | ⬜ pending |
-| 09-02-02 | 02 | 2 | GATEWAY-01, GATEWAY-02 | T-09-02 | Course Switcher seamlessly toggles course containers and updates document metadata | unit / dom | `node tests/multi-course.test.js` | ❌ W0 | ⬜ pending |
+| 09-01-01 | 01 | 1 | GATEWAY-01, GATEWAY-03 | T-09-01 | State storage namespaced with zero cross-course bleed; legacy state migrated smoothly | unit | `node tests/multi-course.test.js` | ✅ | ✅ green |
+| 09-01-02 | 01 | 1 | GATEWAY-01 | T-09-01 | Legacy `pretraining_app_state_v1` untouched and functional without regression | unit | `node tests/mode-switcher.test.js` | ✅ | ✅ green |
+| 09-02-01 | 02 | 2 | GATEWAY-02 | T-09-02 | Course 2 gate modal blocks unauthenticated entry until passcode 'buka-kata' or '?course=word&unlock=dev' | unit / dom | `node tests/multi-course.test.js` | ✅ | ✅ green |
+| 09-02-02 | 02 | 2 | GATEWAY-01, GATEWAY-02 | T-09-02 | Course Switcher seamlessly toggles course containers and updates document metadata | unit / dom | `node tests/multi-course.test.js` | ✅ | ✅ green |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -49,7 +49,7 @@ created: "2026-09-07"
 
 ## Wave 0 Requirements
 
-- [ ] `tests/multi-course.test.js` — Test suite stubs for multi-course switching, namespaced StateManager, migration, and gate protection.
+- [x] `tests/multi-course.test.js` — Test suite stubs for multi-course switching, namespaced StateManager, migration, and gate protection.
 
 ---
 

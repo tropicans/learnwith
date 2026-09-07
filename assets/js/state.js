@@ -4,7 +4,27 @@
  * ==========================================================================
  */
 
-const STORAGE_KEY = 'pretraining_app_state_v1';
+const STORAGE_KEY = 'learnwith_ai_state_v1';
+const LEGACY_STORAGE_KEY = 'pretraining_app_state_v1';
+
+const COURSE_CONFIGS = {
+  ai: {
+    id: 'ai',
+    storageKey: 'learnwith_ai_state_v1',
+    legacyKey: 'pretraining_app_state_v1',
+    title: 'Hands-on Agentic AI',
+    subtitle: 'Hands-on Agentic AI • Pra-Training',
+    icon: '🤖'
+  },
+  word: {
+    id: 'word',
+    storageKey: 'learnwith_word_state_v1',
+    unlockKey: 'learnwith_word_unlocked',
+    title: 'Pengolahan Kata Tingkat Lanjut',
+    subtitle: 'Pengolahan Kata Tingkat Lanjut • Modul Praktik ASN',
+    icon: '📝'
+  }
+};
 
 const DEFAULT_STATE = {
   theme: 'light',
@@ -97,9 +117,60 @@ const DEFAULT_STATE = {
 };
 
 class StateManager {
-  constructor() {
+  constructor(initialCourse = 'ai') {
     this.listeners = new Map();
+    this.activeCourse = (initialCourse === 'word') ? 'word' : 'ai';
+    this.migrateLegacyStateIfNeeded();
     this.state = this.loadState();
+  }
+
+  /**
+   * Migrate legacy state key if present without modifying or deleting it
+   */
+  migrateLegacyStateIfNeeded() {
+    try {
+      if (typeof localStorage === 'undefined') return;
+      const aiKey = COURSE_CONFIGS.ai.storageKey;
+      const legacyKey = COURSE_CONFIGS.ai.legacyKey;
+      const currentAiState = localStorage.getItem(aiKey);
+      const legacyState = localStorage.getItem(legacyKey);
+      if (!currentAiState && legacyState) {
+        localStorage.setItem(aiKey, legacyState);
+      }
+    } catch (e) {
+      console.warn('Legacy state migration check failed:', e);
+    }
+  }
+
+  /**
+   * Get current storage key based on active course
+   */
+  getStorageKey() {
+    return COURSE_CONFIGS[this.activeCourse]?.storageKey || COURSE_CONFIGS.ai.storageKey;
+  }
+
+  /**
+   * Get active course identifier ('ai' | 'word')
+   */
+  getActiveCourse() {
+    return this.activeCourse;
+  }
+
+  /**
+   * Set active course, reload scoped state, and emit courseChange
+   */
+  setCourse(courseId) {
+    const validCourse = (courseId === 'word') ? 'word' : 'ai';
+    if (this.activeCourse === validCourse) return true;
+    this.activeCourse = validCourse;
+    this.state = this.loadState();
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('learnwith_active_course', validCourse);
+      }
+    } catch (e) {}
+    this.emit('courseChange', { course: validCourse, state: this.state });
+    return true;
   }
 
   /**
@@ -107,7 +178,11 @@ class StateManager {
    */
   loadState() {
     try {
-      const serialized = localStorage.getItem(STORAGE_KEY);
+      const storageKey = this.getStorageKey();
+      let serialized = (typeof localStorage !== 'undefined') ? localStorage.getItem(storageKey) : null;
+      if (!serialized && this.activeCourse === 'ai' && typeof localStorage !== 'undefined') {
+        serialized = localStorage.getItem(COURSE_CONFIGS.ai.legacyKey);
+      }
       if (!serialized) {
         return JSON.parse(JSON.stringify(DEFAULT_STATE));
       }
@@ -162,7 +237,10 @@ class StateManager {
   saveState() {
     try {
       this.state.lastUpdated = new Date().toISOString();
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
+      const storageKey = this.getStorageKey();
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(storageKey, JSON.stringify(this.state));
+      }
       this.emit('stateChange', this.state);
     } catch (e) {
       console.error('Failed to save state to localStorage:', e);
@@ -431,5 +509,5 @@ class StateManager {
 window.AppState = new StateManager();
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { StateManager, DEFAULT_STATE, STORAGE_KEY };
+  module.exports = { StateManager, DEFAULT_STATE, STORAGE_KEY, LEGACY_STORAGE_KEY, COURSE_CONFIGS };
 }

@@ -88,10 +88,38 @@
           <h1 id="header-brand-title">Hands-on Agentic AI</h1>
           <p id="header-brand-subtitle">Hands-on Agentic AI • Pra-Training</p>
         </div>
+
+        <!-- Course Switcher Component (Header) -->
+        <div class="header-course-switcher" id="course-switcher-container">
+          <button type="button" class="course-dropdown-btn" id="btn-course-dropdown" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih Workshop / Course">
+            <span class="course-icon" id="current-course-icon">🤖</span>
+            <span class="course-name" id="current-course-name">Hands-on Agentic AI</span>
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <ul class="course-dropdown-menu" id="course-dropdown-menu" role="listbox">
+            <li class="course-dropdown-item active" data-course="ai" role="option" aria-selected="true" id="item-course-ai">
+              <span class="course-item-icon">🤖</span>
+              <div class="course-item-info">
+                <span class="course-item-title">Hands-on Agentic AI</span>
+                <span class="course-item-desc">Hermes Agent & 9Router</span>
+              </div>
+            </li>
+            <li class="course-dropdown-item" data-course="word" role="option" aria-selected="false" id="item-course-word">
+              <span class="course-item-icon">📝</span>
+              <div class="course-item-info">
+                <span class="course-item-title">Pengolahan Kata Lanjut</span>
+                <span class="course-item-desc">Modul Praktik ASN (Styles, TOC, Merge)</span>
+              </div>
+              <span class="course-lock-badge" id="badge-word-locked">🔒</span>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Mode Switcher Tabs (Segmented Control) -->
-      <div class="header-mode-switcher mode-switcher" role="tablist" aria-label="Pilihan Sesi Workshop">
+      <!-- Mode Switcher Tabs (Segmented Control - Course 1 Dual-Mode) -->
+      <div class="header-mode-switcher mode-switcher" id="header-mode-switcher" role="tablist" aria-label="Pilihan Sesi Workshop">
         <button type="button" class="mode-tab active" data-mode="pretraining" role="tab" aria-selected="true" aria-controls="container-pretraining" id="tab-pretraining-header">
           <span class="mode-tab-icon">📋</span>
           <span class="mode-tab-label">Pra-Training</span>
@@ -161,8 +189,20 @@
          ========================================== -->
     <aside id="app-sidebar" class="app-sidebar">
       
-      <!-- Sidebar Mode Switcher -->
-      <div class="sidebar-mode-switcher-container">
+      <!-- Sidebar Course Selector -->
+      <div class="sidebar-course-selector-container">
+        <div class="sidebar-course-label">Pilihan Workshop</div>
+        <button type="button" class="sidebar-course-btn" id="btn-sidebar-course-select" aria-label="Ganti Workshop">
+          <span style="display: flex; align-items: center; gap: 0.5rem;">
+            <span id="sidebar-course-icon">🤖</span>
+            <span id="sidebar-course-name">Hands-on Agentic AI</span>
+          </span>
+          <span class="course-lock-badge unlocked" id="sidebar-word-locked">🔒</span>
+        </button>
+      </div>
+
+      <!-- Sidebar Mode Switcher (Specific to Course 1) -->
+      <div class="sidebar-mode-switcher-container" id="sidebar-mode-switcher-container">
         <div class="sidebar-mode-label">Mode Sesi Workshop</div>
         <div class="sidebar-mode-switcher" role="tablist" aria-label="Pilihan Sesi Workshop (Sidebar)">
           <button type="button" class="mode-tab active" data-mode="pretraining" role="tab" aria-selected="true" aria-controls="container-pretraining" id="tab-pretraining-sidebar">
@@ -408,9 +448,14 @@
     <main id="main-content" class="app-main">
       
       <!-- ==========================================
-           MODE CONTAINER 1: PRA-TRAINING (PERSIAPAN)
+           COURSE CONTAINER 1: HANDS-ON AGENTIC AI
            ========================================== -->
-      <div id="container-pretraining" class="mode-container active" role="tabpanel" aria-labelledby="tab-pretraining-header">
+      <div id="container-course-ai" class="course-container active">
+        
+        <!-- ==========================================
+             MODE CONTAINER 1: PRA-TRAINING (PERSIAPAN)
+             ========================================== -->
+        <div id="container-pretraining" class="mode-container active" role="tabpanel" aria-labelledby="tab-pretraining-header">
         
         <!-- HERO WELCOME SECTION -->
         <section class="main-hero">
@@ -4401,6 +4446,70 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
       </section>
     </div>
     <!-- /#container-liveclass -->
+    </div>
+    <!-- /#container-course-ai -->
+
+    <!-- ==========================================
+         COURSE CONTAINER 2: PENGOLAHAN KATA TINGKAT LANJUT (ASN)
+         ========================================== -->
+    <div id="container-course-word" class="course-container" style="display: none;">
+      <section class="main-hero" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.25) 0%, rgba(15, 23, 42, 0.4) 100%); border-color: rgba(59, 130, 246, 0.3);">
+        <div class="hero-tag" style="background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-color: rgba(59, 130, 246, 0.3);">
+          <span>📝</span> Modul Pengolahan Kata Tingkat Lanjut • Standar ASN
+        </div>
+        <h2 class="hero-title">Pengolahan Kata Tingkat Lanjut</h2>
+        <p class="hero-subtitle">
+          Panduan praktik interaktif penyusunan dokumen dinas resmi, hirarki Styles & Heading, Daftar Isi otomatis, pemisahan Section Breaks nomor Romawi/Arab, template <code>.dotx</code>, otomatisasi Mail Merge, serta etika kolaborasi daring ASN Pemprov DKI Jakarta.
+        </p>
+        <div class="hero-stats-grid" style="margin-top: 1.5rem;">
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">📑</div>
+            <div class="hero-stat-info">
+              <h4>Bab I–IV</h4>
+              <p>4 Modul Terstruktur</p>
+            </div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">🎯</div>
+            <div class="hero-stat-info">
+              <h4>3 Checkpoint</h4>
+              <p>Verifikasi Praktik</p>
+            </div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">💡</div>
+            <div class="hero-stat-info">
+              <h4>20 Kuis ASN</h4>
+              <p>Evaluasi Bab V</p>
+            </div>
+          </div>
+          <div class="hero-stat-card">
+            <div class="hero-stat-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">🖨️</div>
+            <div class="hero-stat-info">
+              <h4>Ekspor 1-Klik</h4>
+              <p>Laporan BPSDM</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Placeholder Card for Phase 10 Modules -->
+      <section class="content-section" style="margin-top: 2rem;">
+        <div class="card" style="border: 2px dashed var(--border-subtle); padding: 2.5rem; text-align: center; background: var(--bg-surface-subtle);">
+          <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚧</div>
+          <h3 style="font-size: var(--font-size-xl); margin-bottom: 0.5rem; color: var(--text-primary);">Modul Praktik Sedang Disiapkan (Fase 10)</h3>
+          <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 1.5rem auto; line-height: 1.6;">
+            Arsitektur multi-course dan sistem penguncian gerbang (gate protection) telah aktif. Modul interaktif Bab I hingga Bab IV akan dimuat pada Fase 10 dan 11.
+          </p>
+          <div style="display: inline-flex; gap: 0.75rem;">
+            <button type="button" class="btn btn-primary btn-sm" id="btn-return-course-ai">
+              <span>🤖</span> Kembali ke Hands-on Agentic AI
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- /#container-course-word -->
 
       <!-- FOOTER -->
       <footer class="app-footer">
@@ -4485,6 +4594,48 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
       <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.25rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
         <button type="button" id="btn-close-locked-modal" class="btn btn-primary" style="width: 100%; justify-content: center;">
           <span>📋</span> Tetap di Mode Pra-Training
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Course 2 (Pengolahan Kata) Locked Modal Dialog -->
+  <div id="modal-wordcourse-locked" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-word-locked-title">
+    <div class="modal-content" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 id="modal-word-locked-title" style="display: flex; align-items: center; gap: 0.5rem; color: var(--accent-primary); font-size: var(--font-size-lg);">
+          <span>🔒</span> Modul Pengolahan Kata Tingkat Lanjut Terkunci
+        </h3>
+      </div>
+      <div class="modal-body" style="margin: 1.25rem 0; color: var(--text-secondary); line-height: 1.6; font-size: var(--font-size-sm);">
+        <p>
+          Modul <strong>Pengolahan Kata Tingkat Lanjut (ASN)</strong> saat ini berada dalam tahap pratinjau instruktur/pengembang dan dilindungi oleh gerbang verifikasi kode akses.
+        </p>
+        <div class="alert-box alert-info" style="margin: 1rem 0; padding: 0.85rem 1rem;">
+          <div class="alert-icon">💡</div>
+          <div class="alert-content">
+            <p style="font-size: var(--font-size-xs); font-weight: 600; margin: 0 0 0.25rem 0;">Akses Publik Default:</p>
+            <p style="font-size: var(--font-size-xs); margin: 0;">
+              Peserta umum dapat langsung mengakses panduan workshop <strong>Hands-on Agentic AI</strong> tanpa perlu memasukkan kode sandi.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Passcode Form for Instructors & Developers -->
+        <div style="margin-top: 1.25rem; background: var(--bg-surface-subtle); padding: 0.85rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+          <label for="input-word-unlock-code" style="display: block; font-size: var(--font-size-xs); font-weight: 600; margin-bottom: 0.4rem; color: var(--text-primary);">
+            Kode Buka Kunci Instruktur / Pengembang:
+          </label>
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="password" id="input-word-unlock-code" class="form-control" placeholder="Contoh: buka-kata" style="flex: 1; font-size: var(--font-size-xs); padding: 0.4rem 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); background: var(--bg-surface);" />
+            <button type="button" id="btn-submit-word-unlock" class="btn btn-primary btn-sm">Buka Modul</button>
+          </div>
+          <span id="word-unlock-feedback" style="display: block; font-size: var(--font-size-xs); margin-top: 0.35rem; color: var(--color-danger); display: none;"></span>
+        </div>
+      </div>
+      <div class="modal-footer" style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.25rem; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+        <button type="button" id="btn-close-word-locked" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+          <span>🤖</span> Tetap di Hands-on Agentic AI
         </button>
       </div>
     </div>

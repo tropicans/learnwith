@@ -61,6 +61,12 @@ class SearchEngine {
     const elements = document.querySelectorAll('.content-section, .card, .step-card, .module-card, .step-section, .alert-box, .checkpoint-gate-card');
 
     elements.forEach((el, index) => {
+      // Skip elements that belong to a currently hidden course container
+      const parentCourseContainer = el.closest('#container-course-ai, #container-course-word');
+      if (parentCourseContainer && parentCourseContainer.style.display === 'none') {
+        return;
+      }
+
       // Skip elements that belong to a currently hidden mode container
       const parentModeContainer = el.closest('#container-pretraining, #container-liveclass');
       if (parentModeContainer && parentModeContainer.style.display === 'none') {
