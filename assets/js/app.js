@@ -5,7 +5,12 @@
  */
 
 if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', async () => {
+    // 0. Initialize Session Security & URL Authorization (SEC-05, SEC-06)
+    if (typeof SessionSecurityManager !== 'undefined' && typeof SessionSecurityManager.init === 'function') {
+      await SessionSecurityManager.init();
+    }
+
     // 1. Initialize State and Theme
     window.AppState.init();
 
@@ -501,7 +506,9 @@ function showToast(message, type = 'info', duration = 3000) {
   }, duration);
 }
 
-window.showToast = showToast;
+if (typeof window !== 'undefined') {
+  window.showToast = showToast;
+}
 
 /**
  * --- 8. MODULE ACCORDION & COLLAPSIBLE CONTROLLER ---
@@ -1939,30 +1946,471 @@ function updateModeUI(mode, showNotification = true) {
 }
 
 const LIVE_CLASS_UNLOCK_KEY = 'live_class_unlocked';
+const WORD_COURSE_UNLOCK_KEY = 'learnwith_word_unlocked';
 const INSTRUCTOR_PASSCODES = ['buka-kelas'];
 
-function isLiveClassUnlocked() {
-  // 1. Check URL parameters for ?unlock=live or ?unlock=class
-  if (typeof window !== 'undefined' && window.location && window.location.search) {
-    const params = new URLSearchParams(window.location.search);
-    const unlockVal = params.get('unlock');
-    if (unlockVal === 'live' || unlockVal === 'class' || unlockVal === '1') {
-      try { localStorage.setItem(LIVE_CLASS_UNLOCK_KEY, 'true'); } catch (e) {}
-      return true;
+// Default authorized SHA-256 hashes (Zero-Plaintext Security)
+// 'buka-kata': ddf62f4013c59b111215312fb959629155a5b1dc5cf799f2053a8c2395c4511b
+// 'kata-sandi-asn': 487da33ab431e57b68afa84059c0e7a95818f99cd9581054026f224fc7bba174
+const DEFAULT_WORD_PASSCODE_HASHES = [
+  'ddf62f4013c59b111215312fb959629155a5b1dc5cf799f2053a8c2395c4511b',
+  '487da33ab431e57b68afa84059c0e7a95818f99cd9581054026f224fc7bba174'
+];
+
+function getAllowedWordPasscodeHashes() {
+  if (typeof window !== 'undefined' && window.LEARNWITH_CONFIG && window.LEARNWITH_CONFIG.security && Array.isArray(window.LEARNWITH_CONFIG.security.allowedPasscodeHashes)) {
+    return window.LEARNWITH_CONFIG.security.allowedPasscodeHashes;
+  }
+  return DEFAULT_WORD_PASSCODE_HASHES;
+}
+
+async function hashPasscodeSha256(rawStr) {
+  const normalized = (rawStr || '').trim().toLowerCase();
+  if (typeof window !== 'undefined' && window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(normalized);
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  if (typeof require !== 'undefined') {
+    try {
+      const crypto = require('crypto');
+      return crypto.createHash('sha256').update(normalized).digest('hex');
+    } catch (e) {}
+  }
+  return null;
+}
+
+async function verifyWordPasscode(inputCode) {
+  if (!inputCode) return false;
+  const hash = await hashPasscodeSha256(inputCode);
+  if (!hash) return false;
+  const allowed = getAllowedWordPasscodeHashes();
+  return allowed.includes(hash);
+}
+
+/**
+ * Session Security & Inactivity Manager (SEC-05, SEC-06)
+ * - Tab-scoped session storage isolation
+ * - Cryptographic checksum anti-tampering verification
+ * - 15-minute sliding inactivity auto-lock
+ * - Immediate URL history sanitization
+ */
+const SessionSecurityManager = (function() {
+  'use strict';
+
+  const STORAGE_KEY_PREFIX = 'lw_session_';
+  let sessionSeed = null;
+  let inactivityTimer = null;
+  let lastActivityTimestamp = Date.now();
+  let listenersAttached = false;
+  const activeSessionChecksums = {};
+
+  function getTimeoutMs() {
+    let minutes = 15;
+    if (typeof window !== 'undefined' && window.LEARNWITH_CONFIG && window.LEARNWITH_CONFIG.security && typeof window.LEARNWITH_CONFIG.security.sessionTimeoutMinutes === 'number') {
+      minutes = window.LEARNWITH_CONFIG.security.sessionTimeoutMinutes;
+    }
+    return Math.max(1, minutes) * 60 * 1000;
+  }
+
+  function getSessionSeed() {
+    if (typeof window !== 'undefined' && window.__LW_SESSION_SEED) {
+      return window.__LW_SESSION_SEED;
+    }
+    if (!sessionSeed) {
+      if (typeof window !== 'undefined' && window.crypto && window.crypto.getRandomValues) {
+        const arr = new Uint8Array(16);
+        window.crypto.getRandomValues(arr);
+        sessionSeed = Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+      } else if (typeof require !== 'undefined') {
+        try {
+          const crypto = require('crypto');
+          sessionSeed = crypto.randomBytes(16).toString('hex');
+        } catch (e) {
+          sessionSeed = 'lw_seed_' + Math.random().toString(36).slice(2) + Date.now();
+        }
+      } else {
+        sessionSeed = 'lw_seed_' + Math.random().toString(36).slice(2) + Date.now();
+      }
+      if (typeof window !== 'undefined') {
+        window.__LW_SESSION_SEED = sessionSeed;
+      }
+    }
+    return sessionSeed;
+  }
+
+  function computeChecksumSync(course, expiresAt) {
+    if (typeof require !== 'undefined') {
+      try {
+        const crypto = require('crypto');
+        const seed = getSessionSeed();
+        const raw = `${course}:${expiresAt}:${seed}`.trim().toLowerCase();
+        return crypto.createHash('sha256').update(raw).digest('hex');
+      } catch (e) {}
+    }
+    return null;
+  }
+
+  async function computeChecksum(course, expiresAt) {
+    const syncVal = computeChecksumSync(course, expiresAt);
+    if (syncVal) return syncVal;
+    const seed = getSessionSeed();
+    const raw = `${course}:${expiresAt}:${seed}`;
+    return await hashPasscodeSha256(raw);
+  }
+
+  function getStorageKey(course) {
+    return STORAGE_KEY_PREFIX + (course === 'word' ? 'word' : 'live');
+  }
+
+  function purgeLegacyStorage() {
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.removeItem('learnwith_word_unlocked');
+      }
+    } catch (e) {}
+  }
+
+  function isSessionValid(course) {
+    try {
+      if (typeof sessionStorage === 'undefined') {
+        if (course === 'live-class' && typeof localStorage !== 'undefined') {
+          return localStorage.getItem(LIVE_CLASS_UNLOCK_KEY) === 'true';
+        }
+        return false;
+      }
+
+      const key = getStorageKey(course);
+      const raw = sessionStorage.getItem(key);
+      if (!raw) return false;
+
+      let token;
+      try {
+        token = JSON.parse(raw);
+      } catch (e) {
+        sessionStorage.removeItem(key);
+        delete activeSessionChecksums[course];
+        return false;
+      }
+
+      if (!token || !token.unlocked || !token.expiresAt || !token.checksum) {
+        sessionStorage.removeItem(key);
+        delete activeSessionChecksums[course];
+        return false;
+      }
+
+      // Check expiry
+      if (Date.now() > token.expiresAt) {
+        sessionStorage.removeItem(key);
+        delete activeSessionChecksums[course];
+        return false;
+      }
+
+      // Check integrity checksum
+      const syncExpected = computeChecksumSync(course, token.expiresAt);
+      if (syncExpected) {
+        if (token.checksum !== syncExpected) {
+          sessionStorage.removeItem(key);
+          delete activeSessionChecksums[course];
+          return false;
+        }
+        activeSessionChecksums[course] = syncExpected;
+        return true;
+      }
+
+      // Browser Web Crypto memory validation check:
+      if (activeSessionChecksums[course]) {
+        if (activeSessionChecksums[course] === token.checksum) {
+          return true;
+        } else {
+          // Token checksum doesn't match active verified session
+          sessionStorage.removeItem(key);
+          delete activeSessionChecksums[course];
+          return false;
+        }
+      }
+
+      // If token has not been verified yet in memory (e.g. after tab refresh):
+      computeChecksum(course, token.expiresAt).then(expected => {
+        if (expected && token.checksum === expected) {
+          activeSessionChecksums[course] = expected;
+        } else {
+          sessionStorage.removeItem(key);
+          delete activeSessionChecksums[course];
+          if (course === 'word' && typeof setWordCourseUnlocked === 'function') {
+            setWordCourseUnlocked(false);
+          } else if (typeof setLiveClassUnlocked === 'function') {
+            setLiveClassUnlocked(false);
+          }
+        }
+      }).catch(() => {});
+
+      return false;
+    } catch (e) {
+      return false;
     }
   }
 
-  // 2. Check localStorage
+  async function createToken(course, unlockedAt = Date.now(), expiresAt = null) {
+    const exp = expiresAt || (unlockedAt + getTimeoutMs());
+    let checksum = computeChecksumSync(course, exp);
+    if (!checksum) {
+      checksum = await computeChecksum(course, exp);
+    }
+    return {
+      unlocked: true,
+      course,
+      unlockedAt,
+      expiresAt: exp,
+      checksum
+    };
+  }
+
+  function setSessionSync(course, unlocked) {
+    purgeLegacyStorage();
+    if (typeof sessionStorage === 'undefined') return;
+    const key = getStorageKey(course);
+
+    if (!unlocked) {
+      delete activeSessionChecksums[course];
+      sessionStorage.removeItem(key);
+      return;
+    }
+
+    const exp = Date.now() + getTimeoutMs();
+    const syncChecksum = computeChecksumSync(course, exp);
+    if (syncChecksum) {
+      activeSessionChecksums[course] = syncChecksum;
+      const token = {
+        unlocked: true,
+        course,
+        unlockedAt: Date.now(),
+        expiresAt: exp,
+        checksum: syncChecksum
+      };
+      sessionStorage.setItem(key, JSON.stringify(token));
+      startInactivityWatcher();
+      return;
+    }
+
+    // Web Crypto async path
+    computeChecksum(course, exp).then(cs => {
+      activeSessionChecksums[course] = cs;
+      const token = {
+        unlocked: true,
+        course,
+        unlockedAt: Date.now(),
+        expiresAt: exp,
+        checksum: cs
+      };
+      sessionStorage.setItem(key, JSON.stringify(token));
+      startInactivityWatcher();
+    });
+  }
+
+  async function setSession(course, unlocked) {
+    setSessionSync(course, unlocked);
+  }
+
+  function resetInactivityTimer() {
+    const now = Date.now();
+    if (now - lastActivityTimestamp < 2000) return;
+    lastActivityTimestamp = now;
+
+    const timeoutMs = getTimeoutMs();
+
+    ['word', 'live-class'].forEach(course => {
+      const key = getStorageKey(course);
+      try {
+        if (typeof sessionStorage !== 'undefined') {
+          const raw = sessionStorage.getItem(key);
+          if (raw) {
+            const token = JSON.parse(raw);
+            if (token && token.unlocked && Date.now() <= token.expiresAt) {
+              token.expiresAt = Date.now() + timeoutMs;
+              const newChecksum = computeChecksumSync(course, token.expiresAt);
+              if (newChecksum) {
+                token.checksum = newChecksum;
+                activeSessionChecksums[course] = newChecksum;
+                sessionStorage.setItem(key, JSON.stringify(token));
+              } else {
+                computeChecksum(course, token.expiresAt).then(cs => {
+                  token.checksum = cs;
+                  activeSessionChecksums[course] = cs;
+                  sessionStorage.setItem(key, JSON.stringify(token));
+                }).catch(() => {});
+              }
+            }
+          }
+        }
+      } catch (e) {}
+    });
+
+    if (inactivityTimer) {
+      clearTimeout(inactivityTimer);
+    }
+    inactivityTimer = setTimeout(() => {
+      triggerAutoLock('inactivity');
+    }, timeoutMs);
+  }
+
+  function triggerAutoLock(reason = 'inactivity') {
+    if (inactivityTimer) {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = null;
+    }
+
+    delete activeSessionChecksums['word'];
+    delete activeSessionChecksums['live-class'];
+
+    try {
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.removeItem(getStorageKey('word'));
+        sessionStorage.removeItem(getStorageKey('live-class'));
+      }
+      if (typeof localStorage !== 'undefined') {
+        localStorage.removeItem(LIVE_CLASS_UNLOCK_KEY);
+        localStorage.removeItem(WORD_COURSE_UNLOCK_KEY);
+      }
+    } catch (e) {}
+
+    if (typeof setWordCourseUnlocked === 'function') {
+      setWordCourseUnlocked(false);
+    }
+    if (typeof setLiveClassUnlocked === 'function') {
+      setLiveClassUnlocked(false);
+    }
+
+    if (typeof window !== 'undefined' && window.AppState) {
+      const currentCourse = window.AppState.getActiveCourse ? window.AppState.getActiveCourse() : null;
+      if (currentCourse === 'word') {
+        if (typeof switchView === 'function') {
+          switchView('home', null, true, false);
+        }
+      }
+    }
+
+    if (reason === 'inactivity' && typeof showToast === 'function') {
+      showToast('Sesi telah berakhir karena tidak ada aktivitas. Modul otomatis dikunci demi keamanan.', 'warning', 4500);
+    }
+  }
+
+  function startInactivityWatcher() {
+    if (listenersAttached || typeof window === 'undefined' || !window.addEventListener) return;
+    listenersAttached = true;
+
+    const activityEvents = ['mousemove', 'keydown', 'touchstart', 'scroll', 'click'];
+    activityEvents.forEach(evt => {
+      window.addEventListener(evt, resetInactivityTimer, { passive: true });
+    });
+
+    resetInactivityTimer();
+  }
+
+  async function processUrlAuthorization() {
+    if (typeof window === 'undefined' || !window.location) return;
+
+    purgeLegacyStorage();
+
+    let search = window.location.search;
+    if (!search && window.location.href && window.location.href.includes('?')) {
+      search = '?' + window.location.href.split('?')[1].split('#')[0];
+    }
+    if (!search) return;
+
+    const params = new URLSearchParams(search);
+
+    // SEC-05: Check for authorized passcode or token
+    const codeParam = params.get('code') || params.get('unlock_code') || params.get('passcode') || params.get('token');
+
+    let authorizedWord = false;
+    let authorizedLive = false;
+
+    if (codeParam) {
+      const trimmed = codeParam.trim();
+      const codeHash = await hashPasscodeSha256(trimmed);
+      const allowedWordHashes = getAllowedWordPasscodeHashes();
+
+      if (codeHash && allowedWordHashes.includes(codeHash)) {
+        authorizedWord = true;
+      }
+
+      if (INSTRUCTOR_PASSCODES.includes(trimmed.toLowerCase())) {
+        authorizedLive = true;
+      }
+    }
+
+    if (authorizedWord) {
+      setSessionSync('word', true);
+      if (typeof setWordCourseUnlocked === 'function') {
+        setWordCourseUnlocked(true);
+      }
+    }
+
+    if (authorizedLive) {
+      setSessionSync('live-class', true);
+      if (typeof setLiveClassUnlocked === 'function') {
+        setLiveClassUnlocked(true);
+      }
+    }
+
+    // SEC-05: Cleanse URL immediately via history.replaceState
+    if (window.history && typeof window.history.replaceState === 'function') {
+      try {
+        const cleanParams = new URLSearchParams(search);
+        ['code', 'unlock_code', 'passcode', 'token', 'unlock', 'auth'].forEach(k => cleanParams.delete(k));
+
+        let newSearch = cleanParams.toString();
+        newSearch = newSearch ? `?${newSearch}` : '';
+        const newUrl = `${window.location.pathname}${newSearch}${window.location.hash || ''}`;
+        window.history.replaceState({}, document.title, newUrl);
+      } catch (e) {}
+    }
+  }
+
+  async function init() {
+    getSessionSeed();
+    purgeLegacyStorage();
+    await processUrlAuthorization();
+    if (isSessionValid('word') || isSessionValid('live-class')) {
+      startInactivityWatcher();
+    }
+  }
+
+  return {
+    init,
+    createToken,
+    isSessionValid,
+    setSession,
+    setSessionSync,
+    computeChecksum,
+    computeChecksumSync,
+    getSessionSeed,
+    resetInactivityTimer,
+    triggerAutoLock,
+    startInactivityWatcher,
+    processUrlAuthorization,
+    purgeLegacyStorage
+  };
+})();
+
+function isLiveClassUnlocked() {
+  if (typeof sessionStorage !== 'undefined') {
+    return SessionSecurityManager.isSessionValid('live-class');
+  }
   try {
     if (typeof localStorage !== 'undefined' && localStorage.getItem(LIVE_CLASS_UNLOCK_KEY) === 'true') {
       return true;
     }
   } catch (e) {}
-
   return false;
 }
 
 function setLiveClassUnlocked(unlocked = true) {
+  SessionSecurityManager.setSessionSync('live-class', unlocked);
+
   try {
     if (unlocked) {
       localStorage.setItem(LIVE_CLASS_UNLOCK_KEY, 'true');
@@ -2089,78 +2537,30 @@ function setupModeSwitcher() {
   }
 }
 
-const WORD_COURSE_UNLOCK_KEY = 'learnwith_word_unlocked';
-
-// Default authorized SHA-256 hashes (Zero-Plaintext Security)
-// 'buka-kata': ddf62f4013c59b111215312fb959629155a5b1dc5cf799f2053a8c2395c4511b
-// 'kata-sandi-asn': 487da33ab431e57b68afa84059c0e7a95818f99cd9581054026f224fc7bba174
-const DEFAULT_WORD_PASSCODE_HASHES = [
-  'ddf62f4013c59b111215312fb959629155a5b1dc5cf799f2053a8c2395c4511b',
-  '487da33ab431e57b68afa84059c0e7a95818f99cd9581054026f224fc7bba174'
-];
-
-function getAllowedWordPasscodeHashes() {
-  if (typeof window !== 'undefined' && window.LEARNWITH_CONFIG && window.LEARNWITH_CONFIG.security && Array.isArray(window.LEARNWITH_CONFIG.security.allowedPasscodeHashes)) {
-    return window.LEARNWITH_CONFIG.security.allowedPasscodeHashes;
-  }
-  return DEFAULT_WORD_PASSCODE_HASHES;
-}
-
-async function hashPasscodeSha256(rawStr) {
-  const normalized = (rawStr || '').trim().toLowerCase();
-  if (typeof window !== 'undefined' && window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(normalized);
-    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  }
-  if (typeof require !== 'undefined') {
-    try {
-      const crypto = require('crypto');
-      return crypto.createHash('sha256').update(normalized).digest('hex');
-    } catch (e) {}
-  }
-  return null;
-}
-
-async function verifyWordPasscode(inputCode) {
-  if (!inputCode) return false;
-  const hash = await hashPasscodeSha256(inputCode);
-  if (!hash) return false;
-  const allowed = getAllowedWordPasscodeHashes();
-  return allowed.includes(hash);
-}
-
 function isWordCourseUnlocked() {
-  // 1. Check URL parameters for ?unlock=word, ?unlock=dev, or ?course=word&unlock=...
-  if (typeof window !== 'undefined' && window.location && window.location.search) {
-    const params = new URLSearchParams(window.location.search);
-    const unlockVal = (params.get('unlock') || '').toLowerCase();
-    if (unlockVal === 'word' || unlockVal === 'dev' || unlockVal === 'instructor' || unlockVal === '1') {
-      try { localStorage.setItem(WORD_COURSE_UNLOCK_KEY, 'true'); } catch (e) {}
-      return true;
-    }
+  if (typeof sessionStorage !== 'undefined') {
+    return SessionSecurityManager.isSessionValid('word');
   }
-
-  // 2. Check localStorage
   try {
     if (typeof localStorage !== 'undefined' && localStorage.getItem(WORD_COURSE_UNLOCK_KEY) === 'true') {
       return true;
     }
   } catch (e) {}
-
   return false;
 }
 
 function setWordCourseUnlocked(unlocked = true) {
-  try {
-    if (unlocked) {
-      localStorage.setItem(WORD_COURSE_UNLOCK_KEY, 'true');
-    } else {
-      localStorage.removeItem(WORD_COURSE_UNLOCK_KEY);
-    }
-  } catch (e) {}
+  if (typeof sessionStorage !== 'undefined') {
+    SessionSecurityManager.setSessionSync('word', unlocked);
+  } else {
+    try {
+      if (unlocked) {
+        localStorage.setItem(WORD_COURSE_UNLOCK_KEY, 'true');
+      } else {
+        localStorage.removeItem(WORD_COURSE_UNLOCK_KEY);
+      }
+    } catch (e) {}
+  }
 
   const badgeWord = document.getElementById('badge-word-locked');
   const sidebarWordLock = document.getElementById('sidebar-word-locked');
@@ -2182,7 +2582,7 @@ function switchView(viewMode, targetCourse = null, updateUrl = true, showNotific
   const containerHome = document.getElementById('container-home');
   const containerAi = document.getElementById('container-course-ai');
   const containerWord = document.getElementById('container-course-word');
-  const appContainer = document.querySelector('.app-container');
+  const appContainer = (typeof document !== 'undefined' && typeof document.querySelector === 'function') ? document.querySelector('.app-container') : null;
 
   if (viewMode === 'home') {
     if (appContainer) appContainer.classList.add('view-home');
@@ -2208,7 +2608,9 @@ function switchView(viewMode, targetCourse = null, updateUrl = true, showNotific
       } catch (e) {}
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window.scrollTo === 'function') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     return;
   }
 
@@ -2227,7 +2629,7 @@ function switchCourse(courseId, updateUrl = true, showNotification = true) {
     return;
   }
 
-  const appContainer = document.querySelector('.app-container');
+  const appContainer = (typeof document !== 'undefined' && typeof document.querySelector === 'function') ? document.querySelector('.app-container') : null;
   if (appContainer) appContainer.classList.remove('view-home');
   const containerHome = document.getElementById('container-home');
   if (containerHome) containerHome.style.display = 'none';
@@ -2639,6 +3041,7 @@ if (typeof window !== 'undefined') {
   window.setupWordRubrik = setupWordRubrik;
   window.setupWordGraduationReport = setupWordGraduationReport;
   window.updateWordNavBadges = updateWordNavBadges;
+  window.SessionSecurityManager = SessionSecurityManager;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -2672,7 +3075,8 @@ if (typeof module !== 'undefined' && module.exports) {
     setupCourseManager,
     verifyWordPasscode,
     hashPasscodeSha256,
-    getAllowedWordPasscodeHashes
+    getAllowedWordPasscodeHashes,
+    SessionSecurityManager
   };
 }
 

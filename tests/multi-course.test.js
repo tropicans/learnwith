@@ -166,7 +166,7 @@
   assertEquals(localStorage.getItem('learnwith_word_unlocked'), null, 'Unlock flag removed from localStorage');
 
   // Test 9: Zero-Plaintext Security & Cryptographic Hash Verification (SEC-01, SEC-03)
-  assert.strictEqual(window.WORD_PASSCODES, undefined, 'WORD_PASSCODES must NOT be exposed globally on window');
+  assert(window.WORD_PASSCODES === undefined, 'WORD_PASSCODES must NOT be exposed globally on window');
   assert(typeof appModule.verifyWordPasscode === 'function', 'verifyWordPasscode must be a function');
   const validPass = await appModule.verifyWordPasscode('buka-kata');
   assert(validPass === true, 'verifyWordPasscode returns true for buka-kata');

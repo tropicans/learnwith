@@ -16,7 +16,7 @@
   - Implementasi Web Crypto API (`crypto.subtle.digest`) dengan algoritma SHA-256 untuk memverifikasi kecocokan sandi tanpa pernah menyimpan string rahasia asli di client.
   - Pisahkan konfigurasi penguncian modul dan hash kredensial ke file mandiri `config.js` (`window.LEARNWITH_CONFIG`).
 
-- [ ] **Phase 17: URL Gate Hardening, Session Management & Anti-Tampering**
+- [x] **Phase 17: URL Gate Hardening, Session Management & Anti-Tampering**
   - Matikan bypass URL parameter tidak aman (`?unlock=dev`, `?unlock=word`, `?unlock=1`) di mode normal.
   - Terapkan mekanisme auto-lock session timeout (misal: otomatis mengunci kembali modul setelah periode inaktivitas tertentu atau saat tab ditutup).
   - Tambahkan proteksi anti-tampering pada kunci status penyimpanan local storage.

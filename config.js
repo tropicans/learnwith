@@ -9,6 +9,8 @@
     version: '2.2.0',
     security: {
       wordCourseLocked: true,
+      // Automatic session timeout in minutes (inactivity auto-lock)
+      sessionTimeoutMinutes: 15,
       // One-way SHA-256 hashes of authorized instructor passcodes.
       // Passcodes are NEVER stored in plaintext in the codebase.
       allowedPasscodeHashes: [
