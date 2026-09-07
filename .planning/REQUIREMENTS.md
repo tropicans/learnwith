@@ -23,14 +23,14 @@
 
 ### Interactive Evaluation & Quiz (QUIZ)
 
-- [ ] **QUIZ-01**: Interactive 20-question multiple-choice knowledge evaluation based on Bab V of the official module.
-- [ ] **QUIZ-02**: Immediate answer validation, detailed explanation/reasoning, and scoring calculation.
-- [ ] **QUIZ-03**: Self-reflection rubric and practical evaluation checklist for ASN competency verification.
+- [x] **QUIZ-01**: Interactive 20-question multiple-choice knowledge evaluation based on Bab V of the official module.
+- [x] **QUIZ-02**: Immediate answer validation, detailed explanation/reasoning, and scoring calculation.
+- [x] **QUIZ-03**: Self-reflection rubric and practical evaluation checklist for ASN competency verification.
 
 ### Report & Completion Exporter (WORD-RPT)
 
-- [ ] **WORD-RPT-01**: Pre-filled Form Laporan Hasil Pelatihan Pengolahan Kata summarizing Checkpoints 1–3, quiz score, and portfolio practice tasks.
-- [ ] **WORD-RPT-02**: 1-click copy for WhatsApp, Telegram Markdown, and clean Print/PDF export for instructor/BPSDM evaluation.
+- [x] **WORD-RPT-01**: Pre-filled Form Laporan Hasil Pelatihan Pengolahan Kata summarizing Checkpoints 1–3, quiz score, and portfolio practice tasks.
+- [x] **WORD-RPT-02**: 1-click copy for WhatsApp, Telegram Markdown, and clean Print/PDF export for instructor/BPSDM evaluation.
 
 ---
 
@@ -46,8 +46,8 @@
 | WORD-03 | Phase 10 | Complete |
 | WORD-04 | Phase 11 | Complete |
 | WORD-05 | Phase 11 | Complete |
-| QUIZ-01 | Phase 12 | Pending |
-| QUIZ-02 | Phase 12 | Pending |
-| QUIZ-03 | Phase 12 | Pending |
-| WORD-RPT-01 | Phase 12 | Pending |
-| WORD-RPT-02 | Phase 12 | Pending |
+| QUIZ-01 | Phase 12 | Complete |
+| QUIZ-02 | Phase 12 | Complete |
+| QUIZ-03 | Phase 12 | Complete |
+| WORD-RPT-01 | Phase 12 | Complete |
+| WORD-RPT-02 | Phase 12 | Complete |
