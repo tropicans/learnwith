@@ -1148,7 +1148,7 @@ function generateLiveReportText(format = 'whatsapp', overrides = {}) {
 
   if (format === 'whatsapp') {
     return `*LAPORAN HASIL PRAKTIK KELAS (HARI-H)*
-Workshop Hermes Agent + 9Router (Google Calendar via Telegram)
+Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router
 
 *Data Peserta:*
 • Nama: ${name}
@@ -1172,7 +1172,7 @@ ${sanitizedError}`;
 
   // Telegram format (Markdown)
   return `📊 **LAPORAN HASIL PRAKTIK KELAS (HARI-H)**
-Workshop Hermes Agent + 9Router (Google Calendar via Telegram)
+Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router
 
 👤 **Data Peserta:**
 - Nama: ${name}
@@ -1359,8 +1359,8 @@ function updateModeUI(mode, showNotification = true) {
   const headerSubtitle = document.getElementById('header-brand-subtitle');
   if (headerSubtitle) {
     headerSubtitle.textContent = isPretraining
-      ? 'Hermes Agent + 9Router • Pemula'
-      : 'Hermes Agent + 9Router • Live Praktik Kelas';
+      ? 'Hands-on Agentic AI • Pra-Training'
+      : 'Hands-on Agentic AI • Live Praktik Kelas';
   }
 
   // 5. Rebuild search index for active mode

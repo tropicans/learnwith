@@ -160,7 +160,7 @@
       assertEquals(liveContainer.style.display, 'none', 'Liveclass container is hidden in pretraining mode');
       assertEquals(preNav.style.display, '', 'Pretraining nav is visible in pretraining mode');
       assertEquals(liveNav.style.display, 'none', 'Liveclass nav is hidden in pretraining mode');
-      assertEquals(subtitle.textContent, 'Hermes Agent + 9Router • Pemula', 'Subtitle updated for pretraining mode');
+      assertEquals(subtitle.textContent, 'Hands-on Agentic AI • Pra-Training', 'Subtitle updated for pretraining mode');
 
       // Test Live Class Mode UI
       appModule.updateModeUI('live-class', false);
@@ -168,7 +168,7 @@
       assertEquals(liveContainer.style.display, '', 'Liveclass container is visible in live-class mode');
       assertEquals(preNav.style.display, 'none', 'Pretraining nav is hidden in live-class mode');
       assertEquals(liveNav.style.display, '', 'Liveclass nav is visible in live-class mode');
-      assertEquals(subtitle.textContent, 'Hermes Agent + 9Router • Live Praktik Kelas', 'Subtitle updated for live-class mode');
+      assertEquals(subtitle.textContent, 'Hands-on Agentic AI • Live Praktik Kelas', 'Subtitle updated for live-class mode');
     } else {
       assert(false, 'updateModeUI controller export not found');
     }

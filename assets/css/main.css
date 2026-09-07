@@ -38,6 +38,7 @@ body {
   --bg-surface-elevated: #ffffff;
   --bg-surface-subtle: #f1f5f9;
   --bg-surface-hover: #f8fafc;
+  --bg-tertiary: #f1f5f9;
   --bg-glass: rgba(255, 255, 255, 0.96);
   --bg-glass-card: #ffffff;
   --bg-terminal: #0f172a;
@@ -65,6 +66,7 @@ body {
   --color-success-text: #065f46;
 
   --color-warning: #d97706;        /* Amber 600 */
+  --color-warning-dark: #b45309;   /* Amber 700 */
   --color-warning-subtle: #fffbeb;
   --color-warning-border: #fde68a;
   --color-warning-text: #92400e;
@@ -113,6 +115,7 @@ body {
   --shadow-glow: none;
 
   /* Border Radii: Crisp Documentation (4px / 8px / 12px) */
+  --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;

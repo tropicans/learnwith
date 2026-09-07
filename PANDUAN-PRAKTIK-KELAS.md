@@ -1,6 +1,6 @@
 # Panduan Praktik Kelas untuk Instruktur
 
-## Hermes Agent + 9Router: Google Calendar melalui Telegram
+## Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router
 
 Gunakan dokumen ini ketika memandu sesi Zoom 08.30–11.00. Dokumen ini melengkapi `PANDUAN-PRE-TRAINING.md`; peserta tetap tidak boleh memasang Hermes atau mengonfigurasi provider sebelum sesi dimulai.
 

@@ -1,6 +1,6 @@
 # Rencana Pembelajaran Workshop
 
-## Hermes Agent + 9Router: Mengelola Google Calendar melalui Telegram
+## Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router
 
 **Durasi:** 08.30–11.00 WIB (150 menit)  
 **Moda:** Zoom Meeting  

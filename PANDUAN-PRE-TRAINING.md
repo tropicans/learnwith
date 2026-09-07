@@ -1,6 +1,6 @@
 # Panduan Pre-Training untuk Peserta Pemula
 
-## Workshop Hermes Agent + 9Router: Mengelola Google Calendar melalui Telegram
+## Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router
 
 Panduan ini ditulis untuk peserta **tanpa pengalaman coding atau dasar IT**. Ikuti langkah secara berurutan. Tidak perlu memahami semua istilah teknis terlebih dahulu.
 
