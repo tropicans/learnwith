@@ -259,16 +259,19 @@ function setupChecklistListeners() {
       }
     }
 
-    checkbox.addEventListener('change', (e) => {
-      const completed = e.target.checked;
-      window.AppState.updateChecklist(taskId, completed);
-      const item = e.target.closest('.checklist-item, .step-checklist-action');
-      if (item) {
-        if (completed) item.classList.add('completed');
-        else item.classList.remove('completed');
-      }
-      updateProgressUI();
-    });
+    if (!checkbox.hasAttribute('data-has-checklist-listener')) {
+      checkbox.setAttribute('data-has-checklist-listener', 'true');
+      checkbox.addEventListener('change', (e) => {
+        const completed = e.target.checked;
+        window.AppState.updateChecklist(taskId, completed);
+        const item = e.target.closest('.checklist-item, .step-checklist-action');
+        if (item) {
+          if (completed) item.classList.add('completed');
+          else item.classList.remove('completed');
+        }
+        updateProgressUI();
+      });
+    }
   });
 }
 
@@ -282,6 +285,7 @@ function setupProgressTracker() {
 }
 
 function updateProgressUI() {
+  const isWord = window.AppState.getActiveCourse && window.AppState.getActiveCourse() === 'word';
   const progress = window.AppState.calculateProgress();
   
   // Header Progress Text & Bar
@@ -306,6 +310,67 @@ function updateProgressUI() {
   const statCount = document.getElementById('stat-progress-count');
   if (statCount) {
     statCount.innerText = `${progress.completedTasks}/${progress.totalTasks}`;
+  }
+
+  if (isWord) {
+    // Update Module Progress Badges in Sidebar (Bab I, II, III)
+    ['b1', 'b2', 'b3'].forEach(mod => {
+      const el = document.getElementById(`badge-nav-word-${mod}`);
+      if (el) {
+        const p = window.AppState.getModuleProgress(`word-${mod}-`);
+        el.innerText = `${p.completed}/${p.total}`;
+        if (p.total > 0 && p.completed === p.total) {
+          el.className = 'badge badge-pill badge-success';
+        } else if (p.completed > 0) {
+          el.className = 'badge badge-pill badge-primary';
+        } else {
+          el.className = 'badge badge-pill badge-neutral';
+        }
+      }
+    });
+
+    // Update Checkpoint Status Badges in Sidebar for Course 2
+    const state = window.AppState.getState();
+    const cps = state.checkpoints || {};
+    ['word-cp-1', 'word-cp-2'].forEach((id, idx) => {
+      const el = document.getElementById(`status-nav-word-cp${idx + 1}`);
+      if (el) {
+        const status = cps[id] || 'pending';
+        if (status === 'passed') {
+          el.className = 'badge badge-pill badge-success';
+          el.innerText = 'Lolos ✓';
+        } else if (status === 'failed') {
+          el.className = 'badge badge-pill badge-danger';
+          el.innerText = 'Gagal';
+        } else {
+          el.className = 'badge badge-pill badge-warning';
+          el.innerText = 'Pending';
+        }
+      }
+    });
+
+    // Update Word Document Readiness Summary Status Badge & Description
+    if (typeof window.AppState.calculateWordReadiness === 'function') {
+      const readiness = window.AppState.calculateWordReadiness();
+      const readinessBadge = document.getElementById('readiness-word-badge') || document.getElementById('readiness-status-badge');
+      const readinessDesc = document.getElementById('readiness-word-desc') || document.getElementById('readiness-status-desc');
+      const readinessCard = document.getElementById('card-word-readiness-status') || document.getElementById('card-readiness-status');
+
+      if (readinessBadge) {
+        readinessBadge.className = `readiness-badge status-${readiness.status}`;
+        readinessBadge.innerText = readiness.label;
+      }
+
+      if (readinessDesc) {
+        readinessDesc.innerText = readiness.description;
+      }
+
+      if (readinessCard) {
+        readinessCard.style.borderColor = readiness.color;
+      }
+    }
+
+    return;
   }
 
   // Update Module Progress Badges in Sidebar (Pre-Training & Live Class)
@@ -381,6 +446,7 @@ function updateProgressUI() {
     readinessCard.style.borderColor = readiness.color;
   }
 }
+
 
 /**
  * --- 7. TOAST NOTIFICATION UTILITY ---
@@ -518,7 +584,8 @@ function setupCheckpointGates() {
   const state = window.AppState.getState();
   const checkpoints = state.checkpoints || {};
 
-  ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'].forEach(cpId => {
+  const allCheckpointIds = ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9', 'word-cp-1', 'word-cp-2'];
+  allCheckpointIds.forEach(cpId => {
     updateCheckpointCardUI(cpId, checkpoints[cpId] || 'pending');
   });
 
@@ -533,13 +600,17 @@ function setupCheckpointGates() {
     window.AppState.updateCheckpoint(cpId, newStatus);
     updateCheckpointCardUI(cpId, newStatus);
 
-    const cpNum = cpId.replace('cp-', '');
+    const isWordCp = cpId.startsWith('word-cp-');
+    const cpLabel = isWordCp
+      ? `Bab ${cpId === 'word-cp-1' ? 'II' : 'III'} (CP-${cpId.replace('word-cp-', '')})`
+      : `Checkpoint ${cpId.replace('cp-', '')}`;
+
     if (newStatus === 'passed') {
-      showToast(`Checkpoint ${cpNum} berhasil diverifikasi (Lolos ✓)`, 'success', 2500);
+      showToast(`${cpLabel} berhasil diverifikasi (Lolos ✓)`, 'success', 2500);
     } else if (newStatus === 'failed') {
-      showToast(`Checkpoint ${cpNum} ditandai memiliki kendala ⚠️`, 'warning', 2500);
+      showToast(`${cpLabel} ditandai memiliki kendala ⚠️`, 'warning', 2500);
     } else {
-      showToast(`Checkpoint ${cpNum} diatur ulang ke status Pending`, 'info', 2000);
+      showToast(`${cpLabel} diatur ulang ke status Pending`, 'info', 2000);
     }
   });
 
@@ -550,7 +621,10 @@ function setupCheckpointGates() {
 
 function updateCheckpointCardUI(cpId, status) {
   const card = document.getElementById(`card-${cpId}`);
-  const statusBadge = document.getElementById(`status-card-${cpId.replace('-', '')}`);
+  const statusBadge = document.getElementById(`status-card-${cpId}`)
+    || document.getElementById(`status-card-${cpId.replace('cp-', 'cp')}`)
+    || document.getElementById(`status-card-${cpId.replace(/-/g, '')}`)
+    || document.getElementById(`status-card-${cpId.replace('-', '')}`);
   
   if (card) {
     card.classList.remove('passed', 'failed');
@@ -578,7 +652,26 @@ function updateCheckpointCardUI(cpId, status) {
       statusBadge.innerText = 'Pending';
     }
   }
+
+  // Update sidebar checkpoint badge for Course 2
+  if (cpId.startsWith('word-cp-')) {
+    const num = cpId.replace('word-cp-', '');
+    const navBadge = document.getElementById(`status-nav-word-cp${num}`);
+    if (navBadge) {
+      if (status === 'passed') {
+        navBadge.className = 'badge badge-pill badge-success';
+        navBadge.innerText = 'Lolos ✓';
+      } else if (status === 'failed') {
+        navBadge.className = 'badge badge-pill badge-danger';
+        navBadge.innerText = 'Gagal';
+      } else {
+        navBadge.className = 'badge badge-pill badge-warning';
+        navBadge.innerText = 'Pending';
+      }
+    }
+  }
 }
+
 
 /**
  * --- 11. PARTICIPANT INPUTS & VALIDATION CONTROLLER ---
@@ -1592,6 +1685,7 @@ function switchCourse(courseId, updateUrl = true, showNotification = true) {
   const sidebarModeSwitcher = document.getElementById('sidebar-mode-switcher-container');
   const navGroupPretraining = document.getElementById('nav-group-pretraining');
   const navGroupLiveclass = document.getElementById('nav-group-liveclass');
+  const navGroupWord = document.getElementById('nav-group-word');
 
   if (validCourse === 'word') {
     if (containerAi) containerAi.style.display = 'none';
@@ -1600,18 +1694,53 @@ function switchCourse(courseId, updateUrl = true, showNotification = true) {
     if (sidebarModeSwitcher) sidebarModeSwitcher.style.display = 'none';
     if (navGroupPretraining) navGroupPretraining.style.display = 'none';
     if (navGroupLiveclass) navGroupLiveclass.style.display = 'none';
+    if (navGroupWord) {
+      navGroupWord.style.display = 'block';
+      navGroupWord.classList.add('active');
+    }
+
+    // Re-sync Course 2 checklist checkboxes and checkpoint cards from active state
+    if (typeof setupChecklistListeners === 'function') {
+      setupChecklistListeners();
+    }
+    const wordCps = (window.AppState && window.AppState.getState) ? (window.AppState.getState().checkpoints || {}) : {};
+    ['word-cp-1', 'word-cp-2'].forEach(cpId => {
+      updateCheckpointCardUI(cpId, wordCps[cpId] || 'pending');
+    });
+
+    if (typeof updateProgressUI === 'function') {
+      updateProgressUI();
+    }
   } else {
     if (containerAi) containerAi.style.display = 'block';
     if (containerWord) containerWord.style.display = 'none';
     if (headerModeSwitcher) headerModeSwitcher.style.display = 'flex';
     if (sidebarModeSwitcher) sidebarModeSwitcher.style.display = 'block';
+    if (navGroupWord) {
+      navGroupWord.style.display = 'none';
+      navGroupWord.classList.remove('active');
+    }
     
     // Restore Course 1 active mode navigation
     const activeMode = (window.AppState && window.AppState.getActiveMode) ? window.AppState.getActiveMode() : 'pretraining';
     if (typeof updateModeUI === 'function') {
       updateModeUI(activeMode, false);
     }
+
+    // Re-sync Course 1 checkboxes and checkpoints
+    if (typeof setupChecklistListeners === 'function') {
+      setupChecklistListeners();
+    }
+    const aiCps = (window.AppState && window.AppState.getState) ? (window.AppState.getState().checkpoints || {}) : {};
+    ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'].forEach(cpId => {
+      updateCheckpointCardUI(cpId, aiCps[cpId] || 'pending');
+    });
+
+    if (typeof updateProgressUI === 'function') {
+      updateProgressUI();
+    }
   }
+
 
   // 3. Update Header & Sidebar UI Titles
   const brandTitle = document.getElementById('header-brand-title');
