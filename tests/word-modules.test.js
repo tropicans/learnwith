@@ -47,7 +47,7 @@
         return child;
       },
       closest(selector) {
-        if (selector === '.checkpoint-gate-card' && (this.id === 'card-word-cp-1' || this.id === 'card-word-cp-2')) return this;
+        if (selector === '.checkpoint-gate-card' && (this.id === 'card-word-cp-1' || this.id === 'card-word-cp-2' || this.id === 'card-word-cp-3')) return this;
         if (selector === '.btn-cp-action' && classes.has('btn-cp-action')) return this;
         if (selector === '.checklist-item' || selector === '.step-checklist-action') return this;
         return this.parentElement ? this.parentElement.closest(selector) : null;
@@ -99,22 +99,28 @@
       'sec-word-cp-1': createMockElement('sec-word-cp-1'),
       'sec-word-module-3': createMockElement('sec-word-module-3'),
       'sec-word-cp-2': createMockElement('sec-word-cp-2'),
+      'sec-word-module-4': createMockElement('sec-word-module-4'),
+      'sec-word-cp-3': createMockElement('sec-word-cp-3'),
       'sec-word-diagnosis': createMockElement('sec-word-diagnosis'),
       'card-word-cp-1': createMockElement('card-word-cp-1', 'div', { classes: ['checkpoint-gate-card'] }),
       'card-word-cp-2': createMockElement('card-word-cp-2', 'div', { classes: ['checkpoint-gate-card'] }),
+      'card-word-cp-3': createMockElement('card-word-cp-3', 'div', { classes: ['checkpoint-gate-card'] }),
       'status-card-word-cp1': createMockElement('status-card-word-cp1', 'span'),
       'status-card-word-cp2': createMockElement('status-card-word-cp2', 'span'),
+      'status-card-word-cp3': createMockElement('status-card-word-cp3', 'span'),
       'status-nav-word-cp1': createMockElement('status-nav-word-cp1', 'span'),
       'status-nav-word-cp2': createMockElement('status-nav-word-cp2', 'span'),
+      'status-nav-word-cp3': createMockElement('status-nav-word-cp3', 'span'),
       'badge-nav-word-b1': createMockElement('badge-nav-word-b1', 'span'),
       'badge-nav-word-b2': createMockElement('badge-nav-word-b2', 'span'),
       'badge-nav-word-b3': createMockElement('badge-nav-word-b3', 'span'),
+      'badge-nav-word-b4': createMockElement('badge-nav-word-b4', 'span'),
       'card-word-readiness-status': createMockElement('card-word-readiness-status', 'div'),
       'readiness-word-badge': createMockElement('readiness-word-badge', 'span')
     };
 
     // Attach buttons inside checkpoint cards
-    ['word-cp-1', 'word-cp-2'].forEach((cpId) => {
+    ['word-cp-1', 'word-cp-2', 'word-cp-3'].forEach((cpId) => {
       const card = mockElements[`card-${cpId}`];
       ['passed', 'failed', 'pending'].forEach((status) => {
         const btn = createMockElement(`btn-${cpId}-${status}`, 'button', {
@@ -125,13 +131,15 @@
       });
     });
 
-    // Checklist checkboxes for 20 Word tasks
+    // Checklist checkboxes for 28 Word tasks
     const wordTasks = [
       'word-b1-download-pkg', 'word-b1-setup-folder', 'word-b1-inspect-messy', 'word-b1-check-version',
       'word-b2-apply-h1', 'word-b2-apply-h2-h3', 'word-b2-modify-styles', 'word-b2-nav-pane',
       'word-b2-multilevel', 'word-b2-insert-toc', 'word-b2-update-toc', 'word-b2-captions-ref',
       'word-b3-section-breaks', 'word-b3-unlink-header', 'word-b3-page-num-roman', 'word-b3-page-num-arabic',
-      'word-b3-landscape-mix', 'word-b3-save-dotx', 'word-b3-content-controls', 'word-b3-doc-inspection'
+      'word-b3-landscape-mix', 'word-b3-save-dotx', 'word-b3-content-controls', 'word-b3-doc-inspection',
+      'word-b4-prepare-source', 'word-b4-setup-mailmerge', 'word-b4-insert-fields', 'word-b4-merge-rules',
+      'word-b4-preview-finish', 'word-b4-track-changes', 'word-b4-comments-resolve', 'word-b4-compare-combine'
     ];
 
     const checkboxElements = wordTasks.map(taskId => {
@@ -159,7 +167,8 @@
         if (selector === '.btn-cp-action') {
           return [
             ...mockElements['card-word-cp-1'].querySelectorAll('.btn-cp-action'),
-            ...mockElements['card-word-cp-2'].querySelectorAll('.btn-cp-action')
+            ...mockElements['card-word-cp-2'].querySelectorAll('.btn-cp-action'),
+            ...mockElements['card-word-cp-3'].querySelectorAll('.btn-cp-action')
           ];
         }
         return [];
@@ -195,22 +204,25 @@
   console.log('\n[Suite 1: StateManager Course 2 Isolation & Default State]');
   localStorage.clear();
 
-  // Test 1.1: WORD_DEFAULT_STATE has exactly 20 checklist tasks
+  // Test 1.1: WORD_DEFAULT_STATE has exactly 28 checklist tasks
   assert(WORD_DEFAULT_STATE !== undefined, 'WORD_DEFAULT_STATE is exported');
   const defaultChecklistKeys = Object.keys(WORD_DEFAULT_STATE.checklists);
-  assertEquals(defaultChecklistKeys.length, 20, 'WORD_DEFAULT_STATE has exactly 20 checklist tasks');
+  assertEquals(defaultChecklistKeys.length, 28, 'WORD_DEFAULT_STATE has exactly 28 checklist tasks');
 
   const b1Keys = defaultChecklistKeys.filter(k => k.startsWith('word-b1-'));
   const b2Keys = defaultChecklistKeys.filter(k => k.startsWith('word-b2-'));
   const b3Keys = defaultChecklistKeys.filter(k => k.startsWith('word-b3-'));
+  const b4Keys = defaultChecklistKeys.filter(k => k.startsWith('word-b4-'));
   assertEquals(b1Keys.length, 4, 'Bab I has 4 checklist tasks');
   assertEquals(b2Keys.length, 8, 'Bab II has 8 checklist tasks');
   assertEquals(b3Keys.length, 8, 'Bab III has 8 checklist tasks');
+  assertEquals(b4Keys.length, 8, 'Bab IV has 8 checklist tasks');
 
   // Test 1.2: Checkpoint defaults
-  assertEquals(Object.keys(WORD_DEFAULT_STATE.checkpoints).length, 2, 'Course 2 has 2 checkpoints');
+  assertEquals(Object.keys(WORD_DEFAULT_STATE.checkpoints).length, 3, 'Course 2 has 3 checkpoints');
   assertEquals(WORD_DEFAULT_STATE.checkpoints['word-cp-1'], 'pending', 'word-cp-1 defaults to pending');
   assertEquals(WORD_DEFAULT_STATE.checkpoints['word-cp-2'], 'pending', 'word-cp-2 defaults to pending');
+  assertEquals(WORD_DEFAULT_STATE.checkpoints['word-cp-3'], 'pending', 'word-cp-3 defaults to pending');
 
   // Test 1.3: Isolation from Course 1
   const smAi = new StateManager('ai');
@@ -220,33 +232,34 @@
   const smWord = new StateManager('word');
   assertEquals(smWord.getActiveCourse(), 'word', 'Active course is word');
   assertEquals(smWord.getState().checklists['word-b1-download-pkg'], false, 'Word b1 task starts false');
+  assertEquals(smWord.getState().checklists['word-b4-prepare-source'], false, 'Word b4 task starts false');
   assertEquals(smWord.getState().checklists['m1-check-node'], undefined, 'Course 1 task does not exist in Word state');
   assertEquals(smWord.getState().checkpoints['cp-1'], undefined, 'Course 1 checkpoint does not exist in Word state');
 
   // Test 1.4: Mutating Course 2 state does not affect Course 1 in localStorage
-  smWord.updateChecklist('word-b1-download-pkg', true);
-  smWord.updateCheckpoint('word-cp-1', 'passed');
-  assertEquals(smWord.getState().checklists['word-b1-download-pkg'], true, 'Word task updated in Word state');
-  assertEquals(smWord.getState().checkpoints['word-cp-1'], 'passed', 'word-cp-1 updated in Word state');
+  smWord.updateChecklist('word-b4-prepare-source', true);
+  smWord.updateCheckpoint('word-cp-3', 'passed');
+  assertEquals(smWord.getState().checklists['word-b4-prepare-source'], true, 'Word b4 task updated in Word state');
+  assertEquals(smWord.getState().checkpoints['word-cp-3'], 'passed', 'word-cp-3 updated in Word state');
 
   const savedWordState = JSON.parse(localStorage.getItem('learnwith_word_state_v1'));
   const savedAiState = JSON.parse(localStorage.getItem('learnwith_ai_state_v1'));
-  assertEquals(savedWordState.checklists['word-b1-download-pkg'], true, 'Word state persisted to learnwith_word_state_v1');
-  assertEquals(savedAiState.checklists['word-b1-download-pkg'], undefined, 'learnwith_ai_state_v1 has zero pollution from Course 2');
+  assertEquals(savedWordState.checklists['word-b4-prepare-source'], true, 'Word state persisted to learnwith_word_state_v1');
+  assertEquals(savedAiState.checklists['word-b4-prepare-source'], undefined, 'learnwith_ai_state_v1 has zero pollution from Course 2');
 
   // Test 1.5: resetState() on Course 2 resets only Course 2
   smWord.resetState();
-  assertEquals(smWord.getState().checklists['word-b1-download-pkg'], false, 'Word task reset to false');
-  assertEquals(smWord.getState().checkpoints['word-cp-1'], 'pending', 'word-cp-1 reset to pending');
+  assertEquals(smWord.getState().checklists['word-b4-prepare-source'], false, 'Word task reset to false');
+  assertEquals(smWord.getState().checkpoints['word-cp-3'], 'pending', 'word-cp-3 reset to pending');
 
   const checkAiAfterWordReset = new StateManager('ai');
   assertEquals(checkAiAfterWordReset.getState().checklists['m1-check-node'], true, 'AI state preserved after Word reset');
   assertEquals(checkAiAfterWordReset.getState().checkpoints['cp-1'], 'passed', 'AI checkpoint preserved after Word reset');
 
   // =========================================================================
-  // Suite 2: Checkpoint 1 & 2 Gates Workflow
+  // Suite 2: Checkpoint 1, 2 & 3 Gates Workflow
   // =========================================================================
-  console.log('\n[Suite 2: Checkpoint 1 & 2 Gates Workflow]');
+  console.log('\n[Suite 2: Checkpoint 1, 2 & 3 Gates Workflow]');
   localStorage.clear();
   const mgrGate = new StateManager('word');
 
@@ -261,48 +274,59 @@
   mgrGate.updateCheckpoint('word-cp-1', 'pending');
   assertEquals(mgrGate.getState().checkpoints['word-cp-1'], 'pending', 'word-cp-1 resets to pending');
 
-  // Test 2.2: Persistence across re-instantiation
-  mgrGate.updateCheckpoint('word-cp-2', 'passed');
+  // Test 2.2: Checkpoint 3 transitions & persistence across re-instantiation
+  assertEquals(mgrGate.getState().checkpoints['word-cp-3'], 'pending', 'word-cp-3 begins pending');
+  mgrGate.updateCheckpoint('word-cp-3', 'passed');
+  assertEquals(mgrGate.getState().checkpoints['word-cp-3'], 'passed', 'word-cp-3 transitions to passed');
+  mgrGate.updateCheckpoint('word-cp-3', 'failed');
+  assertEquals(mgrGate.getState().checkpoints['word-cp-3'], 'failed', 'word-cp-3 transitions to failed');
+  mgrGate.updateCheckpoint('word-cp-3', 'passed');
+
   const mgrReloaded = new StateManager('word');
-  assertEquals(mgrReloaded.getState().checkpoints['word-cp-2'], 'passed', 'word-cp-2 persisted across instances');
+  assertEquals(mgrReloaded.getState().checkpoints['word-cp-3'], 'passed', 'word-cp-3 persisted across instances');
 
   // =========================================================================
-  // Suite 3: Course 2 Weighted Progress & Readiness
+  // Suite 3: Course 2 Weighted Progress & Multi-Checkpoint Readiness
   // =========================================================================
-  console.log('\n[Suite 3: Course 2 Weighted Progress & Readiness]');
+  console.log('\n[Suite 3: Course 2 Weighted Progress & Multi-Checkpoint Readiness]');
   localStorage.clear();
   const mgrProg = new StateManager('word');
 
   // Test 3.1: Clean state = 0%
   const cleanProg = mgrProg.calculateProgress();
   assertEquals(cleanProg.percentage, 0, 'Clean state progress is 0%');
-  assertEquals(cleanProg.totalTasks, 20, 'Total tasks count is 20');
+  assertEquals(cleanProg.totalTasks, 28, 'Total tasks count is 28');
   assertEquals(cleanProg.completedTasks, 0, 'Completed tasks count is 0');
-  assertEquals(cleanProg.totalCheckpoints, 2, 'Total checkpoints count is 2');
+  assertEquals(cleanProg.totalCheckpoints, 3, 'Total checkpoints count is 3');
   assertEquals(cleanProg.passedCheckpoints, 0, 'Passed checkpoints count is 0');
 
-  // Test 3.2: 20 checklist tasks = 60%
-  b1Keys.concat(b2Keys, b3Keys).forEach(k => mgrProg.updateChecklist(k, true));
+  // Test 3.2: 28 checklist tasks = 60%
+  b1Keys.concat(b2Keys, b3Keys, b4Keys).forEach(k => mgrProg.updateChecklist(k, true));
   const tasksDoneProg = mgrProg.calculateProgress();
-  assertEquals(tasksDoneProg.completedTasks, 20, 'All 20 tasks completed');
-  assertEquals(tasksDoneProg.percentage, 60, 'All 20 tasks completed equals 60%');
+  assertEquals(tasksDoneProg.completedTasks, 28, 'All 28 tasks completed');
+  assertEquals(tasksDoneProg.percentage, 60, 'All 28 tasks completed equals 60%');
 
-  // Test 3.3: Passing 1 checkpoint adds 20% (60 + 20 = 80%)
+  // Test 3.3: Passing 1 checkpoint adds ~13.33% (60 + 13 = 73%)
   mgrProg.updateCheckpoint('word-cp-1', 'passed');
   const cp1Prog = mgrProg.calculateProgress();
-  assertEquals(cp1Prog.percentage, 80, '20 tasks + 1 checkpoint equals 80%');
+  assertEquals(cp1Prog.percentage, 73, '28 tasks + 1 checkpoint equals 73%');
 
-  // Test 3.4: Passing both checkpoints = 100%
+  // Test 3.4: Passing 2 checkpoints adds ~26.67% (60 + 27 = 87%)
   mgrProg.updateCheckpoint('word-cp-2', 'passed');
-  const allProg = mgrProg.calculateProgress();
-  assertEquals(allProg.percentage, 100, '20 tasks + 2 checkpoints equals 100%');
+  const cp2Prog = mgrProg.calculateProgress();
+  assertEquals(cp2Prog.percentage, 87, '28 tasks + 2 checkpoints equals 87%');
 
-  // Test 3.5: Readiness calculation logic
+  // Test 3.5: Passing all 3 checkpoints = 100%
+  mgrProg.updateCheckpoint('word-cp-3', 'passed');
+  const allProg = mgrProg.calculateProgress();
+  assertEquals(allProg.percentage, 100, '28 tasks + 3 checkpoints equals 100%');
+
+  // Test 3.6: Multi-checkpoint readiness calculation logic
   assert(typeof mgrProg.calculateWordReadiness === 'function', 'calculateWordReadiness is a function');
   const readyResult = mgrProg.calculateWordReadiness();
-  assertEquals(readyResult.status, 'ready', 'Readiness is ready when 100% and all passed');
+  assertEquals(readyResult.status, 'ready', 'Readiness is ready when 100% and all 3 passed');
 
-  mgrProg.updateCheckpoint('word-cp-2', 'failed');
+  mgrProg.updateCheckpoint('word-cp-3', 'failed');
   const failResult = mgrProg.calculateWordReadiness();
   assertEquals(failResult.status, 'clinic', 'Readiness is clinic when any checkpoint fails');
 
@@ -322,6 +346,8 @@
     'sec-word-cp-1',
     'sec-word-module-3',
     'sec-word-cp-2',
+    'sec-word-module-4',
+    'sec-word-cp-3',
     'sec-word-diagnosis'
   ];
 
@@ -331,13 +357,17 @@
 
   const cardCp1 = document.getElementById('card-word-cp-1');
   const cardCp2 = document.getElementById('card-word-cp-2');
+  const cardCp3 = document.getElementById('card-word-cp-3');
   assert(cardCp1 !== null, 'Card #card-word-cp-1 exists');
   assert(cardCp2 !== null, 'Card #card-word-cp-2 exists');
+  assert(cardCp3 !== null, 'Card #card-word-cp-3 exists');
 
   const btnsCp1 = cardCp1.querySelectorAll('.btn-cp-action');
   assertEquals(btnsCp1.length, 3, 'Card 1 contains 3 action buttons');
   const btnsCp2 = cardCp2.querySelectorAll('.btn-cp-action');
   assertEquals(btnsCp2.length, 3, 'Card 2 contains 3 action buttons');
+  const btnsCp3 = cardCp3.querySelectorAll('.btn-cp-action');
+  assertEquals(btnsCp3.length, 3, 'Card 3 contains 3 action buttons');
 
   // =========================================================================
   // Suite 5: Course Switcher & Navigation Synchronization
@@ -357,6 +387,12 @@
   assertEquals(navPre.style.display, 'none', 'nav-group-pretraining is hidden');
   assertEquals(navLive.style.display, 'none', 'nav-group-liveclass is hidden');
   assertEquals(window.AppState.getActiveCourse(), 'word', 'AppState switched to word');
+
+  // Verify Bab IV and Checkpoint 3 nav badges in Word course
+  const b4Badge = document.getElementById('badge-nav-word-b4');
+  assert(b4Badge !== null, '#badge-nav-word-b4 exists');
+  const cp3NavBadge = document.getElementById('status-nav-word-cp3');
+  assert(cp3NavBadge !== null, '#status-nav-word-cp3 exists');
 
   // Switch back to AI course
   appModule.switchCourse('ai', false, false);
