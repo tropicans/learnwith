@@ -311,6 +311,10 @@ function updateProgressUI() {
   if (statCount) {
     statCount.innerText = `${progress.completedTasks}/${progress.totalTasks}`;
   }
+  const statWordCount = document.getElementById('stat-word-progress-count');
+  if (statWordCount) {
+    statWordCount.innerText = `${progress.completedTasks}/${progress.totalTasks}`;
+  }
 
   if (isWord) {
     // Update Module Progress Badges in Sidebar (Bab I, II, III)

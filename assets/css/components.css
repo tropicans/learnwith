@@ -2217,4 +2217,138 @@ mark.search-highlight {
   background: var(--bg-surface-hover);
 }
 
+/* ==========================================================================
+   COURSE 2: WORD PROCESSING SUPPORT STYLING (PHASE 10)
+   ========================================================================== */
+
+/* Shortcut Grid & Keyboard Badges */
+.shortcut-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.shortcut-card {
+  padding: 1.1rem;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.shortcut-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.shortcut-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.kbd-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.kbd-group .header-search-kbd {
+  position: static;
+  display: inline-block;
+  padding: 0.2rem 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-bottom: 2px solid var(--border-strong);
+  border-radius: var(--radius-xs);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  pointer-events: auto;
+}
+
+/* Data Table & Diagnostic Matrix Styling */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+}
+
+.data-table th {
+  color: var(--text-primary);
+  font-weight: 600;
+  background: var(--bg-surface-subtle);
+  border-bottom: 2px solid var(--border-subtle);
+}
+
+.data-table td {
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.data-table tr:hover td {
+  background: var(--bg-surface-hover);
+}
+
+/* Diagnosis Matrix Specifics */
+.diag-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.diag-table th {
+  background: var(--bg-surface-subtle);
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.diag-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+.diag-table tr:hover td {
+  background: var(--bg-surface-hover);
+}
+
+.diag-problem {
+  font-weight: 600;
+  color: var(--color-danger-text);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.diag-cause {
+  color: var(--text-secondary);
+}
+
+.diag-solution {
+  color: var(--text-primary);
+  background: var(--bg-surface-subtle);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-success);
+}
+
+
 
