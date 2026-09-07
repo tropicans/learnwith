@@ -34,6 +34,7 @@
 **Plans**: 2 plans
 
 Plans:
+
 - [x] 09-01: Namespaced StateManager refactoring, migration helper, and backward compatibility layer.
 - [x] 09-02: Course switcher UI component, developer gate modal with passcode/URL unlock, and course routing.
 
