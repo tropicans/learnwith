@@ -58,7 +58,7 @@ class SearchEngine {
   buildIndex() {
     this.clearHighlights();
     this.searchItems = [];
-    const elements = document.querySelectorAll('.content-section, .card, .step-card, .module-card, .step-section, .alert-box, .checkpoint-gate-card');
+    const elements = document.querySelectorAll('.content-section, .card, .step-card, .module-card, .step-section, .alert-box, .checkpoint-gate-card, .quiz-card, .reflection-card, .bpsdm-certificate-card');
 
     const activeCourse = (window.AppState && typeof window.AppState.getActiveCourse === 'function')
       ? window.AppState.getActiveCourse()

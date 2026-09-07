@@ -2367,7 +2367,7 @@ mark.search-highlight {
 }
 
 .quiz-card:hover {
-  border-color: var(--border-hover, var(--color-primary));
+  border-color: var(--border-strong);
 }
 
 .quiz-question-text {
@@ -2404,19 +2404,19 @@ mark.search-highlight {
 
 .quiz-option-btn:hover,
 .btn-quiz-option:hover {
-  border-color: var(--color-primary);
+  border-color: var(--accent-primary);
   background: var(--bg-surface-hover);
 }
 
 .quiz-option-btn:focus,
 .btn-quiz-option:focus {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--accent-primary);
   outline-offset: 1px;
 }
 
 .quiz-option-btn.selected,
 .btn-quiz-option.selected {
-  border-color: var(--color-primary);
+  border-color: var(--accent-primary);
   background: rgba(59, 130, 246, 0.12);
   font-weight: 600;
 }
@@ -2439,7 +2439,7 @@ mark.search-highlight {
 
 .quiz-explanation-box {
   background: var(--bg-surface-subtle);
-  border-left: 4px solid var(--color-primary);
+  border-left: 4px solid var(--accent-primary);
   padding: 0.85rem 1rem;
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   margin-top: 0.75rem;
@@ -2466,7 +2466,7 @@ mark.search-highlight {
 .score-val {
   font-size: var(--font-size-lg);
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--accent-primary);
   font-family: var(--font-mono, monospace);
 }
 
@@ -2490,7 +2490,7 @@ mark.search-highlight {
 }
 
 .reflection-textarea:focus {
-  border-color: var(--color-primary);
+  border-color: var(--accent-primary);
   outline: none;
 }
 

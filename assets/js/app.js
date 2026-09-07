@@ -56,6 +56,11 @@ if (typeof document !== 'undefined' && typeof document.addEventListener === 'fun
     setupReadinessReport();
     setupLiveReport();
 
+    // 16.5. Setup Course 2 Bab V Controllers (Quiz, Rubrik & Laporan Kelulusan)
+    setupWordQuiz();
+    setupWordRubrik();
+    setupWordGraduationReport();
+
     // 17. Setup Dual-Purpose Mode Switcher (Pra-Training vs Hari-H Kelas)
     setupModeSwitcher();
 
@@ -382,6 +387,10 @@ function updateProgressUI() {
       if (readinessCard) {
         readinessCard.style.borderColor = readiness.color;
       }
+    }
+
+    if (typeof updateWordNavBadges === 'function') {
+      updateWordNavBadges();
     }
 
     return;
@@ -1506,6 +1515,360 @@ function setupLiveReport() {
 window.setupLiveReport = setupLiveReport;
 
 /**
+ * --- 16.5. COURSE 2 BAB V: QUIZ, RUBRIK & GRADUATION REPORT CONTROLLERS ---
+ */
+function updateWordNavBadges() {
+  if (typeof window === 'undefined' || !window.AppState) return;
+  const state = window.AppState.getState();
+
+  // 1. Quiz badge (#badge-nav-word-quiz)
+  const quizBadge = document.getElementById('badge-nav-word-quiz');
+  if (quizBadge) {
+    const answeredCount = Object.keys(state.quiz?.answers || {}).length;
+    quizBadge.innerText = `${answeredCount}/20`;
+    if (answeredCount === 20 && state.quiz?.passed) {
+      quizBadge.className = 'badge badge-pill badge-success';
+    } else if (answeredCount > 0) {
+      quizBadge.className = 'badge badge-pill badge-primary';
+    } else {
+      quizBadge.className = 'badge badge-pill badge-neutral';
+    }
+  }
+
+  // 2. Rubric badge (#badge-nav-word-rubrik)
+  const rubrikBadge = document.getElementById('badge-nav-word-rubrik');
+  if (rubrikBadge) {
+    const rubric = state.rubric || {};
+    const portKeys = ['word-port-structure', 'word-port-multisection', 'word-port-template', 'word-port-merge', 'word-port-review', 'word-port-qa-log'];
+    const completedPortItems = portKeys.filter(k => rubric[k] === true).length;
+    rubrikBadge.innerText = `${completedPortItems}/${portKeys.length}`;
+    if (completedPortItems === portKeys.length) {
+      rubrikBadge.className = 'badge badge-pill badge-success';
+    } else if (completedPortItems > 0) {
+      rubrikBadge.className = 'badge badge-pill badge-primary';
+    } else {
+      rubrikBadge.className = 'badge badge-pill badge-neutral';
+    }
+  }
+
+  // 3. Report status badge (#status-nav-word-report)
+  const reportStatusBadge = document.getElementById('status-nav-word-report');
+  if (reportStatusBadge && typeof window.AppState.calculateWordGraduation === 'function') {
+    const grad = window.AppState.calculateWordGraduation();
+    if (grad.status === 'lulus' || grad.status === 'lulus_cukup') {
+      reportStatusBadge.className = 'badge badge-pill badge-success';
+      reportStatusBadge.innerText = 'Kompeten ✓';
+    } else if (grad.status === 'remediasi' && (grad.finalScore > 0 || state.quiz?.submitted)) {
+      reportStatusBadge.className = 'badge badge-pill badge-danger';
+      reportStatusBadge.innerText = 'Remediasi';
+    } else {
+      reportStatusBadge.className = 'badge badge-pill badge-warning';
+      reportStatusBadge.innerText = 'Pending';
+    }
+  }
+}
+
+function setupWordQuiz() {
+  const container = document.getElementById('sec-word-quiz');
+  if (!container) return;
+
+  const scoreBanner = document.getElementById('banner-word-quiz-score') || document.getElementById('word-quiz-score-banner');
+  const resetBtn = document.getElementById('btn-reset-word-quiz');
+
+  function renderQuizUI() {
+    if (typeof window === 'undefined' || !window.AppState) return;
+    const quizState = window.AppState.getState().quiz || { answers: {}, score: 0, submitted: false, passed: false };
+    const questions = (window.WORD_QUIZ_QUESTIONS && window.WORD_QUIZ_QUESTIONS.length)
+      ? window.WORD_QUIZ_QUESTIONS
+      : (typeof WORD_QUIZ_QUESTIONS !== 'undefined' ? WORD_QUIZ_QUESTIONS : []);
+
+    questions.forEach(q => {
+      const card = document.getElementById(`card-quiz-q${q.id}`) || document.getElementById(`quiz-card-${q.id}`);
+      if (!card) return;
+
+      const explBox = card.querySelector('.quiz-explanation-box') || document.getElementById(`exp-quiz-q${q.id}`);
+      const selectedOption = quizState.answers[q.id];
+
+      const optionBtns = card.querySelectorAll('.quiz-option-btn, .btn-quiz-option');
+      optionBtns.forEach(btn => {
+        const optKey = btn.getAttribute('data-option');
+        btn.classList.remove('selected', 'correct', 'incorrect');
+
+        if (selectedOption) {
+          if (optKey === selectedOption) {
+            btn.classList.add('selected');
+            if (selectedOption === q.correct) {
+              btn.classList.add('correct');
+            } else {
+              btn.classList.add('incorrect');
+            }
+          }
+          // Highlight correct answer if user got it wrong
+          if (optKey === q.correct && selectedOption !== q.correct) {
+            btn.classList.add('correct');
+          }
+        }
+      });
+
+      if (explBox) {
+        explBox.style.display = selectedOption ? 'block' : 'none';
+      }
+    });
+
+    if (scoreBanner) {
+      const answeredCount = Object.keys(quizState.answers || {}).length;
+      scoreBanner.innerHTML = `
+        <div class="score-val">${quizState.score} / 100</div>
+        <div class="score-meta">${answeredCount}/20 Terjawab — Status: <strong>${quizState.passed ? 'LULUS (≥ 80%)' : 'BELUM LULUS'}</strong></div>
+      `;
+    }
+
+    updateWordNavBadges();
+  }
+
+  container.addEventListener('click', (e) => {
+    const btn = e.target.closest('.quiz-option-btn, .btn-quiz-option');
+    if (!btn) return;
+    const qId = parseInt(btn.getAttribute('data-question-id'), 10);
+    const optKey = btn.getAttribute('data-option');
+    if (window.AppState && !isNaN(qId) && optKey) {
+      window.AppState.updateQuizAnswer(qId, optKey);
+      renderQuizUI();
+      if (typeof updateWordReportPreview === 'function') {
+        updateWordReportPreview();
+      }
+    }
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      const shouldReset = (typeof confirm === 'function') ? confirm('Reset seluruh jawaban kuis evaluasi Bab V?') : true;
+      if (shouldReset && window.AppState) {
+        window.AppState.resetQuiz();
+        renderQuizUI();
+        if (typeof updateWordReportPreview === 'function') {
+          updateWordReportPreview();
+        }
+        if (typeof showToast === 'function') {
+          showToast('Jawaban kuis Bab V berhasil diatur ulang', 'info', 2500);
+        }
+      }
+    });
+  }
+
+  renderQuizUI();
+
+  if (window.AppState) {
+    window.AppState.on('quizUpdate', renderQuizUI);
+    window.AppState.on('quizReset', renderQuizUI);
+  }
+}
+
+function setupWordRubrik() {
+  const container = document.getElementById('sec-word-rubrik');
+  if (!container || !window.AppState) return;
+
+  const state = window.AppState.getState();
+  const reflections = state.reflections || {};
+  const rubric = state.rubric || {};
+
+  // 1. Setup 5 Reflection Textareas
+  ['ref-repetitive', 'ref-challenging', 'ref-template', 'ref-risks', 'ref-collaboration'].forEach(promptId => {
+    const textarea = document.getElementById(promptId) || document.getElementById(`input-word-${promptId}`);
+    if (textarea) {
+      if (reflections[promptId] !== undefined) {
+        textarea.value = reflections[promptId];
+      }
+      textarea.addEventListener('input', (e) => {
+        window.AppState.updateWordReflection(promptId, e.target.value);
+      });
+    }
+  });
+
+  // 2. Setup 15 Quality & Portfolio Checkboxes
+  const allRubricKeys = [
+    'word-chk-headings', 'word-chk-toc', 'word-chk-section-link', 'word-chk-page-num',
+    'word-chk-mailmerge-valid', 'word-chk-mergefield-clean', 'word-chk-track-decided',
+    'word-chk-comments-resolved', 'word-chk-sharing-inspected',
+    'word-port-structure', 'word-port-multisection', 'word-port-template',
+    'word-port-merge', 'word-port-review', 'word-port-qa-log'
+  ];
+
+  allRubricKeys.forEach(key => {
+    const chk = document.getElementById(`chk-${key}`);
+    if (chk) {
+      if (rubric[key] !== undefined) {
+        chk.checked = !!rubric[key];
+      }
+      chk.addEventListener('change', (e) => {
+        window.AppState.updateWordRubric(key, e.target.checked);
+        updateWordNavBadges();
+        if (typeof updateWordReportPreview === 'function') {
+          updateWordReportPreview();
+        }
+      });
+    }
+  });
+
+  updateWordNavBadges();
+}
+
+let updateWordReportPreview = null;
+
+function setupWordGraduationReport() {
+  const container = document.getElementById('sec-word-report');
+  if (!container) return;
+
+  const nameInput = document.getElementById('input-word-participant-name') || document.getElementById('input-word-report-name');
+  const nipInput = document.getElementById('input-word-participant-nip') || document.getElementById('input-word-report-nip');
+  const unitInput = document.getElementById('input-word-participant-unit') || document.getElementById('input-word-report-unit');
+  const docInput = document.getElementById('input-word-target-doc') || document.getElementById('input-word-report-doc');
+  const dateInput = document.getElementById('input-word-report-date');
+  const previewBox = document.getElementById('preview-word-report-text') || document.getElementById('word-report-output-preview');
+
+  const copyWaBtn = document.getElementById('btn-copy-word-wa') || document.getElementById('btn-copy-word-report-wa');
+  const copyTgBtn = document.getElementById('btn-copy-word-tg') || document.getElementById('btn-copy-word-report-tg');
+  const printBtn = document.getElementById('btn-print-word-report');
+
+  const state = (window.AppState && window.AppState.getState()) ? window.AppState.getState() : {};
+  const pInfo = state.participantInfo || {};
+  if (nameInput && pInfo.name) nameInput.value = pInfo.name;
+  if (nipInput && pInfo.nip) nipInput.value = pInfo.nip;
+  if (unitInput && pInfo.unitKerja) unitInput.value = pInfo.unitKerja;
+  if (docInput && pInfo.targetDoc) docInput.value = pInfo.targetDoc;
+  if (dateInput && pInfo.reportDate) dateInput.value = pInfo.reportDate;
+
+  function updatePreview() {
+    const overrides = {
+      name: nameInput ? nameInput.value.trim() : '',
+      nip: nipInput ? nipInput.value.trim() : '',
+      unitKerja: unitInput ? unitInput.value.trim() : '',
+      targetDoc: docInput ? docInput.value.trim() : '',
+      reportDate: dateInput ? dateInput.value.trim() : ''
+    };
+
+    const text = generateWordReportText('whatsapp', overrides);
+    if (previewBox) {
+      previewBox.innerText = text;
+    }
+
+    // Update Certificate Slip Elements
+    const certName = document.getElementById('cert-word-name');
+    const certNip = document.getElementById('cert-word-nip');
+    const certUnit = document.getElementById('cert-word-unit');
+    const certDoc = document.getElementById('cert-word-doc');
+    const certSignName = document.getElementById('cert-sign-participant');
+    const certSignNip = document.getElementById('cert-sign-nip');
+
+    if (certName) certName.innerText = overrides.name || '[Nama Lengkap Pegawai]';
+    if (certNip) certNip.innerText = overrides.nip || '[NIP]';
+    if (certUnit) certUnit.innerText = overrides.unitKerja || '[SKPD / Unit Kerja]';
+    if (certDoc) certDoc.innerText = overrides.targetDoc || '[Jenis Naskah Dinas Portofolio]';
+    if (certSignName) certSignName.innerText = overrides.name || '[Nama Lengkap Pegawai]';
+    if (certSignNip) certSignNip.innerText = overrides.nip ? `NIP. ${overrides.nip}` : 'NIP. -';
+
+    const certCp1 = document.getElementById('cert-word-cp1-val');
+    const certCp2 = document.getElementById('cert-word-cp2-val');
+    const certCp3 = document.getElementById('cert-word-cp3-val');
+    const cps = (window.AppState && window.AppState.getState().checkpoints) || {};
+    if (certCp1) certCp1.innerText = cps['word-cp-1'] === 'passed' ? 'Lolos ✓' : cps['word-cp-1'] === 'failed' ? 'Gagal ✕' : 'Pending';
+    if (certCp2) certCp2.innerText = cps['word-cp-2'] === 'passed' ? 'Lolos ✓' : cps['word-cp-2'] === 'failed' ? 'Gagal ✕' : 'Pending';
+    if (certCp3) certCp3.innerText = cps['word-cp-3'] === 'passed' ? 'Lolos ✓' : cps['word-cp-3'] === 'failed' ? 'Gagal ✕' : 'Pending';
+
+    const certQuiz = document.getElementById('cert-word-quiz-score');
+    const certPort = document.getElementById('cert-word-port-score');
+    const certFinal = document.getElementById('cert-word-final-score');
+    const certVerdict = document.getElementById('cert-word-verdict');
+
+    if (window.AppState && typeof window.AppState.calculateWordGraduation === 'function') {
+      const grad = window.AppState.calculateWordGraduation();
+      if (certQuiz) certQuiz.innerText = `${grad.quizScore} / 100`;
+      if (certPort) certPort.innerText = `${grad.portfolioScore} / 100`;
+      if (certFinal) certFinal.innerText = `${grad.finalScore} / 100 (${grad.grade})`;
+      if (certVerdict) certVerdict.innerText = grad.label;
+    }
+
+    updateWordNavBadges();
+  }
+
+  updateWordReportPreview = updatePreview;
+
+  [
+    { input: nameInput, field: 'name' },
+    { input: nipInput, field: 'nip' },
+    { input: unitInput, field: 'unitKerja' },
+    { input: docInput, field: 'targetDoc' },
+    { input: dateInput, field: 'reportDate' }
+  ].forEach(({ input, field }) => {
+    if (input) {
+      input.addEventListener('input', (e) => {
+        if (window.AppState) {
+          window.AppState.updateParticipantInfo(field, e.target.value);
+        }
+        updatePreview();
+      });
+    }
+  });
+
+  if (copyWaBtn) {
+    copyWaBtn.addEventListener('click', () => {
+      const text = generateWordReportText('whatsapp');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          if (typeof showToast === 'function') showToast('Laporan kelulusan WhatsApp berhasil disalin! 📲', 'success', 3000);
+        }).catch(() => fallbackCopy(text, 'WhatsApp'));
+      } else {
+        fallbackCopy(text, 'WhatsApp');
+      }
+    });
+  }
+
+  if (copyTgBtn) {
+    copyTgBtn.addEventListener('click', () => {
+      const text = generateWordReportText('telegram');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          if (typeof showToast === 'function') showToast('Format Markdown Telegram berhasil disalin! ✈️', 'success', 3000);
+        }).catch(() => fallbackCopy(text, 'Telegram'));
+      } else {
+        fallbackCopy(text, 'Telegram');
+      }
+    });
+  }
+
+  if (printBtn) {
+    printBtn.addEventListener('click', () => {
+      if (typeof window.print === 'function') {
+        window.print();
+      }
+    });
+  }
+
+  function fallbackCopy(text, channelName) {
+    if (typeof document === 'undefined') return;
+    const temp = document.createElement('textarea');
+    temp.value = text;
+    document.body.appendChild(temp);
+    temp.select();
+    if (typeof document.execCommand === 'function') {
+      document.execCommand('copy');
+    }
+    document.body.removeChild(temp);
+    if (typeof showToast === 'function') showToast(`Format ${channelName} berhasil disalin ke clipboard! 📋`, 'success', 2500);
+  }
+
+  updatePreview();
+
+  if (window.AppState) {
+    window.AppState.on('checkpointUpdate', updatePreview);
+    window.AppState.on('rubricUpdate', updatePreview);
+    window.AppState.on('quizUpdate', updatePreview);
+    window.AppState.on('stateChanged', updatePreview);
+    window.AppState.on('stateReset', updatePreview);
+  }
+}
+
+/**
  * --- 17. DUAL-PURPOSE MODE SWITCHER CONTROLLER ---
  */
 function updateModeUI(mode, showNotification = true) {
@@ -2053,6 +2416,10 @@ if (typeof window !== 'undefined') {
   window.setupCourseManager = setupCourseManager;
   window.WORD_PASSCODES = WORD_PASSCODES;
   window.generateWordReportText = generateWordReportText;
+  window.setupWordQuiz = setupWordQuiz;
+  window.setupWordRubrik = setupWordRubrik;
+  window.setupWordGraduationReport = setupWordGraduationReport;
+  window.updateWordNavBadges = updateWordNavBadges;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -2064,6 +2431,10 @@ if (typeof module !== 'undefined' && module.exports) {
     generateLiveReportText,
     setupLiveReport,
     generateWordReportText,
+    setupWordQuiz,
+    setupWordRubrik,
+    setupWordGraduationReport,
+    updateWordNavBadges,
     showToast,
     setupMobileDrawer,
     setupModuleAccordions,
