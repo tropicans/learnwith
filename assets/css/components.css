@@ -2350,5 +2350,330 @@ mark.search-highlight {
   border-left: 3px solid var(--color-success);
 }
 
+/* ==========================================================================
+   COURSE 2 BAB V: KUIS EVALUASI PENGETAHUAN (20 SOAL)
+   ========================================================================== */
+.quiz-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
 
+.quiz-card {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
 
+.quiz-card:hover {
+  border-color: var(--border-hover, var(--color-primary));
+}
+
+.quiz-question-text {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.quiz-options-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+  margin: 0.85rem 0;
+}
+
+.quiz-option-btn,
+.btn-quiz-option {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface-subtle);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.quiz-option-btn:hover,
+.btn-quiz-option:hover {
+  border-color: var(--color-primary);
+  background: var(--bg-surface-hover);
+}
+
+.quiz-option-btn:focus,
+.btn-quiz-option:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.quiz-option-btn.selected,
+.btn-quiz-option.selected {
+  border-color: var(--color-primary);
+  background: rgba(59, 130, 246, 0.12);
+  font-weight: 600;
+}
+
+.quiz-option-btn.correct,
+.btn-quiz-option.correct {
+  border-color: #10b981 !important;
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #065f46 !important;
+  font-weight: 600;
+}
+
+.quiz-option-btn.incorrect,
+.btn-quiz-option.incorrect {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.15) !important;
+  color: #991b1b !important;
+  font-weight: 600;
+}
+
+.quiz-explanation-box {
+  background: var(--bg-surface-subtle);
+  border-left: 4px solid var(--color-primary);
+  padding: 0.85rem 1rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin-top: 0.75rem;
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.quiz-score-banner {
+  display: flex;
+  align-items: center;
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.25rem;
+}
+
+.banner-score-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.score-val {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-mono, monospace);
+}
+
+.score-meta {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   COURSE 2 BAB V: RUBRIK & REFLEKSI DIRI
+   ========================================================================== */
+.reflection-textarea {
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
+}
+
+.reflection-textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.rubric-table th,
+.rubric-table td {
+  padding: 0.75rem 0.85rem;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   COURSE 2 BAB V: BPSDM GRADUATION CERTIFICATE CARD
+   ========================================================================== */
+.bpsdm-certificate-card {
+  background: #ffffff;
+  color: #0f172a;
+  border: 2px solid #334155;
+  border-radius: var(--radius-md);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.bpsdm-kop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.bpsdm-kop-text h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin: 0 0 0.2rem 0;
+  color: #0f172a;
+}
+
+.bpsdm-kop-text h4 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35rem 0;
+  color: #0f172a;
+}
+
+.bpsdm-kop-text p {
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
+  color: #475569;
+  margin: 0;
+}
+
+.bpsdm-cert-divider {
+  border-top: 3px double #0f172a;
+  margin: 0.6rem 0 1.25rem 0;
+}
+
+.bpsdm-cert-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.bpsdm-cert-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: underline;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.4rem 0;
+  color: #0f172a;
+}
+
+.bpsdm-cert-sub {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+  color: #1e293b;
+}
+
+.bpsdm-cert-reg {
+  font-size: 0.8rem;
+  font-family: var(--font-mono, monospace);
+  color: #64748b;
+  margin: 0;
+}
+
+.bpsdm-ident-table {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  border-collapse: collapse;
+}
+
+.bpsdm-ident-table td {
+  padding: 0.25rem 0.4rem;
+  color: #0f172a;
+}
+
+.bpsdm-transcript-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.bpsdm-transcript-table th,
+.bpsdm-transcript-table td {
+  border: 1px solid #94a3b8;
+  padding: 0.5rem 0.65rem;
+  color: #0f172a;
+}
+
+.bpsdm-transcript-table thead th {
+  background: #f1f5f9;
+  font-weight: bold;
+}
+
+.bpsdm-signature-grid {
+  font-size: 0.92rem;
+}
+
+/* ==========================================================================
+   COURSE 2 BAB V: PRINT MEDIA CERTIFICATE ISOLATION
+   ========================================================================== */
+@media print {
+  /* Hide all app chrome, sidebars, interactive controls, and non-report sections */
+  .app-header,
+  .app-sidebar,
+  .app-footer,
+  .mode-switcher,
+  #header-mode-switcher,
+  #sidebar-mode-switcher-container,
+  #container-course-ai,
+  #sec-word-intro,
+  #sec-word-standards,
+  #sec-word-shortcuts,
+  #sec-word-module-2,
+  #sec-word-cp-1,
+  #sec-word-module-3,
+  #sec-word-cp-2,
+  #sec-word-module-4,
+  #sec-word-cp-3,
+  #sec-word-diagnosis,
+  #sec-word-quiz,
+  #sec-word-rubrik,
+  .report-workbench,
+  .report-form-pane,
+  .report-preview-pane,
+  .report-btn-group,
+  .quiz-footer-actions,
+  .toast-container,
+  .modal-backdrop,
+  #btn-print-word-report {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #main-content,
+  .app-main,
+  #container-course-word,
+  #sec-word-report {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .bpsdm-certificate-card,
+  #bpsdm-certificate-card {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 1.5rem !important;
+    border: 2px solid #000000 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}
