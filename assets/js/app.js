@@ -1364,8 +1364,12 @@ function updateModeUI(mode, showNotification = true) {
   }
 
   // 5. Rebuild search index for active mode
-  if (window.SearchEngine && typeof window.SearchEngine.rebuildIndex === 'function') {
-    window.SearchEngine.rebuildIndex();
+  if (window.SearchEngine) {
+    if (typeof window.SearchEngine.buildIndex === 'function') {
+      window.SearchEngine.buildIndex();
+    } else if (typeof window.SearchEngine.rebuildIndex === 'function') {
+      window.SearchEngine.rebuildIndex();
+    }
   }
 
   // 6. Scroll window smoothly to top
@@ -1380,15 +1384,139 @@ function updateModeUI(mode, showNotification = true) {
   }
 }
 
+const LIVE_CLASS_UNLOCK_KEY = 'live_class_unlocked';
+const INSTRUCTOR_PASSCODES = ['hermes2026', 'buka-kelas', 'admin'];
+
+function isLiveClassUnlocked() {
+  // 1. Check URL parameters for ?unlock=live or ?unlock=class
+  if (typeof window !== 'undefined' && window.location && window.location.search) {
+    const params = new URLSearchParams(window.location.search);
+    const unlockVal = params.get('unlock');
+    if (unlockVal === 'live' || unlockVal === 'class' || unlockVal === '1') {
+      try { localStorage.setItem(LIVE_CLASS_UNLOCK_KEY, 'true'); } catch (e) {}
+      return true;
+    }
+  }
+
+  // 2. Check localStorage
+  try {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem(LIVE_CLASS_UNLOCK_KEY) === 'true') {
+      return true;
+    }
+  } catch (e) {}
+
+  return false;
+}
+
+function setLiveClassUnlocked(unlocked = true) {
+  try {
+    if (unlocked) {
+      localStorage.setItem(LIVE_CLASS_UNLOCK_KEY, 'true');
+    } else {
+      localStorage.removeItem(LIVE_CLASS_UNLOCK_KEY);
+    }
+  } catch (e) {}
+
+  // Update lock icons in DOM
+  const lockHeader = document.getElementById('lock-icon-header');
+  const lockSidebar = document.getElementById('lock-icon-sidebar');
+  if (lockHeader) lockHeader.classList.toggle('unlocked', unlocked);
+  if (lockSidebar) lockSidebar.classList.toggle('unlocked', unlocked);
+}
+
 function setupModeSwitcher() {
   const modeTabs = document.querySelectorAll('.mode-tab');
   if (!modeTabs.length) return;
+
+  const lockedModal = document.getElementById('modal-liveclass-locked');
+  const closeLockedBtn = document.getElementById('btn-close-locked-modal');
+  const toggleUnlockBtn = document.getElementById('toggle-instructor-unlock');
+  const unlockForm = document.getElementById('instructor-unlock-form');
+  const unlockInput = document.getElementById('input-unlock-code');
+  const submitUnlockBtn = document.getElementById('btn-submit-unlock');
+  const unlockFeedback = document.getElementById('unlock-feedback');
+
+  function openLockedModal() {
+    if (!lockedModal) return;
+    lockedModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (closeLockedBtn) closeLockedBtn.focus();
+  }
+
+  function closeLockedModal() {
+    if (!lockedModal) return;
+    lockedModal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (closeLockedBtn) {
+    closeLockedBtn.addEventListener('click', closeLockedModal);
+  }
+
+  if (lockedModal) {
+    lockedModal.addEventListener('click', (e) => {
+      if (e.target === lockedModal) closeLockedModal();
+    });
+  }
+
+  if (toggleUnlockBtn && unlockForm) {
+    toggleUnlockBtn.addEventListener('click', () => {
+      const isVisible = unlockForm.style.display !== 'none';
+      unlockForm.style.display = isVisible ? 'none' : 'block';
+      if (!isVisible && unlockInput) unlockInput.focus();
+    });
+  }
+
+  function handleUnlockSubmit() {
+    if (!unlockInput) return;
+    const code = (unlockInput.value || '').trim().toLowerCase();
+    if (INSTRUCTOR_PASSCODES.includes(code)) {
+      setLiveClassUnlocked(true);
+      closeLockedModal();
+      if (typeof showToast === 'function') {
+        showToast('🔓 Kunci Sesi Praktik Kelas berhasil dibuka!', 'success', 3000);
+      }
+      if (window.AppState) {
+        window.AppState.setMode('live-class');
+      }
+    } else {
+      if (unlockFeedback) {
+        unlockFeedback.textContent = 'Kode salah. Silakan periksa kembali.';
+        unlockFeedback.style.display = 'block';
+      }
+    }
+  }
+
+  if (submitUnlockBtn) {
+    submitUnlockBtn.addEventListener('click', handleUnlockSubmit);
+  }
+
+  if (unlockInput) {
+    unlockInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleUnlockSubmit();
+      }
+    });
+  }
+
+  // Sync initial lock icon status
+  if (isLiveClassUnlocked()) {
+    setLiveClassUnlocked(true);
+  }
 
   // Click handlers on all mode buttons
   modeTabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
       e.preventDefault();
       const targetMode = tab.getAttribute('data-mode');
+
+      // Intercept if target is live-class and still locked
+      if (targetMode === 'live-class' && !isLiveClassUnlocked()) {
+        openLockedModal();
+        return;
+      }
+
       if (targetMode && window.AppState) {
         window.AppState.setMode(targetMode);
       }
@@ -1407,6 +1535,12 @@ function setupModeSwitcher() {
   }
 }
 
+if (typeof window !== 'undefined') {
+  window.updateModeUI = updateModeUI;
+  window.isLiveClassUnlocked = isLiveClassUnlocked;
+  window.setLiveClassUnlocked = setLiveClassUnlocked;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = {
     REDACTION_RULES,
@@ -1422,7 +1556,10 @@ if (typeof module !== 'undefined' && module.exports) {
     setupLiveTroubleshootingHub,
     setupCodeCopy,
     setupModeSwitcher,
-    updateModeUI
+    updateModeUI,
+    isLiveClassUnlocked,
+    setLiveClassUnlocked
   };
 }
+
 

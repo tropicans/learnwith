@@ -173,6 +173,23 @@
       assert(false, 'updateModeUI controller export not found');
     }
 
+    console.log('\n[Suite 4: Live Workshop Lock / Unlock Controller]');
+    if (appModule && typeof appModule.isLiveClassUnlocked === 'function') {
+      localStorage.removeItem('live_class_unlocked');
+      assert(appModule.isLiveClassUnlocked() === false, 'Live class is locked by default');
+
+      appModule.setLiveClassUnlocked(true);
+      assert(appModule.isLiveClassUnlocked() === true, 'Live class is unlocked after setLiveClassUnlocked(true)');
+      assertEquals(localStorage.getItem('live_class_unlocked'), 'true', 'Unlock state persisted in localStorage');
+
+      appModule.setLiveClassUnlocked(false);
+      assert(appModule.isLiveClassUnlocked() === false, 'Live class is locked after setLiveClassUnlocked(false)');
+      assertEquals(localStorage.getItem('live_class_unlocked'), null, 'Unlock key removed from localStorage');
+    } else {
+      assert(false, 'isLiveClassUnlocked or setLiveClassUnlocked export not found');
+    }
+
+
     console.log(`\nTEST SUMMARY: ${passedTests} PASSED, ${failedTests} FAILED\n`);
     if (failedTests > 0) {
       if (typeof process !== 'undefined') process.exit(1);
