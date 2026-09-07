@@ -2210,21 +2210,27 @@ mark.search-highlight {
 
 .sidebar-course-btn {
   width: 100%;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.85rem;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   cursor: pointer;
   color: var(--text-primary);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-fast);
 }
 
 .sidebar-course-btn:hover {
   background: var(--bg-surface-hover);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================

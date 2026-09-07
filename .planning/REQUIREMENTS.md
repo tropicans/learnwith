@@ -1,6 +1,6 @@
 # Milestone v2.1 Requirements — Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture
 
-**Status:** 🟡 ACTIVE  
+**Status:** ✅ COMPLETE  
 **Milestone:** v2.1  
 
 ---
@@ -20,15 +20,15 @@
 
 ### 3. Workspace De-duplication & Sidebar Streamlining (WORKSPACE)
 
-- [ ] **WORK-01**: Sidebar on desktop (screens ≥ 1024px) hides redundant duplicate switchers, immediately surfacing module curriculum links without pushing content below the fold.
-- [ ] **WORK-02**: Course 1 mode switcher (Pra-Training vs Hari-H Kelas) on desktop resides exclusively in the header as a clean, segmented Material 3 pill control.
-- [ ] **WORK-03**: Mobile header displays compact logo and hamburger menu without text wrapping or multi-line button breaking; mobile sidebar drawer cleanly accommodates touch-friendly course and mode selection (≥ 44px touch targets).
+- [x] **WORK-01**: Sidebar on desktop (screens ≥ 1024px) hides redundant duplicate switchers, immediately surfacing module curriculum links without pushing content below the fold.
+- [x] **WORK-02**: Course 1 mode switcher (Pra-Training vs Hari-H Kelas) on desktop resides exclusively in the header as a clean, segmented Material 3 pill control.
+- [x] **WORK-03**: Mobile header displays compact logo and hamburger menu without text wrapping or multi-line button breaking; mobile sidebar drawer cleanly accommodates touch-friendly course and mode selection (≥ 44px touch targets).
 
 ### 4. Visual Hierarchy, Card Polishing & Content Alignment (POLISH)
 
-- [ ] **POLISH-01**: Course 2 hero stat cards synchronized to real numbers: 4 Bab, 3 Checkpoints, 28 Checklist steps, and dynamic progress counter (`0/28 Langkah Selesai`).
-- [ ] **POLISH-02**: Document readiness status card redesigned from an alarming orange warning box into an encouraging, calm progress card.
-- [ ] **POLISH-03**: Search bar styled with Google-style rounded pill container, comfortable padding, and non-overlapping `Ctrl+K` key badge.
+- [x] **POLISH-01**: Course 2 hero stat cards synchronized to real numbers: 4 Bab, 3 Checkpoints, 28 Checklist steps, and dynamic progress counter (`0/28 Langkah Selesai`).
+- [x] **POLISH-02**: Document readiness status card redesigned from an alarming orange warning box into an encouraging, calm progress card.
+- [x] **POLISH-03**: Search bar styled with Google-style rounded pill container, comfortable padding, and non-overlapping `Ctrl+K` key badge.
 
 ---
 
@@ -41,9 +41,9 @@
 | NLM-NAV-01 | Phase 13 | Complete |
 | NLM-NAV-02 | Phase 13 | Complete |
 | NLM-NAV-03 | Phase 13 | Complete |
-| WORK-01 | Phase 14 | Pending |
-| WORK-02 | Phase 14 | Pending |
-| WORK-03 | Phase 14 | Pending |
-| POLISH-01 | Phase 14 | Pending |
-| POLISH-02 | Phase 14 | Pending |
-| POLISH-03 | Phase 14 | Pending |
+| WORK-01 | Phase 14 | Complete |
+| WORK-02 | Phase 14 | Complete |
+| WORK-03 | Phase 14 | Complete |
+| POLISH-01 | Phase 14 | Complete |
+| POLISH-02 | Phase 14 | Complete |
+| POLISH-03 | Phase 14 | Complete |

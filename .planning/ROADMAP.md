@@ -9,14 +9,14 @@
 
 ## Active Milestone: v2.1 (Phases 13-14)
 
-- [ ] **Phase 13: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector**
+- [x] **Phase 13: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector**
   - Embed critical `<style>` rules for course dropdowns in `<head>` to prevent unstyled layout leaks.
   - Bump asset cache-busting to `?v=2.1.0`.
   - Introduce `learnwith` platform branding + breadcrumb course pill selector (`learnwith / [ 🤖 Hands-on Agentic AI ▾ ]`).
   - Eliminate triple title repetition while preserving semantic accessibility and test compatibility.
   - Polish elevated course picker modal card.
 
-- [ ] **Phase 14: Workspace Studio Navigation, Sidebar De-duplication & Material 3 Polishing**
+- [x] **Phase 14: Workspace Studio Navigation, Sidebar De-duplication & Material 3 Polishing**
   - Hide redundant duplicate course/mode switchers on desktop sidebar (screens ≥ 1024px) to present curriculum immediately.
   - Keep single source of truth for Course 1 mode switcher (Pra-Training vs Hari-H) on desktop header.
   - Ensure mobile header and drawer provide clean, responsive, touch-friendly navigation without text wrapping.
