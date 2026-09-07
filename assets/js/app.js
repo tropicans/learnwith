@@ -2356,12 +2356,22 @@ function setupCourseManager() {
   }
 
   if (closeWordLockedBtn) {
-    closeWordLockedBtn.addEventListener('click', closeWordLockedModal);
+    closeWordLockedBtn.addEventListener('click', () => {
+      closeWordLockedModal();
+      if (typeof switchView === 'function') {
+        switchView('home', null, true, false);
+      }
+    });
   }
 
   if (wordLockedModal) {
     wordLockedModal.addEventListener('click', (e) => {
-      if (e.target === wordLockedModal) closeWordLockedModal();
+      if (e.target === wordLockedModal) {
+        closeWordLockedModal();
+        if (typeof switchView === 'function') {
+          switchView('home', null, true, false);
+        }
+      }
     });
   }
 
