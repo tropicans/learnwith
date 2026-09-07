@@ -239,6 +239,10 @@
   font-family: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
   color: #94a3b8;
   letter-spacing: 0.04em;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .code-copy-btn {
@@ -253,6 +257,8 @@
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all var(--transition-fast);
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .code-copy-btn:hover {
@@ -414,6 +420,8 @@ code.inline-code {
 
 .checklist-label {
   flex: 1;
+  min-width: 0;
+  word-break: break-word;
   font-size: var(--font-size-sm);
   color: var(--text-primary);
   line-height: 1.4;
@@ -477,6 +485,12 @@ code.inline-code {
   height: 22px;
   flex-shrink: 0;
   margin-top: 1px;
+}
+
+.alert-content {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
 }
 
 .alert-content h5 {

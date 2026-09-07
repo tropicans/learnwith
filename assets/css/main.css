@@ -431,6 +431,7 @@ body {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   transition: all var(--transition-fast);
+  min-width: 0;
 }
 
 .nav-link:hover {
@@ -453,6 +454,18 @@ body {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.nav-link-content span:last-child {
+  word-break: break-word;
+  line-height: 1.35;
+}
+
+.nav-link .badge {
+  flex-shrink: 0;
+  margin-left: 0.5rem;
 }
 
 .nav-link-icon {
@@ -515,6 +528,7 @@ body {
   letter-spacing: -0.025em;
   margin-bottom: 0.75rem;
   line-height: 1.25;
+  word-break: break-word;
 }
 
 .hero-subtitle {
@@ -522,6 +536,7 @@ body {
   color: var(--text-secondary);
   max-width: 760px;
   line-height: 1.6;
+  word-break: break-word;
 }
 
 .hero-stats-grid {
@@ -540,6 +555,7 @@ body {
   align-items: center;
   gap: 1rem;
   box-shadow: var(--shadow-xs);
+  min-width: 0;
 }
 
 .hero-stat-icon {
@@ -552,16 +568,23 @@ body {
   flex-shrink: 0;
 }
 
+.hero-stat-info {
+  min-width: 0;
+  flex: 1;
+}
+
 .hero-stat-info h4 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--text-primary);
   line-height: 1.2;
+  word-break: break-word;
 }
 
 .hero-stat-info p {
   font-size: var(--font-size-xs);
   color: var(--text-muted);
+  word-break: break-word;
 }
 
 /* --- Section Container --- */
@@ -654,10 +677,29 @@ body {
 /* --- Responsive Breakpoints --- */
 @media (max-width: 1024px) {
   :root {
-    --sidebar-width: 240px;
+    --sidebar-width: 250px;
   }
   .app-main {
     padding: 1.5rem 1.5rem 3rem;
+  }
+  .header-brand-text p {
+    display: none; /* Hide subtitle on tablet to prevent crowding */
+  }
+  .header-mode-switcher {
+    margin: 0 0.5rem;
+  }
+  .header-search-container {
+    margin: 0 0.75rem;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
+  .header-mode-switcher {
+    display: none !important; /* Sidebar mode switcher handles switching cleanly */
+  }
+  .header-search-container {
+    max-width: 360px;
   }
 }
 
