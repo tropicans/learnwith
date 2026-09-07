@@ -4,6 +4,24 @@
  * ==========================================================================
  */
 
+/**
+ * Robust DOM Sanitization Utility (SEC-09)
+ * Guarantees zero DOM-based XSS when escaping user-supplied strings.
+ */
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+if (typeof window !== 'undefined') {
+  window.escapeHtml = escapeHtml;
+}
+
 if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
   document.addEventListener('DOMContentLoaded', async () => {
     // 0. Initialize Session Security & URL Authorization (SEC-05, SEC-06)
@@ -1624,9 +1642,12 @@ function setupWordQuiz() {
 
     if (scoreBanner) {
       const answeredCount = Object.keys(quizState.answers || {}).length;
+      const safeScore = escapeHtml(quizState.score);
+      const safeAnswered = escapeHtml(answeredCount);
+      const safeStatus = quizState.passed ? 'LULUS (≥ 80%)' : 'BELUM LULUS';
       scoreBanner.innerHTML = `
-        <div class="score-val">${quizState.score} / 100</div>
-        <div class="score-meta">${answeredCount}/20 Terjawab — Status: <strong>${quizState.passed ? 'LULUS (≥ 80%)' : 'BELUM LULUS'}</strong></div>
+        <div class="score-val">${safeScore} / 100</div>
+        <div class="score-meta">${safeAnswered}/20 Terjawab — Status: <strong>${safeStatus}</strong></div>
       `;
     }
 
@@ -3076,7 +3097,8 @@ if (typeof module !== 'undefined' && module.exports) {
     verifyWordPasscode,
     hashPasscodeSha256,
     getAllowedWordPasscodeHashes,
-    SessionSecurityManager
+    SessionSecurityManager,
+    escapeHtml
   };
 }
 

@@ -3,6 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Content Security Policy (SEC-07): Restrict scripts, connections, and external objects -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' https://generativelanguage.googleapis.com https://api.telegram.org; object-src 'none'; base-uri 'self';">
+
+  <!-- Anti-Clickjacking & Frame-Busting Guard (SEC-08) -->
+  <style id="anti-clickjack-style">
+    html { display: none !important; }
+  </style>
+  <script>
+    (function() {
+      try {
+        if (window.top === window.self) {
+          var antiClickjack = document.getElementById('anti-clickjack-style');
+          if (antiClickjack && antiClickjack.parentNode) {
+            antiClickjack.parentNode.removeChild(antiClickjack);
+          }
+          if (document.documentElement) {
+            document.documentElement.style.display = 'block';
+          }
+        }
+      } catch (e) {
+        // If window.top access is restricted by cross-origin security, anti-clickjack-style remains in place
+      }
+    })();
+  </script>
+
   <meta name="description" content="Aplikasi Web Panduan Interaktif — Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router">
   <title>Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router</title>
 

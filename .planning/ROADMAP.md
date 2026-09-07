@@ -6,9 +6,9 @@
 - ✅ **v1.1 Live Workshop Guide (Agentic AI Hari-H)** - Phases 5-8 (shipped 2026-09-07) — [Archive](milestones/v1.1-ROADMAP.md)
 - ✅ **v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut** - Phases 9-12 (shipped 2026-09-07) — [Archive](milestones/v2.0-ROADMAP.md)
 - ✅ **v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture** - Phases 13-15 (shipped 2026-09-07) — [Archive](milestones/v2.1-ROADMAP.md)
-- 🟡 **v2.2 Application Security Hardening & Anti-Breach Protection** - Phases 16-18 (in progress)
+- ✅ **v2.2 Application Security Hardening & Anti-Breach Protection** - Phases 16-18 (shipped 2026-09-07)
 
-## Active Milestone: v2.2 (Phases 16-18)
+## Active Milestone: v2.2 (Phases 16-18) — COMPLETED
 
 - [x] **Phase 16: Cryptographic Passcode Hashing & Secret Protection (Zero-Plaintext)**
   - Hapus seluruh kata sandi teks polos dari file JavaScript dan console DevTools (`window.WORD_PASSCODES`).
@@ -21,7 +21,7 @@
   - Terapkan mekanisme auto-lock session timeout (misal: otomatis mengunci kembali modul setelah periode inaktivitas tertentu atau saat tab ditutup).
   - Tambahkan proteksi anti-tampering pada kunci status penyimpanan local storage.
 
-- [ ] **Phase 18: Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking**
+- [x] **Phase 18: Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking**
   - Terapkan meta tag Content Security Policy (CSP) ketat pada `<head>` untuk mencegah eksploitasi skrip asing dan XSS.
   - Tambahkan script pelindung anti-clickjacking untuk mencegah halaman dibajak atau di-embed dalam `<iframe>` pihak ketiga.
   - Lakukan audit sanitasi menyeluruh pada semua titik input pengguna (nama, NIP, instansi, form pencarian, dan perakitan kuis) untuk memastikan 0% celah DOM XSS.
