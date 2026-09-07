@@ -141,11 +141,21 @@ const WORD_DEFAULT_STATE = {
     'word-b3-landscape-mix': false,
     'word-b3-save-dotx': false,
     'word-b3-content-controls': false,
-    'word-b3-doc-inspection': false
+    'word-b3-doc-inspection': false,
+    // Bab IV (8 tasks)
+    'word-b4-prepare-source': false,
+    'word-b4-setup-mailmerge': false,
+    'word-b4-insert-fields': false,
+    'word-b4-merge-rules': false,
+    'word-b4-preview-finish': false,
+    'word-b4-track-changes': false,
+    'word-b4-comments-resolve': false,
+    'word-b4-compare-combine': false
   },
   checkpoints: {
     'word-cp-1': 'pending', // 'pending' | 'passed' | 'failed'
-    'word-cp-2': 'pending'
+    'word-cp-2': 'pending',
+    'word-cp-3': 'pending'
   },
   participantInfo: {
     name: '',
@@ -384,7 +394,7 @@ class StateManager {
     const checklists = this.state.checklists || {};
 
     if (this.activeCourse === 'word') {
-      const taskKeys = Object.keys(checklists).filter(k => k.startsWith('word-b1-') || k.startsWith('word-b2-') || k.startsWith('word-b3-'));
+      const taskKeys = Object.keys(checklists).filter(k => k.startsWith('word-b1-') || k.startsWith('word-b2-') || k.startsWith('word-b3-') || k.startsWith('word-b4-'));
       const cpKeys = Object.keys(this.state.checkpoints || {}).filter(k => k.startsWith('word-cp-'));
 
       const totalTasks = taskKeys.length;
@@ -533,12 +543,12 @@ class StateManager {
   }
 
   /**
-   * Calculate dynamic Word Processing document readiness status (Course 2: Bab I-III, Checkpoints 1 & 2)
+   * Calculate dynamic Word Processing document readiness status (Course 2: Bab I-IV, Checkpoints 1, 2, & 3)
    */
   calculateWordReadiness() {
     const progress = this.calculateProgress();
     const cps = this.state.checkpoints || {};
-    const cpIds = ['word-cp-1', 'word-cp-2'];
+    const cpIds = ['word-cp-1', 'word-cp-2', 'word-cp-3'];
     const cpValues = cpIds.map(id => cps[id] || 'pending');
 
     const hasFailure = cpValues.some(v => v === 'failed');
@@ -549,7 +559,7 @@ class StateManager {
         status: 'clinic',
         label: '⚠️ PERLU KONSULTASI / KLINIK',
         badgeClass: 'badge-danger',
-        description: 'Terdapat kendala pada verifikasi struktur dokumen atau tata letak section. Periksa kembali panduan perbaikan atau konsultasikan dengan fasilitator.',
+        description: 'Terdapat kendala pada verifikasi struktur dokumen, section break, atau otomasi/kolaborasi Bab IV. Periksa kembali panduan perbaikan atau konsultasikan dengan fasilitator.',
         color: 'var(--color-danger)'
       };
     }
@@ -559,7 +569,7 @@ class StateManager {
         status: 'ready',
         label: '🎉 DOKUMEN SESUAI STANDAR DINAS',
         badgeClass: 'badge-success',
-        description: 'Selamat! Seluruh checklist Bab I–III dan Checkpoint 1 & 2 berhasil diverifikasi. Dokumen Anda memenuhi standar hierarki, penomoran section, dan template ASN!',
+        description: 'Selamat! Seluruh checklist Bab I–IV dan Checkpoint 1, 2, & 3 berhasil diverifikasi. Dokumen Anda memenuhi standar hierarki, penomoran section, otomatisasi mail merge, kolaborasi, dan template ASN!',
         color: 'var(--color-success)'
       };
     }
@@ -568,7 +578,7 @@ class StateManager {
       status: 'pending',
       label: '⏳ DALAM PENYUSUNAN PRAKTIK',
       badgeClass: 'badge-warning',
-      description: 'Lengkapi checklist praktik Bab I, II, dan III serta verifikasi Checkpoint 1 dan 2 untuk menuntaskan standardisasi dokumen dinas Anda.',
+      description: 'Lengkapi checklist praktik Bab I s/d IV serta verifikasi Checkpoint 1, 2, dan 3 untuk menuntaskan standardisasi dan kolaborasi dokumen dinas Anda.',
       color: 'var(--color-warning)'
     };
   }
