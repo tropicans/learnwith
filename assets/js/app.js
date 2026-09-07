@@ -1385,7 +1385,7 @@ function updateModeUI(mode, showNotification = true) {
 }
 
 const LIVE_CLASS_UNLOCK_KEY = 'live_class_unlocked';
-const INSTRUCTOR_PASSCODES = ['hermes2026', 'buka-kelas', 'admin'];
+const INSTRUCTOR_PASSCODES = ['buka-kelas'];
 
 function isLiveClassUnlocked() {
   // 1. Check URL parameters for ?unlock=live or ?unlock=class
@@ -1539,6 +1539,7 @@ if (typeof window !== 'undefined') {
   window.updateModeUI = updateModeUI;
   window.isLiveClassUnlocked = isLiveClassUnlocked;
   window.setLiveClassUnlocked = setLiveClassUnlocked;
+  window.INSTRUCTOR_PASSCODES = INSTRUCTOR_PASSCODES;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -1558,7 +1559,8 @@ if (typeof module !== 'undefined' && module.exports) {
     setupModeSwitcher,
     updateModeUI,
     isLiveClassUnlocked,
-    setLiveClassUnlocked
+    setLiveClassUnlocked,
+    INSTRUCTOR_PASSCODES
   };
 }
 

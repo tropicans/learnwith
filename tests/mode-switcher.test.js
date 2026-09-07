@@ -185,6 +185,11 @@
       appModule.setLiveClassUnlocked(false);
       assert(appModule.isLiveClassUnlocked() === false, 'Live class is locked after setLiveClassUnlocked(false)');
       assertEquals(localStorage.getItem('live_class_unlocked'), null, 'Unlock key removed from localStorage');
+
+      // Test Passcode Configuration
+      if (appModule.INSTRUCTOR_PASSCODES) {
+        assertEquals(appModule.INSTRUCTOR_PASSCODES, ['buka-kelas'], 'INSTRUCTOR_PASSCODES only contains buka-kelas');
+      }
     } else {
       assert(false, 'isLiveClassUnlocked or setLiveClassUnlocked export not found');
     }
