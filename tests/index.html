@@ -21,11 +21,43 @@
   </div>
   <!-- Hidden fixtures for DOM testing in browser -->
   <div style="display:none;" id="test-dom-fixtures">
+    <div id="container-course-ai"></div>
+    <div id="container-course-word"></div>
     <div id="container-pretraining"></div>
     <div id="container-liveclass"></div>
     <div id="nav-group-pretraining"></div>
     <div id="nav-group-liveclass"></div>
+    <div id="nav-group-word"></div>
+    <span id="header-brand-title"></span>
     <span id="header-brand-subtitle"></span>
+    <div id="header-progress-text"></div>
+    <div id="header-progress-bar"></div>
+    <div id="stat-progress-count"></div>
+    <div id="sec-word-intro"></div>
+    <div id="sec-word-standards"></div>
+    <div id="sec-word-shortcuts"></div>
+    <div id="sec-word-module-2"></div>
+    <div id="sec-word-cp-1"></div>
+    <div id="sec-word-module-3"></div>
+    <div id="sec-word-cp-2"></div>
+    <div id="sec-word-diagnosis"></div>
+    <div id="card-word-cp-1" class="checkpoint-gate-card">
+      <span id="status-card-word-cp1"></span>
+      <button class="btn-cp-action" data-checkpoint="word-cp-1" data-status="passed"></button>
+      <button class="btn-cp-action" data-checkpoint="word-cp-1" data-status="failed"></button>
+      <button class="btn-cp-action" data-checkpoint="word-cp-1" data-status="pending"></button>
+    </div>
+    <div id="card-word-cp-2" class="checkpoint-gate-card">
+      <span id="status-card-word-cp2"></span>
+      <button class="btn-cp-action" data-checkpoint="word-cp-2" data-status="passed"></button>
+      <button class="btn-cp-action" data-checkpoint="word-cp-2" data-status="failed"></button>
+      <button class="btn-cp-action" data-checkpoint="word-cp-2" data-status="pending"></button>
+    </div>
+    <span id="status-nav-word-cp1"></span>
+    <span id="status-nav-word-cp2"></span>
+    <span id="badge-nav-word-b1"></span>
+    <span id="badge-nav-word-b2"></span>
+    <span id="badge-nav-word-b3"></span>
     <button class="mode-tab" data-mode="pretraining"></button>
     <button class="mode-tab" data-mode="live-class"></button>
   </div>
@@ -54,5 +86,6 @@
   <script src="mode-switcher.test.js"></script>
   <script src="live-class-modules.test.js"></script>
   <script src="multi-course.test.js"></script>
+  <script src="word-modules.test.js"></script>
 </body>
 </html>
