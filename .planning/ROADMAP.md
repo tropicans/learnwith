@@ -26,6 +26,38 @@
   - Lembar refleksi diri dan checklist bukti praktik terpadu ASN.
   - Form Laporan Kelulusan & Hasil Praktik dengan ekspor 1-klik WhatsApp, Telegram, dan Print PDF.
 
+### Phase 9: Multi-Course Architecture & Course Gate Protection
+
+**Goal**: Establish multi-course architecture with namespaced state storage, developer gate protection for Course 2, and seamless course switching while maintaining 100% backward compatibility for Course 1.
+**Depends on**: Milestone v1.1
+**Requirements**: GATEWAY-01, GATEWAY-02, GATEWAY-03
+**Plans**: 2 plans
+
+Plans:
+- [ ] 09-01: Namespaced StateManager refactoring, migration helper, and backward compatibility layer.
+- [ ] 09-02: Course switcher UI component, developer gate modal with passcode/URL unlock, and course routing.
+
+### Phase 10: Interactive Modules Bab I–III (Struktur Dokumen, Styles, TOC & Penomoran Halaman)
+
+**Goal**: Deliver interactive guide modules and checkpoint gates for Word Advanced Modules Bab I to III covering styles hierarchy, automatic TOC, section breaks, and complex page numbering.
+**Depends on**: Phase 9
+**Requirements**: WORD-01, WORD-02, WORD-03, WORD-05
+**Plans**: 2 plans
+
+### Phase 11: Interactive Modules Bab IV (Mail Merge, Track Changes & Kolaborasi Dokumen)
+
+**Goal**: Provide interactive step-by-step guides for Mail Merge automation, Track Changes, document comparison, and cloud collaboration workflows.
+**Depends on**: Phase 10
+**Requirements**: WORD-04, WORD-05
+**Plans**: 2 plans
+
+### Phase 12: Interactive Knowledge Quiz (Bab V), Rubrik Evaluasi & Laporan Kelulusan BPSDM
+
+**Goal**: Implement 20-question interactive evaluation quiz with instant explanations, self-reflection competency checklist, and multi-channel report exporter for BPSDM certification.
+**Depends on**: Phase 11
+**Requirements**: QUIZ-01, QUIZ-02, QUIZ-03, WORD-RPT-01, WORD-RPT-02
+**Plans**: 2 plans
+
 ## Completed Milestones
 
 <details>
