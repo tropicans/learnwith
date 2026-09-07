@@ -11,9 +11,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/components.css">
+  <!-- Core Stylesheets (with Cache-Busting) -->
+  <link rel="stylesheet" href="assets/css/main.css?v=1.2.2">
+  <link rel="stylesheet" href="assets/css/components.css?v=1.2.2">
+
+  <style>
+    /* Critical Sidebar Mode Switcher Overrides (Instant Anti-Cache Protection) */
+    .sidebar-mode-switcher {
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      gap: 0.4rem !important;
+      background: var(--bg-surface-subtle) !important;
+      padding: 0.35rem !important;
+      border-radius: var(--radius-md) !important;
+      border: 1px solid var(--border-subtle) !important;
+      box-sizing: border-box !important;
+    }
+    .sidebar-mode-switcher .mode-tab {
+      display: flex !important;
+      align-items: center !important;
+      width: 100% !important;
+      justify-content: flex-start !important;
+      padding: 0.6rem 0.85rem !important;
+      border-radius: var(--radius-sm) !important;
+      font-size: var(--font-size-xs) !important;
+      min-height: 44px !important;
+      gap: 0.65rem !important;
+      text-align: left !important;
+      border: 1px solid transparent !important;
+      box-sizing: border-box !important;
+      white-space: normal !important;
+    }
+    .sidebar-mode-switcher .mode-tab.active {
+      background: var(--bg-surface) !important;
+      border-color: var(--border-subtle) !important;
+      color: var(--accent-primary) !important;
+      box-shadow: var(--shadow-xs) !important;
+    }
+    .sidebar-mode-switcher .mode-tab .mode-tab-label {
+      flex: 1 !important;
+      font-weight: 600 !important;
+    }
+    .sidebar-mode-switcher .mode-tab-lock {
+      margin-left: auto !important;
+      padding: 0.15rem 0.35rem !important;
+      background: rgba(239, 68, 68, 0.12) !important;
+      border: 1px solid rgba(239, 68, 68, 0.25) !important;
+      border-radius: var(--radius-xs) !important;
+    }
+  </style>
 
   <!-- Favicon & App Icons -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -117,7 +164,7 @@
       <!-- Sidebar Mode Switcher -->
       <div class="sidebar-mode-switcher-container">
         <div class="sidebar-mode-label">Mode Sesi Workshop</div>
-        <div class="sidebar-mode-switcher mode-switcher" role="tablist" aria-label="Pilihan Sesi Workshop (Sidebar)">
+        <div class="sidebar-mode-switcher" role="tablist" aria-label="Pilihan Sesi Workshop (Sidebar)">
           <button type="button" class="mode-tab active" data-mode="pretraining" role="tab" aria-selected="true" aria-controls="container-pretraining" id="tab-pretraining-sidebar">
             <span class="mode-tab-icon">📋</span>
             <span class="mode-tab-label">Pra-Training</span>
@@ -4446,9 +4493,9 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
   <!-- Dynamic Toast Container -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-  <!-- Core Scripts -->
-  <script src="assets/js/state.js"></script>
-  <script src="assets/js/search.js"></script>
-  <script src="assets/js/app.js"></script>
+  <!-- Core Scripts (with Cache-Busting) -->
+  <script src="assets/js/state.js?v=1.2.2"></script>
+  <script src="assets/js/search.js?v=1.2.2"></script>
+  <script src="assets/js/app.js?v=1.2.2"></script>
 </body>
 </html>
