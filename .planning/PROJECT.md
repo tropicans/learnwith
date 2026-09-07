@@ -6,21 +6,15 @@ A modern, responsive, and beginner-friendly web application designed to guide wo
 ## Core Value
 Empower non-technical participants to complete all pre-training prerequisites and live in-class practical exercises independently, safely, and without anxiety through clear visual guidance, interactive checklists, and automated checkpoint reporting.
 
-## Current Milestone: v1.1 Live Workshop Guide (Hari-H Praktik Kelas)
+## Current State: Milestone v1.1 Complete (Live Workshop Guide)
 
-**Goal:** Expand the web application to provide interactive guidance, command copying, and checkpoint validation for the live workshop session (`PANDUAN-PRAKTIK-KELAS.md`), covering 9Router model alignment, Hermes Agent installation, Telegram bot wiring, and Google Calendar tool execution.
-
-**Target features:**
-- Mode / Tab Switcher in Header/Sidebar to toggle between "Pra-Training (Persiapan)" and "Hari-H (Praktik Kelas)"
-- Interactive In-Class Modules (Modul 6–10):
-  - Modul 6: Penyelarasan Provider & Model 9Router (Checkpoint 4)
-  - Modul 7: Instalasi & Pemeriksaan Hermes di Windows via PowerShell (`hermes doctor`, Checkpoint 5)
-  - Modul 8: Konfigurasi Hermes Full Setup (Model, Endpoint `http://localhost:20128/v1`, API Key)
-  - Modul 9: Integrasi Bot Telegram & Whitelist User ID pada Hermes Agent (Checkpoint 6)
-  - Modul 10: Google Cloud OAuth 2.0 (Desktop app), Otorisasi Google Calendar, & Uji End-to-End via Telegram (Checkpoint 7)
-- 4 Live Workshop Checkpoint Verification Gates (CP-4, CP-5, CP-6, CP-7) with reactive status tracking
-- In-Class Troubleshooting Hub & Resolution Cards (handling Python PATH issues, ExecutionPolicy, Google OAuth redirect errors, Telegram polling conflicts)
-- Final Workshop Completion Report Generator (Form Laporan Status Akhir Praktik Kelas) with 1-click WhatsApp/Telegram export
+**Shipped:** 2026-09-07
+**Accomplishments:**
+- Complete dual-purpose workshop navigation (Pra-Training vs Hari-H Praktik Kelas).
+- Interactive guided workflows for Moduls 6–11 with Checkpoints 4–9.
+- Dedicated in-class troubleshooting hub with live search and category filter.
+- Form Laporan Hasil Praktik Kelas with 1-click WhatsApp and Telegram exports and automatic regex token redaction.
+- 153 automated browser & Node.js test assertions passing with 0 failures (100% pass rate).
 
 ## Requirements
 
@@ -43,16 +37,20 @@ Empower non-technical participants to complete all pre-training prerequisites an
 - ✓ Pre-filled Form Laporan Kesiapan Section 15 (RPT-01) — v1.0
 - ✓ 1-Click WhatsApp / Telegram clipboard export (RPT-02) — v1.0
 - ✓ Clean Print & PDF-ready layout formatting (RPT-03) — v1.0
-
-### Active (Milestone v1.1)
-- [ ] Mode Switcher: Tab/Toggle between "Pra-Training" and "Hari-H Praktik Kelas" (MODE-01)
-- [ ] 9Router Alignment Guide & Checkpoint 4 Gate (CLASS-01)
-- [ ] Hermes Agent Native Windows Installation & Doctor Checkpoint 5 (CLASS-02)
-- [ ] Hermes Full Setup & Provider Configuration Guide (CLASS-03)
-- [ ] Telegram Bot Integration & Whitelist Security Checkpoint 6 (CLASS-04)
-- [ ] Google Calendar OAuth 2.0 & End-to-End Tool Call Verification Checkpoint 7 (CLASS-05)
-- [ ] Live Workshop Troubleshooting Hub extension for runtime & OAuth errors (CLASS-06)
-- [ ] Form Laporan Akhir Sesi Praktik Kelas & Export (CLASS-07)
+- ✓ Mode Switcher: Tab/Toggle between "Pra-Training" and "Hari-H Praktik Kelas" (MODE-01) — v1.1
+- ✓ Dynamic Navigation & Section Visibility across modes (MODE-02) — v1.1
+- ✓ 9Router Model Alignment & Endpoint Synchronization (CLASS-01) — v1.1
+- ✓ Hermes Agent Windows Native Install & Doctor Diagnosis (CLASS-02) — v1.1
+- ✓ Hermes Full Setup Wizard & 9Router Provider Test (CLASS-03) — v1.1
+- ✓ Telegram Gateway Setup & Strict Allowlist Enforcement (CLASS-04) — v1.1
+- ✓ Google Cloud Console OAuth 2.0 Desktop App & Calendar Authorization (CLASS-05) — v1.1
+- ✓ End-to-End Test Prompts, Calendar Verification & Reboot SOP (CLASS-06) — v1.1
+- ✓ Checkpoint Gates 4 through 9 Pass/Fail verification (GATE-01..06) — v1.1
+- ✓ Multi-tier Live Workshop Completion Status Engine (GATE-07) — v1.1
+- ✓ 7 In-Class Runtime Error Resolution Cards (TRBL-04) — v1.1
+- ✓ In-Class Category Filters for Troubleshooting (TRBL-05) — v1.1
+- ✓ Form Laporan Hasil Praktik Kelas (RPT-04) — v1.1
+- ✓ Dual 1-Click WhatsApp & Telegram Markdown Exporter with Redaction (RPT-05) — v1.1
 
 ### Out of Scope
 - Automated remote installation on user's machine (security risk; users must run commands themselves).
@@ -60,13 +58,19 @@ Empower non-technical participants to complete all pre-training prerequisites an
 - Storing participant OAuth client secrets or bot tokens in `localStorage` (credentials must remain in participant's local environment).
 
 ## Context
-Shipped v1.0 with ~6,400 LOC of clean Vanilla HTML5, CSS3, and ES6 JavaScript. Zero external build tooling or npm runtime dependencies required. Tested with 62 automated browser & Node.js test assertions passing (100% pass rate). Expanding into v1.1 to provide an end-to-end companion tool for both preparation and live workshop execution.
+Shipped v1.1 with ~4,000 lines of production HTML and JavaScript. 153 automated tests passing with zero failures. Zero build tools or npm dependencies required. Complete companion web application ready for live deployment and classroom use.
 
 ## Key Decisions
 - ✓ **Architecture**: Lightweight, modular Vanilla HTML5, modern CSS3 (Custom Properties, Glassmorphism, Responsive Grid/Flex), and Vanilla JS ES6+ (zero complex build steps required, runnable offline or on any browser) — *Outcome: Good*
 - ✓ **Persistence**: Browser `localStorage` for state preservation (steps checked, form input, checkpoint states) — *Outcome: Good*
 - ✓ **Safety First**: Client-side only with built-in token detection & redaction assistant to protect sensitive credentials — *Outcome: Good*
 - ✓ **Tone & Usability**: Indonesian language matching `PANDUAN-PRE-TRAINING.md` and `PANDUAN-PRAKTIK-KELAS.md`, clean typography, high visual feedback, and clear callouts for checkpoints — *Outcome: Good*
+
+## Next Milestone Goals (v1.2 Candidates)
+- Interactive command simulator / terminal preview playground for dry-running PowerShell commands before executing.
+- Live localhost ping button (CORS/fetch healthcheck) for `http://localhost:20128/v1` and 9Router status.
+- Multilingual toggle (Indonesian / English) for international participants.
+- PWA (Progressive Web App) manifest and service worker for 100% offline standalone usage.
 
 ## Evolution
 
@@ -86,4 +90,5 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-09-04 for Milestone v1.1*
+*Last updated: 2026-09-07 for Milestone v1.1 Complete*
+

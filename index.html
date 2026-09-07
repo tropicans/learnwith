@@ -3952,40 +3952,390 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
         </div>
       </section>
 
-      <!-- SECTION: TROUBLESHOOTING HARI-H -->
+      <!-- SECTION: TROUBLESHOOTING HARI-H (TRBL-04, TRBL-05) -->
       <section id="sec-live-troubleshooting" class="content-section" data-section="sec-live-troubleshooting">
         <div class="section-header">
           <div class="section-title-wrap">
             <div class="section-icon">🛠️</div>
             <div>
-              <h2 class="section-title">Solusi Kendala Live Workshop</h2>
-              <p class="section-desc">Pusat penanganan error runtime Hermes, 9Router, Telegram, dan OAuth.</p>
+              <h2 class="section-title">Solusi Kendala Live Workshop (Hari-H)</h2>
+              <p class="section-desc">Pusat penanganan cepat error runtime Hermes CLI, 9Router endpoint, Telegram Gateway, dan Google Calendar OAuth.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-warning">Fase 8</span>
+          <span class="badge badge-pill badge-warning">Hari-H Live</span>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <p>Pusat solusi kendala live workshop akan diintegrasikan pada Phase 8.</p>
+
+        <!-- Troubleshooting Search & Category Filter Toolbar -->
+        <div class="troubleshoot-toolbar">
+          <div class="troubleshoot-search-wrap">
+            <span class="troubleshoot-search-icon">🔍</span>
+            <input 
+              type="text" 
+              id="live-troubleshoot-search-input" 
+              class="troubleshoot-search-input" 
+              placeholder="Cari kendala live (hermes, endpoint, gateway, allowlist, oauth, token)..."
+              autocomplete="off"
+              aria-label="Cari kendala live workshop"
+            />
           </div>
+
+          <div class="troubleshoot-filter-pills" id="live-troubleshoot-filter-pills" role="group" aria-label="Filter kategori kendala live">
+            <button type="button" class="troubleshoot-filter-btn active" data-category="all" aria-pressed="true">Semua Kendala Live (7)</button>
+            <button type="button" class="troubleshoot-filter-btn" data-category="9router-live" aria-pressed="false">9Router & Endpoint</button>
+            <button type="button" class="troubleshoot-filter-btn" data-category="hermes-cli" aria-pressed="false">Hermes CLI</button>
+            <button type="button" class="troubleshoot-filter-btn" data-category="telegram-gateway" aria-pressed="false">Telegram Gateway</button>
+            <button type="button" class="troubleshoot-filter-btn" data-category="google-oauth" aria-pressed="false">Google OAuth</button>
+          </div>
+        </div>
+
+        <!-- Live Troubleshooting Cards Grid -->
+        <div class="troubleshoot-grid" id="live-troubleshoot-cards-container">
+          
+          <!-- Card 1: hermes tidak dikenali -->
+          <div class="trouble-card" data-live-trouble-category="hermes-cli">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">💻</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>'hermes' tidak dikenali</code> / <code>command not found</code></h4>
+                  <span class="badge badge-pill badge-neutral">Hermes CLI</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Pemeriksaan pertama:</strong> Terminal PowerShell belum dibuka ulang setelah menjalankan skrip instalasi resmi Hermes.
+            </div>
+            <ol class="trouble-steps">
+              <li>Tutup seluruh jendela PowerShell atau Windows Terminal yang sedang terbuka (bukan hanya satu tab).</li>
+              <li>Buka PowerShell baru, lalu jalankan diagnosis kesehatan Hermes:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">powershell</span>
+                <button type="button" class="code-copy-btn" aria-label="Salin perintah hermes doctor">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-powershell">hermes doctor</code></pre>
+            </div>
+            <ol class="trouble-steps" start="3">
+              <li>Jika masih belum ditemukan, pastikan direktori instalasi binary Hermes (biasanya <code>~/.hermes/bin</code>) terdaftar pada variabel PATH lingkungan pengguna Windows Anda.</li>
+            </ol>
+          </div>
+
+          <!-- Card 2: 9Router Connection Refused -->
+          <div class="trouble-card" data-live-trouble-category="9router-live">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🌐</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>Hermes tidak menjawab</code> / <code>Connection refused to 127.0.0.1:20128</code></h4>
+                  <span class="badge badge-pill badge-neutral">9Router & Endpoint</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Pemeriksaan pertama:</strong> Proses 9Router lokal belum dijalankan atau port 20128 terhenti.
+            </div>
+            <ol class="trouble-steps">
+              <li>Buka jendela PowerShell khusus, lalu jalankan 9Router:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">powershell</span>
+                <button type="button" class="code-copy-btn" aria-label="Salin perintah npx 9router">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-powershell">npx 9router</code></pre>
+            </div>
+            <ol class="trouble-steps" start="2">
+              <li>Buka peramban ke <code>http://localhost:20128</code> dan pastikan dashboard terbuka serta status router menunjukkan <em>Running</em>.</li>
+              <li>Pastikan URL endpoint di Hermes setup mengarah tepat ke <code>http://localhost:20128/v1</code>.</li>
+            </ol>
+          </div>
+
+          <!-- Card 3: Model Gagal Dipanggil / API Key Invalid -->
+          <div class="trouble-card" data-live-trouble-category="9router-live">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🔑</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>Model gagal dipanggil</code> / <code>401 Unauthorized / Invalid API Key</code></h4>
+                  <span class="badge badge-pill badge-neutral">9Router & Endpoint</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Pemeriksaan pertama:</strong> API key 9Router lokal atau provider LLM belum sinkron atau kedaluwarsa.
+            </div>
+            <ol class="trouble-steps">
+              <li>Buka dashboard 9Router di <code>http://localhost:20128</code> pada menu <strong>API Keys</strong>.</li>
+              <li>Buat API Key baru jika perlu, salin secara privat. <strong>Peringatan:</strong> Jangan membagikan API key ke chat publik Zoom/kelas!</li>
+              <li>Jalankan konfigurasi ulang wizard di terminal Hermes:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">powershell</span>
+                <button type="button" class="code-copy-btn" aria-label="Salin perintah hermes setup">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-powershell">hermes setup</code></pre>
+            </div>
+          </div>
+
+          <!-- Card 4: Bot Telegram Tidak Merespons -->
+          <div class="trouble-card" data-live-trouble-category="telegram-gateway">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🤖</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>Bot Telegram diam / tidak membalas pesan sama sekali</code></h4>
+                  <span class="badge badge-pill badge-neutral">Telegram Gateway</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Pemeriksaan pertama:</strong> Gateway Hermes belum diaktifkan di latar belakang atau bot token salah.
+            </div>
+            <ol class="trouble-steps">
+              <li>Periksa status gateway Hermes di terminal:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">powershell</span>
+                <button type="button" class="code-copy-btn" aria-label="Salin status gateway">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-powershell">hermes gateway status</code></pre>
+            </div>
+            <ol class="trouble-steps" start="2">
+              <li>Jika statusnya <em>Stopped</em>, jalankan gateway dengan:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">powershell</span>
+                <button type="button" class="code-copy-btn" aria-label="Salin start gateway">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-powershell">hermes gateway start</code></pre>
+            </div>
+            <ol class="trouble-steps" start="3">
+              <li>Jika status aktif tetapi tetap diam, hentikan gateway lalu jalankan <code>hermes gateway setup</code> untuk memverifikasi Bot Token dari @BotFather.</li>
+            </ol>
+          </div>
+
+          <!-- Card 5: Error 'unauthorized' di Telegram -->
+          <div class="trouble-card" data-live-trouble-category="telegram-gateway">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🛑</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: Bot membalas <code>unauthorized</code> / <code>Akses ditolak</code></h4>
+                  <span class="badge badge-pill badge-neutral">Telegram Gateway</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Pemeriksaan pertama:</strong> User ID Telegram Anda belum terdaftar dalam variabel allowlist <code>TELEGRAM_ALLOWED_USERS</code>.
+            </div>
+            <ol class="trouble-steps">
+              <li>Buka Telegram dan kirim pesan apapun ke bot resmi <code>@userinfobot</code> untuk mendapatkan angka User ID numerik Anda (contoh: <code>123456789</code>).</li>
+              <li>Jalankan konfigurasi gateway dan masukkan User ID numerik tersebut ke daftar yang diizinkan:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">powershell</span>
+                <button type="button" class="code-copy-btn" aria-label="Salin gateway setup allowlist">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-powershell">hermes gateway setup</code></pre>
+            </div>
+            <ol class="trouble-steps" start="3">
+              <li>Mulai ulang gateway: jalankan <code>hermes gateway stop</code> diikuti <code>hermes gateway start</code>.</li>
+            </ol>
+          </div>
+
+          <!-- Card 6: OAuth Google Gagal -->
+          <div class="trouble-card" data-live-trouble-category="google-oauth">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">🔒</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>OAuth Google gagal</code> / <code>Access blocked: Authorization Error</code></h4>
+                  <span class="badge badge-pill badge-neutral">Google OAuth</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Pemeriksaan pertama:</strong> OAuth Client ID di GCP Console bukan bertipe <em>Desktop app</em> atau email latihan belum didaftarkan sebagai <em>Test User</em>.
+            </div>
+            <ol class="trouble-steps">
+              <li>Buka <a href="https://console.cloud.google.com/apis/credentials" target="_blank" rel="noopener noreferrer">Google Cloud Credentials</a>.</li>
+              <li>Periksa <strong>Application Type</strong>: Wajib memilih <strong>Desktop app</strong> (bukan Web application atau Other). Jika salah, buat Client ID baru bertipe Desktop app dan unduh file JSON kredensialnya.</li>
+              <li>Buka menu <strong>OAuth consent screen</strong> di GCP Console, pada bagian <strong>Test users</strong> pastikan email Google akun latihan Anda sudah ditambahkan.</li>
+            </ol>
+          </div>
+
+          <!-- Card 7: Google Calendar Tidak Berubah -->
+          <div class="trouble-card" data-live-trouble-category="google-oauth">
+            <div class="trouble-header">
+              <div class="trouble-title-wrap">
+                <div class="trouble-icon">📅</div>
+                <div>
+                  <h4 class="trouble-title">Pesan: <code>Google Calendar tidak berubah / agenda baru tidak muncul</code></h4>
+                  <span class="badge badge-pill badge-neutral">Google OAuth</span>
+                </div>
+              </div>
+            </div>
+            <div class="trouble-cause">
+              <strong>Pemeriksaan pertama:</strong> Browser Anda sedang login ke akun Google personal/kantor yang berbeda dari akun latihan yang diotorisasi Hermes.
+            </div>
+            <ol class="trouble-steps">
+              <li>Periksa profil akun aktif di sudut kanan atas <a href="https://calendar.google.com" target="_blank" rel="noopener noreferrer">calendar.google.com</a> dan pastikan akunnya sesuai akun latihan.</li>
+              <li>Kirim prompt pembacaan agenda terlebih dahulu dari bot Telegram:</li>
+            </ol>
+            <div class="code-block-wrap">
+              <div class="code-block-header">
+                <span class="code-block-lang">text</span>
+                <button type="button" class="code-copy-btn" aria-label="Salin prompt baca agenda">
+                  <span class="copy-icon">📋</span>
+                  <span class="copy-label">Salin</span>
+                </button>
+              </div>
+              <pre class="code-block-content"><code class="language-text">Tampilkan agenda saya hari ini.</code></pre>
+            </div>
+            <ol class="trouble-steps" start="3">
+              <li>Setelah berhasil membaca agenda, ulangi perintah pembuatan agenda dummy dan periksa kalender latihan di browser.</li>
+            </ol>
+          </div>
+
         </div>
       </section>
 
-      <!-- SECTION: LAPORAN AKHIR -->
+      <!-- SECTION: LAPORAN AKHIR (GATE-07, RPT-04, RPT-05) -->
       <section id="sec-live-report" class="content-section" data-section="sec-live-report">
         <div class="section-header">
           <div class="section-title-wrap">
             <div class="section-icon">📊</div>
             <div>
               <h2 class="section-title">Laporan Status Akhir Praktik Kelas</h2>
-              <p class="section-desc">Rekapitulasi pencapaian akhir untuk instruktur via WhatsApp/Telegram.</p>
+              <p class="section-desc">Format resmi rekapitulasi hasil praktik Hari-H (Checkpoints 4 s/d 9) untuk dilaporkan kepada instruktur.</p>
             </div>
           </div>
-          <span class="badge badge-pill badge-success">Fase 8</span>
+          <span id="badge-live-readiness" class="badge badge-pill badge-warning">DALAM PRAKTIK</span>
         </div>
-        <div class="card">
-          <div class="card-body">
-            <p>Generator laporan hasil praktik kelas akan diintegrasikan pada Phase 8.</p>
+
+        <div class="report-workbench">
+          <div class="report-grid">
+            
+            <!-- Left: Editable Form Pane -->
+            <div class="report-form-pane">
+              <h4 style="font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.5rem;">
+                ✏️ Lengkapi Data Hasil Praktik:
+              </h4>
+
+              <div class="form-group">
+                <label for="input-live-report-name" class="form-label">
+                  <span>👤</span> Nama Lengkap Peserta:
+                </label>
+                <input 
+                  type="text" 
+                  id="input-live-report-name" 
+                  class="form-input" 
+                  placeholder="Masukkan nama lengkap Anda..."
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="input-live-report-model" class="form-label">
+                  <span>🤖</span> Model LLM yang Digunakan:
+                </label>
+                <input 
+                  type="text" 
+                  id="input-live-report-model" 
+                  class="form-input" 
+                  placeholder="Contoh: hermes-3-llama-3.1-8b atau qwen2.5-coder"
+                  value="hermes-3-llama-3.1-8b"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="select-live-report-os" class="form-label">
+                  <span>💻</span> Sistem Operasi Laptop:
+                </label>
+                <select id="select-live-report-os" class="form-input" style="cursor: pointer;">
+                  <option value="Windows 11">Windows 11</option>
+                  <option value="Windows 10">Windows 10</option>
+                  <option value="Windows Lainnya / Mac / Linux">Windows Lainnya / Mac / Linux</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="input-live-report-problem-step" class="form-label">
+                  <span>⚠️</span> Kendala / Langkah Terakhir (Jika Ada):
+                </label>
+                <input 
+                  type="text" 
+                  id="input-live-report-problem-step" 
+                  class="form-input" 
+                  placeholder="Tulis 'Nihil / Sukses Penuh' jika seluruh langkah berhasil"
+                  value="Nihil / Sukses Penuh"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="input-live-report-error-msg" class="form-label">
+                  <span>🛑</span> Pesan Error Terminal (Opsional, Otomatis Disensor):
+                </label>
+                <textarea 
+                  id="input-live-report-error-msg" 
+                  class="form-input" 
+                  style="height: 80px; font-family: var(--font-mono); font-size: var(--font-size-xs);" 
+                  placeholder="Jika ada kendala error runtime, tempel di sini (token/kunci akan disensor otomatis)..."
+                ></textarea>
+              </div>
+
+              <div class="alert-box alert-info" style="margin-top: 0.5rem; padding: 0.75rem 1rem;">
+                <div class="alert-icon">💡</div>
+                <div class="alert-content">
+                  <p style="font-size: var(--font-size-xs); line-height: 1.5;">
+                    Status Checkpoint 4 s/d 9 diambil secara otomatis dari progres modul interaktif Anda.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Preview Pane & Actions -->
+            <div class="report-preview-pane">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                <span style="font-size: var(--font-size-xs); font-weight: 600; color: var(--text-secondary);">Pratinjau Pesan Siap Kirim:</span>
+                <span id="live-report-char-count" style="font-size: var(--font-size-xs); color: var(--text-muted);">0 karakter</span>
+              </div>
+
+              <pre id="live-report-output-preview" class="report-preview-box" style="height: 270px; overflow-y: auto; font-family: var(--font-mono); font-size: var(--font-size-xs); line-height: 1.5; padding: 0.85rem; border-radius: var(--radius-md); background: var(--bg-tertiary); border: 1px solid var(--border-subtle); white-space: pre-wrap; word-break: break-word;"></pre>
+
+              <div class="report-actions" style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem;">
+                <button type="button" id="btn-copy-live-report-wa" class="btn btn-success btn-sm" style="flex: 1; min-width: 180px;">
+                  <span>📋</span> Salin Format WhatsApp
+                </button>
+                <button type="button" id="btn-copy-live-report-tg" class="btn btn-primary btn-sm" style="flex: 1; min-width: 180px;">
+                  <span>✈️</span> Salin Format Telegram
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

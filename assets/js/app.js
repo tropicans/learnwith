@@ -47,12 +47,14 @@ if (typeof document !== 'undefined' && typeof document.addEventListener === 'fun
 
     // 14. Setup Troubleshooting Hub Search & Filter
     setupTroubleshootingHub();
+    setupLiveTroubleshootingHub();
 
     // 15. Setup Sensitive Data Redaction Tool
     setupRedactionTool();
 
     // 16. Setup Form Laporan Kesiapan & Export
     setupReadinessReport();
+    setupLiveReport();
 
     // 17. Setup Dual-Purpose Mode Switcher (Pra-Training vs Hari-H Kelas)
     setupModeSwitcher();
@@ -803,6 +805,80 @@ function setupTroubleshootingHub() {
 }
 
 /**
+ * --- 13B. LIVE WORKSHOP TROUBLESHOOTING HUB CONTROLLER (TRBL-04, TRBL-05) ---
+ */
+function setupLiveTroubleshootingHub() {
+  const searchInput = document.getElementById('live-troubleshoot-search-input');
+  const filterPills = document.getElementById('live-troubleshoot-filter-pills');
+  const filterBtns = filterPills ? filterPills.querySelectorAll('.troubleshoot-filter-btn') : document.querySelectorAll('#sec-live-troubleshooting .troubleshoot-filter-btn');
+  const cards = document.querySelectorAll('#live-troubleshoot-cards-container .trouble-card');
+
+  let currentCategory = 'all';
+  let searchQuery = '';
+
+  filterBtns.forEach((btn, index) => {
+    btn.tabIndex = btn.classList.contains('active') || (index === 0 && !Array.from(filterBtns).some(item => item.classList.contains('active'))) ? 0 : -1;
+  });
+
+  function filterLiveCards() {
+    const q = searchQuery.toLowerCase().trim();
+
+    cards.forEach(card => {
+      const cardCategory = card.getAttribute('data-live-trouble-category') || '';
+      const textContent = card.innerText.toLowerCase();
+
+      const categoryMatch = currentCategory === 'all' || cardCategory === currentCategory;
+      const searchMatch = !q || textContent.includes(q);
+
+      if (categoryMatch && searchMatch) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+        b.tabIndex = -1;
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      btn.tabIndex = 0;
+      currentCategory = btn.getAttribute('data-category') || 'all';
+      filterLiveCards();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+      if (!keys.includes(e.key)) return;
+      e.preventDefault();
+      const buttons = Array.from(filterBtns);
+      const currentIndex = buttons.indexOf(btn);
+      let nextIndex = currentIndex;
+      if (e.key === 'Home') nextIndex = 0;
+      if (e.key === 'End') nextIndex = buttons.length - 1;
+      if (e.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      if (e.key === 'ArrowRight') nextIndex = (currentIndex + 1) % buttons.length;
+      buttons.forEach((button, index) => { button.tabIndex = index === nextIndex ? 0 : -1; });
+      buttons[nextIndex].focus();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      filterLiveCards();
+    });
+  }
+}
+
+window.setupLiveTroubleshootingHub = setupLiveTroubleshootingHub;
+
+/**
  * --- 14. SENSITIVE DATA REDACTION TOOL (TRBL-03) ---
  */
 const REDACTION_RULES = [
@@ -1041,6 +1117,204 @@ function setupReadinessReport() {
 }
 
 /**
+ * --- 16B. FORM LAPORAN HASIL PRAKTIK KELAS CONTROLLER (GATE-07, RPT-04, RPT-05) ---
+ */
+function generateLiveReportText(format = 'whatsapp', overrides = {}) {
+  const state = window.AppState ? window.AppState.getState() : {};
+  const info = { ...(state.participantInfo || {}), ...overrides.participantInfo };
+  const cps = { ...(state.checkpoints || {}), ...overrides.checkpoints };
+  const liveReadiness = (window.AppState && window.AppState.calculateLiveReadiness)
+    ? window.AppState.calculateLiveReadiness()
+    : { status: 'in_progress', label: 'DALAM PRAKTIK' };
+
+  const name = overrides.name || info.name || '[Nama Peserta]';
+  const model = overrides.model || info.routerModel || 'hermes-3-llama-3.1-8b';
+  const os = overrides.os || 'Windows 11 / Windows 10';
+
+  // Checkpoints 4 through 9
+  const cp4Mark = cps['cp-4'] === 'passed' ? '[X]' : '[ ]';
+  const cp5Mark = cps['cp-5'] === 'passed' ? '[X]' : '[ ]';
+  const cp6Mark = cps['cp-6'] === 'passed' ? '[X]' : '[ ]';
+  const cp7Mark = cps['cp-7'] === 'passed' ? '[X]' : '[ ]';
+  const cp8Mark = cps['cp-8'] === 'passed' ? '[X]' : '[ ]';
+  const cp9Mark = cps['cp-9'] === 'passed' ? '[X]' : '[ ]';
+
+  // Problem step & Error msg
+  const probStep = overrides.probStep || 'Nihil / Sukses Penuh';
+  const rawError = overrides.errorMsg || 'Nihil';
+  const sanitizedError = (rawError === 'Nihil') ? 'Nihil' : (window.sanitizeLogText ? window.sanitizeLogText(rawError).sanitized : rawError);
+
+  const statusLabel = overrides.statusLabel || liveReadiness.label || 'DALAM PRAKTIK';
+
+  if (format === 'whatsapp') {
+    return `*LAPORAN HASIL PRAKTIK KELAS (HARI-H)*
+Workshop Hermes Agent + 9Router (Google Calendar via Telegram)
+
+*Data Peserta:*
+• Nama: ${name}
+• Model Digunakan: ${model}
+• Sistem Operasi: ${os}
+
+*Status Gerbang Checkpoint:*
+${cp4Mark} Checkpoint 4 — 9Router & model sinkron
+${cp5Mark} Checkpoint 5 — Hermes CLI & doctor lolos
+${cp6Mark} Checkpoint 6 — Respon uji model via 9Router
+${cp7Mark} Checkpoint 7 — Telegram Gateway allowlist aktif
+${cp8Mark} Checkpoint 8 — Google Calendar Desktop OAuth aktif
+${cp9Mark} Checkpoint 9 — Uji E2E kelola kalender via Telegram
+
+*Status Akhir:* ${statusLabel}
+*Kendala / Langkah Terakhir:* ${probStep}
+
+*Log Error Terminal (Tersensor):*
+${sanitizedError}`;
+  }
+
+  // Telegram format (Markdown)
+  return `📊 **LAPORAN HASIL PRAKTIK KELAS (HARI-H)**
+Workshop Hermes Agent + 9Router (Google Calendar via Telegram)
+
+👤 **Data Peserta:**
+- Nama: ${name}
+- Model Digunakan: \`${model}\`
+- Sistem Operasi: ${os}
+
+🏁 **Status Gerbang Checkpoint:**
+${cp4Mark} Checkpoint 4 — 9Router & model sinkron
+${cp5Mark} Checkpoint 5 — Hermes CLI & doctor lolos
+${cp6Mark} Checkpoint 6 — Respon uji model via 9Router
+${cp7Mark} Checkpoint 7 — Telegram Gateway allowlist aktif
+${cp8Mark} Checkpoint 8 — Google Calendar Desktop OAuth aktif
+${cp9Mark} Checkpoint 9 — Uji E2E kelola kalender via Telegram
+
+⚡ **Status Akhir:** ${statusLabel}
+⚠️ **Kendala / Langkah Terakhir:** ${probStep}
+
+🛑 **Log Error Terminal (Tersensor):**
+\`\`\`
+${sanitizedError}
+\`\`\``;
+}
+
+window.generateLiveReportText = generateLiveReportText;
+
+function setupLiveReport() {
+  const nameInput = document.getElementById('input-live-report-name');
+  const modelInput = document.getElementById('input-live-report-model');
+  const osSelect = document.getElementById('select-live-report-os');
+  const probStepInput = document.getElementById('input-live-report-problem-step');
+  const errorMsgInput = document.getElementById('input-live-report-error-msg');
+  const previewBox = document.getElementById('live-report-output-preview');
+  const charCount = document.getElementById('live-report-char-count');
+  const copyWaBtn = document.getElementById('btn-copy-live-report-wa');
+  const copyTgBtn = document.getElementById('btn-copy-live-report-tg');
+  const readinessBadge = document.getElementById('badge-live-readiness');
+
+  if (!previewBox) return;
+
+  function updateLivePreview() {
+    const overrides = {
+      name: nameInput ? nameInput.value.trim() : '',
+      model: modelInput ? modelInput.value.trim() : '',
+      os: osSelect ? osSelect.value : 'Windows 11',
+      probStep: probStepInput ? probStepInput.value.trim() : 'Nihil / Sukses Penuh',
+      errorMsg: errorMsgInput ? errorMsgInput.value.trim() : 'Nihil'
+    };
+
+    const text = generateLiveReportText('whatsapp', overrides);
+    previewBox.innerText = text;
+    if (charCount) {
+      charCount.innerText = `${text.length} karakter`;
+    }
+
+    if (readinessBadge && window.AppState && window.AppState.calculateLiveReadiness) {
+      const liveReadiness = window.AppState.calculateLiveReadiness();
+      readinessBadge.className = `badge badge-pill ${liveReadiness.badgeClass}`;
+      readinessBadge.innerText = liveReadiness.label;
+    }
+  }
+
+  if (nameInput) {
+    nameInput.value = (window.AppState && window.AppState.getState().participantInfo.name) || '';
+    nameInput.addEventListener('input', (e) => {
+      if (window.AppState) window.AppState.updateParticipantInfo('name', e.target.value);
+      updateLivePreview();
+    });
+  }
+
+  if (modelInput) {
+    const savedModel = (window.AppState && window.AppState.getState().participantInfo.routerModel);
+    if (savedModel) modelInput.value = savedModel;
+    modelInput.addEventListener('input', (e) => {
+      if (window.AppState) window.AppState.updateParticipantInfo('routerModel', e.target.value);
+      updateLivePreview();
+    });
+  }
+
+  updateLivePreview();
+
+  if (osSelect) osSelect.addEventListener('change', updateLivePreview);
+  if (probStepInput) probStepInput.addEventListener('input', updateLivePreview);
+  if (errorMsgInput) errorMsgInput.addEventListener('input', updateLivePreview);
+
+  if (window.AppState) {
+    window.AppState.on('stateChange', updateLivePreview);
+    window.AppState.on('checkpointUpdate', updateLivePreview);
+    window.AppState.on('participantInfoUpdate', updateLivePreview);
+  }
+
+  if (copyWaBtn) {
+    copyWaBtn.addEventListener('click', () => {
+      const overrides = {
+        name: nameInput ? nameInput.value.trim() : '',
+        model: modelInput ? modelInput.value.trim() : '',
+        os: osSelect ? osSelect.value : 'Windows 11',
+        probStep: probStepInput ? probStepInput.value.trim() : 'Nihil / Sukses Penuh',
+        errorMsg: errorMsgInput ? errorMsgInput.value.trim() : 'Nihil'
+      };
+      const text = generateLiveReportText('whatsapp', overrides);
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Format WhatsApp berhasil disalin ke clipboard! 📋', 'success', 3000);
+      }).catch(() => {
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast('Laporan disalin ke clipboard!', 'success', 2500);
+      });
+    });
+  }
+
+  if (copyTgBtn) {
+    copyTgBtn.addEventListener('click', () => {
+      const overrides = {
+        name: nameInput ? nameInput.value.trim() : '',
+        model: modelInput ? modelInput.value.trim() : '',
+        os: osSelect ? osSelect.value : 'Windows 11',
+        probStep: probStepInput ? probStepInput.value.trim() : 'Nihil / Sukses Penuh',
+        errorMsg: errorMsgInput ? errorMsgInput.value.trim() : 'Nihil'
+      };
+      const text = generateLiveReportText('telegram', overrides);
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Format Telegram berhasil disalin ke clipboard! ✈️', 'success', 3000);
+      }).catch(() => {
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast('Laporan disalin ke clipboard!', 'success', 2500);
+      });
+    });
+  }
+}
+
+window.setupLiveReport = setupLiveReport;
+
+/**
  * --- 17. DUAL-PURPOSE MODE SWITCHER CONTROLLER ---
  */
 function updateModeUI(mode, showNotification = true) {
@@ -1139,10 +1413,13 @@ if (typeof module !== 'undefined' && module.exports) {
     sanitizeLogText,
     generateReportText,
     setupReadinessReport,
+    generateLiveReportText,
+    setupLiveReport,
     showToast,
     setupMobileDrawer,
     setupModuleAccordions,
     setupTroubleshootingHub,
+    setupLiveTroubleshootingHub,
     setupCodeCopy,
     setupModeSwitcher,
     updateModeUI

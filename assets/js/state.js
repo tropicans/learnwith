@@ -347,6 +347,47 @@ class StateManager {
   }
 
   /**
+   * Calculate dynamic Live Class completion readiness status (Hari-H: Checkpoints 4-9) (GATE-07)
+   */
+  calculateLiveReadiness() {
+    const progress = this.calculateProgress('live-class');
+    const cps = this.state.checkpoints || {};
+    const liveCpIds = ['cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'];
+    const cpValues = liveCpIds.map(id => cps[id] || 'pending');
+
+    const hasFailure = cpValues.some(v => v === 'failed');
+    const allCheckpointsPassed = cpValues.every(v => v === 'passed');
+
+    if (hasFailure || progress.percentage < 50) {
+      return {
+        status: 'clinic',
+        label: '⚠️ BELUM SIAP / BUTUH BANTUAN',
+        badgeClass: 'badge-danger',
+        description: 'Terdapat kendala pada satu atau lebih gerbang checkpoint in-class atau progres masih di bawah 50%. Silakan periksa Pusat Bantuan Kendala Live Workshop atau tanyakan kepada instruktur.',
+        color: 'var(--color-danger)'
+      };
+    }
+
+    if (allCheckpointsPassed && progress.percentage >= 95) {
+      return {
+        status: 'ready',
+        label: '🎉 SELESAI (SUKSES)',
+        badgeClass: 'badge-success',
+        description: 'Selamat! Seluruh gerbang checkpoint Hari-H Praktik Kelas (CP 4 s/d CP 9) berhasil diselesaikan. Integrasi Telegram dan Google Calendar Anda telah terverifikasi penuh!',
+        color: 'var(--color-success)'
+      };
+    }
+
+    return {
+      status: 'in_progress',
+      label: '⏳ DALAM PRAKTIK',
+      badgeClass: 'badge-warning',
+      description: 'Sesi praktik kelas sedang berlangsung. Lanjutkan modul berikutnya dan selesaikan verifikasi Checkpoint 4 hingga 9 untuk menyelesaikan workshop.',
+      color: 'var(--color-warning)'
+    };
+  }
+
+  /**
    * Reset all progress
    */
   resetState() {

@@ -161,6 +161,82 @@
     assert(liveProgress.totalCheckpoints === 6, 'Live class tracks 6 checkpoints (cp-4..cp-9)');
     assert(liveProgress.passedCheckpoints === 6, 'All 6 live checkpoints passed');
 
+    console.log('\n[Suite 8: Phase 8 calculateLiveReadiness Status Engine (GATE-07)]');
+    localStorage.clear();
+    const smReadiness = new ProductionStateManager();
+    // Fresh state: all CP 4..9 are pending, progress = 0% (< 50%) -> clinic
+    assertEquals(smReadiness.calculateLiveReadiness().status, 'clinic', 'Initial fresh state with 0% progress is clinic');
+    assertEquals(smReadiness.calculateLiveReadiness().label, '⚠️ BELUM SIAP / BUTUH BANTUAN', 'Label is BELUM SIAP / BUTUH BANTUAN');
+
+    // Complete all checklists for Modul 6..11 to get task completion > 50%
+    const allLiveTasks = [
+      'm6-run-router', 'm6-open-dashboard', 'm6-select-model', 'm6-create-key',
+      'm7-install-cli', 'm7-restart-shell', 'm7-run-doctor',
+      'm8-run-setup', 'm8-enter-endpoint', 'm8-enter-key', 'm8-test-response',
+      'm9-run-setup', 'm9-select-telegram', 'm9-enter-token', 'm9-enter-allowed', 'm9-start-gateway', 'm9-check-status', 'm9-verify-dm',
+      'm10-open-cloud', 'm10-enable-calendar', 'm10-oauth-screen', 'm10-create-desktop-client', 'm10-download-secret', 'm10-auth-hermes',
+      'm11-prompt-read', 'm11-prompt-create', 'm11-verify-calendar', 'm11-clean-dummy', 'm11-reboot-sequence'
+    ];
+    allLiveTasks.forEach(task => smReadiness.updateChecklist(task, true));
+    
+    // Now task progress is 100% * 60% = 60%, checkpoints still pending (0% * 40% = 0%) -> total 60% (>= 50%, no failures, but not all passed) -> in_progress
+    assertEquals(smReadiness.calculateLiveReadiness().status, 'in_progress', 'Progress >= 50% with pending checkpoints is in_progress');
+    assertEquals(smReadiness.calculateLiveReadiness().label, '⏳ DALAM PRAKTIK', 'Label is DALAM PRAKTIK');
+
+    // If any checkpoint fails -> clinic
+    smReadiness.updateCheckpoint('cp-5', 'failed');
+    assertEquals(smReadiness.calculateLiveReadiness().status, 'clinic', 'Any failed checkpoint returns clinic');
+    assertEquals(smReadiness.calculateLiveReadiness().label, '⚠️ BELUM SIAP / BUTUH BANTUAN', 'Failed checkpoint label is BELUM SIAP / BUTUH BANTUAN');
+
+    // Pass all checkpoints 4 through 9 -> ready (100% total progress)
+    ['cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9'].forEach(cp => smReadiness.updateCheckpoint(cp, 'passed'));
+    assertEquals(smReadiness.calculateLiveReadiness().status, 'ready', 'All checkpoints passed with full progress returns ready');
+    assertEquals(smReadiness.calculateLiveReadiness().label, '🎉 SELESAI (SUKSES)', 'Ready label is SELESAI (SUKSES)');
+
+    console.log('\n[Suite 9: Phase 8 Form Laporan Hasil Praktik Generator & Dual Export (RPT-04, RPT-05)]');
+    const productionApp = typeof module !== 'undefined' && module.exports
+      ? require('../assets/js/app.js')
+      : {
+          generateLiveReportText: window.generateLiveReportText,
+          setupLiveTroubleshootingHub: window.setupLiveTroubleshootingHub
+        };
+
+    assert(typeof productionApp.generateLiveReportText === 'function', 'generateLiveReportText function is available');
+
+    window.AppState = smReadiness;
+    const waReport = productionApp.generateLiveReportText('whatsapp', {
+      name: 'Ahmad Peserta',
+      model: 'hermes-3-llama-3.1-8b',
+      os: 'Windows 11',
+      probStep: 'Nihil / Sukses Penuh',
+      errorMsg: 'Nihil'
+    });
+
+    assert(waReport.includes('*LAPORAN HASIL PRAKTIK KELAS (HARI-H)*'), 'WhatsApp format includes bold header');
+    assert(waReport.includes('Ahmad Peserta'), 'WhatsApp format includes participant name');
+    assert(waReport.includes('hermes-3-llama-3.1-8b'), 'WhatsApp format includes model name');
+    assert(waReport.includes('[X] Checkpoint 4'), 'Checkpoint 4 is marked [X]');
+    assert(waReport.includes('[X] Checkpoint 9'), 'Checkpoint 9 is marked [X]');
+    assert(waReport.includes('SELESAI (SUKSES)'), 'Status Akhir shows SELESAI (SUKSES)');
+
+    // Telegram markdown format
+    const tgReport = productionApp.generateLiveReportText('telegram', {
+      name: 'Ahmad Peserta',
+      model: 'hermes-3-llama-3.1-8b',
+      os: 'Windows 11',
+      probStep: 'Nihil',
+      errorMsg: 'Error with token 123456789:ABCDefGhIjKlMnOpQrStUvWxYz012345678 and key sk-123456789012345678901234567890'
+    });
+
+    assert(tgReport.includes('**LAPORAN HASIL PRAKTIK KELAS (HARI-H)**'), 'Telegram format includes markdown header');
+    assert(tgReport.includes('`hermes-3-llama-3.1-8b`'), 'Telegram format includes backtick model name');
+    assert(tgReport.includes('[REDACTED_TELEGRAM_BOT_TOKEN]'), 'Telegram report redacts bot token');
+    assert(tgReport.includes('[REDACTED_API_KEY]'), 'Telegram report redacts API key');
+    assert(!tgReport.includes('123456789:ABCDefGhIjKlMnOpQrStUvWxYz012345678'), 'Original bot token is completely absent');
+
+    console.log('\n[Suite 10: Phase 8 Live Troubleshooting Hub Categories & Scenarios (TRBL-04, TRBL-05)]');
+    assert(typeof productionApp.setupLiveTroubleshootingHub === 'function' || typeof window.setupLiveTroubleshootingHub === 'function', 'setupLiveTroubleshootingHub function is available');
+
     console.log(`\nTEST SUMMARY: ${passedTests} PASSED, ${failedTests} FAILED\n`);
     if (failedTests > 0 && typeof process !== 'undefined') process.exitCode = 1;
     return { passedTests, failedTests };
