@@ -17,7 +17,7 @@
   - Bab I Pendahuluan & berkas praktik ASN.
   - Bab II Styles, Heading, Multilevel List, TOC otomatis & Checkpoint 1.
   - Bab III Section Breaks, Header/Footer unlink, nomor halaman Romawi vs Arab, tata letak campuran, template `.dotx`, content controls & Checkpoint 2.
-- [ ] **Phase 11: Interactive Modules Bab IV (Mail Merge, Track Changes & Kolaborasi Dokumen)**
+- [x] **Phase 11: Interactive Modules Bab IV (Mail Merge, Track Changes & Kolaborasi Dokumen)** (completed 2026-09-07)
   - Mail Merge surat & label massal, rules & filtering data.
   - Review tools: Komentar, Track Changes, Compare/Combine, penguncian pelacakan, dan etika kolaborasi daring.
   - Checkpoint 3 verifikasi otomatisasi & kolaborasi.
