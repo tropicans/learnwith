@@ -9,14 +9,14 @@
 
 ### 1. Critical CSS & Anti-Cache Architecture (CACHE)
 
-- [ ] **CACHE-01**: Course dropdown menu must have critical `<style>` rules embedded in `<head>` ensuring `display: none !important;` by default and `display: flex !important;` when `.show` is toggled, preventing unstyled HTML leakage under any network or cache conditions.
-- [ ] **CACHE-02**: Asset versioning query parameter bumped to `?v=2.1.0` on all linked stylesheets and scripts in `index.html`.
+- [x] **CACHE-01**: Course dropdown menu must have critical `<style>` rules embedded in `<head>` ensuring `display: none !important;` by default and `display: flex !important;` when `.show` is toggled, preventing unstyled HTML leakage under any network or cache conditions.
+- [x] **CACHE-02**: Asset versioning query parameter bumped to `?v=2.1.0` on all linked stylesheets and scripts in `index.html`.
 
 ### 2. Google NotebookLM-Inspired Top Bar & Course Selector (NLM-NAV)
 
-- [ ] **NLM-NAV-01**: Header displays unified platform branding `learnwith` alongside an elegant Material 3 breadcrumb pill selector (`learnwith / [ 🤖 Hands-on Agentic AI ▾ ]`).
-- [ ] **NLM-NAV-02**: Elimination of triple text repetition in header: `#header-brand-title` and `#header-brand-subtitle` integrated seamlessly into the brand & breadcrumb hierarchy while preserving DOM accessibility and 100% test compatibility.
-- [ ] **NLM-NAV-03**: Floating course switcher popover styled as an elevated Google-style card with soft shadows, active course indicator, and clean unlock status badges.
+- [x] **NLM-NAV-01**: Header displays unified platform branding `learnwith` alongside an elegant Material 3 breadcrumb pill selector (`learnwith / [ 🤖 Hands-on Agentic AI ▾ ]`).
+- [x] **NLM-NAV-02**: Elimination of triple text repetition in header: `#header-brand-title` and `#header-brand-subtitle` integrated seamlessly into the brand & breadcrumb hierarchy while preserving DOM accessibility and 100% test compatibility.
+- [x] **NLM-NAV-03**: Floating course switcher popover styled as an elevated Google-style card with soft shadows, active course indicator, and clean unlock status badges.
 
 ### 3. Workspace De-duplication & Sidebar Streamlining (WORKSPACE)
 
@@ -36,11 +36,11 @@
 
 | Requirement | Phase | Status |
 |---|---|---|
-| CACHE-01 | Phase 13 | Pending |
-| CACHE-02 | Phase 13 | Pending |
-| NLM-NAV-01 | Phase 13 | Pending |
-| NLM-NAV-02 | Phase 13 | Pending |
-| NLM-NAV-03 | Phase 13 | Pending |
+| CACHE-01 | Phase 13 | Complete |
+| CACHE-02 | Phase 13 | Complete |
+| NLM-NAV-01 | Phase 13 | Complete |
+| NLM-NAV-02 | Phase 13 | Complete |
+| NLM-NAV-03 | Phase 13 | Complete |
 | WORK-01 | Phase 14 | Pending |
 | WORK-02 | Phase 14 | Pending |
 | WORK-03 | Phase 14 | Pending |

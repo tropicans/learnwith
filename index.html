@@ -12,10 +12,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheets (with Cache-Busting) -->
-  <link rel="stylesheet" href="assets/css/main.css?v=1.2.2">
-  <link rel="stylesheet" href="assets/css/components.css?v=1.2.2">
+  <link rel="stylesheet" href="assets/css/main.css?v=2.1.0">
+  <link rel="stylesheet" href="assets/css/components.css?v=2.1.0">
 
   <style>
+    /* Critical Anti-Leak Protection for Course Dropdown Menu (Zero-Unstyled Glitch) */
+    .course-dropdown-menu {
+      display: none !important;
+      position: absolute !important;
+      top: calc(100% + 8px) !important;
+      left: 0 !important;
+      min-width: 290px !important;
+      background: var(--bg-surface, #ffffff) !important;
+      border: 1px solid var(--border-subtle, #e2e8f0) !important;
+      border-radius: 14px !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08) !important;
+      padding: 0.45rem !important;
+      list-style: none !important;
+      z-index: 9999 !important;
+    }
+    .course-dropdown-menu.show {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    /* Screen-Reader & Test Compatibility Utility */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    /* NotebookLM Top Bar & Pill Selector Baseline */
+    .header-brand-platform {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .platform-logo-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+    .brand-breadcrumb-separator {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      opacity: 0.45;
+      margin: 0 0.4rem;
+      font-weight: 300;
+      user-select: none;
+    }
+
     /* Critical Sidebar Mode Switcher Overrides (Instant Anti-Cache Protection) */
     .sidebar-mode-switcher {
       display: flex !important;
@@ -82,14 +136,14 @@
           </svg>
         </button>
         <div class="header-brand-icon">
-          <img src="favicon.svg" alt="Agentic AI Robot Logo" class="brand-logo-img">
+          <img src="favicon.svg" alt="learnwith Logo" class="brand-logo-img">
         </div>
-        <div class="header-brand-text">
-          <h1 id="header-brand-title">Hands-on Agentic AI</h1>
-          <p id="header-brand-subtitle">Hands-on Agentic AI • Pra-Training</p>
+        <div class="header-brand-platform">
+          <span class="platform-logo-text">learnwith</span>
         </div>
+        <span class="brand-breadcrumb-separator" aria-hidden="true">/</span>
 
-        <!-- Course Switcher Component (Header) -->
+        <!-- Course Switcher Component (NotebookLM-Style Pill Dropdown) -->
         <div class="header-course-switcher" id="course-switcher-container">
           <button type="button" class="course-dropdown-btn" id="btn-course-dropdown" aria-haspopup="listbox" aria-expanded="false" aria-label="Pilih Workshop / Course">
             <span class="course-icon" id="current-course-icon">🤖</span>
@@ -116,6 +170,10 @@
             </li>
           </ul>
         </div>
+
+        <!-- Accessible titles for Screen Readers & Automated Tests -->
+        <h1 id="header-brand-title" class="sr-only">Hands-on Agentic AI</h1>
+        <p id="header-brand-subtitle" class="sr-only">Hands-on Agentic AI • Pra-Training</p>
       </div>
 
       <!-- Mode Switcher Tabs (Segmented Control - Course 1 Dual-Mode) -->
@@ -7267,8 +7325,8 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
   <!-- Core Scripts (with Cache-Busting) -->
-  <script src="assets/js/state.js?v=1.2.2"></script>
-  <script src="assets/js/search.js?v=1.2.2"></script>
-  <script src="assets/js/app.js?v=1.2.2"></script>
+  <script src="assets/js/state.js?v=2.1.0"></script>
+  <script src="assets/js/search.js?v=2.1.0"></script>
+  <script src="assets/js/app.js?v=2.1.0"></script>
 </body>
 </html>

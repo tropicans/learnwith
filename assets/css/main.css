@@ -279,6 +279,43 @@ body {
   font-weight: var(--font-weight-medium);
 }
 
+/* NotebookLM Platform Branding & Breadcrumb */
+.header-brand-platform {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.platform-logo-text {
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  font-family: var(--font-family-primary, inherit);
+}
+
+.brand-breadcrumb-separator {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  opacity: 0.4;
+  margin: 0 0.35rem;
+  font-weight: 300;
+  user-select: none;
+}
+
+/* Accessibility screen-reader only utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 .header-mode-switcher {
   margin: 0 1rem;
   flex-shrink: 0;
@@ -757,6 +794,14 @@ body {
   }
 
   .header-mode-switcher {
+    display: none !important;
+  }
+
+  .header-course-switcher {
+    display: none !important;
+  }
+
+  .brand-breadcrumb-separator {
     display: none !important;
   }
 
