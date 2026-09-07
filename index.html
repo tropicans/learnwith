@@ -5078,6 +5078,719 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
           </div>
         </div>
       </section>
+
+      <!-- ============================================================
+           SECTION: BAB II - STRUKTUR & OTOMATISASI DOKUMEN
+           ============================================================ -->
+      <section id="sec-word-module-2" class="content-section">
+        <div class="module-card">
+          <div class="module-header" role="button" tabindex="0" aria-expanded="true" aria-controls="module-body-word-2">
+            <div class="module-header-main">
+              <div class="module-icon-badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">📑</div>
+              <div class="module-title-group">
+                <h3>Bab II: Struktur & Otomatisasi Dokumen</h3>
+                <p>Penguasaan hierarki Styles (Heading 1–3 vs Normal), Navigation Pane, Multilevel List, dan Table of Contents otomatis.</p>
+              </div>
+            </div>
+            <div class="module-header-meta">
+              <span class="badge badge-pill badge-primary">8 Langkah Praktik</span>
+              <span class="module-chevron" aria-hidden="true">▼</span>
+            </div>
+          </div>
+
+          <div id="module-body-word-2" class="module-body">
+            <!-- Langkah A -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Penerapan Hierarki Styles (Heading 1–3 vs Normal)</span>
+                <span class="badge badge-pill badge-neutral">Home > Styles</span>
+              </div>
+              <p class="card-body">
+                Buka salinan berkas <code>01_Dokumen_Berantakan.docx</code>. Jangan membuat judul hanya dengan memperbesar ukuran huruf dan menebalkannya secara manual (manual formatting). Terapkan style <strong>Heading 1</strong> untuk judul BAB utama, <strong>Heading 2</strong> untuk Subbab, dan <strong>Heading 3</strong> untuk anak subbab. Paragraf isi harus menggunakan style <strong>Normal</strong>.
+              </p>
+
+              <div class="alert-box alert-info">
+                <div class="alert-icon">💡</div>
+                <div class="alert-content">
+                  <h5>Aturan Emas Hierarki Dokumen ASN:</h5>
+                  <p style="margin: 0;">
+                    Hierarki yang baik tidak boleh melompati tingkatan. Jangan pernah menggunakan Heading 3 langsung di bawah Heading 1 tanpa ada Heading 2 di antaranya. Word membaca struktur ini untuk Navigation Pane, daftar isi, dan pembaca layar (screen reader).
+                  </p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-apply-h1">
+                <span class="checklist-label"><strong>Langkah A1:</strong> Terapkan style <code>Heading 1</code> pada seluruh judul Bab (BAB I, BAB II, BAB III, dll.) menggunakan shortcut <code>Ctrl+Alt+1</code>.</span>
+              </label>
+
+              <label class="step-checklist-action" style="margin-top: 0.5rem;">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-apply-h2-h3">
+                <span class="checklist-label"><strong>Langkah A2:</strong> Terapkan style <code>Heading 2</code> (<code>Ctrl+Alt+2</code>) pada subbagian dan <code>Heading 3</code> (<code>Ctrl+Alt+3</code>) pada rincian materi.</span>
+              </label>
+            </div>
+
+            <!-- Langkah B -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Modifikasi Style Sesuai Standar Kedinasan</span>
+                <span class="badge badge-pill badge-neutral">Right-Click Style > Modify</span>
+              </div>
+              <p class="card-body">
+                Keseragaman tampilan di seluruh dokumen harus dikendalikan dari Style, bukan diedit per baris teks. Modifikasi style <strong>Normal</strong> dan <strong>Heading 1</strong> agar mematuhi standar Pergub DKI Jakarta No. 14/2020:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Pada tab <strong>Home</strong> galeri Styles, klik kanan pada kotak <code>Heading 1</code> lalu pilih <strong>Modify...</strong></li>
+                <li>Atur font menjadi <strong>Bookman Old Style</strong> atau <strong>Arial</strong>, ukuran <strong>14 pt Bold</strong>, warna Automatic/Hitam.</li>
+                <li>Klik tombol <strong>Format</strong> di kiri bawah > pilih <strong>Paragraph...</strong></li>
+                <li>Atur <strong>Spacing Before: 12 pt</strong>, <strong>After: 6 pt</strong>, dan centang kotak <strong>Keep with next</strong> (pada tab Line and Page Breaks) agar judul bab tidak pernah terputus sendirian di dasar halaman!</li>
+                <li>Klik <strong>OK</strong> dua kali untuk menyimpan perubahan. Seluruh judul Heading 1 di seluruh dokumen akan terbarui seketika.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-modify-styles">
+                <span class="checklist-label"><strong>Langkah B selesai:</strong> Modifikasi style Heading 1, Heading 2, dan Normal telah disesuaikan dan opsi <code>Keep with next</code> aktif.</span>
+              </label>
+            </div>
+
+            <!-- Langkah C -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Pemeriksaan Navigasi & Reorganisasi via Navigation Pane</span>
+                <span class="badge badge-pill badge-neutral">Ctrl + F / View > Navigation Pane</span>
+              </div>
+              <p class="card-body">
+                Tekan <code>Ctrl + F</code> pada keyboard atau buka tab <strong>View</strong> lalu centang kotak <strong>Navigation Pane</strong>. Pilih tab <strong>Headings</strong> di panel sisi kiri.
+              </p>
+              <div class="alert-box alert-success">
+                <div class="alert-icon">✨</div>
+                <div class="alert-content">
+                  <h5>Fitur Canggih Drag-and-Drop Navigation Pane:</h5>
+                  <p style="margin: 0;">
+                    Di Microsoft Word, Anda dapat memindahkan satu bab atau subbab beserta seluruh paragraf dan tabel di bawahnya hanya dengan menyeret (drag-and-drop) judul tersebut di Navigation Pane! Anda tidak perlu lagi melakukan cut-and-paste manual yang rawan merusak format dokumen.
+                  </p>
+                </div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-nav-pane">
+                <span class="checklist-label"><strong>Langkah C selesai:</strong> Struktur dokumen diperiksa pada Navigation Pane dan hierarki terlihat rapi tanpa ada judul yang terlewat.</span>
+              </label>
+            </div>
+
+            <!-- Langkah D -->
+            <div class="step-section">
+              <div class="step-section-node">D</div>
+              <div class="step-section-title">
+                <span>Penomoran Bertingkat Terikat Heading (Multilevel List)</span>
+                <span class="badge badge-pill badge-neutral">Home > Multilevel List</span>
+              </div>
+              <p class="card-body">
+                Jangan mengetik penomoran naskah dinas (seperti <em>A., 1., a., 1)</em>) secara manual karena saat bab dipindahkan nomornya akan kacau. Tautkan penomoran bertingkat ke Styles:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Pilih tab <strong>Home</strong> > klik ikon <strong>Multilevel List</strong> > pilih <strong>Define New Multilevel List...</strong></li>
+                <li>Klik tombol <strong>More >></strong> di pojok kiri bawah untuk membuka pengaturan lanjutan.</li>
+                <li>Pilih <strong>Level 1</strong>: Pada kotak <em>Link level to style</em>, pilih <code>Heading 1</code>.</li>
+                <li>Pilih <strong>Level 2</strong>: Pada kotak <em>Link level to style</em>, pilih <code>Heading 2</code>.</li>
+                <li>Pilih <strong>Level 3</strong>: Pada kotak <em>Link level to style</em>, pilih <code>Heading 3</code>.</li>
+                <li>Klik <strong>OK</strong>. Kini saat Anda menerapkan Heading 1 atau 2, nomor bab dan subbab akan bertambah otomatis!</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-multilevel">
+                <span class="checklist-label"><strong>Langkah D selesai:</strong> Penomoran bertingkat Multilevel List berhasil dikaitkan ke hierarki Heading 1–3.</span>
+              </label>
+            </div>
+
+            <!-- Langkah E -->
+            <div class="step-section">
+              <div class="step-section-node">E</div>
+              <div class="step-section-title">
+                <span>Penyisipan Daftar Isi Otomatis (Table of Contents)</span>
+                <span class="badge badge-pill badge-neutral">References > Table of Contents</span>
+              </div>
+              <p class="card-body">
+                Setelah seluruh judul menggunakan heading yang benar, buat Daftar Isi otomatis:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Letakkan kursor pada halaman yang diperuntukkan bagi <strong>DAFTAR ISI</strong>.</li>
+                <li>Buka tab <strong>References</strong> > klik menu <strong>Table of Contents</strong>.</li>
+                <li>Pilih <strong>Custom Table of Contents...</strong></li>
+                <li>Pastikan kotak <em>Show page numbers</em> dan <em>Right align page numbers</em> tercentang.</li>
+                <li>Pilih <strong>Tab leader</strong> dengan titik-titik (<code>..........</code>).</li>
+                <li>Pastikan <strong>Show levels: 3</strong> (mencakup Heading 1, Heading 2, dan Heading 3).</li>
+                <li>Klik <strong>OK</strong>. Daftar Isi akan terbentuk secara instan dan presisi.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-insert-toc">
+                <span class="checklist-label"><strong>Langkah E selesai:</strong> Table of Contents otomatis 3 tingkat berhasil disisipkan dengan tab leader titik-titik.</span>
+              </label>
+            </div>
+
+            <!-- Langkah F -->
+            <div class="step-section">
+              <div class="step-section-node">F</div>
+              <div class="step-section-title">
+                <span>Pengujian & Pembaruan Daftar Isi (Update Field)</span>
+                <span class="badge badge-pill badge-neutral">Klik Kanan TOC > Update Field / F9</span>
+              </div>
+              <p class="card-body">
+                Lakukan pengujian dinamis untuk membuktikan otomatisasi TOC berfungsi:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Tambahkan satu judul subbagian baru pada Bab II, misalnya <code>B.5 Standar Audit Dokumen</code> dengan format <strong>Heading 2</strong>.</li>
+                <li>Kembali ke halaman Daftar Isi. Klik kanan di area Daftar Isi > pilih <strong>Update Field</strong> (atau tekan <code>F9</code>).</li>
+                <li>Pilih opsi <strong>Update entire table</strong> (Perbarui seluruh tabel) lalu klik <strong>OK</strong>.</li>
+                <li>Pastikan subbagian baru tersebut langsung muncul lengkap dengan nomor halamannya yang akurat!</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-update-toc">
+                <span class="checklist-label"><strong>Langkah F selesai:</strong> Subbagian baru berhasil terdeteksi dan tercantum pada Daftar Isi setelah Update Field.</span>
+              </label>
+            </div>
+
+            <!-- Langkah G -->
+            <div class="step-section">
+              <div class="step-section-node">G</div>
+              <div class="step-section-title">
+                <span>Penomoran Gambar, Tabel & Referensi Silang (Captions & Cross-Reference)</span>
+                <span class="badge badge-pill badge-neutral">References > Insert Caption</span>
+              </div>
+              <p class="card-body">
+                Beri keterangan resmi pada tabel dan gambar dokumen dinas:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Klik pada tabel atau gambar dalam berkas latihan.</li>
+                <li>Buka tab <strong>References</strong> > klik <strong>Insert Caption</strong>.</li>
+                <li>Pilih Label <strong>Tabel</strong> atau <strong>Gambar</strong> (buat label baru jika belum ada), ketik judulnya, lalu klik <strong>OK</strong>.</li>
+                <li>Pada kalimat isi paragraf, rujuk nomor tersebut via <strong>References > Cross-reference</strong> > pilih Reference type: Tabel/Gambar > Insert reference to: <em>Only label and number</em>.</li>
+                <li>Saat posisi gambar/tabel berpindah, tekan <code>Ctrl + A</code> lalu <code>F9</code> untuk memperbarui seluruh nomor rujukan secara otomatis!</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b2-captions-ref">
+                <span class="checklist-label"><strong>Langkah G selesai:</strong> Caption tabel/gambar dan Cross-reference dinamis berhasil disisipkan dan diuji.</span>
+              </label>
+            </div>
+
+            <!-- Langkah H -->
+            <div class="step-section">
+              <div class="step-section-node">H</div>
+              <div class="step-section-title">
+                <span>Penyimpanan Berkas Sesuai Konvensi Nama ASN</span>
+                <span class="badge badge-pill badge-primary">Finalisasi Bab II</span>
+              </div>
+              <p class="card-body">
+                Simpan berkas latihan hasil pengerjaan Bab II Anda ke dalam folder kerja <code>Praktik_Word_NamaPeserta</code> dengan nama:
+              </p>
+              <div class="code-container">
+                <div class="code-header">
+                  <span class="code-label">Nama Berkas Simpanan</span>
+                  <button type="button" class="code-copy-btn" aria-label="Salin nama file">
+                    <span>📋 Salin Nama</span>
+                  </button>
+                </div>
+                <pre class="code-content"><code>Latihan_Styles_NamaPeserta.docx</code></pre>
+              </div>
+              <p style="font-size: var(--font-size-xs); color: var(--text-muted); margin-top: 0.5rem;">
+                Pastikan Anda telah memeriksa kembali bahwa tidak ada lagi teks judul yang menggunakan format manual (font tebal semata tanpa Heading). Lanjutkan ke Gerbang Checkpoint 1 di bawah ini.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: GERBANG CHECKPOINT 1 (BAB II: STRUKTUR & TOC)
+           ============================================================ -->
+      <section id="sec-word-cp-1" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">📍</div>
+            <div>
+              <h3 class="section-title">Gerbang Checkpoint 1: Struktur & Daftar Isi Otomatis</h3>
+              <p class="section-desc">Verifikasi penerapan hierarki Heading 1–3, Navigation Pane, dan Table of Contents dinamis.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint-gate-card" id="card-word-cp-1">
+          <div class="checkpoint-header-row">
+            <div class="checkpoint-title-wrap">
+              <div class="checkpoint-badge-icon">1</div>
+              <div>
+                <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                  Verifikasi Struktur Dokumen & TOC (Bab II)
+                </h4>
+                <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Bukti Berkas: <code>Latihan_Styles_NamaPeserta.docx</code></span>
+              </div>
+            </div>
+            <span id="status-card-word-cp1" class="badge badge-pill badge-warning">Pending</span>
+          </div>
+
+          <p class="card-body">
+            Gerbang Checkpoint 1 dinyatakan <strong>Lolos Verifikasi</strong> apabila 5 kriteria pemeriksaan hasil berikut terpenuhi pada berkas kerja Anda:
+          </p>
+
+          <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Seluruh judul dan subbagian memakai style <code>Heading 1</code>, <code>Heading 2</code>, atau <code>Heading 3</code> (tidak ada format manual semata).</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Hierarki pada <strong>Navigation Pane</strong> (<code>Ctrl+F</code>) rapi berurutan dan tidak melompati tingkatan.</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Daftar Isi Otomatis menampilkan judul dan nomor halaman yang sesuai serta memiliki tab leader titik-titik.</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Uji pembaruan berhasil: penambahan satu subbagian baru tercermin di daftar isi setelah memilih <code>Update entire table</code>.</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Paragraf isi menggunakan style <strong>Normal</strong>, dan opsi <strong>Keep with next</strong> aktif pada heading agar judul tidak terpisah di akhir halaman.</div>
+            </div>
+          </div>
+
+          <div class="cp-action-btn-group">
+            <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="word-cp-1" data-status="passed">
+              <span>✓</span> Lolos Verifikasi
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="word-cp-1" data-status="failed">
+              <span>✕</span> Ada Kendala (Gagal)
+            </button>
+            <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="word-cp-1" data-status="pending">
+              <span>↺</span> Reset Status
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: BAB III - TATA LETAK & TEMPLATE DOKUMEN
+           ============================================================ -->
+      <section id="sec-word-module-3" class="content-section">
+        <div class="module-card">
+          <div class="module-header" role="button" tabindex="0" aria-expanded="true" aria-controls="module-body-word-3">
+            <div class="module-header-main">
+              <div class="module-icon-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">📄</div>
+              <div class="module-title-group">
+                <h3>Bab III: Tata Letak & Template Dokumen</h3>
+                <p>Rekayasa dokumen multi-section, decoupling Link to Previous, nomor Romawi vs Arab, tata letak Landscape, template .dotx, dan Content Controls.</p>
+              </div>
+            </div>
+            <div class="module-header-meta">
+              <span class="badge badge-pill badge-primary">8 Langkah Praktik</span>
+              <span class="module-chevron" aria-hidden="true">▼</span>
+            </div>
+          </div>
+
+          <div id="module-body-word-3" class="module-body">
+            <!-- Langkah A -->
+            <div class="step-section">
+              <div class="step-section-node">A</div>
+              <div class="step-section-title">
+                <span>Konsep & Implementasi Section Break vs Page Break</span>
+                <span class="badge badge-pill badge-neutral">Layout > Breaks</span>
+              </div>
+              <p class="card-body">
+                Buka salinan berkas <code>02_Dokumen_Panjang_Section.docx</code>. Pahami perbedaan fundamental antara Page Break dan Section Break:
+              </p>
+              <div style="overflow-x: auto; margin: 0.75rem 0;">
+                <table class="data-table" style="font-size: var(--font-size-xs);">
+                  <thead>
+                    <tr>
+                      <th>Jenis Pemisah</th>
+                      <th>Perilaku Format</th>
+                      <th>Penggunaan Standar ASN</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Page Break (Ctrl+Enter)</strong></td>
+                      <td>Memulai halaman baru tetapi tetap dalam pengaturan section yang sama.</td>
+                      <td>Pindah halaman antar paragraf biasa dalam satu bab.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Section Break: Next Page</strong></td>
+                      <td>Membuat batas section baru yang independen pada halaman berikutnya.</td>
+                      <td>Pemisah antara Sampul, Kata Pengantar, Bab Isi, dan Lampiran Landscape.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Section Break: Continuous</strong></td>
+                      <td>Membuat section baru pada halaman yang sama tanpa jeda halaman.</td>
+                      <td>Mengubah teks 1 kolom menjadi 2 kolom di tengah halaman.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="card-body">
+                Aktifkan tombol <strong>Show/Hide (¶)</strong> pada tab Home untuk melihat penanda <code>:::: Section Break (Next Page) ::::</code> agar tidak terhapus tanpa sengaja.
+              </p>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-section-breaks">
+                <span class="checklist-label"><strong>Langkah A selesai:</strong> Sisipkan <code>Section Break (Next Page)</code> setelah halaman Sampul dan setelah halaman Daftar Isi.</span>
+              </label>
+            </div>
+
+            <!-- Langkah B -->
+            <div class="step-section">
+              <div class="step-section-node">B</div>
+              <div class="step-section-title">
+                <span>Pemutusan Hubungan Header & Footer (Link to Previous)</span>
+                <span class="badge badge-pill badge-warning">Kunci Sukses Nomor Berbeda!</span>
+              </div>
+              <p class="card-body">
+                Secara default, saat Anda membuat Section 2, Microsoft Word akan tetap mengaitkan header dan footernya ke Section 1 (terlihat tulisan <em>Same as Previous</em> di pojok kanan). Anda WAJIB memutuskan tautan ini:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Klik ganda (double-click) area <strong>Header</strong> pada halaman BAB I (Section 3).</li>
+                <li>Perhatikan tab ribbon <strong>Header & Footer</strong> yang muncul di bagian atas.</li>
+                <li>Klik tombol <strong>Link to Previous</strong> untuk MENONAKTIFKANNYA (sorotan tombol menjadi mati).</li>
+                <li>Gulir ke bawah dan klik di area <strong>Footer</strong> Section 3, lalu klik lagi tombol <strong>Link to Previous</strong> hingga mati!</li>
+                <li><em>Catatan:</em> Header dan Footer memiliki tombol Link to Previous masing-masing yang berdiri sendiri!</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-unlink-header">
+                <span class="checklist-label"><strong>Langkah B selesai:</strong> Tombol <code>Link to Previous</code> berhasil dinonaktifkan pada Header dan Footer Section 2 & Section 3.</span>
+              </label>
+            </div>
+
+            <!-- Langkah C -->
+            <div class="step-section">
+              <div class="step-section-node">C</div>
+              <div class="step-section-title">
+                <span>Penomoran Halaman Campuran (Romawi Kecil vs Angka Arab Mulai dari 1)</span>
+                <span class="badge badge-pill badge-neutral">Insert > Page Number > Format Page Numbers</span>
+              </div>
+              <p class="card-body">
+                Terapkan standar penomoran dokumen resmi ASN:
+              </p>
+              <div style="background: var(--bg-surface-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); margin-bottom: 0.75rem; font-size: var(--font-size-xs); line-height: 1.7;">
+                <div>1. <strong>Halaman Sampul (Cover):</strong> Tidak boleh memiliki nomor halaman (pilih <em>Different First Page</em> atau hapus footer di Section 1).</div>
+                <div>2. <strong>Bagian Awal (Kata Pengantar, Daftar Isi):</strong> Nomor Romawi kecil di tengah bawah: <code>i, ii, iii</code>.</div>
+                <div>3. <strong>Bagian Isi (BAB I dst):</strong> Nomor Arab: <code>1, 2, 3</code> di kanan bawah / tengah bawah, dan WAJIB dimulai dari nomor <strong>1</strong>.</div>
+              </div>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-page-num-roman">
+                <span class="checklist-label"><strong>Langkah C1:</strong> Atur nomor halaman Section 2 (Kata Pengantar/Daftar Isi) dengan format Romawi kecil <code>i, ii, iii</code>.</span>
+              </label>
+
+              <label class="step-checklist-action" style="margin-top: 0.5rem;">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-page-num-arabic">
+                <span class="checklist-label"><strong>Langkah C2:</strong> Pada Section 3 (Bab I), pilih <em>Format Page Numbers > Start at: 1</em> (Angka Arab 1, 2, 3) dan verifikasi halaman cover tetap bersih tanpa nomor.</span>
+              </label>
+            </div>
+
+            <!-- Langkah D -->
+            <div class="step-section">
+              <div class="step-section-node">D</div>
+              <div class="step-section-title">
+                <span>Tata Letak Campuran (Halaman Landscape Khusus Tabel Lebar)</span>
+                <span class="badge badge-pill badge-neutral">Layout > Orientation > Landscape</span>
+              </div>
+              <p class="card-body">
+                Dokumen kedinasan sering kali memiliki tabel rekapitulasi data yang sangat lebar sehingga teks terpotong jika dipaksakan dalam orientasi Portrait:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Letakkan kursor tepat sebelum judul tabel data lebar > sisipkan <strong>Layout > Breaks > Section Break (Next Page)</strong>.</li>
+                <li>Letakkan kursor tepat sesudah akhir tabel > sisipkan lagi <strong>Section Break (Next Page)</strong>.</li>
+                <li>Klik di halaman tabel > pilih <strong>Layout > Orientation > Landscape</strong>.</li>
+                <li>Periksa dokumen: Halaman tabel kini menjadi Landscape mendatar yang leluasa, sementara halaman sebelum dan sesudahnya tetap Portrait berdiri sempurna!</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-landscape-mix">
+                <span class="checklist-label"><strong>Langkah D selesai:</strong> Halaman Landscape untuk tabel data lebar berhasil dibuat di tengah dokumen Portrait tanpa merusak orientasi halaman lain.</span>
+              </label>
+            </div>
+
+            <!-- Langkah E -->
+            <div class="step-section">
+              <div class="step-section-node">E</div>
+              <div class="step-section-title">
+                <span>Pembuatan & Penggunaan Template Word Standar (.dotx)</span>
+                <span class="badge badge-pill badge-neutral">File > Save As > Word Template (*.dotx)</span>
+              </div>
+              <p class="card-body">
+                Jangan pernah membagikan draft kedinasan dengan menyalin-tempel (copy-paste) dokumen lama yang berisiko menyisakan data kasus orang lain. Buat Template resmi:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Hapus seluruh isi paragraf spesifik kasus, tetapi pertahankan struktur judul, style, section break, margin, dan header/footer.</li>
+                <li>Ganti teks spesifik dengan instruksi pengisian umum dalam tanda kurung siku, misalnya: <code>[Tuliskan Latar Belakang Kegiatan di Sini]</code>.</li>
+                <li>Pilih <strong>File > Save As</strong> > ubah tipe berkas <em>Save as type</em> menjadi <strong>Word Template (*.dotx)</strong>.</li>
+                <li>Uji coba template: Klik ganda berkas <code>.dotx</code> tersebut. Word akan otomatis membuka dokumen baru (<em>Document1</em>) berbasis template tanpa pernah menimpa berkas master aslinya!</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-save-dotx">
+                <span class="checklist-label"><strong>Langkah E selesai:</strong> Template master dinas berhasil disimpan dalam format <code>.dotx</code> dan diuji pembukaan dokumen barunya.</span>
+              </label>
+            </div>
+
+            <!-- Langkah F -->
+            <div class="step-section">
+              <div class="step-section-node">F</div>
+              <div class="step-section-title">
+                <span>Pemasangan Form Isian Content Controls (Tab Developer)</span>
+                <span class="badge badge-pill badge-neutral">Developer > Controls</span>
+              </div>
+              <p class="card-body">
+                Untuk template formulir resmi (seperti Nota Dinas atau SPT), cegah pengguna merusak format tata letak dengan Content Controls:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Jika tab <strong>Developer</strong> belum muncul: Klik kanan ribbon > <em>Customize the Ribbon</em> > centang kotak <strong>Developer</strong>.</li>
+                <li>Sisipkan <strong>Plain Text Content Control</strong> pada bagian Nama Pejabat dan NIP.</li>
+                <li>Sisipkan <strong>Date Picker Content Control</strong> pada baris tanggal surat naskah dinas.</li>
+                <li>Sisipkan <strong>Drop-Down List Content Control</strong> untuk pilihan Unit Kerja / SKPD Pemprov DKI.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-content-controls">
+                <span class="checklist-label"><strong>Langkah F selesai:</strong> Content Controls (Plain Text, Date Picker, Drop-Down List) terpasang rapi pada area template form.</span>
+              </label>
+            </div>
+
+            <!-- Langkah G -->
+            <div class="step-section">
+              <div class="step-section-node">G</div>
+              <div class="step-section-title">
+                <span>Inspeksi Dokumen & Aksesibilitas ASN (Inspect Document)</span>
+                <span class="badge badge-pill badge-danger">Kepatuhan Keamanan & Privasi</span>
+              </div>
+              <p class="card-body">
+                Sebelum naskah dinas dikirim ke pimpinan, unit lain, atau dipublikasikan, jalankan inspeksi sanitasi metadata:
+              </p>
+              <ol style="font-size: var(--font-size-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 1.25rem; margin: 0.5rem 0;">
+                <li>Pilih <strong>File > Info > Check for Issues > Inspect Document</strong>.</li>
+                <li>Centang seluruh opsi (Comments, Document Properties and Personal Information, Hidden Text) lalu klik <strong>Inspect</strong>.</li>
+                <li>Klik tombol <strong>Remove All</strong> pada <em>Document Properties and Personal Information</em> untuk membersihkan riwayat nama penyusun dan metadata sensitif!</li>
+                <li>Pilih <strong>Review > Check Accessibility</strong> untuk memastikan kontras warna dan alternatif teks tabel memenuhi standar inklusivitas ASN.</li>
+              </ol>
+
+              <label class="step-checklist-action">
+                <input type="checkbox" class="checklist-checkbox" data-task-id="word-b3-doc-inspection">
+                <span class="checklist-label"><strong>Langkah G selesai:</strong> <em>Inspect Document</em> berhasil membersihkan metadata pribadi rahasia dan dokumen lolos uji aksesibilitas.</span>
+              </label>
+            </div>
+
+            <!-- Langkah H -->
+            <div class="step-section">
+              <div class="step-section-node">H</div>
+              <div class="step-section-title">
+                <span>Finalisasi Dokumen Multi-Section & Ekspor PDF Standar</span>
+                <span class="badge badge-pill badge-primary">Finalisasi Bab III</span>
+              </div>
+              <p class="card-body">
+                Simpan berkas hasil latihan Bab III dengan nama <code>Laporan_Section_NamaPeserta.docx</code>. Lakukan uji ekspor PDF via <strong>File > Export > Create PDF/XPS</strong> dan verifikasi bahwa pada berkas PDF hasil ekspor, nomor Romawi, nomor Arab, dan rotasi halaman Landscape tampil sempurna!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: GERBANG CHECKPOINT 2 (BAB III: TATA LETAK & TEMPLATE)
+           ============================================================ -->
+      <section id="sec-word-cp-2" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981; width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">📍</div>
+            <div>
+              <h3 class="section-title">Gerbang Checkpoint 2: Tata Letak & Template Dokumen</h3>
+              <p class="section-desc">Verifikasi rekayasa Section Breaks, nomor halaman Romawi/Arab, orientasi Landscape terisolasi, dan berkas template .dotx.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkpoint-gate-card" id="card-word-cp-2">
+          <div class="checkpoint-header-row">
+            <div class="checkpoint-title-wrap">
+              <div class="checkpoint-badge-icon">2</div>
+              <div>
+                <h4 style="font-size: var(--font-size-base); font-weight: var(--font-weight-bold); color: var(--text-primary); margin-bottom: 0.15rem;">
+                  Verifikasi Tata Letak, Nomor Campuran & Template (.dotx)
+                </h4>
+                <span style="font-size: var(--font-size-xs); color: var(--text-muted);">Bukti Berkas: <code>Laporan_Section_NamaPeserta.docx</code> & <code>Template_Naskah_Dinas_Master.dotx</code></span>
+              </div>
+            </div>
+            <span id="status-card-word-cp2" class="badge badge-pill badge-warning">Pending</span>
+          </div>
+
+          <p class="card-body">
+            Gerbang Checkpoint 2 dinyatakan <strong>Lolos Verifikasi</strong> apabila 5 kriteria pemeriksaan hasil berikut terpenuhi:
+          </p>
+
+          <div class="checklist-group" style="margin: 0.75rem 0 1rem 0;">
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Dokumen terbagi menjadi minimal 3 section berbeda (Sampul, Bagian Awal, dan Isi Utama) menggunakan Section Break (Next Page).</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Hubungan <code>Link to Previous</code> pada header dan footer section isi dinonaktifkan dari section pengantar.</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Bagian pengantar memiliki penomoran halaman angka Romawi kecil (<code>i, ii</code>), sedangkan isi utama menggunakan angka Arab (<code>1, 2, 3</code>) dimulai dari nomor 1 (<code>Start at: 1</code>).</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Halaman tabel data lebar berorientasi Landscape diapit section break tanpa merusak format Portrait halaman sebelum dan sesudahnya.</div>
+            </div>
+            <div class="checklist-item" style="cursor: default;">
+              <span style="font-size: 1.1rem; color: var(--color-success); font-weight: bold;">✓</span>
+              <div class="checklist-label">Struktur dokumen disimpan sebagai template master kedinasan (<code>.dotx</code>) dan metadata pribadi telah dibersihkan via <em>Inspect Document</em>.</div>
+            </div>
+          </div>
+
+          <div class="cp-action-btn-group">
+            <button type="button" class="btn btn-success btn-cp-action" data-checkpoint="word-cp-2" data-status="passed">
+              <span>✓</span> Lolos Verifikasi
+            </button>
+            <button type="button" class="btn btn-outline-danger btn-cp-action" data-checkpoint="word-cp-2" data-status="failed">
+              <span>✕</span> Ada Kendala (Gagal)
+            </button>
+            <button type="button" class="btn btn-secondary btn-cp-action btn-sm" data-checkpoint="word-cp-2" data-status="pending">
+              <span>↺</span> Reset Status
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION: MATRIKS DIAGNOSIS KENDALA STRUKTUR DOKUMEN
+           ============================================================ -->
+      <section id="sec-word-diagnosis" class="content-section">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <div class="section-badge-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444; width: 36px; height: 36px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">🛠️</div>
+            <div>
+              <h3 class="section-title">Matriks Diagnosis Masalah Dokumen</h3>
+              <p class="section-desc">Panduan cepat identifikasi gejala kerusakan tata letak, akar penyebab teknis, dan langkah pemulihan 1-klik bagi aparatur.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-glass">
+          <div class="card-header">
+            <h4 class="card-title">🔍 Matriks Troubleshooting Format Naskah Dinas</h4>
+            <span class="badge badge-pill badge-primary">Tabel 2.2 & 3.1 BPSDM 2026</span>
+          </div>
+          <div class="card-body">
+            <div style="overflow-x: auto;">
+              <table class="diag-table">
+                <thead>
+                  <tr>
+                    <th style="width: 25%;">Gejala Masalah Format</th>
+                    <th style="width: 30%;">Akar Masalah Teknis</th>
+                    <th style="width: 45%;">Prosedur Solusi Perbaikan Cepat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Masalah 1 -->
+                  <tr>
+                    <td class="diag-problem">
+                      <span>⚠️</span> Daftar Isi melompati halaman atau judul tidak muncul sama sekali
+                    </td>
+                    <td class="diag-cause">
+                      Judul bab diformat manual (hanya tebal/besar) tanpa menerapkan Style Heading, atau pengaturan Custom TOC hanya menampilkan level 1–2.
+                    </td>
+                    <td>
+                      <div class="diag-solution">
+                        1. Sorot teks judul > klik <strong>Heading 1</strong> atau <strong>Heading 2</strong>.<br>
+                        2. Pilih <strong>References > Table of Contents > Custom TOC</strong> > pastikan <em>Show levels: 3</em>.<br>
+                        3. Klik kanan Daftar Isi > pilih <strong>Update Field > Update entire table</strong>.
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Masalah 2 -->
+                  <tr>
+                    <td class="diag-problem">
+                      <span>⚠️</span> Halaman cover/sampul memiliki nomor halaman '1'
+                    </td>
+                    <td class="diag-cause">
+                      Opsi <em>Different First Page</em> belum diaktifkan, atau section cover belum dipisahkan dari bagian pengantar dokumen.
+                    </td>
+                    <td>
+                      <div class="diag-solution">
+                        1. Klik ganda area header/footer halaman pertama sampul.<br>
+                        2. Pada tab <strong>Header & Footer</strong>, centang kotak <strong>Different First Page</strong>.<br>
+                        3. Hapus nomor halaman yang tersisa di halaman sampul tersebut.
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Masalah 3 -->
+                  <tr>
+                    <td class="diag-problem">
+                      <span>⚠️</span> Mengubah header di Bab II ikut merubah header di Bab I
+                    </td>
+                    <td class="diag-cause">
+                      Tombol <em>Link to Previous</em> pada header Section Bab II masih aktif terhubung ke section sebelumnya (<em>Same as Previous</em>).
+                    </td>
+                    <td>
+                      <div class="diag-solution">
+                        1. Klik ganda header pada halaman Bab II.<br>
+                        2. Klik tombol <strong>Link to Previous</strong> pada ribbon hingga sorotan warnanya MATI.<br>
+                        3. Ubah teks header Bab II tanpa khawatir teks header Bab I ikut berubah.
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Masalah 4 -->
+                  <tr>
+                    <td class="diag-problem">
+                      <span>⚠️</span> Nomor halaman Bab I melanjutkan nomor Romawi (iv, v) alih-alih angka 1
+                    </td>
+                    <td class="diag-cause">
+                      Section Break sudah ada, namun pengaturan <em>Format Page Numbers</em> masih berstatus <em>Continue from previous section</em>.
+                    </td>
+                    <td>
+                      <div class="diag-solution">
+                        1. Letakkan kursor di footer halaman Bab I.<br>
+                        2. Pilih <strong>Insert > Page Number > Format Page Numbers...</strong><br>
+                        3. Ubah <em>Number format</em> menjadi <code>1, 2, 3</code>.<br>
+                        4. Pilih radio button <strong>Start at: 1</strong> lalu klik <strong>OK</strong>.
+                      </div>
+                    </td>
+                  </tr>
+
+                  <!-- Masalah 5 -->
+                  <tr>
+                    <td class="diag-problem">
+                      <span>⚠️</span> Halaman Landscape merusak orientasi seluruh halaman dokumen setelahnya
+                    </td>
+                    <td class="diag-cause">
+                      Orientasi diubah tanpa menyisipkan <em>Section Break (Next Page)</em> penutup, atau opsi <em>Apply to</em> tidak dibatasi ke section tersebut.
+                    </td>
+                    <td>
+                      <div class="diag-solution">
+                        1. Sisipkan Section Break (Next Page) <strong>sebelum</strong> tabel dan <strong>sesudah</strong> tabel.<br>
+                        2. Di halaman tabel, pilih <strong>Layout > Orientation > Landscape</strong>.<br>
+                        3. Pada halaman setelah tabel, pastikan kursor diletakkan di sana lalu pilih <strong>Layout > Orientation > Portrait</strong>.
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     <!-- /#container-course-word -->
 
