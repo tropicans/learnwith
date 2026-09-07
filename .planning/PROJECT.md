@@ -1,12 +1,25 @@
-# Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router
+# learnwith — Interactive Training Platform (Multi-Course)
 
 ## What This Is
-A modern, responsive, and beginner-friendly web application designed to guide workshop participants through `PANDUAN-PRE-TRAINING.md` and `PANDUAN-PRAKTIK-KELAS.md` (Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router). It provides interactive step-by-step guidance, one-click command copying, real-time checklist tracking with `localStorage` persistence, automated checkpoint readiness evaluation, interactive troubleshooting, token redaction helper, and instant readiness & completion report generation for instructors.
+A modern, responsive, and beginner-friendly web learning platform designed to guide workshop participants through interactive technical training. It provides a modular course architecture hosting:
+1. **Course 1**: *Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router* (Production & Published).
+2. **Course 2**: *Pengolahan Kata Tingkat Lanjut* (Pelatihan Komputer Lanjutan BPSDM DKI Jakarta) — Protected/Locked for development with passkey and dedicated isolated directory/module structure.
 
 ## Core Value
-Empower non-technical participants to complete all pre-training prerequisites and live in-class practical exercises independently, safely, and without anxiety through clear visual guidance, interactive checklists, and automated checkpoint reporting.
+Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current State: Milestone v1.1 Complete (Live Workshop Guide)
+## Current Milestone: v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut
+
+**Goal:** Transform learnwith into a multi-course architecture while keeping Course 1 100% stable and published, and build the interactive companion for "Pengolahan Kata Tingkat Lanjut" behind an instructor protection gate.
+
+**Target features:**
+- **Zero-Risk Course Isolation**: Ensure existing URL and files for "Hands-on Agentic AI" remain intact and active for currently published participants.
+- **Passcode Protection for Course 2**: Access to "Pengolahan Kata Tingkat Lanjut" is protected with an instructor passcode (`buka-kata` or similar) or hidden route so participants of the AI workshop do not see incomplete/unreleased material.
+- **Interactive Word Processing Modules (Bab I–IV)**: Interactive step-by-step guides for Styles & Heading, Section Break, Multilevel List, Header/Footer per section, Romawi vs Arab page numbering, Landscape orientation, Template .dotx, Mail Merge, and Track Changes.
+- **Interactive Knowledge Quiz (Bab V)**: 20-question multiple-choice interactive quiz with instant feedback, scoring, and explanation.
+- **Form Laporan Hasil Praktik & Kelulusan**: Exportable completion proof for BPSDM DKI Jakarta instructors via WhatsApp / Telegram / Print.
+
+## Previous Milestone: v1.1 Complete (Live Workshop Guide for Agentic AI)
 
 **Shipped:** 2026-09-07
 **Accomplishments:**

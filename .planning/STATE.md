@@ -1,16 +1,16 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: Live Workshop Guide (Hari-H Praktik Kelas)
-status: completed
-last_updated: "2026-09-07T08:39:00.000Z"
+milestone: v2.0
+milestone_name: Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut
+status: planning
+last_updated: "2026-09-07T04:49:24.797Z"
 last_activity: 2026-09-07
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 8
-  completed_plans: 8
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -24,11 +24,10 @@ See: `.planning/PROJECT.md` (updated 2026-09-07)
 
 ## Current Position
 
-Phase: Phase 8 completed (All 4 phases of Milestone v1.1 complete)
-Plan: 08-01 & 08-02 completed (100% test pass rate across all test suites)
-Status: Milestone v1.1 complete and archived
-Last activity: 2026-09-07 — Archived Milestone v1.1 (Live Workshop Guide)
-
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-09-07 — Milestone v2.0 started
 
 ## Milestone Summary
 
