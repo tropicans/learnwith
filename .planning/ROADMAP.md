@@ -4,7 +4,7 @@
 
 - ✅ **v1.0 Pre-Training Interactive Web App (Agentic AI)** - Phases 1-4 (shipped 2026-09-03) — [Archive](milestones/v1.0-ROADMAP.md)
 - ✅ **v1.1 Live Workshop Guide (Agentic AI Hari-H)** - Phases 5-8 (shipped 2026-09-07) — [Archive](milestones/v1.1-ROADMAP.md)
-- 🟡 **v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut** - Phases 9-12 (In Planning)
+- ✅ **v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut** - Phases 9-12 (shipped 2026-09-07)
 
 ## Active Milestone: v2.0 (Phases 9-12)
 
@@ -21,7 +21,7 @@
   - Mail Merge surat & label massal, rules & filtering data.
   - Review tools: Komentar, Track Changes, Compare/Combine, penguncian pelacakan, dan etika kolaborasi daring.
   - Checkpoint 3 verifikasi otomatisasi & kolaborasi.
-- [ ] **Phase 12: Interactive Knowledge Quiz (Bab V), Rubrik Evaluasi & Laporan Kelulusan BPSDM**
+- [x] **Phase 12: Interactive Knowledge Quiz (Bab V), Rubrik Evaluasi & Laporan Kelulusan BPSDM** (completed 2026-09-07)
   - Kuis pilihan ganda 20 butir interaktif Bab V dengan skor instan dan pembahasan.
   - Lembar refleksi diri dan checklist bukti praktik terpadu ASN.
   - Form Laporan Kelulusan & Hasil Praktik dengan ekspor 1-klik WhatsApp, Telegram, dan Print PDF.

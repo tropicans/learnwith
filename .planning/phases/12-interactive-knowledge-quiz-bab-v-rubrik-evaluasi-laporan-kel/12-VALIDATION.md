@@ -1,9 +1,9 @@
----
+﻿---
 phase: "12"
 slug: "interactive-knowledge-quiz-bab-v-rubrik-evaluasi-laporan-kelulusan-bpsdm"
-status: draft
+status: complete
 nyquist_compliant: true
-wave_0_complete: false
+wave_0_complete: true
 created: "2026-09-07"
 ---
 
@@ -38,12 +38,12 @@ created: "2026-09-07"
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 12-01-01 | 01 | 0 | QUIZ-01, QUIZ-02, QUIZ-03, WORD-RPT-01, WORD-RPT-02 | T-12-01 | Test scaffolding and comprehensive assertion suite for Quiz, Rubric, and Report | unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ❌ W0 | ⬜ pending |
-| 12-01-02 | 01 | 1 | QUIZ-01, QUIZ-02, QUIZ-03 | T-12-02 | Official 20-question bank with answer keys, explanations, and scoped state in word-course.js | unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ⬜ pending |
-| 12-01-03 | 01 | 1 | WORD-RPT-01, WORD-RPT-02 | T-12-03 | Report generator, multi-channel copy formatters, and graduation verdict calculation | unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ⬜ pending |
-| 12-02-01 | 02 | 2 | QUIZ-01, QUIZ-02 | T-12-04 | Interactive Quiz UI markup, question carousel/cards, answer selection & instant explanation display | DOM / unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ⬜ pending |
-| 12-02-02 | 02 | 2 | QUIZ-03 | T-12-05 | Self-reflection textarea cards, Lampiran 3 rubric checklists, and portfolio items in index.html | DOM / unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ⬜ pending |
-| 12-02-03 | 02 | 3 | WORD-RPT-01, WORD-RPT-02 | T-12-06 | Graduation report generator UI, print certificate layout, clipboard exporters, and event bindings in app.js | integration | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js && node tests/word-modules.test.js && node tests/multi-course.test.js"` | ✅ | ⬜ pending |
+| 12-01-01 | 01 | 0 | QUIZ-01, QUIZ-02, QUIZ-03, WORD-RPT-01, WORD-RPT-02 | T-12-01 | Test scaffolding and comprehensive assertion suite for Quiz, Rubric, and Report | unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ✅ green |
+| 12-01-02 | 01 | 1 | QUIZ-01, QUIZ-02, QUIZ-03 | T-12-02 | Official 20-question bank with answer keys, explanations, and scoped state in word-course.js | unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ✅ green |
+| 12-01-03 | 01 | 1 | WORD-RPT-01, WORD-RPT-02 | T-12-03 | Report generator, multi-channel copy formatters, and graduation verdict calculation | unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ✅ green |
+| 12-02-01 | 02 | 2 | QUIZ-01, QUIZ-02 | T-12-04 | Interactive Quiz UI markup, question carousel/cards, answer selection & instant explanation display | DOM / unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ✅ green |
+| 12-02-02 | 02 | 2 | QUIZ-03 | T-12-05 | Self-reflection textarea cards, Lampiran 3 rubric checklists, and portfolio items in index.html | DOM / unit | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js"` | ✅ | ✅ green |
+| 12-02-03 | 02 | 3 | WORD-RPT-01, WORD-RPT-02 | T-12-06 | Graduation report generator UI, print certificate layout, clipboard exporters, and event bindings in app.js | integration | `cmd /c "set PATH=C:\nvm4w\nodejs;%PATH% && node tests/word-quiz-report.test.js && node tests/word-modules.test.js && node tests/multi-course.test.js"` | ✅ | ✅ green |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -51,7 +51,7 @@ created: "2026-09-07"
 
 ## Wave 0 Requirements
 
-- [ ] `tests/word-quiz-report.test.js` — comprehensive test suite covering Suites 1 to 6 (Question bank integrity, Quiz scoring, Rubric engine, BPSDM report formatting, Exporters, and State isolation)
+- [x] `tests/word-quiz-report.test.js` — comprehensive test suite covering Suites 1 to 6 (Question bank integrity, Quiz scoring, Rubric engine, BPSDM report formatting, Exporters, and State isolation)
 
 ---
 
@@ -73,4 +73,4 @@ created: "2026-09-07"
 - [x] Feedback latency < 5s
 - [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending 2026-09-07
+**Approval:** verified 2026-09-07
