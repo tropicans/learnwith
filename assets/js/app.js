@@ -174,12 +174,22 @@ function setupNavigationSpy() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        // Skip sections within hidden course or mode containers
+        const parentCourse = entry.target.closest('#container-course-ai, #container-course-word');
+        if (parentCourse && parentCourse.style.display === 'none') return;
+        const parentMode = entry.target.closest('#container-pretraining, #container-liveclass');
+        if (parentMode && parentMode.style.display === 'none') return;
+
         const id = entry.target.getAttribute('id');
         navLinks.forEach(link => {
           if (link.getAttribute('href') === `#${id}`) {
             link.classList.add('active');
           } else {
-            link.classList.remove('active');
+            // Only deactivate if link belongs to visible nav group
+            const linkNavGroup = link.closest('.sidebar-nav-group');
+            if (!linkNavGroup || linkNavGroup.style.display !== 'none') {
+              link.classList.remove('active');
+            }
           }
         });
       }

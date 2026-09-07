@@ -60,11 +60,17 @@ class SearchEngine {
     this.searchItems = [];
     const elements = document.querySelectorAll('.content-section, .card, .step-card, .module-card, .step-section, .alert-box, .checkpoint-gate-card');
 
+    const activeCourse = (window.AppState && typeof window.AppState.getActiveCourse === 'function')
+      ? window.AppState.getActiveCourse()
+      : 'ai';
+
     elements.forEach((el, index) => {
-      // Skip elements that belong to a currently hidden course container
+      // Skip elements that belong to a currently hidden course container or inactive course
       const parentCourseContainer = el.closest('#container-course-ai, #container-course-word');
-      if (parentCourseContainer && parentCourseContainer.style.display === 'none') {
-        return;
+      if (parentCourseContainer) {
+        if (parentCourseContainer.style.display === 'none') return;
+        if (activeCourse === 'word' && parentCourseContainer.id !== 'container-course-word') return;
+        if (activeCourse !== 'word' && parentCourseContainer.id !== 'container-course-ai') return;
       }
 
       // Skip elements that belong to a currently hidden mode container
@@ -148,8 +154,11 @@ class SearchEngine {
       }
     });
 
-    // Hide sections that have zero matches
+    // Hide sections that have zero matches (only within active course container)
     document.querySelectorAll('.content-section').forEach(section => {
+      const parentCourse = section.closest('#container-course-ai, #container-course-word');
+      if (parentCourse && parentCourse.style.display === 'none') return;
+
       if (!matchedSections.has(section) && !section.innerText.toLowerCase().includes(lowerQuery)) {
         section.style.display = 'none';
       } else {
