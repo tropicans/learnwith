@@ -46,3 +46,4 @@ None.
 |---|-------------|------|--------|--------|-----------|
 | 260903-buq | Fix reviewed search DOM corruption and XSS, report initialization and Telegram formatting, and make tests exercise production code | 2026-09-03 | e022acd | Complete | [260903-buq-fix-reviewed-search-dom-corruption-and-x](./quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/) |
 | 260903-gsa | Improve smartphone layout, orientation controls, 44px touch targets, and contrast accessibility from UI audit | 2026-09-03 | 7ff0ce5 | Complete | [260903-gsa-improve-smartphone-layout-from-ui-audit-](./quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/) |
+| 260907-g9a | Update Workshop Name to Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router | 2026-09-07 | 9cb3788 | Complete | [260907-g9a-nama-workshopnya-adalah-hands-on-agentic](./quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/) |

@@ -1,7 +1,7 @@
-# Pre-Training Workshop Interactive Checklist & Guide Web App
+# Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router
 
 ## What This Is
-A modern, responsive, and beginner-friendly web application designed to guide workshop participants through `PANDUAN-PRE-TRAINING.md` and `PANDUAN-PRAKTIK-KELAS.md` (Workshop Hermes Agent + 9Router: Mengelola Google Calendar melalui Telegram). It provides interactive step-by-step guidance, one-click command copying, real-time checklist tracking with `localStorage` persistence, automated checkpoint readiness evaluation, interactive troubleshooting, token redaction helper, and instant readiness & completion report generation for instructors.
+A modern, responsive, and beginner-friendly web application designed to guide workshop participants through `PANDUAN-PRE-TRAINING.md` and `PANDUAN-PRAKTIK-KELAS.md` (Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router). It provides interactive step-by-step guidance, one-click command copying, real-time checklist tracking with `localStorage` persistence, automated checkpoint readiness evaluation, interactive troubleshooting, token redaction helper, and instant readiness & completion report generation for instructors.
 
 ## Core Value
 Empower non-technical participants to complete all pre-training prerequisites and live in-class practical exercises independently, safely, and without anxiety through clear visual guidance, interactive checklists, and automated checkpoint reporting.
