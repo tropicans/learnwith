@@ -8,26 +8,55 @@ A modern, responsive, and beginner-friendly web learning platform designed to gu
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current Milestone: v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut
+## Current State: v2.0 Shipped (2026-09-07)
 
-**Goal:** Transform learnwith into a multi-course architecture while keeping Course 1 100% stable and published, and build the interactive companion for "Pengolahan Kata Tingkat Lanjut" behind an instructor protection gate.
+The platform is now a fully functional **Multi-Course Training Platform** hosting:
+1. **Course 1**: *Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router* (Production, Published & Backward-Compatible).
+2. **Course 2**: *Pengolahan Kata Tingkat Lanjut: Dari Dokumen Berantakan ke Standar Kedinasan Otomatis* (Complete, Verified & Protected behind Instructor Gate `buka-kata`).
 
-**Target features:**
-- **Zero-Risk Course Isolation**: Ensure existing URL and files for "Hands-on Agentic AI" remain intact and active for currently published participants.
-- **Passcode Protection for Course 2**: Access to "Pengolahan Kata Tingkat Lanjut" is protected with an instructor passcode (`buka-kata` or similar) or hidden route so participants of the AI workshop do not see incomplete/unreleased material.
-- **Interactive Word Processing Modules (Bab I–IV)**: Interactive step-by-step guides for Styles & Heading, Section Break, Multilevel List, Header/Footer per section, Romawi vs Arab page numbering, Landscape orientation, Template .dotx, Mail Merge, and Track Changes.
-- **Interactive Knowledge Quiz (Bab V)**: 20-question multiple-choice interactive quiz with instant feedback, scoring, and explanation.
-- **Form Laporan Hasil Praktik & Kelulusan**: Exportable completion proof for BPSDM DKI Jakarta instructors via WhatsApp / Telegram / Print.
+## Previous Milestones
 
-## Previous Milestone: v1.1 Complete (Live Workshop Guide for Agentic AI)
+<details>
+<summary>✅ v2.0 Complete (Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut) - SHIPPED 2026-09-07</summary>
 
-**Shipped:** 2026-09-07
-**Accomplishments:**
-- Complete dual-purpose workshop navigation (Pra-Training vs Hari-H Praktik Kelas).
-- Interactive guided workflows for Moduls 6–11 with Checkpoints 4–9.
-- Dedicated in-class troubleshooting hub with live search and category filter.
-- Form Laporan Hasil Praktik Kelas with 1-click WhatsApp and Telegram exports and automatic regex token redaction.
-- 153 automated browser & Node.js test assertions passing with 0 failures (100% pass rate).
+- **Phases**: 9-12 (4 phases, 8 plans)
+- **Accomplishments**:
+  - Multi-course architecture with isolated state storage (`learnwith_ai_*` vs `learnwith_word_*`).
+  - Developer gate modal with passcode (`buka-kata`) & URL unlock (`?course=word&unlock=dev`).
+  - Bab I–III practical guides for Styles hierarchy, Automatic TOC, Section Breaks, mixed Roman/Arabic page numbering, `.dotx` templates, and Checkpoints 1 & 2.
+  - Visual keyboard shortcuts, Pergub DKI No. 14/2020 formatting callouts, and 1-click text copying.
+  - Bab IV Mail Merge automation, Track Changes, commenting, and Checkpoint 3.
+  - Interactive 20-question multiple-choice knowledge evaluation (Bab V) with instant pedagogical explanations and scoring (KKM 80).
+  - ASN self-reflection rubric and practical portfolio verification.
+  - BPSDM graduation calculation (70% portfolio + 30% quiz), predicate assignment, official Kop Surat certificate slip, and 1-click WhatsApp, Telegram Markdown, and `@media print` exports.
+  - 269 passed automated unit test assertions + 35 Playwright E2E browser tests passing with 0 errors.
+
+</details>
+
+<details>
+<summary>✅ v1.1 Complete (Live Workshop Guide for Agentic AI) - SHIPPED 2026-09-07</summary>
+
+- **Phases**: 5-8 (4 phases, 8 plans)
+- **Accomplishments**:
+  - Complete dual-purpose workshop navigation (Pra-Training vs Hari-H Praktik Kelas).
+  - Interactive guided workflows for Moduls 6–11 with Checkpoints 4–9.
+  - Dedicated in-class troubleshooting hub with live search and category filter.
+  - Form Laporan Hasil Praktik Kelas with 1-click WhatsApp and Telegram exports and automatic regex token redaction.
+  - 153 automated browser & Node.js test assertions passing with 0 failures (100% pass rate).
+
+</details>
+
+<details>
+<summary>✅ v1.0 Complete (Pre-Training Interactive Web App) - SHIPPED 2026-09-03</summary>
+
+- **Phases**: 1-4 (4 phases, 11 plans)
+- **Accomplishments**:
+  - Core responsive shell, theme switcher, Ctrl+K search engine.
+  - 5 interactive pre-training modules with 1-click copy and glossary popovers.
+  - 13 checklist steps, 3 checkpoint gates, and dynamic readiness badge.
+  - 10-issue troubleshooting hub, token redaction helper, and report exporter.
+
+</details>
 
 ## Requirements
 
@@ -64,6 +93,19 @@ Empower non-technical participants and government professionals to complete prac
 - ✓ In-Class Category Filters for Troubleshooting (TRBL-05) — v1.1
 - ✓ Form Laporan Hasil Praktik Kelas (RPT-04) — v1.1
 - ✓ Dual 1-Click WhatsApp & Telegram Markdown Exporter with Redaction (RPT-05) — v1.1
+- ✓ Default Public Course 1 Stability & Backward-Compatibility (GATEWAY-01) — v2.0
+- ✓ Course 2 Developer Gate with Passcode & URL Unlock (GATEWAY-02) — v2.0
+- ✓ Namespaced LocalStorage Isolation per Course (GATEWAY-03) — v2.0
+- ✓ Bab I Pendahuluan, Capaian & Berkas Latihan (WORD-01) — v2.0
+- ✓ Bab II Struktur Dokumen, Styles, TOC & Checkpoint 1 (WORD-02) — v2.0
+- ✓ Bab III Section Break, Romawi/Arab, .dotx & Checkpoint 2 (WORD-03) — v2.0
+- ✓ Bab IV Mail Merge, Track Changes & Checkpoint 3 (WORD-04) — v2.0
+- ✓ Visual Shortcuts, Pergub DKI Callouts & 1-Click Copy (WORD-05) — v2.0
+- ✓ Evaluasi Pengetahuan Interaktif 20 Soal Bab V (QUIZ-01) — v2.0
+- ✓ Validasi Jawaban, Penjelasan Pedagogis & Nilai Kuis (QUIZ-02) — v2.0
+- ✓ Rubrik Refleksi Diri & Checklist Portofolio ASN (QUIZ-03) — v2.0
+- ✓ Kalkulasi Kelulusan BPSDM & Kartu Sertifikat Kop Surat (WORD-RPT-01) — v2.0
+- ✓ Ekspor Laporan WhatsApp, Telegram & Cetak Dokumen Dinas (WORD-RPT-02) — v2.0
 
 ### Out of Scope
 - Automated remote installation on user's machine (security risk; users must run commands themselves).
@@ -71,7 +113,7 @@ Empower non-technical participants and government professionals to complete prac
 - Storing participant OAuth client secrets or bot tokens in `localStorage` (credentials must remain in participant's local environment).
 
 ## Context
-Shipped v1.1 with ~4,000 lines of production HTML and JavaScript. 153 automated tests passing with zero failures. Zero build tools or npm dependencies required. Complete companion web application ready for live deployment and classroom use.
+Shipped v2.0 with ~7,500 lines of production HTML, CSS, and JavaScript. 269 automated unit test assertions and 35 Playwright E2E browser tests passing with zero failures. Complete multi-course platform ready for live deployment and classroom use.
 
 ## Key Decisions
 - ✓ **Architecture**: Lightweight, modular Vanilla HTML5, modern CSS3 (Custom Properties, Glassmorphism, Responsive Grid/Flex), and Vanilla JS ES6+ (zero complex build steps required, runnable offline or on any browser) — *Outcome: Good*

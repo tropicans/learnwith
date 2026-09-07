@@ -1,5 +1,32 @@
 # Milestones
 
+## v2.0: Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut
+
+**Shipped:** 2026-09-07
+**Status:** ✅ SHIPPED (verified_closeout)
+**Phases:** 9-12 (4 phases)
+**Plans:** 8 plans (8/8 completed)
+**Automated Tests:** 269 assertions passing across 9 test suites (0 failures) + 35 Playwright E2E browser tests
+**Requirements:** 13/13 satisfied (100%)
+
+### Delivered
+Transformed learnwith into a multi-course architecture while keeping Course 1 100% active, backward-compatible, and isolated, and built the complete interactive companion for "Pengolahan Kata Tingkat Lanjut" behind an instructor protection gate.
+
+### Key Accomplishments
+1. **Multi-Course Architecture & Gateway Protection**: Namespaced state storage (`learnwith_ai_*` vs `learnwith_word_*`), zero regression for Course 1, developer passkey modal (`buka-kata`) & URL unlock (`?course=word&unlock=dev`), and course switcher UI.
+2. **Interactive Word Modules & Checkpoints 1–2**: Guided workflows for Bab I–III covering Styles & Heading hierarchy, Navigation Pane, Multilevel Lists, Automatic TOC, Section Breaks, Header/Footer unlinking, mixed Roman/Arabic page numbering, and `.dotx` templates with Checkpoints 1 and 2 gates.
+3. **Civil Service Standards & Keyboard Cheatsheet**: Visual shortcuts cards, Pergub DKI Jakarta No. 14/2020 formatting rules callouts, and 1-click snippet copying with animated toasts.
+4. **Mail Merge Automation & Document Review Tools**: Bab IV automated guides for Mail Merge (mass letters, labels, filtering rules), Track Changes, commenting, Document Compare & Combine, and Checkpoint 3 gate.
+5. **Interactive Knowledge Quiz & ASN Competency Rubric**: Official 20-question multiple-choice interactive knowledge evaluation with instant validation and detailed explanations (KKM 80), self-reflection rubrics, and portfolio verification.
+6. **BPSDM Graduation Engine & Multi-Channel Exporter**: Weighted scoring (70% portfolio + 30% quiz), predicate assignment (*Sangat Memuaskan*, *Memuaskan*, *Cukup*), official Kop Surat certificate slip, and 1-click export to WhatsApp, Telegram Markdown, and clean `@media print` layout.
+
+### Archive Reference
+- [Roadmap Archive](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v2.0-ROADMAP.md)
+- [Requirements Archive](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v2.0-REQUIREMENTS.md)
+- [Milestone Audit](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v2.0-MILESTONE-AUDIT.md)
+
+---
+
 ## v1.1: Live Workshop Guide (Hari-H Praktik Kelas)
 
 **Shipped:** 2026-09-07
