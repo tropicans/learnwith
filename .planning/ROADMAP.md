@@ -13,7 +13,7 @@
   - Zero-risk backward compatibility for public Agentic AI participants.
   - Course 2 developer/instructor protection gate (`buka-kata` or `?course=word&unlock=dev`).
   - Course switcher component.
-- [ ] **Phase 10: Interactive Modules Bab I–III (Struktur Dokumen, Styles, TOC & Penomoran Halaman)**
+- [x] **Phase 10: Interactive Modules Bab I–III (Struktur Dokumen, Styles, TOC & Penomoran Halaman)**
   - Bab I Pendahuluan & berkas praktik ASN.
   - Bab II Styles, Heading, Multilevel List, TOC otomatis & Checkpoint 1.
   - Bab III Section Breaks, Header/Footer unlink, nomor halaman Romawi vs Arab, tata letak campuran, template `.dotx`, content controls & Checkpoint 2.
@@ -44,6 +44,11 @@ Plans:
 **Depends on**: Phase 9
 **Requirements**: WORD-01, WORD-02, WORD-03, WORD-05
 **Plans**: 2 plans
+
+Plans:
+
+- [x] 10-01: Wave 0 Automated Test Suite & Core State/Controller Engine for Course 2
+- [x] 10-02: Interactive UI Markup for Bab I–III, Shortcuts Cheatsheet, Checkpoint Gates & Navigation Integration
 
 ### Phase 11: Interactive Modules Bab IV (Mail Merge, Track Changes & Kolaborasi Dokumen)
 
