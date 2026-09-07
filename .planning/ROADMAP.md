@@ -24,6 +24,13 @@
   - Soften document readiness status card into a calm, encouraging progress indicator.
   - Style search input into a NotebookLM rounded pill container.
 
+- [x] **Phase 15: Google NotebookLM Frontpage Hub & Seamless Studio Navigation**
+  - Dedicated NotebookLM Frontpage Hub (`#container-home`) displaying platform greeting and notebook card gallery for Course 1, Course 2, and BPSDM Civil Service standards.
+  - Clean full-width canvas on home view (`.view-home` on `.app-container` hides `.app-sidebar` and centers `.app-main`).
+  - Header adaptively displays brand-only on Frontpage and breadcrumb pill on Studio Workspace views.
+  - Seamless two-way navigation: clicking notebook cards enters Studio Workspace, clicking `learnwith` logo or `🏠 Beranda Kursus` in dropdown returns to Frontpage.
+  - URL routing supports `?course=ai`, `?course=word`, and default root/`?view=home` with full backward compatibility.
+
 ### Phase 13: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector
 
 **Goal**: Deliver a calm, elegant Google NotebookLM-style top bar with unified platform branding, anti-cache critical CSS protection, and a modern course pill selector.  
@@ -37,6 +44,13 @@
 **Depends on**: Phase 13  
 **Requirements**: WORK-01, WORK-02, WORK-03, POLISH-01, POLISH-02, POLISH-03  
 **Plans**: 1-2 plans  
+
+### Phase 15: Google NotebookLM Frontpage Hub & Seamless Studio Navigation
+
+**Goal**: Deliver an authentic Google NotebookLM Frontpage Hub with notebook cards gallery, full-width canvas, adaptive header, and seamless two-way studio navigation.  
+**Depends on**: Phase 14  
+**Requirements**: HOME-01, HOME-02, HOME-03, HOME-04, HOME-05  
+**Plans**: 1 plan  
 
 ## Completed Milestones
 

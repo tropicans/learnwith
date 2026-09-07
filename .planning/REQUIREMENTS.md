@@ -30,6 +30,14 @@
 - [x] **POLISH-02**: Document readiness status card redesigned from an alarming orange warning box into an encouraging, calm progress card.
 - [x] **POLISH-03**: Search bar styled with Google-style rounded pill container, comfortable padding, and non-overlapping `Ctrl+K` key badge.
 
+### 5. Google NotebookLM Frontpage Hub & Seamless Navigation (HOME)
+
+- [x] **HOME-01**: Dedicated NotebookLM Frontpage Hub (`#container-home`) displaying platform welcome hero, search/filter helper, and notebook card gallery for Course 1, Course 2, and BPSDM Civil Service standards.
+- [x] **HOME-02**: Clean full-width canvas on home view (`.view-home` on `.app-container` hides `.app-sidebar` and centers `.app-main`).
+- [x] **HOME-03**: Header adaptively displays clean brand on Frontpage and breadcrumb pill on Studio Workspace views.
+- [x] **HOME-04**: Seamless two-way navigation: clicking notebook cards enters Studio Workspace, clicking `learnwith` brand or `🏠 Beranda Kursus` in dropdown returns to Frontpage.
+- [x] **HOME-05**: URL routing supports `?course=ai`, `?course=word`, and default root without parameters rendering the NotebookLM Frontpage with 100% backward test compatibility.
+
 ---
 
 ## Traceability Table
@@ -47,3 +55,8 @@
 | POLISH-01 | Phase 14 | Complete |
 | POLISH-02 | Phase 14 | Complete |
 | POLISH-03 | Phase 14 | Complete |
+| HOME-01 | Phase 15 | Complete |
+| HOME-02 | Phase 15 | Complete |
+| HOME-03 | Phase 15 | Complete |
+| HOME-04 | Phase 15 | Complete |
+| HOME-05 | Phase 15 | Complete |

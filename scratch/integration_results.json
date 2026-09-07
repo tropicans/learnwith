@@ -1,15 +1,27 @@
 [
   {
-    "category": "GATEWAY-01",
-    "test": "Default course is AI",
+    "category": "HOME-01",
+    "test": "Default page loads NotebookLM Frontpage Hub",
     "passed": true,
-    "details": "activeCourse=ai"
+    "details": "c_home=block"
   },
   {
-    "category": "GATEWAY-01",
-    "test": "Container AI is visible, Word is hidden by default",
+    "category": "HOME-02",
+    "test": "App container has view-home (sidebar hidden)",
     "passed": true,
-    "details": "c_ai=block, c_word=none"
+    "details": ""
+  },
+  {
+    "category": "HOME-03",
+    "test": "Header adapts cleanly on Frontpage",
+    "passed": true,
+    "details": "sep=none, switch=none"
+  },
+  {
+    "category": "HOME-04",
+    "test": "Clicking Card 1 launches Course 1 Workspace Studio",
+    "passed": true,
+    "details": "active=ai, c_ai=block, view_home=False"
   },
   {
     "category": "GATEWAY-03",
@@ -18,14 +30,14 @@
     "details": "key=learnwith_ai_state_v1"
   },
   {
-    "category": "GATEWAY-02",
-    "test": "Word course is locked by default",
+    "category": "HOME-04",
+    "test": "Clicking learnwith brand returns to Frontpage Hub",
     "passed": true,
-    "details": "isWordCourseUnlocked=False"
+    "details": ""
   },
   {
     "category": "GATEWAY-02",
-    "test": "Clicking Word when locked opens passcode modal",
+    "test": "Clicking Word Card when locked opens passcode modal",
     "passed": true,
     "details": "modal_open=True"
   },
@@ -37,7 +49,7 @@
   },
   {
     "category": "GATEWAY-02",
-    "test": "Passcode 'buka-kata' unlocks Course 2",
+    "test": "Passcode 'buka-kata' unlocks Course 2 and enters Workspace",
     "passed": true,
     "details": "course=word, c_word=block, unlocked_storage=true"
   },
@@ -48,8 +60,8 @@
     "details": "key=learnwith_word_state_v1"
   },
   {
-    "category": "GATEWAY-02",
-    "test": "URL ?course=word&unlock=dev activates Word course",
+    "category": "HOME-05",
+    "test": "URL ?course=word&unlock=dev activates Word course directly",
     "passed": true,
     "details": "unlocked=True, course=word, display=block"
   },

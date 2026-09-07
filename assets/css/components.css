@@ -2122,7 +2122,7 @@ mark.search-highlight {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
   padding: 0.5rem;
   list-style: none;
-  z-index: var(--z-dropdown);
+  z-index: var(--z-dropdown, 1000);
   display: none;
   flex-direction: column;
   gap: 0.35rem;

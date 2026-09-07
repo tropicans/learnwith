@@ -31,35 +31,51 @@ with sync_playwright() as p:
     page.on('pageerror', lambda exc: console_errors.append(str(exc)))
 
     # -------------------------------------------------------------
-    # FLOW 1: COURSE SWITCHING & DEVELOPER GATE (GATEWAY-01, GATEWAY-02, GATEWAY-03)
+    # FLOW 1: NOTEBOOKLM FRONTPAGE & SEAMLESS STUDIO NAVIGATION (HOME-01..05, GATEWAY-01..03)
     # -------------------------------------------------------------
-    # Step 1.1: Load default page (no params)
+    # Step 1.1: Load default page (no params) -> Lands on NotebookLM Frontpage Hub
     page.goto(url)
     page.wait_for_load_state('domcontentloaded')
     page.wait_for_timeout(1000)
 
-    # Verify default is Course 1 (Hands-on Agentic AI)
-    active_course = page.evaluate("window.AppState.getActiveCourse()")
-    record("GATEWAY-01", "Default course is AI", active_course == 'ai', f"activeCourse={active_course}")
+    c_home_disp = page.evaluate("document.getElementById('container-home').style.display")
+    has_view_home = page.evaluate("document.querySelector('.app-container').classList.contains('view-home')")
+    record("HOME-01", "Default page loads NotebookLM Frontpage Hub", c_home_disp != 'none', f"c_home={c_home_disp}")
+    record("HOME-02", "App container has view-home (sidebar hidden)", has_view_home)
 
+    # Verify header breadcrumb separator & dropdown switcher are hidden on home
+    home_sep_disp = page.evaluate("window.getComputedStyle(document.querySelector('.brand-breadcrumb-separator')).display")
+    home_switch_disp = page.evaluate("window.getComputedStyle(document.querySelector('.header-course-switcher')).display")
+    record("HOME-03", "Header adapts cleanly on Frontpage", home_sep_disp == 'none' and home_switch_disp == 'none', f"sep={home_sep_disp}, switch={home_switch_disp}")
+
+    # Step 1.2: Click Card 1 (Hands-on Agentic AI) -> Launches Course 1 Workspace
+    page.click("#btn-home-enter-ai")
+    page.wait_for_timeout(400)
+
+    active_course = page.evaluate("window.AppState.getActiveCourse()")
     c_ai_disp = page.evaluate("document.getElementById('container-course-ai').style.display")
     c_word_disp = page.evaluate("document.getElementById('container-course-word').style.display")
-    record("GATEWAY-01", "Container AI is visible, Word is hidden by default", 
-           c_ai_disp != 'none' and c_word_disp == 'none', 
-           f"c_ai={c_ai_disp}, c_word={c_word_disp}")
+    is_home_after_click = page.evaluate("document.querySelector('.app-container').classList.contains('view-home')")
+    record("HOME-04", "Clicking Card 1 launches Course 1 Workspace Studio", 
+           (not is_home_after_click) and active_course == 'ai' and c_ai_disp != 'none' and c_word_disp == 'none',
+           f"active={active_course}, c_ai={c_ai_disp}, view_home={is_home_after_click}")
 
-    # Check localStorage keys
+    # Check localStorage key for AI
     ai_storage_key = page.evaluate("window.AppState.getStorageKey()")
     record("GATEWAY-03", "AI course uses learnwith_ai_state_v1", ai_storage_key == 'learnwith_ai_state_v1', f"key={ai_storage_key}")
 
-    # Step 1.2: Check Developer Gate lock by default
-    is_unlocked = page.evaluate("window.isWordCourseUnlocked()")
-    record("GATEWAY-02", "Word course is locked by default", not is_unlocked, f"isWordCourseUnlocked={is_unlocked}")
+    # Step 1.3: Click brand logo/link -> Returns cleanly to Frontpage Hub
+    page.click("#brand-home-link")
+    page.wait_for_timeout(400)
+    returned_home = page.evaluate("document.querySelector('.app-container').classList.contains('view-home')")
+    c_home_returned = page.evaluate("document.getElementById('container-home').style.display")
+    record("HOME-04", "Clicking learnwith brand returns to Frontpage Hub", returned_home and c_home_returned != 'none')
 
-    # Attempt to switch to Word course via sidebar/dropdown trigger
-    page.evaluate("document.getElementById('btn-sidebar-course-select').click()")
+    # Step 1.4: Click Card 2 (Pengolahan Kata) when locked -> Opens passcode modal
+    page.click("#btn-home-enter-word")
+    page.wait_for_timeout(400)
     modal_open = page.evaluate("document.getElementById('modal-wordcourse-locked').classList.contains('open')")
-    record("GATEWAY-02", "Clicking Word when locked opens passcode modal", modal_open, f"modal_open={modal_open}")
+    record("GATEWAY-02", "Clicking Word Card when locked opens passcode modal", modal_open, f"modal_open={modal_open}")
 
     # Enter wrong passcode
     page.fill("#input-word-unlock-code", "salah-kode")
@@ -78,7 +94,7 @@ with sync_playwright() as p:
     c_word_after = page.evaluate("document.getElementById('container-course-word').style.display")
     word_unlocked_storage = page.evaluate("localStorage.getItem('learnwith_word_unlocked')")
 
-    record("GATEWAY-02", "Passcode 'buka-kata' unlocks Course 2", 
+    record("GATEWAY-02", "Passcode 'buka-kata' unlocks Course 2 and enters Workspace", 
            (not modal_open_after) and active_course_after == 'word' and c_word_after == 'block' and c_ai_after == 'none',
            f"course={active_course_after}, c_word={c_word_after}, unlocked_storage={word_unlocked_storage}")
 
@@ -86,7 +102,7 @@ with sync_playwright() as p:
     word_storage_key = page.evaluate("window.AppState.getStorageKey()")
     record("GATEWAY-03", "Word course uses learnwith_word_state_v1", word_storage_key == 'learnwith_word_state_v1', f"key={word_storage_key}")
 
-    # Test URL parameter unlock (?course=word&unlock=dev)
+    # Step 1.5: Test URL parameter directly launching courses (HOME-05)
     page.goto(f"{url}?course=word&unlock=dev")
     page.wait_for_load_state('domcontentloaded')
     page.wait_for_timeout(1000)
@@ -94,7 +110,7 @@ with sync_playwright() as p:
     url_unlocked = page.evaluate("window.isWordCourseUnlocked()")
     url_course = page.evaluate("window.AppState.getActiveCourse()")
     url_c_word = page.evaluate("document.getElementById('container-course-word').style.display")
-    record("GATEWAY-02", "URL ?course=word&unlock=dev activates Word course",
+    record("HOME-05", "URL ?course=word&unlock=dev activates Word course directly",
            url_unlocked and url_course == 'word' and url_c_word == 'block',
            f"unlocked={url_unlocked}, course={url_course}, display={url_c_word}")
 

@@ -2126,9 +2126,72 @@ function setWordCourseUnlocked(unlocked = true) {
   const sidebarWordLock = document.getElementById('sidebar-word-locked');
   if (badgeWord) badgeWord.classList.toggle('unlocked', unlocked);
   if (sidebarWordLock) sidebarWordLock.classList.toggle('unlocked', unlocked);
+
+  const homeWordBadge = document.getElementById('home-badge-word-status');
+  const btnHomeWordLabel = document.getElementById('btn-home-word-label');
+  if (homeWordBadge) {
+    homeWordBadge.textContent = unlocked ? '✅ Akses Terbuka' : '🔒 Perlu Kode Sandi';
+    homeWordBadge.className = unlocked ? 'badge badge-pill badge-success' : 'badge badge-pill badge-neutral';
+  }
+  if (btnHomeWordLabel) {
+    btnHomeWordLabel.textContent = unlocked ? 'Buka Modul Pengolahan Kata' : 'Buka Akses Modul';
+  }
+}
+
+function switchView(viewMode, targetCourse = null, updateUrl = true, showNotification = false) {
+  const containerHome = document.getElementById('container-home');
+  const containerAi = document.getElementById('container-course-ai');
+  const containerWord = document.getElementById('container-course-word');
+  const appContainer = document.querySelector('.app-container');
+
+  if (viewMode === 'home') {
+    if (appContainer) appContainer.classList.add('view-home');
+    if (containerHome) containerHome.style.display = 'block';
+    if (containerAi) containerAi.style.display = 'none';
+    if (containerWord) containerWord.style.display = 'none';
+
+    // Update active state on dropdown items
+    const dropdownItems = document.querySelectorAll('.course-dropdown-item');
+    dropdownItems.forEach(item => {
+      const isHome = item.getAttribute('data-course') === 'home';
+      item.classList.toggle('active', isHome);
+      item.setAttribute('aria-selected', isHome ? 'true' : 'false');
+    });
+
+    document.title = 'learnwith — Pusat Modul Praktik & Workshop Interaktif';
+
+    if (updateUrl && typeof window !== 'undefined' && window.history && window.location) {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('course');
+        window.history.replaceState({}, '', url.pathname);
+      } catch (e) {}
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  // Viewing Workspace
+  if (appContainer) appContainer.classList.remove('view-home');
+  if (containerHome) containerHome.style.display = 'none';
+
+  if (targetCourse) {
+    switchCourse(targetCourse, updateUrl, showNotification);
+  }
 }
 
 function switchCourse(courseId, updateUrl = true, showNotification = true) {
+  if (courseId === 'home') {
+    switchView('home', null, updateUrl, showNotification);
+    return;
+  }
+
+  const appContainer = document.querySelector('.app-container');
+  if (appContainer) appContainer.classList.remove('view-home');
+  const containerHome = document.getElementById('container-home');
+  if (containerHome) containerHome.style.display = 'none';
+
   const validCourse = (courseId === 'word') ? 'word' : 'ai';
 
   // 1. Update StateManager if present
@@ -2370,6 +2433,68 @@ function setupCourseManager() {
     });
   }
 
+  // Brand Logo Click -> Return to Home Hub
+  const brandHomeLink = document.getElementById('brand-home-link');
+  if (brandHomeLink) {
+    brandHomeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchView('home', null, true, false);
+    });
+  }
+
+  // Home Card Enter AI Button
+  const btnHomeEnterAi = document.getElementById('btn-home-enter-ai');
+  if (btnHomeEnterAi) {
+    btnHomeEnterAi.addEventListener('click', () => {
+      switchView('workspace', 'ai', true, false);
+    });
+  }
+
+  // Home Card Enter Word Button
+  const btnHomeEnterWord = document.getElementById('btn-home-enter-word');
+  if (btnHomeEnterWord) {
+    btnHomeEnterWord.addEventListener('click', () => {
+      if (!isWordCourseUnlocked()) {
+        openWordLockedModal();
+      } else {
+        switchView('workspace', 'word', true, false);
+      }
+    });
+  }
+
+  // Home Card View Standards Button
+  const btnHomeViewStandards = document.getElementById('btn-home-view-standards');
+  if (btnHomeViewStandards) {
+    btnHomeViewStandards.addEventListener('click', () => {
+      if (!isWordCourseUnlocked()) {
+        openWordLockedModal();
+      } else {
+        switchView('workspace', 'word', true, false);
+        const secStandards = document.getElementById('sec-word-standards');
+        if (secStandards) secStandards.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Home Filter Chips
+  const homeChips = document.querySelectorAll('.home-chip');
+  homeChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      homeChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.getAttribute('data-filter');
+      const cards = document.querySelectorAll('.notebook-card');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
   // Dropdown Item Selection
   dropdownItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -2379,12 +2504,17 @@ function setupCourseManager() {
         if (dropdownBtn) dropdownBtn.setAttribute('aria-expanded', 'false');
       }
 
+      if (targetCourse === 'home') {
+        switchView('home', null, true, false);
+        return;
+      }
+
       if (targetCourse === 'word' && !isWordCourseUnlocked()) {
         openWordLockedModal();
         return;
       }
 
-      switchCourse(targetCourse, true, true);
+      switchView('workspace', targetCourse, true, true);
     });
   });
 
@@ -2393,16 +2523,27 @@ function setupCourseManager() {
     setWordCourseUnlocked(true);
   }
 
-  // Determine initial course from URL or storage
+  // Determine initial view/course from URL
+  let initialMode = 'home';
   let initialCourse = 'ai';
   if (typeof window !== 'undefined' && window.location && window.location.search) {
     const params = new URLSearchParams(window.location.search);
     const courseParam = (params.get('course') || '').toLowerCase();
-    if ((courseParam === 'word' || courseParam === 'kata') && isWordCourseUnlocked()) {
+    if (courseParam === 'word' || courseParam === 'kata') {
+      initialMode = 'workspace';
       initialCourse = 'word';
+    } else if (courseParam === 'ai') {
+      initialMode = 'workspace';
+      initialCourse = 'ai';
     }
   }
-  switchCourse(initialCourse, false, false);
+
+  if (initialMode === 'workspace') {
+    switchView('workspace', initialCourse, false, false);
+  } else {
+    // Default to Google NotebookLM Frontpage Hub
+    switchView('home', null, false, false);
+  }
 }
 
 if (typeof window !== 'undefined') {
@@ -2412,6 +2553,7 @@ if (typeof window !== 'undefined') {
   window.INSTRUCTOR_PASSCODES = INSTRUCTOR_PASSCODES;
   window.isWordCourseUnlocked = isWordCourseUnlocked;
   window.setWordCourseUnlocked = setWordCourseUnlocked;
+  window.switchView = switchView;
   window.switchCourse = switchCourse;
   window.setupCourseManager = setupCourseManager;
   window.WORD_PASSCODES = WORD_PASSCODES;
@@ -2448,6 +2590,7 @@ if (typeof module !== 'undefined' && module.exports) {
     INSTRUCTOR_PASSCODES,
     isWordCourseUnlocked,
     setWordCourseUnlocked,
+    switchView,
     switchCourse,
     setupCourseManager,
     WORD_PASSCODES
