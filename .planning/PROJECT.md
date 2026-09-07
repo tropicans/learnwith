@@ -8,6 +8,18 @@ A modern, responsive, and beginner-friendly web learning platform designed to gu
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
+## Current Milestone: v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture
+
+**Goal:** Redesign the user interface and interaction model to adopt the calm, focused, and intuitive aesthetic of Google NotebookLM. Eliminate visual clutter, remove duplicate controls across header and sidebar, solve CSS cache/leak vulnerabilities, and introduce a modern Workspace Studio experience.
+
+**Target Features:**
+- **Anti-Cache Protection & Critical CSS**: Embed critical dropdown and layout rules in `<head>` and implement robust cache-busting so unstyled menus never leak on production.
+- **Google NotebookLM Top Bar**: Clean 56px top bar with platform brand `learnwith`, breadcrumb divider, and an elegant Course Pill Selector (`learnwith › [ 🤖 Hands-on Agentic AI ▾ ]`). Single source of truth with no repeating titles.
+- **De-duplicated Workspace Navigation**: Remove redundant "Pilihan Workshop" and "Mode Sesi Workshop" from desktop sidebar; streamline sidebar navigation into a focused "Sources / Curriculum" panel.
+- **Material 3 Component Refinement**: Soft rounded corners (12px–16px), gentle borders, subtle pill badges, and non-alarming progress states.
+- **Course 2 Hero & Stat Card Synchronization**: Synchronize Course 2 stats to 3 Checkpoints and 28 Checklist steps, with friendly progress indicators.
+- **Responsive Mobile Experience**: Clean mobile header without truncated dropdown buttons; seamless drawer navigation for phone screens.
+
 ## Current State: v2.0 Shipped (2026-09-07)
 
 The platform is now a fully functional **Multi-Course Training Platform** hosting:

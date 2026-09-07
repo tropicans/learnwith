@@ -1,20 +1,20 @@
 ---
 gsd_state_version: 1.0
-milestone: v2.0
-milestone_name: (Phases 9-12)
-current_phase: null
-current_phase_name: null
-status: archived
-last_updated: "2026-09-07T14:10:00.000Z"
+milestone: v2.1
+milestone_name: Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture
+current_phase: 13
+current_phase_name: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector
+status: active
+last_updated: "2026-09-07T14:24:00.000Z"
 last_activity: 2026-09-07
-last_activity_desc: Milestone v2.0 archived and tagged
+last_activity_desc: Milestone v2.1 initialized (Google NotebookLM-Inspired UI/UX Overhaul)
 state_head: HEAD
 progress:
-  total_phases: 4
-  completed_phases: 4
-  total_plans: 8
-  completed_plans: 8
-  percent: 100
+  total_phases: 2
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -24,21 +24,21 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-09-07)
 
 **Core value:** Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
-**Current focus:** Milestone v2.0 Archived — Ready for next milestone via `/gsd-new-milestone`
+**Current focus:** Milestone v2.1 — Phase 13 (NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector)
 
 ## Current Position
 
-Phase: None (Milestone v2.0 complete and archived)
-Status: Milestone archived
-Last activity: 2026-09-07 — Milestone v2.0 archived and tagged
+Phase: 13 (NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector)
+Status: Active, ready for planning
+Last activity: 2026-09-07 — Milestone v2.1 initialized
 
 ## Milestone Summary
 
 - **Delivered**: Milestone v1.0 complete (Phases 1-4).
 - **Delivered**: Milestone v1.1 complete (Phases 5-8).
-- **Delivered**: Milestone v2.0 complete (Phases 9-12, 13 requirements satisfied, 269 automated assertions passing).
-- **Active Scope**: None (Run `/gsd-new-milestone` to initiate next milestone).
-- **Verification**: All automated test suites passing with zero failures.
+- **Delivered**: Milestone v2.0 complete (Phases 9-12).
+- **Active Scope**: Milestone v2.1 (Phases 13-14, 11 requirements).
+- **Verification**: 269 automated unit test assertions and 35 Playwright E2E browser tests passing.
 
 ## Deferred Items
 
