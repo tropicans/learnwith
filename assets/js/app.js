@@ -1308,6 +1308,87 @@ ${sanitizedError}
 
 window.generateLiveReportText = generateLiveReportText;
 
+/**
+ * Generate formatted evaluation & graduation report text for Course 2 (BPSDM 2026)
+ * Supports 'whatsapp' (rich emojis, asterisks, bullet points) and 'telegram' (Markdown)
+ */
+function generateWordReportText(format = 'whatsapp', overrides = {}) {
+  const state = (typeof window !== 'undefined' && window.AppState) ? window.AppState.getState() : {};
+  const info = { ...(state.participantInfo || {}), ...(overrides.participantInfo || {}) };
+  const cps = { ...(state.checkpoints || {}), ...(overrides.checkpoints || {}) };
+  const grad = (typeof window !== 'undefined' && window.AppState && window.AppState.calculateWordGraduation)
+    ? window.AppState.calculateWordGraduation()
+    : { finalScore: 0, quizScore: 0, portfolioScore: 0, label: 'DALAM PROSES' };
+
+  const name = overrides.name || info.name || '[Nama Lengkap Pegawai]';
+  const nip = overrides.nip || info.nip || '[NIP]';
+  const unit = overrides.unitKerja || info.unitKerja || '[SKPD / Unit Kerja]';
+  const targetDoc = overrides.targetDoc || info.targetDoc || '[Jenis Naskah Dinas Portofolio]';
+  const reportDate = overrides.reportDate || info.reportDate || new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+  // Checkpoints 1, 2, 3
+  const cp1Mark = cps['word-cp-1'] === 'passed' ? '[X]' : '[ ]';
+  const cp2Mark = cps['word-cp-2'] === 'passed' ? '[X]' : '[ ]';
+  const cp3Mark = cps['word-cp-3'] === 'passed' ? '[X]' : '[ ]';
+
+  const quizScore = overrides.quizScore !== undefined ? overrides.quizScore : grad.quizScore;
+  const portScore = overrides.portfolioScore !== undefined ? overrides.portfolioScore : grad.portfolioScore;
+  const finalScore = overrides.finalScore !== undefined ? overrides.finalScore : grad.finalScore;
+  const statusLabel = overrides.statusLabel || grad.label || 'DALAM PROSES';
+
+  if (format === 'whatsapp') {
+    return `*LAPORAN HASIL EVALUASI & KELULUSAN PELATIHAN*
+*Pengolahan Kata Tingkat Lanjut — BPSDM DKI Jakarta 2026*
+
+*Data Aparatur Sipil Negara (ASN):*
+• Nama: ${name}
+• NIP: ${nip}
+• Unit Kerja: ${unit}
+• Naskah Dinas: ${targetDoc}
+• Tanggal Evaluasi: ${reportDate}
+
+*Status Gerbang Checkpoint Praktik:*
+${cp1Mark} Checkpoint 1 — Struktur Heading & TOC Otomatis
+${cp2Mark} Checkpoint 2 — Section Break & Tata Letak Campuran
+${cp3Mark} Checkpoint 3 — Mail Merge & Etika Kolaborasi
+
+*Rincian Hasil Evaluasi:*
+• Kuis Pengetahuan Bab V (Bobot 30%): ${quizScore} / 100
+• Portofolio Praktik Terpadu (Bobot 70%): ${portScore} / 100
+• *Nilai Akhir Kelulusan: ${finalScore} / 100*
+
+*Keputusan Hasil Kelulusan:*
+🏆 *${statusLabel}*
+_${statusLabel.includes('LULUS') ? 'Memenuhi kriteria kompetensi pengolahan naskah dinas otomatis BPSDM.' : 'Diperlukan pengulangan materi dan penyelesaian perbaikan checkpoint.'}_`;
+  }
+
+  // Telegram format (Markdown)
+  return `📋 **LAPORAN HASIL EVALUASI & KELULUSAN PELATIHAN**
+**Pengolahan Kata Tingkat Lanjut — BPSDM DKI Jakarta 2026**
+
+👤 **Data Aparatur Sipil Negara (ASN):**
+- Nama: ${name}
+- NIP: \`${nip}\`
+- Unit Kerja: ${unit}
+- Naskah Dinas: \`${targetDoc}\`
+- Tanggal Evaluasi: ${reportDate}
+
+🏁 **Status Gerbang Checkpoint Praktik:**
+\`${cp1Mark}\` Checkpoint 1 — Struktur Heading & TOC Otomatis
+\`${cp2Mark}\` Checkpoint 2 — Section Break & Tata Letak Campuran
+\`${cp3Mark}\` Checkpoint 3 — Mail Merge & Etika Kolaborasi
+
+📊 **Rincian Hasil Evaluasi:**
+- Kuis Pengetahuan Bab V (30%): \`${quizScore} / 100\`
+- Portofolio Praktik Terpadu (70%): \`${portScore} / 100\`
+- **Nilai Akhir Kelulusan:** \`${finalScore} / 100\`
+
+🎯 **Keputusan Hasil Kelulusan:**
+**${statusLabel}**`;
+}
+
+window.generateWordReportText = generateWordReportText;
+
 function setupLiveReport() {
   const nameInput = document.getElementById('input-live-report-name');
   const modelInput = document.getElementById('input-live-report-model');
@@ -1971,6 +2052,7 @@ if (typeof window !== 'undefined') {
   window.switchCourse = switchCourse;
   window.setupCourseManager = setupCourseManager;
   window.WORD_PASSCODES = WORD_PASSCODES;
+  window.generateWordReportText = generateWordReportText;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
@@ -1981,6 +2063,7 @@ if (typeof module !== 'undefined' && module.exports) {
     setupReadinessReport,
     generateLiveReportText,
     setupLiveReport,
+    generateWordReportText,
     showToast,
     setupMobileDrawer,
     setupModuleAccordions,
