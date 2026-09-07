@@ -10,7 +10,7 @@
 
 ## Active Milestone: v2.2 (Phases 16-18)
 
-- [ ] **Phase 16: Cryptographic Passcode Hashing & Secret Protection (Zero-Plaintext)**
+- [x] **Phase 16: Cryptographic Passcode Hashing & Secret Protection (Zero-Plaintext)**
   - Hapus seluruh kata sandi teks polos dari file JavaScript dan console DevTools (`window.WORD_PASSCODES`).
   - Hapus kebocoran kredensial di form modal placeholder.
   - Implementasi Web Crypto API (`crypto.subtle.digest`) dengan algoritma SHA-256 untuk memverifikasi kecocokan sandi tanpa pernah menyimpan string rahasia asli di client.

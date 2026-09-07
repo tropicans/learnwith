@@ -1,6 +1,6 @@
 # Milestone v2.2 Requirements — Application Security Hardening & Anti-Breach Protection
 
-**Status:** 🟡 ACTIVE (Ready for Planning)  
+**Status:** 🟡 ACTIVE (In Progress)  
 **Milestone:** v2.2  
 
 ---
@@ -9,10 +9,10 @@
 
 ### 1. Cryptographic Gate & Secret Protection (SEC-CRYPTO)
 
-- [ ] **SEC-01**: Seluruh teks polos kata sandi (`['buka-kata', 'kata-sandi-asn']`) dihapus dari kode sumber JavaScript, dan variabel `window.WORD_PASSCODES` dihapus total dari global scope browser console.
-- [ ] **SEC-02**: Formulir modal penguncian modul bersih dari kebocoran kredensial; teks `placeholder="Contoh: buka-kata"` diganti menjadi placeholder netral dan aman.
-- [ ] **SEC-03**: Verifikasi kata sandi menggunakan enkripsi hash satu arah SHA-256 via Web Crypto API standar (`crypto.subtle.digest`), mencocokkan hash input dengan array hash tersimpan tanpa pernah menyimpan string sandi asli di client.
-- [ ] **SEC-04**: Konfigurasi keamanan dan penguncian modul dipisahkan ke dalam file konfigurasi mandiri [`config.js`](file:///c:/Users/yudhiar/Downloads/AgenticAI/config.js) (`window.LEARNWITH_CONFIG`) sehingga memudahkan pembaruan sandi instruktur tanpa memodifikasi logika aplikasi.
+- [x] **SEC-01**: Seluruh teks polos kata sandi (`['buka-kata', 'kata-sandi-asn']`) dihapus dari kode sumber JavaScript, dan variabel `window.WORD_PASSCODES` dihapus total dari global scope browser console.
+- [x] **SEC-02**: Formulir modal penguncian modul bersih dari kebocoran kredensial; teks `placeholder="Contoh: buka-kata"` diganti menjadi placeholder netral dan aman (`placeholder="Masukkan kode sandi instruktur..."`).
+- [x] **SEC-03**: Verifikasi kata sandi menggunakan enkripsi hash satu arah SHA-256 via Web Crypto API standar (`crypto.subtle.digest`), mencocokkan hash input dengan array hash tersimpan tanpa pernah menyimpan string sandi asli di client.
+- [x] **SEC-04**: Konfigurasi keamanan dan penguncian modul dipisahkan ke dalam file konfigurasi mandiri [`config.js`](file:///c:/Users/yudhiar/Downloads/AgenticAI/config.js) (`window.LEARNWITH_CONFIG`) sehingga memudahkan pembaruan sandi instruktur tanpa memodifikasi logika aplikasi.
 
 ### 2. URL Hardening, Session Management & Anti-Tampering (SEC-SESSION)
 
@@ -31,10 +31,10 @@
 
 | Requirement | Phase | Status |
 |---|---|---|
-| SEC-01 | Phase 16 | Pending |
-| SEC-02 | Phase 16 | Pending |
-| SEC-03 | Phase 16 | Pending |
-| SEC-04 | Phase 16 | Pending |
+| SEC-01 | Phase 16 | Complete |
+| SEC-02 | Phase 16 | Complete |
+| SEC-03 | Phase 16 | Complete |
+| SEC-04 | Phase 16 | Complete |
 | SEC-05 | Phase 17 | Pending |
 | SEC-06 | Phase 17 | Pending |
 | SEC-07 | Phase 18 | Pending |

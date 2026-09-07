@@ -2090,7 +2090,47 @@ function setupModeSwitcher() {
 }
 
 const WORD_COURSE_UNLOCK_KEY = 'learnwith_word_unlocked';
-const WORD_PASSCODES = ['buka-kata', 'kata-sandi-asn'];
+
+// Default authorized SHA-256 hashes (Zero-Plaintext Security)
+// 'buka-kata': ddf62f4013c59b111215312fb959629155a5b1dc5cf799f2053a8c2395c4511b
+// 'kata-sandi-asn': 487da33ab431e57b68afa84059c0e7a95818f99cd9581054026f224fc7bba174
+const DEFAULT_WORD_PASSCODE_HASHES = [
+  'ddf62f4013c59b111215312fb959629155a5b1dc5cf799f2053a8c2395c4511b',
+  '487da33ab431e57b68afa84059c0e7a95818f99cd9581054026f224fc7bba174'
+];
+
+function getAllowedWordPasscodeHashes() {
+  if (typeof window !== 'undefined' && window.LEARNWITH_CONFIG && window.LEARNWITH_CONFIG.security && Array.isArray(window.LEARNWITH_CONFIG.security.allowedPasscodeHashes)) {
+    return window.LEARNWITH_CONFIG.security.allowedPasscodeHashes;
+  }
+  return DEFAULT_WORD_PASSCODE_HASHES;
+}
+
+async function hashPasscodeSha256(rawStr) {
+  const normalized = (rawStr || '').trim().toLowerCase();
+  if (typeof window !== 'undefined' && window.crypto && window.crypto.subtle && window.crypto.subtle.digest) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(normalized);
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+  if (typeof require !== 'undefined') {
+    try {
+      const crypto = require('crypto');
+      return crypto.createHash('sha256').update(normalized).digest('hex');
+    } catch (e) {}
+  }
+  return null;
+}
+
+async function verifyWordPasscode(inputCode) {
+  if (!inputCode) return false;
+  const hash = await hashPasscodeSha256(inputCode);
+  if (!hash) return false;
+  const allowed = getAllowedWordPasscodeHashes();
+  return allowed.includes(hash);
+}
 
 function isWordCourseUnlocked() {
   // 1. Check URL parameters for ?unlock=word, ?unlock=dev, or ?course=word&unlock=...
@@ -2375,20 +2415,46 @@ function setupCourseManager() {
     });
   }
 
-  function handleWordUnlockSubmit() {
+  async function handleWordUnlockSubmit() {
     if (!wordUnlockInput) return;
-    const code = (wordUnlockInput.value || '').trim().toLowerCase();
-    if (WORD_PASSCODES.includes(code)) {
-      setWordCourseUnlocked(true);
-      closeWordLockedModal();
-      if (typeof showToast === 'function') {
-        showToast('🔓 Modul Pengolahan Kata Tingkat Lanjut berhasil dibuka!', 'success', 3000);
-      }
-      switchCourse('word', true, true);
-    } else {
+    const code = (wordUnlockInput.value || '').trim();
+    if (!code) {
       if (wordUnlockFeedback) {
-        wordUnlockFeedback.textContent = 'Kode sandi salah. Gunakan "buka-kata" untuk pratinjau instruktur.';
+        wordUnlockFeedback.textContent = 'Silakan masukkan kode sandi terlebih dahulu.';
         wordUnlockFeedback.style.display = 'block';
+      }
+      return;
+    }
+
+    if (wordUnlockSubmitBtn) {
+      wordUnlockSubmitBtn.disabled = true;
+      wordUnlockSubmitBtn.textContent = 'Memverifikasi...';
+    }
+
+    try {
+      const isValid = await verifyWordPasscode(code);
+      if (isValid) {
+        setWordCourseUnlocked(true);
+        closeWordLockedModal();
+        if (typeof showToast === 'function') {
+          showToast('🔓 Modul Pengolahan Kata Tingkat Lanjut berhasil dibuka!', 'success', 3000);
+        }
+        switchCourse('word', true, true);
+      } else {
+        if (wordUnlockFeedback) {
+          wordUnlockFeedback.textContent = 'Kode sandi salah. Silakan hubungi instruktur pelatihan.';
+          wordUnlockFeedback.style.display = 'block';
+        }
+      }
+    } catch (err) {
+      if (wordUnlockFeedback) {
+        wordUnlockFeedback.textContent = 'Terjadi kesalahan saat memverifikasi kode sandi.';
+        wordUnlockFeedback.style.display = 'block';
+      }
+    } finally {
+      if (wordUnlockSubmitBtn) {
+        wordUnlockSubmitBtn.disabled = false;
+        wordUnlockSubmitBtn.textContent = 'Buka Modul';
       }
     }
   }
@@ -2566,7 +2632,8 @@ if (typeof window !== 'undefined') {
   window.switchView = switchView;
   window.switchCourse = switchCourse;
   window.setupCourseManager = setupCourseManager;
-  window.WORD_PASSCODES = WORD_PASSCODES;
+  window.hashPasscodeSha256 = hashPasscodeSha256;
+  window.verifyWordPasscode = verifyWordPasscode;
   window.generateWordReportText = generateWordReportText;
   window.setupWordQuiz = setupWordQuiz;
   window.setupWordRubrik = setupWordRubrik;
@@ -2603,7 +2670,9 @@ if (typeof module !== 'undefined' && module.exports) {
     switchView,
     switchCourse,
     setupCourseManager,
-    WORD_PASSCODES
+    verifyWordPasscode,
+    hashPasscodeSha256,
+    getAllowedWordPasscodeHashes
   };
 }
 

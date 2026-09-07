@@ -1,7 +1,7 @@
 /**
  * Automated tests for Multi-Course Architecture & Course Gate Protection (Phase 9: GATEWAY-01, GATEWAY-02, GATEWAY-03).
  */
-(function () {
+(async function () {
   if (typeof window === 'undefined') global.window = {};
   if (typeof localStorage === 'undefined') {
     global.localStorage = {
@@ -165,8 +165,13 @@
   assert(!appModule.isWordCourseUnlocked(), 'Course 2 is locked after setWordCourseUnlocked(false)');
   assertEquals(localStorage.getItem('learnwith_word_unlocked'), null, 'Unlock flag removed from localStorage');
 
-  // Test 9: Passcode check
-  assert(appModule.WORD_PASSCODES.includes('buka-kata'), 'WORD_PASSCODES contains buka-kata');
+  // Test 9: Zero-Plaintext Security & Cryptographic Hash Verification (SEC-01, SEC-03)
+  assert.strictEqual(window.WORD_PASSCODES, undefined, 'WORD_PASSCODES must NOT be exposed globally on window');
+  assert(typeof appModule.verifyWordPasscode === 'function', 'verifyWordPasscode must be a function');
+  const validPass = await appModule.verifyWordPasscode('buka-kata');
+  assert(validPass === true, 'verifyWordPasscode returns true for buka-kata');
+  const invalidPass = await appModule.verifyWordPasscode('salah-kode');
+  assert(invalidPass === false, 'verifyWordPasscode returns false for invalid password');
 
   // Suite 3: Course Switcher UI & Container Visibility
   console.log('\n[Suite 3: Course Switcher & Container Visibility]');
