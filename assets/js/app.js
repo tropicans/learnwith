@@ -327,8 +327,8 @@ function updateProgressUI() {
   }
 
   if (isWord) {
-    // Update Module Progress Badges in Sidebar (Bab I, II, III)
-    ['b1', 'b2', 'b3'].forEach(mod => {
+    // Update Module Progress Badges in Sidebar (Bab I, II, III, IV)
+    ['b1', 'b2', 'b3', 'b4'].forEach(mod => {
       const el = document.getElementById(`badge-nav-word-${mod}`);
       if (el) {
         const p = window.AppState.getModuleProgress(`word-${mod}-`);
@@ -346,7 +346,7 @@ function updateProgressUI() {
     // Update Checkpoint Status Badges in Sidebar for Course 2
     const state = window.AppState.getState();
     const cps = state.checkpoints || {};
-    ['word-cp-1', 'word-cp-2'].forEach((id, idx) => {
+    ['word-cp-1', 'word-cp-2', 'word-cp-3'].forEach((id, idx) => {
       const el = document.getElementById(`status-nav-word-cp${idx + 1}`);
       if (el) {
         const status = cps[id] || 'pending';
@@ -598,7 +598,7 @@ function setupCheckpointGates() {
   const state = window.AppState.getState();
   const checkpoints = state.checkpoints || {};
 
-  const allCheckpointIds = ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9', 'word-cp-1', 'word-cp-2'];
+  const allCheckpointIds = ['cp-1', 'cp-2', 'cp-3', 'cp-4', 'cp-5', 'cp-6', 'cp-7', 'cp-8', 'cp-9', 'word-cp-1', 'word-cp-2', 'word-cp-3'];
   allCheckpointIds.forEach(cpId => {
     updateCheckpointCardUI(cpId, checkpoints[cpId] || 'pending');
   });
@@ -616,7 +616,7 @@ function setupCheckpointGates() {
 
     const isWordCp = cpId.startsWith('word-cp-');
     const cpLabel = isWordCp
-      ? `Bab ${cpId === 'word-cp-1' ? 'II' : 'III'} (CP-${cpId.replace('word-cp-', '')})`
+      ? `Bab ${cpId === 'word-cp-1' ? 'II' : cpId === 'word-cp-2' ? 'III' : 'IV'} (CP-${cpId.replace('word-cp-', '')})`
       : `Checkpoint ${cpId.replace('cp-', '')}`;
 
     if (newStatus === 'passed') {
@@ -1718,7 +1718,7 @@ function switchCourse(courseId, updateUrl = true, showNotification = true) {
       setupChecklistListeners();
     }
     const wordCps = (window.AppState && window.AppState.getState) ? (window.AppState.getState().checkpoints || {}) : {};
-    ['word-cp-1', 'word-cp-2'].forEach(cpId => {
+    ['word-cp-1', 'word-cp-2', 'word-cp-3'].forEach(cpId => {
       updateCheckpointCardUI(cpId, wordCps[cpId] || 'pending');
     });
 
