@@ -12,8 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheets (with Cache-Busting) -->
-  <link rel="stylesheet" href="assets/css/main.css?v=2.1.0">
-  <link rel="stylesheet" href="assets/css/components.css?v=2.1.0">
+  <link rel="stylesheet" href="assets/css/main.css?v=2.2.0">
+  <link rel="stylesheet" href="assets/css/components.css?v=2.2.0">
 
   <style>
     /* Critical Anti-Leak Protection for Course Dropdown Menu (Zero-Unstyled Glitch) */
@@ -34,6 +34,19 @@
     .course-dropdown-menu.show {
       display: flex !important;
       flex-direction: column !important;
+    }
+
+    /* Critical View-Home Baseline Protection */
+    .app-container.view-home {
+      grid-template-columns: 1fr !important;
+      grid-template-areas: "header" "main" !important;
+    }
+    .app-container.view-home .app-sidebar,
+    .app-container.view-home .brand-breadcrumb-separator,
+    .app-container.view-home .header-course-switcher,
+    .app-container.view-home .header-mode-switcher,
+    .app-container.view-home #btn-mobile-menu {
+      display: none !important;
     }
 
     /* Screen-Reader & Test Compatibility Utility */
@@ -121,7 +134,7 @@
   <link rel="apple-touch-icon" href="favicon.svg">
 </head>
 <body>
-  <div class="app-container">
+  <div class="app-container view-home">
     
     <!-- ==========================================
          TOP HEADER
@@ -639,7 +652,7 @@
       <!-- ==========================================
            GOOGLE NOTEBOOKLM FRONTPAGE HUB
            ========================================== -->
-      <section id="container-home" class="container-home" style="display: none;">
+      <section id="container-home" class="container-home">
         
         <!-- Welcome Hero Banner (NotebookLM Aesthetic) -->
         <div class="home-hero">
@@ -781,7 +794,7 @@
       <!-- ==========================================
            COURSE CONTAINER 1: HANDS-ON AGENTIC AI
            ========================================== -->
-      <div id="container-course-ai" class="course-container active">
+      <div id="container-course-ai" class="course-container" style="display: none;">
         
         <!-- ==========================================
              MODE CONTAINER 1: PRA-TRAINING (PERSIAPAN)
@@ -7476,8 +7489,8 @@ TELEGRAM_ALLOWED_USERS=&lt;user-id-numerik-peserta&gt;</code></pre>
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
   <!-- Core Scripts (with Cache-Busting) -->
-  <script src="assets/js/state.js?v=2.1.0"></script>
-  <script src="assets/js/search.js?v=2.1.0"></script>
-  <script src="assets/js/app.js?v=2.1.0"></script>
+  <script src="assets/js/state.js?v=2.2.0"></script>
+  <script src="assets/js/search.js?v=2.2.0"></script>
+  <script src="assets/js/app.js?v=2.2.0"></script>
 </body>
 </html>

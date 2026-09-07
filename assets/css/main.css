@@ -945,17 +945,19 @@ body {
    ========================================================================== */
 
 /* Full-Width Canvas when in Home View */
-.view-home .app-sidebar {
-  display: none !important;
-}
-
-.view-home .app-container {
+.app-container.view-home {
   grid-template-columns: 1fr !important;
   grid-template-areas:
     "header"
     "main" !important;
 }
 
+.app-container.view-home .app-sidebar,
+.view-home .app-sidebar {
+  display: none !important;
+}
+
+.app-container.view-home .app-main,
 .view-home .app-main {
   max-width: 1200px;
   margin: 0 auto;
@@ -963,6 +965,10 @@ body {
   padding: 2.5rem 2rem 5rem;
 }
 
+.app-container.view-home .brand-breadcrumb-separator,
+.app-container.view-home .header-course-switcher,
+.app-container.view-home .header-mode-switcher,
+.app-container.view-home #btn-mobile-menu,
 .view-home .brand-breadcrumb-separator,
 .view-home .header-course-switcher,
 .view-home .header-mode-switcher,
