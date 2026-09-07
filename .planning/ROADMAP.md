@@ -5,87 +5,67 @@
 - ✅ **v1.0 Pre-Training Interactive Web App (Agentic AI)** - Phases 1-4 (shipped 2026-09-03) — [Archive](milestones/v1.0-ROADMAP.md)
 - ✅ **v1.1 Live Workshop Guide (Agentic AI Hari-H)** - Phases 5-8 (shipped 2026-09-07) — [Archive](milestones/v1.1-ROADMAP.md)
 - ✅ **v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut** - Phases 9-12 (shipped 2026-09-07) — [Archive](milestones/v2.0-ROADMAP.md)
-- 🟡 **v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture** - Phases 13-14 (in progress)
+- ✅ **v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture** - Phases 13-15 (shipped 2026-09-07) — [Archive](milestones/v2.1-ROADMAP.md)
+- 🟡 **v2.2 Application Security Hardening & Anti-Breach Protection** - Phases 16-18 (in progress)
 
-## Active Milestone: v2.1 (Phases 13-14)
+## Active Milestone: v2.2 (Phases 16-18)
 
-- [x] **Phase 13: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector**
-  - Embed critical `<style>` rules for course dropdowns in `<head>` to prevent unstyled layout leaks.
-  - Bump asset cache-busting to `?v=2.1.0`.
-  - Introduce `learnwith` platform branding + breadcrumb course pill selector (`learnwith / [ 🤖 Hands-on Agentic AI ▾ ]`).
-  - Eliminate triple title repetition while preserving semantic accessibility and test compatibility.
-  - Polish elevated course picker modal card.
+- [ ] **Phase 16: Cryptographic Passcode Hashing & Secret Protection (Zero-Plaintext)**
+  - Hapus seluruh kata sandi teks polos dari file JavaScript dan console DevTools (`window.WORD_PASSCODES`).
+  - Hapus kebocoran kredensial di form modal placeholder.
+  - Implementasi Web Crypto API (`crypto.subtle.digest`) dengan algoritma SHA-256 untuk memverifikasi kecocokan sandi tanpa pernah menyimpan string rahasia asli di client.
+  - Pisahkan konfigurasi penguncian modul dan hash kredensial ke file mandiri `config.js` (`window.LEARNWITH_CONFIG`).
 
-- [x] **Phase 14: Workspace Studio Navigation, Sidebar De-duplication & Material 3 Polishing**
-  - Hide redundant duplicate course/mode switchers on desktop sidebar (screens ≥ 1024px) to present curriculum immediately.
-  - Keep single source of truth for Course 1 mode switcher (Pra-Training vs Hari-H) on desktop header.
-  - Ensure mobile header and drawer provide clean, responsive, touch-friendly navigation without text wrapping.
-  - Synchronize Course 2 stats cards (4 Bab, 3 Checkpoints, 28 Checklist steps, `0/28`).
-  - Soften document readiness status card into a calm, encouraging progress indicator.
-  - Style search input into a NotebookLM rounded pill container.
+- [ ] **Phase 17: URL Gate Hardening, Session Management & Anti-Tampering**
+  - Matikan bypass URL parameter tidak aman (`?unlock=dev`, `?unlock=word`, `?unlock=1`) di mode normal.
+  - Terapkan mekanisme auto-lock session timeout (misal: otomatis mengunci kembali modul setelah periode inaktivitas tertentu atau saat tab ditutup).
+  - Tambahkan proteksi anti-tampering pada kunci status penyimpanan local storage.
 
-- [x] **Phase 15: Google NotebookLM Frontpage Hub & Seamless Studio Navigation**
-  - Dedicated NotebookLM Frontpage Hub (`#container-home`) displaying platform greeting and notebook card gallery for Course 1, Course 2, and BPSDM Civil Service standards.
-  - Clean full-width canvas on home view (`.view-home` on `.app-container` hides `.app-sidebar` and centers `.app-main`).
-  - Header adaptively displays brand-only on Frontpage and breadcrumb pill on Studio Workspace views.
-  - Seamless two-way navigation: clicking notebook cards enters Studio Workspace, clicking `learnwith` logo or `🏠 Beranda Kursus` in dropdown returns to Frontpage.
-  - URL routing supports `?course=ai`, `?course=word`, and default root/`?view=home` with full backward compatibility.
+- [ ] **Phase 18: Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking**
+  - Terapkan meta tag Content Security Policy (CSP) ketat pada `<head>` untuk mencegah eksploitasi skrip asing dan XSS.
+  - Tambahkan script pelindung anti-clickjacking untuk mencegah halaman dibajak atau di-embed dalam `<iframe>` pihak ketiga.
+  - Lakukan audit sanitasi menyeluruh pada semua titik input pengguna (nama, NIP, instansi, form pencarian, dan perakitan kuis) untuk memastikan 0% celah DOM XSS.
 
-### Phase 13: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector
+---
 
-**Goal**: Deliver a calm, elegant Google NotebookLM-style top bar with unified platform branding, anti-cache critical CSS protection, and a modern course pill selector.  
-**Depends on**: Milestone v2.0  
-**Requirements**: CACHE-01, CACHE-02, NLM-NAV-01, NLM-NAV-02, NLM-NAV-03  
-**Plans**: 1-2 plans  
+### Phase 16: Cryptographic Passcode Hashing & Secret Protection (Zero-Plaintext)
 
-### Phase 14: Workspace Studio Navigation, Sidebar De-duplication & Material 3 Polishing
+**Goal**: Menghilangkan seluruh jejak kata sandi teks polos, mengamankan objek global browser, membersihkan placeholder input, dan menerapkan Web Crypto SHA-256 hash matching dengan file konfigurasi terisolasi `config.js`.  
+**Depends on**: Milestone v2.1  
+**Requirements**: SEC-01, SEC-02, SEC-03, SEC-04  
+**Plans**: 1 plan  
 
-**Goal**: Eliminate duplicate switchers on desktop sidebar, streamline the curriculum navigation panel, polish Course 2 stat cards and status banners, and perfect mobile responsiveness.  
-**Depends on**: Phase 13  
-**Requirements**: WORK-01, WORK-02, WORK-03, POLISH-01, POLISH-02, POLISH-03  
-**Plans**: 1-2 plans  
+### Phase 17: URL Gate Hardening, Session Management & Anti-Tampering
 
-### Phase 15: Google NotebookLM Frontpage Hub & Seamless Studio Navigation
+**Goal**: Mengamankan gerbang otorisasi dari manipulasi parameter URL bebas dan menerapkan auto-lock session timeout untuk melindungi sesi yang ditinggalkan tanpa pengawasan.  
+**Depends on**: Phase 16  
+**Requirements**: SEC-05, SEC-06  
+**Plans**: 1 plan  
 
-**Goal**: Deliver an authentic Google NotebookLM Frontpage Hub with notebook cards gallery, full-width canvas, adaptive header, and seamless two-way studio navigation.  
-**Depends on**: Phase 14  
-**Requirements**: HOME-01, HOME-02, HOME-03, HOME-04, HOME-05  
+### Phase 18: Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking
+
+**Goal**: Memasang pertahanan Content Security Policy ketat, pelindung anti-clickjacking frame-busting, dan audit sanitasi DOM untuk menjamin 0% kerentanan XSS.  
+**Depends on**: Phase 17  
+**Requirements**: SEC-07, SEC-08, SEC-09  
 **Plans**: 1 plan  
 
 ## Completed Milestones
 
 <details>
+<summary>✅ v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture (Phases 13-15) - SHIPPED 2026-09-07</summary>
+
+- [x] **Phase 13: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector**
+- [x] **Phase 14: Workspace Studio Navigation, Sidebar De-duplication & Material 3 Polishing**
+- [x] **Phase 15: Google NotebookLM Frontpage Hub & Seamless Studio Navigation**
+
+</details>
+
+<details>
 <summary>✅ v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut (Phases 9-12) - SHIPPED 2026-09-07</summary>
 
 - [x] **Phase 9: Multi-Course Architecture & Course Gate Protection**
-- [x] **Phase 10: Interactive Modules Bab I–III (Struktur Dokumen, Styles, TOC & Penomoran Halaman)**
-- [x] **Phase 11: Interactive Modules Bab IV (Mail Merge, Track Changes & Kolaborasi Dokumen)**
-- [x] **Phase 12: Interactive Knowledge Quiz (Bab V), Rubrik Evaluasi & Laporan Kelulusan BPSDM**
-
-Full details: [v2.0 Roadmap Archive](milestones/v2.0-ROADMAP.md) | [v2.0 Requirements Archive](milestones/v2.0-REQUIREMENTS.md) | [v2.0 Milestone Audit](milestones/v2.0-MILESTONE-AUDIT.md)
-
-</details>
-
-<details>
-<summary>✅ v1.1 Live Workshop Guide (Hari-H Praktik Kelas) (Phases 5-8) - SHIPPED 2026-09-07</summary>
-
-- [x] **Phase 5: Mode Switcher & Dual Workshop Navigation Shell**
-- [x] **Phase 6: 9Router Model Alignment & Hermes Agent Windows Installation**
-- [x] **Phase 7: Telegram Allowlist Gateway, Google Calendar OAuth & End-to-End Verification**
-- [x] **Phase 8: In-Class Troubleshooting Hub, Completion Status Engine & Final Report Exporter**
-
-Full details: [v1.1 Roadmap Archive](milestones/v1.1-ROADMAP.md) | [v1.1 Requirements Archive](milestones/v1.1-REQUIREMENTS.md)
-
-</details>
-
-<details>
-<summary>✅ v1.0 Pre-Training Interactive Web App (Phases 1-4) - SHIPPED 2026-09-03</summary>
-
-- [x] **Phase 1: Foundation Shell, Navigation & Theme Architecture**
-- [x] **Phase 2: Interactive Guide Modules & 1-Click Execution**
-- [x] **Phase 3: Checklist Engine, Checkpoint Gates & Local Storage State**
-- [x] **Phase 4: Troubleshooting Hub, Secret Redaction Helper & Report Exporter**
-
-Full details: [v1.0 Roadmap Archive](milestones/v1.0-ROADMAP.md) | [v1.0 Requirements Archive](milestones/v1.0-REQUIREMENTS.md)
+- [x] **Phase 10: Modul Bab I–III Praktik Interaktif, Checkpoint 1–2, & Standar Tata Naskah Dinas**
+- [x] **Phase 11: Modul Bab IV Otomasi Dokumen, Reviewing & Checkpoint 3**
+- [x] **Phase 12: Evaluasi Akhir, Kuis Interaktif 20 Soal, & Mesin Kelulusan BPSDM**
 
 </details>

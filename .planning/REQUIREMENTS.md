@@ -1,42 +1,29 @@
-# Milestone v2.1 Requirements — Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture
+# Milestone v2.2 Requirements — Application Security Hardening & Anti-Breach Protection
 
-**Status:** ✅ COMPLETE  
-**Milestone:** v2.1  
+**Status:** 🟡 ACTIVE (Ready for Planning)  
+**Milestone:** v2.2  
 
 ---
 
 ## Requirements Traceability
 
-### 1. Critical CSS & Anti-Cache Architecture (CACHE)
+### 1. Cryptographic Gate & Secret Protection (SEC-CRYPTO)
 
-- [x] **CACHE-01**: Course dropdown menu must have critical `<style>` rules embedded in `<head>` ensuring `display: none !important;` by default and `display: flex !important;` when `.show` is toggled, preventing unstyled HTML leakage under any network or cache conditions.
-- [x] **CACHE-02**: Asset versioning query parameter bumped to `?v=2.1.0` on all linked stylesheets and scripts in `index.html`.
+- [ ] **SEC-01**: Seluruh teks polos kata sandi (`['buka-kata', 'kata-sandi-asn']`) dihapus dari kode sumber JavaScript, dan variabel `window.WORD_PASSCODES` dihapus total dari global scope browser console.
+- [ ] **SEC-02**: Formulir modal penguncian modul bersih dari kebocoran kredensial; teks `placeholder="Contoh: buka-kata"` diganti menjadi placeholder netral dan aman.
+- [ ] **SEC-03**: Verifikasi kata sandi menggunakan enkripsi hash satu arah SHA-256 via Web Crypto API standar (`crypto.subtle.digest`), mencocokkan hash input dengan array hash tersimpan tanpa pernah menyimpan string sandi asli di client.
+- [ ] **SEC-04**: Konfigurasi keamanan dan penguncian modul dipisahkan ke dalam file konfigurasi mandiri [`config.js`](file:///c:/Users/yudhiar/Downloads/AgenticAI/config.js) (`window.LEARNWITH_CONFIG`) sehingga memudahkan pembaruan sandi instruktur tanpa memodifikasi logika aplikasi.
 
-### 2. Google NotebookLM-Inspired Top Bar & Course Selector (NLM-NAV)
+### 2. URL Hardening, Session Management & Anti-Tampering (SEC-SESSION)
 
-- [x] **NLM-NAV-01**: Header displays unified platform branding `learnwith` alongside an elegant Material 3 breadcrumb pill selector (`learnwith / [ 🤖 Hands-on Agentic AI ▾ ]`).
-- [x] **NLM-NAV-02**: Elimination of triple text repetition in header: `#header-brand-title` and `#header-brand-subtitle` integrated seamlessly into the brand & breadcrumb hierarchy while preserving DOM accessibility and 100% test compatibility.
-- [x] **NLM-NAV-03**: Floating course switcher popover styled as an elevated Google-style card with soft shadows, active course indicator, and clean unlock status badges.
+- [ ] **SEC-05**: Penutupan celah bypass URL parameter tanpa otorisasi (`?unlock=dev`, `?unlock=word`, `?unlock=1`); parameter URL hanya dapat membuka modul jika menyertakan token/hash instruktur yang sah.
+- [ ] **SEC-06**: Mekanisme auto-lock / session timeout: modul yang telah dibuka akan otomatis terkunci kembali jika sesi tidak aktif atau saat browser ditutup, mencegah akses tidak sah pada perangkat yang ditinggalkan.
 
-### 3. Workspace De-duplication & Sidebar Streamlining (WORKSPACE)
+### 3. Content Security Policy, DOM Sanitization & Anti-Clickjacking (SEC-GUARD)
 
-- [x] **WORK-01**: Sidebar on desktop (screens ≥ 1024px) hides redundant duplicate switchers, immediately surfacing module curriculum links without pushing content below the fold.
-- [x] **WORK-02**: Course 1 mode switcher (Pra-Training vs Hari-H Kelas) on desktop resides exclusively in the header as a clean, segmented Material 3 pill control.
-- [x] **WORK-03**: Mobile header displays compact logo and hamburger menu without text wrapping or multi-line button breaking; mobile sidebar drawer cleanly accommodates touch-friendly course and mode selection (≥ 44px touch targets).
-
-### 4. Visual Hierarchy, Card Polishing & Content Alignment (POLISH)
-
-- [x] **POLISH-01**: Course 2 hero stat cards synchronized to real numbers: 4 Bab, 3 Checkpoints, 28 Checklist steps, and dynamic progress counter (`0/28 Langkah Selesai`).
-- [x] **POLISH-02**: Document readiness status card redesigned from an alarming orange warning box into an encouraging, calm progress card.
-- [x] **POLISH-03**: Search bar styled with Google-style rounded pill container, comfortable padding, and non-overlapping `Ctrl+K` key badge.
-
-### 5. Google NotebookLM Frontpage Hub & Seamless Navigation (HOME)
-
-- [x] **HOME-01**: Dedicated NotebookLM Frontpage Hub (`#container-home`) displaying platform welcome hero, search/filter helper, and notebook card gallery for Course 1, Course 2, and BPSDM Civil Service standards.
-- [x] **HOME-02**: Clean full-width canvas on home view (`.view-home` on `.app-container` hides `.app-sidebar` and centers `.app-main`).
-- [x] **HOME-03**: Header adaptively displays clean brand on Frontpage and breadcrumb pill on Studio Workspace views.
-- [x] **HOME-04**: Seamless two-way navigation: clicking notebook cards enters Studio Workspace, clicking `learnwith` brand or `🏠 Beranda Kursus` in dropdown returns to Frontpage.
-- [x] **HOME-05**: URL routing supports `?course=ai`, `?course=word`, and default root without parameters rendering the NotebookLM Frontpage with 100% backward test compatibility.
+- [ ] **SEC-07**: Pemasangan header meta Content Security Policy (CSP) ketat di `<head>` untuk mencegah injeksi skrip asing, cross-site scripting (XSS), dan muatan konten eksternal tidak terpercaya.
+- [ ] **SEC-08**: Pelindung anti-clickjacking (frame-busting guard) memastikan platform `learnwith` tidak dapat disusupi atau dimanipulasi di dalam `<iframe>` situs web jahat.
+- [ ] **SEC-09**: Audit sanitasi DOM input: seluruh input pengguna (nama peserta, NIP, instansi, kuis, dan pencarian) wajib diproses secara aman menggunakan sanitasi karakter atau `textContent` murni, menjamin 0% celah DOM-based XSS.
 
 ---
 
@@ -44,19 +31,12 @@
 
 | Requirement | Phase | Status |
 |---|---|---|
-| CACHE-01 | Phase 13 | Complete |
-| CACHE-02 | Phase 13 | Complete |
-| NLM-NAV-01 | Phase 13 | Complete |
-| NLM-NAV-02 | Phase 13 | Complete |
-| NLM-NAV-03 | Phase 13 | Complete |
-| WORK-01 | Phase 14 | Complete |
-| WORK-02 | Phase 14 | Complete |
-| WORK-03 | Phase 14 | Complete |
-| POLISH-01 | Phase 14 | Complete |
-| POLISH-02 | Phase 14 | Complete |
-| POLISH-03 | Phase 14 | Complete |
-| HOME-01 | Phase 15 | Complete |
-| HOME-02 | Phase 15 | Complete |
-| HOME-03 | Phase 15 | Complete |
-| HOME-04 | Phase 15 | Complete |
-| HOME-05 | Phase 15 | Complete |
+| SEC-01 | Phase 16 | Pending |
+| SEC-02 | Phase 16 | Pending |
+| SEC-03 | Phase 16 | Pending |
+| SEC-04 | Phase 16 | Pending |
+| SEC-05 | Phase 17 | Pending |
+| SEC-06 | Phase 17 | Pending |
+| SEC-07 | Phase 18 | Pending |
+| SEC-08 | Phase 18 | Pending |
+| SEC-09 | Phase 18 | Pending |

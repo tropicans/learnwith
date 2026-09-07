@@ -1,5 +1,30 @@
 # Milestones
 
+## v2.1: Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture
+
+**Shipped:** 2026-09-07
+**Status:** ✅ SHIPPED (verified_closeout)
+**Phases:** 13-15 (3 phases)
+**Plans:** 3 plans (3/3 completed)
+**Automated Tests:** 38 Playwright E2E browser tests passing (0 failures)
+**Requirements:** 16/16 satisfied (100%)
+
+### Delivered
+Transformed the user interface into a calm, focused, and intuitive Google NotebookLM-inspired experience with an adaptive Frontpage Hub, seamless two-way Studio Workspace navigation, anti-cache critical CSS, de-duplicated sidebar, and modern LY monogram branding.
+
+### Key Accomplishments
+1. **Critical CSS & Anti-Cache Architecture**: Embedded critical dropdown and layout rules in `<head>` and asset version query busting (`?v=2.2.2`) preventing unstyled glitches.
+2. **NotebookLM Top Bar & Pill Selector**: Sleek 56px header with unified platform branding `learnwith`, breadcrumb divider, and interactive course dropdown pill.
+3. **Workspace De-duplication & Material 3 Refinement**: Streamlined sidebar to direct curriculum navigation, synchronized Course 2 stats (4 Bab, 3 Checkpoints, 28 Checklist steps), calm progress indicators, and pill search bar with `Ctrl+K`.
+4. **NotebookLM Frontpage Hub**: Full-width `#container-home` displaying platform greeting ("Selamat Datang di learnwith Yudhi") and 2 focused workshop notebook cards with filter chips.
+5. **Modern LY Monogram Branding**: Konsep 5 (Gemini AI Emblem LY) with royal blue to indigo gradient and gold 4-point AI sparkle applied to favicon and app header.
+
+### Archive Reference
+- [Roadmap Archive](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v2.1-ROADMAP.md)
+- [Requirements Archive](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v2.1-REQUIREMENTS.md)
+
+---
+
 ## v2.0: Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut
 
 **Shipped:** 2026-09-07

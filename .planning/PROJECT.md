@@ -8,25 +8,37 @@ A modern, responsive, and beginner-friendly web learning platform designed to gu
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current Milestone: v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture
+## Current Milestone: v2.2 Application Security Hardening & Anti-Breach Protection
 
-**Goal:** Redesign the user interface and interaction model to adopt the calm, focused, and intuitive aesthetic of Google NotebookLM. Eliminate visual clutter, remove duplicate controls across header and sidebar, solve CSS cache/leak vulnerabilities, and introduce a modern Workspace Studio experience.
+**Goal:** Lakukan penguatan keamanan (hardening) menyeluruh terhadap aplikasi agar tidak bisa dibreach (tahan terhadap kebocoran kata sandi, manipulasi objek global DevTools, bypass URL query tidak aman, dan celah injeksi DOM XSS).
 
 **Target Features:**
-- **Anti-Cache Protection & Critical CSS**: Embed critical dropdown and layout rules in `<head>` and implement robust cache-busting so unstyled menus never leak on production.
-- **Google NotebookLM Top Bar**: Clean 56px top bar with platform brand `learnwith`, breadcrumb divider, and an elegant Course Pill Selector (`learnwith › [ 🤖 Hands-on Agentic AI ▾ ]`). Single source of truth with no repeating titles.
-- **De-duplicated Workspace Navigation**: Remove redundant "Pilihan Workshop" and "Mode Sesi Workshop" from desktop sidebar; streamline sidebar navigation into a focused "Sources / Curriculum" panel.
-- **Material 3 Component Refinement**: Soft rounded corners (12px–16px), gentle borders, subtle pill badges, and non-alarming progress states.
-- **Course 2 Hero & Stat Card Synchronization**: Synchronize Course 2 stats to 3 Checkpoints and 28 Checklist steps, with friendly progress indicators.
-- **Responsive Mobile Experience**: Clean mobile header without truncated dropdown buttons; seamless drawer navigation for phone screens.
+- **Zero-Plaintext & Cryptographic Gate (Web Crypto API)**: Hapus seluruh kata sandi teks polos dari kode sumber, hapus `window.WORD_PASSCODES` dari console global, bersihkan bocoran di placeholder UI, dan gunakan enkripsi hash satu arah SHA-256 (`crypto.subtle.digest`).
+- **Centralized Secure Config (`config.js`)**: Pisahkan konfigurasi penguncian modul dan hash sandi instruktur ke file konfigurasi terisolasi (`window.LEARNWITH_CONFIG`).
+- **URL Bypass Hardening & Auto-Lock Session**: Kunci jalur bypass URL tanpa izin (`?unlock=dev`, dll.) di mode normal dan implementasikan auto-lock timeout agar modul tidak terbuka permanen jika ditinggal tanpa pengawasan.
+- **Content Security Policy (CSP) & Anti-Clickjacking**: Pasang meta header CSP ketat dan pelindung anti-framing untuk mencegah serangan injeksi skrip dan pembajakan klik.
+- **DOM Sanitization & Anti-XSS Audit**: Audit menyeluruh seluruh input pengguna (nama, NIP, evaluasi kuis, pencarian kata kunci) untuk memastikan 0% celah DOM XSS.
 
-## Current State: v2.0 Shipped (2026-09-07)
+## Current State: v2.1 Shipped (2026-09-07)
 
-The platform is now a fully functional **Multi-Course Training Platform** hosting:
-1. **Course 1**: *Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router* (Production, Published & Backward-Compatible).
-2. **Course 2**: *Pengolahan Kata Tingkat Lanjut: Dari Dokumen Berantakan ke Standar Kedinasan Otomatis* (Complete, Verified & Protected behind Instructor Gate `buka-kata`).
+The platform is now an authenticated **NotebookLM-Inspired Multi-Course Studio** with an adaptive Frontpage Hub, clean two-way studio workspace navigation, and modern LY monogram identity.
 
 ## Previous Milestones
+
+<details>
+<summary>✅ v2.1 Complete (Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture) - SHIPPED 2026-09-07</summary>
+
+- **Phases**: 13-15 (3 phases, 3 plans)
+- **Accomplishments**:
+  - Embedded critical CSS for course dropdowns in `<head>` and asset version query parameter (`?v=2.2.2`).
+  - Google NotebookLM-style top bar with unified `learnwith` branding, breadcrumb divider, and course pill dropdown.
+  - Streamlined desktop sidebar navigation focusing directly on curriculum links.
+  - Synchronized Course 2 stats cards (4 Bab, 3 Checkpoints, 28 Checklist steps) and softened progress indicator.
+  - Dedicated NotebookLM Frontpage Hub (`#container-home`) with 2 focused workshop cards and adaptive header.
+  - Modern LY Monogram Branding (Konsep 5 Gemini AI Emblem) applied to favicon and app header.
+  - 38 Playwright E2E integration tests passing with 0 errors.
+
+</details>
 
 <details>
 <summary>✅ v2.0 Complete (Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut) - SHIPPED 2026-09-07</summary>
