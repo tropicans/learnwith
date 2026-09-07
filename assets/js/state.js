@@ -116,6 +116,250 @@ const DEFAULT_STATE = {
   lastUpdated: null
 };
 
+// Official 20-Question Knowledge Evaluation Bank (Bab V & Lampiran 1 Table L1.1 BPSDM DKI Jakarta 2026)
+const WORD_QUIZ_QUESTIONS = [
+  {
+    id: 1,
+    question: "Fungsi utama Heading adalah ...",
+    options: {
+      A: "mengubah warna halaman",
+      B: "membentuk struktur logis dokumen",
+      C: "menyisipkan gambar",
+      D: "mengunci dokumen"
+    },
+    correct: "B",
+    explanation: "Heading (Heading 1, 2, 3) berfungsi membentuk hierarki dan struktur logis dokumen, memungkinkan pembuatan Daftar Isi otomatis, navigasi melalui Navigation Pane, dan pengindeksan dokumen standar kedinasan."
+  },
+  {
+    id: 2,
+    question: "Perintah yang tepat untuk memperbarui judul dan nomor halaman pada daftar isi adalah ...",
+    options: {
+      A: "Update page numbers only",
+      B: "Update entire table",
+      C: "Refresh Styles",
+      D: "Replace All"
+    },
+    correct: "B",
+    explanation: "Opsi Update entire table memperbarui nomor halaman sekaligus mendeteksi judul/subjudul baru atau teks heading yang diubah. Opsi Update page numbers only hanya memperbarui angka halaman tanpa memperbarui teks judul."
+  },
+  {
+    id: 3,
+    question: "Pemisah yang memungkinkan header berbeda pada halaman berikutnya adalah ...",
+    options: {
+      A: "Line Break",
+      B: "Page Break",
+      C: "Next Page Section Break",
+      D: "Column Break"
+    },
+    correct: "C",
+    explanation: "Section Break (Next Page) memecah dokumen menjadi bagian (section) independen sehingga pengaturan header, footer, margin, dan orientasi halaman dapat dibuat berbeda antar-bagian. Page Break biasa tidak memisahkan section."
+  },
+  {
+    id: 4,
+    question: "Sebelum mengubah header pada section baru, langkah penting adalah ...",
+    options: {
+      A: "menghapus footer",
+      B: "menonaktifkan Link to Previous",
+      C: "mengubah zoom",
+      D: "menyalakan Track Changes"
+    },
+    correct: "B",
+    explanation: "Secara default, header pada section baru terhubung ke section sebelumnya (Same as Previous). Menekan tombol Link to Previous untuk menonaktifkannya adalah syarat mutlak agar perubahan header tidak merusak section sebelumnya."
+  },
+  {
+    id: 5,
+    question: "Format template Word tanpa macro adalah ...",
+    options: {
+      A: ".docx",
+      B: ".xlsx",
+      C: ".dotx",
+      D: ".pptx"
+    },
+    correct: "C",
+    explanation: "Ekstensi .dotx adalah format Word Template standar tanpa kode makro (aman dari ancaman keamanan makro), yang menghasilkan dokumen baru berformat .docx setiap kali dibuka dengan klik ganda. Format dengan makro adalah .dotm."
+  },
+  {
+    id: 6,
+    question: "Satu baris pada sumber data mail merge mewakili ...",
+    options: {
+      A: "satu penerima atau record",
+      B: "satu halaman",
+      C: "satu style",
+      D: "satu section"
+    },
+    correct: "A",
+    explanation: "Dalam basis data atau tabel Excel mail merge, baris pertama adalah nama-nama field (header kolom), sedangkan setiap baris berikutnya mewakili satu record data penerima (misalnya satu pegawai/peserta)."
+  },
+  {
+    id: 7,
+    question: "Fitur untuk memeriksa hasil personalisasi sebelum penggabungan adalah ...",
+    options: {
+      A: "Navigation Pane",
+      B: "Preview Results",
+      C: "Word Count",
+      D: "Restrict Editing"
+    },
+    correct: "B",
+    explanation: "Tombol Preview Results pada tab Mailings memungkinkan pengguna meninjau bagaimana field merge terisi oleh data nyata dari setiap record secara dinamis sebelum diekspor atau dicetak."
+  },
+  {
+    id: 8,
+    question: "Pada label mail merge, aturan untuk berpindah penerima adalah ...",
+    options: {
+      A: "Skip If",
+      B: "Next Record",
+      C: "Ask",
+      D: "Fill-in"
+    },
+    correct: "B",
+    explanation: "Aturan <<Next Record>> (Rules > Next Record) wajib disisipkan di awal sel label berikutnya agar Word membaca data baris selanjutnya pada sheet Excel, bukan mencetak nama penerima yang sama berulang kali di satu lembar label."
+  },
+  {
+    id: 9,
+    question: "No Markup pada Track Changes berarti ...",
+    options: {
+      A: "semua perubahan diterima",
+      B: "semua perubahan dihapus",
+      C: "markup disembunyikan dari tampilan",
+      D: "dokumen dikunci"
+    },
+    correct: "C",
+    explanation: "Mode No Markup menyembunyikan coretan, garis bawah, dan balon komentar dari layar tampilan sehingga naskah terlihat rapi seperti hasil akhir, namun revisi belum diputuskan (belum diterima/ditolak)."
+  },
+  {
+    id: 10,
+    question: "Komentar sebaiknya digunakan untuk ...",
+    options: {
+      A: "mengganti seluruh isi otomatis",
+      B: "diskusi dan masukan kontekstual",
+      C: "mengubah margin",
+      D: "membuat daftar isi"
+    },
+    correct: "B",
+    explanation: "Komentar (Modern Comments) dirancang untuk memberikan umpan balik kontekstual, pertanyaan telaah, diskusi thread, dan catatan telaah naskah dinas tanpa mengubah isi teks dokumen secara langsung."
+  },
+  {
+    id: 11,
+    question: "Izin paling tepat untuk pihak yang hanya memberi saran adalah ...",
+    options: {
+      A: "review jika tersedia",
+      B: "pemilik penuh",
+      C: "tautan publik edit",
+      D: "akses tanpa autentikasi"
+    },
+    correct: "A",
+    explanation: "Memberikan izin Reviewing (Can Review) memastikan penelaah hanya dapat memberi komentar dan menyarankan perubahan (secara otomatis terlacak lewat Track Changes) tanpa kewenangan mengubah naskah master secara permanen."
+  },
+  {
+    id: 12,
+    question: "Cara terbaik menghindari konflik versi adalah ...",
+    options: {
+      A: "membuat banyak salinan lokal",
+      B: "bekerja pada satu dokumen bersama di lokasi resmi",
+      C: "mengirim file melalui banyak kanal",
+      D: "menonaktifkan penyimpanan"
+    },
+    correct: "B",
+    explanation: "Menerapkan single source of truth dengan mengedit dokumen bersama (co-authoring) di cloud resmi (OneDrive/SharePoint/Server Dinas) mencegah kekacauan akibat peredaran belasan file lokal yang saling bertolak belakang."
+  },
+  {
+    id: 13,
+    question: "Fungsi Navigation Pane adalah ...",
+    options: {
+      A: "memeriksa struktur heading dan berpindah bagian",
+      B: "mengubah orientasi",
+      C: "membuat label",
+      D: "menghapus metadata"
+    },
+    correct: "A",
+    explanation: "Navigation Pane (Ctrl+F atau View > Navigation Pane) menampilkan outline hierarki dokumen secara interaktif, memungkinkan penataan ulang bab dengan drag-and-drop, dan lompat ke bagian naskah secara instan."
+  },
+  {
+    id: 14,
+    question: "Jika nomor halaman isi harus dimulai dari 1, pilih ...",
+    options: {
+      A: "Continue from previous",
+      B: "Start at: 1",
+      C: "Different Odd Page",
+      D: "AutoFit"
+    },
+    correct: "B",
+    explanation: "Pada kotak dialog Page Number Format, memilih opsi Start at: 1 mereset penomoran halaman pada section tersebut ke angka 1 (misalnya saat beralih dari bagian pengantar bernomor Romawi ke Bab I naskah utama)."
+  },
+  {
+    id: 15,
+    question: "Langkah akhir sebelum dokumen review dinyatakan bersih adalah ...",
+    options: {
+      A: "memilih No Markup",
+      B: "memeriksa Reviewing Pane dan menyelesaikan perubahan/komentar",
+      C: "menutup Navigation Pane",
+      D: "menghapus daftar isi"
+    },
+    correct: "B",
+    explanation: "Memeriksa Reviewing Pane memastikan semua revisi telah diputuskan (Accept/Reject) dan semua komentar telah ditandai Resolve atau dihapus, lalu dilanjutkan pembersihan jejak reviewer melalui Document Inspector. Memilih No Markup saja tidak menghapus revisi yang tertinggal."
+  },
+  {
+    id: 16,
+    question: "Nomor bab tidak konsisten setelah bagian dipindahkan. Perbaikan paling tepat adalah ...",
+    options: {
+      A: "mengetik ulang semua nomor",
+      B: "menautkan multilevel list ke heading",
+      C: "mengubah ukuran font",
+      D: "menyisipkan page break"
+    },
+    correct: "B",
+    explanation: "Menautkan Multilevel List ke Style Heading (Define New Multilevel List > Link level to style: Heading 1, 2) membuat penomoran bab dan subbab memperbarui dirinya sendiri secara otomatis saat paragraf dipindahkan atau disisipkan."
+  },
+  {
+    id: 17,
+    question: "Semua label menampilkan penerima yang sama. Penyebab paling mungkin adalah ...",
+    options: {
+      A: "aturan Next Record hilang",
+      B: "Link to Previous aktif",
+      C: "TOC belum diperbarui",
+      D: "template berformat DOTX"
+    },
+    correct: "A",
+    explanation: "Jika aturan <<Next Record>> tidak disisipkan sebelum field pertama pada kotak label ke-2 dan seterusnya, Word akan terus mengulang data penerima pertama di seluruh stiker label dalam satu halaman kertas."
+  },
+  {
+    id: 18,
+    question: "Header section sebelumnya ikut berubah ketika header baru diedit. Tindakan korektif adalah ...",
+    options: {
+      A: "memutus Link to Previous pada section baru",
+      B: "menghapus seluruh section",
+      C: "menjalankan mail merge",
+      D: "menerima Track Changes"
+    },
+    correct: "A",
+    explanation: "Gejala ini terjadi karena hubungan antar-section masih aktif. Solusinya adalah masuk ke header section yang baru lalu klik Link to Previous pada tab Header & Footer untuk mematikan keterhubungan tersebut (unlink)."
+  },
+  {
+    id: 19,
+    question: "Risiko utama tautan publik edit untuk dokumen kedinasan adalah ...",
+    options: {
+      A: "ukuran font berubah",
+      B: "akses dan perubahan tidak dibatasi pada pihak berwenang",
+      C: "daftar isi hilang",
+      D: "nomor halaman menjadi Romawi"
+    },
+    correct: "B",
+    explanation: "Membagikan link edit tanpa proteksi akun/autentikasi memungkinkan pihak mana pun di luar instansi mengubah isi naskah dinas, membocorkan data pribadi (melanggar Pergub DKI No. 14/2020), dan merusak integritas hukum dokumen."
+  },
+  {
+    id: 20,
+    question: "Dua reviewer mengirim salinan revisi tanpa Track Changes. Fitur paling sesuai untuk merekonsiliasi perubahan adalah ...",
+    options: {
+      A: "Word Count",
+      B: "Compare/Combine",
+      C: "Replace All",
+      D: "Format Painter"
+    },
+    correct: "B",
+    explanation: "Fitur Compare atau Combine Documents (Review > Compare) secara cerdas membandingkan dua versi dokumen Word terpisah dan menyatukan seluruh perbedaan kata, kalimat, maupun format ke dalam satu naskah baru yang dilengkapi tanda revisi Track Changes."
+  }
+];
+
 const WORD_DEFAULT_STATE = {
   theme: 'light',
   checklists: {
@@ -161,7 +405,40 @@ const WORD_DEFAULT_STATE = {
     name: '',
     nip: '',
     unitKerja: '',
-    targetDoc: ''
+    targetDoc: '',
+    reportDate: ''
+  },
+  quiz: {
+    answers: {},       // e.g. { 1: 'B', 2: 'B', ... }
+    score: 0,          // 0 to 100
+    submitted: false,  // true once user answers or evaluates
+    passed: false      // true if score >= 80
+  },
+  reflections: {
+    'ref-repetitive': '',
+    'ref-challenging': '',
+    'ref-template': '',
+    'ref-risks': '',
+    'ref-collaboration': ''
+  },
+  rubric: {
+    // Lampiran 3: 9 Verification Checklist Items
+    'word-chk-headings': false,
+    'word-chk-toc': false,
+    'word-chk-section-link': false,
+    'word-chk-page-num': false,
+    'word-chk-mailmerge-valid': false,
+    'word-chk-mergefield-clean': false,
+    'word-chk-track-decided': false,
+    'word-chk-comments-resolved': false,
+    'word-chk-sharing-inspected': false,
+    // Lampiran 5: 6 Portfolio Artifact Verification
+    'word-port-structure': false,
+    'word-port-multisection': false,
+    'word-port-template': false,
+    'word-port-merge': false,
+    'word-port-review': false,
+    'word-port-qa-log': false
   },
   activeSection: 'sec-word-intro',
   lastUpdated: null
@@ -252,7 +529,16 @@ class StateManager {
         ...(activeMode ? { activeMode } : {}),
         checklists: { ...defaultState.checklists, ...(parsed.checklists || {}) },
         checkpoints: { ...defaultState.checkpoints, ...(parsed.checkpoints || {}) },
-        participantInfo: { ...defaultState.participantInfo, ...(parsed.participantInfo || {}) }
+        participantInfo: { ...defaultState.participantInfo, ...(parsed.participantInfo || {}) },
+        ...(isWord ? {
+          quiz: {
+            ...defaultState.quiz,
+            ...(parsed.quiz || {}),
+            answers: { ...(defaultState.quiz?.answers || {}), ...(parsed.quiz?.answers || {}) }
+          },
+          reflections: { ...defaultState.reflections, ...(parsed.reflections || {}) },
+          rubric: { ...defaultState.rubric, ...(parsed.rubric || {}) }
+        } : {})
       };
     } catch (e) {
       console.warn('Failed to load state from localStorage:', e);
@@ -584,6 +870,137 @@ class StateManager {
   }
 
   /**
+   * Update answer for Bab V knowledge quiz question (QUIZ-01, QUIZ-02)
+   */
+  updateQuizAnswer(questionId, selectedOption) {
+    if (!this.state.quiz) {
+      this.state.quiz = { answers: {}, score: 0, submitted: false, passed: false };
+    }
+    if (!this.state.quiz.answers) {
+      this.state.quiz.answers = {};
+    }
+    this.state.quiz.answers[questionId] = selectedOption;
+    this.state.quiz.submitted = true;
+    this.calculateQuizScore();
+    this.saveState();
+    this.emit('quizUpdate', this.state.quiz);
+    this.emit('stateChanged', this.state);
+  }
+
+  /**
+   * Calculate score for Bab V knowledge quiz (5 pts per correct answer, 0-100)
+   */
+  calculateQuizScore() {
+    if (!this.state.quiz) {
+      this.state.quiz = { answers: {}, score: 0, submitted: false, passed: false };
+    }
+    if (!this.state.quiz.answers) {
+      this.state.quiz.answers = {};
+    }
+    let correctCount = 0;
+    WORD_QUIZ_QUESTIONS.forEach(q => {
+      if (this.state.quiz.answers[q.id] === q.correct) {
+        correctCount++;
+      }
+    });
+    const score = correctCount * 5; // 20 questions * 5 = 100 points
+    this.state.quiz.score = score;
+    this.state.quiz.passed = (score >= 80);
+    return score;
+  }
+
+  /**
+   * Reset Bab V knowledge quiz answers and score
+   */
+  resetQuiz() {
+    this.state.quiz = { answers: {}, score: 0, submitted: false, passed: false };
+    this.saveState();
+    this.emit('quizReset', this.state.quiz);
+    this.emit('stateChanged', this.state);
+  }
+
+  /**
+   * Update Bab V self-reflection prompt (QUIZ-03)
+   */
+  updateWordReflection(promptId, text) {
+    if (!this.state.reflections) {
+      this.state.reflections = {};
+    }
+    this.state.reflections[promptId] = text;
+    this.saveState();
+    this.emit('reflectionUpdate', { promptId, text });
+    this.emit('stateChanged', this.state);
+  }
+
+  /**
+   * Update Bab V competency rubric / quality checklist item (QUIZ-03)
+   */
+  updateWordRubric(rubricKey, checked) {
+    if (!this.state.rubric) {
+      this.state.rubric = {};
+    }
+    this.state.rubric[rubricKey] = !!checked;
+    this.saveState();
+    this.emit('rubricUpdate', { rubricKey, checked: !!checked });
+    this.emit('stateChanged', this.state);
+  }
+
+  /**
+   * Calculate BPSDM Course 2 Graduation Evaluation (70% Practice + 30% Quiz) (WORD-RPT-01)
+   */
+  calculateWordGraduation() {
+    const cps = this.state.checkpoints || {};
+    const cpIds = ['word-cp-1', 'word-cp-2', 'word-cp-3'];
+    const allCpPassed = cpIds.every(id => cps[id] === 'passed');
+    const hasCpFailure = cpIds.some(id => cps[id] === 'failed');
+
+    const quizScore = (this.state.quiz && typeof this.state.quiz.score === 'number') ? this.state.quiz.score : 0;
+
+    // Calculate Portfolio Rubric score (6 portfolio items from Lampiran 5, each ~16.67 pts, total 100)
+    const rubric = this.state.rubric || {};
+    const portKeys = ['word-port-structure', 'word-port-multisection', 'word-port-template', 'word-port-merge', 'word-port-review', 'word-port-qa-log'];
+    const completedPortItems = portKeys.filter(k => rubric[k] === true).length;
+    const portfolioScore = Math.round((completedPortItems / portKeys.length) * 100);
+
+    // Nilai Akhir = (Praktik Terpadu * 70%) + (Kuis Pengetahuan * 30%)
+    const finalScore = Math.round((portfolioScore * 0.7) + (quizScore * 0.3));
+
+    let status = 'remediasi';
+    let label = 'BELUM MEMENUHI SYARAT / PERLU REMEDIASI';
+    let badgeClass = 'badge-danger';
+    let grade = 'Perlu Remediasi (D)';
+
+    if (hasCpFailure || finalScore < 75 || !allCpPassed) {
+      status = 'remediasi';
+      label = 'PERLU REMEDIASI';
+      badgeClass = 'badge-danger';
+      grade = 'Perlu Remediasi (D)';
+    } else if (allCpPassed && finalScore >= 80 && quizScore >= 80) {
+      status = 'lulus';
+      label = 'KOMPETEN (LULUS)';
+      badgeClass = 'badge-success';
+      if (finalScore >= 90) grade = 'Sangat Memuaskan (A)';
+      else grade = 'Memuaskan (B)';
+    } else if (allCpPassed && finalScore >= 75) {
+      status = 'lulus_cukup';
+      label = 'KOMPETEN (LULUS CUKUP)';
+      badgeClass = 'badge-success';
+      grade = 'Cukup (C)';
+    }
+
+    return {
+      quizScore,
+      portfolioScore,
+      finalScore,
+      status,
+      label,
+      badgeClass,
+      grade,
+      allCpPassed
+    };
+  }
+
+  /**
    * Reset all progress
    */
   resetState() {
@@ -628,8 +1045,10 @@ class StateManager {
 
 // Global AppState Singleton
 window.AppState = new StateManager();
+window.WORD_QUIZ_QUESTIONS = WORD_QUIZ_QUESTIONS;
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { StateManager, DEFAULT_STATE, WORD_DEFAULT_STATE, STORAGE_KEY, LEGACY_STORAGE_KEY, COURSE_CONFIGS };
+  module.exports = { StateManager, DEFAULT_STATE, WORD_DEFAULT_STATE, WORD_QUIZ_QUESTIONS, STORAGE_KEY, LEGACY_STORAGE_KEY, COURSE_CONFIGS };
 }
+
 

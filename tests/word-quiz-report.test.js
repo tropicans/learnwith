@@ -288,6 +288,8 @@ const assert = require('assert');
 
   runTest('calculateWordGraduation accurately computes 70% Practice + 30% Quiz and assigns BPSDM predicate', () => {
     // Case 1: Initial state (all checkpoints pending, 0 quiz, 0 portfolio)
+    const portKeys = ['word-port-structure', 'word-port-multisection', 'word-port-template', 'word-port-merge', 'word-port-review', 'word-port-qa-log'];
+    portKeys.forEach(k => testManager.updateWordRubric(k, false));
     let grad = testManager.calculateWordGraduation();
     assert.strictEqual(grad.finalScore, 0);
     assert.strictEqual(grad.status, 'remediasi');
@@ -303,7 +305,6 @@ const assert = require('assert');
     }
 
     // Complete all 6 portfolio items in rubric
-    const portKeys = ['word-port-structure', 'word-port-multisection', 'word-port-template', 'word-port-merge', 'word-port-review', 'word-port-qa-log'];
     portKeys.forEach(k => testManager.updateWordRubric(k, true));
 
     grad = testManager.calculateWordGraduation();
