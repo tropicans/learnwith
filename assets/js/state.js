@@ -116,6 +116,47 @@ const DEFAULT_STATE = {
   lastUpdated: null
 };
 
+const WORD_DEFAULT_STATE = {
+  theme: 'light',
+  checklists: {
+    // Bab I (4 tasks)
+    'word-b1-download-pkg': false,
+    'word-b1-setup-folder': false,
+    'word-b1-inspect-messy': false,
+    'word-b1-check-version': false,
+    // Bab II (8 tasks)
+    'word-b2-apply-h1': false,
+    'word-b2-apply-h2-h3': false,
+    'word-b2-modify-styles': false,
+    'word-b2-nav-pane': false,
+    'word-b2-multilevel': false,
+    'word-b2-insert-toc': false,
+    'word-b2-update-toc': false,
+    'word-b2-captions-ref': false,
+    // Bab III (8 tasks)
+    'word-b3-section-breaks': false,
+    'word-b3-unlink-header': false,
+    'word-b3-page-num-roman': false,
+    'word-b3-page-num-arabic': false,
+    'word-b3-landscape-mix': false,
+    'word-b3-save-dotx': false,
+    'word-b3-content-controls': false,
+    'word-b3-doc-inspection': false
+  },
+  checkpoints: {
+    'word-cp-1': 'pending', // 'pending' | 'passed' | 'failed'
+    'word-cp-2': 'pending'
+  },
+  participantInfo: {
+    name: '',
+    nip: '',
+    unitKerja: '',
+    targetDoc: ''
+  },
+  activeSection: 'sec-word-intro',
+  lastUpdated: null
+};
+
 class StateManager {
   constructor(initialCourse = 'ai') {
     this.listeners = new Map();
@@ -178,32 +219,34 @@ class StateManager {
    */
   loadState() {
     try {
+      const isWord = this.activeCourse === 'word';
+      const defaultState = isWord ? WORD_DEFAULT_STATE : DEFAULT_STATE;
       const storageKey = this.getStorageKey();
       let serialized = (typeof localStorage !== 'undefined') ? localStorage.getItem(storageKey) : null;
-      if (!serialized && this.activeCourse === 'ai' && typeof localStorage !== 'undefined') {
+      if (!serialized && !isWord && typeof localStorage !== 'undefined') {
         serialized = localStorage.getItem(COURSE_CONFIGS.ai.legacyKey);
       }
       if (!serialized) {
-        return JSON.parse(JSON.stringify(DEFAULT_STATE));
+        return JSON.parse(JSON.stringify(defaultState));
       }
       const parsed = JSON.parse(serialized);
-      // Validate activeMode
-      const activeMode = (parsed.activeMode === 'live-class' || parsed.activeMode === 'pretraining')
+      // Validate activeMode for AI course
+      const activeMode = (!isWord && (parsed.activeMode === 'live-class' || parsed.activeMode === 'pretraining'))
         ? parsed.activeMode
-        : DEFAULT_STATE.activeMode;
+        : (isWord ? undefined : DEFAULT_STATE.activeMode);
 
       // Merge with default state to handle newly added fields
       return {
-        ...DEFAULT_STATE,
+        ...defaultState,
         ...parsed,
-        activeMode,
-        checklists: { ...DEFAULT_STATE.checklists, ...(parsed.checklists || {}) },
-        checkpoints: { ...DEFAULT_STATE.checkpoints, ...(parsed.checkpoints || {}) },
-        participantInfo: { ...DEFAULT_STATE.participantInfo, ...(parsed.participantInfo || {}) }
+        ...(activeMode ? { activeMode } : {}),
+        checklists: { ...defaultState.checklists, ...(parsed.checklists || {}) },
+        checkpoints: { ...defaultState.checkpoints, ...(parsed.checkpoints || {}) },
+        participantInfo: { ...defaultState.participantInfo, ...(parsed.participantInfo || {}) }
       };
     } catch (e) {
       console.warn('Failed to load state from localStorage:', e);
-      return JSON.parse(JSON.stringify(DEFAULT_STATE));
+      return JSON.parse(JSON.stringify(this.activeCourse === 'word' ? WORD_DEFAULT_STATE : DEFAULT_STATE));
     }
   }
 
@@ -339,6 +382,30 @@ class StateManager {
    */
   calculateProgress(mode = null) {
     const checklists = this.state.checklists || {};
+
+    if (this.activeCourse === 'word') {
+      const taskKeys = Object.keys(checklists).filter(k => k.startsWith('word-b1-') || k.startsWith('word-b2-') || k.startsWith('word-b3-'));
+      const cpKeys = Object.keys(this.state.checkpoints || {}).filter(k => k.startsWith('word-cp-'));
+
+      const totalTasks = taskKeys.length;
+      const completedTasks = taskKeys.filter(k => checklists[k] === true).length;
+      const totalCheckpoints = cpKeys.length;
+      const passedCheckpoints = cpKeys.filter(k => (this.state.checkpoints || {})[k] === 'passed').length;
+
+      // Weighted calculation: Checklists = 60%, Checkpoints = 40%
+      const taskPercent = totalTasks > 0 ? (completedTasks / totalTasks) * 60 : 0;
+      const cpPercent = totalCheckpoints > 0 ? (passedCheckpoints / totalCheckpoints) * 40 : 0;
+      const overallPercent = Math.min(100, Math.round(taskPercent + cpPercent));
+
+      return {
+        totalTasks,
+        completedTasks,
+        totalCheckpoints,
+        passedCheckpoints,
+        percentage: overallPercent
+      };
+    }
+
     let taskKeys = Object.keys(checklists);
     let cpKeys = Object.keys(this.state.checkpoints || {});
 
@@ -466,12 +533,56 @@ class StateManager {
   }
 
   /**
+   * Calculate dynamic Word Processing document readiness status (Course 2: Bab I-III, Checkpoints 1 & 2)
+   */
+  calculateWordReadiness() {
+    const progress = this.calculateProgress();
+    const cps = this.state.checkpoints || {};
+    const cpIds = ['word-cp-1', 'word-cp-2'];
+    const cpValues = cpIds.map(id => cps[id] || 'pending');
+
+    const hasFailure = cpValues.some(v => v === 'failed');
+    const allPassed = cpValues.every(v => v === 'passed');
+
+    if (hasFailure) {
+      return {
+        status: 'clinic',
+        label: '⚠️ PERLU KONSULTASI / KLINIK',
+        badgeClass: 'badge-danger',
+        description: 'Terdapat kendala pada verifikasi struktur dokumen atau tata letak section. Periksa kembali panduan perbaikan atau konsultasikan dengan fasilitator.',
+        color: 'var(--color-danger)'
+      };
+    }
+
+    if (allPassed && progress.percentage >= 80) {
+      return {
+        status: 'ready',
+        label: '🎉 DOKUMEN SESUAI STANDAR DINAS',
+        badgeClass: 'badge-success',
+        description: 'Selamat! Seluruh checklist Bab I–III dan Checkpoint 1 & 2 berhasil diverifikasi. Dokumen Anda memenuhi standar hierarki, penomoran section, dan template ASN!',
+        color: 'var(--color-success)'
+      };
+    }
+
+    return {
+      status: 'pending',
+      label: '⏳ DALAM PENYUSUNAN PRAKTIK',
+      badgeClass: 'badge-warning',
+      description: 'Lengkapi checklist praktik Bab I, II, dan III serta verifikasi Checkpoint 1 dan 2 untuk menuntaskan standardisasi dokumen dinas Anda.',
+      color: 'var(--color-warning)'
+    };
+  }
+
+  /**
    * Reset all progress
    */
   resetState() {
-    this.state = JSON.parse(JSON.stringify(DEFAULT_STATE));
+    const defaultState = this.activeCourse === 'word' ? WORD_DEFAULT_STATE : DEFAULT_STATE;
+    this.state = JSON.parse(JSON.stringify(defaultState));
     this.saveState();
-    this.setTheme('dark', false);
+    if (this.activeCourse === 'ai') {
+      this.setTheme('dark', false);
+    }
     this.emit('stateReset', this.state);
   }
 
@@ -509,5 +620,6 @@ class StateManager {
 window.AppState = new StateManager();
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { StateManager, DEFAULT_STATE, STORAGE_KEY, LEGACY_STORAGE_KEY, COURSE_CONFIGS };
+  module.exports = { StateManager, DEFAULT_STATE, WORD_DEFAULT_STATE, STORAGE_KEY, LEGACY_STORAGE_KEY, COURSE_CONFIGS };
 }
+

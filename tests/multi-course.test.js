@@ -129,7 +129,7 @@
   mgr.setCourse('word');
   assertEquals(mgr.getActiveCourse(), 'word', 'Active course switched to word');
   const wordState = mgr.getState();
-  assertEquals(wordState.checklists['prereq-laptop'], false, 'Course 2 checklists start with defaults (not polluted by Course 1)');
+  assertEquals(wordState.checklists['prereq-laptop'], undefined, 'Course 2 checklists start with defaults (not polluted by Course 1)');
 
   // Test 4: Mutating Course 2 does not mutate Course 1
   mgr.updateChecklist('word-task-1', true);
