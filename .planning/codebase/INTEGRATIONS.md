@@ -78,8 +78,15 @@
 
 ## CI/CD & Deployment
 
-**Hosting:**
-- Static Web Hosting ready: GitHub Pages, Cloudflare Pages, Vercel, Netlify, Amazon S3, or intranet file shares
+**Hosting & Production Deployment:**
+- **Production Server:** `learnwith`
+- **Root Directory:** `/var/www/learnwith`
+- **Web Server:** Nginx (`systemctl reload nginx`)
+- **Deployment Command (Pull):**
+  ```bash
+  cd /var/www/learnwith && git pull origin master
+  ```
+- Also static web hosting ready: GitHub Pages, Cloudflare Pages, Vercel, Netlify, Amazon S3, or intranet file shares
 
 **CI Pipeline:**
 - Headless test execution scriptable via Node.js:
