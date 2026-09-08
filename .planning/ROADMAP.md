@@ -82,16 +82,13 @@ Plans:
 **Goal**: Menjaga fungsi sensitif dan logika server murni di balik boundary `createServerFn` yang aman dari kebocoran bundle client.
 **Depends on**: Phase 21
 **Requirements**: SRV-01, SRV-02, SRV-03
-**Success Criteria**:
+**Plans**: 3 plans
 
-1. Verifikasi passkey modul pengajar dieksekusi via `createServerFn` dengan validasi payload Zod di sisi server.
-2. Secret hash dan environment variables terisolasi di `app/server/` dan tidak pernah disertakan dalam bundle JavaScript browser.
-3. Diagnostik dan telemetry internal berjalan via typed RPC yang aman.
+Plans:
 
-**Plans**:
-- [x] **22-01**: Server Boundary Foundation, Quarantined Configuration & Secret Hashing Isolation (SRV-02) (completed 2026-09-08)
-- [x] **22-02**: Typed Server Functions for Instructor Passkey & Diagnostic Telemetry (SRV-01, SRV-03) (completed 2026-09-08)
-- [ ] **22-03**: Client Modal Integration, Workspace Wiring & Legacy Sanitization (SRV-01, SRV-02, SRV-03)
+- [x] 22-01: Server Boundary Foundation, Quarantined Configuration & Secret Hashing Isolation (SRV-02) (completed 2026-09-08)
+- [x] 22-02: Typed Server Functions for Instructor Passkey & Diagnostic Telemetry (SRV-01, SRV-03) (completed 2026-09-08)
+- [x] 22-03: Client Modal Integration, Workspace Wiring & Legacy Sanitization (SRV-01, SRV-02, SRV-03) (completed 2026-09-08)
 
 ### Phase 23: Route-Level SSR Optimization & Production Docker Target
 

@@ -31,9 +31,9 @@
 
 ### Category 4: Server Boundaries & Typed Server Functions (SRV)
 
-- [ ] **SRV-01**: Implementasi `createServerFn` untuk autentikasi dan verifikasi passkey modul pengajar secara aman di sisi server.
-- [ ] **SRV-02**: Isolasi server configuration dan environment variables di `app/server/` agar tidak bocor ke client JavaScript bundle.
-- [ ] **SRV-03**: Typed server function untuk logging diagnostik lokal atau healthcheck gateway tanpa mengekspos endpoint mentah.
+- [x] **SRV-01**: Implementasi `createServerFn` untuk autentikasi dan verifikasi passkey modul pengajar secara aman di sisi server.
+- [x] **SRV-02**: Isolasi server configuration dan environment variables di `app/server/` agar tidak bocor ke client JavaScript bundle.
+- [x] **SRV-03**: Typed server function untuk logging diagnostik lokal atau healthcheck gateway tanpa mengekspos endpoint mentah.
 
 ### Category 5: Target Deployment & Production Build Optimization (DEPLOY)
 
