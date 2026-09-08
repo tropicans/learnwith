@@ -65,27 +65,27 @@
 
 | Requirement | Phase | Status | Verification Evidence |
 |---|---|---|---|
-| PRE-BASE-01 | Pending | Pending | — |
-| PRE-BASE-02 | Pending | Pending | — |
-| PRE-BASE-03 | Pending | Pending | — |
-| PRE-BASE-04 | Pending | Pending | — |
-| PRE-BASE-05 | Pending | Pending | — |
-| PRE-MOD-01 | Pending | Pending | — |
-| PRE-MOD-02 | Pending | Pending | — |
-| PRE-MOD-03 | Pending | Pending | — |
-| PRE-MOD-04 | Pending | Pending | — |
-| PRE-MOD-05 | Pending | Pending | — |
-| PRE-MOD-06 | Pending | Pending | — |
-| PRE-CHK-01 | Pending | Pending | — |
-| PRE-CHK-02 | Pending | Pending | — |
-| PRE-CHK-03 | Pending | Pending | — |
-| PRE-CHK-04 | Pending | Pending | — |
-| PRE-TOOL-01 | Pending | Pending | — |
-| PRE-TOOL-02 | Pending | Pending | — |
-| PRE-TOOL-03 | Pending | Pending | — |
-| PRE-RPT-01 | Pending | Pending | — |
-| PRE-RPT-02 | Pending | Pending | — |
-| PRE-RPT-03 | Pending | Pending | — |
-| PRE-NAV-01 | Pending | Pending | — |
-| PRE-NAV-02 | Pending | Pending | — |
-| PRE-NAV-03 | Pending | Pending | — |
+| PRE-BASE-01 | Phase 24 | Pending | Target & Alur rendered in /course/ai?mode=pretraining |
+| PRE-BASE-02 | Phase 24 | Pending | Interactive glossary cards rendered |
+| PRE-BASE-03 | Phase 24 | Pending | Security & secret warning callouts rendered |
+| PRE-BASE-04 | Phase 24 | Pending | Prerequisites & hardware requirements rendered |
+| PRE-BASE-05 | Phase 24 | Pending | PowerShell guide with copyable commands rendered |
+| PRE-MOD-01 | Phase 25 | Pending | Module 1 accordion with Node.js guide & 1-click copy |
+| PRE-MOD-02 | Phase 25 | Pending | Module 2 accordion with 9Router guide & curl testing |
+| PRE-MOD-03 | Phase 25 | Pending | Module 3 accordion with Telegram bot creation guide |
+| PRE-MOD-04 | Phase 25 | Pending | Module 4 accordion with Hermes Agent installation guide |
+| PRE-MOD-05 | Phase 25 | Pending | Module 5 accordion with final integration test flow |
+| PRE-MOD-06 | Phase 25 | Pending | 1-Click copy engine with feedback toast across all codeblocks |
+| PRE-CHK-01 | Phase 26 | Pending | 13-step checklist synced with localStorage persistence |
+| PRE-CHK-02 | Phase 26 | Pending | Checkpoints 1, 2, 3 verification gates auto-evaluated |
+| PRE-CHK-03 | Phase 26 | Pending | Dynamic readiness badge & summary calculation |
+| PRE-CHK-04 | Phase 26 | Pending | Safe progress reset modal |
+| PRE-TOOL-01 | Phase 27 | Pending | Troubleshooting live search & category filter |
+| PRE-TOOL-02 | Phase 27 | Pending | 10+ error resolution cards with copyable solutions |
+| PRE-TOOL-03 | Phase 27 | Pending | Secret token redaction helper tool |
+| PRE-RPT-01 | Phase 28 | Pending | Pre-filled Form Laporan Kesiapan Peserta |
+| PRE-RPT-02 | Phase 28 | Pending | 1-Click WhatsApp & Telegram Markdown clipboard exporter |
+| PRE-RPT-03 | Phase 28 | Pending | Print layout formatted for official document export |
+| PRE-NAV-01 | Phase 28 | Pending | Sidebar navigation with curriculum links & progress indicators |
+| PRE-NAV-02 | Phase 28 | Pending | Seamless mode switching between pretraining & live-class |
+| PRE-NAV-03 | Phase 28 | Pending | 100% test pass rate across Node unit & Playwright E2E suites |
