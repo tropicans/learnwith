@@ -1,16 +1,16 @@
 # Graph Report - learnwith  (2026-09-08)
 
 ## Corpus Check
-- 2071 files · ~5,712,879 words
+- 2075 files · ~5,713,268 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 24398 nodes · 39152 edges · 1805 communities (1168 shown, 257 thin omitted)
+- 24409 nodes · 39159 edges · 1800 communities (1159 shown, 261 thin omitted)
 - Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 3368 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4ffa42a6`
+- Built from commit: `c454825c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,7 +20,7 @@
 - .agents/gsd-core/bin/lib/config.cjs
 - output
 - .agents/gsd-core/bin/gsd-tools.cjs
-- gsd-local-patches/gsd-core/bin/lib/phase.cjs
+- gsd-local-patches/gsd-core/bin/lib/roadmap.cjs
 - .agents/gsd-core/bin/lib/runtime-artifact-conversion.cjs
 - gsd-local-patches/gsd-core/bin/lib/runtime-artifact-conversion.cjs
 - .agents/gsd-core/bin/lib/vendor/re2js.cjs
@@ -29,7 +29,7 @@
 - gsd-local-patches/gsd-core/bin/gsd-tools.cjs
 - .agents/gsd-core/bin/lib/state.cjs
 - .agents/gsd-core/bin/lib/roadmap-parser.cjs
-- .agents/gsd-core/bin/lib/install-profiles.cjs
+- .agents/gsd-core/bin/lib/surface.cjs
 - gsd-local-patches/gsd-core/bin/lib/capability-validator.cjs
 - .agents/gsd-core/bin/lib/capability-validator.cjs
 - .agents/gsd-core/bin/lib/install-engine.cjs
@@ -40,14 +40,14 @@
 - gsd-local-patches/gsd-core/bin/lib/install-engine.cjs
 - gsd-local-patches/gsd-core/bin/lib/commands.cjs
 - Communities (658 total, 66 thin omitted)
-- .agents/gsd-core/bin/lib/core-utils.cjs
+- .agents/gsd-core/bin/lib/phase.cjs
 - gsd-local-patches/gsd-core/bin/lib/surface.cjs
 - .agents/gsd-core/bin/lib/uat.cjs
 - gsd-local-patches/gsd-core/bin/lib/phase-id.cjs
 - .agents/gsd-core/bin/lib/milestone.cjs
 - quick-batch.cjs
 - .agents/gsd-core/bin/lib/verification.cjs
-- .agents/gsd-core/bin/lib/phase.cjs
+- gsd-local-patches/gsd-core/bin/lib/phase.cjs
 - gsd-local-patches/gsd-core/bin/lib/runtime-hooks-surface.cjs
 - .agents/gsd-core/bin/lib/runtime-hooks-surface.cjs
 - gsd-local-patches/gsd-core/bin/lib/check-command-router.cjs
@@ -57,11 +57,11 @@
 - gsd-local-patches/gsd-core/bin/lib/io.cjs
 - .agents/gsd-core/bin/lib/shell-command-projection.cjs
 - .agents/gsd-core/bin/lib/planning-workspace.cjs
-- gsd-local-patches/gsd-core/bin/lib/planning-workspace.cjs
-- gsd-local-patches/gsd-core/bin/lib/task-command-router.cjs
+- gsd-local-patches/gsd-core/bin/lib/config.cjs
+- .agents/gsd-core/bin/lib/cjs-command-router-adapter.cjs
 - .agents/gsd-core/bin/lib/model-catalog.cjs
 - .agents/gsd-core/bin/lib/check-command-router.cjs
-- gsd-local-patches/gsd-core/bin/lib/workstream-inventory.cjs
+- gsd-local-patches/gsd-core/bin/lib/planning-workspace.cjs
 - gsd-local-patches/gsd-core/bin/lib/planning-snapshot.cjs
 - .agents/gsd-core/bin/lib/prohibition-enforcement.cjs
 - gsd-local-patches/gsd-core/bin/lib/frontmatter.cjs
@@ -69,11 +69,11 @@
 - .agents/gsd-core/bin/lib/planning-inspect.cjs
 - gsd-local-patches/gsd-core/bin/lib/model-catalog.cjs
 - gsd-local-patches/gsd-core/bin/lib/planning-inspect.cjs
-- .agents/gsd-core/bin/lib/task-command-router.cjs
+- .agents/gsd-core/bin/lib/install-profiles.cjs
 - gsd-local-patches/gsd-core/bin/lib/shell-command-projection.cjs
 - app.js
 - .agents/gsd-core/bin/lib/vendor/js-yaml.cjs
-- installFs
+- gsd-local-patches/gsd-core/bin/lib/runtime-artifact-layout.cjs
 - gsd-local-patches/gsd-core/bin/lib/vendor/js-yaml.cjs
 - gsd-pristine/gsd-core/bin/lib/capability-lifecycle.cjs
 - gsd-pristine/gsd-core/bin/lib/installer-migrations.cjs
@@ -86,14 +86,14 @@
 - gsd-local-patches/gsd-core/bin/lib/capability-lifecycle.cjs
 - gsd-local-patches/scripts/gen-capability-registry.cjs
 - .agents/hooks/gsd-cursor-subagent-start.js
-- gsd-local-patches/gsd-core/bin/lib/verify.cjs
+- .agents/gsd-core/bin/lib/audit.cjs
 - allow
 - gsd-local-patches/gsd-core/bin/lib/installer-migrations.cjs
 - gsd-pristine/gsd-core/bin/lib/cjs-command-router-adapter.cjs
 - gsd-pristine/scripts/gen-capability-registry.cjs
 - .agents/gsd-core/bin/lib/broken-windows.cjs
 - gsd-local-patches/gsd-core/bin/lib/broken-windows.cjs
-- gsd-local-patches/gsd-core/bin/lib/audit.cjs
+- .agents/hooks/gsd-windsurf-pre-write.js
 - .agents/gsd-core/bin/lib/capability-trust.cjs
 - gsd-local-patches/gsd-core/bin/lib/milestone.cjs
 - gsd-local-patches/gsd-core/bin/lib/capability-trust.cjs
@@ -150,23 +150,23 @@
 - gsd-local-patches/agents/gsd-debugger.md
 - .agents/gsd-core/bin/lib/profile-output.cjs
 - gsd-local-patches/gsd-core/bin/lib/state-document.cjs
-- gsd-local-patches/hooks/gsd-agent-isolation-guard.js
+- ensureRuntimeBuild
 - gsd-local-patches/gsd-core/workflows/plan-phase.md
 - gsd-local-patches/gsd-core/bin/lib/profile-output.cjs
 - .agents/gsd-core/bin/lib/gsd2-import.cjs
 - .agents/gsd-core/bin/lib/health-diagnostic.cjs
 - .agents/gsd-core/bin/lib/markdown-sectionizer.cjs
 - .agents/gsd-core/bin/lib/review-lane-runner.cjs
-- .agents/gsd-core/bin/lib/state-document.cjs
+- .agents/gsd-core/bin/lib/command-arg-projection.cjs
 - gsd-local-patches/gsd-core/bin/lib/gsd2-import.cjs
 - gsd-local-patches/gsd-core/bin/lib/capability-loader.cjs
 - gsd-local-patches/gsd-core/bin/lib/health-diagnostic.cjs
 - gsd-pristine/gsd-core/bin/lib/capability-loader.cjs
 - gsd-pristine/gsd-core/bin/lib/config.cjs
-- .agents/gsd-core/bin/lib/smart-entry.cjs
-- gsd-local-patches/gsd-core/bin/lib/smart-entry.cjs
+- .agents/gsd-core/bin/lib/state-document.cjs
+- gsd-local-patches/gsd-core/bin/lib/cjs-command-router-adapter.cjs
 - gsd-pristine/gsd-core/bin/lib/active-workstream-store.cjs
-- .agents/gsd-core/bin/lib/retired-artifact-cleanup.cjs
+- .agents/gsd-core/bin/lib/install-fs-adapter.cjs
 - Panduan Pre-Training untuk Peserta Pemula
 - gsd-local-patches/gsd-core/bin/lib/capability-registry.cjs
 - gsd-local-patches/gsd-core/bin/lib/active-workstream-store.cjs
@@ -192,14 +192,14 @@
 - .agents/gsd-core/bin/lib/mcp-catalog.cjs
 - .agents/scripts/changeset/cli.cjs
 - gsd-local-patches/gsd-core/bin/lib/graphify.cjs
-- gsd-local-patches/gsd-core/bin/lib/gap-checker.cjs
+- gsd-local-patches/gsd-core/bin/lib/pattern.cjs
 - gsd-local-patches/gsd-core/bin/lib/mcp-catalog.cjs
 - gsd-pristine/gsd-core/bin/lib/learnings.cjs
 - gsd-pristine/gsd-core/bin/lib/mcp-catalog.cjs
 - cli-exit.js
-- .agents/gsd-core/bin/lib/host-integration.cjs
+- .agents/gsd-core/bin/lib/runtime-slash.cjs
 - .agents/gsd-core/bin/lib/learnings.cjs
-- .agents/gsd-core/bin/lib/io.cjs
+- .agents/gsd-core/bin/lib/profile-pipeline.cjs
 - .agents/gsd-core/bin/lib/coverage.cjs
 - gsd-local-patches/gsd-core/bin/lib/learnings.cjs
 - gsd-local-patches/gsd-core/bin/lib/coverage.cjs
@@ -233,8 +233,8 @@
 - substring
 - word-modules.test.js
 - .agents/gsd-core/bin/lib/git-base-branch.cjs
-- .agents/gsd-core/bin/lib/capability-ledger.cjs
-- .agents/gsd-core/bin/lib/runtime-slash.cjs
+- .agents/hooks/gsd-read-injection-scanner.js
+- .agents/gsd-core/bin/lib/capability-registry.cjs
 - .agents/gsd-core/bin/lib/cli-exit.cjs
 - .agents/gsd-core/bin/lib/codex-agent-toml.cjs
 - .agents/gsd-core/bin/lib/mcp-server.cjs
@@ -248,27 +248,27 @@
 - gsd-pristine/gsd-core/bin/lib/codex-agent-toml.cjs
 - gsd-pristine/gsd-core/bin/lib/estimate-cli.cjs
 - gsd-pristine/gsd-core/bin/lib/mcp-server.cjs
-- .agents/gsd-core/bin/lib/runtime-name-policy.cjs
-- .agents/gsd-core/bin/lib/agent-install-check.cjs
+- gsd-local-patches/gsd-core/bin/lib/runtime-homes.cjs
+- .agents/gsd-core/bin/lib/io.cjs
 - .agents/gsd-core/bin/lib/capability-loader.cjs
 - .agents/gsd-core/bin/lib/adr-parser.cjs
 - .agents/gsd-core/bin/lib/install-scope.cjs
 - Core Workflow
 - gsd-local-patches/gsd-core/bin/lib/runtime-name-policy.cjs
 - gsd-local-patches/gsd-core/bin/lib/adr-parser.cjs
-- gsd-local-patches/gsd-core/bin/lib/estimate-cli.cjs
+- gsd-local-patches/gsd-core/bin/lib/onboard-projection.cjs
 - gsd-local-patches/hooks/gsd-windsurf-pre-command.js
 - gsd-pristine/gsd-core/bin/lib/adr-parser.cjs
 - gsd-pristine/gsd-core/bin/lib/agent-install-check.cjs
 - gsd-pristine/gsd-core/bin/lib/runtime-name-policy.cjs
 - .agents/gsd-core/bin/lib/api-coverage.cjs
-- .agents/gsd-core/bin/lib/gap-checker.cjs
+- .agents/gsd-core/bin/lib/estimate-cli.cjs
 - Core Workflow
-- .agents/gsd-core/bin/lib/observability/logger.cjs
-- gsd-local-patches/gsd-core/bin/lib/runtime-slash.cjs
+- .agents/gsd-core/bin/lib/command-routing-hub.cjs
+- gsd-local-patches/gsd-core/bin/lib/verify.cjs
 - gsd-local-patches/gsd-core/bin/lib/api-coverage.cjs
 - .agents/agents/gsd-plan-checker.md
-- gsd-local-patches/gsd-core/bin/lib/markdown-table.cjs
+- quick-batch-command-router.cjs
 - gsd-pristine/gsd-core/bin/lib/api-coverage.cjs
 - gsd-pristine/gsd-core/bin/lib/markdown-sectionizer.cjs
 - .agents/hooks/gsd-windsurf-pre-command.js
@@ -285,13 +285,13 @@
 - .agents/agents/gsd-roadmapper.md
 - adviseRemedy
 - .agents/gsd-core/bin/lib/milestone-lock.cjs
-- .agents/gsd-core/bin/lib/phase-lifecycle.cjs
+- .agents/gsd-core/bin/lib/onboard-projection.cjs
 - gsd-local-patches/gsd-core/bin/verify-reapply-patches.cjs
 - gsd-local-patches/gsd-core/bin/lib/host-integration-sdk.cjs
 - adviseRemedy
-- gsd-local-patches/gsd-core/bin/lib/markdown-sectionizer.cjs
+- gsd-local-patches/gsd-core/bin/lib/estimate-cli.cjs
 - gsd-local-patches/gsd-core/bin/lib/milestone-lock.cjs
-- gsd-local-patches/gsd-core/bin/lib/phase-lifecycle.cjs
+- gsd-local-patches/gsd-core/bin/lib/workstream-inventory-builder.cjs
 - gsd-pristine/gsd-core/bin/lib/cli-exit.cjs
 - gsd-pristine/gsd-core/bin/lib/configuration.cjs
 - gsd-pristine/gsd-core/bin/lib/milestone-lock.cjs
@@ -299,7 +299,7 @@
 - gsd-pristine/gsd-core/bin/lib/profile-pipeline.cjs
 - gsd-pristine/gsd-core/bin/lib/runtime-homes.cjs
 - gsd-pristine/scripts/lib/cli-exit.cjs
-- .agents/gsd-core/bin/lib/command-routing-hub.cjs
+- .agents/gsd-core/bin/lib/host-integration-sdk.cjs
 - .agents/gsd-core/bin/lib/drift.cjs
 - gsd-local-patches/agents/gsd-plan-checker.md
 - Matcher
@@ -309,12 +309,12 @@
 - gsd-local-patches/hooks/gsd-cursor-subagent-start.js
 - gsd-local-patches/scripts/changeset/github-release-notes.cjs
 - gsd-pristine/gsd-core/bin/lib/command-arg-projection.cjs
-- gsd-pristine/gsd-core/bin/lib/install-fs-adapter.cjs
+- installFs
 - gsd-pristine/gsd-core/bin/lib/drift.cjs
 - gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/config-validation.cjs
 - gsd-pristine/gsd-core/bin/lib/uat-predicate.cjs
 - Matcher
-- .agents/gsd-core/bin/lib/surface.cjs
+- gsd-local-patches/gsd-core/bin/lib/cli-exit.cjs
 - .agents/scripts/changeset/github-release-notes.cjs
 - search
 - .agents/gsd-core/bin/lib/external-job.cjs
@@ -327,7 +327,7 @@
 - gsd-pristine/gsd-core/bin/lib/user-artifact-staging.cjs
 - compile
 - gsd-pristine/scripts/changeset/github-release-notes.cjs
-- .agents/gsd-core/bin/lib/loop-resolver.cjs
+- routeHubCommandFamily
 - gsd-pristine/gsd-core/bin/lib/capability-command-router.cjs
 - .agents/gsd-core/bin/lib/decisions.cjs
 - .agents/gsd-core/bin/lib/installer-migrations/000-first-time-baseline.cjs
@@ -337,7 +337,7 @@
 - gsd-local-patches/gsd-core/bin/lib/installer-migrations/000-first-time-baseline.cjs
 - gsd-local-patches/gsd-core/bin/lib/probe-core.cjs
 - gsd-local-patches/gsd-core/bin/lib/worktree-base-ref.cjs
-- gsd-pristine/gsd-core/bin/lib/health-diagnostic-types.cjs
+- gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/milestone-archive-hygiene.cjs
 - gsd-pristine/gsd-core/bin/lib/prompt-budget.cjs
 - gsd-pristine/gsd-core/bin/lib/installer-migrations/000-first-time-baseline.cjs
 - gsd-pristine/gsd-core/bin/lib/probe-core.cjs
@@ -349,7 +349,7 @@
 - Dimensions
 - .agents/gsd-core/bin/lib/installer-migration-report.cjs
 - .agents/gsd-core/bin/lib/plan-document.cjs
-- .agents/gsd-core/bin/verify-reapply-patches.cjs
+- ExitError
 - gsd-local-patches/gsd-core/bin/lib/installer-migration-report.cjs
 - gsd-local-patches/gsd-core/bin/lib/plan-document.cjs
 - gsd-local-patches/hooks/gsd-check-update.js
@@ -364,7 +364,7 @@
 - gsd-local-patches/gsd-core/bin/lib/research-store.cjs
 - gsd-local-patches/gsd-core/bin/lib/stale-bake-guard.cjs
 - gsd-local-patches/gsd-core/bin/lib/vendor/re2js.d.cts
-- gsd-local-patches/hooks/gsd-cursor-stop.js
+- gsd-local-patches/gsd-core/bin/lib/profile-pipeline-command-router.cjs
 - gsd-local-patches/scripts/changeset/lint.cjs
 - gsd-local-patches/scripts/fix-slash-commands.cjs
 - gsd-pristine/gsd-core/bin/ensure-runtime-build.cjs
@@ -387,7 +387,7 @@
 - gsd-local-patches/gsd-core/bin/lib/installer-migration-authoring.cjs
 - gsd-local-patches/gsd-core/bin/lib/package-legitimacy.cjs
 - appendRange
-- gsd-pristine/gsd-core/bin/lib/external-descriptor-trust.cjs
+- gsd-pristine/gsd-core/bin/lib/retired-artifact-cleanup.cjs
 - gsd-pristine/gsd-core/bin/lib/installer-migration-authoring.cjs
 - gsd-pristine/gsd-core/bin/lib/observability/logger.cjs
 - gsd-pristine/gsd-core/bin/lib/package-legitimacy.cjs
@@ -396,7 +396,7 @@
 - appendRange
 - BM25
 - .agents/gsd-core/bin/check-latest-version.cjs
-- .agents/gsd-core/bin/lib/capability-activation.cjs
+- collectSection
 - .agents/gsd-core/bin/lib/health-diagnostic-rules/agent-install.cjs
 - AI-SPEC — Phase {N}: {phase_name}
 - newRegexp
@@ -446,7 +446,7 @@
 - .agents/gsd-core/bin/lib/edge-probe.cjs
 - .agents/gsd-core/bin/lib/health-diagnostic-rules/root-existence.cjs
 - .agents/gsd-core/bin/lib/health-diagnostic-rules/worktree-health.cjs
-- .agents/gsd-core/bin/lib/semver-compare.cjs
+- gsd-local-patches/gsd-core/bin/lib/command-arg-projection.cjs
 - requireInt
 - gsd-local-patches/gsd-core/bin/check-latest-version.cjs
 - gsd-local-patches/gsd-core/bin/lib/runtime-identity.cjs
@@ -455,12 +455,12 @@
 - gsd-local-patches/gsd-core/bin/lib/health-diagnostic-rules/phase-structure.cjs
 - gsd-local-patches/gsd-core/bin/lib/health-diagnostic-rules/root-existence.cjs
 - gsd-local-patches/gsd-core/bin/lib/health-diagnostic-rules/worktree-health.cjs
-- routeDriftGuard
+- splitDeferredHeadingEntriesDetailed
 - requireInt
 - gsd-pristine/gsd-core/bin/lib/gate-predicate-evaluator.cjs
-- gsd-pristine/gsd-core/bin/lib/planning-scope.cjs
-- gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/root-existence.cjs
-- gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/worktree-health.cjs
+- planningDir
+- .agents/gsd-core/bin/lib/plan-drift-guard.cjs
+- pruneOrphanedWorktrees
 - gsd-pristine/gsd-core/bin/lib/normalize-test-command.cjs
 - gsd-pristine/gsd-core/bin/lib/plan-drift-guard.cjs
 - gsd-pristine/gsd-core/bin/lib/semver-compare.cjs
@@ -476,27 +476,27 @@
 - constructor
 - Prog
 - .agents/gsd-core/bin/lib/workstream-name-policy.cjs
-- executeWorktreeWaveCleanupPlan
+- gsd-local-patches/gsd-core/bin/lib/validate-command-router.cjs
 - gsd-pristine/gsd-core/bin/lib/write-set.cjs
-- gsd-local-patches/gsd-core/bin/lib/health-diagnostic-rules/consistency.cjs
-- gsd-local-patches/gsd-core/bin/lib/health-diagnostic-rules/install-surface-shadowing.cjs
-- gsd-local-patches/gsd-core/bin/lib/install-shadow-report.cjs
+- gsd-local-patches/gsd-core/bin/lib/gate-predicate-evaluator.cjs
+- gsd-local-patches/gsd-core/bin/lib/state-command-router.cjs
+- .agents/gsd-core/bin/lib/agent-command-router.cjs
 - constructor
 - Prog
 - gsd-local-patches/gsd-core/bin/lib/workstream-name-policy.cjs
-- gsd-local-patches/hooks/gsd-check-update-worker.js
+- .agents/gsd-core/bin/lib/assumption-delta.cjs
 - gsd-local-patches/hooks/gsd-update-banner.js
 - gsd-pristine/gsd-core/bin/check-latest-version.cjs
-- gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/consistency.cjs
+- gsd-local-patches/gsd-core/bin/lib/intel-command-router.cjs
+- gsd-local-patches/gsd-core/bin/lib/ui-frontend-evidence.cjs
 - gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/install-surface-shadowing.cjs
-- gsd-pristine/gsd-core/bin/lib/install-shadow-report.cjs
 - Phase 12: Interactive Knowledge Quiz (Bab V), Rubrik Evaluasi & Laporan Kelulusan BPSDM - Research
 - gsd-pristine/gsd-core/bin/lib/runtime-identity.cjs
 - gsd-pristine/gsd-core/bin/lib/state-command-router.cjs
 - constructor
 - Prog
 - gsd-pristine/gsd-core/bin/lib/workstream-name-policy.cjs
-- .agents/hooks/gsd-update-banner.js
+- ensureRuntimeBuild
 - checkpoint-engine.test.js
 - .agents/gsd-core/bin/lib/code-review-depth.cjs
 - .agents/gsd-core/bin/lib/config-schema.cjs
@@ -507,7 +507,7 @@
 - requireCommon
 - Domain-Aware Probing Patterns
 - gsd-local-patches/gsd-core/bin/lib/code-review-depth.cjs
-- gsd-local-patches/gsd-core/bin/lib/config-schema.cjs
+- .agents/gsd-core/bin/lib/federated-config.cjs
 - gsd-local-patches/gsd-core/bin/lib/fallow-runner.cjs
 - gsd-local-patches/gsd-core/bin/lib/installer-migrations/005-opencode-baseline-commands-dir.cjs
 - gsd-local-patches/gsd-core/bin/lib/research-provider.cjs
@@ -536,7 +536,7 @@
 - .agents/agents/gsd-planner.md
 - gsd-local-patches/gsd-core/bin/lib/host-integration-adapters/cline-sdk-binding.cjs
 - gsd-local-patches/gsd-core/bin/lib/review-reviewer-selection.cjs
-- .agents/gsd-core/bin/lib/validate.cjs
+- .agents/gsd-core/bin/lib/phase-id.cjs
 - toString
 - DFA
 - gsd-local-patches/gsd-core/bin/shared/exit-codes.sh
@@ -573,10 +573,10 @@
 - .agents/gsd-core/bin/lib/installer-migrations/004-prune-stale-pristine-snapshots.cjs
 - .agents/gsd-core/bin/lib/installer-migrations/010-antigravity-retire-confighome-artifacts.cjs
 - .agents/gsd-core/bin/lib/schema-detect.cjs
-- .agents/gsd-core/bin/lib/spec-section.cjs
+- gsd-local-patches/gsd-core/bin/lib/exit-code-registry.cjs
 - Planner Guidance: Philosophy, Task Calibration, and Output Formats
 - gsd-local-patches/gsd-core/bin/lib/command-roster.cjs
-- gsd-local-patches/gsd-core/bin/lib/eval.cjs
+- gsd-local-patches/gsd-core/bin/lib/ui-safety-gate.cjs
 - gsd-local-patches/gsd-core/bin/lib/installer-migrations/003-rename-get-shit-done-to-gsd-core.cjs
 - gsd-local-patches/gsd-core/bin/lib/installer-migrations/004-prune-stale-pristine-snapshots.cjs
 - gsd-local-patches/gsd-core/bin/lib/installer-migrations/010-antigravity-retire-confighome-artifacts.cjs
@@ -686,7 +686,7 @@
 - Variants
 - Model Profiles
 - Complete Field Reference
-- gsd-local-patches/gsd-core/bin/lib/user-artifact-staging.cjs
+- Quick Task: Fix Docker Context Transfer & Test Suite Stability
 - Framework Profiles
 - Core Artifacts
 - Variants
@@ -696,12 +696,12 @@
 - Core Artifacts
 - Variants
 - Model Profiles
-- .agents/gsd-core/bin/lib/user-artifact-staging.cjs
+- Quick Task Summary: Fix Docker Context Transfer & Test Suite Stability
 - Reapply Local Patches Workflow
 - Reapply Local Patches Workflow
 - Milestones
 - Gate Prompt Patterns
-- ensureRuntimeBuild
+- Quick Task Summary: Analisis Penyimpanan Data & Resource LearnWith
 - Gate Prompt Patterns
 - Gate Prompt Patterns
 - DesignSystemGenerator
@@ -721,7 +721,7 @@
 - Phase 11: Interactive Modules Bab IV (Mail Merge, Track Changes & Kolaborasi Dokumen) - Pattern Mapping
 - Context Budget Rules
 - .agents/gsd-core/workflows/new-milestone.md
-- gsd-local-patches/gsd-core/bin/lib/retired-artifact-cleanup.cjs
+- 260908-pga-postgresql-storage-architecture-analysis/PLAN.md
 - gsd-local-patches/gsd-core/bin/lib/observability/logger.cjs
 - Context Budget Rules
 - gsd-local-patches/gsd-core/workflows/new-milestone.md
@@ -729,7 +729,6 @@
 - BAB I    PENDAHULUAN
 - Panduan Praktik Kelas untuk Instruktur
 - Target Modules & Structure
-- parseUatItemsWithStats
 - Phase Prompt Template
 - .agents/gsd-core/workflows/new-project.md
 - .agents/gsd-core/workflows/ui-phase.md
@@ -901,7 +900,6 @@
 - Thinking Partner Integration
 - Convergence Evidence Gate (#3304)
 - .agents/gsd-core/workflows/settings-advanced.md
-- gsd-local-patches/gsd-core/bin/lib/capability-activation.cjs
 - Regression-Test Hardening — Shrinking + Oracle + Boundaries
 - Spectrum-Based Fault Localization (SBFL) Pre-filter
 - Semantic Knowledge-Base Recall via MemPalace
@@ -917,7 +915,6 @@
 - Thinking Partner Integration
 - gsd-local-patches/gsd-core/workflows/settings-advanced.md
 - gsd-local-patches/skills/gsd-surface/SKILL.md
-- gsd-pristine/gsd-core/bin/lib/workstream-inventory-builder.cjs
 - Regression-Test Hardening — Shrinking + Oracle + Boundaries
 - Spectrum-Based Fault Localization (SBFL) Pre-filter
 - Semantic Knowledge-Base Recall via MemPalace
@@ -943,8 +940,6 @@
 - Milestone: v1.0 — Pre-Training Interactive Web App
 - Milestone v2.0 Audit Report: Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut
 - .agents/agents/gsd-codebase-mapper.md
-- .agents/gsd-core/bin/lib/commonjs-marker.cjs
-- .agents/gsd-core/bin/lib/ui-frontend-evidence.cjs
 - Agent Contracts
 - Debugger Philosophy
 - Negative Examples
@@ -1456,14 +1451,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `routeResolveModel()` --calls--> `cmdResolveModel()`  [EXTRACTED]
   .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/commands.cjs
-- `routeConfigEnsureSection()` --indirect_call--> `error()`  [INFERRED]
-  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/io.cjs
-- `routeConfigEnsureSection()` --indirect_call--> `output()`  [INFERRED]
-  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/io.cjs
-- `routeConfigSet()` --indirect_call--> `error()`  [INFERRED]
-  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/io.cjs
-- `routeConfigSet()` --indirect_call--> `output()`  [INFERRED]
-  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/io.cjs
+- `routeResolveGranularity()` --calls--> `cmdResolveGranularity()`  [EXTRACTED]
+  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/commands.cjs
+- `routeCheck()` --calls--> `routeCheckCommand()`  [EXTRACTED]
+  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/check-command-router.cjs
+- `routeCommit()` --calls--> `cmdCommit()`  [EXTRACTED]
+  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/commands.cjs
+- `routeCheckCommit()` --calls--> `cmdCheckCommit()`  [EXTRACTED]
+  .agents/gsd-core/bin/gsd-tools.cjs → .agents/gsd-core/bin/lib/commands.cjs
 
 ## Import Cycles
 - 2-file cycle: `.agents/gsd-local-patches/gsd-core/bin/lib/install-engine.cjs -> .agents/gsd-local-patches/gsd-core/bin/lib/user-artifact-staging.cjs -> .agents/gsd-local-patches/gsd-core/bin/lib/install-engine.cjs`
@@ -1475,39 +1470,39 @@
 - 3-file cycle: `.agents/gsd-local-patches/gsd-core/bin/lib/smart-entry.cjs -> .agents/gsd-local-patches/gsd-core/bin/lib/state.cjs -> .agents/gsd-local-patches/gsd-core/bin/lib/state-contract.cjs -> .agents/gsd-local-patches/gsd-core/bin/lib/smart-entry.cjs`
 - 3-file cycle: `.agents/gsd-core/bin/lib/smart-entry.cjs -> .agents/gsd-core/bin/lib/state.cjs -> .agents/gsd-core/bin/lib/state-contract.cjs -> .agents/gsd-core/bin/lib/smart-entry.cjs`
 
-## Communities (1805 total, 257 thin omitted)
+## Communities (1800 total, 261 thin omitted)
 
 ### Community 0 - "output"
-Cohesion: 0.02
-Nodes (229): _dispatchNonFamily(), routeAgentSkills(), routeClassifyConfidence(), routeConfigEnsureSection(), routeConfigGet(), routeConfigNewProject(), routeConfigSet(), routeConfigSetModelProfile() (+221 more)
+Cohesion: 0.03
+Nodes (238): _dispatchNonFamily(), routeAgentSkills(), routeAssumptionDelta(), routeClassifyConfidence(), routeConfigEnsureSection(), routeConfigGet(), routeConfigNewProject(), routeConfigSet() (+230 more)
 
 ### Community 1 - "gsd-local-patches/gsd-core/bin/lib/state.cjs"
 Cohesion: 0.02
-Nodes (201): cmdHistoryDigest(), extractFrontmatter(), propagateCommentChannel(), reconstructFrontmatter(), stripFrontmatter(), runRepairAction(), pushSkillEntry(), parsePhaseFromProse() (+193 more)
+Nodes (194): routeStateSnapshot(), propagateCommentChannel(), reconstructFrontmatter(), stripFrontmatter(), parsePhaseFromProse(), phaseKeyFromDir(), phaseKeyFromToken(), planningPaths() (+186 more)
 
 ### Community 2 - ".agents/gsd-core/bin/lib/config.cjs"
-Cohesion: 0.05
-Nodes (56): _dispatchNonFamily(), routeConfigEnsureSection(), routeConfigGet(), routeConfigNewProject(), routeConfigPath(), routeConfigSet(), routeConfigSetModelProfile(), assertEnumValue() (+48 more)
+Cohesion: 0.06
+Nodes (37): routeConfigPath(), ADR-0457, ADR-1244, ADR-1411, ADR-2629, ADR-3889, cliExitMod, cmdConfigGet() (+29 more)
 
 ### Community 3 - "output"
 Cohesion: 0.02
-Nodes (248): routeAgentSkills(), routeAssumptionDelta(), routeClassifyConfidence(), routeFindPhase(), routeGenerateSlug(), routeInspectDispatchIsolation(), routePackageLegitimacy(), routeRecordDispatchIsolation() (+240 more)
+Nodes (251): _dispatchNonFamily(), routeAgentSkills(), routeAssumptionDelta(), routeClassifyConfidence(), routeConfigEnsureSection(), routeConfigGet(), routeConfigNewProject(), routeConfigSet() (+243 more)
 
 ### Community 4 - ".agents/gsd-core/bin/gsd-tools.cjs"
-Cohesion: 0.01
-Nodes (206): brokenWindows, captureStdoutSyncWrites(), ADR-0022, ADR-0227, ADR-0457, ADR-0857, ADR-0959, ADR-1239 (+198 more)
-
-### Community 5 - "gsd-local-patches/gsd-core/bin/lib/phase.cjs"
 Cohesion: 0.02
-Nodes (124): routePhasePlanIndex(), routeSummaryExtract(), cmdSummaryExtract(), ADR-0857, ADR-3180, ADR-3473, countMatchedSummaries(), CYRILLIC_TRANSLITERATION (+116 more)
+Nodes (136): brokenWindows, captureStdoutSyncWrites(), ADR-0022, ADR-0227, ADR-0457, ADR-0857, ADR-0959, ADR-1239 (+128 more)
+
+### Community 5 - "gsd-local-patches/gsd-core/bin/lib/roadmap.cjs"
+Cohesion: 0.02
+Nodes (112): routeHistoryDigest(), routePhasePlanIndex(), routeSummaryExtract(), cmdHistoryDigest(), cmdSummaryExtract(), ADR-0857, ADR-3180, ADR-3473 (+104 more)
 
 ### Community 6 - ".agents/gsd-core/bin/lib/runtime-artifact-conversion.cjs"
 Cohesion: 0.04
-Nodes (134): readGsdCommandNames(), resolveOrchestratorExec(), addKimiAgentDiagnostic(), appendAgentTools(), applyAgentBrandingRewrites(), applyAgentFrontmatterExtensions(), applyAgentPathRewrites(), applyClaudeCodeBrandSwap() (+126 more)
+Nodes (131): readGsdCommandNames(), addKimiAgentDiagnostic(), appendAgentTools(), applyAgentBrandingRewrites(), applyAgentPathRewrites(), applyClaudeCodeBrandSwap(), applyRuntimeContentRewritesForCommandsInPlace(), _applyRuntimeRewrites() (+123 more)
 
 ### Community 7 - "gsd-local-patches/gsd-core/bin/lib/runtime-artifact-conversion.cjs"
 Cohesion: 0.04
-Nodes (124): readGsdCommandNames(), resolveOrchestratorExec(), addKimiAgentDiagnostic(), applyAgentBrandingRewrites(), applyAgentPathRewrites(), applyClaudeCodeBrandSwap(), _applyRuntimeRewrites(), buildKiloAgentPermissionBlock() (+116 more)
+Nodes (128): readGsdCommandNames(), resolveOrchestratorExec(), applyOpencodeFamilyPathPrefix(), installOpencodeFamilyCommands(), addKimiAgentDiagnostic(), applyAgentBrandingRewrites(), applyAgentPathRewrites(), applyClaudeCodeBrandSwap() (+120 more)
 
 ### Community 8 - ".agents/gsd-core/bin/lib/vendor/re2js.cjs"
 Cohesion: 0.02
@@ -1523,19 +1518,19 @@ Nodes (79): allMatches(), asBytes(), asCharSequence(), ASCII_TO_LOWER, ASCII_TO_
 
 ### Community 11 - "gsd-local-patches/gsd-core/bin/gsd-tools.cjs"
 Cohesion: 0.01
-Nodes (215): brokenWindows, captureStdoutSyncWrites(), ADR-0022, ADR-0227, ADR-0443, ADR-0457, ADR-0857, ADR-0959 (+207 more)
+Nodes (186): brokenWindows, captureStdoutSyncWrites(), ADR-0022, ADR-0227, ADR-0443, ADR-0457, ADR-0857, ADR-0959 (+178 more)
 
 ### Community 12 - ".agents/gsd-core/bin/lib/state.cjs"
 Cohesion: 0.02
-Nodes (204): routeStateSnapshot(), propagateCommentChannel(), stripFrontmatter(), parsePhaseFromProse(), phaseKeyFromDir(), phaseKeyFromToken(), resolvePhaseIdConvention(), validateFieldName() (+196 more)
+Nodes (216): cmdHistoryDigest(), extractFrontmatter(), propagateCommentChannel(), reconstructFrontmatter(), stripFrontmatter(), declineNoOp(), parsePhaseFromProse(), phaseKeyFromDir() (+208 more)
 
 ### Community 13 - ".agents/gsd-core/bin/lib/roadmap-parser.cjs"
-Cohesion: 0.02
-Nodes (133): BARE_INTEGER_RE, BRACKET_DIR_TOKEN_RE, BRACKET_ID_PREFIX_RE, BRACKET_QUALIFIED_KEY_RE, bracketMilestoneIntroSrcFor(), bracketQualifiedKey(), CANONICAL_NUMERIC_RE, CASE_FLEXIBLE_PHASE_NUMBER_TOKEN_SOURCE (+125 more)
-
-### Community 14 - ".agents/gsd-core/bin/lib/install-profiles.cjs"
 Cohesion: 0.03
-Nodes (82): capabilityState, capabilityWriter, ADR-1244, ADR-2346, { ExitError }, fs, io, path (+74 more)
+Nodes (94): bracketMilestoneIntroSrcFor(), phaseHeadingPrefixSrcFor(), buildCurrentMilestoneRoadmapPhaseIdsField(), buildRoadmapPhaseCheckboxesField(), buildPhaseHeadingRegex(), ADR-0457, ADR-2143, ADR-3180 (+86 more)
+
+### Community 14 - ".agents/gsd-core/bin/lib/surface.cjs"
+Cohesion: 0.04
+Nodes (73): capabilityState, capabilityWriter, ADR-1244, ADR-2346, { ExitError }, fs, io, path (+65 more)
 
 ### Community 15 - "gsd-local-patches/gsd-core/bin/lib/capability-validator.cjs"
 Cohesion: 0.03
@@ -1543,59 +1538,59 @@ Nodes (108): ADR-0857, ADR-0894, ADR-0959, ADR-1016, ADR-1239, ADR-1244, ADR-151
 
 ### Community 16 - ".agents/gsd-core/bin/lib/capability-validator.cjs"
 Cohesion: 0.03
-Nodes (104): ADR-0857, ADR-0894, ADR-0959, ADR-1016, ADR-1239, ADR-1244, ADR-1517, ADR-2782 (+96 more)
+Nodes (109): ADR-0857, ADR-0894, ADR-0959, ADR-1016, ADR-1239, ADR-1244, ADR-1517, ADR-2782 (+101 more)
 
 ### Community 17 - ".agents/gsd-core/bin/lib/install-engine.cjs"
-Cohesion: 0.07
-Nodes (72): applyOpencodeFamilyPathPrefix(), assertCorpusTreeHasNoSymlinks(), ADR-0058, ADR-1235, ADR-1239, commonjs_marker_cjs_1, _copyStaged(), executingPackageRoot() (+64 more)
+Cohesion: 0.06
+Nodes (85): applyOpencodeFamilyPathPrefix(), assertCorpusTreeHasNoSymlinks(), ADR-0058, ADR-1235, ADR-1239, commonjs_marker_cjs_1, _copyStaged(), executingPackageRoot() (+77 more)
 
 ### Community 18 - "gsd-local-patches/gsd-core/bin/lib/roadmap-parser.cjs"
-Cohesion: 0.04
-Nodes (91): phaseMarkdownRegexSource(), roadmapPhaseLookupSources(), phaseDisplayNameFromRoadmap(), buildPhaseHeadingRegex(), ADR-0457, ADR-2143, ADR-3180, ADR-3473 (+83 more)
+Cohesion: 0.07
+Nodes (49): cmdRoadmapMilestoneScope(), BRACKET_PHASE_ENTRY_HEADING_RE, bulletPhaseLineFor(), ADR-0022, ADR-0227, ADR-0612, ADR-0857, ADR-1411 (+41 more)
 
 ### Community 19 - ".agents/gsd-core/bin/lib/frontmatter.cjs"
-Cohesion: 0.04
-Nodes (100): routeFrontmatter(), auditOpenArtifacts(), ADR-0457, ADR-3180, cmdAuditAcknowledge(), command_arg_projection_cjs_1, coreUtils, deriveOpenQuestions() (+92 more)
+Cohesion: 0.06
+Nodes (53): setEffortFrontmatter(), setFrontmatterKeyLine(), agentScalarNeedsDoubleQuoting(), AnchorDetectedSignal, ADR-0457, ADR-1411, ADR-3473, cmdFrontmatterSet() (+45 more)
 
 ### Community 20 - ".agents/gsd-core/bin/lib/planning-snapshot.cjs"
 Cohesion: 0.05
-Nodes (49): routeMigrateConfig(), cmdMigrateConfig(), findOrphanSummaries(), agentInstallCheckMod, buildArchivedPhaseTokensField(), buildConfigField(), buildMilestoneArchiveStatusField(), buildPerPhasePlanScanFields() (+41 more)
+Nodes (54): routeMigrateConfig(), cmdMigrateConfig(), findOrphanSummaries(), listAllPhaseDirs(), agentInstallCheckMod, buildAllPhaseDirNamesField(), buildArchivedPhaseTokensField(), buildConfigField() (+46 more)
 
 ### Community 21 - ".agents/gsd-core/bin/lib/commands.cjs"
-Cohesion: 0.02
-Nodes (113): routeCheckCommit(), routeCommit(), routeCommitDocsGuard(), routeCommitToSubrepo(), routeCurrentTimestamp(), routeEffort(), routeListSeeds(), routePrSubrepo() (+105 more)
+Cohesion: 0.03
+Nodes (73): routeCommitDocsGuard(), routeCurrentTimestamp(), routeTemplate(), routeWebsearch(), agentCommandRouterMod, buildCommitDocsGuardHookScript(), ADR-0443, ADR-0457 (+65 more)
 
 ### Community 22 - "gsd-local-patches/gsd-core/bin/lib/install-engine.cjs"
-Cohesion: 0.07
-Nodes (60): applyOpencodeFamilyPathPrefix(), ADR-0058, ADR-1235, ADR-1239, commonjs_marker_cjs_1, _copyStaged(), external_descriptor_trust_cjs_1, hasExistingSymlinkBetween() (+52 more)
+Cohesion: 0.05
+Nodes (92): ADR-0058, ADR-1235, ADR-1239, commonjs_marker_cjs_1, _copyStaged(), external_descriptor_trust_cjs_1, hasExistingSymlinkBetween(), _hostBehaviors() (+84 more)
 
 ### Community 23 - "gsd-local-patches/gsd-core/bin/lib/commands.cjs"
 Cohesion: 0.03
-Nodes (77): routeCommitDocsGuard(), routeCommitToSubrepo(), routeCurrentTimestamp(), routeListSeeds(), routeProgress(), routePrSubrepo(), routeStats(), routeTemplate() (+69 more)
+Nodes (77): routeCheckCommit(), routeCommitDocsGuard(), routeCommitToSubrepo(), routeCurrentTimestamp(), routeListSeeds(), routeTemplate(), routeWebsearch(), agentCommandRouterMod (+69 more)
 
 ### Community 24 - "Communities (658 total, 66 thin omitted)"
 Cohesion: 0.00
 Nodes (579): Communities (658 total, 66 thin omitted), Community 0 - "output", Community 100 - "gsd-local-patches/gsd-core/bin/lib/capability-source.cjs", Community 101 - "requireLoader", Community 102 - "gsd-pristine/gsd-core/bin/lib/capability-source.cjs", Community 103 - "requireLoader", Community 104 - ".agents/hooks/gsd-workflow-guard.js", Community 105 - "gsd-local-patches/gsd-core/bin/lib/config-loader.cjs" (+571 more)
 
-### Community 25 - ".agents/gsd-core/bin/lib/core-utils.cjs"
-Cohesion: 0.03
-Nodes (95): routeSummaryExtract(), cmdSummaryExtract(), ADR-0857, ADR-3180, ADR-3473, countMatchedSummaries(), CYRILLIC_TRANSLITERATION, CYRILLIC_TRANSLITERATION_KEYS (+87 more)
+### Community 25 - ".agents/gsd-core/bin/lib/phase.cjs"
+Cohesion: 0.02
+Nodes (143): ADR-0857, ADR-3180, ADR-3473, CYRILLIC_TRANSLITERATION, CYRILLIC_TRANSLITERATION_KEYS, extractCanonicalPlanId(), findUnsummarizedPlans(), getPhaseFileStats() (+135 more)
 
 ### Community 26 - "gsd-local-patches/gsd-core/bin/lib/surface.cjs"
-Cohesion: 0.04
-Nodes (72): _resolveActivationValue(), capabilityState, capabilityWriter, ADR-1244, ADR-2346, { ExitError }, fs, io (+64 more)
+Cohesion: 0.05
+Nodes (47): _resolveCommandsGsdDir(), capabilityStateMod, ADR-1213, cliExitMod, cmdCapabilitySet(), configMod, installProfilesMod, ioMod (+39 more)
 
 ### Community 27 - ".agents/gsd-core/bin/lib/uat.cjs"
 Cohesion: 0.06
-Nodes (72): collectSection(), acknowledgeDeferredItem(), acknowledgeHeadingShapedEntry(), ANY_KEY_SCALAR_HEADER_LINE_RE, auditMod, buildCheckpoint(), categorizeItem(), CHECKPOINT_FRAMES (+64 more)
+Nodes (57): ANY_KEY_SCALAR_HEADER_LINE_RE, auditMod, blankIndentedFenceDelimiters(), buildCheckpoint(), categorizeItem(), CHECKPOINT_FRAMES, CHECKPOINT_LANGUAGE_ALIASES, ADR-0457 (+49 more)
 
 ### Community 28 - "gsd-local-patches/gsd-core/bin/lib/phase-id.cjs"
-Cohesion: 0.06
-Nodes (49): checkW023(), BARE_INTEGER_RE, CANONICAL_NUMERIC_RE, CASE_FLEXIBLE_PHASE_NUMBER_TOKEN_SOURCE, CASE_FLEXIBLE_PROJECT_CODE_PREFIX_SOURCE, ADR-0612, ADR-0857, ADR-2121 (+41 more)
+Cohesion: 0.04
+Nodes (56): checkW006(), checkW007(), ADR-0457, ADR-3180, computeClaimedDirs(), dirsForPhase(), healthDiagnosticMod, isPhaseNotStarted() (+48 more)
 
 ### Community 29 - ".agents/gsd-core/bin/lib/milestone.cjs"
-Cohesion: 0.06
-Nodes (41): routeMilestone(), resolveQuickTaskSummaryFile(), applyQuickTasksReset(), archiveQuickTaskDirectories(), auditMod, buildQuickArchiveIndex(), ADR-0457, ADR-1769 (+33 more)
+Cohesion: 0.05
+Nodes (51): routeMilestone(), routeRequirements(), resolveQuickTaskSummaryFile(), cmdSummaryExtract(), countMatchedSummaries(), extractOneLinerFromBody(), applyQuickTasksReset(), archivePhaseDirectories() (+43 more)
 
 ### Community 30 - "quick-batch.cjs"
 Cohesion: 0.05
@@ -1603,11 +1598,11 @@ Nodes (71): agentOptions(), BACKEND_VALUES, ADR-1411, AGENT_SDK_PKG, argValue(),
 
 ### Community 31 - ".agents/gsd-core/bin/lib/verification.cjs"
 Cohesion: 0.06
-Nodes (49): stripFencedCode(), analyzeMarkdown(), BLOCKING_UAT_FM_RESULTS, BLOCKING_UAT_FM_STATUSES, BLOCKING_VERIFICATION_FM_STATUSES, ADR-0457, ADR-1372, coreUtils (+41 more)
+Nodes (55): stripFencedCode(), analyzeMarkdown(), BLOCKING_UAT_FM_RESULTS, BLOCKING_UAT_FM_STATUSES, BLOCKING_VERIFICATION_FM_STATUSES, ADR-0457, ADR-1372, coreUtils (+47 more)
 
-### Community 32 - ".agents/gsd-core/bin/lib/phase.cjs"
+### Community 32 - "gsd-local-patches/gsd-core/bin/lib/phase.cjs"
 Cohesion: 0.04
-Nodes (81): readSubdirectories(), analyzeRequirementsLine(), ADR-0457, ADR-1769, ADR-2143, ADR-3180, ADR-3408, ADR-3473 (+73 more)
+Nodes (71): readSubdirectories(), ADR-0457, ADR-1769, ADR-2143, ADR-3180, ADR-3408, ADR-3473, ADR-3524 (+63 more)
 
 ### Community 33 - "gsd-local-patches/gsd-core/bin/lib/runtime-hooks-surface.cjs"
 Cohesion: 0.06
@@ -1618,88 +1613,88 @@ Cohesion: 0.06
 Nodes (65): applySettingsJsonHooks(), atomicWriteFileSync(), __atomicWrittenTmps, buildBakedNodeToken(), buildClineAgentsMdBody(), buildClinePreToolUseHook(), buildClineRulesBody(), buildCodexHookBlock() (+57 more)
 
 ### Community 35 - "gsd-local-patches/gsd-core/bin/lib/check-command-router.cjs"
-Cohesion: 0.05
-Nodes (70): routeCheck(), apiCoverageMod, buildPlanMessage(), buildPredicateDeps(), buildVerifyMessage(), buildXmlDecisionTagRegex(), ADR-0457, ADR-0550 (+62 more)
+Cohesion: 0.06
+Nodes (54): apiCoverageMod, buildPlanMessage(), buildPredicateDeps(), buildVerifyMessage(), buildXmlDecisionTagRegex(), ADR-0457, ADR-0550, ADR-2008 (+46 more)
 
 ### Community 36 - ".agents/gsd-core/bin/lib/runtime-artifact-layout.cjs"
-Cohesion: 0.05
-Nodes (63): mkInstallTempDir(), registerStagedDir(), stageAgentsForProfile(), stageAgentsForRuntimeWithConverter(), stageCommandsForRuntimeFlat(), stageSkillsForProfile(), buildScopeRecord(), ADR-2866 (+55 more)
+Cohesion: 0.06
+Nodes (56): buildScopeRecord(), ADR-2866, deriveStemsForKindEntry(), deriveStemsFromManifest(), getDefaultRuntimeRegistry(), install_scope_cjs_1, installerMigrationsMod, isSymlinkPath() (+48 more)
 
 ### Community 37 - "gsd-local-patches/gsd-core/bin/lib/model-resolver.cjs"
 Cohesion: 0.06
 Nodes (38): routeResolveExecution(), cmdResolveExecution(), ADR-0227, ADR-0857, CLAUDE_POLICY_ID_TO_ALIAS, computeProfileTier(), configLoaderModule, configuration_cjs_1 (+30 more)
 
 ### Community 38 - "gsd-local-patches/gsd-core/bin/lib/uat.cjs"
-Cohesion: 0.06
-Nodes (58): acknowledgeDeferredItem(), acknowledgeHeadingShapedEntry(), ANY_KEY_SCALAR_HEADER_LINE_RE, auditMod, buildCheckpoint(), categorizeItem(), CHECKPOINT_FRAMES, CHECKPOINT_LANGUAGE_ALIASES (+50 more)
+Cohesion: 0.04
+Nodes (106): routeQuickTasksAppend(), ADR-0457, ADR-1372, ADR-2143, collectSection(), collectSections(), deleteSection(), extractFencedBlock() (+98 more)
 
 ### Community 39 - "gsd-local-patches/gsd-core/bin/lib/io.cjs"
-Cohesion: 0.02
-Nodes (100): routeTeamsStatus(), ADR-0959, cjsCommandRouterAdapter, io, routeAuditOpen(), routeAuditUat(), routeHubCommandFamily(), ADR-2980 (+92 more)
+Cohesion: 0.09
+Nodes (38): backoffOnce(), ADR-0857, ADR-2980, ADR-3473, ADR-3889, cliExitModule, ensureGsdTempDir(), GSD_TEMP_DIR (+30 more)
 
 ### Community 40 - ".agents/gsd-core/bin/lib/shell-command-projection.cjs"
 Cohesion: 0.06
-Nodes (46): resolveSpawnBinary(), rewriteLegacyManagedNodeHookCommands(), buildLocalShellHookCommand(), _buildVerbatimCmdLine(), ADR-0457, ADR-1239, ADR-1703, _cmdQuoteToken() (+38 more)
+Nodes (51): resolveSpawnBinary(), getProcessStartTime(), rewriteLegacyManagedNodeHookCommands(), atomicRenameWithRetry(), buildLocalShellHookCommand(), _buildVerbatimCmdLine(), ADR-0457, ADR-1239 (+43 more)
 
 ### Community 41 - ".agents/gsd-core/bin/lib/planning-workspace.cjs"
-Cohesion: 0.04
-Nodes (79): projectWorktreesOptedOut(), routeWorkstream(), getLatestCompletedMilestone(), parentPhaseKey(), phaseKeyFromProse(), buildPlanningRootFilesField(), activeWorkstreamStore, ADR-0457 (+71 more)
-
-### Community 42 - "gsd-local-patches/gsd-core/bin/lib/planning-workspace.cjs"
 Cohesion: 0.03
-Nodes (91): projectWorktreesOptedOut(), routeConfigPath(), ADR-0457, localToday(), now(), nowIso(), _pinnedNowMs(), _realSleepBuf (+83 more)
+Nodes (81): projectWorktreesOptedOut(), routeDispatchIsolation(), routeWorkstream(), writeDispatchIsolationSentinel(), getLatestCompletedMilestone(), parentPhaseKey(), phaseKeyFromProse(), buildPlanningRootFilesField() (+73 more)
 
-### Community 43 - "gsd-local-patches/gsd-core/bin/lib/task-command-router.cjs"
-Cohesion: 0.15
-Nodes (14): routeTask(), capabilityLoaderMod, ADR-0457, ADR-1244, ADR-3646, ioMod, isBehaviorAddingTaskContent(), node_fs_1 (+6 more)
+### Community 42 - "gsd-local-patches/gsd-core/bin/lib/config.cjs"
+Cohesion: 0.05
+Nodes (49): routeConfigPath(), assertEnumValue(), buildNewProjectConfig(), ADR-0457, ADR-1244, ADR-1411, ADR-2629, ADR-3889 (+41 more)
+
+### Community 43 - ".agents/gsd-core/bin/lib/cjs-command-router-adapter.cjs"
+Cohesion: 0.03
+Nodes (51): ADR-0174, ADR-0457, commandRoutingHub, io, observabilityLogger, ADR-0457, cjsCommandRouterAdapter, command_aliases_cjs_1 (+43 more)
 
 ### Community 44 - ".agents/gsd-core/bin/lib/model-catalog.cjs"
-Cohesion: 0.05
-Nodes (48): resolveDispatchIsolationDecision(), resolveDispatchModelPin(), _warnDispatchModelPinDropped(), _findAncestorGsdConfigPath(), _getGsdEffortCatalog(), installFsAdapter, modelCatalog, modelResolver (+40 more)
+Cohesion: 0.04
+Nodes (70): resolveDispatchIsolationDecision(), resolveDispatchModelPin(), routeEffort(), routeSkillsRoot(), _warnDispatchModelPinDropped(), cmdEffortSync(), cmdEffortSyncCodex(), cmdEffortSyncOpencode() (+62 more)
 
 ### Community 45 - ".agents/gsd-core/bin/lib/check-command-router.cjs"
-Cohesion: 0.05
-Nodes (63): routeCheck(), apiCoverageMod, buildPlanMessage(), buildPredicateDeps(), buildVerifyMessage(), buildXmlDecisionTagRegex(), ADR-0457, ADR-0550 (+55 more)
-
-### Community 46 - "gsd-local-patches/gsd-core/bin/lib/workstream-inventory.cjs"
 Cohesion: 0.06
-Nodes (46): parentPhaseKey(), isMilestoneShippedInRoadmap(), ADR-0457, clock_cjs_1, coreUtils, getOtherActiveWorkstreams(), ADR-0457, ADR-3180 (+38 more)
+Nodes (55): apiCoverageMod, buildPlanMessage(), buildPredicateDeps(), buildVerifyMessage(), buildXmlDecisionTagRegex(), ADR-0457, ADR-0550, ADR-2008 (+47 more)
+
+### Community 46 - "gsd-local-patches/gsd-core/bin/lib/planning-workspace.cjs"
+Cohesion: 0.04
+Nodes (78): projectWorktreesOptedOut(), routeWorkstream(), getLatestCompletedMilestone(), parentPhaseKey(), phaseKeyFromProse(), activeWorkstreamStore, ADR-0457, clock_cjs_1 (+70 more)
 
 ### Community 47 - "gsd-local-patches/gsd-core/bin/lib/planning-snapshot.cjs"
 Cohesion: 0.05
-Nodes (55): routeMigrateConfig(), cmdMigrateConfig(), findOrphanSummaries(), listAllPhaseDirs(), agentInstallCheckMod, buildAllPhaseDirNamesField(), buildConfigField(), buildCurrentMilestoneRoadmapPhaseIdsField() (+47 more)
+Nodes (52): routeMigrateConfig(), cmdMigrateConfig(), agentInstallCheckMod, buildAllPhaseDirNamesField(), buildArchivedPhaseTokensField(), buildConfigField(), buildCurrentMilestoneRoadmapPhaseIdsField(), buildMilestoneArchiveStatusField() (+44 more)
 
 ### Community 48 - ".agents/gsd-core/bin/lib/prohibition-enforcement.cjs"
 Cohesion: 0.14
 Nodes (29): baseOf(), buildLintArgs(), buildNodeTestArgs(), childEnv(), ADR-0550, ADR-1606, defaultProveFailFirst(), defaultRunCheck() (+21 more)
 
 ### Community 49 - "gsd-local-patches/gsd-core/bin/lib/frontmatter.cjs"
-Cohesion: 0.06
-Nodes (50): setEffortFrontmatter(), setFrontmatterKeyLine(), agentScalarNeedsDoubleQuoting(), AnchorDetectedSignal, ADR-0457, ADR-1411, ADR-3473, cmdFrontmatterSet() (+42 more)
+Cohesion: 0.04
+Nodes (90): auditOpenArtifacts(), ADR-0457, ADR-3180, cmdAuditAcknowledge(), command_arg_projection_cjs_1, coreUtils, deriveOpenQuestions(), deriveOpenQuestionsDigest() (+82 more)
 
 ### Community 50 - ".agents/gsd-core/bin/lib/verify.cjs"
-Cohesion: 0.05
-Nodes (49): routeVerifySummary(), agentInstallCheck, buildContextDriftMessage(), ADR-0457, ADR-2313, ADR-3180, ADR-3473, cmdValidateConsistency() (+41 more)
+Cohesion: 0.04
+Nodes (57): routeVerifySummary(), ADR-0457, ADR-3212, compileUserPattern(), escapeRegex(), literalPattern(), NEVER_MATCH(), re2js_cjs_1 (+49 more)
 
 ### Community 51 - ".agents/gsd-core/bin/lib/planning-inspect.cjs"
-Cohesion: 0.06
-Nodes (53): parseRequirements(), iterateBullets(), planIdFromFile(), AGREEMENT, buildActivePlan(), buildPhaseGoalAndDependencies(), buildPlanningInspect(), buildPlanRows() (+45 more)
+Cohesion: 0.04
+Nodes (75): ADR-0457, ADR-1372, ADR-3473, decisions_cjs_1, detectCoverage(), expandPhaseReqIdToken(), formatGapTable(), io (+67 more)
 
 ### Community 52 - "gsd-local-patches/gsd-core/bin/lib/model-catalog.cjs"
-Cohesion: 0.05
-Nodes (58): resolveDispatchModelPin(), routeEffort(), routeSkillsRoot(), _warnDispatchModelPinDropped(), cmdEffortSync(), cmdEffortSyncCodex(), cmdEffortSyncOpencode(), removeEffortFrontmatter() (+50 more)
+Cohesion: 0.06
+Nodes (42): resolveDispatchIsolationDecision(), resolveDispatchModelPin(), _warnDispatchModelPinDropped(), cmdEffortSyncOpencode(), _findAncestorGsdConfigPath(), _getGsdEffortCatalog(), installFsAdapter, modelCatalog (+34 more)
 
 ### Community 53 - "gsd-local-patches/gsd-core/bin/lib/planning-inspect.cjs"
-Cohesion: 0.06
-Nodes (52): iterateBullets(), planIdFromFile(), AGREEMENT, buildActivePlan(), buildPhaseGoalAndDependencies(), buildPlanningInspect(), buildPlanRows(), buildRequirements() (+44 more)
+Cohesion: 0.04
+Nodes (73): ADR-0457, ADR-1372, ADR-3473, decisions_cjs_1, detectCoverage(), expandPhaseReqIdToken(), formatGapTable(), io (+65 more)
 
-### Community 54 - ".agents/gsd-core/bin/lib/task-command-router.cjs"
-Cohesion: 0.15
-Nodes (14): routeTask(), capabilityLoaderMod, ADR-0457, ADR-1244, ADR-3646, ioMod, isBehaviorAddingTaskContent(), node_fs_1 (+6 more)
+### Community 54 - ".agents/gsd-core/bin/lib/install-profiles.cjs"
+Cohesion: 0.06
+Nodes (46): mkInstallTempDir(), capabilityClusterStems(), _capabilitySkillsForMode(), ADR-0011, ADR-0058, ADR-0457, ADR-0857, ADR-1235 (+38 more)
 
 ### Community 55 - "gsd-local-patches/gsd-core/bin/lib/shell-command-projection.cjs"
 Cohesion: 0.06
-Nodes (49): resolveSpawnBinary(), rewriteLegacyManagedNodeHookCommands(), atomicRenameWithRetry(), buildLocalShellHookCommand(), _buildVerbatimCmdLine(), ADR-0457, ADR-1239, ADR-1703 (+41 more)
+Nodes (49): rewriteLegacyManagedNodeHookCommands(), atomicRenameWithRetry(), buildLocalShellHookCommand(), _buildVerbatimCmdLine(), ADR-0457, ADR-1239, ADR-1703, _cmdQuoteToken() (+41 more)
 
 ### Community 56 - "app.js"
 Cohesion: 0.07
@@ -1709,9 +1704,9 @@ Nodes (44): DEFAULT_WORD_PASSCODE_HASHES, escapeHtml(), generateLiveReportText()
 Cohesion: 0.09
 Nodes (25): require_default(), require_null(), requireBinary(), requireBool(), extend(), requireCore(), requireException(), requireFailsafe() (+17 more)
 
-### Community 58 - "installFs"
-Cohesion: 0.06
-Nodes (59): resolveDispatchIsolationDecision(), installFs(), mkInstallTempDir(), installEffortResolver, installFsAdapter, modelCatalog, modelResolverModule, node_os_1 (+51 more)
+### Community 58 - "gsd-local-patches/gsd-core/bin/lib/runtime-artifact-layout.cjs"
+Cohesion: 0.05
+Nodes (56): checkInstallSurfaceShadowing(), ADR-0457, healthDiagnosticMod, installShadowReportMod, package_identity_cjs_1, RULES, runtimeSlashMod, buildPrefixLookup() (+48 more)
 
 ### Community 59 - "gsd-local-patches/gsd-core/bin/lib/vendor/js-yaml.cjs"
 Cohesion: 0.09
@@ -1722,56 +1717,56 @@ Cohesion: 0.09
 Nodes (50): acquireLock(), applyCapabilitySharedEdits(), backupNameMatchesId(), bindProjectConsent(), capabilitiesRoot(), capDataDir(), capDir(), checkSharedFileCount() (+42 more)
 
 ### Community 61 - "gsd-pristine/gsd-core/bin/lib/installer-migrations.cjs"
-Cohesion: 0.07
-Nodes (48): sleep(), acquireInstallMigrationLock(), appliedMigrationEntries(), appliedMigrationIds(), applyInstallerMigrationPlan(), atomicWriteInstallState(), ADR-0008, ADR-0058 (+40 more)
+Cohesion: 0.08
+Nodes (47): sleep(), acquireInstallMigrationLock(), appliedMigrationEntries(), appliedMigrationIds(), applyInstallerMigrationPlan(), atomicWriteInstallState(), ADR-0008, ADR-0058 (+39 more)
 
 ### Community 62 - "gsd-pristine/gsd-core/bin/lib/planning-inspect.cjs"
-Cohesion: 0.06
-Nodes (53): iterateBullets(), AGREEMENT, buildActivePlan(), buildPhaseGoalAndDependencies(), buildPlanningInspect(), buildPlanRows(), buildRequirements(), buildTaskRows() (+45 more)
+Cohesion: 0.07
+Nodes (51): iterateBullets(), AGREEMENT, buildActivePlan(), buildPhaseGoalAndDependencies(), buildPlanningInspect(), buildPlanRows(), buildRequirements(), buildTaskRows() (+43 more)
 
 ### Community 63 - "gsd-pristine/gsd-core/bin/lib/vendor/js-yaml.cjs"
 Cohesion: 0.09
 Nodes (25): require_default(), require_null(), requireBinary(), requireBool(), extend(), requireCore(), requireException(), requireFailsafe() (+17 more)
 
 ### Community 64 - ".agents/gsd-core/bin/lib/capability-lifecycle.cjs"
-Cohesion: 0.08
-Nodes (53): acquireLock(), applyCapabilitySharedEdits(), backupNameMatchesId(), bindProjectConsent(), capabilitiesRoot(), capDataDir(), capDir(), checkSharedFileCount() (+45 more)
+Cohesion: 0.09
+Nodes (49): acquireLock(), applyCapabilitySharedEdits(), backupNameMatchesId(), bindProjectConsent(), capabilitiesRoot(), capDataDir(), capDir(), checkSharedFileCount() (+41 more)
 
 ### Community 65 - ".agents/gsd-core/bin/lib/installer-migrations.cjs"
-Cohesion: 0.07
-Nodes (55): ADR-0457, localToday(), now(), nowIso(), _pinnedNowMs(), _realSleepBuf, sleep(), today() (+47 more)
+Cohesion: 0.06
+Nodes (59): ADR-0457, localToday(), now(), nowIso(), _pinnedNowMs(), _realSleepBuf, sleep(), today() (+51 more)
 
 ### Community 66 - "gsd-local-patches/gsd-core/bin/lib/install-profiles.cjs"
-Cohesion: 0.06
-Nodes (37): capabilityClusterStems(), _capabilitySkillsForMode(), ADR-0011, ADR-0058, ADR-0457, ADR-0857, ADR-1235, ADR-1239 (+29 more)
+Cohesion: 0.05
+Nodes (55): activationMod, ADR-0857, ADR-1244, configLoaderMod, installProfilesMod, ioMod, _loadFlatCommandsGsdManifest(), _loadInstalledSkillsManifest() (+47 more)
 
 ### Community 67 - "gsd-local-patches/gsd-core/bin/lib/worktree-safety.cjs"
-Cohesion: 0.07
-Nodes (43): routeWorktree(), ADR-0457, ADR-0857, cmdWorktreeCleanupWave(), cmdWorktreeCreate(), cmdWorktreeReapOrphans(), cmdWorktreeRecordAgent(), declaredScopePrefix() (+35 more)
+Cohesion: 0.08
+Nodes (34): routeWorktree(), ADR-0457, ADR-0857, cmdWorktreeCleanupWave(), cmdWorktreeCreate(), cmdWorktreeReapOrphans(), cmdWorktreeRecordAgent(), declaredScopePrefix() (+26 more)
 
 ### Community 68 - "gsd-local-patches/gsd-core/bin/lib/capability-lifecycle.cjs"
 Cohesion: 0.09
-Nodes (50): acquireLock(), applyCapabilitySharedEdits(), backupNameMatchesId(), bindProjectConsent(), capabilitiesRoot(), capDataDir(), capDir(), checkSharedFileCount() (+42 more)
+Nodes (49): acquireLock(), applyCapabilitySharedEdits(), backupNameMatchesId(), bindProjectConsent(), capabilitiesRoot(), capDataDir(), capDir(), checkSharedFileCount() (+41 more)
 
 ### Community 69 - "gsd-local-patches/scripts/gen-capability-registry.cjs"
 Cohesion: 0.06
 Nodes (43): classifyCrossErrors(), materializeHookFragments(), runConfigFormatParityGate(), validateAgainstContract(), validateConfigSliceEntry(), validateConsumesGlobal(), validateHooksWired(), ADR-0894 (+35 more)
 
 ### Community 70 - ".agents/hooks/gsd-cursor-subagent-start.js"
-Cohesion: 0.04
-Nodes (66): acquireLock(), ADR-0457, defaultLibDir(), defaultPackageRoot(), ensureRuntimeBuild(), forceFullEmit(), fs, isBuilt() (+58 more)
+Cohesion: 0.06
+Nodes (47): { ensureRuntimeBuild, RuntimeBuildError }, evaluateDispatch(), EXECUTOR_SUBAGENT_TYPES, fs, { HOOK_ON_CRASH, allow, deny, crash }, ADR-0457, main(), os (+39 more)
 
-### Community 71 - "gsd-local-patches/gsd-core/bin/lib/verify.cjs"
-Cohesion: 0.04
-Nodes (69): routeVerifySummary(), applyRepairs(), repairPaths(), checkW006(), checkW007(), ADR-0457, ADR-3180, computeClaimedDirs() (+61 more)
+### Community 71 - ".agents/gsd-core/bin/lib/audit.cjs"
+Cohesion: 0.10
+Nodes (40): auditOpenArtifacts(), ADR-0457, ADR-3180, cmdAuditAcknowledge(), command_arg_projection_cjs_1, coreUtils, deriveOpenQuestions(), deriveOpenQuestionsDigest() (+32 more)
 
 ### Community 72 - "allow"
-Cohesion: 0.03
-Nodes (74): evaluateDispatch(), main(), parseHarnessFlag(), fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout, fs (+66 more)
+Cohesion: 0.05
+Nodes (38): fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout, fs, { HOOK_ON_CRASH, allow, crash }, ADR-3889, os (+30 more)
 
 ### Community 73 - "gsd-local-patches/gsd-core/bin/lib/installer-migrations.cjs"
-Cohesion: 0.08
-Nodes (48): _migrateLegacyOpencodeCommandDir(), acquireInstallMigrationLock(), appliedMigrationEntries(), appliedMigrationIds(), applyInstallerMigrationPlan(), atomicWriteInstallState(), ADR-0008, ADR-0058 (+40 more)
+Cohesion: 0.07
+Nodes (53): ADR-0457, localToday(), now(), nowIso(), _pinnedNowMs(), _realSleepBuf, sleep(), today() (+45 more)
 
 ### Community 74 - "gsd-pristine/gsd-core/bin/lib/cjs-command-router-adapter.cjs"
 Cohesion: 0.05
@@ -1779,7 +1774,7 @@ Nodes (41): ADR-0959, cjsCommandRouterAdapter, io, routeAuditOpen(), routeAuditU
 
 ### Community 75 - "gsd-pristine/scripts/gen-capability-registry.cjs"
 Cohesion: 0.06
-Nodes (39): ADR-0894, LOOP_HOST_CONTRACT, ADR-0457, ADR-3212, normalizeEol(), buildRegistry(), CAPABILITIES_DIR, capValidator (+31 more)
+Nodes (38): ADR-0894, LOOP_HOST_CONTRACT, ADR-0457, ADR-3212, normalizeEol(), buildRegistry(), CAPABILITIES_DIR, capValidator (+30 more)
 
 ### Community 76 - ".agents/gsd-core/bin/lib/broken-windows.cjs"
 Cohesion: 0.13
@@ -1789,9 +1784,9 @@ Nodes (41): routeWindows(), appendWindow(), assertOpen(), cmdWindowsAppend(), cm
 Cohesion: 0.13
 Nodes (41): routeWindows(), appendWindow(), assertOpen(), cmdWindowsAppend(), cmdWindowsMarkFixed(), cmdWindowsStatus(), cmdWindowsWaive(), diffTableRowIds() (+33 more)
 
-### Community 78 - "gsd-local-patches/gsd-core/bin/lib/audit.cjs"
-Cohesion: 0.10
-Nodes (40): auditOpenArtifacts(), ADR-0457, ADR-3180, cmdAuditAcknowledge(), command_arg_projection_cjs_1, coreUtils, deriveOpenQuestions(), deriveOpenQuestionsDigest() (+32 more)
+### Community 78 - ".agents/hooks/gsd-windsurf-pre-write.js"
+Cohesion: 0.07
+Nodes (21): block(), { allow, deny }, block(), fs, ADR-1239, ADR-3889, path, { reportIfUndetermined } (+13 more)
 
 ### Community 79 - ".agents/gsd-core/bin/lib/capability-trust.cjs"
 Cohesion: 0.09
@@ -1799,7 +1794,7 @@ Nodes (43): artifactExists(), asString(), checkEngines(), checkReservedNamespace
 
 ### Community 80 - "gsd-local-patches/gsd-core/bin/lib/milestone.cjs"
 Cohesion: 0.05
-Nodes (48): routeMilestone(), routeRequirements(), resolveQuickTaskSummaryFile(), applyQuickTasksReset(), archivePhaseDirectories(), archiveQuickTaskDirectories(), auditMod, buildQuickArchiveIndex() (+40 more)
+Nodes (50): routeMilestone(), routeRequirements(), resolveQuickTaskSummaryFile(), checkC001(), applyQuickTasksReset(), archivePhaseDirectories(), archiveQuickTaskDirectories(), auditMod (+42 more)
 
 ### Community 81 - "gsd-local-patches/gsd-core/bin/lib/capability-trust.cjs"
 Cohesion: 0.09
@@ -1826,16 +1821,16 @@ Cohesion: 0.12
 Nodes (15): cacheDir, cacheFile, child, cwd, fs, globalConfigDir, globalVersionFile, homeDir (+7 more)
 
 ### Community 87 - ".agents/gsd-core/bin/lib/worktree-safety.cjs"
-Cohesion: 0.08
-Nodes (36): routeWorktree(), buildWorktreeHealthField(), ADR-0457, ADR-0857, cmdWorktreeCleanupWave(), cmdWorktreeCreate(), cmdWorktreeReapOrphans(), cmdWorktreeRecordAgent() (+28 more)
+Cohesion: 0.07
+Nodes (43): routeWorktree(), ADR-0457, ADR-0857, cmdWorktreeCleanupWave(), cmdWorktreeCreate(), cmdWorktreeReapOrphans(), cmdWorktreeRecordAgent(), declaredScopePrefix() (+35 more)
 
 ### Community 88 - ".agents/hooks/gsd-statusline.js"
 Cohesion: 0.10
 Nodes (38): normalizeStateStatus(), buildGitSegment(), CANONICAL_STATUSES, childProcess, compactModelName(), composeStatusline(), contextTokenSuffix(), deriveStateFreshness() (+30 more)
 
 ### Community 89 - ".agents/gsd-core/bin/lib/capability-consent.cjs"
-Cohesion: 0.09
-Nodes (41): acquireConsentLock(), bundleContentHash(), ADR-2782, collectBundleEntries(), consentKey(), consentLockPath(), consentStorePath(), DIR_FSYNC_TOLERATED_ERRNOS (+33 more)
+Cohesion: 0.06
+Nodes (63): acquireConsentLock(), bundleContentHash(), ADR-2782, collectBundleEntries(), consentKey(), consentLockPath(), consentStorePath(), DIR_FSYNC_TOLERATED_ERRNOS (+55 more)
 
 ### Community 90 - "gsd-local-patches/gsd-core/bin/lib/capability-consent.cjs"
 Cohesion: 0.09
@@ -1847,7 +1842,7 @@ Nodes (18): ADR-0457, ADR-3889, cliExitModule, createHub(), dispatch(), _dispatc
 
 ### Community 92 - "gsd-local-patches/gsd-core/bin/lib/verification.cjs"
 Cohesion: 0.06
-Nodes (44): collectSection(), stripFencedCode(), findPhaseRoadmapSection(), parseVerificationItems(), analyzeMarkdown(), BLOCKING_UAT_FM_RESULTS, BLOCKING_UAT_FM_STATUSES, BLOCKING_VERIFICATION_FM_STATUSES (+36 more)
+Nodes (41): stripFencedCode(), analyzeMarkdown(), BLOCKING_UAT_FM_RESULTS, BLOCKING_UAT_FM_STATUSES, BLOCKING_VERIFICATION_FM_STATUSES, ADR-0457, ADR-1372, coreUtils (+33 more)
 
 ### Community 93 - "gsd-pristine/gsd-core/bin/lib/capability-consent.cjs"
 Cohesion: 0.09
@@ -1858,12 +1853,12 @@ Cohesion: 0.09
 Nodes (39): assertFetchableUrl(), assertSafeGitUrl(), assertSafeId(), assertSafeNpmSpec(), assertSafeTarMembers(), assertStagedBundleWithinBudget(), capValidator, ADR-0457 (+31 more)
 
 ### Community 95 - ".agents/scripts/gen-capability-registry.cjs"
-Cohesion: 0.05
-Nodes (48): classifyCrossErrors(), detectRequiresCycles(), materializeHookFragments(), runConfigFormatParityGate(), topoSortContributions(), topoSortHookEntries(), topoSortSteps(), validateAgainstContract() (+40 more)
+Cohesion: 0.06
+Nodes (43): classifyCrossErrors(), materializeHookFragments(), runConfigFormatParityGate(), validateAgainstContract(), validateConfigSliceEntry(), validateConsumesGlobal(), validateHooksWired(), ADR-0894 (+35 more)
 
 ### Community 96 - ".agents/gsd-core/bin/lib/config-loader.cjs"
 Cohesion: 0.06
-Nodes (42): _applyFederatedOverlay(), _applyFederatedValues(), _capabilityRegistryReal, ADR-0227, ADR-0857, ADR-1244, ADR-1411, CONFIG_DEFAULTS (+34 more)
+Nodes (36): _applyFederatedOverlay(), _applyFederatedValues(), _capabilityRegistryReal, ADR-0227, ADR-0857, ADR-1244, ADR-1411, CONFIG_DEFAULTS (+28 more)
 
 ### Community 97 - "gsd-pristine/gsd-core/bin/lib/model-resolver.cjs"
 Cohesion: 0.07
@@ -1894,8 +1889,8 @@ Cohesion: 0.16
 Nodes (40): isObject(), requireLoader(), beginAnchorTransaction(), captureSegment(), charFromCodepoint(), _class(), commitAnchorTransaction(), composeNode() (+32 more)
 
 ### Community 104 - ".agents/hooks/gsd-workflow-guard.js"
-Cohesion: 0.07
-Nodes (35): { allow, deny }, fs, ADR-1239, ADR-3889, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync } (+27 more)
+Cohesion: 0.10
+Nodes (26): currentBranch(), failClosedBlockContext(), forceGitAddCwds(), fs, { HOOK_ON_CRASH, allow, deny, crash }, isAgentBranch(), KIMI_TOOL_NAMES, normalizeKimiPayload() (+18 more)
 
 ### Community 105 - "gsd-local-patches/gsd-core/bin/lib/config-loader.cjs"
 Cohesion: 0.06
@@ -1957,8 +1952,8 @@ Cohesion: 0.08
 Nodes (35): buildClaudeMdFallbacks(), buildClaudeMdProfilePlaceholder(), buildClaudeMdWorkflowEnforcement(), buildSection(), ADR-0457, CLAUDE_INSTRUCTIONS, cmdGenerateClaudeMd(), buildSectionContent() (+27 more)
 
 ### Community 122 - ".agents/gsd-core/bin/lib/refactor-trigger-command-router.cjs"
-Cohesion: 0.11
-Nodes (38): makeInvalidArgs(), analyzeTouchedFiles(), artifactAbsPath(), artifactFileName(), candidateKey(), capabilityActivationMod, capabilityStateMod, ADR-1703 (+30 more)
+Cohesion: 0.08
+Nodes (47): ADR-0959, cjsCommandRouterAdapter, io, routeAuditOpen(), routeAuditUat(), routeHubCommandFamily(), makeInvalidArgs(), routeGraphifyCommand() (+39 more)
 
 ### Community 123 - "push"
 Cohesion: 0.10
@@ -1966,7 +1961,7 @@ Nodes (38): add(), arraysEqual(), canCheckPrefix(), clear(), computeClosure(), c
 
 ### Community 124 - "gsd-local-patches/gsd-core/bin/lib/refactor-trigger-command-router.cjs"
 Cohesion: 0.11
-Nodes (37): makeInvalidArgs(), analyzeTouchedFiles(), artifactAbsPath(), artifactFileName(), candidateKey(), capabilityActivationMod, capabilityStateMod, ADR-1703 (+29 more)
+Nodes (38): analyzeTouchedFiles(), artifactAbsPath(), artifactFileName(), candidateKey(), capabilityActivationMod, capabilityStateMod, ADR-1703, cjsCommandRouterAdapter (+30 more)
 
 ### Community 125 - "push"
 Cohesion: 0.10
@@ -1981,8 +1976,8 @@ Cohesion: 0.06
 Nodes (36): agentInstallMod, applyRepairs(), ADR-0457, ADR-3180, ADR-3473, clock_cjs_1, computeMissingMilestoneVersions(), configLoaderMod (+28 more)
 
 ### Community 128 - ".agents/scripts/gen-loop-host-contract.cjs"
-Cohesion: 0.07
-Nodes (29): ADR-0457, ADR-3212, normalizeEol(), assertPointsCoverage(), buildContract(), CANONICAL_POINTS, ADR-0894, CONTRACT_PATH (+21 more)
+Cohesion: 0.09
+Nodes (27): normalizeEol(), assertPointsCoverage(), buildContract(), CANONICAL_POINTS, ADR-0894, CONTRACT_PATH, coveredKindsInRegion(), crossCheckRoles() (+19 more)
 
 ### Community 129 - "gsd-local-patches/scripts/gen-loop-host-contract.cjs"
 Cohesion: 0.07
@@ -2005,12 +2000,12 @@ Cohesion: 0.09
 Nodes (34): buildClaudeMdFallbacks(), buildClaudeMdProfilePlaceholder(), buildClaudeMdWorkflowEnforcement(), buildSection(), ADR-0457, CLAUDE_INSTRUCTIONS, cmdGenerateClaudeMd(), buildSectionContent() (+26 more)
 
 ### Community 134 - "gsd-local-patches/gsd-core/bin/lib/state-document.cjs"
-Cohesion: 0.08
-Nodes (30): parseActivityTimestamp(), canonicalizeCharForCaselessCompare(), canonicalizeForCaselessCompare(), ADR-0227, ADR-0457, ADR-3180, ADR-3473, countLeading() (+22 more)
+Cohesion: 0.03
+Nodes (85): routeDriftGuard(), ADR-0457, ADR-2143, ADR-3180, ADR-3524, clampPercent(), clampPercentFromFraction(), deriveProgressFromRoadmap() (+77 more)
 
-### Community 135 - "gsd-local-patches/hooks/gsd-agent-isolation-guard.js"
-Cohesion: 0.16
-Nodes (17): { ensureRuntimeBuild, RuntimeBuildError }, evaluateDispatch(), EXECUTOR_SUBAGENT_TYPES, fs, { HOOK_ON_CRASH, allow, deny, crash }, ADR-0457, main(), os (+9 more)
+### Community 135 - "ensureRuntimeBuild"
+Cohesion: 0.07
+Nodes (39): acquireLock(), ADR-0457, defaultLibDir(), defaultPackageRoot(), ensureRuntimeBuild(), forceFullEmit(), fs, isBuilt() (+31 more)
 
 ### Community 136 - "gsd-local-patches/gsd-core/workflows/plan-phase.md"
 Cohesion: 0.04
@@ -2021,28 +2016,28 @@ Cohesion: 0.09
 Nodes (34): buildClaudeMdFallbacks(), buildClaudeMdProfilePlaceholder(), buildClaudeMdWorkflowEnforcement(), buildSection(), ADR-0457, CLAUDE_INSTRUCTIONS, cmdGenerateClaudeMd(), buildSectionContent() (+26 more)
 
 ### Community 138 - ".agents/gsd-core/bin/lib/gsd2-import.cjs"
-Cohesion: 0.10
-Nodes (33): routeFromGsd2(), transliterateForSlug(), buildContextMd(), buildPlanMd(), buildPlanningArtifacts(), buildPreview(), buildRoadmapMd(), buildStateMd() (+25 more)
+Cohesion: 0.08
+Nodes (41): routeFromGsd2(), transliterateForSlug(), buildContextMd(), buildPlanMd(), buildPlanningArtifacts(), buildPreview(), buildRoadmapMd(), buildStateMd() (+33 more)
 
 ### Community 139 - ".agents/gsd-core/bin/lib/health-diagnostic.cjs"
 Cohesion: 0.06
 Nodes (36): agentInstallMod, applyRepairs(), ADR-0457, ADR-3180, ADR-3473, clock_cjs_1, computeMissingMilestoneVersions(), configLoaderMod (+28 more)
 
 ### Community 140 - ".agents/gsd-core/bin/lib/markdown-sectionizer.cjs"
-Cohesion: 0.15
-Nodes (18): ADR-0457, ADR-1372, ADR-2143, collectSections(), deleteSection(), extractFencedBlock(), extractTaggedBlocks(), pattern_cjs_1 (+10 more)
+Cohesion: 0.13
+Nodes (20): ADR-0457, ADR-1372, ADR-2143, collectSections(), deleteSection(), extractFencedBlock(), extractTaggedBlocks(), pattern_cjs_1 (+12 more)
 
 ### Community 141 - ".agents/gsd-core/bin/lib/review-lane-runner.cjs"
 Cohesion: 0.13
 Nodes (33): antigravityArgv(), antigravityDiagnostic(), antigravityFailureMode(), antigravityModel(), antigravityPrompt(), antigravityTranscriptFallback(), antigravityWatermark(), checkEgressHost() (+25 more)
 
-### Community 142 - ".agents/gsd-core/bin/lib/state-document.cjs"
-Cohesion: 0.09
-Nodes (28): canonicalizeCharForCaselessCompare(), canonicalizeForCaselessCompare(), ADR-0227, ADR-0457, ADR-3180, ADR-3473, countLeading(), existingProgressExceedsDerived() (+20 more)
+### Community 142 - ".agents/gsd-core/bin/lib/command-arg-projection.cjs"
+Cohesion: 0.08
+Nodes (23): assertValidSpec(), ADR-0457, ADR-3473, io, isFlagToken(), isPlainObject(), parseNamedArgs(), ADR-0457 (+15 more)
 
 ### Community 143 - "gsd-local-patches/gsd-core/bin/lib/gsd2-import.cjs"
-Cohesion: 0.11
-Nodes (32): routeFromGsd2(), buildContextMd(), buildPlanMd(), buildPlanningArtifacts(), buildPreview(), buildRoadmapMd(), buildStateMd(), buildSummaryMd() (+24 more)
+Cohesion: 0.10
+Nodes (33): routeFromGsd2(), transliterateForSlug(), buildContextMd(), buildPlanMd(), buildPlanningArtifacts(), buildPreview(), buildRoadmapMd(), buildStateMd() (+25 more)
 
 ### Community 144 - "gsd-local-patches/gsd-core/bin/lib/capability-loader.cjs"
 Cohesion: 0.08
@@ -2050,7 +2045,7 @@ Nodes (27): capabilityLoader, ADR-1239, createImperativeAdapter(), installEngine
 
 ### Community 145 - "gsd-local-patches/gsd-core/bin/lib/health-diagnostic.cjs"
 Cohesion: 0.06
-Nodes (33): agentInstallMod, ADR-0457, ADR-3180, ADR-3473, clock_cjs_1, computeMissingMilestoneVersions(), configLoaderMod, configValidationMod (+25 more)
+Nodes (36): agentInstallMod, applyRepairs(), ADR-0457, ADR-3180, ADR-3473, clock_cjs_1, computeMissingMilestoneVersions(), configLoaderMod (+28 more)
 
 ### Community 146 - "gsd-pristine/gsd-core/bin/lib/capability-loader.cjs"
 Cohesion: 0.08
@@ -2058,31 +2053,31 @@ Nodes (27): capabilityLoader, ADR-1239, createImperativeAdapter(), installEngine
 
 ### Community 147 - "gsd-pristine/gsd-core/bin/lib/config.cjs"
 Cohesion: 0.07
-Nodes (46): assertEnumValue(), buildNewProjectConfig(), ADR-0457, ADR-1244, ADR-1411, ADR-2629, ADR-3889, cliExitMod (+38 more)
+Nodes (33): assertEnumValue(), ADR-0457, ADR-1244, ADR-1411, ADR-2629, ADR-3889, cliExitMod, cmdConfigGet() (+25 more)
 
-### Community 148 - ".agents/gsd-core/bin/lib/smart-entry.cjs"
+### Community 148 - ".agents/gsd-core/bin/lib/state-document.cjs"
+Cohesion: 0.03
+Nodes (89): routeDriftGuard(), ADR-0457, ADR-2143, ADR-3180, ADR-3524, clampPercent(), clampPercentFromFraction(), deriveProgressFromRoadmap() (+81 more)
+
+### Community 149 - "gsd-local-patches/gsd-core/bin/lib/cjs-command-router-adapter.cjs"
 Cohesion: 0.08
-Nodes (35): action(), actionsFor(), buildSummary(), ADR-0227, ADR-1411, ADR-2207, ADR-3180, classify() (+27 more)
-
-### Community 149 - "gsd-local-patches/gsd-core/bin/lib/smart-entry.cjs"
-Cohesion: 0.09
-Nodes (32): action(), actionsFor(), buildSummary(), ADR-0227, ADR-1411, ADR-2207, ADR-3180, classify() (+24 more)
+Nodes (15): ADR-0174, ADR-0457, commandRoutingHub, io, observabilityLogger, ADR-0457, cjsCommandRouterAdapter, command_aliases_cjs_1 (+7 more)
 
 ### Community 150 - "gsd-pristine/gsd-core/bin/lib/active-workstream-store.cjs"
 Cohesion: 0.12
 Nodes (30): ADR-0457, ADR-3473, clearActiveWorkstream(), createMemoryPointerAdapter(), createSessionScopedPointerAdapter(), createSharedPointerAdapter(), diagnoseUnresolvedActiveWorkstream(), getActiveWorkstream() (+22 more)
 
-### Community 151 - ".agents/gsd-core/bin/lib/retired-artifact-cleanup.cjs"
-Cohesion: 0.15
-Nodes (12): assertDescriptorConfined(), ADR-1239, ADR-1577, isPathConfined(), node_path_1, capabilityRegistry, ADR-0058, external_descriptor_trust_cjs_1 (+4 more)
+### Community 151 - ".agents/gsd-core/bin/lib/install-fs-adapter.cjs"
+Cohesion: 0.08
+Nodes (28): ADR-0058, classifyMarker(), ensureCommonJsMarker(), installFsAdapter, markerPathFor(), node_path_1, removeCommonJsMarker(), assertDescriptorConfined() (+20 more)
 
 ### Community 152 - "Panduan Pre-Training untuk Peserta Pemula"
 Cohesion: 0.04
 Nodes (46): 10. Membuat bot Telegram melalui BotFather, 11. Pemeriksaan akun Google, 12. Jika terjadi masalah, 13. Cara meminta bantuan, 14. Checklist akhir, 15. Form laporan kesiapan, 16. Referensi resmi, 1. Target pre-training (+38 more)
 
 ### Community 153 - "gsd-local-patches/gsd-core/bin/lib/capability-registry.cjs"
-Cohesion: 0.09
-Nodes (21): byAgent, byLoopPoint, bySkill, capabilities, capabilityClusters, ADR-0894, commandFamilies, configKeys (+13 more)
+Cohesion: 0.07
+Nodes (29): byAgent, byLoopPoint, bySkill, capabilities, capabilityClusters, ADR-0894, commandFamilies, configKeys (+21 more)
 
 ### Community 154 - "gsd-local-patches/gsd-core/bin/lib/active-workstream-store.cjs"
 Cohesion: 0.13
@@ -2093,8 +2088,8 @@ Cohesion: 0.11
 Nodes (24): acquireLock(), { execTool, retryRenameSync }, getProcessStartTime(), holderVerifiedLive(), isPidAlive(), isSameHost(), ledgerMod, lockAgeMs() (+16 more)
 
 ### Community 156 - "gsd-local-patches/gsd-core/bin/lib/install-fs-adapter.cjs"
-Cohesion: 0.15
-Nodes (16): ADR-0058, classifyMarker(), ensureCommonJsMarker(), installFsAdapter, markerPathFor(), node_path_1, removeCommonJsMarker(), buildGuardedAdapter() (+8 more)
+Cohesion: 0.08
+Nodes (28): ADR-0058, classifyMarker(), ensureCommonJsMarker(), installFsAdapter, markerPathFor(), node_path_1, removeCommonJsMarker(), assertDescriptorConfined() (+20 more)
 
 ### Community 157 - "gsd-local-patches/gsd-core/bin/lib/review-lane-runner.cjs"
 Cohesion: 0.14
@@ -2148,8 +2143,8 @@ Cohesion: 0.05
 Nodes (38): Milestone Summary, Milestone v1.0: Pre-Training Interactive Web App, Overview, Phase 1: Core Foundation & Shell, Phase 2: Interactive Modules & Guide Engine, Phase 3: Checklist & Checkpoint Engine, Phase 4: Troubleshooting & Report Exporter, Phases (+30 more)
 
 ### Community 170 - ".agents/gsd-core/bin/lib/graphify.cjs"
-Cohesion: 0.13
-Nodes (28): isCapabilityActive(), applyBudget(), buildAdjacencyMap(), buildQueryResponse(), capabilityStateMod, checkGraphifyInstalled(), checkGraphifyVersion(), ADR-0457 (+20 more)
+Cohesion: 0.14
+Nodes (26): isCapabilityActive(), applyBudget(), buildAdjacencyMap(), buildQueryResponse(), capabilityStateMod, checkGraphifyInstalled(), checkGraphifyVersion(), ADR-0457 (+18 more)
 
 ### Community 171 - ".agents/gsd-core/bin/lib/intel.cjs"
 Cohesion: 0.12
@@ -2168,19 +2163,16 @@ Cohesion: 0.12
 Nodes (27): buildCatalog(), ADR-0457, ADR-1671, classifyUnindexedUri(), decodeCursor(), decodePassesFor(), defaultPackageRoot(), encodeCursor() (+19 more)
 
 ### Community 175 - ".agents/scripts/changeset/cli.cjs"
-Cohesion: 0.12
-Nodes (26): isStableTripletSemver(), assembleChangelog(), cmdExtract(), cmdRender(), cmdVerify(), {
-  compareSemverCore,
-  isStableTripletSemver,
-}, { ExitError, runMain }, fs (+18 more)
+Cohesion: 0.09
+Nodes (36): ADR-0457, compareSemverCore(), compareTuples(), expandComparator(), isSemverNewer(), isStableTripletSemver(), parseVersionToken(), satisfiesPrimitive() (+28 more)
 
 ### Community 176 - "gsd-local-patches/gsd-core/bin/lib/graphify.cjs"
-Cohesion: 0.13
-Nodes (28): isCapabilityActive(), applyBudget(), buildAdjacencyMap(), buildQueryResponse(), capabilityStateMod, checkGraphifyInstalled(), checkGraphifyVersion(), ADR-0457 (+20 more)
+Cohesion: 0.14
+Nodes (26): isCapabilityActive(), applyBudget(), buildAdjacencyMap(), buildQueryResponse(), capabilityStateMod, checkGraphifyInstalled(), checkGraphifyVersion(), ADR-0457 (+18 more)
 
-### Community 177 - "gsd-local-patches/gsd-core/bin/lib/gap-checker.cjs"
-Cohesion: 0.06
-Nodes (39): routeAssumptionDelta(), routeGapAnalysis(), ADR-3889, detectAssumptionDelta(), makeSnippet(), markdown_sectionizer_cjs_1, normalizeTerms(), pattern_cjs_1 (+31 more)
+### Community 177 - "gsd-local-patches/gsd-core/bin/lib/pattern.cjs"
+Cohesion: 0.15
+Nodes (14): ADR-3889, detectAssumptionDelta(), makeSnippet(), markdown_sectionizer_cjs_1, normalizeTerms(), pattern_cjs_1, resolveTerms(), ADR-0457 (+6 more)
 
 ### Community 178 - "gsd-local-patches/gsd-core/bin/lib/mcp-catalog.cjs"
 Cohesion: 0.12
@@ -2198,17 +2190,17 @@ Nodes (27): buildCatalog(), ADR-0457, ADR-1671, classifyUnindexedUri(), decodeCu
 Cohesion: 0.10
 Nodes (24): CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, ExitError, findExitContractFlag(), getContractVersion(), getJsonErrorMode(), getPendingOutcome() (+16 more)
 
-### Community 182 - ".agents/gsd-core/bin/lib/host-integration.cjs"
-Cohesion: 0.05
-Nodes (33): routeDispatchCapacity(), ADR-1239, installEngine, ADR-1239, handleHandshakeRequest(), hostIntegration, ADR-1239, ADR-1016 (+25 more)
+### Community 182 - ".agents/gsd-core/bin/lib/runtime-slash.cjs"
+Cohesion: 0.06
+Nodes (33): routeDispatchCapacity(), routeDispatchShouldFlatten(), routeResolveDispatchType(), ADR-1239, handleHandshakeRequest(), hostIntegration, ADR-1016, ADR-1239 (+25 more)
 
 ### Community 183 - ".agents/gsd-core/bin/lib/learnings.cjs"
 Cohesion: 0.14
 Nodes (28): routeLearnings(), ADR-0457, cmdLearningsCopy(), cmdLearningsDelete(), cmdLearningsList(), cmdLearningsPrune(), cmdLearningsQuery(), contentHash() (+20 more)
 
-### Community 184 - ".agents/gsd-core/bin/lib/io.cjs"
-Cohesion: 0.04
-Nodes (70): ADR-0959, cjsCommandRouterAdapter, io, routeAuditOpen(), routeAuditUat(), routeHubCommandFamily(), ADR-0959, cjsCommandRouterAdapter (+62 more)
+### Community 184 - ".agents/gsd-core/bin/lib/profile-pipeline.cjs"
+Cohesion: 0.19
+Nodes (22): ensureGsdTempDir(), reapStaleTempFiles(), ADR-0457, cliExitModule, cmdExtractMessages(), cmdProfileSample(), cmdScanSessions(), formatBytes() (+14 more)
 
 ### Community 185 - ".agents/gsd-core/bin/lib/coverage.cjs"
 Cohesion: 0.14
@@ -2232,19 +2224,19 @@ Nodes (41): 1. Executive Summary, 1. ID Naming Convention Matrix, 1. Role & Data
 
 ### Community 190 - ".agents/gsd-core/bin/lib/capability-lock.cjs"
 Cohesion: 0.11
-Nodes (24): acquireLock(), { execTool, retryRenameSync }, getProcessStartTime(), holderVerifiedLive(), isPidAlive(), isSameHost(), ledgerMod, lockAgeMs() (+16 more)
+Nodes (23): acquireLock(), { execTool, retryRenameSync }, holderVerifiedLive(), isPidAlive(), isSameHost(), ledgerMod, lockAgeMs(), lockBackoff() (+15 more)
 
 ### Community 191 - ".agents/gsd-core/bin/lib/verify-command-grounding.cjs"
 Cohesion: 0.13
 Nodes (27): declaredPathCovers(), emptyResult(), extractAutomatedCommands(), extractAutomatedFromText(), extractDeclaredPaths(), extractFailingDirections(), extractFailingFromText(), foldCdArgs() (+19 more)
 
 ### Community 192 - ".agents/gsd-core/bin/lib/model-resolver.cjs"
-Cohesion: 0.06
-Nodes (38): routeResolveExecution(), cmdResolveExecution(), ADR-0227, ADR-0857, CLAUDE_POLICY_ID_TO_ALIAS, computeProfileTier(), configLoaderModule, configuration_cjs_1 (+30 more)
+Cohesion: 0.07
+Nodes (33): ADR-0227, ADR-0857, CLAUDE_POLICY_ID_TO_ALIAS, computeProfileTier(), configLoaderModule, configuration_cjs_1, EFFORT_SET, mapClaudeOverrideForRuntime() (+25 more)
 
 ### Community 193 - "gsd-local-patches/gsd-core/bin/lib/loop-resolver.cjs"
-Cohesion: 0.13
-Nodes (15): routeLoop(), CANONICAL_POINTS, capabilityActivationModule, capabilityStateModule, ADR-0857, ADR-1244, cmdLoopRenderHooks(), configLoaderModule (+7 more)
+Cohesion: 0.08
+Nodes (28): routeLoop(), _getNestedConfigValue(), node_fs_1, node_path_1, planningWorkspaceMod, _readRawConfigKey(), _resolveActivationValue(), resolveConfigKey() (+20 more)
 
 ### Community 194 - "gsd-local-patches/gsd-core/bin/lib/verify-command-grounding.cjs"
 Cohesion: 0.13
@@ -2280,7 +2272,7 @@ Nodes (9): DesignSystemGenerator, Select best matching result based on priority 
 
 ### Community 202 - ".agents/gsd-core/bin/lib/markdown-table.cjs"
 Cohesion: 0.19
-Nodes (26): routeQuickTasksAppend(), routeQuickTasksMigrate(), appendQuickTaskRow(), ADR-0457, ADR-2143, deleteTableRow(), escapeCell(), findTableBySchema() (+18 more)
+Nodes (26): routeQuickTasksMigrate(), appendQuickTaskRow(), ADR-0457, ADR-2143, deleteTableRow(), escapeCell(), findTableBySchema(), findTableWithColumns() (+18 more)
 
 ### Community 203 - ".agents/gsd-core/bin/lib/phase-estimation.cjs"
 Cohesion: 0.13
@@ -2291,8 +2283,8 @@ Cohesion: 0.19
 Nodes (26): appendReplacement(), appendReplacementFunc(), appendReplacementInternalJava(), appendReplacementInternalJs(), appendTail(), buildReplacerArgs(), end(), exec() (+18 more)
 
 ### Community 205 - "routeReviewLane"
-Cohesion: 0.13
-Nodes (23): routeReviewLane(), resolveReviewerEgressHost(), checkReviewerDocsParity(), checkReviewerLaneParity(), ADR-2782, countOccurrences(), findSignatureLine(), flagIsDocumented() (+15 more)
+Cohesion: 0.12
+Nodes (24): resolveSpawnBinary(), routeReviewLane(), resolveReviewerEgressHost(), checkReviewerDocsParity(), checkReviewerLaneParity(), ADR-2782, countOccurrences(), findSignatureLine() (+16 more)
 
 ### Community 206 - ".agents/gsd-core/workflows/plan-phase.md"
 Cohesion: 0.05
@@ -2342,17 +2334,17 @@ Nodes (12): COURSE_CONFIGS, DEFAULT_STATE, WORD_DEFAULT_STATE, WORD_QUIZ_QUESTIO
 Cohesion: 0.14
 Nodes (23): routeGit(), changedFilesSince(), cmdGitBaseBranch(), configLoader, configuration_cjs_1, gitWorktreeInfoInternal(), io, isSafeRevisionRef() (+15 more)
 
-### Community 218 - ".agents/gsd-core/bin/lib/capability-ledger.cjs"
-Cohesion: 0.15
-Nodes (22): ADR-1244, CorruptLedgerError, DIR_FSYNC_TOLERATED_ERRNOS, fsyncContainingDir(), isUnsafeCapabilityId(), isValidLedgerEntry(), isValidLedgerFile(), LedgerIOError (+14 more)
+### Community 218 - ".agents/hooks/gsd-read-injection-scanner.js"
+Cohesion: 0.08
+Nodes (20): { HOOK_ON_CRASH, allow, crash }, { INJECTION_PATTERNS, describePattern }, KIMI_TOOL_NAMES, path, stdinTimeout, ALL_PATTERNS, fs, { HOOK_ON_CRASH, allow, crash } (+12 more)
 
-### Community 219 - ".agents/gsd-core/bin/lib/runtime-slash.cjs"
-Cohesion: 0.06
-Nodes (34): routeDispatchShouldFlatten(), routeResolveDispatchType(), byAgent, byLoopPoint, bySkill, capabilities, capabilityClusters, ADR-0894 (+26 more)
+### Community 219 - ".agents/gsd-core/bin/lib/capability-registry.cjs"
+Cohesion: 0.04
+Nodes (63): routeProjectInstructionFile(), routeResolveAgent(), agentFileExists(), _canonicalAgentSourceDir(), checkAgentsInstalled(), checkCodexModelPosture(), checkCodexSandboxPosture(), ADR-0857 (+55 more)
 
 ### Community 220 - ".agents/gsd-core/bin/lib/cli-exit.cjs"
-Cohesion: 0.04
-Nodes (51): ADR-3889, detectAssumptionDelta(), makeSnippet(), markdown_sectionizer_cjs_1, normalizeTerms(), pattern_cjs_1, resolveTerms(), ADR-2980 (+43 more)
+Cohesion: 0.05
+Nodes (42): ADR-2980, ADR-3889, CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, findExitContractFlag(), getContractVersion(), getJsonErrorMode() (+34 more)
 
 ### Community 221 - ".agents/gsd-core/bin/lib/codex-agent-toml.cjs"
 Cohesion: 0.12
@@ -2367,8 +2359,8 @@ Cohesion: 0.12
 Nodes (19): buildInvocation(), ADR-0457, ADR-3646, coerceStringArray(), coerceStringOrNull(), findResolver(), ioMod, isExecTimeout() (+11 more)
 
 ### Community 224 - "gsd-local-patches/gsd-core/bin/lib/git-base-branch.cjs"
-Cohesion: 0.14
-Nodes (23): routeGit(), changedFilesSince(), cmdGitBaseBranch(), configLoader, configuration_cjs_1, gitWorktreeInfoInternal(), io, isSafeRevisionRef() (+15 more)
+Cohesion: 0.15
+Nodes (21): changedFilesSince(), configLoader, configuration_cjs_1, gitWorktreeInfoInternal(), io, isSafeRevisionRef(), node_path_1, readEffectiveGitConfig() (+13 more)
 
 ### Community 225 - "gsd-local-patches/gsd-core/bin/lib/capability-ledger.cjs"
 Cohesion: 0.15
@@ -2402,17 +2394,17 @@ Nodes (23): ADR-2346, ADR-2629, ADR-3473, cmdEstimateCalibrate(), cmdEstimateCal
 Cohesion: 0.13
 Nodes (23): asString(), callTool(), catalogErrorCode(), catalogErrorMessage(), catalogErrorReason(), ADR-1239, errorResponse(), getCatalog() (+15 more)
 
-### Community 233 - ".agents/gsd-core/bin/lib/runtime-name-policy.cjs"
-Cohesion: 0.11
-Nodes (19): routeProjectInstructionFile(), aliasManifest, aliasToCanonical, canonicalizeRuntimeName(), ADR-0457, ADR-1239, ADR-1508, FALLBACK_ALIASES (+11 more)
+### Community 233 - "gsd-local-patches/gsd-core/bin/lib/runtime-homes.cjs"
+Cohesion: 0.13
+Nodes (26): routeEffort(), routeSkillsRoot(), cmdEffortSync(), cmdEffortSyncCodex(), removeEffortFrontmatter(), removeFrontmatterKeyLine(), ADR-0457, ADR-1239 (+18 more)
 
-### Community 234 - ".agents/gsd-core/bin/lib/agent-install-check.cjs"
+### Community 234 - ".agents/gsd-core/bin/lib/io.cjs"
 Cohesion: 0.06
-Nodes (44): routeDocsInit(), routeResolveAgent(), agentFileExists(), _canonicalAgentSourceDir(), checkAgentsInstalled(), checkCodexModelPosture(), checkCodexSandboxPosture(), ADR-0857 (+36 more)
+Nodes (35): agentInstallCheck, ADR-0457, cmdDocsInit(), configLoader, coreUtils, detectDocTooling(), detectMonorepoWorkspaces(), detectProjectType() (+27 more)
 
 ### Community 235 - ".agents/gsd-core/bin/lib/capability-loader.cjs"
-Cohesion: 0.08
-Nodes (27): capabilityLoader, ADR-1239, createImperativeAdapter(), installEngine, canonicalDir(), ADR-1239, ADR-1244, ADR-2782 (+19 more)
+Cohesion: 0.04
+Nodes (56): routeLoop(), capabilityLoader, ADR-1239, createImperativeAdapter(), installEngine, _getNestedConfigValue(), node_fs_1, node_path_1 (+48 more)
 
 ### Community 236 - ".agents/gsd-core/bin/lib/adr-parser.cjs"
 Cohesion: 0.13
@@ -2434,9 +2426,9 @@ Nodes (19): routeProjectInstructionFile(), aliasManifest, aliasToCanonical, cano
 Cohesion: 0.13
 Nodes (23): CANONICAL_HEADERS, ADR-0457, ADR-1372, classifyHeader(), cliExitModule, CONSEQUENCE_NEGATIVE_HINTS, CONSEQUENCE_POSITIVE_HINTS, main() (+15 more)
 
-### Community 241 - "gsd-local-patches/gsd-core/bin/lib/estimate-cli.cjs"
-Cohesion: 0.06
-Nodes (46): ADR-2346, ADR-2629, ADR-3473, cmdEstimateCalibration(), cmdEstimateCheck(), configLoader, defaultBudget(), estimation (+38 more)
+### Community 241 - "gsd-local-patches/gsd-core/bin/lib/onboard-projection.cjs"
+Cohesion: 0.11
+Nodes (25): buildHandoffCommands(), buildOnboardProjection(), CODE_EXTENSIONS, CODE_SCAN_SKIP_DIRS, coreUtils, FAST_CODEBASE_MAP_FILES, getMapReadiness(), hasCodeFilesInternal() (+17 more)
 
 ### Community 242 - "gsd-local-patches/hooks/gsd-windsurf-pre-command.js"
 Cohesion: 0.15
@@ -2458,45 +2450,45 @@ Nodes (18): aliasManifest, aliasToCanonical, canonicalizeRuntimeName(), ADR-0457
 Cohesion: 0.13
 Nodes (21): ADR-3889, CLAUSE_BOUNDARY_CHARS, collectTermMatches(), detectApiIntegration(), INTERNAL_DESCRIPTORS, isInternallyQualified(), makeSnippet(), markdown_sectionizer_cjs_1 (+13 more)
 
-### Community 247 - ".agents/gsd-core/bin/lib/gap-checker.cjs"
-Cohesion: 0.03
-Nodes (72): ADR-2346, ADR-2629, ADR-3473, cmdEstimateCalibration(), cmdEstimateCheck(), configLoader, defaultBudget(), estimation (+64 more)
+### Community 247 - ".agents/gsd-core/bin/lib/estimate-cli.cjs"
+Cohesion: 0.09
+Nodes (24): ADR-2346, ADR-2629, ADR-3473, cmdEstimateCalibration(), cmdEstimateCheck(), configLoader, defaultBudget(), estimation (+16 more)
 
 ### Community 248 - "Core Workflow"
 Cohesion: 0.05
 Nodes (36): Additional Commands, Capturing Ideas, Notes, and Todos, Common Workflows, Configuration, Core Workflow, Debugging, Diagnostics & Maintenance, Discovery & Specification (+28 more)
 
-### Community 249 - ".agents/gsd-core/bin/lib/observability/logger.cjs"
-Cohesion: 0.10
-Nodes (17): _appendAuditLine(), ADR-0174, ADR-0457, createDefaultLogger(), node_fs_1, node_path_1, redaction_cjs_1, _safeStringify() (+9 more)
+### Community 249 - ".agents/gsd-core/bin/lib/command-routing-hub.cjs"
+Cohesion: 0.07
+Nodes (35): ADR-0457, ADR-3889, cliExitModule, createHub(), dispatch(), _dispatchCjs(), _normaliseResult(), _notifyLogger() (+27 more)
 
-### Community 250 - "gsd-local-patches/gsd-core/bin/lib/runtime-slash.cjs"
-Cohesion: 0.05
-Nodes (51): routeDispatchShouldFlatten(), routeResolveAgent(), routeResolveDispatchType(), agentFileExists(), _canonicalAgentSourceDir(), checkAgentsInstalled(), checkCodexModelPosture(), checkCodexSandboxPosture() (+43 more)
+### Community 250 - "gsd-local-patches/gsd-core/bin/lib/verify.cjs"
+Cohesion: 0.03
+Nodes (100): routeDispatchShouldFlatten(), routeResolveAgent(), routeResolveDispatchType(), routeVerifySummary(), agentFileExists(), _canonicalAgentSourceDir(), checkAgentsInstalled(), checkCodexModelPosture() (+92 more)
 
 ### Community 251 - "gsd-local-patches/gsd-core/bin/lib/api-coverage.cjs"
-Cohesion: 0.09
-Nodes (30): ADR-3889, CLAUSE_BOUNDARY_CHARS, collectTermMatches(), detectApiIntegration(), INTERNAL_DESCRIPTORS, isInternallyQualified(), makeSnippet(), markdown_sectionizer_cjs_1 (+22 more)
+Cohesion: 0.13
+Nodes (21): ADR-3889, CLAUSE_BOUNDARY_CHARS, collectTermMatches(), detectApiIntegration(), INTERNAL_DESCRIPTORS, isInternallyQualified(), makeSnippet(), markdown_sectionizer_cjs_1 (+13 more)
 
 ### Community 252 - ".agents/agents/gsd-plan-checker.md"
 Cohesion: 0.06
 Nodes (34): Binding Payload vs Advisory Remediation, Check 8f - Stated Failing Direction (#3172), Dimension 10: GEMINI.md Compliance, Dimension 11: Research Resolution (#1602), Dimension 12: Pattern Compliance (#1861), Dimension 1: Requirement Coverage, Dimension 2: Task Completeness, Dimension 3: Dependency Correctness (+26 more)
 
-### Community 253 - "gsd-local-patches/gsd-core/bin/lib/markdown-table.cjs"
-Cohesion: 0.21
-Nodes (23): appendQuickTaskRow(), ADR-0457, ADR-2143, deleteTableRow(), escapeCell(), findTableBySchema(), findTableWithColumns(), insertTableRow() (+15 more)
+### Community 253 - "quick-batch-command-router.cjs"
+Cohesion: 0.09
+Nodes (16): argValue(), ADR-0457, ADR-1239, cjsCommandRouterAdapter, commandRoutingHub, io, parseJsonArg(), quickBatch (+8 more)
 
 ### Community 254 - "gsd-pristine/gsd-core/bin/lib/api-coverage.cjs"
 Cohesion: 0.13
 Nodes (21): ADR-3889, CLAUSE_BOUNDARY_CHARS, collectTermMatches(), detectApiIntegration(), INTERNAL_DESCRIPTORS, isInternallyQualified(), makeSnippet(), markdown_sectionizer_cjs_1 (+13 more)
 
 ### Community 255 - "gsd-pristine/gsd-core/bin/lib/markdown-sectionizer.cjs"
-Cohesion: 0.15
-Nodes (19): ADR-0457, ADR-1372, ADR-2143, collectSection(), collectSections(), deleteSection(), extractFencedBlock(), extractTaggedBlocks() (+11 more)
+Cohesion: 0.13
+Nodes (21): ADR-0457, ADR-1372, ADR-2143, collectSection(), collectSections(), deleteSection(), extractFencedBlock(), extractTaggedBlocks() (+13 more)
 
 ### Community 256 - ".agents/hooks/gsd-windsurf-pre-command.js"
-Cohesion: 0.17
-Nodes (21): { allow, deny }, basename(), CMD_PREFIXES, destructiveReason(), hasFlag(), indexOfCommandAfterPrefixes(), isDestructiveRmRf(), isDestructiveWindowsRmRf() (+13 more)
+Cohesion: 0.16
+Nodes (22): { allow, deny }, basename(), CMD_PREFIXES, destructiveReason(), hasFlag(), indexOfCommandAfterPrefixes(), isDestructiveRmRf(), isDestructiveWindowsRmRf() (+14 more)
 
 ### Community 257 - ".agents/gsd-core/bin/lib/configuration.cjs"
 Cohesion: 0.13
@@ -2531,16 +2523,16 @@ Cohesion: 0.06
 Nodes (34): 100% Requirement Coverage, 1. Summary Checklist (under `## Phases`), 2. Detail Sections (under `## Phase Details`), 3. Progress Table, Anti-Enterprise, Coverage is Non-Negotiable, Deriving Phase Success Criteria, Deriving Phases from Requirements (+26 more)
 
 ### Community 268 - "adviseRemedy"
-Cohesion: 0.09
-Nodes (24): checkW004(), checkW012(), checkW013(), checkW014(), checkW015(), checkW022(), checkW029(), ADR-0457 (+16 more)
+Cohesion: 0.08
+Nodes (25): checkW004(), checkW012(), checkW013(), checkW014(), checkW015(), checkW022(), checkW029(), ADR-0457 (+17 more)
 
 ### Community 269 - ".agents/gsd-core/bin/lib/milestone-lock.cjs"
 Cohesion: 0.22
 Nodes (19): activeWorkstreamStore, checkMilestoneConflictForPhase(), checkMilestonePosition(), claimMilestonePhase(), clock_cjs_1, currentSessionKey(), ensureClaimDir(), isClaimLive() (+11 more)
 
-### Community 270 - ".agents/gsd-core/bin/lib/phase-lifecycle.cjs"
+### Community 270 - ".agents/gsd-core/bin/lib/onboard-projection.cjs"
 Cohesion: 0.12
-Nodes (19): ADR-0457, ADR-2143, ADR-3180, ADR-3524, clampPercent(), clampPercentFromFraction(), deriveProgressFromRoadmap(), locateProgressTable() (+11 more)
+Nodes (23): buildHandoffCommands(), buildOnboardProjection(), CODE_EXTENSIONS, CODE_SCAN_SKIP_DIRS, coreUtils, FAST_CODEBASE_MAP_FILES, getMapReadiness(), hasCodeFilesInternal() (+15 more)
 
 ### Community 271 - "gsd-local-patches/gsd-core/bin/verify-reapply-patches.cjs"
 Cohesion: 0.19
@@ -2551,20 +2543,20 @@ Cohesion: 0.10
 Nodes (14): ADR-1239, installEngine, ADR-1239, adapterDeclarative, adapterImperative, ADR-1239, handshake, hookBus (+6 more)
 
 ### Community 273 - "adviseRemedy"
-Cohesion: 0.12
-Nodes (16): checkW004(), checkW012(), checkW013(), checkW014(), checkW015(), checkW022(), checkW029(), ADR-0457 (+8 more)
+Cohesion: 0.09
+Nodes (24): checkW004(), checkW012(), checkW013(), checkW014(), checkW015(), checkW022(), checkW029(), ADR-0457 (+16 more)
 
-### Community 274 - "gsd-local-patches/gsd-core/bin/lib/markdown-sectionizer.cjs"
-Cohesion: 0.14
-Nodes (19): ADR-0457, ADR-1372, ADR-2143, collectSections(), deleteSection(), extractFencedBlock(), extractTaggedBlocks(), pattern_cjs_1 (+11 more)
+### Community 274 - "gsd-local-patches/gsd-core/bin/lib/estimate-cli.cjs"
+Cohesion: 0.11
+Nodes (21): ADR-2346, ADR-2629, ADR-3473, cmdEstimateCalibration(), cmdEstimateCheck(), configLoader, defaultBudget(), estimation (+13 more)
 
 ### Community 275 - "gsd-local-patches/gsd-core/bin/lib/milestone-lock.cjs"
 Cohesion: 0.22
 Nodes (19): activeWorkstreamStore, checkMilestoneConflictForPhase(), checkMilestonePosition(), claimMilestonePhase(), clock_cjs_1, currentSessionKey(), ensureClaimDir(), isClaimLive() (+11 more)
 
-### Community 276 - "gsd-local-patches/gsd-core/bin/lib/phase-lifecycle.cjs"
-Cohesion: 0.12
-Nodes (19): ADR-0457, ADR-2143, ADR-3180, ADR-3524, clampPercent(), clampPercentFromFraction(), deriveProgressFromRoadmap(), locateProgressTable() (+11 more)
+### Community 276 - "gsd-local-patches/gsd-core/bin/lib/workstream-inventory-builder.cjs"
+Cohesion: 0.31
+Nodes (8): buildWorkstreamInventory(), ADR-0457, ADR-3180, isCompletedInventory(), node_path_1, phase_lifecycle_cjs_1, pickRollupWinners(), toPosixPath()
 
 ### Community 277 - "gsd-pristine/gsd-core/bin/lib/cli-exit.cjs"
 Cohesion: 0.16
@@ -2579,8 +2571,8 @@ Cohesion: 0.22
 Nodes (19): activeWorkstreamStore, checkMilestoneConflictForPhase(), checkMilestonePosition(), claimMilestonePhase(), clock_cjs_1, currentSessionKey(), ensureClaimDir(), isClaimLive() (+11 more)
 
 ### Community 280 - "gsd-pristine/gsd-core/bin/lib/phase-lifecycle.cjs"
-Cohesion: 0.20
-Nodes (11): ADR-0457, ADR-2143, ADR-3180, ADR-3524, clampPercent(), clampPercentFromFraction(), deriveProgressFromRoadmap(), locateProgressTable() (+3 more)
+Cohesion: 0.12
+Nodes (19): ADR-0457, ADR-2143, ADR-3180, ADR-3524, clampPercent(), clampPercentFromFraction(), deriveProgressFromRoadmap(), locateProgressTable() (+11 more)
 
 ### Community 281 - "gsd-pristine/gsd-core/bin/lib/profile-pipeline.cjs"
 Cohesion: 0.20
@@ -2594,9 +2586,9 @@ Nodes (20): ADR-0457, ADR-1239, detectAntigravityDirAmbiguity(), expandTilde(), 
 Cohesion: 0.16
 Nodes (19): ADR-2980, ADR-3889, CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, findExitContractFlag(), getContractVersion(), getJsonErrorMode() (+11 more)
 
-### Community 284 - ".agents/gsd-core/bin/lib/command-routing-hub.cjs"
-Cohesion: 0.17
-Nodes (18): ADR-0457, ADR-3889, cliExitModule, createHub(), dispatch(), _dispatchCjs(), _normaliseResult(), _notifyLogger() (+10 more)
+### Community 284 - ".agents/gsd-core/bin/lib/host-integration-sdk.cjs"
+Cohesion: 0.10
+Nodes (14): ADR-1239, installEngine, ADR-1239, adapterDeclarative, adapterImperative, ADR-1239, handshake, hookBus (+6 more)
 
 ### Community 285 - ".agents/gsd-core/bin/lib/drift.cjs"
 Cohesion: 0.14
@@ -2615,8 +2607,8 @@ Cohesion: 0.14
 Nodes (18): buildMessage(), CATEGORY_PRIORITY, chooseAffectedPaths(), ADR-0457, classifyFile(), detectDrift(), DRIFT_CATEGORIES, isPathMapped() (+10 more)
 
 ### Community 291 - "gsd-local-patches/hooks/gsd-cursor-subagent-start.js"
-Cohesion: 0.14
-Nodes (19): { allow }, { ensureRuntimeBuild, RuntimeBuildError }, evaluateRootIsolation(), EXECUTOR_SUBAGENT_TYPES, fs, getWorkspaceRoots(), ADR-0457, ADR-1239 (+11 more)
+Cohesion: 0.07
+Nodes (33): { allow }, fs, { resolveStatePath }, stdinTimeout, { allow }, fs, ADR-1239, { resolveStatePath } (+25 more)
 
 ### Community 292 - "gsd-local-patches/scripts/changeset/github-release-notes.cjs"
 Cohesion: 0.16
@@ -2626,25 +2618,25 @@ Nodes (19): cmdGithubReleaseNotes(), buildGithubReleaseNotesIr(), changedFragmen
 Cohesion: 0.12
 Nodes (15): assertValidSpec(), ADR-0457, ADR-3473, io, isFlagToken(), isPlainObject(), parseNamedArgs(), parseNamedArgsOrExit() (+7 more)
 
-### Community 294 - "gsd-pristine/gsd-core/bin/lib/install-fs-adapter.cjs"
-Cohesion: 0.11
-Nodes (18): buildGuardedAdapter(), ADR-0058, mkInstallTempDir(), node_crypto_1, node_fs_1, node_os_1, node_path_1, OPTIONAL_ADAPTER_METHODS (+10 more)
+### Community 294 - "installFs"
+Cohesion: 0.14
+Nodes (20): ADR-0058, classifyMarker(), ensureCommonJsMarker(), installFsAdapter, markerPathFor(), node_path_1, removeCommonJsMarker(), buildGuardedAdapter() (+12 more)
 
 ### Community 295 - "gsd-pristine/gsd-core/bin/lib/drift.cjs"
 Cohesion: 0.14
 Nodes (18): buildMessage(), CATEGORY_PRIORITY, chooseAffectedPaths(), ADR-0457, classifyFile(), detectDrift(), DRIFT_CATEGORIES, isPathMapped() (+10 more)
 
 ### Community 296 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/config-validation.cjs"
-Cohesion: 0.13
-Nodes (15): checkW004(), checkW012(), checkW013(), checkW014(), checkW015(), checkW022(), checkW029(), ADR-0457 (+7 more)
+Cohesion: 0.04
+Nodes (58): checkAgentInstall(), ADR-3180, healthDiagnosticMod, package_identity_cjs_1, planningScopeMod, RULES, checkW004(), checkW012() (+50 more)
 
 ### Community 297 - "gsd-pristine/gsd-core/bin/lib/uat-predicate.cjs"
 Cohesion: 0.12
 Nodes (19): stripFencedCode(), analyzeMarkdown(), BLOCKING_UAT_FM_RESULTS, BLOCKING_UAT_FM_STATUSES, BLOCKING_VERIFICATION_FM_STATUSES, ADR-0457, ADR-1372, coreUtils (+11 more)
 
-### Community 299 - ".agents/gsd-core/bin/lib/surface.cjs"
-Cohesion: 0.08
-Nodes (31): ADR-0457, agentFileExtensionFor(), applySpecRootReferenceToStagedSkills(), computePathPrefix(), resolveSpecRootReference(), rewriteStagedCommandBodies(), rewriteStagedSkillBodies(), applySurface() (+23 more)
+### Community 299 - "gsd-local-patches/gsd-core/bin/lib/cli-exit.cjs"
+Cohesion: 0.18
+Nodes (18): ADR-2980, ADR-3889, CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, findExitContractFlag(), getContractVersion(), getPendingOutcome() (+10 more)
 
 ### Community 300 - ".agents/scripts/changeset/github-release-notes.cjs"
 Cohesion: 0.16
@@ -2683,8 +2675,8 @@ Cohesion: 0.12
 Nodes (10): ADR-0457, KNOWN_VALID_TAGS, node_fs_1, node_os_1, node_path_1, OBFUSCATION_PATTERN_ENTRIES, requireSafePath(), sanitizeForDisplay() (+2 more)
 
 ### Community 309 - "gsd-pristine/gsd-core/bin/lib/user-artifact-staging.cjs"
-Cohesion: 0.13
-Nodes (27): ADR-0058, classifyMarker(), ensureCommonJsMarker(), installFsAdapter, markerPathFor(), node_path_1, removeCommonJsMarker(), installFs() (+19 more)
+Cohesion: 0.18
+Nodes (18): ADR-3574, discardStagedUserArtifacts(), _installEngineSymlinkGuard(), installerMigrations, installFsAdapter, isFlatName(), isProcessAlive(), lstatPresent() (+10 more)
 
 ### Community 310 - "compile"
 Cohesion: 0.20
@@ -2694,9 +2686,9 @@ Nodes (19): alt(), cap(), cat(), cleanupOnePass(), compile(), compileRegexp(), c
 Cohesion: 0.18
 Nodes (18): buildGithubReleaseNotesIr(), changedFragmentPaths(), classifyGroup(), compareUrl(), cp, FIXED_GROUPS, formatBullet(), loadFragmentsFromRange() (+10 more)
 
-### Community 312 - ".agents/gsd-core/bin/lib/loop-resolver.cjs"
-Cohesion: 0.14
-Nodes (14): routeLoop(), CANONICAL_POINTS, capabilityActivationModule, capabilityStateModule, ADR-0857, ADR-1244, cmdLoopRenderHooks(), configLoaderModule (+6 more)
+### Community 312 - "routeHubCommandFamily"
+Cohesion: 0.13
+Nodes (16): ADR-0959, cjsCommandRouterAdapter, io, routeAuditOpen(), routeAuditUat(), routeHubCommandFamily(), makeInvalidArgs(), ADR-0959 (+8 more)
 
 ### Community 313 - "gsd-pristine/gsd-core/bin/lib/capability-command-router.cjs"
 Cohesion: 0.12
@@ -2734,9 +2726,9 @@ Nodes (14): analyzeCoverage(), ADR-0550, cliExitModule, dispositionForUnverifiab
 Cohesion: 0.19
 Nodes (17): applyWorktreeBaseRef(), buildMsgBaserefHeadIgnored(), buildMsgDiverged(), cmdWorktreeBaseCheck(), cmdWorktreeSetBaseRef(), evaluateWorktreeBaseDegrade(), isExecGitTimeout(), node_fs_1 (+9 more)
 
-### Community 322 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-types.cjs"
-Cohesion: 0.11
-Nodes (13): ADR-0457, artifacts_cjs_1, checkW019(), ADR-0457, ADR-3180, healthDiagnosticMod, RULES, ADR-0457 (+5 more)
+### Community 322 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/milestone-archive-hygiene.cjs"
+Cohesion: 0.18
+Nodes (7): ADR-0457, artifacts_cjs_1, checkW019(), ADR-0457, ADR-3180, healthDiagnosticMod, RULES
 
 ### Community 323 - "gsd-pristine/gsd-core/bin/lib/prompt-budget.cjs"
 Cohesion: 0.18
@@ -2780,19 +2772,19 @@ Nodes (16): actionSupportsChoice(), assertInstallerMigrationsUnblocked(), baseli
 
 ### Community 333 - ".agents/gsd-core/bin/lib/plan-document.cjs"
 Cohesion: 0.09
-Nodes (21): ADR-0457, ADR-3180, ADR-3646, collapseWhitespace(), elementBody(), extractObjective(), frontmatterMod, markdownTaskHeadings() (+13 more)
+Nodes (30): ADR-0457, ADR-3180, ADR-3646, collapseWhitespace(), elementBody(), extractObjective(), frontmatterMod, markdownTaskHeadings() (+22 more)
 
-### Community 334 - ".agents/gsd-core/bin/verify-reapply-patches.cjs"
-Cohesion: 0.18
-Nodes (17): computeUserAddedLines(), crypto, { ExitError, runMain }, fs, isSignificantLine(), main(), normalizeUpstreamOwnedLine(), parseArgs() (+9 more)
+### Community 334 - "ExitError"
+Cohesion: 0.10
+Nodes (27): routePromptBudget(), readOptional(), readRequired(), routeTeamsStatus(), runWithTimeout(), ExitError, cliExitModule, cmdTeamsStatus() (+19 more)
 
 ### Community 335 - "gsd-local-patches/gsd-core/bin/lib/installer-migration-report.cjs"
 Cohesion: 0.22
 Nodes (16): actionSupportsChoice(), assertInstallerMigrationsUnblocked(), baselineSummaryLabel(), baselineSummaryRow(), blockedInstallerMigrationActions(), buildBlockedErrorMessage(), ADR-0457, classifyPromptUserAction() (+8 more)
 
 ### Community 336 - "gsd-local-patches/gsd-core/bin/lib/plan-document.cjs"
-Cohesion: 0.18
-Nodes (17): ADR-0457, ADR-3180, ADR-3646, collapseWhitespace(), elementBody(), extractObjective(), frontmatterMod, markdownTaskHeadings() (+9 more)
+Cohesion: 0.09
+Nodes (31): routeTask(), ADR-0457, ADR-3180, ADR-3646, collapseWhitespace(), elementBody(), extractObjective(), frontmatterMod (+23 more)
 
 ### Community 337 - "gsd-local-patches/hooks/gsd-check-update.js"
 Cohesion: 0.12
@@ -2823,8 +2815,8 @@ Cohesion: 0.17
 Nodes (9): ./index.js, ./RE2.js, MatcherInput, RE2JSCompileException, RE2JSException, RE2JSFlagsException, RE2JSGroupException, RE2JSInternalException (+1 more)
 
 ### Community 344 - "gsd-local-patches/gsd-core/bin/lib/install-scope.cjs"
-Cohesion: 0.09
-Nodes (28): ADR-2866, expandTildeForExplicitDir(), getRegistry(), HOST_PRECEDENCE_RANK, isGlobalScope(), node_os_1, node_path_1, normalizeSeparators() (+20 more)
+Cohesion: 0.18
+Nodes (14): ADR-2866, expandTildeForExplicitDir(), getRegistry(), HOST_PRECEDENCE_RANK, isGlobalScope(), node_os_1, node_path_1, normalizeSeparators() (+6 more)
 
 ### Community 345 - "Dimensions"
 Cohesion: 0.06
@@ -2842,9 +2834,9 @@ Nodes (14): detectStaleBake(), findNewestConfigMtime(), findOldestAgentMtime(), 
 Cohesion: 0.17
 Nodes (9): ./index.js, ./RE2.js, MatcherInput, RE2JSCompileException, RE2JSException, RE2JSFlagsException, RE2JSGroupException, RE2JSInternalException (+1 more)
 
-### Community 349 - "gsd-local-patches/hooks/gsd-cursor-stop.js"
-Cohesion: 0.15
-Nodes (13): { allow }, fs, { resolveStatePath }, stdinTimeout, { allow }, fs, ADR-1239, { resolveStatePath } (+5 more)
+### Community 349 - "gsd-local-patches/gsd-core/bin/lib/profile-pipeline-command-router.cjs"
+Cohesion: 0.13
+Nodes (11): getJsonErrorMode(), ERROR_REASON, ADR-0857, ADR-0959, ADR-3889, { ERROR_REASON, getJsonErrorMode }, { ExitError }, _handlePipelineRejection() (+3 more)
 
 ### Community 350 - "gsd-local-patches/scripts/changeset/lint.cjs"
 Cohesion: 0.19
@@ -2903,8 +2895,8 @@ Cohesion: 0.06
 Nodes (33): 1. Communication Style, 2. Decision Speed, 3. Explanation Depth, 4. Debugging Approach, 5. UX Philosophy, 6. Vendor Philosophy, 7. Frustration Triggers, 8. Learning Style (+25 more)
 
 ### Community 364 - ".agents/gsd-core/bin/lib/health-diagnostic-rules/state-consistency.cjs"
-Cohesion: 0.13
-Nodes (12): buildValidPhaseSet(), checkMilestonePrefixW021(), ADR-3180, healthDiagnosticMod, phaseIdMod, RULE_W002, RULE_W011, RULE_W021 (+4 more)
+Cohesion: 0.14
+Nodes (11): buildValidPhaseSet(), ADR-3180, healthDiagnosticMod, phaseIdMod, RULE_W002, RULE_W011, RULE_W021, RULE_W024 (+3 more)
 
 ### Community 365 - ".agents/gsd-core/bin/lib/installer-migration-authoring.cjs"
 Cohesion: 0.28
@@ -2934,9 +2926,9 @@ Nodes (12): checkPackages(), ADR-0457, classifyPackage(), DEFAULT_THRESHOLDS, de
 Cohesion: 0.23
 Nodes (15): appendClass(), appendFoldedClass(), appendFoldedRange(), appendLiteral(), appendNegatedClass(), appendNegatedTable(), appendRange(), appendTable() (+7 more)
 
-### Community 372 - "gsd-pristine/gsd-core/bin/lib/external-descriptor-trust.cjs"
-Cohesion: 0.40
-Nodes (5): assertDescriptorConfined(), ADR-1239, ADR-1577, isPathConfined(), node_path_1
+### Community 372 - "gsd-pristine/gsd-core/bin/lib/retired-artifact-cleanup.cjs"
+Cohesion: 0.15
+Nodes (13): assertDescriptorConfined(), ADR-1239, ADR-1577, isPathConfined(), node_path_1, capabilityRegistry, ADR-0058, external_descriptor_trust_cjs_1 (+5 more)
 
 ### Community 373 - "gsd-pristine/gsd-core/bin/lib/installer-migration-authoring.cjs"
 Cohesion: 0.28
@@ -2970,9 +2962,9 @@ Nodes (5): BM25, Lowercase, split, remove punctuation, filter short words, Build
 Cohesion: 0.25
 Nodes (10): ALLOWED_TAGS, buildViewArgs(), CHECK_REASON, checkLatestVersion(), { execNpm }, main(), { packageName: PACKAGE_NAME }, resolveTag() (+2 more)
 
-### Community 381 - ".agents/gsd-core/bin/lib/capability-activation.cjs"
-Cohesion: 0.21
-Nodes (14): _getNestedConfigValue(), node_fs_1, node_path_1, planningWorkspaceMod, _readRawConfigKey(), _resolveActivationValue(), resolveConfigKey(), _resolvePointGate() (+6 more)
+### Community 381 - "collectSection"
+Cohesion: 0.25
+Nodes (16): collectSection(), acknowledgeDeferredItem(), acknowledgeHeadingShapedEntry(), crlfAtEof(), entryFencedLines(), entryFieldLines(), extractGapEntryFields(), parseDeferredItems() (+8 more)
 
 ### Community 382 - ".agents/gsd-core/bin/lib/health-diagnostic-rules/agent-install.cjs"
 Cohesion: 0.22
@@ -3091,8 +3083,8 @@ Cohesion: 0.27
 Nodes (10): analyzeCoverage(), applicableCategories(), ADR-0457, ADR-0550, classifyElement(), cliExitModule, probe_core_cjs_1, proposeConsiderations() (+2 more)
 
 ### Community 411 - "gsd-pristine/scripts/changeset/new.cjs"
-Cohesion: 0.21
-Nodes (12): ADJECTIVES, ALLOWED_TYPES, { ExitError, runMain }, fs, generateFragmentName(), main(), NOUNS_A, NOUNS_B (+4 more)
+Cohesion: 0.18
+Nodes (13): ADJECTIVES, ALLOWED_TYPES, { ExitError, runMain }, fs, generateFragmentName(), main(), NOUNS_A, NOUNS_B (+5 more)
 
 ### Community 412 - ".agents/scripts/changeset/new.cjs"
 Cohesion: 0.21
@@ -3170,17 +3162,17 @@ Nodes (9): checkE002(), checkE003(), checkW001(), ADR-0457, ADR-3180, healthDiag
 Cohesion: 0.20
 Nodes (10): checkW017(), checkW020(), checkW027(), ADR-0457, ADR-3180, healthDiagnosticMod, isActiveWorktreePath(), planningScopeMod (+2 more)
 
-### Community 431 - ".agents/gsd-core/bin/lib/semver-compare.cjs"
-Cohesion: 0.33
-Nodes (10): ADR-0457, compareSemverCore(), compareTuples(), expandComparator(), isSemverNewer(), parseVersionToken(), satisfiesPrimitive(), satisfiesSet() (+2 more)
+### Community 431 - "gsd-local-patches/gsd-core/bin/lib/command-arg-projection.cjs"
+Cohesion: 0.16
+Nodes (14): assertValidSpec(), ADR-0457, ADR-3473, io, isFlagToken(), isPlainObject(), parseNamedArgs(), ADR-0457 (+6 more)
 
 ### Community 432 - "requireInt"
 Cohesion: 0.27
 Nodes (11): isNegativeZero(), isFloat(), representYamlFloat(), requireInt(), constructYamlInteger(), isDecCode(), isHexCode(), isInteger() (+3 more)
 
 ### Community 433 - "gsd-local-patches/gsd-core/bin/check-latest-version.cjs"
-Cohesion: 0.25
-Nodes (10): ALLOWED_TAGS, buildViewArgs(), CHECK_REASON, checkLatestVersion(), { execNpm }, main(), { packageName: PACKAGE_NAME }, resolveTag() (+2 more)
+Cohesion: 0.20
+Nodes (12): ALLOWED_TAGS, buildViewArgs(), CHECK_REASON, checkLatestVersion(), { execNpm }, main(), { packageName: PACKAGE_NAME }, resolveTag() (+4 more)
 
 ### Community 434 - "gsd-local-patches/gsd-core/bin/lib/runtime-identity.cjs"
 Cohesion: 0.24
@@ -3206,9 +3198,9 @@ Nodes (9): checkE002(), checkE003(), checkW001(), ADR-0457, ADR-3180, healthDiag
 Cohesion: 0.20
 Nodes (10): checkW017(), checkW020(), checkW027(), ADR-0457, ADR-3180, healthDiagnosticMod, isActiveWorktreePath(), planningScopeMod (+2 more)
 
-### Community 440 - "routeDriftGuard"
-Cohesion: 0.24
-Nodes (12): routeDriftGuard(), ADR-0022, classifyDriftSeverity(), comparePhaseStatus(), getEffectiveAuthority(), normalizePhaseStatusText(), PHASE_STATUS_RANKS, resolvePhaseStatusRank() (+4 more)
+### Community 440 - "splitDeferredHeadingEntriesDetailed"
+Cohesion: 0.32
+Nodes (10): indentOf(), indentWidth(), lineOffsets(), ListRuns, matchListOpener(), scanFencesFrom(), splitDeferredHeadingEntriesDetailed(), splitGapsEntriesCore() (+2 more)
 
 ### Community 441 - "requireInt"
 Cohesion: 0.27
@@ -3218,17 +3210,17 @@ Nodes (11): isNegativeZero(), isFloat(), representYamlFloat(), requireInt(), con
 Cohesion: 0.25
 Nodes (9): ADR-2008, evaluateArtifactFrontmatterEquals(), evaluateCommandExitZero(), EVALUATOR_KINDS, interpolate(), INTERPOLATION_VAR_NAMES, isNonEmptyString(), KIND_TABLE (+1 more)
 
-### Community 443 - "gsd-pristine/gsd-core/bin/lib/planning-scope.cjs"
-Cohesion: 0.18
-Nodes (9): checkAgentInstall(), ADR-3180, healthDiagnosticMod, package_identity_cjs_1, planningScopeMod, RULES, ADR-3180, planningScope (+1 more)
+### Community 443 - "planningDir"
+Cohesion: 0.19
+Nodes (13): buildNewProjectConfig(), cmdConfigEnsureSection(), cmdConfigNewProject(), cmdConfigPath(), cmdConfigSetModelProfile(), ensureConfigFile(), getCmdConfigSetModelProfileResultMessage(), setConfigValue() (+5 more)
 
-### Community 444 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/root-existence.cjs"
-Cohesion: 0.18
-Nodes (9): checkE002(), checkE003(), checkW001(), ADR-0457, ADR-3180, healthDiagnosticMod, planningScopeMod, REQUIRED_SECTIONS (+1 more)
+### Community 444 - ".agents/gsd-core/bin/lib/plan-drift-guard.cjs"
+Cohesion: 0.27
+Nodes (10): ADR-0022, classifyDriftSeverity(), comparePhaseStatus(), getEffectiveAuthority(), normalizePhaseStatusText(), PHASE_STATUS_RANKS, resolvePhaseStatusRank(), VALID_AUTHORITIES (+2 more)
 
-### Community 445 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/worktree-health.cjs"
+### Community 445 - "pruneOrphanedWorktrees"
 Cohesion: 0.20
-Nodes (10): checkW017(), checkW020(), checkW027(), ADR-0457, ADR-3180, healthDiagnosticMod, isActiveWorktreePath(), planningScopeMod (+2 more)
+Nodes (11): buildWorktreeHealthField(), executeWorktreePrunePlan(), inspectWorktreeHealth(), listLinkedWorktreePaths(), parseWorktreeEntries(), parseWorktreeListPaths(), parseWorktreePorcelain(), planWorktreePrune() (+3 more)
 
 ### Community 446 - "gsd-pristine/gsd-core/bin/lib/normalize-test-command.cjs"
 Cohesion: 0.31
@@ -3282,21 +3274,21 @@ Nodes (10): constructor(), fromRE2(), maxBitStateLen(), numberOfCapturingGroups(
 Cohesion: 0.31
 Nodes (8): assertValidActiveWorkstreamName(), ADR-0457, ADR-3473, hasInvalidPathSegment(), isValidActiveWorkstreamName(), normalizeWorkstreamNameInput(), validateActiveWorkstreamName(), validateWorkstreamName()
 
-### Community 461 - "executeWorktreeWaveCleanupPlan"
-Cohesion: 0.24
-Nodes (9): declaredScopePrefix(), decodeGitQuotedPath(), executeWorktreeWaveCleanupPlan(), isSummaryArtifactRelPath(), normalizeScopePath(), partitionDeclaredDeletions(), planWaveScopeConformance(), repoRootStillMidMerge() (+1 more)
-
-### Community 463 - "gsd-local-patches/gsd-core/bin/lib/health-diagnostic-rules/consistency.cjs"
+### Community 461 - "gsd-local-patches/gsd-core/bin/lib/validate-command-router.cjs"
 Cohesion: 0.20
-Nodes (9): checkC001(), checkC002(), checkC003(), checkC004(), ADR-0457, ADR-3180, healthDiagnosticMod, phaseIdMod (+1 more)
+Nodes (7): ADR-0457, ADR-0457, cjsCommandRouterAdapter, command_aliases_cjs_1, command_arg_projection_cjs_1, context_utilization_cjs_1, runtime_slash_cjs_1
 
-### Community 464 - "gsd-local-patches/gsd-core/bin/lib/health-diagnostic-rules/install-surface-shadowing.cjs"
+### Community 463 - "gsd-local-patches/gsd-core/bin/lib/gate-predicate-evaluator.cjs"
+Cohesion: 0.29
+Nodes (9): ADR-2008, evaluateArtifactFrontmatterEquals(), evaluateCommandExitZero(), EVALUATOR_KINDS, interpolate(), INTERPOLATION_VAR_NAMES, isNonEmptyString(), KIND_TABLE (+1 more)
+
+### Community 464 - "gsd-local-patches/gsd-core/bin/lib/state-command-router.cjs"
 Cohesion: 0.22
-Nodes (8): ADR-0457, healthDiagnosticMod, installShadowReportMod, package_identity_cjs_1, RULES, runtimeSlashMod, formatManualInstall(), manualInstallCommand()
+Nodes (9): ADR-0174, ADR-0457, ADR-3180, ADR-3473, cjsCommandRouterAdapter, command_aliases_cjs_1, command_arg_projection_cjs_1, routeStateCommand() (+1 more)
 
-### Community 465 - "gsd-local-patches/gsd-core/bin/lib/install-shadow-report.cjs"
-Cohesion: 0.33
-Nodes (9): checkInstallSurfaceShadowing(), buildPrefixLookup(), buildShadowReport(), installed_surface_resolver_cjs_1, isGenuinelyShadowed(), renderShadowReport(), runtimeArtifactLayoutMod, sanitizeForRender() (+1 more)
+### Community 465 - ".agents/gsd-core/bin/lib/agent-command-router.cjs"
+Cohesion: 0.28
+Nodes (8): routeAgent(), AGENT_FAILURE_CLASSES, ADR-0457, classifyAgentFailure(), io, parseRetryAfter(), QUOTA_SENTINELS, routeAgentCommand()
 
 ### Community 466 - "constructor"
 Cohesion: 0.22
@@ -3306,9 +3298,9 @@ Nodes (10): constructor(), fromRE2(), maxBitStateLen(), numberOfCapturingGroups(
 Cohesion: 0.31
 Nodes (8): assertValidActiveWorkstreamName(), ADR-0457, ADR-3473, hasInvalidPathSegment(), isValidActiveWorkstreamName(), normalizeWorkstreamNameInput(), validateActiveWorkstreamName(), validateWorkstreamName()
 
-### Community 469 - "gsd-local-patches/hooks/gsd-check-update-worker.js"
-Cohesion: 0.20
-Nodes (7): fs, ADR-0457, MANAGED_HOOKS, path, NOTE: managed-hooks-registry.cjs must be in HOOKS_TO_COPY (scripts/build-…, result, staleHooks
+### Community 469 - ".agents/gsd-core/bin/lib/assumption-delta.cjs"
+Cohesion: 0.36
+Nodes (7): ADR-3889, detectAssumptionDelta(), makeSnippet(), markdown_sectionizer_cjs_1, normalizeTerms(), pattern_cjs_1, resolveTerms()
 
 ### Community 470 - "gsd-local-patches/hooks/gsd-update-banner.js"
 Cohesion: 0.29
@@ -3318,25 +3310,25 @@ Nodes (9): buildBannerOutput(), fs, ADR-0457, main(), os, path, readCache(), rec
 Cohesion: 0.27
 Nodes (9): ALLOWED_TAGS, buildViewArgs(), CHECK_REASON, checkLatestVersion(), { execNpm }, main(), { packageName: PACKAGE_NAME }, resolveTag() (+1 more)
 
-### Community 472 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/consistency.cjs"
-Cohesion: 0.20
-Nodes (9): checkC001(), checkC002(), checkC003(), checkC004(), ADR-0457, ADR-3180, healthDiagnosticMod, phaseIdMod (+1 more)
+### Community 472 - "gsd-local-patches/gsd-core/bin/lib/intel-command-router.cjs"
+Cohesion: 0.25
+Nodes (7): ADR-0959, cjsCommandRouterAdapter, commandRoutingHub, coreUtils, _defaultCore, io, path
 
-### Community 473 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/install-surface-shadowing.cjs"
-Cohesion: 0.22
-Nodes (8): ADR-0457, healthDiagnosticMod, installShadowReportMod, package_identity_cjs_1, RULES, runtimeSlashMod, formatManualInstall(), manualInstallCommand()
+### Community 473 - "gsd-local-patches/gsd-core/bin/lib/ui-frontend-evidence.cjs"
+Cohesion: 0.32
+Nodes (7): hasStaticFrontendEvidence(), node_fs_1, node_path_1, packageJsonHasUiFramework(), SKIP_DIRS, treeHasComponentFile(), UI_FRAMEWORK_DEPS
 
-### Community 474 - "gsd-pristine/gsd-core/bin/lib/install-shadow-report.cjs"
-Cohesion: 0.33
-Nodes (9): checkInstallSurfaceShadowing(), buildPrefixLookup(), buildShadowReport(), installed_surface_resolver_cjs_1, isGenuinelyShadowed(), renderShadowReport(), runtimeArtifactLayoutMod, sanitizeForRender() (+1 more)
+### Community 474 - "gsd-pristine/gsd-core/bin/lib/health-diagnostic-rules/install-surface-shadowing.cjs"
+Cohesion: 0.17
+Nodes (15): checkInstallSurfaceShadowing(), ADR-0457, healthDiagnosticMod, installShadowReportMod, package_identity_cjs_1, RULES, runtimeSlashMod, buildPrefixLookup() (+7 more)
 
 ### Community 475 - "Phase 12: Interactive Knowledge Quiz (Bab V), Rubrik Evaluasi & Laporan Kelulusan BPSDM - Research"
 Cohesion: 0.07
 Nodes (27): 1. Evaluasi Pengetahuan (20 Soal Pilihan Ganda & Kunci Lampiran 1), 1. State Isolation & Schema Definition, 2. Immediate Feedback Quiz Engine, 2. Refleksi Diri (Bab V.A - 5 Pertanyaan Terstruktur), 3. Multi-Channel Report Exporter, 3. Rubrik Asesmen Praktik Terpadu (Bab V Tabel 5.1 BPSDM), 4. High-Fidelity BPSDM Print Certificate Slip, Architectural Responsibility Map (+19 more)
 
 ### Community 476 - "gsd-pristine/gsd-core/bin/lib/runtime-identity.cjs"
-Cohesion: 0.27
-Nodes (7): buildIdentityPayload(), capability_loader_cjs_1, classifyIdentityProbe(), cmdRuntimeIdentity(), excerpt(), package_identity_cjs_1, parseIdentityRecord()
+Cohesion: 0.21
+Nodes (9): formatManualInstall(), manualInstallCommand(), buildIdentityPayload(), capability_loader_cjs_1, classifyIdentityProbe(), cmdRuntimeIdentity(), excerpt(), package_identity_cjs_1 (+1 more)
 
 ### Community 477 - "gsd-pristine/gsd-core/bin/lib/state-command-router.cjs"
 Cohesion: 0.22
@@ -3350,9 +3342,9 @@ Nodes (10): constructor(), fromRE2(), maxBitStateLen(), numberOfCapturingGroups(
 Cohesion: 0.31
 Nodes (8): assertValidActiveWorkstreamName(), ADR-0457, ADR-3473, hasInvalidPathSegment(), isValidActiveWorkstreamName(), normalizeWorkstreamNameInput(), validateActiveWorkstreamName(), validateWorkstreamName()
 
-### Community 481 - ".agents/hooks/gsd-update-banner.js"
-Cohesion: 0.29
-Nodes (9): buildBannerOutput(), fs, ADR-0457, main(), os, path, readCache(), recordFailureWarning() (+1 more)
+### Community 481 - "ensureRuntimeBuild"
+Cohesion: 0.08
+Nodes (31): acquireLock(), ADR-0457, defaultLibDir(), defaultPackageRoot(), ensureRuntimeBuild(), forceFullEmit(), fs, isBuilt() (+23 more)
 
 ### Community 482 - "checkpoint-engine.test.js"
 Cohesion: 0.29
@@ -3394,9 +3386,9 @@ Nodes (24): API Design, Authentication, Caching, Dashboard, Database, Deployment
 Cohesion: 0.39
 Nodes (8): ADR-0457, finalize(), isPlainObject(), normalizeRelPath(), resolveCodeReviewDepth(), ruleMatchesFile(), validateOverrides(), validateRulePath()
 
-### Community 492 - "gsd-local-patches/gsd-core/bin/lib/config-schema.cjs"
-Cohesion: 0.31
-Nodes (8): _capabilityConfigSchema(), capabilityRegistry, ADR-0457, ADR-1244, configuration_cjs_1, isCapabilityConfigKey(), isCentralConfigKey(), isValidConfigKey()
+### Community 492 - ".agents/gsd-core/bin/lib/federated-config.cjs"
+Cohesion: 0.43
+Nodes (6): ADR-0857, _getNestedValue(), _isWellFormedSlice(), mergeFederatedConfig(), _typeMatches(), VALID_SLICE_TYPES
 
 ### Community 493 - "gsd-local-patches/gsd-core/bin/lib/fallow-runner.cjs"
 Cohesion: 0.28
@@ -3506,9 +3498,9 @@ Nodes (6): ADR-1239, collectPathValues(), evaluateBeforeTool(), inferProviderId(
 Cohesion: 0.36
 Nodes (7): ADR-0457, ADR-2782, deriveReviewerSlugs(), KNOWN_REVIEWER_SLUGS(), normalizeConfiguredDefaultReviewers(), normalizeReviewerInstances(), resolveReviewerSelection()
 
-### Community 521 - ".agents/gsd-core/bin/lib/validate.cjs"
-Cohesion: 0.11
-Nodes (22): checkW006(), checkW007(), ADR-0457, ADR-3180, computeClaimedDirs(), dirsForPhase(), healthDiagnosticMod, isPhaseNotStarted() (+14 more)
+### Community 521 - ".agents/gsd-core/bin/lib/phase-id.cjs"
+Cohesion: 0.04
+Nodes (82): checkW023(), checkW006(), checkW007(), ADR-0457, ADR-3180, computeClaimedDirs(), dirsForPhase(), healthDiagnosticMod (+74 more)
 
 ### Community 522 - "toString"
 Cohesion: 0.29
@@ -3646,9 +3638,9 @@ Nodes (4): migration, node_fs_1, node_path_1, RETIRED_SUBPATHS
 Cohesion: 0.40
 Nodes (4): checkSchemaDrift(), ADR-0457, detectSchemaFiles(), shell_command_projection_cjs_1
 
-### Community 558 - ".agents/gsd-core/bin/lib/spec-section.cjs"
-Cohesion: 0.40
-Nodes (5): cliExitModule, countSectionDataRows(), node_fs_1, specSectionStatus(), VALID_KEYS
+### Community 558 - "gsd-local-patches/gsd-core/bin/lib/exit-code-registry.cjs"
+Cohesion: 0.29
+Nodes (4): ADR-3889, CODE_TO_NAME, EXIT_CODES, NAME_TO_CODE
 
 ### Community 559 - "Planner Guidance: Philosophy, Task Calibration, and Output Formats"
 Cohesion: 0.09
@@ -3658,9 +3650,9 @@ Nodes (22): Building the Dependency Graph, Checkpoint Reached / Revision Complet
 Cohesion: 0.33
 Nodes (5): ADR-0058, COMMANDS_DIR, node_fs_1, node_path_1, slashCommandTransformer
 
-### Community 561 - "gsd-local-patches/gsd-core/bin/lib/eval.cjs"
-Cohesion: 0.47
-Nodes (5): cmdEvalScore(), computeEvalScore(), INFRA_TOKENS, INFRA_VALUE, parseFlag()
+### Community 561 - "gsd-local-patches/gsd-core/bin/lib/ui-safety-gate.cjs"
+Cohesion: 0.33
+Nodes (4): ADR-0457, ADR-3889, UI_GATE_PATTERN, UI_GATE_PATTERN_GLOBAL
 
 ### Community 562 - "gsd-local-patches/gsd-core/bin/lib/installer-migrations/003-rename-get-shit-done-to-gsd-core.cjs"
 Cohesion: 0.33
@@ -3902,10 +3894,6 @@ Nodes (18): Advisor Tool (Claude Code), Candidate pairings, Constraint: session-
 Cohesion: 0.11
 Nodes (18): Advanced Fields, Complete Field Reference, Core Fields, Example Configurations, Features Fields, Field Interactions, Git Fields, Hook Fields (+10 more)
 
-### Community 685 - "gsd-local-patches/gsd-core/bin/lib/user-artifact-staging.cjs"
-Cohesion: 0.18
-Nodes (18): copyPreservingSymlink(), ADR-3574, _installEngineSymlinkGuard(), installerMigrations, installFsAdapter, isFlatName(), isProcessAlive(), lstatPresent() (+10 more)
-
 ### Community 686 - "Framework Profiles"
 Cohesion: 0.11
 Nodes (18): AI Framework Decision Matrix, Anti-Patterns, AutoGen / AG2 / Microsoft Agent Framework, By Model Commitment, By System Type, By Team Size and Stage, Combination Plays (Multi-Framework Stacks), CrewAI (+10 more)
@@ -3942,10 +3930,6 @@ Nodes (18): Anti-Patterns, Continuation Format, Core Structure, Don't: Command-o
 Cohesion: 0.11
 Nodes (18): Advisor Tool (Claude Code), Candidate pairings, Constraint: session-level only (today), Design Rationale, Dynamic Routing with Failure-Tier Escalation (#3024), Model Profiles, Per-Agent Overrides, Per-Phase-Type Model Map (#3023) (+10 more)
 
-### Community 695 - ".agents/gsd-core/bin/lib/user-artifact-staging.cjs"
-Cohesion: 0.20
-Nodes (17): ADR-3574, _installEngineSymlinkGuard(), installerMigrations, installFsAdapter, isFlatName(), isProcessAlive(), lstatPresent(), node_crypto_1 (+9 more)
-
 ### Community 696 - "Reapply Local Patches Workflow"
 Cohesion: 0.11
 Nodes (17): 5a: Deterministic verifier (binding gate, #2969), 5b: Hunk Verification Table review (advisory gate, #1999), Git-enhanced two-way merge, Option A: Pristine hash from backup-meta.json + git history (most reliable), Option B: Pristine snapshot directory, Option C: No baseline available (two-way fallback), Post-merge verification, Reapply Local Patches Workflow (+9 more)
@@ -3961,10 +3945,6 @@ Nodes (17): Archive Reference, Archive Reference, Archive Reference, Archive Ref
 ### Community 699 - "Gate Prompt Patterns"
 Cohesion: 0.12
 Nodes (16): Gate Prompt Patterns, Pattern: action-routing, Pattern: approve-revise-abort, Pattern: context-handling, Pattern: depth-select, Pattern: gray-area-option, Pattern: multi-option-escalation, Pattern: multi-option-failure (+8 more)
-
-### Community 700 - "ensureRuntimeBuild"
-Cohesion: 0.18
-Nodes (15): acquireLock(), ADR-0457, defaultLibDir(), defaultPackageRoot(), ensureRuntimeBuild(), forceFullEmit(), fs, isBuilt() (+7 more)
 
 ### Community 701 - "Gate Prompt Patterns"
 Cohesion: 0.12
@@ -4042,13 +4022,9 @@ Nodes (14): Composition with model_profile, Context Budget Rules, Context Budget
 Cohesion: 0.13
 Nodes (14): 10.5. Link Pending Todos to Roadmap Phases, 10. Create Roadmap, 11. Done, 1. Load Context, 2.5. Scan Planted Seeds, 2. Gather Milestone Goals, 3.5. Verify Milestone Understanding, 3. Determine Milestone Version (+6 more)
 
-### Community 720 - "gsd-local-patches/gsd-core/bin/lib/retired-artifact-cleanup.cjs"
-Cohesion: 0.15
-Nodes (13): assertDescriptorConfined(), ADR-1239, ADR-1577, isPathConfined(), node_path_1, capabilityRegistry, ADR-0058, external_descriptor_trust_cjs_1 (+5 more)
-
 ### Community 721 - "gsd-local-patches/gsd-core/bin/lib/observability/logger.cjs"
-Cohesion: 0.15
-Nodes (10): _appendAuditLine(), ADR-0174, ADR-0457, node_fs_1, node_path_1, redaction_cjs_1, _safeStringify(), ADR-0457 (+2 more)
+Cohesion: 0.10
+Nodes (15): _appendAuditLine(), ADR-0174, ADR-0457, node_fs_1, node_path_1, redaction_cjs_1, _safeStringify(), ADR-0457 (+7 more)
 
 ### Community 722 - "Context Budget Rules"
 Cohesion: 0.13
@@ -4073,10 +4049,6 @@ Nodes (14): 1. Menyamakan 9Router, 2. Instalasi dan pemeriksaan Hermes di Window
 ### Community 727 - "Target Modules & Structure"
 Cohesion: 0.13
 Nodes (14): 1. Interactive Collapsible/Expandable Module Containers, 2. Enhanced 1-Click Code Snippet Engine, 3. Interactive Glossary Tooltips & Popovers, 4. Styled Caution & Alert Callout Cards, 5. Secure External Links, Module 1: Node.js (Pemeriksaan & Instalasi), Module 2: 9Router (Instalasi & Menjalankan), Module 3: Telegram Bot (Pembuatan Bot & User ID) (+6 more)
-
-### Community 728 - "parseUatItemsWithStats"
-Cohesion: 0.23
-Nodes (14): blankIndentedFenceDelimiters(), clipBlockAtFirstFence(), countUnattributedIndentedRows(), dropTopLevelFencedRegions(), extractScalarField(), foldScalarBody(), isColumnZeroHeading(), isTestRowHeadingText() (+6 more)
 
 ### Community 729 - "Phase Prompt Template"
 Cohesion: 0.14
@@ -4543,8 +4515,8 @@ Cohesion: 0.20
 Nodes (9): Pattern Mapping Complete, PATTERNS.md Structure, Step 1: Receive Scope and Load Context, Step 2: Classify Files, Step 3: Find Closest Analogs, Step 4: Extract Patterns from Analogs, Step 5: Identify Shared Patterns, Step 6: Write PATTERNS.md (+1 more)
 
 ### Community 845 - ".agents/gsd-core/bin/lib/gate-predicate-evaluator.cjs"
-Cohesion: 0.29
-Nodes (9): ADR-2008, evaluateArtifactFrontmatterEquals(), evaluateCommandExitZero(), EVALUATOR_KINDS, interpolate(), INTERPOLATION_VAR_NAMES, isNonEmptyString(), KIND_TABLE (+1 more)
+Cohesion: 0.14
+Nodes (16): ADR-2008, evaluateArtifactFrontmatterEquals(), evaluateCommandExitZero(), EVALUATOR_KINDS, interpolate(), INTERPOLATION_VAR_NAMES, isNonEmptyString(), KIND_TABLE (+8 more)
 
 ### Community 846 - "Prevention / Blameless-Postmortem Output"
 Cohesion: 0.20
@@ -4762,10 +4734,6 @@ Nodes (8): Advisory frontmatter, Convergence Evidence Gate (#3304), Definitions,
 Cohesion: 0.22
 Nodes (8): Section 1 — Planning Tuning, Section 2 — Execution Tuning, Section 3 — Discussion Tuning, Section 4 — Cross-AI Execution, Section 5 — Git Customization, Section 6 — Runtime / Output, Section 7 — Runtime Model Tiers, Section 8 — Model Policy
 
-### Community 900 - "gsd-local-patches/gsd-core/bin/lib/capability-activation.cjs"
-Cohesion: 0.31
-Nodes (8): _getNestedConfigValue(), node_fs_1, node_path_1, planningWorkspaceMod, _readRawConfigKey(), resolveConfigKey(), _warnedRawConfigPaths, readEvalConfig()
-
 ### Community 901 - "Regression-Test Hardening — Shrinking + Oracle + Boundaries"
 Cohesion: 0.22
 Nodes (8): 1. Shrinking-based repro minimization (input-space bugs), 2. Explicit oracle classification (before writing the assertion), 3. Boundary neighbors (around the fixed equivalence class), Bound the property/shrink run (GEMINI.md gauntlet — unbounded subprocess), Regression-Test Hardening — Shrinking + Oracle + Boundaries, Scope boundary (Zawinski's Law), Why this exists, Why this matters for Phase 1A
@@ -4825,10 +4793,6 @@ Nodes (8): Section 1 — Planning Tuning, Section 2 — Execution Tuning, Sectio
 ### Community 915 - "gsd-local-patches/skills/gsd-surface/SKILL.md"
 Cohesion: 0.22
 Nodes (8): disable \<cluster\>, enable \<cluster\>, Error handling, list / status, profile \<name\>, reset, runtimeConfigDir resolution, Sub-command routing
-
-### Community 916 - "gsd-pristine/gsd-core/bin/lib/workstream-inventory-builder.cjs"
-Cohesion: 0.31
-Nodes (8): buildWorkstreamInventory(), ADR-0457, ADR-3180, isCompletedInventory(), node_path_1, phase_lifecycle_cjs_1, pickRollupWinners(), toPosixPath()
 
 ### Community 917 - "Regression-Test Hardening — Shrinking + Oracle + Boundaries"
 Cohesion: 0.22
@@ -4929,14 +4893,6 @@ Nodes (8): 1. Executive Summary, 2. Requirements Traceability Matrix (3-Source V
 ### Community 941 - ".agents/agents/gsd-codebase-mapper.md"
 Cohesion: 0.25
 Nodes (7): ARCHITECTURE.md Template (arch focus), CONCERNS.md Template (concerns focus), CONVENTIONS.md Template (quality focus), INTEGRATIONS.md Template (tech focus), STACK.md Template (tech focus), STRUCTURE.md Template (arch focus), TESTING.md Template (quality focus)
-
-### Community 942 - ".agents/gsd-core/bin/lib/commonjs-marker.cjs"
-Cohesion: 0.43
-Nodes (7): ADR-0058, classifyMarker(), ensureCommonJsMarker(), installFsAdapter, markerPathFor(), node_path_1, removeCommonJsMarker()
-
-### Community 943 - ".agents/gsd-core/bin/lib/ui-frontend-evidence.cjs"
-Cohesion: 0.32
-Nodes (7): hasStaticFrontendEvidence(), node_fs_1, node_path_1, packageJsonHasUiFramework(), SKIP_DIRS, treeHasComponentFile(), UI_FRAMEWORK_DEPS
 
 ### Community 944 - "Agent Contracts"
 Cohesion: 0.25
@@ -6159,9 +6115,9 @@ Cohesion: 0.50
 Nodes (3): Overview, Quick Plan: Initialize UI/UX Pro Max for Antigravity, Tasks
 
 ## Knowledge Gaps
-- **11496 isolated node(s):** `{ execNpm }`, `{ runMain }`, `{ packageName: PACKAGE_NAME }`, `CHECK_REASON`, `ALLOWED_TAGS` (+11491 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 14059 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **257 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **11500 isolated node(s):** `{ execNpm }`, `{ runMain }`, `{ packageName: PACKAGE_NAME }`, `CHECK_REASON`, `ALLOWED_TAGS` (+11495 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 14067 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **261 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

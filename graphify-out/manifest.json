@@ -5256,10 +5256,10 @@
     "semantic_hash": "13a39e08ef724a0d79acc17f3c31dc61"
   },
   ".planning/state.json": {
-    "mtime": 1788839562.8731935,
-    "seen": 1788840583.9271684,
-    "ast_hash": "9c14bf212e3f1d08e9d9c0790e1ce201",
-    "semantic_hash": "9c14bf212e3f1d08e9d9c0790e1ce201"
+    "mtime": 1788846678.9383867,
+    "seen": 1788846726.5192947,
+    "ast_hash": "a0c0a4bb70518f190850c20ba71784bf",
+    "semantic_hash": ""
   },
   "assets/js/app.js": {
     "mtime": 1788839562.9147832,
@@ -11592,9 +11592,9 @@
     "semantic_hash": ""
   },
   ".planning/PROJECT.md": {
-    "mtime": 1788839562.807536,
-    "seen": 1788843430.989079,
-    "ast_hash": "14ff5be45fc795e9ddc0791e20cfb8b7",
+    "mtime": 1788846694.7466252,
+    "seen": 1788846726.9312398,
+    "ast_hash": "3e93d61b88a9533d8ce82046eac703e7",
     "semantic_hash": ""
   },
   ".planning/REQUIREMENTS.md": {
@@ -11616,9 +11616,9 @@
     "semantic_hash": ""
   },
   ".planning/STATE.md": {
-    "mtime": 1788842852.2797086,
-    "seen": 1788843430.989079,
-    "ast_hash": "5025889603b76254fa796a228a912794",
+    "mtime": 1788846678.2509534,
+    "seen": 1788846726.9327564,
+    "ast_hash": "b1722651b6b2473bfaeb24dca8ccad68",
     "semantic_hash": ""
   },
   ".planning/codebase/ARCHITECTURE.md": {
@@ -12227,84 +12227,6 @@
     "ast_hash": "a9cf2b3756c6349e683d10f008149ee1",
     "semantic_hash": ""
   },
-  ".planning/phases/14-workspace-studio-navigation-sidebar-deduplication-material3-polishing/14-01-PLAN.md": {
-    "mtime": 1788839562.8608654,
-    "seen": 1788843430.989079,
-    "ast_hash": "a7e3627d3d818c719ee23db8df86d3ea",
-    "semantic_hash": ""
-  },
-  ".planning/phases/14-workspace-studio-navigation-sidebar-deduplication-material3-polishing/14-01-SUMMARY.md": {
-    "mtime": 1788839562.8608654,
-    "seen": 1788843430.989079,
-    "ast_hash": "181d7a629403ca68f4c547d92318b6b7",
-    "semantic_hash": ""
-  },
-  ".planning/phases/15-google-notebooklm-frontpage-hub-seamless-studio-navigation/15-01-PLAN.md": {
-    "mtime": 1788839562.8608654,
-    "seen": 1788843430.989079,
-    "ast_hash": "c05d2cffd61beebbfc08d70451460aa5",
-    "semantic_hash": ""
-  },
-  ".planning/phases/15-google-notebooklm-frontpage-hub-seamless-studio-navigation/15-01-SUMMARY.md": {
-    "mtime": 1788839562.8608654,
-    "seen": 1788843430.989079,
-    "ast_hash": "61921bf99983cb0158213d3290099cae",
-    "semantic_hash": ""
-  },
-  ".planning/phases/16-cryptographic-passcode-hashing-secret-protection/PLAN.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "aa62385be010001ac2929ef612583149",
-    "semantic_hash": ""
-  },
-  ".planning/phases/17-url-gate-hardening-session-management-anti-tampering/17-01-PLAN.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "aa555ae95cc0c176134bd8d39580dd52",
-    "semantic_hash": ""
-  },
-  ".planning/phases/17-url-gate-hardening-session-management-anti-tampering/17-01-SUMMARY.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "caa1545f8410bdeaf7e40c3666504c89",
-    "semantic_hash": ""
-  },
-  ".planning/phases/17-url-gate-hardening-session-management-anti-tampering/17-RESEARCH.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "84bad32c9d37a9c6ee927a8f5950aa65",
-    "semantic_hash": ""
-  },
-  ".planning/phases/17-url-gate-hardening-session-management-anti-tampering/17-VALIDATION.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "f99ed251a1ca501e51adacaeaa8b85bc",
-    "semantic_hash": ""
-  },
-  ".planning/phases/18-content-security-policy-dom-sanitization-anti-clickjacking/18-01-PLAN.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "5a177aa1866c890c9a98ce48aa85339b",
-    "semantic_hash": ""
-  },
-  ".planning/phases/18-content-security-policy-dom-sanitization-anti-clickjacking/18-01-SUMMARY.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "eef9a55f233a426ef25de592004c6128",
-    "semantic_hash": ""
-  },
-  ".planning/phases/18-content-security-policy-dom-sanitization-anti-clickjacking/18-RESEARCH.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "ff575b60ddf933971837a8dd8c027730",
-    "semantic_hash": ""
-  },
-  ".planning/phases/18-content-security-policy-dom-sanitization-anti-clickjacking/18-VALIDATION.md": {
-    "mtime": 1788839562.8629923,
-    "seen": 1788843430.989079,
-    "ast_hash": "16a0002ec4b34715d15b1a02d757bbc2",
-    "semantic_hash": ""
-  },
   ".planning/quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-PLAN.md": {
     "mtime": 1788839562.8629923,
     "seen": 1788843430.989079,
@@ -12420,9 +12342,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1788839562.92516,
-    "seen": 1788843430.989079,
-    "ast_hash": "3a965455c02c4030285c3b42ad95358b",
+    "mtime": 1788844805.5515113,
+    "seen": 1788846727.0005758,
+    "ast_hash": "1302e6d182c69ec0e39b26ebddaea6bf",
     "semantic_hash": ""
   },
   "tests/index.html": {
@@ -12459,6 +12381,30 @@
     "mtime": 1788839562.9228985,
     "seen": 1788843430.989079,
     "ast_hash": "8bb619b55ba3ef6ca9850567e6b04620",
+    "semantic_hash": ""
+  },
+  ".planning/quick/260908-dck-dockerignore-test-runner-fix/PLAN.md": {
+    "mtime": 1788842827.3134198,
+    "seen": 1788846726.9944081,
+    "ast_hash": "54d2c8e31c54a751c6656bccd0430420",
+    "semantic_hash": ""
+  },
+  ".planning/quick/260908-dck-dockerignore-test-runner-fix/SUMMARY.md": {
+    "mtime": 1788842840.4478762,
+    "seen": 1788846726.9944081,
+    "ast_hash": "59cac2bf3f64135b4375630f90f1a4be",
+    "semantic_hash": ""
+  },
+  ".planning/quick/260908-pga-postgresql-storage-architecture-analysis/PLAN.md": {
+    "mtime": 1788843415.1958582,
+    "seen": 1788846726.9959168,
+    "ast_hash": "706e197ee792dee6135b98ed022faef0",
+    "semantic_hash": ""
+  },
+  ".planning/quick/260908-pga-postgresql-storage-architecture-analysis/SUMMARY.md": {
+    "mtime": 1788843428.1145458,
+    "seen": 1788846726.9959168,
+    "ast_hash": "8bbb7c5efbc8cecc154afd153e467dde",
     "semantic_hash": ""
   }
 }
