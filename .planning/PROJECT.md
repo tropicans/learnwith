@@ -1,30 +1,31 @@
 # learnwith — Interactive Training Platform (Multi-Course)
 
 ## What This Is
-A modern, responsive, and beginner-friendly web learning platform designed to guide workshop participants through interactive technical training. It provides a modular course architecture hosting:
+A modern, responsive, and beginner-friendly web learning platform designed to guide workshop participants through interactive technical training. Built with TanStack Start, React 19, Vinxi, and Nitro with full-document SSR, file-based routing, and progressive streaming. It provides a modular course architecture hosting:
 1. **Course 1**: *Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router* (Production & Published).
-2. **Course 2**: *Pengolahan Kata Tingkat Lanjut* (Pelatihan Komputer Lanjutan BPSDM DKI Jakarta) — Protected/Locked for development with passkey and dedicated isolated directory/module structure.
+2. **Course 2**: *Pengolahan Kata Tingkat Lanjut* (Pelatihan Komputer Lanjutan BPSDM DKI Jakarta) — Protected with timing-safe passkey verification (`createServerFn`) and isolated directory/module structure.
 
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current Milestone: v3.0 TanStack Start Full-Document SSR & File-Based Router Migration
+## Current State: v3.0 Shipped (2026-09-08)
 
-**Goal:** Transformasikan arsitektur aplikasi learnwith menjadi modern full-stack TanStack Start application dengan file-based routing via TanStack Router, runtime-validated search params (Zod), typed route loaders, typed server functions (`createServerFn`), full-document SSR, dan streaming architecture tanpa mengubah model aplikasi inti, menjaga server-only boundaries tetap terisolasi, serta mengoptimalkan deployment target.
-
-**Target Features:**
-- **TanStack Start & Vite Full-Stack Foundation**: Inisialisasi struktur TanStack Start dengan bundling Vite/Nitro/Vinxi, konfigurasi TypeScript, dan full-document SSR (`<StartServer />`, `<Meta />`, `<Scripts />`).
-- **File-Based Routing (TanStack Router)**: Migrasi seluruh halaman (`/` untuk Home Hub, `/course/ai` untuk Agentic AI Workshop, `/course/word` untuk Pengolahan Kata, `/settings`, `/diagnostics`) ke sistem routes berbasis file (`app/routes/`).
-- **Validated Search Params & Type-Safe Navigation**: Schema validasi Zod untuk seluruh query parameters (misal: `mode: 'pretraining' | 'live-class'`, `tab`, `filter`, `unlock`, `checkpoint`) dengan type safety penuh di router navigation.
-- **Typed Route Loaders & SSR Streaming**: Pemuatan modul dan kurikulum asinkron melalui route `loader` dengan fallback skeletons dan streaming rendering (HTML streamed progressively ke client).
-- **Typed Server Functions (`createServerFn`)**: Abstraksi server boundaries yang aman untuk operasi sensitif (verifikasi passkey, hash validation, dynamic resource resolution, persistent state sync) tanpa mengekspos logic rahasia ke browser bundle.
-- **Route-Level SSR Mode Selection & Target Deployment Optimization**: Konfigurasi mode SSR yang tepat per route (full SSR, streaming, atau client-only SPA islands untuk interactive state widgets) serta adaptasi runtime deployment (Docker container/Node server/Edge) tanpa mengubah logic platform.
-
-## Current State: v2.2 Shipped (2026-09-07)
-
-The platform is a fully hardened multi-course learning studio with cryptographic passcode hashing (Zero-Plaintext Web Crypto API), protected routes, anti-framing CSP, and 100% automated test coverage.
+The platform is a production-hardened full-stack application running TanStack Start, React 19, Vinxi, and Nitro node-server in a multi-stage Docker container with Alpine tini PID 1, non-root `node` user, full-document SSR, route loaders, progressive streaming Suspense skeletons, timing-safe `createServerFn` instructor passkey authentication, quarantined server boundaries, and 100% test pass rate across multi-tier test suites.
 
 ## Previous Milestones
+
+<details>
+<summary>✅ v3.0 Complete (TanStack Start Full-Document SSR & File-Based Router Migration) - SHIPPED 2026-09-08</summary>
+
+- **Phases**: 19-23 (5 phases, 15 plans)
+- **Accomplishments**:
+  - Migrated codebase to TanStack Start v1.120.20, React 19, Vinxi 0.5.3, Vite 6, and TypeScript strict mode.
+  - Implemented file-based routing (`app/routes/`) with centralized Zod query parameter validation and type-safe navigation.
+  - Built strongly-typed server route loaders (`app/data/courses.ts`), progressive HTML streaming via Suspense skeletons, and dynamic OpenGraph `<head>` metadata.
+  - Quarantined backend configuration and secrets in `app/server/` with timing-safe passkey verification and telemetry via `createServerFn`.
+  - Hardened multi-stage Docker container with Alpine tini PID 1, non-root `node` user, and multi-tier test harness with 100% legacy test suite zero regression.
+
+</details>
 
 <details>
 <summary>✅ v2.2 Complete (Application Security Hardening & Anti-Breach Protection) - SHIPPED 2026-09-07</summary>
@@ -144,44 +145,53 @@ The platform is a fully hardened multi-course learning studio with cryptographic
 - ✓ Rubrik Refleksi Diri & Checklist Portofolio ASN (QUIZ-03) — v2.0
 - ✓ Kalkulasi Kelulusan BPSDM & Kartu Sertifikat Kop Surat (WORD-RPT-01) — v2.0
 - ✓ Ekspor Laporan WhatsApp, Telegram & Cetak Dokumen Dinas (WORD-RPT-02) — v2.0
+- ✓ Root package manifest with pinned TanStack Start/React 19 dependencies & scripts (FOUND-01) — v3.0
+- ✓ `app.config.ts` Vinxi app configuration & Port 3173 containerization (FOUND-02) — v3.0
+- ✓ `tsconfig.json` with `@/*` path alias and strict type-checking (FOUND-03) — v3.0
+- ✓ `app/client.tsx` & `app/ssr.tsx` hydration and streaming entry points (FOUND-04) — v3.0
+- ✓ Global HTML root document shell (`__root.tsx`) with styles & header (ROUTE-01) — v3.0
+- ✓ Index route (`/`) rendering Google NotebookLM Frontpage Hub (ROUTE-02) — v3.0
+- ✓ File route `/course/ai` with dual-mode navigation (ROUTE-03) — v3.0
+- ✓ File route `/course/word` for Word Processing ASN workspace (ROUTE-04) — v3.0
+- ✓ Type-safe Zod search parameter validation schemas (ROUTE-05) — v3.0
+- ✓ Strongly-typed route loaders preloading curriculum structures on server (SSR-01) — v3.0
+- ✓ Progressive HTML streaming with React Suspense fallbacks using `defer` & `<Await>` (SSR-02) — v3.0
+- ✓ Dynamic route metadata (`head()`) outputting contextual page titles, descriptions, and OpenGraph tags (SSR-03) — v3.0
+- ✓ Client-only interactive widgets accessing browser state wrapped in `<ClientOnly>` boundaries (SSR-04) — v3.0
+- ✓ Instructor passkey verification executed via `createServerFn` with server-side Zod validation (SRV-01) — v3.0
+- ✓ Secret hashes and environment variables quarantined in `app/server/` and excluded from client bundles (SRV-02) — v3.0
+- ✓ Internal telemetry and diagnostics executed via typed RPC without exposing raw secrets (SRV-03) — v3.0
+- ✓ Standalone Production Docker Container packaging compiled TanStack Start app with Nitro node-server (DEPLOY-01) — v3.0
+- ✓ Route SSR Mode Selection with NotebookLM 404 and structured request logging (DEPLOY-02) — v3.0
+- ✓ Hardened Dockerfile & Compose with non-root user, tini signal trapping, and native healthchecks (DEPLOY-03) — v3.0
+- ✓ Multi-Tier Testing Harness and 100% Zero-Regression Legacy Guarantee (DEPLOY-04) — v3.0
+
+### Active
+*(None — milestone complete, define next milestone via `/gsd-new-milestone`)*
 
 ### Out of Scope
 - Automated remote installation on user's machine (security risk; users must run commands themselves).
-- Backend server hosting or user authentication (web app runs locally/statically in browser for maximum privacy).
 - Storing participant OAuth client secrets or bot tokens in `localStorage` (credentials must remain in participant's local environment).
+- Heavy external UI component libraries that increase bundle size and degrade first paint performance.
 
 ## Context
-Shipped v2.0 with ~7,500 lines of production HTML, CSS, and JavaScript. 269 automated unit test assertions and 35 Playwright E2E browser tests passing with zero failures. Complete multi-course platform ready for live deployment and classroom use.
+Shipped v3.0 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server. 16 test suites passing (24/24 unit assertions, 7/7 Docker smoke assertions, 5/5 boundary isolation checks, 0 regressions). Multi-stage containerized deployment on Port 3173.
 
 ## Key Decisions
 - ✓ **Architecture**: Lightweight, modular Vanilla HTML5, modern CSS3 (Custom Properties, Glassmorphism, Responsive Grid/Flex), and Vanilla JS ES6+ (zero complex build steps required, runnable offline or on any browser) — *Outcome: Good*
 - ✓ **Persistence**: Browser `localStorage` for state preservation (steps checked, form input, checkpoint states) — *Outcome: Good*
 - ✓ **Safety First**: Client-side only with built-in token detection & redaction assistant to protect sensitive credentials — *Outcome: Good*
 - ✓ **Tone & Usability**: Indonesian language matching `PANDUAN-PRE-TRAINING.md` and `PANDUAN-PRAKTIK-KELAS.md`, clean typography, high visual feedback, and clear callouts for checkpoints — *Outcome: Good*
+- ✓ **Full-Stack SSR Architecture**: TanStack Start + Vinxi + Nitro node-server instead of SPA/static build (Rationale: SEO, TTFB, modern full-stack capabilities while preserving local/container flexibility) — *Outcome: Good*
+- ✓ **File-Based Routing & Zod Search Params**: Declarative file routing in `app/routes/` with type-safe schema validation (Rationale: Eliminates manual DOM swapping and route ambiguity) — *Outcome: Good*
+- ✓ **Server Functions Boundary Isolation**: `createServerFn` with secrets quarantined in `app/server/` (Rationale: Zero server secrets in client bundle, AST-level test verification) — *Outcome: Good*
+- ✓ **Production Containerization**: Multi-stage Dockerfile with tini PID 1, non-root user `node`, standalone Nitro server (Rationale: Secure, reproducible, production-ready runtime on Port 3173) — *Outcome: Good*
 
-## Next Milestone Goals (v1.2 Candidates)
-- Interactive command simulator / terminal preview playground for dry-running PowerShell commands before executing.
-- Live localhost ping button (CORS/fetch healthcheck) for `http://localhost:20128/v1` and 9Router status.
-- Multilingual toggle (Indonesian / English) for international participants.
-- PWA (Progressive Web App) manifest and service worker for 100% offline standalone usage.
-
-## Evolution
-
-This document evolves at phase transitions and milestone boundaries.
-
-**After each phase transition** (via `/gsd-transition`):
-1. Requirements invalidated? → Move to Out of Scope with reason
-2. Requirements validated? → Move to Validated with phase reference
-3. New requirements emerged? → Add to Active
-4. Decisions to log? → Add to Key Decisions
-5. "What This Is" still accurate? → Update if drifted
-
-**After each milestone** (via `/gsd-complete-milestone`):
-1. Full review of all sections
-2. Core Value check — still the right priority?
-3. Audit Out of Scope — reasons still valid?
-4. Update Context with current state
+## Next Milestone Goals (v4.0 Candidates)
+- PostgreSQL database integration for centralized multi-device participant progress and synchronized evaluation submissions.
+- Vector DB & Semantic Search for interactive knowledge retrieval from training guides.
+- Multilingual toggle (Indonesian / English) for international workshop participants.
+- Interactive terminal simulator for dry-running CLI commands before local execution.
 
 ---
-*Last updated: 2026-09-07 for Milestone v1.1 Complete*
-
+*Last updated: 2026-09-08 after v3.0 milestone*

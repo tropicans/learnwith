@@ -4,9 +4,9 @@
   "milestone": "v3.0 — TanStack Start Full-Document SSR & File-Based Router Migration",
   "phases": [],
   "next": {
-    "command": "/gsd-new-milestone",
-    "label": "Start a new milestone",
-    "reason": "All phases complete — start a new milestone"
+    "command": "/gsd-progress",
+    "label": "Show progress",
+    "reason": "Unsure of state — showing progress"
   },
-  "updated_at": "2026-09-08T09:13:50.873Z"
+  "updated_at": "2026-09-08T09:35:40.086Z"
 }

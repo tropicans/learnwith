@@ -29,8 +29,41 @@ A modern, responsive, and beginner-friendly web application designed to guide wo
 
 ---
 
+## Milestone: v3.0 — TanStack Start Full-Document SSR & File-Based Router Migration
+
+**Shipped:** 2026-09-08
+**Phases:** 5 | **Plans:** 15 | **Requirements:** 20/20 (100%)
+
+### What Was Built
+Migrated the entire interactive multi-course web platform to a type-safe full-stack application using TanStack Start, React 19, Vinxi, and Nitro node-server. Features file-based routing (`/`, `/course/ai`, `/course/word`, `/diagnostics`), Zod-validated query parameters, strongly-typed server route loaders, progressive Suspense streaming with animated skeleton states, `<ClientOnly>` island encapsulation for interactive state widgets, timing-safe `createServerFn` instructor passkey authentication, quarantined backend boundaries in `app/server/`, and a production-hardened multi-stage Docker container on Port 3173.
+
+### What Worked
+- **CommonJS Boundary Isolation**: Subdirectory `package.json` files with `{"type": "commonjs"}` in `tests/` and `assets/` allowed modern ESM/TypeScript TanStack Start to coexist with legacy CommonJS tests with zero regression.
+- **Progressive Streaming with Route Loaders**: Preloading curriculum structures on the server and streaming HTML chunks via React Suspense eliminated layout shifts and optimized TTFB.
+- **AST Server Boundary Audits**: Static analysis tests verifying AST imports and client build outputs ensured server secrets and `node:crypto` modules never leak into browser bundles.
+- **Multi-Tier Testing Harness**: Splitting tests into `test:smoke`, `test:node`, and `test:docker` provided instant feedback during development while securing production container verification.
+
+### What Was Inefficient
+- **Ecosystem Version Alignments**: Vite 7 peer dependency incompatibilities with early TanStack Start / Vinxi releases required explicitly pinned dependencies.
+- **Node 25 Global Mock Collisions**: Node 25's experimental built-in `localStorage` required defensive mocking in unit test setups.
+
+### Patterns Established
+- **Client Islands for Browser State**: Wrapping components accessing `localStorage` in `<ClientOnly fallback={<Skeleton />}>` completely eliminates React 19 hydration mismatch errors.
+- **Typed Server Functions (`createServerFn`)**: Direct server function invocation via typed POST RPC with timing-safe SHA-256 hash comparison for secure instructor authentication.
+- **Hardened Multi-Stage Containerization**: Multi-stage Docker builds running standalone Nitro output with Alpine `tini` as PID 1, non-root user `node`, and native healthchecks.
+
+### Key Lessons
+- Migrating an existing rich interactive client application to SSR is cleanest when stateful widgets are encapsulated into islands first, keeping document shells and routes declarative and server-rendered.
+
+---
+
 ## Cross-Milestone Trends
 
 | Milestone | Phases | Plans | Tests | Pass Rate | Shipped Date |
 |-----------|--------|-------|-------|-----------|--------------|
 | v1.0 | 4 | 11 | 46 | 100% | 2026-09-03 |
+| v1.1 | 4 | 8 | 153 | 100% | 2026-09-07 |
+| v2.0 | 4 | 8 | 304 | 100% | 2026-09-07 |
+| v2.1 | 3 | 3 | 38 | 100% | 2026-09-07 |
+| v2.2 | 3 | 3 | 24 | 100% | 2026-09-07 |
+| v3.0 | 5 | 15 | 36 | 100% | 2026-09-08 |
