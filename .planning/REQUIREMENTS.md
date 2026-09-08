@@ -8,12 +8,14 @@
 ## Requirements Grouped by Category
 
 ### Category 1: Framework & Tooling Foundation (FOUND)
-- [ ] **FOUND-01**: Inisialisasi package manifest `package.json` dengan `@tanstack/react-start`, `@tanstack/react-router`, `@tanstack/router-plugin`, `@tanstack/react-query`, `vinxi`, React 19/18, Vite 5, dan TypeScript 5.4.
-- [ ] **FOUND-02**: Konfigurasi `app.config.ts` (Vinxi / TanStack Start app configuration) dengan router plugin dan asset handling.
-- [ ] **FOUND-03**: Konfigurasi `tsconfig.json` dengan path alias (`@/*`), strict type-checking, dan DOM/Node types.
-- [ ] **FOUND-04**: Implementasi `app/client.tsx` (client entry point hydration) dan `app/ssr.tsx` (server streaming entry point).
+
+- [x] **FOUND-01**: Inisialisasi package manifest `package.json` dengan `@tanstack/react-start`, `@tanstack/react-router`, `@tanstack/router-plugin`, `@tanstack/react-query`, `vinxi`, React 19/18, Vite 5, dan TypeScript 5.4.
+- [x] **FOUND-02**: Konfigurasi `app.config.ts` (Vinxi / TanStack Start app configuration) dengan router plugin dan asset handling.
+- [x] **FOUND-03**: Konfigurasi `tsconfig.json` dengan path alias (`@/*`), strict type-checking, dan DOM/Node types.
+- [x] **FOUND-04**: Implementasi `app/client.tsx` (client entry point hydration) dan `app/ssr.tsx` (server streaming entry point).
 
 ### Category 2: File-Based Routing & Search Params (ROUTE)
+
 - [ ] **ROUTE-01**: Implementasi root document route `app/routes/__root.tsx` dengan kerangka dokumen HTML lengkap (`<html>`, `<head>`, `<Meta />`, `<Links />`, `<Outlet />`, `<Scripts />`, `<ScrollRestoration />`).
 - [ ] **ROUTE-02**: Implementasi route index `app/routes/index.tsx` yang memetakan Frontpage Hub / Workshop Gallery.
 - [ ] **ROUTE-03**: Implementasi file-based nested route `app/routes/course.ai.tsx` untuk ruang kerja Agentic AI Workshop.
@@ -21,17 +23,20 @@
 - [ ] **ROUTE-05**: Implementasi schema validasi Zod untuk query parameters (`mode`, `tab`, `filter`, `unlock`, `checkpoint`) dengan type safety penuh pada `<Link>` dan navigation hooks.
 
 ### Category 3: Typed Route Loaders, Full-Document SSR & Streaming (SSR)
+
 - [ ] **SSR-01**: Implementasi typed route loaders pada setiap rute untuk preloading modul materi dan silabus kurikulum di server.
 - [ ] **SSR-02**: Konfigurasi React Suspense boundaries dengan fallback skeleton loader untuk full-document progressive SSR streaming.
 - [ ] **SSR-03**: Integrasi metadata dinamis (title, description, OpenGraph, favicon) per route menggunakan API TanStack Router `head()`.
 - [ ] **SSR-04**: Penanganan hydration safety via `<ClientOnly>` component boundary untuk widget interaktif berbasis `localStorage` (checklist, progress tracking, kuis interaktif).
 
 ### Category 4: Server Boundaries & Typed Server Functions (SRV)
+
 - [ ] **SRV-01**: Implementasi `createServerFn` untuk autentikasi dan verifikasi passkey modul pengajar secara aman di sisi server.
 - [ ] **SRV-02**: Isolasi server configuration dan environment variables di `app/server/` agar tidak bocor ke client JavaScript bundle.
 - [ ] **SRV-03**: Typed server function untuk logging diagnostik lokal atau healthcheck gateway tanpa mengekspos endpoint mentah.
 
 ### Category 5: Target Deployment & Production Build Optimization (DEPLOY)
+
 - [ ] **DEPLOY-01**: Konfigurasi build pipeline TanStack Start (`npm run build`) menghasilkan artefak server & client terpisah yang siap produksi.
 - [ ] **DEPLOY-02**: Pemilihan mode SSR per route (Full SSR vs SPA Island) yang tepat untuk memaksimalkan performa TTFB.
 - [ ] **DEPLOY-03**: Pembaruan konfigurasi Dockerfile / Docker Compose untuk menjalankan TanStack Start Node server container tanpa mengubah model runtime yang ada.
@@ -40,11 +45,13 @@
 ---
 
 ## Future Requirements (Deferred)
+
 - **POSTGRES-01**: Integrasi PostgreSQL database untuk penyimpanan terpusat progres peserta multi-device.
 - **VECTOR-01**: Integrasi Vector DB & semantic search untuk modul materi pembelajaran interaktif.
 
 ---
 
 ## Out of Scope
+
 - Mengubah model pembelajaran, konten silabus, atau menghapus fitur offline/client-side storage.
 - Mengubah framework CSS menjadi UI library berat yang mengorbankan performa first paint.

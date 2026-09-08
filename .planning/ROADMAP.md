@@ -17,6 +17,12 @@
 **Goal**: Menyiapkan struktur dasar full-stack TanStack Start, bundler Vinxi/Vite, TypeScript strict configuration, dan entry points SSR/client.
 **Depends on**: Milestone v2.2
 **Requirements**: FOUND-01, FOUND-02, FOUND-03, FOUND-04
+**Plans**: 3 plans
+
+Plans:
+- [x] 19-01: Root package manifest, pinned dependencies & CommonJS test isolation (completed 2026-09-08)
+- [x] 19-02: TypeScript strict configuration, Vinxi bundler & TanStack Start entry points (completed 2026-09-08)
+- [x] 19-03: Production containerization & deployment verification on Port 3173 (completed 2026-09-08)
 **Success Criteria**:
 1. Project memiliki dependencies TanStack Start, React 19/18, Vite, dan TypeScript terpasang dan dapat dibuild tanpa error.
 2. `app.config.ts` dan `tsconfig.json` terkonfigurasi dengan path alias dan router plugin generator.
