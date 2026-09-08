@@ -1,13 +1,19 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, Await } from '@tanstack/react-router'
+import { Suspense } from 'react'
 import { courseAiSearchSchema } from '@/schemas/searchParams'
-import { getCourseAiData } from '@/data/courses'
+import { getCourseAiData, getCourseStatsAsync, type CourseStats } from '@/data/courses'
+import { StatsSkeleton } from '@/components/ui/Skeleton'
+import { ChecklistIsland } from '@/components/course/ChecklistIsland'
 
 export const Route = createFileRoute('/course/ai')({
   validateSearch: (search) => courseAiSearchSchema.parse(search),
   loaderDeps: ({ search }) => ({ mode: search.mode }),
   loader: async ({ deps }) => {
     const course = await getCourseAiData(deps.mode)
-    return { course }
+    return {
+      course,
+      deferredStats: getCourseStatsAsync(course.id),
+    }
   },
   head: ({ loaderData }) => {
     const title = loaderData?.course?.title || 'Hands-on Agentic AI — Workspace Workshop'
@@ -26,7 +32,7 @@ export const Route = createFileRoute('/course/ai')({
 
 function CourseAiComponent() {
   const { mode } = Route.useSearch()
-  const { course } = Route.useLoaderData()
+  const { course, deferredStats } = Route.useLoaderData()
 
   return (
     <main className="app-main course-main" id="container-course-ai">
@@ -59,6 +65,53 @@ function CourseAiComponent() {
         <p className="course-desc">{course.description}</p>
       </section>
 
+      {/* Progressive Streaming Section (SSR-02) */}
+      <section className="course-streaming-stats">
+        <Suspense fallback={<StatsSkeleton />}>
+          <Await promise={deferredStats}>
+            {(stats: CourseStats) => (
+              <div
+                className="course-stats-banner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-around',
+                  padding: '1rem 1.5rem',
+                  background: 'var(--bg-surface, #ffffff)',
+                  border: '1px solid var(--border-subtle, #e0e0e0)',
+                  borderRadius: 'var(--radius-md, 10px)',
+                  margin: '1.25rem 0',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ fontSize: '1.75rem' }}>👥</span>
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted, #5f6368)' }}>
+                      Peserta Aktif Terdaftar
+                    </div>
+                    <strong style={{ fontSize: '1.15rem', color: 'var(--text-primary, #202124)' }}>
+                      {stats.activeParticipants} Orang
+                    </strong>
+                  </div>
+                </div>
+                <div style={{ height: '36px', width: '1px', background: 'var(--border-subtle, #e0e0e0)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ fontSize: '1.75rem' }}>📈</span>
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted, #5f6368)' }}>
+                      Tingkat Kelulusan Evaluasi
+                    </div>
+                    <strong style={{ fontSize: '1.15rem', color: 'var(--text-primary, #202124)' }}>
+                      {stats.completionRate}% Terverifikasi
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            )}
+          </Await>
+        </Suspense>
+      </section>
+
       {/* Curriculum Outline */}
       <section className="course-syllabus-section">
         <div className="syllabus-header">
@@ -89,6 +142,11 @@ function CourseAiComponent() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Hydration-Safe Client-Only Checklist Island (SSR-04) */}
+      <section className="course-island-section" style={{ marginTop: '2rem' }}>
+        <ChecklistIsland courseId={course.id} modules={course.modules} />
       </section>
     </main>
   )

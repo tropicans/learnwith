@@ -1,12 +1,18 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Await } from '@tanstack/react-router'
+import { Suspense } from 'react'
 import { courseWordSearchSchema } from '@/schemas/searchParams'
-import { getCourseWordData } from '@/data/courses'
+import { getCourseWordData, getCourseStatsAsync, type CourseStats } from '@/data/courses'
+import { StatsSkeleton } from '@/components/ui/Skeleton'
+import { ChecklistIsland } from '@/components/course/ChecklistIsland'
 
 export const Route = createFileRoute('/course/word')({
   validateSearch: (search) => courseWordSearchSchema.parse(search),
   loader: async () => {
     const course = await getCourseWordData()
-    return { course }
+    return {
+      course,
+      deferredStats: getCourseStatsAsync(course.id),
+    }
   },
   head: ({ loaderData }) => {
     const title = loaderData?.course?.title || 'Pengolahan Kata Tingkat Lanjut (ASN)'
@@ -25,7 +31,7 @@ export const Route = createFileRoute('/course/word')({
 
 function CourseWordComponent() {
   const search = Route.useSearch()
-  const { course } = Route.useLoaderData()
+  const { course, deferredStats } = Route.useLoaderData()
 
   return (
     <main className="app-main course-main" id="container-course-word">
@@ -38,6 +44,53 @@ function CourseWordComponent() {
         <p className="course-subtitle">{course.subtitle}</p>
         <p className="course-desc">{course.description}</p>
       </div>
+
+      {/* Progressive Streaming Section (SSR-02) */}
+      <section className="course-streaming-stats">
+        <Suspense fallback={<StatsSkeleton />}>
+          <Await promise={deferredStats}>
+            {(stats: CourseStats) => (
+              <div
+                className="course-stats-banner"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-around',
+                  padding: '1rem 1.5rem',
+                  background: 'var(--bg-surface, #ffffff)',
+                  border: '1px solid var(--border-subtle, #e0e0e0)',
+                  borderRadius: 'var(--radius-md, 10px)',
+                  margin: '1.25rem 0',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ fontSize: '1.75rem' }}>👥</span>
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted, #5f6368)' }}>
+                      Alumni ASN Terakreditasi
+                    </div>
+                    <strong style={{ fontSize: '1.15rem', color: 'var(--text-primary, #202124)' }}>
+                      {stats.activeParticipants} ASN
+                    </strong>
+                  </div>
+                </div>
+                <div style={{ height: '36px', width: '1px', background: 'var(--border-subtle, #e0e0e0)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <span style={{ fontSize: '1.75rem' }}>🎯</span>
+                  <div>
+                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted, #5f6368)' }}>
+                      Tingkat Kelulusan Uji Kompetensi
+                    </div>
+                    <strong style={{ fontSize: '1.15rem', color: 'var(--text-primary, #202124)' }}>
+                      {stats.completionRate}% Lulus Pergub 14/2020
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            )}
+          </Await>
+        </Suspense>
+      </section>
 
       {/* Curriculum Bab Overview */}
       <section className="course-syllabus-section">
@@ -69,6 +122,11 @@ function CourseWordComponent() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Hydration-Safe Client-Only Checklist Island (SSR-04) */}
+      <section className="course-island-section" style={{ marginTop: '2rem' }}>
+        <ChecklistIsland courseId={course.id} modules={course.modules} />
       </section>
     </main>
   )
