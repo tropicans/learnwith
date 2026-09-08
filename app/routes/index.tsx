@@ -1,14 +1,33 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { homeSearchSchema } from '@/schemas/searchParams'
-import { Link } from '@tanstack/react-router'
+import { getCoursesList, type CourseData } from '@/data/courses'
 
 export const Route = createFileRoute('/')({
   validateSearch: (search) => homeSearchSchema.parse(search),
+  loader: async () => {
+    const courses = await getCoursesList()
+    return { courses }
+  },
+  head: () => ({
+    meta: [
+      { title: 'learnwith — Pusat Workshop & Ruang Belajar Terpadu' },
+      {
+        name: 'description',
+        content: 'Platform Pembelajaran Praktik Komputer & AI Interaktif untuk ASN & Profesional',
+      },
+      { property: 'og:title', content: 'learnwith — Pusat Workshop & Ruang Belajar Terpadu' },
+      { property: 'og:type', content: 'website' },
+    ],
+  }),
   component: HomeComponent,
 })
 
 function HomeComponent() {
   const { filter } = Route.useSearch()
+  const { courses } = Route.useLoaderData()
+
+  const aiCourse = courses.find((c) => c.category === 'ai')
+  const wordCourse = courses.find((c) => c.category === 'word')
 
   return (
     <main className="app-main home-main" id="container-home">
@@ -16,7 +35,9 @@ function HomeComponent() {
         <div className="home-hero-badge">
           <span className="home-hero-sparkle">✨</span> Pusat Workshop & Ruang Belajar Terpadu
         </div>
-        <h2 className="home-hero-title">Selamat Datang di <span className="text-accent">learnwith Yudhi</span></h2>
+        <h2 className="home-hero-title">
+          Selamat Datang di <span className="text-accent">learnwith Yudhi</span>
+        </h2>
         <p className="home-hero-subtitle">
           Ruang kerja pembelajaran dan panduan interaktif praktikum teknologi terstandar untuk Aparatur Sipil Negara & profesional modern. Pilih workshop di bawah ini untuk memulai ruang kerja praktik mandiri Anda.
         </p>
@@ -44,31 +65,40 @@ function HomeComponent() {
       </div>
 
       <div className="notebook-grid">
-        {(filter === 'all' || filter === 'ai') && (
+        {(filter === 'all' || filter === 'ai') && aiCourse && (
           <div className="notebook-card" id="card-home-course-ai" data-category="ai">
             <div className="notebook-card-cover cover-gradient-ai">
               <div className="notebook-card-icon-wrapper">
                 <span className="notebook-card-icon">🤖</span>
               </div>
               <div className="notebook-card-status">
-                <span className="badge badge-pill badge-success">✅ Terbuka untuk Umum</span>
+                <span className="badge badge-pill badge-success">{aiCourse.badge}</span>
               </div>
             </div>
             <div className="notebook-card-body">
               <div className="notebook-card-category">Workshop AI & Otomasi</div>
-              <h4 className="notebook-card-title">Hands-on Agentic AI: Dari Chat ke Kalender</h4>
-              <p className="notebook-card-subtitle">Praktik Deploy Hermes Agent & 9Router di Windows</p>
-              <p className="notebook-card-desc">
-                Panduan praktis langkah-demi-langkah integrasi Telegram Bot dengan model LLM lokal/cloud via 9Router, sinkronisasi Google Calendar OAuth, dan sensor token keamanan tanpa coding.
-              </p>
+              <h4 className="notebook-card-title">{aiCourse.title}</h4>
+              <p className="notebook-card-subtitle">{aiCourse.subtitle}</p>
+              <p className="notebook-card-desc">{aiCourse.description}</p>
               <div className="notebook-card-meta">
-                <span className="meta-item"><span className="meta-icon">📚</span> 5 Modul Praktik</span>
-                <span className="meta-item"><span className="meta-icon">🎯</span> 3 Checkpoint Otomatis</span>
-                <span className="meta-item"><span className="meta-icon">⚡</span> Dual-Mode (Pra-Training & Kelas)</span>
+                <span className="meta-item">
+                  <span className="meta-icon">📚</span> {aiCourse.modulesCount} Modul Praktik
+                </span>
+                <span className="meta-item">
+                  <span className="meta-icon">🎯</span> {aiCourse.checkpointsCount} Checkpoint Otomatis
+                </span>
+                <span className="meta-item">
+                  <span className="meta-icon">⚡</span> Dual-Mode (Pra-Training & Kelas)
+                </span>
               </div>
             </div>
             <div className="notebook-card-footer">
-              <Link to="/course/ai" search={{ mode: 'pretraining' }} className="btn btn-primary btn-block" id="btn-home-enter-ai">
+              <Link
+                to="/course/ai"
+                search={{ mode: 'pretraining' }}
+                className="btn btn-primary btn-block"
+                id="btn-home-enter-ai"
+              >
                 <span>Buka Ruang Kerja AI</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -79,28 +109,36 @@ function HomeComponent() {
           </div>
         )}
 
-        {(filter === 'all' || filter === 'word') && (
+        {(filter === 'all' || filter === 'word') && wordCourse && (
           <div className="notebook-card" id="card-home-course-word" data-category="word">
             <div className="notebook-card-cover cover-gradient-word">
               <div className="notebook-card-icon-wrapper">
                 <span className="notebook-card-icon">📝</span>
               </div>
               <div className="notebook-card-status">
-                <span className="badge badge-pill badge-neutral" id="home-badge-word-status">🔒 Perlu Kode Sandi</span>
+                <span className="badge badge-pill badge-neutral" id="home-badge-word-status">
+                  {wordCourse.badge}
+                </span>
               </div>
             </div>
             <div className="notebook-card-body">
               <div className="notebook-card-category">Standardisasi ASN DKI Jakarta</div>
-              <h4 className="notebook-card-title">Pengolahan Kata Tingkat Lanjut</h4>
-              <p className="notebook-card-subtitle">Standardisasi Dokumen Dinas Sesuai Pergub DKI No. 14/2020</p>
-              <p className="notebook-card-desc">
-                Modul komprehensif penyusunan tata naskah dinas baku: Heading Styles, Multilevel List, Daftar Isi Otomatis, Section Breaks & Landscape, Mail Merge, Kuis 20 Soal, & Sertifikat BPSDM.
-              </p>
+              <h4 className="notebook-card-title">{wordCourse.title}</h4>
+              <p className="notebook-card-subtitle">{wordCourse.subtitle}</p>
+              <p className="notebook-card-desc">{wordCourse.description}</p>
               <div className="notebook-card-meta">
-                <span className="meta-item"><span className="meta-icon">📑</span> 4 Bab Kurikulum</span>
-                <span className="meta-item"><span className="meta-icon">🎯</span> 3 Checkpoint Praktik</span>
-                <span className="meta-item"><span className="meta-icon">✅</span> 28 Checklist Mandiri</span>
-                <span className="meta-item"><span className="meta-icon">🎓</span> Sertifikat Kelulusan BPSDM</span>
+                <span className="meta-item">
+                  <span className="meta-icon">📑</span> {wordCourse.modulesCount} Bab Kurikulum
+                </span>
+                <span className="meta-item">
+                  <span className="meta-icon">🎯</span> {wordCourse.checkpointsCount} Checkpoint Praktik
+                </span>
+                <span className="meta-item">
+                  <span className="meta-icon">✅</span> 28 Checklist Mandiri
+                </span>
+                <span className="meta-item">
+                  <span className="meta-icon">🎓</span> Sertifikat Kelulusan BPSDM
+                </span>
               </div>
             </div>
             <div className="notebook-card-footer">
