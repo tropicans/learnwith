@@ -1,7 +1,7 @@
 # Requirements: Milestone v3.0 TanStack Start Full-Document SSR & File-Based Router Migration
 
 **Milestone:** v3.0  
-**Status:** In Progress  
+**Status:** Completed  
 
 ---
 
@@ -16,11 +16,11 @@
 
 ### Category 2: File-Based Routing & Search Params (ROUTE)
 
-- [ ] **ROUTE-01**: Implementasi root document route `app/routes/__root.tsx` dengan kerangka dokumen HTML lengkap (`<html>`, `<head>`, `<Meta />`, `<Links />`, `<Outlet />`, `<Scripts />`, `<ScrollRestoration />`).
-- [ ] **ROUTE-02**: Implementasi route index `app/routes/index.tsx` yang memetakan Frontpage Hub / Workshop Gallery.
-- [ ] **ROUTE-03**: Implementasi file-based nested route `app/routes/course.ai.tsx` untuk ruang kerja Agentic AI Workshop.
-- [ ] **ROUTE-04**: Implementasi file-based nested route `app/routes/course.word.tsx` untuk ruang kerja Pengolahan Kata Tingkat Lanjut.
-- [ ] **ROUTE-05**: Implementasi schema validasi Zod untuk query parameters (`mode`, `tab`, `filter`, `unlock`, `checkpoint`) dengan type safety penuh pada `<Link>` dan navigation hooks.
+- [x] **ROUTE-01**: Implementasi root document route `app/routes/__root.tsx` dengan kerangka dokumen HTML lengkap (`<html>`, `<head>`, `<Meta />`, `<Links />`, `<Outlet />`, `<Scripts />`, `<ScrollRestoration />`).
+- [x] **ROUTE-02**: Implementasi route index `app/routes/index.tsx` yang memetakan Frontpage Hub / Workshop Gallery.
+- [x] **ROUTE-03**: Implementasi file-based nested route `app/routes/course.ai.tsx` untuk ruang kerja Agentic AI Workshop.
+- [x] **ROUTE-04**: Implementasi file-based nested route `app/routes/course.word.tsx` untuk ruang kerja Pengolahan Kata Tingkat Lanjut.
+- [x] **ROUTE-05**: Implementasi schema validasi Zod untuk query parameters (`mode`, `tab`, `filter`, `unlock`, `checkpoint`) dengan type safety penuh pada `<Link>` dan navigation hooks.
 
 ### Category 3: Typed Route Loaders, Full-Document SSR & Streaming (SSR)
 
@@ -37,10 +37,37 @@
 
 ### Category 5: Target Deployment & Production Build Optimization (DEPLOY)
 
-- [ ] **DEPLOY-01**: Konfigurasi build pipeline TanStack Start (`npm run build`) menghasilkan artefak server & client terpisah yang siap produksi.
-- [ ] **DEPLOY-02**: Pemilihan mode SSR per route (Full SSR vs SPA Island) yang tepat untuk memaksimalkan performa TTFB.
-- [ ] **DEPLOY-03**: Pembaruan konfigurasi Dockerfile / Docker Compose untuk menjalankan TanStack Start Node server container tanpa mengubah model runtime yang ada.
-- [ ] **DEPLOY-04**: Verifikasi regresi menyeluruh (automated unit tests & Playwright E2E browser tests) terhadap seluruh fungsionalitas interaktif platform.
+- [x] **DEPLOY-01**: Konfigurasi build pipeline TanStack Start (`npm run build`) menghasilkan artefak server & client terpisah yang siap produksi.
+- [x] **DEPLOY-02**: Pemilihan mode SSR per route (Full SSR vs SPA Island) yang tepat untuk memaksimalkan performa TTFB.
+- [x] **DEPLOY-03**: Pembaruan konfigurasi Dockerfile / Docker Compose untuk menjalankan TanStack Start Node server container tanpa mengubah model runtime yang ada.
+- [x] **DEPLOY-04**: Verifikasi regresi menyeluruh (automated unit tests & Playwright E2E browser tests) terhadap seluruh fungsionalitas interaktif platform.
+
+---
+
+## Traceability Matrix
+
+| Requirement | Phase | Status | Verification Evidence |
+|---|---|---|---|
+| FOUND-01 | Phase 19 | Complete | `package.json` manifest with pinned TanStack Start/Router dependencies |
+| FOUND-02 | Phase 19 | Complete | `app.config.ts` Vinxi configuration with tsconfigPaths |
+| FOUND-03 | Phase 19 | Complete | Strict `tsconfig.json` with `@/*` aliases and DOM/Node lib |
+| FOUND-04 | Phase 19 | Complete | `app/client.tsx` and `app/ssr.tsx` hydration and streaming entry points |
+| ROUTE-01 | Phase 20 | Complete | `app/routes/__root.tsx` root shell with Meta, Links, Scripts |
+| ROUTE-02 | Phase 20 | Complete | `app/routes/index.tsx` Frontpage Hub route |
+| ROUTE-03 | Phase 20 | Complete | `app/routes/course.ai.tsx` Agentic AI workspace route |
+| ROUTE-04 | Phase 20 | Complete | `app/routes/course.word.tsx` Word Processing ASN route |
+| ROUTE-05 | Phase 20 | Complete | `app/schemas/searchParams.ts` Zod search validation schemas |
+| SSR-01 | Phase 21 | Complete | Typed route loaders in `app/data/courses.ts` preloading syllabus outline |
+| SSR-02 | Phase 21 | Complete | `<Suspense>` progressive streaming banner with `StatsSkeleton` |
+| SSR-03 | Phase 21 | Complete | Dynamic route `head()` metadata with OpenGraph tags |
+| SSR-04 | Phase 21 | Complete | `<ClientOnly>` islands in `ChecklistIsland.tsx` preventing hydration mismatch |
+| SRV-01 | Phase 22 | Complete | `verifyInstructorPasskeyFn` via `createServerFn` with Zod validation |
+| SRV-02 | Phase 22 | Complete | Server config quarantined in `app/server/config.ts` passing AST boundary audit |
+| SRV-03 | Phase 22 | Complete | `getSystemDiagnosticsFn` typed telemetry RPC |
+| DEPLOY-01 | Phase 23 | Complete | Multi-stage Dockerfile packaging standalone `.output/server/index.mjs` |
+| DEPLOY-02 | Phase 23 | Complete | Route SSR mode selection with NotebookLM 404 and structured request logging |
+| DEPLOY-03 | Phase 23 | Complete | Hardened container with tini PID 1, USER node, and native fetch healthcheck |
+| DEPLOY-04 | Phase 23 | Complete | Multi-tier test harness (`test:smoke`, `test`) with 100% legacy zero-regression |
 
 ---
 
