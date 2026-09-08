@@ -166,8 +166,24 @@ The platform is a production-hardened full-stack application running TanStack St
 - ✓ Hardened Dockerfile & Compose with non-root user, tini signal trapping, and native healthchecks (DEPLOY-03) — v3.0
 - ✓ Multi-Tier Testing Harness and 100% Zero-Regression Legacy Guarantee (DEPLOY-04) — v3.0
 
+## Current Milestone: v3.1 Pre-Training Parity (Full Interactive Experience in TanStack Start)
+
+**Goal:** Replicate and port 100% of the original Course 1 Pre-Training curriculum, interactive modules (1-5), checklists, checkpoints, troubleshooting hub, token redaction tool, and readiness report generator into the TanStack Start `/course/ai?mode=pretraining` route.
+
+**Target features:**
+- Foundation & Context Sections: Target & Alur, Glosarium, Aturan Keamanan, Alat & Persiapan, dan Panduan PowerShell.
+- Interactive Modules 1-5: Accordion controls, copyable code blocks dengan toast/feedback visual, alert box tips/warning, dan terminal callouts.
+- Checklist Engine & 3 Checkpoints: 13-step checklist, 3 checkpoint gates, sinkronisasi localStorage `learnwith_ai_checklist`, dan dynamic readiness badge.
+- Troubleshooting Hub: Pencarian dan filter kategori solusi error umum pre-training (Node.js, 9Router, Telegram, Hermes).
+- Secret Token Redaction & Readiness Report Generator: Alat sensor token otomatis dan ekspor laporan format WhatsApp, Telegram Markdown, serta Cetak/PDF.
+
 ### Active
-*(None — milestone complete, define next milestone via `/gsd-new-milestone`)*
+- [ ] **PRE-01**: Foundation & context sections (Target & Alur, Glosarium interaktif, Aturan Keamanan, Alat & Persiapan, Panduan PowerShell)
+- [ ] **PRE-02**: Interactive Modules 1-5 (Pemeriksaan Node.js, 9Router, Bot Telegram, Hermes Agent, Integrasi Akhir) dengan accordion & 1-click copy
+- [ ] **PRE-03**: Interactive Checklist Engine (13 langkah verifikasi), 3 Checkpoints, dan Dynamic Readiness Badge dengan sinkronisasi `learnwith_ai_checklist`
+- [ ] **PRE-04**: Troubleshooting Hub dengan live search & filter kategori solusi error pre-training
+- [ ] **PRE-05**: Token Redaction Helper & Generator Laporan Kesiapan (WhatsApp, Telegram, Print/PDF export)
+- [ ] **PRE-06**: Full-fidelity UI/UX styling matching original `index.html` within TanStack Start React 19 layout
 
 ### Out of Scope
 - Automated remote installation on user's machine (security risk; users must run commands themselves).
@@ -175,7 +191,7 @@ The platform is a production-hardened full-stack application running TanStack St
 - Heavy external UI component libraries that increase bundle size and degrade first paint performance.
 
 ## Context
-Shipped v3.0 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server. 16 test suites passing (24/24 unit assertions, 7/7 Docker smoke assertions, 5/5 boundary isolation checks, 0 regressions). Multi-stage containerized deployment on Port 3173.
+Shipped v3.0 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server. 16 test suites passing. Now starting v3.1 to achieve complete feature and content parity on `/course/ai?mode=pretraining`.
 
 ## Key Decisions
 - ✓ **Architecture**: Lightweight, modular Vanilla HTML5, modern CSS3 (Custom Properties, Glassmorphism, Responsive Grid/Flex), and Vanilla JS ES6+ (zero complex build steps required, runnable offline or on any browser) — *Outcome: Good*
@@ -186,12 +202,31 @@ Shipped v3.0 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server
 - ✓ **File-Based Routing & Zod Search Params**: Declarative file routing in `app/routes/` with type-safe schema validation (Rationale: Eliminates manual DOM swapping and route ambiguity) — *Outcome: Good*
 - ✓ **Server Functions Boundary Isolation**: `createServerFn` with secrets quarantined in `app/server/` (Rationale: Zero server secrets in client bundle, AST-level test verification) — *Outcome: Good*
 - ✓ **Production Containerization**: Multi-stage Dockerfile with tini PID 1, non-root user `node`, standalone Nitro server (Rationale: Secure, reproducible, production-ready runtime on Port 3173) — *Outcome: Good*
+- ✓ **Component Porting Strategy**: Build pure React 19 client/island components inside `app/components/course/pretraining/` and integrate into `app/routes/course.ai.tsx` preserving original styling and data schemas — *Outcome: In Progress (v3.1)*
+
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd-complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
 
 ## Next Milestone Goals (v4.0 Candidates)
+- Live Class Mode (`?mode=live-class`) Full Parity in TanStack Start (Modul 6-11, Checkpoints 4-9, In-Class Report).
 - PostgreSQL database integration for centralized multi-device participant progress and synchronized evaluation submissions.
 - Vector DB & Semantic Search for interactive knowledge retrieval from training guides.
 - Multilingual toggle (Indonesian / English) for international workshop participants.
 - Interactive terminal simulator for dry-running CLI commands before local execution.
 
 ---
-*Last updated: 2026-09-08 after v3.0 milestone*
+*Last updated: 2026-09-08 for milestone v3.1*

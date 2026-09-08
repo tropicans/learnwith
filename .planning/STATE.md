@@ -1,20 +1,16 @@
 ---
 gsd_state_version: "1.0"
-milestone: v3.0
-milestone_name: TanStack Start Full-Document SSR & File-Based Router Migration
-status: Awaiting next milestone
-stopped_at: Phase 23 complete — all phases complete
-last_updated: "2026-09-08T09:35:39.968Z"
+milestone: v3.1
+milestone_name: Pre-Training Parity in TanStack Start
+status: planning
+last_updated: "2026-09-08T09:45:16.957Z"
 last_activity: 2026-09-08
-last_activity_desc: Milestone v3.0 completed and archived
-state_head: 7a99b40f63a1553c8bf0f3511bdc3ab951296804
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 15
-  completed_plans: 15
-  percent: 100
-current_phase: 23
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -28,10 +24,10 @@ See: `.planning/PROJECT.md` (updated 2026-09-08 after v3.0 milestone)
 
 ## Current Position
 
-Phase: Milestone v3.0 complete
+Phase: Not started (defining requirements)
 Plan: —
-Status: Awaiting next milestone
-Last activity: 2026-09-08 — Milestone v3.0 completed and archived
+Status: Defining requirements
+Last activity: 2026-09-08 — Milestone v3.1 started
 
 ## Milestone Summary
 
