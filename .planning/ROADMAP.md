@@ -1,71 +1,60 @@
-# Roadmap: learnwith — Multi-Course Platform & Pengolahan Kata Tingkat Lanjut
+# Roadmap: Milestone v3.0 TanStack Start Full-Document SSR & File-Based Router Migration
 
-## Milestones
+## Milestones Overview
 
 - ✅ **v1.0 Pre-Training Interactive Web App (Agentic AI)** - Phases 1-4 (shipped 2026-09-03) — [Archive](milestones/v1.0-ROADMAP.md)
 - ✅ **v1.1 Live Workshop Guide (Agentic AI Hari-H)** - Phases 5-8 (shipped 2026-09-07) — [Archive](milestones/v1.1-ROADMAP.md)
 - ✅ **v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut** - Phases 9-12 (shipped 2026-09-07) — [Archive](milestones/v2.0-ROADMAP.md)
 - ✅ **v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture** - Phases 13-15 (shipped 2026-09-07) — [Archive](milestones/v2.1-ROADMAP.md)
-- ✅ **v2.2 Application Security Hardening & Anti-Breach Protection** - Phases 16-18 (shipped 2026-09-07)
-
-## Active Milestone: v2.2 (Phases 16-18) — COMPLETED
-
-- [x] **Phase 16: Cryptographic Passcode Hashing & Secret Protection (Zero-Plaintext)**
-  - Hapus seluruh kata sandi teks polos dari file JavaScript dan console DevTools (`window.WORD_PASSCODES`).
-  - Hapus kebocoran kredensial di form modal placeholder.
-  - Implementasi Web Crypto API (`crypto.subtle.digest`) dengan algoritma SHA-256 untuk memverifikasi kecocokan sandi tanpa pernah menyimpan string rahasia asli di client.
-  - Pisahkan konfigurasi penguncian modul dan hash kredensial ke file mandiri `config.js` (`window.LEARNWITH_CONFIG`).
-
-- [x] **Phase 17: URL Gate Hardening, Session Management & Anti-Tampering**
-  - Matikan bypass URL parameter tidak aman (`?unlock=dev`, `?unlock=word`, `?unlock=1`) di mode normal.
-  - Terapkan mekanisme auto-lock session timeout (misal: otomatis mengunci kembali modul setelah periode inaktivitas tertentu atau saat tab ditutup).
-  - Tambahkan proteksi anti-tampering pada kunci status penyimpanan local storage.
-
-- [x] **Phase 18: Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking**
-  - Terapkan meta tag Content Security Policy (CSP) ketat pada `<head>` untuk mencegah eksploitasi skrip asing dan XSS.
-  - Tambahkan script pelindung anti-clickjacking untuk mencegah halaman dibajak atau di-embed dalam `<iframe>` pihak ketiga.
-  - Lakukan audit sanitasi menyeluruh pada semua titik input pengguna (nama, NIP, instansi, form pencarian, dan perakitan kuis) untuk memastikan 0% celah DOM XSS.
+- ✅ **v2.2 Application Security Hardening & Anti-Breach Protection** - Phases 16-18 (shipped 2026-09-07) — [Archive](milestones/v2.2-phases)
+- 🚀 **v3.0 TanStack Start Full-Document SSR & File-Based Router Migration** - Phases 19-23 (Active)
 
 ---
 
-### Phase 16: Cryptographic Passcode Hashing & Secret Protection (Zero-Plaintext)
+## Active Milestone: v3.0 (Phases 19-23)
 
-**Goal**: Menghilangkan seluruh jejak kata sandi teks polos, mengamankan objek global browser, membersihkan placeholder input, dan menerapkan Web Crypto SHA-256 hash matching dengan file konfigurasi terisolasi `config.js`.  
-**Depends on**: Milestone v2.1  
-**Requirements**: SEC-01, SEC-02, SEC-03, SEC-04  
-**Plans**: 1 plan  
+### Phase 19: TanStack Start & Full-Stack Tooling Foundation
+**Goal**: Menyiapkan struktur dasar full-stack TanStack Start, bundler Vinxi/Vite, TypeScript strict configuration, dan entry points SSR/client.
+**Depends on**: Milestone v2.2
+**Requirements**: FOUND-01, FOUND-02, FOUND-03, FOUND-04
+**Success Criteria**:
+1. Project memiliki dependencies TanStack Start, React 19/18, Vite, dan TypeScript terpasang dan dapat dibuild tanpa error.
+2. `app.config.ts` dan `tsconfig.json` terkonfigurasi dengan path alias dan router plugin generator.
+3. Entry points `app/client.tsx` dan `app/ssr.tsx` aktif dan mampu menangani initial request/response cycle.
 
-### Phase 17: URL Gate Hardening, Session Management & Anti-Tampering
+### Phase 20: File-Based Routes & Validated Search Params
+**Goal**: Mengonversi struktur multi-halaman monolitik menjadi file-based routing menggunakan TanStack Router dengan validasi parameter query via Zod.
+**Depends on**: Phase 19
+**Requirements**: ROUTE-01, ROUTE-02, ROUTE-03, ROUTE-04, ROUTE-05
+**Success Criteria**:
+1. Root document shell `__root.tsx` menyajikan HTML lengkap dengan `<Meta />`, `<Links />`, `<Outlet />`, `<Scripts />`.
+2. Halaman `/`, `/course/ai`, `/course/word`, dan `/diagnostics` terpetakan secara deklaratif di `app/routes/`.
+3. Search parameters (`mode`, `tab`, `filter`, `unlock`) divalidasi dengan schema Zod dan memiliki type safety otomatis pada navigasi `<Link>`.
 
-**Goal**: Mengamankan gerbang otorisasi dari manipulasi parameter URL bebas dan menerapkan auto-lock session timeout untuk melindungi sesi yang ditinggalkan tanpa pengawasan.  
-**Depends on**: Phase 16  
-**Requirements**: SEC-05, SEC-06  
-**Plans**: 1 plan  
+### Phase 21: Typed Route Loaders, Full-Document SSR & Progressive Streaming
+**Goal**: Mengaktifkan server-side preloading data kurikulum dan modul melalui route loaders serta mengalirkan HTML secara progresif dengan React Suspense.
+**Depends on**: Phase 20
+**Requirements**: SSR-01, SSR-02, SSR-03, SSR-04
+**Success Criteria**:
+1. Data modul dan kurikulum di-preload via route `loader`, mengeliminasi layout shifts saat initial load.
+2. Progressive streaming HTML aktif dengan Suspense fallback skeleton loader.
+3. Widget interaktif berbasis client state (checklist dan kuis) dienkapsulasi dengan boundary `<ClientOnly>` sehingga bebas dari hydration mismatch.
 
-### Phase 18: Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking
+### Phase 22: Typed Server Functions & Boundary Isolation
+**Goal**: Menjaga fungsi sensitif dan logika server murni di balik boundary `createServerFn` yang aman dari kebocoran bundle client.
+**Depends on**: Phase 21
+**Requirements**: SRV-01, SRV-02, SRV-03
+**Success Criteria**:
+1. Verifikasi passkey modul pengajar dieksekusi via `createServerFn` dengan validasi payload Zod di sisi server.
+2. Secret hash dan environment variables terisolasi di `app/server/` dan tidak pernah disertakan dalam bundle JavaScript browser.
+3. Diagnostik dan telemetry internal berjalan via typed RPC yang aman.
 
-**Goal**: Memasang pertahanan Content Security Policy ketat, pelindung anti-clickjacking frame-busting, dan audit sanitasi DOM untuk menjamin 0% kerentanan XSS.  
-**Depends on**: Phase 17  
-**Requirements**: SEC-07, SEC-08, SEC-09  
-**Plans**: 1 plan  
-
-## Completed Milestones
-
-<details>
-<summary>✅ v2.1 Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture (Phases 13-15) - SHIPPED 2026-09-07</summary>
-
-- [x] **Phase 13: NotebookLM Top Bar, Anti-Cache Critical CSS & Clean Course Selector**
-- [x] **Phase 14: Workspace Studio Navigation, Sidebar De-duplication & Material 3 Polishing**
-- [x] **Phase 15: Google NotebookLM Frontpage Hub & Seamless Studio Navigation**
-
-</details>
-
-<details>
-<summary>✅ v2.0 Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut (Phases 9-12) - SHIPPED 2026-09-07</summary>
-
-- [x] **Phase 9: Multi-Course Architecture & Course Gate Protection**
-- [x] **Phase 10: Modul Bab I–III Praktik Interaktif, Checkpoint 1–2, & Standar Tata Naskah Dinas**
-- [x] **Phase 11: Modul Bab IV Otomasi Dokumen, Reviewing & Checkpoint 3**
-- [x] **Phase 12: Evaluasi Akhir, Kuis Interaktif 20 Soal, & Mesin Kelulusan BPSDM**
-
-</details>
+### Phase 23: Route-Level SSR Optimization & Production Docker Target
+**Goal**: Mengoptimalkan mode SSR per route (Full SSR vs Client Island) dan memvalidasi deployment runtime container Docker.
+**Depends on**: Phase 22
+**Requirements**: DEPLOY-01, DEPLOY-02, DEPLOY-03, DEPLOY-04
+**Success Criteria**:
+1. Build pipeline produksi `npm run build` menghasilkan artefak standalone Node server yang teroptimasi.
+2. Mode SSR per route dikonfigurasi secara tepat untuk memaksimalkan TTFB dan SEO.
+3. Container Docker berhasil dibuild dan dijalankan (`docker compose up --build -d`) tanpa regresi fungsionalitas.
+4. Seluruh test suite (unit tests dan Playwright E2E) lulus 100%.
