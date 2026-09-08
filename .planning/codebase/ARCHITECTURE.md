@@ -1,17 +1,17 @@
-<!-- refreshed: 2026-09-04 -->
+<!-- refreshed: 2026-09-08 -->
 # Architecture
 
-**Analysis Date:** 2026-09-04
+**Analysis Date:** 2026-09-08
 
 ## System Overview
 
 ```text
 ┌────────────────────────────────────────────────────────────────────────┐
-│                        User Interface (View Layer)                     │
+│               NotebookLM Multi-Course Frontpage & Studio               │
 │                             `index.html`                               │
 ├──────────────────────────┬──────────────────────┬──────────────────────┤
-│    Sidebar Navigation    │   Interactive Guide  │ Troubleshooting Hub  │
-│  & Responsive Drawer     │  & Checkpoint Gates  │  & Report Exporter   │
+│  Top Bar & Course Menu   │  Course 1: AI Guide  │ Course 2: Word Guide │
+│  LY Monogram Brand Pill  │ Pra-Training/Live M6 │ 4 Bab Praktik + Bab V│
 │  `assets/css/main.css`   │ `assets/css/main.css`│ `assets/css/main.css`│
 │ `assets/css/components`  │`assets/css/components`│`assets/css/components`│
 └────────────┬─────────────┴──────────┬───────────┴──────────┬───────────┘
@@ -20,9 +20,9 @@
 ┌────────────────────────────────────────────────────────────────────────┐
 │                      Interaction & Controller Layer                    │
 │                            `assets/js/app.js`                          │
-│  • Theme Switcher       • Mobile Drawer      • 1-Click Code Copy       │
-│  • Navigation Spy       • Accordions         • Redaction Engine        │
-│  • Checkpoint Gate UI   • Form Sync          • Report Generator        │
+│  • Theme & Mode Switch  • Mobile Drawer Nav    • 1-Click Code Copy     │
+│  • Course Manager Gate  • Accordions & Spies   • Redaction Helper      │
+│  • Bab V Quiz Engine    • BPSDM Rubric/Report  • Readiness Exporters   │
 └────────────┬───────────────────────────────────────────────┬───────────┘
              │                                               │
              ▼                                               ▼
@@ -30,15 +30,17 @@
 │     Search Engine (Query)    │               │  State Management Engine│
 │     `assets/js/search.js`    │               │   `assets/js/state.js`  │
 │  • Real-time DOM Indexer     │               │  • Reactive Pub/Sub     │
-│  • Debounced Filtering       │               │  • Readiness Evaluator  │
-│  • XSS-Safe Highlight Nodes  │               │  • Module Progress Calc │
+│  • Debounced Filtering       │               │  • Multi-Course Schema  │
+│  • XSS-Safe Highlight Nodes  │               │  • Score & BPSDM Math   │
 └──────────────────────────────┘               └─────────────┬───────────┘
                                                              │
                                                              ▼
                                                ┌─────────────────────────┐
-                                               │ Browser Storage API     │
-                                               │ `localStorage` (Origin) │
-                                               │ 'pretraining_app_state' │
+                                               │ Browser Storage & Crypto│
+                                               │ `config.js` (Hashes)    │
+                                               │ Web Crypto SHA-256 API  │
+                                               │ `localStorage` (Scoped) │
+                                               │ `sessionStorage` (Token)│
                                                └─────────────────────────┘
 ```
 
@@ -46,21 +48,24 @@
 
 | Component | Responsibility | File |
 |-----------|----------------|------|
-| **HTML Shell & Markup** | Semantic HTML5 structure, accessible ARIA attributes, module guides, checkpoint gates, modals, and report templates | `index.html` |
-| **Design System & Layout** | CSS reset, theme variables, light/dark modes, layout grid/flexbox, typography, and responsive media queries | `assets/css/main.css` |
-| **UI Components & Atoms** | Cards, badges, buttons, code terminal blocks, tooltips, alert boxes, toasts, and print styling | `assets/css/components.css` |
-| **State Management Engine** | Source of truth for checklists, checkpoints, participant data, reactive subscriber notification, and `localStorage` persistence | `assets/js/state.js` |
+| **HTML Shell & Markup** | Semantic HTML5 structure, CSP meta tags, anti-clickjack styles, NotebookLM top bar, Frontpage Hub (`#container-home`), Course 1 container (`#container-course-ai`), Course 2 container (`#container-course-word`), modals, and print slips | `index.html` |
+| **Design System & Layout** | CSS reset, theme tokens, Material 3 elevation, NotebookLM studio header styling, light/dark mode variables, responsive breakpoints | `assets/css/main.css` |
+| **UI Components & Atoms** | Cards, badges, buttons, code blocks, tooltips, alert boxes, toasts, quiz option buttons, BPSDM certificate layout, print stylesheets | `assets/css/components.css` |
+| **Security Configuration** | Application versioning, course locked flags, session timeouts, and one-way SHA-256 authorized instructor passcode hashes | `config.js` |
+| **State Management Engine** | Isolated multi-course state (`learnwith_ai_*` and `learnwith_word_*`), 20-question quiz scoring, self-reflection persistence, rubric checks, BPSDM graduation math (70/30), and reactive subscribers | `assets/js/state.js` |
 | **Search Engine** | Real-time DOM scanning, non-destructive text highlighting (TextNode splitting), keyboard shortcuts (`Ctrl+K`), and query filtering | `assets/js/search.js` |
-| **App Controller** | Orchestrates DOM event binding, UI updates, code copy, mobile drawer transitions, modal dialogs, and report exports | `assets/js/app.js` |
-| **Automated Test Harness** | Dual-environment test execution (browser DOM & Node.js) validating state logic, redaction, search safety, and mobile UX | `tests/*.test.js` |
+| **App Controller** | Orchestrates DOM event binding, course transitions, developer gate passcodes, mode switching (Pra-Training vs Hari-H), quiz interactions, report formatting, and exports | `assets/js/app.js` |
+| **Automated Test Harness** | Dual-environment test execution (browser DOM & Node.js) validating state logic, redaction, search safety, mode switching, quiz evaluation, session security, and CSP | `tests/*.test.js` |
 
 ## Pattern Overview
 
-**Overall:** Modular Clean Vanilla Architecture (Separation of Concerns with Reactive Observer Pattern)
+**Overall:** Modular Clean Vanilla Architecture (Separation of Concerns with Reactive Observer Pattern & Cryptographic Gate)
 
 **Key Characteristics:**
 - **Zero Runtime Dependencies**: No heavy frontend frameworks; leverages native browser capabilities for instant loading, offline capability, and longevity.
-- **Reactive State via Observer Pattern**: `StateManager` maintains the single source of truth and notifies UI controllers via an event emitter when state changes.
+- **Strict Multi-Course State Isolation**: StateManager isolates storage keys per course (`learnwith_ai_state_v1` vs `learnwith_word_state_v1`) preventing data pollution.
+- **Cryptographic Gate (Zero-Plaintext)**: Passcodes verified via Web Crypto SHA-256 hashing; passwords never stored or logged in plaintext.
+- **Tab-Scoped Session Tokens**: Ephemeral session integrity validated against SHA-256 signatures with auto-lock timeout.
 - **Defensive DOM Operations**: Search highlighting avoids `innerHTML` re-assignment to preserve live input states, event listeners, and prevent XSS vulnerabilities.
 - **Universal Module Exports (Dual Environment)**: Core JavaScript files export to both browser `window` globals and Node.js `module.exports` for headless CI/CD testing.
 
@@ -74,16 +79,16 @@
 - Used by: End users and assistive technologies.
 
 **2. Application Controller Layer:**
-- Purpose: Binds user interactions (clicks, keyboard input, scroll) to application actions.
+- Purpose: Binds user interactions (clicks, keyboard input, scroll, passcodes) to application actions.
 - Location: `assets/js/app.js`
-- Contains: Event listener setup, drawer animation handlers, clipboard utilities, DOM mutation helpers.
-- Depends on: `assets/js/state.js`, `assets/js/search.js`.
+- Contains: Event listener setup, drawer animation handlers, clipboard utilities, DOM mutation helpers, quiz controllers.
+- Depends on: `config.js`, `assets/js/state.js`, `assets/js/search.js`.
 - Used by: Browser runtime on `DOMContentLoaded`.
 
 **3. State & Business Logic Layer:**
-- Purpose: Encapsulates state persistence, checklist completion calculations, checkpoint validation, and participant info.
+- Purpose: Encapsulates state persistence, checklist completion calculations, checkpoint validation, quiz scoring, and BPSDM evaluation math.
 - Location: `assets/js/state.js`
-- Contains: `StateManager` class, default state constants, storage serialization.
+- Contains: `StateManager` class, default state constants, storage serialization, course configurations.
 - Depends on: Browser `localStorage` API.
 - Used by: `assets/js/app.js` and automated test suites.
 
@@ -96,56 +101,44 @@
 
 ## Data Flow
 
-### Primary Request Path: Checklist Toggle & Progress Calculation
+### Primary Request Path: Course Switching & Gated Unlock
+1. User clicks course pill or Frontpage Hub card (`index.html:L120`).
+2. Controller `setupCourseManager()` in `assets/js/app.js` checks if course is locked in `config.js`.
+3. If locked, checks `sessionStorage` token and `localStorage` unlock status. If locked and no valid session, displays `#modal-wordcourse-locked`.
+4. User enters passcode → Web Crypto SHA-256 hash computed → compared against `window.LEARNWITH_CONFIG.security.allowedPasscodeHashes`.
+5. On match, persists unlock state, issues tab-scoped session token, hides modal, and renders `#container-course-word`.
 
-1. **User Action**: Participant clicks a checklist item checkbox (`index.html:L350`)
-2. **Event Capture**: Change event listener triggered in `assets/js/app.js:L220` (`setupChecklistListeners`)
-3. **State Mutation**: `window.AppState.updateChecklist(id, isChecked)` called in `assets/js/state.js:L120`
-4. **Persistence**: `StateManager.saveState()` writes updated JSON string to `localStorage.setItem('pretraining_app_state_v1')` (`assets/js/state.js:L88-96`)
-5. **Event Emission**: `StateManager.emit('stateChange', state)` broadcasts the state update (`assets/js/state.js:L92`)
-6. **UI Synchronization**: `updateProgressUI()` in `assets/js/app.js:L510-560` updates:
-   - Header progress percentage and progress bar width
-   - Module-specific counter badge (`N/M Selesai`)
-   - Checkpoint gate eligibility
-   - Readiness status badge (`SIAP` vs `PERLU CLINIC`)
-
-### Secondary Flow: Checkpoint Gate Validation
-
-1. **User Action**: Participant clicks "Verifikasi Berhasil (PASS)" or "Terdapat Masalah (FAIL)" on Checkpoint 1 (`index.html:L580`)
-2. **Controller Handler**: Event listener in `assets/js/app.js:L360` (`setupCheckpointGates`) invokes `window.AppState.updateCheckpoint('cp-1', 'passed')`
-3. **Status Recomputation**: `StateManager.getReadinessStatus()` re-evaluates all 3 checkpoints:
-   - Returns `'clinic'` if any checkpoint is `'failed'`
-   - Returns `'ready'` if all checkpoints are `'passed'` and checklists complete
-   - Returns `'pending'` if validations remain incomplete
-4. **UI Update**: Badges reflect color shifts (Emerald Green for Ready, Amber for Pending, Red for Clinic)
-
-### Tertiary Flow: Token & Credential Redaction
-
-1. **User Action**: User pastes terminal logs or configuration into Redaction Tool textarea (`index.html:L1920`)
-2. **Input Processing**: Debounced input handler in `assets/js/app.js:L810` runs `sanitizeLogText(rawText)`
-3. **Pattern Matching**: Regex replaces Telegram tokens (`[0-9]{8,10}:[a-zA-Z0-9_-]{35}`), OpenAI keys (`sk-[a-zA-Z0-9]{20,}`), and Google Cloud keys with masked strings (`[REDACTED_TELEGRAM_BOT_TOKEN]`, etc.)
-4. **DOM Display**: Sanitized text displayed in output block with 1-click safe copy button
+### Secondary Flow: Bab V Quiz & BPSDM Graduation Report
+1. User selects options in 20-question quiz cards (`quiz-card-*`).
+2. Controller calls `AppState.updateQuizAnswer(qId, selectedOption)`.
+3. StateManager validates against `WORD_QUIZ_QUESTIONS`, recalculates score (each 5 pts, KKM 80), and emits state change.
+4. Rubrik checkboxes and reflection textareas trigger `updateWordRubric()` and `updateWordReflection()`.
+5. BPSDM formula (`0.7 * practiceScore + 0.3 * quizScore`) computes final grade and assigns Predikat (Sangat Memuaskan / Memuaskan / Cukup / Kurang).
+6. Export handlers format output for WhatsApp, Telegram, or `@media print`.
 
 ## Key Abstractions
 
-**`StateManager` (`assets/js/state.js:L55-300`):**
-- Purpose: Centralized state store with reactive subscriber callbacks and persistence.
-- Pattern: Pub/Sub + Active Record over LocalStorage.
+**StateManager:**
+- Purpose: Single source of truth for active course, checklists, checkpoints, quiz scores, and user metadata.
+- Examples: `assets/js/state.js`
+- Pattern: Reactive Event Emitter / Observer.
 
-**`SearchEngine` (`assets/js/search.js:L7-235`):**
-- Purpose: Client-side DOM indexing and search engine without altering component state.
-- Pattern: In-Memory Inverted Index + Non-Destructive DOM Text Replacement.
+**SearchEngine:**
+- Purpose: Non-destructive DOM search indexer and query highlighter.
+- Examples: `assets/js/search.js`
+- Pattern: TextNode Splitter & Token Filter.
 
-**Toast Notification System (`assets/js/app.js:L990-1025`):**
-- Purpose: Ephemeral feedback message queue.
-- Pattern: Floating Action Toast Queue.
+**SessionSecurityManager:**
+- Purpose: Manages tab-scoped session tokens, inactivity timeout, and URL sanitization.
+- Examples: `assets/js/app.js`
+- Pattern: Token Authenticator & Lifecycle Guard.
 
 ## Entry Points
 
 **Web Application Entry:**
 - Location: `index.html`
 - Triggers: User opens the file via browser or visits hosted web address.
-- Responsibilities: Loads CSS design system, renders semantic layout, loads scripts in order (`state.js` → `search.js` → `app.js`), initializes `AppState` and `SearchEngine`.
+- Responsibilities: Loads CSP metadata, loads `config.js` → `state.js` → `search.js` → `app.js`, mounts NotebookLM studio and default Frontpage Hub.
 
 **Automated Test Runner Entry (Browser):**
 - Location: `tests/index.html`
@@ -154,7 +147,7 @@
 
 **Automated Test Runner Entry (Node.js / CI):**
 - Location: `tests/*.test.js`
-- Triggers: `node tests/checkpoint-engine.test.js`, etc.
+- Triggers: `node tests/<suite>.test.js`.
 - Responsibilities: Instantiates production classes in mocked DOM/localStorage environment and asserts contract behaviors.
 
 ## Architectural Constraints
@@ -163,36 +156,35 @@
 - **Client-Side Origin Isolation**: `localStorage` data is isolated per protocol/host/port origin; state does not cross origins.
 - **Zero Build Artifacts**: Code files must remain pure vanilla JavaScript without non-standard syntax (no JSX, no TypeScript types in runtime files).
 - **No External CDN Dependencies for Logic**: Core scripts must run completely offline without internet connectivity.
+- **Content Security Policy (CSP)**: Strictly limits script and network connections (`connect-src 'self' https://generativelanguage.googleapis.com https://api.telegram.org; object-src 'none'; base-uri 'self'`).
 
 ## Anti-Patterns
 
 ### Anti-Pattern 1: Direct innerHTML Injection in Search Highlights
+- **What happens:** Replacing element `.innerHTML` with `<mark>` tags destroys attached event listeners and resets user-typed form values.
+- **Why it's wrong:** Causes interactive checkboxes, copy buttons, and input fields within the searched containers to lose functionality.
+- **Do this instead:** Use DOM TextNode splitting (`document.createTextNode` and `document.createElement('mark')`) as implemented in `assets/js/search.js`.
 
-**What happens:** Replacing element `.innerHTML` with `<mark>` tags destroys attached event listeners and resets user-typed form values.
-**Why it's wrong:** Causes interactive checkboxes, copy buttons, and input fields within the searched containers to lose functionality.
-**Do this instead:** Use DOM TextNode splitting (`document.createTextNode` and `document.createElement('mark')`) as implemented in `assets/js/search.js:L170-220`.
-
-### Anti-Pattern 2: Storing Sensitive Telegram/OpenAI Tokens in State
-
-**What happens:** Storing raw API tokens or passwords in `localStorage` or form state.
-**Why it's wrong:** Exposes sensitive credentials in unencrypted browser storage and risks accidental inclusion in shared reports.
-**Do this instead:** Pre-training web app never prompts for or stores tokens; the Redaction Helper in `assets/js/app.js:L810` sanitizes tokens client-side before sharing.
+### Anti-Pattern 2: Plaintext Passcodes in Source Code or Global Objects
+- **What happens:** Storing plain text passcodes like `window.WORD_PASSCODES = ['...']` or in HTML placeholders.
+- **Why it's wrong:** Any user opening browser DevTools or reading source can immediately bypass the gate.
+- **Do this instead:** Store only one-way cryptographic SHA-256 hashes in `config.js` and verify input via `crypto.subtle.digest()`.
 
 ## Error Handling
 
 **Strategy:** Graceful degradation and user-friendly visual feedback.
 
 **Patterns:**
-- **LocalStorage Quota / Exception Guarding**: `assets/js/state.js:L65-83` wraps `localStorage.getItem` and `setItem` in `try...catch` blocks, falling back to in-memory state if cookies/storage are disabled.
+- **LocalStorage Quota / Exception Guarding**: `assets/js/state.js` wraps `localStorage.getItem` and `setItem` in `try...catch` blocks, falling back to in-memory state if cookies/storage are disabled.
 - **DOM Element Presence Checking**: Every controller function in `assets/js/app.js` checks element existence (`if (!element) return;`) before attaching event listeners.
-- **Clipboard API Fallback**: `setupCodeCopy()` in `assets/js/app.js:L160-190` handles `navigator.clipboard.writeText` rejection and alerts the user with helpful error toasts.
+- **Clipboard API Fallback**: `setupCodeCopy()` in `assets/js/app.js` handles `navigator.clipboard.writeText` rejection and alerts the user with helpful error toasts.
 
 ## Cross-Cutting Concerns
 
 **Logging:** Standard `console.log` and `console.warn` wrapped during automated test runs.
-**Validation:** Form inputs (email, Telegram username) validated with friendly regex constraints; Telegram usernames automatically normalized with `@`.
+**Validation:** Form inputs validated with friendly regex constraints; Telegram usernames automatically normalized with `@`.
 **Accessibility:** Full keyboard navigation support (Skip-to-content, `Ctrl+K` search focus, Tab/Enter/Space accordion controls, 44px touch targets on mobile).
 
 ---
 
-*Architecture analysis: 2026-09-04*
+*Architecture analysis: 2026-09-08*

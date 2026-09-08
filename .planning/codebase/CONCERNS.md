@@ -1,100 +1,79 @@
 # Codebase Concerns
 
-**Analysis Date:** 2026-09-04
+**Analysis Date:** 2026-09-08
 
 ## Tech Debt
 
 **Monolithic Single-Page HTML (`index.html`):**
-- Issue: `index.html` contains over 2,000 lines of markup incorporating the header, sidebar, 5 guide modules, 3 checkpoint gates, participant forms, troubleshooting cards, modals, and templates.
+- Issue: `index.html` contains over 7,400 lines of markup incorporating the top bar, Frontpage Hub, sidebar, Course 1 guide (Pre-Training & Live M6-11), Course 2 guide (Bab I-IV), Bab V quiz cards, BPSDM graduation slip, modals, and templates.
 - Files: `index.html`
-- Impact: While this maintains the strict zero-build, double-click-to-run architecture, editing module content or adding troubleshooting scenarios requires editing a large file.
-- Fix approach: In future iterations, if a lightweight build step is introduced, HTML templates could be componentized or loaded via modular partials (e.g., using a build script or template literal injector), while preserving the single-file distribution bundle.
+- Impact: While this maintains the zero-build, double-click-to-run architecture, editing module content or adding interactive features requires navigating a large single file.
+- Fix approach: If a lightweight compilation script or static site generator is ever introduced, split sections into HTML partials (`partials/course-ai.html`, `partials/course-word.html`) that bundle into `index.html` for release.
 
-**Global Window Namespace Coupling:**
-- Issue: Client-side modules attach to `window.AppState` and `window.SearchEngine` via script tags without an ES module import system.
-- Files: `assets/js/state.js`, `assets/js/search.js`, `assets/js/app.js`
-- Impact: Strict script load order in `index.html` is required (`state.js` before `search.js` before `app.js`). If scripts load asynchronously or out of order, controllers will fail to initialize.
-- Fix approach: Use native browser ES modules (`<script type="module">`) with explicit `import`/`export` syntax if browser compatibility baseline allows.
+**Global Window Namespace & Script Order Coupling:**
+- Issue: Client-side modules attach to `window.AppState`, `window.SearchEngine`, and `window.LEARNWITH_CONFIG` via traditional script tags without an ES module bundler.
+- Files: `config.js`, `assets/js/state.js`, `assets/js/search.js`, `assets/js/app.js`
+- Impact: Strict script load order in `index.html` is required (`config.js` → `state.js` → `search.js` → `app.js`). If scripts load asynchronously or out of order, controllers fail to initialize.
+- Fix approach: Adopt native browser ES modules (`<script type="module">`) with explicit imports when target browser requirements permit.
 
 ## Known Bugs & Edge Cases
 
 **Browser Privacy Mode / Storage Quota Blocking:**
 - Symptoms: Checklists and form inputs fail to persist across page refreshes.
-- Files: `assets/js/state.js:L62-96`
+- Files: `assets/js/state.js`
 - Trigger: Opening `index.html` in strict Incognito/Private windows that block `localStorage` access entirely, or when storage quota is exceeded on `localhost`.
-- Workaround: Handled via `try...catch` guards that fall back to in-memory state; a visual warning banner could be displayed to notify users that their progress will not survive a reload.
+- Workaround: Handled via `try...catch` guards that fall back to in-memory state.
 
-**Double Search Highlighting on Re-indexing:**
-- Symptoms: Multiple overlapping `<mark>` tags if `buildIndex()` is called repeatedly without clearing existing highlights.
-- Files: `assets/js/search.js:L58-75`
-- Trigger: Calling `rebuildIndex()` during an active search query.
-- Current mitigation: `clearHighlights()` is invoked before index building and before applying new matches.
+**Node.js 25 Global `localStorage` Shadowing in Unit Tests:**
+- Symptoms: In Node.js 25+, a global `localStorage` object exists by default but lacks standard methods (`getItem is not a function`), causing test suites that check `typeof localStorage === 'undefined'` to skip mocking.
+- Files: `tests/word-quiz-report.test.js`, `tests/*.test.js`
+- Workaround: Polyfill tests must explicitly assign `global.localStorage = { getItem: ..., setItem: ..., ... }` rather than relying on `typeof localStorage === 'undefined'`.
 
 ## Security Considerations
 
-**Participant Secret Exposure in Shared Reports:**
-- Risk: Workshop participants copying terminal logs or bot credentials into the Form Laporan Kesiapan or WhatsApp chats could expose sensitive tokens (e.g., Telegram Bot Tokens, OpenAI API keys).
-- Files: `assets/js/app.js:L810-870`, `index.html:L1920-1980`
-- Current mitigation: An interactive Token & Secret Redaction Helper automatically detects and masks credentials matching known patterns before output generation.
-- Recommendations: Keep regex patterns updated for emerging AI API key formats (Anthropic `sk-ant-api03-*`, Google Gemini `AIza*`, Groq, Cerebras).
+**Cryptographic Passcode Protection (Mitigated in v2.2):**
+- Previous Risk: Plaintext passcodes stored in JavaScript files or HTML placeholders.
+- Files: `config.js`, `assets/js/app.js`, `index.html`
+- Current mitigation: One-way SHA-256 hashes stored in `config.js`, verified in-browser using Web Crypto API (`crypto.subtle.digest`). Plaintext credentials removed from DOM and console.
+- Recommendations: Keep salt/hashing schemes reviewed if server-side authentication is added in v3.0.
+
+**Content Security Policy (CSP) & Clickjacking (Mitigated in v2.2):**
+- Current mitigation: Rigid CSP `<meta>` header restricting `script-src`, `connect-src` (Google Gemini API & Telegram only), `style-src`, and `object-src 'none'`. Inline anti-clickjacking frame-busting CSS/script prevents embedding in external iframes.
 
 **XSS Risk via User-Supplied Form Inputs:**
-- Risk: Pasting malicious HTML or script payloads into participant name or log text areas could lead to DOM-based XSS when rendering the report preview.
-- Files: `assets/js/app.js:L890-950`
-- Current mitigation: `escapeHtml()` helper converts `<`, `>`, `&`, `"`, and `'` to safe HTML entities before inserting values into report templates.
+- Risk: Pasting malicious HTML into participant fields or search bars could trigger DOM-based XSS.
+- Files: `assets/js/app.js`
+- Current mitigation: Robust `escapeHtml()` utility sanitizes strings before DOM injection; search engine uses DOM `TextNode` splitting instead of `innerHTML`.
 
 ## Performance Bottlenecks
 
 **Full DOM Search Scanning on Large Documents:**
-- Problem: `SearchEngine.performSearch()` iterates over all indexed containers (`.content-section`, `.card`, `.step-card`) and performs text matching.
-- Files: `assets/js/search.js:L87-140`
-- Cause: Traverses live DOM elements and modifies TextNodes on every keystroke.
+- Problem: `SearchEngine.performSearch()` iterates over indexed sections in `index.html` (>7,400 lines).
+- Files: `assets/js/search.js`
 - Current mitigation: 150ms debounce timer on input prevents UI freeze during typing.
-- Improvement path: Pre-compute normalized text tokens during `buildIndex()` and only modify DOM nodes that have confirmed query hits.
 
 ## Fragile Areas
 
-**Hardcoded Checkpoint and Module ID Coupling:**
-- Files: `assets/js/state.js:L11-53`, `assets/js/app.js:L360-450`
-- Why fragile: `StateManager.getModuleProgress()` and `getReadinessStatus()` hardcode module prefixes (`prereq-`, `m1-`, `m2-`, `m3-`, `m4-`) and checkpoint keys (`cp-1`, `cp-2`, `cp-3`). Adding a new module or renaming an ID requires synchronized changes across `index.html`, `state.js`, and test suites.
-- Safe modification: When introducing new modules, register them in `DEFAULT_STATE.checklists` and update `getModuleProgress()` configurations.
-- Test coverage: Covered by `tests/checkpoint-engine.test.js`.
-
-**Clipboard API Browser Permissions:**
-- Files: `assets/js/app.js:L160-190`
-- Why fragile: `navigator.clipboard.writeText` requires secure context (HTTPS) or `localhost` in some browsers, and may throw errors under `file:///` in certain Firefox or Safari configurations.
-- Safe modification: Maintain fallback `document.execCommand('copy')` or clear visual feedback when clipboard access is rejected.
+**Dual Course State Isolation Invariant:**
+- Files: `assets/js/state.js`, `assets/js/app.js`
+- Why fragile: State operations must strictly use `this.activeStorageKey` (`learnwith_ai_state_v1` vs `learnwith_word_state_v1`). Any hardcoded fallback to `STORAGE_KEY` risks contaminating Course 1 state with Course 2 quiz or checklist data.
+- Safe modification: All state methods route through `this.getActiveStorageKey()` and respect `this.activeCourse`.
+- Test coverage: Verified in `tests/multi-course.test.js` and `tests/word-quiz-report.test.js`.
 
 ## Scaling Limits
 
 **LocalStorage Capacity:**
-- Current capacity: State payload is ~2 KB.
-- Limit: Standard browser `localStorage` cap is 5 MB per domain.
-- Scaling path: Ample headroom (>2,500x safety margin). If detailed per-command execution logs are stored in the future, IndexedDB would be required.
+- Current capacity: Combined state payload for both courses is ~8 KB.
+- Limit: Standard browser `localStorage` cap is 5 MB per domain (>600x safety margin).
 
 ## Dependencies at Risk
 
 **External Web Fonts Availability:**
-- Package/Resource: Google Fonts (`Inter`, `JetBrains Mono` via `fonts.googleapis.com`)
-- Risk: If running in an air-gapped corporate intranet without internet access, font requests will fail.
-- Impact: Visual styling degrades gracefully to system sans-serif and monospace fonts; no functional breakage.
-- Migration plan: Bundle WOFF2 font files locally in `assets/fonts/` for true offline-first portability.
-
-## Missing Critical Features (Candidates for v1.1)
-
-- **In-browser PowerShell Sandbox Simulation:** Interactive simulated terminal allowing participants to practice commands before running them in Windows PowerShell.
-- **Live 9Router Ping / Health Check:** A 1-click button using `fetch('http://localhost:3000/health')` with CORS handling to verify local service health automatically.
-- **Multilingual Localization:** Language switcher toggle (Bahasa Indonesia / English).
-- **Service Worker / PWA:** Add `manifest.json` and service worker for full offline desktop installation.
-
-## Test Coverage Gaps
-
-**Clipboard Fallback Execution:**
-- What's not tested: Fallback behavior when `navigator.clipboard.writeText` rejects in restrictive browser sandboxes.
-- Files: `assets/js/app.js:L165-185`
-- Risk: Users on non-standard browser settings may receive silent copy failures.
-- Priority: Medium
+- Resource: Google Fonts (`Inter`, `JetBrains Mono` via `fonts.googleapis.com`)
+- Risk: If running in an air-gapped corporate intranet without internet access, font requests fail.
+- Impact: Visual styling degrades gracefully to system sans-serif and monospace font stacks.
+- Migration plan: Bundle local WOFF2 font files in `assets/fonts/` for true offline-first portability.
 
 ---
 
-*Concerns audit: 2026-09-04*
+*Concerns audit: 2026-09-08*
