@@ -1,3 +1,5 @@
+@.agents/gsd-core/references/response-language-directive.md
+
 <internal_workflow>
 
 **This is an INTERNAL workflow — NOT a user-facing command.**

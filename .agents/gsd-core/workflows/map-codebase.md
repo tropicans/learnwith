@@ -1,3 +1,5 @@
+@.agents/gsd-core/references/response-language-directive.md
+
 <purpose>
 Orchestrate parallel codebase mapper agents to analyze codebase and produce structured documents in .planning/codebase/
 

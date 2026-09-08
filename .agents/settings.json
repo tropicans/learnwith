@@ -75,7 +75,7 @@
           {
             "type": "command",
             "command": "\"$(for n in \"C:/nvm4w/nodejs/node.exe\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" .agents/hooks/gsd-prompt-guard.js",
-            "timeout": 5
+            "timeout": 120
           }
         ]
       },
@@ -95,7 +95,7 @@
           {
             "type": "command",
             "command": "\"$(for n in \"C:/nvm4w/nodejs/node.exe\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" .agents/hooks/gsd-workflow-guard.js",
-            "timeout": 5
+            "timeout": 120
           }
         ]
       },
@@ -105,7 +105,7 @@
           {
             "type": "command",
             "command": "\"$(for n in \"C:/nvm4w/nodejs/node.exe\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" .agents/hooks/gsd-worktree-path-guard.js",
-            "timeout": 5
+            "timeout": 120
           }
         ]
       },
@@ -115,7 +115,7 @@
           {
             "type": "command",
             "command": "\"$(for n in \"C:/nvm4w/nodejs/node.exe\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" .agents/hooks/gsd-agent-isolation-guard.js",
-            "timeout": 5
+            "timeout": 120
           }
         ]
       },
@@ -125,7 +125,7 @@
           {
             "type": "command",
             "command": "\"$(for n in \"C:/nvm4w/nodejs/node.exe\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" .agents/hooks/gsd-write-guard.js",
-            "timeout": 5
+            "timeout": 120
           }
         ]
       },
@@ -135,7 +135,17 @@
           {
             "type": "command",
             "command": "\"C:/Program Files/Git/bin/bash.exe\" .agents/hooks/gsd-validate-commit.sh",
-            "timeout": 5
+            "timeout": 120
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Grep|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(for n in \"C:/Program Files/nodejs/node.exe\" \"$(command -v node)\" /usr/local/bin/node /usr/bin/node; do [ -x \"$n\" ] && { [ \"${n#/}\" != \"$n\" ] || [ \"${n#?:}\" != \"$n\" ]; } && printf '%s' \"$n\" && break; done)\" .agents/hooks/gsd-secret-read-guard.js",
+            "timeout": 120
           }
         ]
       }
@@ -146,7 +156,11 @@
       "read_file(~/Downloads/AgenticAI/.agents/gsd-core/*)",
       "read_file(~/Downloads/AgenticAI/.agents/agents/gsd-*)",
       "read_file(~/Downloads/AgenticAI/.agents/skills/gsd-*)",
-      "command(node ~/Downloads/AgenticAI/.agents/hooks/*)"
+      "command(node ~/Downloads/AgenticAI/.agents/hooks/*)",
+      "read_file(~/Downloads/Projects/self-hosted-ai-starter-kit/Dev/learnwith/.agents/gsd-core/*)",
+      "read_file(~/Downloads/Projects/self-hosted-ai-starter-kit/Dev/learnwith/.agents/agents/gsd-*)",
+      "read_file(~/Downloads/Projects/self-hosted-ai-starter-kit/Dev/learnwith/.agents/skills/gsd-*)",
+      "command(node ~/Downloads/Projects/self-hosted-ai-starter-kit/Dev/learnwith/.agents/hooks/*)"
     ]
   }
 }

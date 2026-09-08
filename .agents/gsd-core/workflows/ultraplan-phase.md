@@ -1,3 +1,5 @@
+@.agents/gsd-core/references/response-language-directive.md
+
 # Ultraplan Phase Workflow [BETA]
 
 Offload GSD's plan phase to Claude Code's ultraplan cloud infrastructure.
