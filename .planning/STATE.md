@@ -60,6 +60,7 @@ None.
 | 260908-uip | Install uipro-cli and initialize UI/UX Pro Max skill for Antigravity | 2026-09-08 | 9e5c557 | Complete | [260908-uip-uipro-antigravity-init](./quick/260908-uip-uipro-antigravity-init/) |
 | 260908-dck | Fix Docker build context transfer via root .dockerignore and resolve Node 25 test suite mock stability | 2026-09-08 | 4ffa42a | Complete | [260908-dck-dockerignore-test-runner-fix](./quick/260908-dck-dockerignore-test-runner-fix/) |
 | 260908-pga | Architecture analysis: PostgreSQL vs Object Storage & Vector DB for LearnWith data & resources | 2026-09-08 | HEAD | Complete | [260908-pga-postgresql-storage-architecture-analysis](./quick/260908-pga-postgresql-storage-architecture-analysis/) |
+| 260908-k0z | Ganti logo LearnWith menjadi logo resmi baru sesuai gambar terlampir | 2026-09-08 | HEAD | Complete | [260908-k0z-ganti-logo-nya-menjadi-yang-terlampir](./quick/260908-k0z-ganti-logo-nya-menjadi-yang-terlampir/) |
 
 ## Session
 

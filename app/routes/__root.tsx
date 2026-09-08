@@ -16,7 +16,7 @@ export const Route = createRootRoute({
       { name: 'description', content: 'Platform Pembelajaran Praktik Komputer & AI Interaktif' },
     ],
     links: [
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2.2.2' },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2.3.0' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap' },

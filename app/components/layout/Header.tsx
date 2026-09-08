@@ -5,12 +5,12 @@ export function Header() {
   return (
     <header className="app-header">
       <div className="header-brand">
-        <Link to="/" search={{ filter: 'all' }} id="brand-home-link" className="brand-home-link" aria-label="Beranda learnwith">
+        <Link to="/" search={{ filter: 'all' }} id="brand-home-link" className="brand-home-link" aria-label="Beranda LearnWith">
           <div className="header-brand-icon">
-            <img src="/favicon.svg?v=2.2.2" alt="learnwith Logo" className="brand-logo-img" />
+            <img src="/favicon.svg?v=2.3.0" alt="LearnWith Logo" className="brand-logo-img" />
           </div>
           <div className="header-brand-platform">
-            <span className="platform-logo-text">learnwith</span>
+            <span className="platform-logo-text">LearnWith</span>
           </div>
         </Link>
         <span className="brand-breadcrumb-separator" aria-hidden="true">/</span>
@@ -19,7 +19,7 @@ export function Header() {
         <CourseSwitcher />
 
         {/* Accessible title for Screen Readers */}
-        <h1 id="header-brand-title" className="sr-only">learnwith Platform</h1>
+        <h1 id="header-brand-title" className="sr-only">LearnWith Platform</h1>
       </div>
 
       {/* Global Search Input placeholder */}
