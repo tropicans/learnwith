@@ -6,6 +6,8 @@ import {
 import { Meta, Scripts } from '@tanstack/react-start'
 import type { ReactNode } from 'react'
 import { Header } from '@/components/layout/Header'
+import { NotFound } from '@/components/ui/NotFound'
+import { RouteErrorBoundary } from '@/components/ui/RouteErrorBoundary'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -24,6 +26,8 @@ export const Route = createRootRoute({
       { rel: 'stylesheet', href: '/assets/css/components.css?v=2.2.0' },
     ],
   }),
+  notFoundComponent: NotFound,
+  errorComponent: RouteErrorBoundary,
   component: RootComponent,
 })
 

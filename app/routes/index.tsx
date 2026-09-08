@@ -16,7 +16,12 @@ export const Route = createFileRoute('/')({
         content: 'Platform Pembelajaran Praktik Komputer & AI Interaktif untuk ASN & Profesional',
       },
       { property: 'og:title', content: 'learnwith — Pusat Workshop & Ruang Belajar Terpadu' },
+      {
+        property: 'og:description',
+        content: 'Platform Pembelajaran Praktik Komputer & AI Interaktif untuk ASN & Profesional',
+      },
       { property: 'og:type', content: 'website' },
+      { property: 'og:image', content: '/learnwith-banner.png' },
     ],
   }),
   component: HomeComponent,
@@ -96,6 +101,7 @@ function HomeComponent() {
               <Link
                 to="/course/ai"
                 search={{ mode: 'pretraining' }}
+                preload="intent"
                 className="btn btn-primary btn-block"
                 id="btn-home-enter-ai"
               >
@@ -142,7 +148,7 @@ function HomeComponent() {
               </div>
             </div>
             <div className="notebook-card-footer">
-              <Link to="/course/word" search={{}} className="btn btn-secondary btn-block" id="btn-home-enter-word">
+              <Link to="/course/word" search={{}} preload="intent" className="btn btn-secondary btn-block" id="btn-home-enter-word">
                 <span id="btn-home-word-label">Buka Modul Pengolahan Kata</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
