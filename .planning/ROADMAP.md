@@ -19,6 +19,11 @@
 **Goal**: Ekstraksi konten lengkap panduan dasar dan implementasi komponen modular React 19 untuk Target & Alur, Glosarium interaktif, Aturan Keamanan, Alat & Persiapan, serta Panduan PowerShell pada `/course/ai?mode=pretraining`.  
 **Depends on**: Phase 23 (v3.0)  
 **Requirements**: PRE-BASE-01, PRE-BASE-02, PRE-BASE-03, PRE-BASE-04, PRE-BASE-05  
+**Plans**: 2 plans
+
+Plans:
+- [ ] 24-01: Data extraction & typed data schema (pretrainingFoundation.ts) and modular React 19 foundation components (Hero, Target, Glosarium, Security, Prerequisites, PowerShell)
+- [ ] 24-02: Route integration in app/routes/course.ai.tsx, styling fidelity, and automated unit/regression test verification
 
 **Success Criteria**:
 1. User dapat melihat Target & Alur Pre-Training dengan estimasi waktu dan tahapan visual di route `/course/ai?mode=pretraining`.
