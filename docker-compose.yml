@@ -6,8 +6,14 @@ services:
     container_name: learnwith-app
     restart: unless-stopped
     ports:
-      - "3173:3173"
+      - "${PORT:-3173}:3173"
     environment:
       - NODE_ENV=production
       - PORT=3173
       - HOST=0.0.0.0
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:' + (process.env.PORT || 3173) + '/').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
