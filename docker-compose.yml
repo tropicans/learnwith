@@ -1,0 +1,13 @@
+services:
+  learnwith:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: learnwith-app
+    restart: unless-stopped
+    ports:
+      - "3173:3173"
+    environment:
+      - NODE_ENV=production
+      - PORT=3173
+      - HOST=0.0.0.0

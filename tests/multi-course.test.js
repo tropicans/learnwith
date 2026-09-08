@@ -12,6 +12,15 @@
       clear() { this._data = {}; }
     };
   }
+  if (typeof sessionStorage === 'undefined' || !sessionStorage.getItem) {
+    global.sessionStorage = {
+      _data: {},
+      getItem(key) { return Object.prototype.hasOwnProperty.call(this._data, key) ? this._data[key] : null; },
+      setItem(key, value) { this._data[key] = String(value); },
+      removeItem(key) { delete this._data[key]; },
+      clear() { this._data = {}; }
+    };
+  }
 
   // Minimal DOM mock for Node environment
   if (typeof document === 'undefined' || !document.getElementById) {
