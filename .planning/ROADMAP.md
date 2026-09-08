@@ -69,7 +69,7 @@ Plans:
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 21-03: Production SSR streaming probe verification on Port 3173 & legacy test suite regression
+- [x] 21-03: Production SSR streaming probe verification on Port 3173 & legacy test suite regression
 
 **Success Criteria**:
 
