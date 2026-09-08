@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c14" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="gradL" x1="16" y1="16" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="gradY" x1="30" y1="20" x2="64" y2="52" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+    <filter id="starGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="80" height="80" rx="22" fill="url(#bg)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" />
+  <!-- L: Sleek angled bracket -->
+  <path d="M 20 18 L 20 54 C 20 58.5 23.5 62 28 62 L 60 62" stroke="url(#gradL)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- Y: Dynamic chevron & stem -->
+  <path d="M 32 26 L 44 40 L 62 20" stroke="url(#gradY)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M 44 40 L 44 51" stroke="url(#gradY)" stroke-width="8" stroke-linecap="round" />
+  <!-- 4-point AI Star Sparkle -->
+  <path d="M 52 38 L 53.2 41 L 56.5 42 L 53.2 43 L 52 46 L 50.8 43 L 47.5 42 L 50.8 41 Z" fill="#fbbf24" filter="url(#starGlow)" />
+</svg>
