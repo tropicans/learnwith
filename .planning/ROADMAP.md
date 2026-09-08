@@ -61,7 +61,7 @@ Plans:
 Plans:
 **Wave 1**
 
-- [ ] 21-01: Strongly-typed course data layer, route loaders & dynamic document head metadata
+- [x] 21-01: Strongly-typed course data layer, route loaders & dynamic document head metadata
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
