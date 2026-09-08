@@ -1,9 +1,10 @@
 import { createFileRoute, Link, Await } from '@tanstack/react-router'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { courseAiSearchSchema } from '@/schemas/searchParams'
 import { getCourseAiData, getCourseStatsAsync, type CourseStats } from '@/data/courses'
 import { StatsSkeleton } from '@/components/ui/Skeleton'
 import { ChecklistIsland } from '@/components/course/ChecklistIsland'
+import { InstructorUnlockModal } from '@/components/course/InstructorUnlockModal'
 
 export const Route = createFileRoute('/course/ai')({
   validateSearch: (search) => courseAiSearchSchema.parse(search),
@@ -33,6 +34,22 @@ export const Route = createFileRoute('/course/ai')({
 function CourseAiComponent() {
   const { mode } = Route.useSearch()
   const { course, deferredStats } = Route.useLoaderData()
+  const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false)
+  const [isUnlocked, setIsUnlocked] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = sessionStorage.getItem('live_class_unlocked') === 'true'
+      setIsUnlocked(stored)
+    }
+  }, [])
+
+  const handleUnlocked = () => {
+    setIsUnlocked(true)
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('live_class_unlocked', 'true')
+    }
+  }
 
   return (
     <main className="app-main course-main" id="container-course-ai">
@@ -49,7 +66,7 @@ function CourseAiComponent() {
           search={{ mode: 'live-class' }}
           className={`mode-tab ${mode === 'live-class' ? 'active' : ''}`}
         >
-          🚀 Hari-H Kelas 🔒
+          🚀 Hari-H Kelas {isUnlocked ? '🔓' : '🔒'}
         </Link>
       </div>
 
@@ -63,6 +80,50 @@ function CourseAiComponent() {
         <h2 className="course-title">{course.title}</h2>
         <p className="course-subtitle">{course.subtitle}</p>
         <p className="course-desc">{course.description}</p>
+
+        {mode === 'live-class' && (
+          <div style={{ marginTop: '1rem' }}>
+            {isUnlocked ? (
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.5rem 1rem',
+                  backgroundColor: '#f0fdf4',
+                  color: '#166534',
+                  borderRadius: '8px',
+                  border: '1px solid #bbf7d0',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                }}
+              >
+                ✅ Sesi Praktik Terbimbing Aktif & Terbuka
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => setIsUnlockModalOpen(true)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.6rem 1.2rem',
+                  backgroundColor: '#2563eb',
+                  color: '#ffffff',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  boxShadow: '0 2px 4px rgba(37, 99, 235, 0.2)',
+                }}
+              >
+                🔒 Buka Akses Instruktur (Passkey)
+              </button>
+            )}
+          </div>
+        )}
       </section>
 
       {/* Progressive Streaming Section (SSR-02) */}
@@ -148,6 +209,14 @@ function CourseAiComponent() {
       <section className="course-island-section" style={{ marginTop: '2rem' }}>
         <ChecklistIsland courseId={course.id} modules={course.modules} />
       </section>
+
+      {/* Instructor Unlock Modal */}
+      <InstructorUnlockModal
+        courseId="ai"
+        isOpen={isUnlockModalOpen}
+        onClose={() => setIsUnlockModalOpen(false)}
+        onUnlocked={handleUnlocked}
+      />
     </main>
   )
 }

@@ -1,9 +1,10 @@
 import { createFileRoute, Await } from '@tanstack/react-router'
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { courseWordSearchSchema } from '@/schemas/searchParams'
 import { getCourseWordData, getCourseStatsAsync, type CourseStats } from '@/data/courses'
 import { StatsSkeleton } from '@/components/ui/Skeleton'
 import { ChecklistIsland } from '@/components/course/ChecklistIsland'
+import { InstructorUnlockModal } from '@/components/course/InstructorUnlockModal'
 
 export const Route = createFileRoute('/course/word')({
   validateSearch: (search) => courseWordSearchSchema.parse(search),
@@ -32,6 +33,22 @@ export const Route = createFileRoute('/course/word')({
 function CourseWordComponent() {
   const search = Route.useSearch()
   const { course, deferredStats } = Route.useLoaderData()
+  const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false)
+  const [isUnlocked, setIsUnlocked] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const stored = sessionStorage.getItem('learnwith_word_unlocked') === 'true'
+      setIsUnlocked(stored)
+    }
+  }, [])
+
+  const handleUnlocked = () => {
+    setIsUnlocked(true)
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('learnwith_word_unlocked', 'true')
+    }
+  }
 
   return (
     <main className="app-main course-main" id="container-course-word">
@@ -43,6 +60,48 @@ function CourseWordComponent() {
         <h2>{course.title}</h2>
         <p className="course-subtitle">{course.subtitle}</p>
         <p className="course-desc">{course.description}</p>
+
+        <div style={{ marginTop: '1rem' }}>
+          {isUnlocked ? (
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.5rem 1rem',
+                backgroundColor: '#f0fdf4',
+                color: '#166534',
+                borderRadius: '8px',
+                border: '1px solid #bbf7d0',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+              }}
+            >
+              ✅ Materi Uji Kompetensi Terbuka
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => setIsUnlockModalOpen(true)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.6rem 1.2rem',
+                backgroundColor: '#0f172a',
+                color: '#ffffff',
+                borderRadius: '8px',
+                border: 'none',
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                boxShadow: '0 2px 4px rgba(15, 23, 42, 0.15)',
+              }}
+            >
+              🔒 Buka Kunci Instruktur (Passkey)
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Progressive Streaming Section (SSR-02) */}
@@ -128,6 +187,14 @@ function CourseWordComponent() {
       <section className="course-island-section" style={{ marginTop: '2rem' }}>
         <ChecklistIsland courseId={course.id} modules={course.modules} />
       </section>
+
+      {/* Instructor Unlock Modal */}
+      <InstructorUnlockModal
+        courseId="word"
+        isOpen={isUnlockModalOpen}
+        onClose={() => setIsUnlockModalOpen(false)}
+        onUnlocked={handleUnlocked}
+      />
     </main>
   )
 }
