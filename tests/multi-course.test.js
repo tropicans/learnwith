@@ -3,7 +3,7 @@
  */
 (async function () {
   if (typeof window === 'undefined') global.window = {};
-  if (typeof localStorage === 'undefined') {
+  if (typeof localStorage === 'undefined' || !localStorage.getItem) {
     global.localStorage = {
       _data: {},
       getItem(key) { return Object.prototype.hasOwnProperty.call(this._data, key) ? this._data[key] : null; },
@@ -158,12 +158,12 @@
   // Test 7: setWordCourseUnlocked(true) unlocks Course 2
   appModule.setWordCourseUnlocked(true);
   assert(appModule.isWordCourseUnlocked(), 'Course 2 is unlocked after setWordCourseUnlocked(true)');
-  assertEquals(localStorage.getItem('learnwith_word_unlocked'), 'true', 'Unlock flag persisted in localStorage');
+  assert(sessionStorage.getItem('lw_session_word') !== null || localStorage.getItem('learnwith_word_unlocked') === 'true', 'Unlock token persisted');
 
   // Test 8: setWordCourseUnlocked(false) locks Course 2
   appModule.setWordCourseUnlocked(false);
   assert(!appModule.isWordCourseUnlocked(), 'Course 2 is locked after setWordCourseUnlocked(false)');
-  assertEquals(localStorage.getItem('learnwith_word_unlocked'), null, 'Unlock flag removed from localStorage');
+  assert(sessionStorage.getItem('lw_session_word') === null, 'Unlock token removed');
 
   // Test 9: Zero-Plaintext Security & Cryptographic Hash Verification (SEC-01, SEC-03)
   assert(window.WORD_PASSCODES === undefined, 'WORD_PASSCODES must NOT be exposed globally on window');

@@ -7,7 +7,7 @@ const assert = require('assert');
 
 (function () {
   if (typeof window === 'undefined') global.window = {};
-  if (typeof localStorage === 'undefined') {
+  if (typeof localStorage === 'undefined' || !localStorage.getItem) {
     global.localStorage = {
       _data: {},
       getItem(key) { return Object.prototype.hasOwnProperty.call(this._data, key) ? this._data[key] : null; },
