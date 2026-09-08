@@ -89,9 +89,9 @@ Plans:
 3. Diagnostik dan telemetry internal berjalan via typed RPC yang aman.
 
 **Plans**:
-- **22-01**: Server Boundary Foundation, Quarantined Configuration & Secret Hashing Isolation (SRV-02)
-- **22-02**: Typed Server Functions for Instructor Passkey & Diagnostic Telemetry (SRV-01, SRV-03)
-- **22-03**: Client Modal Integration, Workspace Wiring & Legacy Sanitization (SRV-01, SRV-02, SRV-03)
+- [x] **22-01**: Server Boundary Foundation, Quarantined Configuration & Secret Hashing Isolation (SRV-02) (completed 2026-09-08)
+- [ ] **22-02**: Typed Server Functions for Instructor Passkey & Diagnostic Telemetry (SRV-01, SRV-03)
+- [ ] **22-03**: Client Modal Integration, Workspace Wiring & Legacy Sanitization (SRV-01, SRV-02, SRV-03)
 
 ### Phase 23: Route-Level SSR Optimization & Production Docker Target
 
