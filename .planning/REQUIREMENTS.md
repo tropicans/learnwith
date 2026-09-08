@@ -1,42 +1,50 @@
-# Milestone v2.2 Requirements — Application Security Hardening & Anti-Breach Protection
+# Requirements: Milestone v3.0 TanStack Start Full-Document SSR & File-Based Router Migration
 
-**Status:** 🟡 ACTIVE (In Progress)  
-**Milestone:** v2.2  
-
----
-
-## Requirements Traceability
-
-### 1. Cryptographic Gate & Secret Protection (SEC-CRYPTO)
-
-- [x] **SEC-01**: Seluruh teks polos kata sandi (`['buka-kata', 'kata-sandi-asn']`) dihapus dari kode sumber JavaScript, dan variabel `window.WORD_PASSCODES` dihapus total dari global scope browser console.
-- [x] **SEC-02**: Formulir modal penguncian modul bersih dari kebocoran kredensial; teks `placeholder="Contoh: buka-kata"` diganti menjadi placeholder netral dan aman (`placeholder="Masukkan kode sandi instruktur..."`).
-- [x] **SEC-03**: Verifikasi kata sandi menggunakan enkripsi hash satu arah SHA-256 via Web Crypto API standar (`crypto.subtle.digest`), mencocokkan hash input dengan array hash tersimpan tanpa pernah menyimpan string sandi asli di client.
-- [x] **SEC-04**: Konfigurasi keamanan dan penguncian modul dipisahkan ke dalam file konfigurasi mandiri [`config.js`](file:///c:/Users/yudhiar/Downloads/AgenticAI/config.js) (`window.LEARNWITH_CONFIG`) sehingga memudahkan pembaruan sandi instruktur tanpa memodifikasi logika aplikasi.
-
-### 2. URL Hardening, Session Management & Anti-Tampering (SEC-SESSION)
-
-- [x] **SEC-05**: Penutupan celah bypass URL parameter tanpa otorisasi (`?unlock=dev`, `?unlock=word`, `?unlock=1`); parameter URL hanya dapat membuka modul jika menyertakan token/hash instruktur yang sah.
-- [x] **SEC-06**: Mekanisme auto-lock / session timeout: modul yang telah dibuka akan otomatis terkunci kembali jika sesi tidak aktif atau saat browser ditutup, mencegah akses tidak sah pada perangkat yang ditinggalkan.
-
-### 3. Content Security Policy, DOM Sanitization & Anti-Clickjacking (SEC-GUARD)
-
-- [ ] **SEC-07**: Pemasangan header meta Content Security Policy (CSP) ketat di `<head>` untuk mencegah injeksi skrip asing, cross-site scripting (XSS), dan muatan konten eksternal tidak terpercaya.
-- [ ] **SEC-08**: Pelindung anti-clickjacking (frame-busting guard) memastikan platform `learnwith` tidak dapat disusupi atau dimanipulasi di dalam `<iframe>` situs web jahat.
-- [ ] **SEC-09**: Audit sanitasi DOM input: seluruh input pengguna (nama peserta, NIP, instansi, kuis, dan pencarian) wajib diproses secara aman menggunakan sanitasi karakter atau `textContent` murni, menjamin 0% celah DOM-based XSS.
+**Milestone:** v3.0  
+**Status:** In Progress  
 
 ---
 
-## Traceability Table
+## Requirements Grouped by Category
 
-| Requirement | Phase | Status |
-|---|---|---|
-| SEC-01 | Phase 16 | Complete |
-| SEC-02 | Phase 16 | Complete |
-| SEC-03 | Phase 16 | Complete |
-| SEC-04 | Phase 16 | Complete |
-| SEC-05 | Phase 17 | Complete |
-| SEC-06 | Phase 17 | Complete |
-| SEC-07 | Phase 18 | Pending |
-| SEC-08 | Phase 18 | Pending |
-| SEC-09 | Phase 18 | Pending |
+### Category 1: Framework & Tooling Foundation (FOUND)
+- [ ] **FOUND-01**: Inisialisasi package manifest `package.json` dengan `@tanstack/react-start`, `@tanstack/react-router`, `@tanstack/router-plugin`, `@tanstack/react-query`, `vinxi`, React 19/18, Vite 5, dan TypeScript 5.4.
+- [ ] **FOUND-02**: Konfigurasi `app.config.ts` (Vinxi / TanStack Start app configuration) dengan router plugin dan asset handling.
+- [ ] **FOUND-03**: Konfigurasi `tsconfig.json` dengan path alias (`@/*`), strict type-checking, dan DOM/Node types.
+- [ ] **FOUND-04**: Implementasi `app/client.tsx` (client entry point hydration) dan `app/ssr.tsx` (server streaming entry point).
+
+### Category 2: File-Based Routing & Search Params (ROUTE)
+- [ ] **ROUTE-01**: Implementasi root document route `app/routes/__root.tsx` dengan kerangka dokumen HTML lengkap (`<html>`, `<head>`, `<Meta />`, `<Links />`, `<Outlet />`, `<Scripts />`, `<ScrollRestoration />`).
+- [ ] **ROUTE-02**: Implementasi route index `app/routes/index.tsx` yang memetakan Frontpage Hub / Workshop Gallery.
+- [ ] **ROUTE-03**: Implementasi file-based nested route `app/routes/course.ai.tsx` untuk ruang kerja Agentic AI Workshop.
+- [ ] **ROUTE-04**: Implementasi file-based nested route `app/routes/course.word.tsx` untuk ruang kerja Pengolahan Kata Tingkat Lanjut.
+- [ ] **ROUTE-05**: Implementasi schema validasi Zod untuk query parameters (`mode`, `tab`, `filter`, `unlock`, `checkpoint`) dengan type safety penuh pada `<Link>` dan navigation hooks.
+
+### Category 3: Typed Route Loaders, Full-Document SSR & Streaming (SSR)
+- [ ] **SSR-01**: Implementasi typed route loaders pada setiap rute untuk preloading modul materi dan silabus kurikulum di server.
+- [ ] **SSR-02**: Konfigurasi React Suspense boundaries dengan fallback skeleton loader untuk full-document progressive SSR streaming.
+- [ ] **SSR-03**: Integrasi metadata dinamis (title, description, OpenGraph, favicon) per route menggunakan API TanStack Router `head()`.
+- [ ] **SSR-04**: Penanganan hydration safety via `<ClientOnly>` component boundary untuk widget interaktif berbasis `localStorage` (checklist, progress tracking, kuis interaktif).
+
+### Category 4: Server Boundaries & Typed Server Functions (SRV)
+- [ ] **SRV-01**: Implementasi `createServerFn` untuk autentikasi dan verifikasi passkey modul pengajar secara aman di sisi server.
+- [ ] **SRV-02**: Isolasi server configuration dan environment variables di `app/server/` agar tidak bocor ke client JavaScript bundle.
+- [ ] **SRV-03**: Typed server function untuk logging diagnostik lokal atau healthcheck gateway tanpa mengekspos endpoint mentah.
+
+### Category 5: Target Deployment & Production Build Optimization (DEPLOY)
+- [ ] **DEPLOY-01**: Konfigurasi build pipeline TanStack Start (`npm run build`) menghasilkan artefak server & client terpisah yang siap produksi.
+- [ ] **DEPLOY-02**: Pemilihan mode SSR per route (Full SSR vs SPA Island) yang tepat untuk memaksimalkan performa TTFB.
+- [ ] **DEPLOY-03**: Pembaruan konfigurasi Dockerfile / Docker Compose untuk menjalankan TanStack Start Node server container tanpa mengubah model runtime yang ada.
+- [ ] **DEPLOY-04**: Verifikasi regresi menyeluruh (automated unit tests & Playwright E2E browser tests) terhadap seluruh fungsionalitas interaktif platform.
+
+---
+
+## Future Requirements (Deferred)
+- **POSTGRES-01**: Integrasi PostgreSQL database untuk penyimpanan terpusat progres peserta multi-device.
+- **VECTOR-01**: Integrasi Vector DB & semantic search untuk modul materi pembelajaran interaktif.
+
+---
+
+## Out of Scope
+- Mengubah model pembelajaran, konten silabus, atau menghapus fitur offline/client-side storage.
+- Mengubah framework CSS menjadi UI library berat yang mengorbankan performa first paint.
