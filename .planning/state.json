@@ -1,12 +1,12 @@
 {
   "contract": "1.0.0",
   "flavor": "core",
-  "milestone": "v2.0 — (Phases 9-12)",
+  "milestone": "v3.0 — TanStack Start Full-Document SSR & File-Based Router Migration",
   "phases": [],
   "next": {
     "command": "/gsd-progress --next",
     "label": "Advance to the next step",
-    "reason": "Phase 12 of 4 · 50% · executing"
+    "reason": "Phase 19 of 5 · 0% · executing"
   },
-  "updated_at": "2026-09-07T06:30:24.081Z"
+  "updated_at": "2026-09-08T06:20:32.474Z"
 }
