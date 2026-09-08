@@ -1,20 +1,16 @@
 ---
 gsd_state_version: "1.0"
-milestone: v2.2
-milestone_name: (Phases 16-18) — COMPLETED
-current_phase: 18
-current_phase_name: Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking
-status: completed
-last_updated: "2026-09-08T04:03:57.379Z"
-last_activity: 2026-09-07
-last_activity_desc: Phase 18 execution completed with 100% unit and E2E security tests passed
-state_head: 2ca6613a2cb0fb586fe818f56a0cd131fbc4f9a8
+milestone: v3.0
+milestone_name: TanStack Start Full-Document SSR & File-Based Router Migration
+status: planning
+last_updated: "2026-09-08T05:51:18.243Z"
+last_activity: 2026-09-08
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 3
-  completed_plans: 3
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -28,9 +24,10 @@ See: `.planning/PROJECT.md` (updated 2026-09-07)
 
 ## Current Position
 
-Phase: 18 (Content Security Policy (CSP), DOM Sanitization & Anti-Clickjacking) — COMPLETED
-Status: Milestone v2.2 Completed (Phases 16-18)
-Last activity: 2026-09-07 — Phase 18 executed and verified (100% test pass)
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-09-08 — Milestone v3.0 started
 
 ## Milestone Summary
 

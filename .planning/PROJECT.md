@@ -8,22 +8,36 @@ A modern, responsive, and beginner-friendly web learning platform designed to gu
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current Milestone: v2.2 Application Security Hardening & Anti-Breach Protection
+## Current Milestone: v3.0 TanStack Start Full-Document SSR & File-Based Router Migration
 
-**Goal:** Lakukan penguatan keamanan (hardening) menyeluruh terhadap aplikasi agar tidak bisa dibreach (tahan terhadap kebocoran kata sandi, manipulasi objek global DevTools, bypass URL query tidak aman, dan celah injeksi DOM XSS).
+**Goal:** Transformasikan arsitektur aplikasi learnwith menjadi modern full-stack TanStack Start application dengan file-based routing via TanStack Router, runtime-validated search params (Zod), typed route loaders, typed server functions (`createServerFn`), full-document SSR, dan streaming architecture tanpa mengubah model aplikasi inti, menjaga server-only boundaries tetap terisolasi, serta mengoptimalkan deployment target.
 
 **Target Features:**
-- **Zero-Plaintext & Cryptographic Gate (Web Crypto API)**: Hapus seluruh kata sandi teks polos dari kode sumber, hapus `window.WORD_PASSCODES` dari console global, bersihkan bocoran di placeholder UI, dan gunakan enkripsi hash satu arah SHA-256 (`crypto.subtle.digest`).
-- **Centralized Secure Config (`config.js`)**: Pisahkan konfigurasi penguncian modul dan hash sandi instruktur ke file konfigurasi terisolasi (`window.LEARNWITH_CONFIG`).
-- **URL Bypass Hardening & Auto-Lock Session**: Kunci jalur bypass URL tanpa izin (`?unlock=dev`, dll.) di mode normal dan implementasikan auto-lock timeout agar modul tidak terbuka permanen jika ditinggal tanpa pengawasan.
-- **Content Security Policy (CSP) & Anti-Clickjacking**: Pasang meta header CSP ketat dan pelindung anti-framing untuk mencegah serangan injeksi skrip dan pembajakan klik.
-- **DOM Sanitization & Anti-XSS Audit**: Audit menyeluruh seluruh input pengguna (nama, NIP, evaluasi kuis, pencarian kata kunci) untuk memastikan 0% celah DOM XSS.
+- **TanStack Start & Vite Full-Stack Foundation**: Inisialisasi struktur TanStack Start dengan bundling Vite/Nitro/Vinxi, konfigurasi TypeScript, dan full-document SSR (`<StartServer />`, `<Meta />`, `<Scripts />`).
+- **File-Based Routing (TanStack Router)**: Migrasi seluruh halaman (`/` untuk Home Hub, `/course/ai` untuk Agentic AI Workshop, `/course/word` untuk Pengolahan Kata, `/settings`, `/diagnostics`) ke sistem routes berbasis file (`app/routes/`).
+- **Validated Search Params & Type-Safe Navigation**: Schema validasi Zod untuk seluruh query parameters (misal: `mode: 'pretraining' | 'live-class'`, `tab`, `filter`, `unlock`, `checkpoint`) dengan type safety penuh di router navigation.
+- **Typed Route Loaders & SSR Streaming**: Pemuatan modul dan kurikulum asinkron melalui route `loader` dengan fallback skeletons dan streaming rendering (HTML streamed progressively ke client).
+- **Typed Server Functions (`createServerFn`)**: Abstraksi server boundaries yang aman untuk operasi sensitif (verifikasi passkey, hash validation, dynamic resource resolution, persistent state sync) tanpa mengekspos logic rahasia ke browser bundle.
+- **Route-Level SSR Mode Selection & Target Deployment Optimization**: Konfigurasi mode SSR yang tepat per route (full SSR, streaming, atau client-only SPA islands untuk interactive state widgets) serta adaptasi runtime deployment (Docker container/Node server/Edge) tanpa mengubah logic platform.
 
-## Current State: v2.1 Shipped (2026-09-07)
+## Current State: v2.2 Shipped (2026-09-07)
 
-The platform is now an authenticated **NotebookLM-Inspired Multi-Course Studio** with an adaptive Frontpage Hub, clean two-way studio workspace navigation, and modern LY monogram identity.
+The platform is a fully hardened multi-course learning studio with cryptographic passcode hashing (Zero-Plaintext Web Crypto API), protected routes, anti-framing CSP, and 100% automated test coverage.
 
 ## Previous Milestones
+
+<details>
+<summary>✅ v2.2 Complete (Application Security Hardening & Anti-Breach Protection) - SHIPPED 2026-09-07</summary>
+
+- **Phases**: 16-18 (3 phases, 3 plans)
+- **Accomplishments**:
+  - Web Crypto API SHA-256 hash validation replacing plaintext passcodes.
+  - Centralized security configuration in `config.js` and anti-tampering guards.
+  - Safe URL parameter handling and session auto-lock mechanics.
+  - Full Content Security Policy (CSP) headers, DOM sanitization, and anti-clickjacking frame busting.
+  - 100% security test pass rate across Node and Playwright E2E suites.
+
+</details>
 
 <details>
 <summary>✅ v2.1 Complete (Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture) - SHIPPED 2026-09-07</summary>
