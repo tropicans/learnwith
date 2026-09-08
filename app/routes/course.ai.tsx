@@ -5,6 +5,12 @@ import { getCourseAiData, getCourseStatsAsync, type CourseStats } from '@/data/c
 import { StatsSkeleton } from '@/components/ui/Skeleton'
 import { ChecklistIsland } from '@/components/course/ChecklistIsland'
 import { InstructorUnlockModal } from '@/components/course/InstructorUnlockModal'
+import { PretrainingHero } from '@/components/course/pretraining/PretrainingHero'
+import { PretrainingTargetSection } from '@/components/course/pretraining/PretrainingTargetSection'
+import { PretrainingGlossarySection } from '@/components/course/pretraining/PretrainingGlossarySection'
+import { PretrainingSecuritySection } from '@/components/course/pretraining/PretrainingSecuritySection'
+import { PretrainingPrerequisitesSection } from '@/components/course/pretraining/PretrainingPrerequisitesSection'
+import { PretrainingPowerShellSection } from '@/components/course/pretraining/PretrainingPowerShellSection'
 
 export const Route = createFileRoute('/course/ai')({
   validateSearch: (search) => courseAiSearchSchema.parse(search),
@@ -70,18 +76,25 @@ function CourseAiComponent() {
         </Link>
       </div>
 
-      <section className="course-hero-header">
-        <div className="course-hero-badge">
-          <span className="badge badge-pill badge-success">{course.badge}</span>
-          <span className="course-session-pill">
-            {mode === 'pretraining' ? 'Mode Persiapan Mandiri' : 'Mode Kelas Terbimbing'}
-          </span>
+      {mode === 'pretraining' ? (
+        <div id="container-pretraining" className="mode-container active">
+          <PretrainingHero />
+          <PretrainingTargetSection />
+          <PretrainingGlossarySection />
+          <PretrainingSecuritySection />
+          <PretrainingPrerequisitesSection />
+          <PretrainingPowerShellSection />
         </div>
-        <h2 className="course-title">{course.title}</h2>
-        <p className="course-subtitle">{course.subtitle}</p>
-        <p className="course-desc">{course.description}</p>
+      ) : (
+        <section className="course-hero-header">
+          <div className="course-hero-badge">
+            <span className="badge badge-pill badge-success">{course.badge}</span>
+            <span className="course-session-pill">Mode Kelas Terbimbing</span>
+          </div>
+          <h2 className="course-title">{course.title}</h2>
+          <p className="course-subtitle">{course.subtitle}</p>
+          <p className="course-desc">{course.description}</p>
 
-        {mode === 'live-class' && (
           <div style={{ marginTop: '1rem' }}>
             {isUnlocked ? (
               <div
@@ -123,8 +136,8 @@ function CourseAiComponent() {
               </button>
             )}
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       {/* Progressive Streaming Section (SSR-02) */}
       <section className="course-streaming-stats">
