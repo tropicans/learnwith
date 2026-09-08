@@ -88,6 +88,11 @@ Plans:
 2. Secret hash dan environment variables terisolasi di `app/server/` dan tidak pernah disertakan dalam bundle JavaScript browser.
 3. Diagnostik dan telemetry internal berjalan via typed RPC yang aman.
 
+**Plans**:
+- **22-01**: Server Boundary Foundation, Quarantined Configuration & Secret Hashing Isolation (SRV-02)
+- **22-02**: Typed Server Functions for Instructor Passkey & Diagnostic Telemetry (SRV-01, SRV-03)
+- **22-03**: Client Modal Integration, Workspace Wiring & Legacy Sanitization (SRV-01, SRV-02, SRV-03)
+
 ### Phase 23: Route-Level SSR Optimization & Production Docker Target
 
 **Goal**: Mengoptimalkan mode SSR per route (Full SSR vs Client Island) dan memvalidasi deployment runtime container Docker.
