@@ -4844,8 +4844,7 @@
     "semantic_hash": "699813c9a0ec4749e7f5a3e9102eb387"
   },
   ".agents/hooks/gsd-secret-read-guard.js": {
-    "mtime": 1788839668.3208249,
-    "seen": 1788840583.9271684,
+    "mtime": 1788850623.8565044,
     "ast_hash": "290e9d7769d1c1eb5f822812bbefcc32",
     "semantic_hash": "290e9d7769d1c1eb5f822812bbefcc32"
   },
@@ -5094,8 +5093,8 @@
     "semantic_hash": ""
   },
   ".planning/state.json": {
-    "mtime": 1788852941.4137442,
-    "ast_hash": "7fbe8a61e8b4eb3b92196971db88cc17",
+    "mtime": 1788855626.0589862,
+    "ast_hash": "4ac6a68cb3ca78b67d02dab6adb7b60b",
     "semantic_hash": ""
   },
   "assets/js/app.js": {
@@ -10379,8 +10378,8 @@
     "semantic_hash": ""
   },
   ".planning/REQUIREMENTS.md": {
-    "mtime": 1788851046.838612,
-    "ast_hash": "8868f31ce998a2e10fc89cea3e4674d3",
+    "mtime": 1788855625.8012483,
+    "ast_hash": "1a7dd5dd1c1931f5c60f44b27e9832c0",
     "semantic_hash": ""
   },
   ".planning/RETROSPECTIVE.md": {
@@ -10389,13 +10388,13 @@
     "semantic_hash": ""
   },
   ".planning/ROADMAP.md": {
-    "mtime": 1788852967.0530484,
-    "ast_hash": "96a8b11097d5b477a22a07a6387fdce5",
+    "mtime": 1788855634.5099607,
+    "ast_hash": "2dab9a53b2b4a064d769600a01a2aa4c",
     "semantic_hash": ""
   },
   ".planning/STATE.md": {
-    "mtime": 1788852941.1166668,
-    "ast_hash": "3f008a74940cb2967b8037539d91e6a6",
+    "mtime": 1788855641.5484216,
+    "ast_hash": "c982a5a1ef179d3b7d5e7fdcd5832868",
     "semantic_hash": ""
   },
   ".planning/codebase/ARCHITECTURE.md": {
@@ -11395,13 +11394,13 @@
     "semantic_hash": ""
   },
   "app/routes/course.ai.tsx": {
-    "mtime": 1788853007.8450217,
-    "ast_hash": "d63c1ba647a6506b2321f8d957b3e9f4",
+    "mtime": 1788855505.7182486,
+    "ast_hash": "2edfd376cb8a14da5ba60320d3e37575",
     "semantic_hash": ""
   },
   "app/routes/course.word.tsx": {
-    "mtime": 1788853016.8990867,
-    "ast_hash": "cd1418e0152beb0077c240e4e6587e41",
+    "mtime": 1788855513.8666236,
+    "ast_hash": "c66dfb8c8c901dd2de70dd0e07b77234",
     "semantic_hash": ""
   },
   "app/schemas/searchParams.ts": {
@@ -11682,6 +11681,111 @@
   ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-01-SUMMARY.md": {
     "mtime": 1788852914.1270866,
     "ast_hash": "90dac4dfc901f5a1cf2f134abadae9e3",
+    "semantic_hash": ""
+  },
+  "app/components/course/InstructorUnlockModal.tsx": {
+    "mtime": 1788855564.621262,
+    "ast_hash": "24b36b35a9d04343465fea0ba1177478",
+    "semantic_hash": ""
+  },
+  "app/schemas/serverFn.ts": {
+    "mtime": 1788855194.45736,
+    "ast_hash": "f931e1bea22af32b950581bceebbc750",
+    "semantic_hash": ""
+  },
+  "app/server/auth.ts": {
+    "mtime": 1788855424.991544,
+    "ast_hash": "2443d929930ec3249fb3bd4c97332b7f",
+    "semantic_hash": ""
+  },
+  "app/server/config.ts": {
+    "mtime": 1788855271.7107563,
+    "ast_hash": "0863e40ed35667de8fe9f5bf806956ef",
+    "semantic_hash": ""
+  },
+  "app/server/diagnostics.ts": {
+    "mtime": 1788855424.9935389,
+    "ast_hash": "c18f7f35e629f08641b1eda144c8079f",
+    "semantic_hash": ""
+  },
+  "scratch/test_ssr_phase21.py": {
+    "mtime": 1788853169.803751,
+    "ast_hash": "6061b3c518d135467ade74ef92d446f2",
+    "semantic_hash": ""
+  },
+  "tests/server-boundary-audit.test.js": {
+    "mtime": 1788855283.2914033,
+    "ast_hash": "aeee4676c0d9925091d5fbfd1b733574",
+    "semantic_hash": ""
+  },
+  "tests/server-functions.test.js": {
+    "mtime": 1788855445.9634805,
+    "ast_hash": "7d5c16e30218de95078494627ea38d5c",
+    "semantic_hash": ""
+  },
+  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-02-SUMMARY.md": {
+    "mtime": 1788853104.846933,
+    "ast_hash": "d1cfd645e9b1ca7535d8f993a63cddeb",
+    "semantic_hash": ""
+  },
+  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-03-SUMMARY.md": {
+    "mtime": 1788853198.6124818,
+    "ast_hash": "a0e453f4950cd2d939f07cb4831fe91e",
+    "semantic_hash": ""
+  },
+  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-VERIFICATION.md": {
+    "mtime": 1788853266.8890407,
+    "ast_hash": "e8cf9439d249ac79013334e4e7772f35",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-01-PLAN.md": {
+    "mtime": 1788855019.4496171,
+    "ast_hash": "f2a06b6e90a7af6bfd73d606158eba55",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-01-SUMMARY.md": {
+    "mtime": 1788855302.3701189,
+    "ast_hash": "8359fa543f27b265c0019aad4581e0a1",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-02-PLAN.md": {
+    "mtime": 1788855019.4506173,
+    "ast_hash": "e7ce3b1edcd64fb6ca373635d76d6f62",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-02-SUMMARY.md": {
+    "mtime": 1788855460.427781,
+    "ast_hash": "5cc463a313fe0effaec0ab472ffd6032",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-03-PLAN.md": {
+    "mtime": 1788855019.4506173,
+    "ast_hash": "c28a80dad46179f6b3e13d1afbb4f8d0",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-03-SUMMARY.md": {
+    "mtime": 1788855579.46526,
+    "ast_hash": "81a16e91af5ea662e552d99c91e50060",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-PATTERNS.md": {
+    "mtime": 1788854955.1541164,
+    "ast_hash": "4b74700068a417e8c487a4fd33b945cd",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-RESEARCH.md": {
+    "mtime": 1788854927.0178075,
+    "ast_hash": "b07959c842c597620dcac269832739e1",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-VALIDATION.md": {
+    "mtime": 1788854939.6670554,
+    "ast_hash": "3b9b4ecde3d4f617ab8c0a0f272e78f0",
+    "semantic_hash": ""
+  },
+  ".planning/phases/22-typed-server-functions-boundary-isolation/22-VERIFICATION.md": {
+    "mtime": 1788855610.2616873,
+    "ast_hash": "a0958b10a18ee4085ccd9673b686236a",
     "semantic_hash": ""
   }
 }
