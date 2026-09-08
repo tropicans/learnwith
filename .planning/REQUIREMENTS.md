@@ -1,84 +1,91 @@
-# Requirements: Milestone v3.0 TanStack Start Full-Document SSR & File-Based Router Migration
+# Requirements: Milestone v3.1 Pre-Training Parity in TanStack Start
 
-**Milestone:** v3.0  
-**Status:** Completed  
+**Milestone:** v3.1  
+**Status:** In Progress  
 
 ---
 
 ## Requirements Grouped by Category
 
-### Category 1: Framework & Tooling Foundation (FOUND)
+### Category 1: Foundation & Context Sections (PRE-BASE)
 
-- [x] **FOUND-01**: Inisialisasi package manifest `package.json` dengan `@tanstack/react-start`, `@tanstack/react-router`, `@tanstack/router-plugin`, `@tanstack/react-query`, `vinxi`, React 19/18, Vite 5, dan TypeScript 5.4.
-- [x] **FOUND-02**: Konfigurasi `app.config.ts` (Vinxi / TanStack Start app configuration) dengan router plugin dan asset handling.
-- [x] **FOUND-03**: Konfigurasi `tsconfig.json` dengan path alias (`@/*`), strict type-checking, dan DOM/Node types.
-- [x] **FOUND-04**: Implementasi `app/client.tsx` (client entry point hydration) dan `app/ssr.tsx` (server streaming entry point).
+- [ ] **PRE-BASE-01**: User dapat membaca Target & Alur Pre-Training (`sec-target`) dengan tahapan visual dan estimasi durasi belajar mandiri.
+- [ ] **PRE-BASE-02**: User dapat mengakses Glosarium Interaktif (`sec-glosarium`) yang mendefinisikan istilah teknis AI (LLM, Agent, API Key, Reverse Proxy, Daemon, Webhook, CLI, JSON, Port, Process Manager) secara jelas.
+- [ ] **PRE-BASE-03**: User dapat membaca Aturan Keamanan & Perlindungan Rahasia (`sec-security`) dengan panduan menjaga API key & token bot agar tidak terekspos ke publik.
+- [ ] **PRE-BASE-04**: User dapat membaca Alat & Persiapan Perangkat (`sec-prerequisites`) berisi spesifikasi sistem Windows, koneksi internet, akun Telegram, dan software prasyarat.
+- [ ] **PRE-BASE-05**: User dapat membaca Panduan Khusus PowerShell (`sec-powershell`) dengan tata cara membuka administrator terminal, eksekusi perintah, dan tips penanganan policy.
 
-### Category 2: File-Based Routing & Search Params (ROUTE)
+### Category 2: Interactive Modules 1–5 (PRE-MOD)
 
-- [x] **ROUTE-01**: Implementasi root document route `app/routes/__root.tsx` dengan kerangka dokumen HTML lengkap (`<html>`, `<head>`, `<Meta />`, `<Links />`, `<Outlet />`, `<Scripts />`, `<ScrollRestoration />`).
-- [x] **ROUTE-02**: Implementasi route index `app/routes/index.tsx` yang memetakan Frontpage Hub / Workshop Gallery.
-- [x] **ROUTE-03**: Implementasi file-based nested route `app/routes/course.ai.tsx` untuk ruang kerja Agentic AI Workshop.
-- [x] **ROUTE-04**: Implementasi file-based nested route `app/routes/course.word.tsx` untuk ruang kerja Pengolahan Kata Tingkat Lanjut.
-- [x] **ROUTE-05**: Implementasi schema validasi Zod untuk query parameters (`mode`, `tab`, `filter`, `unlock`, `checkpoint`) dengan type safety penuh pada `<Link>` dan navigation hooks.
+- [ ] **PRE-MOD-01**: User dapat membuka/menutup accordion Modul 1 (Pemeriksaan & Instalasi Node.js) dengan panduan verifikasi versi node, nvm-windows, dan perintah `node -v` dengan 1-click copy.
+- [ ] **PRE-MOD-02**: User dapat berinteraksi dengan Modul 2 (Instalasi & Menjalankan 9Router) dengan copyable commands untuk proxy/router API lokal, konfigurasi port 20128/9000, dan instruksi pengujian curl.
+- [ ] **PRE-MOD-03**: User dapat mengikuti panduan langkah demi langkah Modul 3 (Pembuatan Bot Telegram & Telegram User ID) melalui @BotFather, token bot protection, dan pencarian User ID via @userinfobot.
+- [ ] **PRE-MOD-04**: User dapat mengikuti instruksi Modul 4 (Instalasi & Konfigurasi Hermes Agent) dengan perintah CLI, konfigurasi provider 9Router, dan uji coba Hermes.
+- [ ] **PRE-MOD-05**: User dapat mengikuti instruksi Modul 5 (Pengujian Integrasi Akhir & Uji Coba Chat) untuk memverifikasi alur interaksi live chat Telegram ke Hermes dan 9Router.
+- [ ] **PRE-MOD-06**: Tombol 1-Click Copy pada semua blok kode perintah modul dengan visual feedback tooltip/toast "Tersalin!" serta preserving syntax whitespace.
 
-### Category 3: Typed Route Loaders, Full-Document SSR & Streaming (SSR)
+### Category 3: Checklist Engine, Checkpoints & Dynamic Readiness (PRE-CHK)
 
-- [x] **SSR-01**: Implementasi typed route loaders pada setiap rute untuk preloading modul materi dan silabus kurikulum di server.
-- [x] **SSR-02**: Konfigurasi React Suspense boundaries dengan fallback skeleton loader untuk full-document progressive SSR streaming.
-- [x] **SSR-03**: Integrasi metadata dinamis (title, description, OpenGraph, favicon) per route menggunakan API TanStack Router `head()`.
-- [x] **SSR-04**: Penanganan hydration safety via `<ClientOnly>` component boundary untuk widget interaktif berbasis `localStorage` (checklist, progress tracking, kuis interaktif).
+- [ ] **PRE-CHK-01**: User dapat mencentang 13 item checklist langkah demi langkah yang tersebar di Modul 1–5 dengan penyimpanan persisten di browser localStorage (`learnwith_ai_checklist`).
+- [ ] **PRE-CHK-02**: User dapat memvalidasi 3 Checkpoint Gates (Checkpoint 1: Lingkungan Node.js, Checkpoint 2: 9Router & Kunci API, Checkpoint 3: Bot Telegram & Hermes Running) dengan kalkulasi otomatis status LULUS / BELUM LULUS.
+- [ ] **PRE-CHK-03**: User dapat melihat Status Kesiapan Peserta (Dynamic Readiness Badge & Summary) yang menghitung persentase kemajuan dan menampilkan status visual "SIAP WORKSHOP" atau "PERLU KLINIK PERSIAPAN".
+- [ ] **PRE-CHK-04**: User dapat mereset seluruh progres checklist dan checkpoint pre-training secara aman melalui modal konfirmasi reset.
 
-### Category 4: Server Boundaries & Typed Server Functions (SRV)
+### Category 4: Troubleshooting Hub & Token Redaction (PRE-TOOL)
 
-- [x] **SRV-01**: Implementasi `createServerFn` untuk autentikasi dan verifikasi passkey modul pengajar secara aman di sisi server.
-- [x] **SRV-02**: Isolasi server configuration dan environment variables di `app/server/` agar tidak bocor ke client JavaScript bundle.
-- [x] **SRV-03**: Typed server function untuk logging diagnostik lokal atau healthcheck gateway tanpa mengekspos endpoint mentah.
+- [ ] **PRE-TOOL-01**: User dapat mencari solusi kendala teknis pre-training secara instan melalui input pencarian real-time dan tombol filter kategori (Node.js, 9Router, Telegram, Hermes, PowerShell).
+- [ ] **PRE-TOOL-02**: User dapat membaca 10+ kartu solusi error umum (seperti `EADDRINUSE`, `401 Unauthorized`, `Execution_Policies`, `Telegram 409 Conflict`) lengkap dengan deskripsi penyebab dan solusinya.
+- [ ] **PRE-TOOL-03**: User dapat menggunakan Tool Sensor Rahasia / Token Redaction Helper untuk mem-paste teks log/konfigurasi dan otomatis menyensor format token rahasia sebelum dibagikan.
 
-### Category 5: Target Deployment & Production Build Optimization (DEPLOY)
+### Category 5: Readiness Report Generator & Export (PRE-RPT)
 
-- [x] **DEPLOY-01**: Konfigurasi build pipeline TanStack Start (`npm run build`) menghasilkan artefak server & client terpisah yang siap produksi.
-- [x] **DEPLOY-02**: Pemilihan mode SSR per route (Full SSR vs SPA Island) yang tepat untuk memaksimalkan performa TTFB.
-- [x] **DEPLOY-03**: Pembaruan konfigurasi Dockerfile / Docker Compose untuk menjalankan TanStack Start Node server container tanpa mengubah model runtime yang ada.
-- [x] **DEPLOY-04**: Verifikasi regresi menyeluruh (automated unit tests & Playwright E2E browser tests) terhadap seluruh fungsionalitas interaktif platform.
+- [ ] **PRE-RPT-01**: User dapat mengisi nama peserta dan instansi pada Form Laporan Kesiapan Peserta yang terisi otomatis dengan rekap checkpoint yang telah diselesaikan.
+- [ ] **PRE-RPT-02**: User dapat mengekspor laporan kesiapan ke clipboard dengan format siap kirim WhatsApp dan Telegram Markdown dalam 1 kali klik.
+- [ ] **PRE-RPT-03**: Tampilan cetak rapi (`@media print`) untuk mencetak atau menyimpan laporan kesiapan peserta sebagai PDF dokumen resmi.
 
----
+### Category 6: Sidebar Navigation, Layout & Zero-Regression (PRE-NAV)
 
-## Traceability Matrix
-
-| Requirement | Phase | Status | Verification Evidence |
-|---|---|---|---|
-| FOUND-01 | Phase 19 | Complete | `package.json` manifest with pinned TanStack Start/Router dependencies |
-| FOUND-02 | Phase 19 | Complete | `app.config.ts` Vinxi configuration with tsconfigPaths |
-| FOUND-03 | Phase 19 | Complete | Strict `tsconfig.json` with `@/*` aliases and DOM/Node lib |
-| FOUND-04 | Phase 19 | Complete | `app/client.tsx` and `app/ssr.tsx` hydration and streaming entry points |
-| ROUTE-01 | Phase 20 | Complete | `app/routes/__root.tsx` root shell with Meta, Links, Scripts |
-| ROUTE-02 | Phase 20 | Complete | `app/routes/index.tsx` Frontpage Hub route |
-| ROUTE-03 | Phase 20 | Complete | `app/routes/course.ai.tsx` Agentic AI workspace route |
-| ROUTE-04 | Phase 20 | Complete | `app/routes/course.word.tsx` Word Processing ASN route |
-| ROUTE-05 | Phase 20 | Complete | `app/schemas/searchParams.ts` Zod search validation schemas |
-| SSR-01 | Phase 21 | Complete | Typed route loaders in `app/data/courses.ts` preloading syllabus outline |
-| SSR-02 | Phase 21 | Complete | `<Suspense>` progressive streaming banner with `StatsSkeleton` |
-| SSR-03 | Phase 21 | Complete | Dynamic route `head()` metadata with OpenGraph tags |
-| SSR-04 | Phase 21 | Complete | `<ClientOnly>` islands in `ChecklistIsland.tsx` preventing hydration mismatch |
-| SRV-01 | Phase 22 | Complete | `verifyInstructorPasskeyFn` via `createServerFn` with Zod validation |
-| SRV-02 | Phase 22 | Complete | Server config quarantined in `app/server/config.ts` passing AST boundary audit |
-| SRV-03 | Phase 22 | Complete | `getSystemDiagnosticsFn` typed telemetry RPC |
-| DEPLOY-01 | Phase 23 | Complete | Multi-stage Dockerfile packaging standalone `.output/server/index.mjs` |
-| DEPLOY-02 | Phase 23 | Complete | Route SSR mode selection with NotebookLM 404 and structured request logging |
-| DEPLOY-03 | Phase 23 | Complete | Hardened container with tini PID 1, USER node, and native fetch healthcheck |
-| DEPLOY-04 | Phase 23 | Complete | Multi-tier test harness (`test:smoke`, `test`) with 100% legacy zero-regression |
-
----
-
-## Future Requirements (Deferred)
-
-- **POSTGRES-01**: Integrasi PostgreSQL database untuk penyimpanan terpusat progres peserta multi-device.
-- **VECTOR-01**: Integrasi Vector DB & semantic search untuk modul materi pembelajaran interaktif.
+- [ ] **PRE-NAV-01**: Sidebar navigasi menampilkan tautan kurikulum pre-training lengkap dengan indikator progres modul dan scrollspy / jump-to-section.
+- [ ] **PRE-NAV-02**: Mode switcher terintegrasi mulus antara `📋 Pra-Training` dan `🚀 Hari-H Kelas` via query parameter URL `?mode=pretraining` pada arsitektur TanStack Start.
+- [ ] **PRE-NAV-03**: Seluruh test suite (Node unit tests, Playwright E2E browser tests) lulus 100% tanpa regresi terhadap fungsionalitas Course 1, Course 2, maupun Frontpage Hub.
 
 ---
 
 ## Out of Scope
 
-- Mengubah model pembelajaran, konten silabus, atau menghapus fitur offline/client-side storage.
-- Mengubah framework CSS menjadi UI library berat yang mengorbankan performa first paint.
+- Menjalankan instalasi paket otomatis secara remote di komputer peserta (berisiko keamanan; peserta mengeksekusi sendiri di PowerShell).
+- Menyimpan kredensial token mentah peserta ke server publik atau remote database.
+- Mengubah skema persistensi localStorage yang sudah ada agar data peserta terdahulu tidak hilang (`learnwith_ai_*`).
+
+---
+
+## Traceability Matrix
+
+*(Akan diisi dan diperbarui oleh Roadmap setelah pemetaan fase selesai)*
+
+| Requirement | Phase | Status | Verification Evidence |
+|---|---|---|---|
+| PRE-BASE-01 | Pending | Pending | — |
+| PRE-BASE-02 | Pending | Pending | — |
+| PRE-BASE-03 | Pending | Pending | — |
+| PRE-BASE-04 | Pending | Pending | — |
+| PRE-BASE-05 | Pending | Pending | — |
+| PRE-MOD-01 | Pending | Pending | — |
+| PRE-MOD-02 | Pending | Pending | — |
+| PRE-MOD-03 | Pending | Pending | — |
+| PRE-MOD-04 | Pending | Pending | — |
+| PRE-MOD-05 | Pending | Pending | — |
+| PRE-MOD-06 | Pending | Pending | — |
+| PRE-CHK-01 | Pending | Pending | — |
+| PRE-CHK-02 | Pending | Pending | — |
+| PRE-CHK-03 | Pending | Pending | — |
+| PRE-CHK-04 | Pending | Pending | — |
+| PRE-TOOL-01 | Pending | Pending | — |
+| PRE-TOOL-02 | Pending | Pending | — |
+| PRE-TOOL-03 | Pending | Pending | — |
+| PRE-RPT-01 | Pending | Pending | — |
+| PRE-RPT-02 | Pending | Pending | — |
+| PRE-RPT-03 | Pending | Pending | — |
+| PRE-NAV-01 | Pending | Pending | — |
+| PRE-NAV-02 | Pending | Pending | — |
+| PRE-NAV-03 | Pending | Pending | — |
