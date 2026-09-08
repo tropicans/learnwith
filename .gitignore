@@ -6,3 +6,5 @@ Thumbs.db
 .gsd/
 .codex-finalizer/
 .pptx-*
+.output/
+.vinxi/

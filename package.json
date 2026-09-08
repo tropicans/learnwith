@@ -1,0 +1,33 @@
+{
+  "name": "learnwith",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev --port 3173",
+    "build": "vinxi build",
+    "start": "vinxi start --port 3173",
+    "typecheck": "tsc --noEmit",
+    "test:node": "node --test tests/*.test.js",
+    "test": "npm run test:node"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.66.0",
+    "@tanstack/react-router": "1.120.20",
+    "@tanstack/react-start": "1.120.20",
+    "@tanstack/router-plugin": "1.120.20",
+    "@tanstack/start": "1.120.20",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vinxi": "0.5.3",
+    "vite": "^6.1.0",
+    "vite-tsconfig-paths": "^5.1.4",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "typescript": "^5.4.5"
+  }
+}
