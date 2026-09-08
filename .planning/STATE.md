@@ -2,20 +2,20 @@
 gsd_state_version: "1.0"
 milestone: v3.0
 milestone_name: TanStack Start Full-Document SSR & File-Based Router Migration
-current_phase: 21
-current_phase_name: Typed Route Loaders, Full-Document SSR & Progressive Streaming
-status: verifying
-stopped_at: Phase 20 complete, ready to plan Phase 21
-last_updated: "2026-09-08T07:40:13.377Z"
+current_phase: 22
+current_phase_name: Typed Server Functions & Boundary Isolation
+status: planning
+stopped_at: Phase 21 complete, ready to plan Phase 22
+last_updated: "2026-09-08T07:41:21.053Z"
 last_activity: 2026-09-08
-last_activity_desc: Phase 21 execution started
-state_head: 701d590aac6135deb5948c26507e648218c3c328
+last_activity_desc: Phase 21 complete, transitioned to Phase 22
+state_head: e1f2a02103a8562a2e39e581c09d7ff4e44e5e8f
 progress:
   total_phases: 5
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 9
   completed_plans: 9
-  percent: 40
+  percent: 60
 ---
 
 # Project State
@@ -29,10 +29,10 @@ See: `.planning/PROJECT.md` (updated 2026-09-07)
 
 ## Current Position
 
-Phase: 21 (Typed Route Loaders, Full-Document SSR & Progressive Streaming) — EXECUTING
-Plan: 3 of 3
-Status: Phase complete — ready for verification
-Last activity: 2026-09-08 — Phase 21 execution started
+Phase: 22 — Typed Server Functions & Boundary Isolation
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-09-08 — Phase 21 complete, transitioned to Phase 22
 
 ## Milestone Summary
 
@@ -65,5 +65,5 @@ None.
 ## Session
 
 **Last session:** 2026-09-08T07:15:00.000Z
-**Stopped at:** Phase 20 complete, ready to plan Phase 21
+**Stopped at:** Phase 21 complete, ready to plan Phase 22
 **Resume file:** .planning/phases/20-file-based-routes-validated-search-params/20-VERIFICATION.md

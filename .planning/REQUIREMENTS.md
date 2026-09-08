@@ -24,10 +24,10 @@
 
 ### Category 3: Typed Route Loaders, Full-Document SSR & Streaming (SSR)
 
-- [ ] **SSR-01**: Implementasi typed route loaders pada setiap rute untuk preloading modul materi dan silabus kurikulum di server.
-- [ ] **SSR-02**: Konfigurasi React Suspense boundaries dengan fallback skeleton loader untuk full-document progressive SSR streaming.
-- [ ] **SSR-03**: Integrasi metadata dinamis (title, description, OpenGraph, favicon) per route menggunakan API TanStack Router `head()`.
-- [ ] **SSR-04**: Penanganan hydration safety via `<ClientOnly>` component boundary untuk widget interaktif berbasis `localStorage` (checklist, progress tracking, kuis interaktif).
+- [x] **SSR-01**: Implementasi typed route loaders pada setiap rute untuk preloading modul materi dan silabus kurikulum di server.
+- [x] **SSR-02**: Konfigurasi React Suspense boundaries dengan fallback skeleton loader untuk full-document progressive SSR streaming.
+- [x] **SSR-03**: Integrasi metadata dinamis (title, description, OpenGraph, favicon) per route menggunakan API TanStack Router `head()`.
+- [x] **SSR-04**: Penanganan hydration safety via `<ClientOnly>` component boundary untuk widget interaktif berbasis `localStorage` (checklist, progress tracking, kuis interaktif).
 
 ### Category 4: Server Boundaries & Typed Server Functions (SRV)
 

@@ -61,15 +61,15 @@ Plans:
 Plans:
 **Wave 1**
 
-- [x] 21-01: Strongly-typed course data layer, route loaders & dynamic document head metadata
+- [x] 21-01: Strongly-typed course data layer, route loaders & dynamic document head metadata (completed 2026-09-08)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [x] 21-02: Progressive HTML streaming with React Suspense & ClientOnly hydration safety
+- [x] 21-02: Progressive HTML streaming with React Suspense & ClientOnly hydration safety (completed 2026-09-08)
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [x] 21-03: Production SSR streaming probe verification on Port 3173 & legacy test suite regression
+- [x] 21-03: Production SSR streaming probe verification on Port 3173 & legacy test suite regression (completed 2026-09-08)
 
 **Success Criteria**:
 
