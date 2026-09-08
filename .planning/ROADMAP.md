@@ -32,6 +32,12 @@ Plans:
 **Goal**: Mengonversi struktur multi-halaman monolitik menjadi file-based routing menggunakan TanStack Router dengan validasi parameter query via Zod.
 **Depends on**: Phase 19
 **Requirements**: ROUTE-01, ROUTE-02, ROUTE-03, ROUTE-04, ROUTE-05
+**Plans**: 3 plans
+
+Plans:
+- [x] 20-01: Centralized Zod search validation schemas, platform Header & root document shell (completed 2026-09-08)
+- [x] 20-02: Frontpage Hub (`/`), Agentic AI (`/course/ai`), and Word (`/course/word`) file routes & routeTree generation (completed 2026-09-08)
+- [x] 20-03: End-to-end SSR endpoint verification on Port 3173 & legacy regression testing (completed 2026-09-08)
 **Success Criteria**:
 1. Root document shell `__root.tsx` menyajikan HTML lengkap dengan `<Meta />`, `<Links />`, `<Outlet />`, `<Scripts />`.
 2. Halaman `/`, `/course/ai`, `/course/word`, dan `/diagnostics` terpetakan secara deklaratif di `app/routes/`.

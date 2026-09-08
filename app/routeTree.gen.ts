@@ -12,12 +12,26 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as CourseWordImport } from './routes/course.word'
+import { Route as CourseAiImport } from './routes/course.ai'
 
 // Create/Update Routes
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CourseWordRoute = CourseWordImport.update({
+  id: '/course/word',
+  path: '/course/word',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const CourseAiRoute = CourseAiImport.update({
+  id: '/course/ai',
+  path: '/course/ai',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -32,6 +46,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/course/ai': {
+      id: '/course/ai'
+      path: '/course/ai'
+      fullPath: '/course/ai'
+      preLoaderRoute: typeof CourseAiImport
+      parentRoute: typeof rootRoute
+    }
+    '/course/word': {
+      id: '/course/word'
+      path: '/course/word'
+      fullPath: '/course/word'
+      preLoaderRoute: typeof CourseWordImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -39,32 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/course/ai': typeof CourseAiRoute
+  '/course/word': typeof CourseWordRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/course/ai': typeof CourseAiRoute
+  '/course/word': typeof CourseWordRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/course/ai': typeof CourseAiRoute
+  '/course/word': typeof CourseWordRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/course/ai' | '/course/word'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/course/ai' | '/course/word'
+  id: '__root__' | '/' | '/course/ai' | '/course/word'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CourseAiRoute: typeof CourseAiRoute
+  CourseWordRoute: typeof CourseWordRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CourseAiRoute: CourseAiRoute,
+  CourseWordRoute: CourseWordRoute,
 }
 
 export const routeTree = rootRoute
@@ -77,11 +115,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/course/ai",
+        "/course/word"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/course/ai": {
+      "filePath": "course.ai.tsx"
+    },
+    "/course/word": {
+      "filePath": "course.word.tsx"
     }
   }
 }
