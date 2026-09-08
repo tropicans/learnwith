@@ -544,7 +544,7 @@ body {
   grid-area: main;
   background: var(--bg-body);
   padding: 2rem 2.5rem 4rem;
-  max-width: 1100px;
+  max-width: min(1600px, 94vw);
   margin: 0 auto;
   width: 100%;
 }
@@ -960,7 +960,7 @@ body {
 
 .app-container.view-home .app-main,
 .view-home .app-main {
-  max-width: 1200px;
+  max-width: min(1500px, 92vw);
   margin: 0 auto;
   width: 100%;
   padding: 2.5rem 2rem 5rem;
@@ -1120,8 +1120,18 @@ body {
 
 .notebook-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 1.75rem;
+}
+
+@media (min-width: 1920px) {
+  .app-main {
+    padding: 2.5rem 3.5rem 5rem;
+  }
+  .app-container.view-home .app-main,
+  .view-home .app-main {
+    padding: 3rem 3rem 6rem;
+  }
 }
 
 /* Notebook Card */
