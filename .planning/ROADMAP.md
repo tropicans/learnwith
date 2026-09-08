@@ -22,8 +22,8 @@
 **Plans**: 2 plans
 
 Plans:
-- [ ] 24-01: Data extraction & typed data schema (pretrainingFoundation.ts) and modular React 19 foundation components (Hero, Target, Glosarium, Security, Prerequisites, PowerShell)
-- [ ] 24-02: Route integration in app/routes/course.ai.tsx, styling fidelity, and automated unit/regression test verification
+- [x] 24-01: Data extraction & typed data schema (pretrainingFoundation.ts) and modular React 19 foundation components (Hero, Target, Glosarium, Security, Prerequisites, PowerShell) (completed 2026-09-08)
+- [x] 24-02: Route integration in app/routes/course.ai.tsx, styling fidelity, and automated unit/regression test verification (completed 2026-09-08)
 
 **Success Criteria**:
 1. User dapat melihat Target & Alur Pre-Training dengan estimasi waktu dan tahapan visual di route `/course/ai?mode=pretraining`.

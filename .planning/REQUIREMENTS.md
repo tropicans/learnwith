@@ -9,11 +9,11 @@
 
 ### Category 1: Foundation & Context Sections (PRE-BASE)
 
-- [ ] **PRE-BASE-01**: User dapat membaca Target & Alur Pre-Training (`sec-target`) dengan tahapan visual dan estimasi durasi belajar mandiri.
-- [ ] **PRE-BASE-02**: User dapat mengakses Glosarium Interaktif (`sec-glosarium`) yang mendefinisikan istilah teknis AI (LLM, Agent, API Key, Reverse Proxy, Daemon, Webhook, CLI, JSON, Port, Process Manager) secara jelas.
-- [ ] **PRE-BASE-03**: User dapat membaca Aturan Keamanan & Perlindungan Rahasia (`sec-security`) dengan panduan menjaga API key & token bot agar tidak terekspos ke publik.
-- [ ] **PRE-BASE-04**: User dapat membaca Alat & Persiapan Perangkat (`sec-prerequisites`) berisi spesifikasi sistem Windows, koneksi internet, akun Telegram, dan software prasyarat.
-- [ ] **PRE-BASE-05**: User dapat membaca Panduan Khusus PowerShell (`sec-powershell`) dengan tata cara membuka administrator terminal, eksekusi perintah, dan tips penanganan policy.
+- [x] **PRE-BASE-01**: User dapat membaca Target & Alur Pre-Training (`sec-target`) dengan tahapan visual dan estimasi durasi belajar mandiri.
+- [x] **PRE-BASE-02**: User dapat mengakses Glosarium Interaktif (`sec-glosarium`) yang mendefinisikan istilah teknis AI (LLM, Agent, API Key, Reverse Proxy, Daemon, Webhook, CLI, JSON, Port, Process Manager) secara jelas.
+- [x] **PRE-BASE-03**: User dapat membaca Aturan Keamanan & Perlindungan Rahasia (`sec-security`) dengan panduan menjaga API key & token bot agar tidak terekspos ke publik.
+- [x] **PRE-BASE-04**: User dapat membaca Alat & Persiapan Perangkat (`sec-prerequisites`) berisi spesifikasi sistem Windows, koneksi internet, akun Telegram, dan software prasyarat.
+- [x] **PRE-BASE-05**: User dapat membaca Panduan Khusus PowerShell (`sec-powershell`) dengan tata cara membuka administrator terminal, eksekusi perintah, dan tips penanganan policy.
 
 ### Category 2: Interactive Modules 1–5 (PRE-MOD)
 
@@ -65,11 +65,11 @@
 
 | Requirement | Phase | Status | Verification Evidence |
 |---|---|---|---|
-| PRE-BASE-01 | Phase 24 | Pending | Target & Alur rendered in /course/ai?mode=pretraining |
-| PRE-BASE-02 | Phase 24 | Pending | Interactive glossary cards rendered |
-| PRE-BASE-03 | Phase 24 | Pending | Security & secret warning callouts rendered |
-| PRE-BASE-04 | Phase 24 | Pending | Prerequisites & hardware requirements rendered |
-| PRE-BASE-05 | Phase 24 | Pending | PowerShell guide with copyable commands rendered |
+| PRE-BASE-01 | Phase 24 | Complete | Target & Alur rendered in /course/ai?mode=pretraining |
+| PRE-BASE-02 | Phase 24 | Complete | Interactive glossary cards rendered |
+| PRE-BASE-03 | Phase 24 | Complete | Security & secret warning callouts rendered |
+| PRE-BASE-04 | Phase 24 | Complete | Prerequisites & hardware requirements rendered |
+| PRE-BASE-05 | Phase 24 | Complete | PowerShell guide with copyable commands rendered |
 | PRE-MOD-01 | Phase 25 | Pending | Module 1 accordion with Node.js guide & 1-click copy |
 | PRE-MOD-02 | Phase 25 | Pending | Module 2 accordion with 9Router guide & curl testing |
 | PRE-MOD-03 | Phase 25 | Pending | Module 3 accordion with Telegram bot creation guide |
