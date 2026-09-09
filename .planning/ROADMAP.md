@@ -38,6 +38,11 @@ Plans:
 **Goal**: Membangun modul pembelajaran interaktif Modul 1 s.d. 5 (Node.js, 9Router, Bot Telegram, Hermes Agent, Integrasi Live Chat) dengan kontrol accordion buka-tutup, callout peringatan/tips, dan mesin 1-click copy dengan toast feedback.  
 **Depends on**: Phase 24  
 **Requirements**: PRE-MOD-01, PRE-MOD-02, PRE-MOD-03, PRE-MOD-04, PRE-MOD-05, PRE-MOD-06  
+**Plans**: 2 plans
+
+Plans:
+- [x] 25-01: Extract typed dataset (pretrainingModules.ts), 1-Click copy engine with fallback & toast (CopyableCodeBlock.tsx, Toast.tsx), and modular presentation components (PretrainingModuleCard, ModuleArchitectureFlow, CheckpointPreviewCard) (completed 2026-09-09)
+- [x] 25-02: Build master accordion section (PretrainingModulesSection.tsx), route integration in course.ai.tsx, and automated unit/regression test suite verification (completed 2026-09-09)
 
 **Success Criteria**:
 1. Seluruh Modul 1 sampai Modul 5 dapat dibuka/ditutup secara independen maupun via tombol "Buka Semua" / "Tutup Semua".
