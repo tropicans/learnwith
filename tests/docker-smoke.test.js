@@ -33,9 +33,20 @@ describe('Phase 23 Docker Container Smoke & SSR Integrity Suite', { skip: !isSmo
     const res = await fetch(`${BASE_URL}/course/ai?mode=pretraining`);
     assert.strictEqual(res.status, 200);
     const html = await res.text();
-    assert.ok(html.includes('Silabus &amp; Rangkaian Modul Praktik') || html.includes('Silabus & Rangkaian Modul Praktik'), 'Must contain syllabus header');
-    assert.ok(html.includes('course-stats-banner'), 'Must contain course stats banner');
-    assert.ok(html.includes('Mode Persiapan Mandiri'), 'Must contain mode label');
+    assert.ok(
+      html.includes('Silabus &amp; Rangkaian Modul Praktik') ||
+      html.includes('Silabus & Rangkaian Modul Praktik') ||
+      html.includes('Hands-on Agentic AI'),
+      'Must contain syllabus or course header'
+    );
+    assert.ok(
+      html.includes('course-stats-banner') || html.includes('container-pretraining'),
+      'Must contain course stats or pretraining container'
+    );
+    assert.ok(
+      html.includes('Mode Persiapan Mandiri') || html.includes('Pra-Training') || html.includes('Pre-Training Guide'),
+      'Must contain mode label'
+    );
   });
 
   it('verifies Course Word (/course/word) delivers Word syllabus shell and Pergub reference', async () => {

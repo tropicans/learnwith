@@ -31,15 +31,16 @@
 ---
 
 ### Phase 30: Server Telemetry Ingestion API & Participant Background Client
+**Status**: ✅ Complete (2/2 plans shipped, verified 2026-09-09)  
 **Goal**: Membangun endpoint server internal TanStack Start untuk menerima heartbeat progres peserta, memvalidasi schema dengan Zod, menyimpannya di structured server store, dan mengintegrasikan pengiriman telemetry non-blocking dari browser peserta.  
 **Depends on**: Phase 29  
-**Requirements**: ADMIN-TELEM-01, ADMIN-TELEM-02, ADMIN-TELEM-03, ADMIN-QA-01  
-**Plans**: 2 plans  
+**Requirements**: ADMIN-TELEM-01, ADMIN-TELEM-02, ADMIN-TELEM-03, ADMIN-QA-01, ADMIN-QA-02  
+**Plans**: 2 plans (2 shipped)  
 
 **Success Criteria**:
-1. Server Telemetry API menerima dan memvalidasi payload peserta dengan Zod (nama, instansi, courseId, progress percent, checkpoints status, quiz score).
-2. Payload tersimpan aman di structured server store tanpa kehilangan data dan dapat di-query oleh modul admin.
-3. Klien peserta mengirimkan heartbeat/progress update secara asinkron (non-blocking) saat checklist/checkpoint diverifikasi tanpa mengganggu UX peserta.
+1. Server Telemetry API menerima dan memvalidasi payload peserta dengan Zod (nama, instansi, courseId, progress percent, checkpoints status, quiz score). (✅ Shipped)
+2. Payload tersimpan aman di structured server store tanpa kehilangan data dan dapat di-query oleh modul admin. (✅ Shipped)
+3. Klien peserta mengirimkan heartbeat/progress update secara asinkron (non-blocking) saat checklist/checkpoint diverifikasi tanpa mengganggu UX peserta. (✅ Shipped)
 
 ---
 
