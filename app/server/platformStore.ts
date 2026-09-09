@@ -2,6 +2,7 @@ import { getServerConfig } from './config.ts'
 import type {
   AdminPlatformConfig,
   AnnouncementBanner,
+  AnnouncementBannerType,
   PublicPlatformConfig,
   UpdateAnnouncementBannerInput,
   WorkshopMode,
