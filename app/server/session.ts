@@ -186,3 +186,16 @@ export function clearAllSessionsForTesting(): void {
 export function getActiveSessionCount(): number {
   return sessionRegistry.size
 }
+
+/**
+ * Validates Master Admin session token.
+ * Throws an unauthorized Error if invalid or expired.
+ */
+export function assertAdminAuthorized(explicitToken?: string | null): AdminUser {
+  const token = explicitToken || readSessionToken()
+  const adminUser = validateAdminSession(token)
+  if (!adminUser) {
+    throw new Error('UNAUTHORIZED: Sesi Master Admin diperlukan untuk mengakses konfigurasi platform.')
+  }
+  return adminUser
+}
