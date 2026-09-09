@@ -4,6 +4,7 @@ export interface PretrainingState {
   checklists: Record<string, boolean>
   checkpoints: Record<'cp-1' | 'cp-2' | 'cp-3', 'pending' | 'passed' | 'failed'>
   participantInfo: {
+    name?: string
     nodeVersion: string
     telegramUsername: string
     telegramUserId: string
@@ -57,6 +58,7 @@ export const DEFAULT_PRETRAINING_STATE: PretrainingState = {
     'cp-3': 'pending',
   },
   participantInfo: {
+    name: '',
     nodeVersion: '',
     telegramUsername: '',
     telegramUserId: '',
@@ -116,6 +118,7 @@ function loadStateFromStorage(): PretrainingState {
           'cp-3': parsed.checkpoints?.['cp-3'] || 'pending',
         },
         participantInfo: {
+          name: parsed.participantInfo?.name || '',
           nodeVersion: parsed.participantInfo?.nodeVersion || '',
           telegramUsername: parsed.participantInfo?.telegramUsername || '',
           telegramUserId: parsed.participantInfo?.telegramUserId || '',
@@ -305,7 +308,7 @@ export function usePretrainingState() {
 
   const setParticipantInfo = useCallback(
     (
-      field: 'nodeVersion' | 'telegramUsername' | 'telegramUserId',
+      field: 'name' | 'nodeVersion' | 'telegramUsername' | 'telegramUserId',
       value: string
     ) => {
       memoryState = {

@@ -1,16 +1,16 @@
 # Graph Report - AgenticAI  (2026-09-09)
 
 ## Corpus Check
-- 1530 files · ~3,839,775 words
+- 1540 files · ~3,844,747 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 13229 nodes · 12740 edges · 1634 communities (1410 shown, 224 thin omitted)
+- 13265 nodes · 12784 edges · 1642 communities (1414 shown, 228 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 18 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2e4e7a89`
+- Built from commit: `48091a40`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -125,6 +125,14 @@
 - [[_COMMUNITY_Community 112|Community 112]]
 - [[_COMMUNITY_Community 113|Community 113]]
 - [[_COMMUNITY_Community 114|Community 114]]
+- [[_COMMUNITY_Community 119|Community 119]]
+- [[_COMMUNITY_Community 120|Community 120]]
+- [[_COMMUNITY_Community 121|Community 121]]
+- [[_COMMUNITY_Community 122|Community 122]]
+- [[_COMMUNITY_Community 123|Community 123]]
+- [[_COMMUNITY_Community 124|Community 124]]
+- [[_COMMUNITY_Community 125|Community 125]]
+- [[_COMMUNITY_Community 126|Community 126]]
 - [[_COMMUNITY_gsd-local-patchesscriptsgen-loop-host-contract.cjs|gsd-local-patches/scripts/gen-loop-host-contract.cjs]]
 - [[_COMMUNITY_gsd-secret-read-guard.js|gsd-secret-read-guard.js]]
 - [[_COMMUNITY_.agentsgsd-corebinlibcommand-arg-projection.cjs|.agents/gsd-core/bin/lib/command-arg-projection.cjs]]
@@ -1237,6 +1245,8 @@
 10. `agents` - 36 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `emitBlock()` --calls--> `deny()`  [INFERRED]
+  .agents/gsd-local-patches/hooks/gsd-write-guard.js → .agents/hooks/lib/hook-exit.js
 - `block()` --calls--> `deny()`  [INFERRED]
   .agents/hooks/gsd-windsurf-pre-write.js → .agents/hooks/lib/hook-exit.js
 - `evaluateDispatch()` --calls--> `extractDispatchIdentifiers()`  [INFERRED]
@@ -1245,13 +1255,11 @@
   .agents/gsd-local-patches/hooks/gsd-cursor-subagent-start.js → .agents/hooks/lib/isolation-sentinel.js
 - `block()` --calls--> `deny()`  [INFERRED]
   .agents/gsd-local-patches/hooks/gsd-windsurf-pre-command.js → .agents/hooks/lib/hook-exit.js
-- `block()` --calls--> `deny()`  [INFERRED]
-  .agents/gsd-local-patches/hooks/gsd-windsurf-pre-write.js → .agents/hooks/lib/hook-exit.js
 
 ## Import Cycles
 - None detected.
 
-## Communities (1634 total, 224 thin omitted)
+## Communities (1642 total, 228 thin omitted)
 
 ### Community 0 - "output"
 Cohesion: 0.10
@@ -1278,8 +1286,8 @@ Cohesion: 0.00
 Nodes (579): Communities (658 total, 66 thin omitted), Community 0 - "output", Community 100 - "gsd-local-patches/gsd-core/bin/lib/capability-source.cjs", Community 101 - "requireLoader", Community 102 - "gsd-pristine/gsd-core/bin/lib/capability-source.cjs", Community 103 - "requireLoader", Community 104 - ".agents/hooks/gsd-workflow-guard.js", Community 105 - "gsd-local-patches/gsd-core/bin/lib/config-loader.cjs" (+571 more)
 
 ### Community 6 - ".agents/gsd-core/bin/lib/runtime-artifact-conversion.cjs"
-Cohesion: 0.06
-Nodes (32): { allow, deny }, block(), fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout (+24 more)
+Cohesion: 0.09
+Nodes (18): { allow, deny }, block(), fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout (+10 more)
 
 ### Community 7 - "gsd-local-patches/gsd-core/bin/lib/runtime-artifact-conversion.cjs"
 Cohesion: 0.16
@@ -1306,8 +1314,8 @@ Cohesion: 0.06
 Nodes (30): 10. Implementation Roadmap for Phase 25, 1. Executive Summary & Scope, 2.1 Requirements Mapping, 2. Requirements & Source Analysis, 3.1 Data Flow & State Hierarchy, 3. Architectural Responsibility Map, 4.1 Standard Stack (No External Dependencies Needed), 4.2 Don't Hand-Roll: Reusing Established Patterns (+22 more)
 
 ### Community 13 - ".agents/gsd-core/bin/lib/roadmap-parser.cjs"
-Cohesion: 0.09
-Nodes (28): GlossaryTerm, HeroStat, PowerShellStep, PrerequisiteItem, PRETRAINING_GLOSSARY_TERMS, PRETRAINING_HERO_STATS, PRETRAINING_POWERSHELL_STEPS, PRETRAINING_PREREQUISITES (+20 more)
+Cohesion: 0.11
+Nodes (17): GlossaryTerm, HeroStat, PowerShellStep, PrerequisiteItem, PRETRAINING_GLOSSARY_TERMS, PRETRAINING_HERO_STATS, PRETRAINING_POWERSHELL_STEPS, PRETRAINING_PREREQUISITES (+9 more)
 
 ### Community 14 - ".agents/gsd-core/bin/lib/surface.cjs"
 Cohesion: 0.22
@@ -1442,20 +1450,20 @@ Cohesion: 0.50
 Nodes (4): haiku, opus, sonnet, kimi-code
 
 ### Community 47 - "gsd-local-patches/gsd-core/bin/lib/planning-snapshot.cjs"
-Cohesion: 0.13
-Nodes (17): CopyableCodeBlock(), CopyableCodeBlockProps, copyToClipboard(), PretrainingRedactionSection(), currentToasts, notifySubscribers(), showToast(), subscribers (+9 more)
+Cohesion: 0.12
+Nodes (19): CopyableCodeBlockProps, copyToClipboard(), PretrainingRedactionSection(), currentToasts, notifySubscribers(), showToast(), subscribers, ToastEventDetail (+11 more)
 
 ### Community 48 - ".agents/gsd-core/bin/lib/prohibition-enforcement.cjs"
-Cohesion: 0.15
-Nodes (15): AlertType, ArchFlowArrow, ArchFlowNode, CheckpointPreview, ComparisonGrid, ModuleStep, PRETRAINING_MODULES, PretrainingModule (+7 more)
+Cohesion: 0.14
+Nodes (16): AlertType, ArchFlowArrow, ArchFlowNode, CheckpointPreview, ComparisonGrid, ModuleStep, PRETRAINING_MODULES, PretrainingModule (+8 more)
 
 ### Community 49 - "gsd-local-patches/gsd-core/bin/lib/frontmatter.cjs"
 Cohesion: 0.12
 Nodes (16): 1. `app/data/pretrainingTroubleshooting.ts` (model / data, transform), 1. Clipboard Copy with Toast Feedback, 2. `app/utils/redaction.ts` (utility, transform), 2. Badge Pill Styling & Accessibility, 3. `app/components/course/pretraining/TroubleshootingCard.tsx` (component, presentation), 3. Native Node.js Test Runner with Dynamic TS Imports, 4. `app/components/course/pretraining/PretrainingTroubleshootingSection.tsx` (component, event-driven), 5. `app/components/course/pretraining/PretrainingRedactionSection.tsx` (component, event-driven) (+8 more)
 
 ### Community 50 - ".agents/gsd-core/bin/lib/verify.cjs"
-Cohesion: 0.14
-Nodes (12): calculatePretrainingProgress(), calculatePretrainingReadiness(), DEFAULT_PRETRAINING_STATE, initPretrainingState(), loadStateFromStorage(), memoryState, PRETRAINING_CHECKLIST_TASK_IDS, ProgressStats (+4 more)
+Cohesion: 0.10
+Nodes (26): calculatePretrainingProgress(), calculatePretrainingReadiness(), DEFAULT_PRETRAINING_STATE, initPretrainingState(), loadStateFromStorage(), memoryState, PRETRAINING_CHECKLIST_TASK_IDS, PretrainingState (+18 more)
 
 ### Community 51 - ".agents/gsd-core/bin/lib/planning-inspect.cjs"
 Cohesion: 0.17
@@ -1502,12 +1510,12 @@ Cohesion: 0.40
 Nodes (4): Accomplishments, Overview, Phase 23 Plan 03: Standalone Nitro Asset Caching, Automated Container Smoke Test & Multi-Tier Test Suite Summary, Verification
 
 ### Community 67 - "Community 67"
-Cohesion: 0.40
-Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
+Cohesion: 0.17
+Nodes (14): currentBranch(), failClosedBlockContext(), fs, { HOOK_ON_CRASH, allow, deny, crash }, isAgentBranch(), KIMI_TOOL_NAMES, normalizeKimiPayload(), path (+6 more)
 
 ### Community 68 - "Community 68"
-Cohesion: 0.40
-Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
+Cohesion: 0.17
+Nodes (7): CURATED_PATTERNS, emitBlock(), fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
 
 ### Community 69 - "Community 69"
 Cohesion: 0.50
@@ -1519,7 +1527,7 @@ Nodes (15): 1. Dedicated Checklist & Checkpoint Suite, 1. State Engine & Multi-C
 
 ### Community 71 - "Community 71"
 Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, augment
+Nodes (9): opus, opus, opus, opus, opus, high, low, medium (+1 more)
 
 ### Community 72 - "Community 72"
 Cohesion: 0.50
@@ -1534,8 +1542,8 @@ Cohesion: 0.50
 Nodes (3): assert, { describe, it }, { execSync }
 
 ### Community 77 - "Community 77"
-Cohesion: 0.60
-Nodes (5): qwen, haiku, opus, sonnet, qwen
+Cohesion: 0.29
+Nodes (5): { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, path, stdinTimeout, { INJECTION_PATTERNS }
 
 ### Community 78 - ".agents/hooks/gsd-windsurf-pre-write.js"
 Cohesion: 0.14
@@ -1570,24 +1578,24 @@ Cohesion: 0.08
 Nodes (9): assertSearch(), MiniClassList, MiniDocument, MiniElement, MiniFragment, MiniNode, MiniText, runSearchSecurityTests() (+1 more)
 
 ### Community 86 - "Community 86"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, antigravity
+Cohesion: 0.29
+Nodes (5): fs, { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
 
 ### Community 87 - "Community 87"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, augment
+Cohesion: 0.40
+Nodes (4): 1. Exporter Engine Pattern (`app/utils/reportGenerator.ts`), 2. Component Design Patterns, 3. Multi-Course & Zero Regression Invariants, Phase 28 Patterns: Laporan Kesiapan Generator, Sidebar Sync & E2E Zero Regression
 
 ### Community 88 - "Community 88"
-Cohesion: 0.50
-Nodes (4): zcode, haiku, opus, sonnet
+Cohesion: 0.40
+Nodes (4): assert, { describe, it, before }, fs, path
 
 ### Community 89 - "Community 89"
 Cohesion: 0.14
 Nodes (13): 1. Data Model & Error Resolution Cards (`app/data/pretrainingTroubleshooting.ts`), 1. Dedicated Phase 27 Test Suite, 2. Backward Compatibility & Exporter Test Suite, 2. Secret Redaction Engine (`app/utils/redaction.ts`), 3. Component Hierarchy & UX Flow, 3. Full Project Regression Suite, 4. TypeScript Compiler Verification, Conclusion (+5 more)
 
 ### Community 93 - "Community 93"
-Cohesion: 0.24
-Nodes (10): PRETRAINING_TROUBLESHOOTING_ITEMS, TroubleSeverity, TROUBLESHOOTING_CATEGORIES, TroubleshootingCategory, TroubleshootingCategoryOption, TroubleshootingCodeBlock, TroubleshootingItem, PretrainingTroubleshootingSection() (+2 more)
+Cohesion: 0.22
+Nodes (11): PRETRAINING_TROUBLESHOOTING_ITEMS, TroubleSeverity, TROUBLESHOOTING_CATEGORIES, TroubleshootingCategory, TroubleshootingCategoryOption, TroubleshootingCodeBlock, TroubleshootingItem, CopyableCodeBlock() (+3 more)
 
 ### Community 94 - "Community 94"
 Cohesion: 0.15
@@ -1599,7 +1607,7 @@ Nodes (8): fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, { r
 
 ### Community 96 - "Community 96"
 Cohesion: 0.50
-Nodes (9): opus, opus, opus, opus, opus, high, low, medium (+1 more)
+Nodes (3): Plan 28-01 Summary: Data Model, Exporter Utility & Readiness Report Test Suite, Requirements Verified, What Was Done
 
 ### Community 97 - "Community 97"
 Cohesion: 0.25
@@ -1639,7 +1647,7 @@ Nodes (4): assert, { describe, it, before }, fs, path
 
 ### Community 106 - "Community 106"
 Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, codebuddy
+Nodes (4): haiku, opus, sonnet, cline
 
 ### Community 107 - "Community 107"
 Cohesion: 0.50
@@ -1651,15 +1659,31 @@ Nodes (4): haiku, opus, sonnet, codebuddy
 
 ### Community 109 - "Community 109"
 Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, kimi-code
+Nodes (4): windsurf, haiku, opus, sonnet
 
 ### Community 110 - "Community 110"
 Cohesion: 0.50
 Nodes (4): haiku, opus, sonnet, antigravity
 
+### Community 119 - "Community 119"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, antigravity
+
+### Community 120 - "Community 120"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, kimi
+
+### Community 121 - "Community 121"
+Cohesion: 0.50
+Nodes (4): windsurf, haiku, opus, sonnet
+
+### Community 122 - "Community 122"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, codebuddy
+
 ### Community 129 - "gsd-local-patches/scripts/gen-loop-host-contract.cjs"
 Cohesion: 0.05
-Nodes (39): { allow }, stdinTimeout, { allow }, stdinTimeout, { allow }, stdinTimeout, fs, { HOOK_ON_CRASH, allow, crash } (+31 more)
+Nodes (29): { allow }, stdinTimeout, { allow }, stdinTimeout, { allow }, fs, { resolveStatePath }, stdinTimeout (+21 more)
 
 ### Community 131 - "gsd-secret-read-guard.js"
 Cohesion: 0.04
@@ -1706,8 +1730,8 @@ Cohesion: 0.16
 Nodes (9): add(), assert(), assertEquals(), clear(), getElementById(), getItem(), removeItem(), runTests() (+1 more)
 
 ### Community 328 - "multi-course.test.js"
-Cohesion: 0.12
-Nodes (41): haiku, opus, sonnet, haiku, opus, sonnet, haiku, opus (+33 more)
+Cohesion: 0.13
+Nodes (31): haiku, sonnet, haiku, sonnet, haiku, sonnet, haiku, sonnet (+23 more)
 
 ### Community 350 - "gsd-local-patches/scripts/changeset/lint.cjs"
 Cohesion: 0.08
@@ -1718,16 +1742,16 @@ Cohesion: 0.14
 Nodes (16): { ensureRuntimeBuild, RuntimeBuildError }, evaluateDispatch(), EXECUTOR_SUBAGENT_TYPES, fs, { HOOK_ON_CRASH, allow, deny, crash }, os, parseHarnessFlag(), path (+8 more)
 
 ### Community 368 - "gsd-local-patches/gsd-core/bin/lib/decisions.cjs"
-Cohesion: 0.14
-Nodes (32): haiku, sonnet, haiku, sonnet, haiku, sonnet, haiku, sonnet (+24 more)
+Cohesion: 0.12
+Nodes (41): haiku, opus, sonnet, haiku, opus, sonnet, haiku, opus (+33 more)
 
 ### Community 376 - "gsd-pristine/gsd-core/bin/lib/profile-pipeline-command-router.cjs"
 Cohesion: 0.08
 Nodes (25): haiku, opus, sonnet, haiku, opus, sonnet, haiku, opus (+17 more)
 
 ### Community 384 - "newRegexp"
-Cohesion: 0.13
-Nodes (36): haiku, opus, sonnet, haiku, opus, sonnet, haiku, opus (+28 more)
+Cohesion: 0.12
+Nodes (41): haiku, opus, sonnet, haiku, opus, sonnet, haiku, opus (+33 more)
 
 ### Community 399 - "Phase 17: URL Gate Hardening, Session Management & Anti-Tampering - Research"
 Cohesion: 0.08
@@ -1770,16 +1794,16 @@ Cohesion: 0.05
 Nodes (36): Additional Commands, Capturing Ideas, Notes, and Todos, Common Workflows, Configuration, Core Workflow, Debugging, Diagnostics & Maintenance, Discovery & Specification (+28 more)
 
 ### Community 477 - "gsd-pristine/gsd-core/bin/lib/state-command-router.cjs"
-Cohesion: 0.07
-Nodes (21): fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout, fs, { HOOK_ON_CRASH, allow, crash }, os, path (+13 more)
+Cohesion: 0.05
+Nodes (33): fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout, fs, { HOOK_ON_CRASH, allow, crash }, os, path (+25 more)
 
 ### Community 478 - "constructor"
 Cohesion: 0.22
 Nodes (8): 1. Strongly-Typed Data Layer (`app/data/courses.ts`), 2. Route Loaders with Critical Data & Streaming Defer (`loader`), 3. Suspense & Skeleton Fallbacks (SSR-02), 4. Hydration Safety via `<ClientOnly>` (SSR-04), Executive Summary, File Classification & Architectural Boundaries, Pattern Blueprints, Phase 21: Typed Route Loaders, Full-Document SSR & Progressive Streaming - Pattern Map
 
 ### Community 481 - "ensureRuntimeBuild"
-Cohesion: 0.05
-Nodes (27): block(), { allow, deny }, block(), fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync } (+19 more)
+Cohesion: 0.08
+Nodes (20): block(), { allow, deny }, block(), fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync } (+12 more)
 
 ### Community 482 - "checkpoint-engine.test.js"
 Cohesion: 0.29
@@ -1907,7 +1931,7 @@ Nodes (31): 1. System Classification, 1b. Domain Context, 2. Framework Decision,
 
 ### Community 1817 - "Community 1817"
 Cohesion: 0.15
-Nodes (12): adaptiveTierMap, heavy, light, standard, agents, codexModelEffort, _baseline, gpt-5.6-luna (+4 more)
+Nodes (12): adaptiveTierMap, heavy, light, standard, codexModelEffort, _baseline, gpt-5.6-luna, gpt-5.6-sol (+4 more)
 
 ### Community 1818 - "Community 1818"
 Cohesion: 0.25
@@ -1967,7 +1991,7 @@ Nodes (26): 0. Initialize Milestone Context, 1. Determine Milestone Scope, 2. Re
 
 ### Community 1833 - "Community 1833"
 Cohesion: 0.09
-Nodes (16): CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, ExitError, findExitContractFlag(), getContractVersion(), HOOK_DENY_CODE, JSON_ERROR_MODE_KEY (+8 more)
+Nodes (17): CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, ExitError, findExitContractFlag(), getContractVersion(), HOOK_DENY_CODE, JSON_ERROR_MODE_KEY (+9 more)
 
 ### Community 1834 - "Community 1834"
 Cohesion: 0.08
@@ -2010,8 +2034,8 @@ Cohesion: 0.08
 Nodes (24): agent_skills, brave_search, claude_md_path, _comment, commit_docs, context_window, exa_search, firecrawl (+16 more)
 
 ### Community 1844 - "Community 1844"
-Cohesion: 0.08
-Nodes (17): { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, path, stdinTimeout, ALL_PATTERNS, fs, { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES (+9 more)
+Cohesion: 0.12
+Nodes (12): ALL_PATTERNS, fs, { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, MARKDOWN_LINK_PATTERNS, path, RULE_IDS, stdinTimeout (+4 more)
 
 ### Community 1845 - "Community 1845"
 Cohesion: 0.08
@@ -2206,8 +2230,8 @@ Cohesion: 0.11
 Nodes (19): workflow, auto_advance, code_review_command, cross_ai_command, cross_ai_execution, cross_ai_timeout, discuss_mode, nyquist_validation (+11 more)
 
 ### Community 1898 - "Community 1898"
-Cohesion: 0.11
-Nodes (18): compilerOptions, allowJs, baseUrl, esModuleInterop, isolatedModules, jsx, lib, module (+10 more)
+Cohesion: 0.10
+Nodes (19): compilerOptions, allowImportingTsExtensions, allowJs, baseUrl, esModuleInterop, isolatedModules, jsx, lib (+11 more)
 
 ### Community 1899 - "Community 1899"
 Cohesion: 0.11
@@ -4030,8 +4054,8 @@ Cohesion: 0.33
 Nodes (6): gsd-doc-synthesizer, balanced, budget, golden, phaseType, routingTier
 
 ### Community 2368 - "Community 2368"
-Cohesion: 0.33
-Nodes (6): gsd-doc-verifier, balanced, budget, golden, phaseType, routingTier
+Cohesion: 0.29
+Nodes (7): agents, gsd-doc-verifier, balanced, budget, golden, phaseType, routingTier
 
 ### Community 2369 - "Community 2369"
 Cohesion: 0.33
@@ -5190,9 +5214,9 @@ Cohesion: 0.50
 Nodes (3): Overview, Quick Plan: Ganti Logo LearnWith Menjadi Logo Resmi Baru, Tasks
 
 ## Knowledge Gaps
-- **9223 isolated node(s):** `bool`, `_comment`, `model_profile`, `commit_docs`, `parallelization` (+9218 more)
+- **9242 isolated node(s):** `bool`, `_comment`, `model_profile`, `commit_docs`, `parallelization` (+9237 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **224 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **228 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -5200,11 +5224,11 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `pristine_hashes` connect `.agents/gsd-core/bin/lib/cjs-command-router-adapter.cjs` to `Community 2580`?**
   _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Why does `Communities (658 total, 66 thin omitted)` connect `gsd-local-patches/gsd-core/bin/lib/roadmap.cjs` to `Community 2073`?**
-  _High betweenness centrality (0.002) - this node is a cross-community bridge._
+  _High betweenness centrality (0.003) - this node is a cross-community bridge._
 - **Why does `files` connect `.agents/gsd-core/bin/lib/install-profiles.cjs` to `Community 2300`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `BM25 ranking algorithm for text search`, `Lowercase, split, remove punctuation, filter short words`, `Build BM25 index from documents` to the rest of the system?**
-  _9276 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _9295 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `output` be split into smaller, more focused modules?**
   _Cohesion score 0.10476190476190476 - nodes in this community are weakly interconnected._
 - **Should `gsd-local-patches/gsd-core/bin/lib/state.cjs` be split into smaller, more focused modules?**

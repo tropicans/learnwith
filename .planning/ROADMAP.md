@@ -105,6 +105,16 @@ Plans:
 **Goal**: Menyediakan Form Laporan Kesiapan Peserta dengan ekspor 1-click ke WhatsApp dan Telegram Markdown, layout cetak resmi (`@media print`), sinkronisasi navigasi sidebar & scrollspy, serta pengujian E2E regresi nol.  
 **Depends on**: Phase 27  
 **Requirements**: PRE-RPT-01, PRE-RPT-02, PRE-RPT-03, PRE-NAV-01, PRE-NAV-02, PRE-NAV-03  
+**Plans**: 2 plans
+
+Plans:
+**Wave 1**
+
+- [x] 28-01: Data model (name persistence in usePretrainingState), Report generator engine (reportGenerator.ts), and automated test suite (pretraining-readiness-report.test.js)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [x] 28-02: Presentation components (PretrainingReadinessReportSection.tsx, PretrainingSidebar.tsx), route mounting in course.ai.tsx, print CSS verification, and E2E zero-regression testing
 
 **Success Criteria**:
 
@@ -112,3 +122,4 @@ Plans:
 2. Halaman rapi saat dicetak (`Ctrl+P`) dengan layout khusus cetak dokumen dinas/peserta.
 3. Sidebar kiri menyinkronkan daftar tautan modul pre-training dengan indikator progres dan scrollspy navigasi aktif.
 4. Seluruh test suite (Node unit test, Playwright E2E browser tests) lulus 100% tanpa error regresi.
+

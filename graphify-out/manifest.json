@@ -11064,8 +11064,8 @@
     "semantic_hash": ""
   },
   "tsconfig.json": {
-    "mtime": 1788850625.1630964,
-    "ast_hash": "4659ee19613c98e68fbfba349230133d",
+    "mtime": 1788918419.132627,
+    "ast_hash": "8e4b130f688640459547d74b8456419e",
     "semantic_hash": ""
   },
   ".planning/milestones/v2.2-phases/14-workspace-studio-navigation-sidebar-deduplication-material3-polishing/14-01-PLAN.md": {
@@ -11244,8 +11244,8 @@
     "semantic_hash": ""
   },
   "app/routes/course.ai.tsx": {
-    "mtime": 1788917884.1968675,
-    "ast_hash": "3b1feb997b0e92659b8fa685e550e8f9",
+    "mtime": 1788918485.8467834,
+    "ast_hash": "6f53b3fcedcb45f4d525abc07d2c2c07",
     "semantic_hash": ""
   },
   "app/routes/course.word.tsx": {
@@ -12094,8 +12094,8 @@
     "semantic_hash": ""
   },
   "app/hooks/usePretrainingState.ts": {
-    "mtime": 1788916736.3439083,
-    "ast_hash": "3e685722d2ab5e4d5e695da6862b8424",
+    "mtime": 1788918299.753047,
+    "ast_hash": "c748155ab61c7567ff82546f3ce57f46",
     "semantic_hash": ""
   },
   "app/utils/redaction.ts": {
@@ -12236,6 +12236,56 @@
   ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VERIFICATION.md": {
     "mtime": 1788917958.4712336,
     "ast_hash": "2f9c6e570dad8daaafe0a5fec572aa54",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingReadinessReportSection.tsx": {
+    "mtime": 1788918495.4594657,
+    "ast_hash": "a8e5536ea202b06333b4568e53a8d4e0",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingSidebar.tsx": {
+    "mtime": 1788918465.4074466,
+    "ast_hash": "5267ab5e9009b05fd3400d43257afe90",
+    "semantic_hash": ""
+  },
+  "app/utils/reportGenerator.ts": {
+    "mtime": 1788918346.0139022,
+    "ast_hash": "2afa7714be38211cadcc4d9f9070f75f",
+    "semantic_hash": ""
+  },
+  "tests/pretraining-readiness-report.test.js": {
+    "mtime": 1788918506.9298022,
+    "ast_hash": "74f0a63f21e8f095a7c4a260058d20ec",
+    "semantic_hash": ""
+  },
+  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-PLAN.md": {
+    "mtime": 1788918271.3958163,
+    "ast_hash": "7db5f04ca186a6178b0abae4aca59fc0",
+    "semantic_hash": ""
+  },
+  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-SUMMARY.md": {
+    "mtime": 1788918445.5231361,
+    "ast_hash": "87361607a4b66a9ae8908d6900f7589f",
+    "semantic_hash": ""
+  },
+  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-02-PLAN.md": {
+    "mtime": 1788918277.9311895,
+    "ast_hash": "413c260f229ccb4db272bc88f5918e8f",
+    "semantic_hash": ""
+  },
+  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-PATTERNS.md": {
+    "mtime": 1788918242.9388206,
+    "ast_hash": "c54dd66d95372068ce021e87037a235c",
+    "semantic_hash": ""
+  },
+  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-RESEARCH.md": {
+    "mtime": 1788918239.3510728,
+    "ast_hash": "a31ff4ab1b863a0aa5bd7a4183a885f8",
+    "semantic_hash": ""
+  },
+  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-VALIDATION.md": {
+    "mtime": 1788918281.542705,
+    "ast_hash": "6caaad29acc444a2f345ffcb040fa976",
     "semantic_hash": ""
   }
 }

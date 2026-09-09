@@ -16,6 +16,8 @@ import { PretrainingCheckpointsSection } from '@/components/course/pretraining/P
 import { PretrainingReadinessSection } from '@/components/course/pretraining/PretrainingReadinessSection'
 import { PretrainingTroubleshootingSection } from '@/components/course/pretraining/PretrainingTroubleshootingSection'
 import { PretrainingRedactionSection } from '@/components/course/pretraining/PretrainingRedactionSection'
+import { PretrainingReadinessReportSection } from '@/components/course/pretraining/PretrainingReadinessReportSection'
+import { PretrainingSidebar } from '@/components/course/pretraining/PretrainingSidebar'
 import { ResetProgressModal } from '@/components/course/pretraining/ResetProgressModal'
 import { usePretrainingState } from '@/hooks/usePretrainingState'
 import { showToast } from '@/components/ui/Toast'
@@ -68,41 +70,44 @@ function CourseAiComponent() {
   }
 
   return (
-    <main className="app-main course-main" id="container-course-ai">
-      <div className="course-mode-tabs">
-        <Link
-          to="/course/ai"
-          search={{ mode: 'pretraining' }}
-          className={`mode-tab ${mode === 'pretraining' ? 'active' : ''}`}
-        >
-          📋 Pra-Training
-        </Link>
-        <Link
-          to="/course/ai"
-          search={{ mode: 'live-class' }}
-          className={`mode-tab ${mode === 'live-class' ? 'active' : ''}`}
-        >
-          🚀 Hari-H Kelas {isUnlocked ? '🔓' : '🔒'}
-        </Link>
-      </div>
+    <>
+      <PretrainingSidebar currentMode={mode} />
+      <main className="app-main course-main" id="container-course-ai">
+        <div className="course-mode-tabs">
+          <Link
+            to="/course/ai"
+            search={{ mode: 'pretraining' }}
+            className={`mode-tab ${mode === 'pretraining' ? 'active' : ''}`}
+          >
+            📋 Pra-Training
+          </Link>
+          <Link
+            to="/course/ai"
+            search={{ mode: 'live-class' }}
+            className={`mode-tab ${mode === 'live-class' ? 'active' : ''}`}
+          >
+            🚀 Hari-H Kelas {isUnlocked ? '🔓' : '🔒'}
+          </Link>
+        </div>
 
-      {mode === 'pretraining' ? (
-        <div id="container-pretraining" className="mode-container active">
-          <PretrainingHero />
-          <PretrainingTargetSection />
-          <PretrainingGlossarySection />
-          <PretrainingSecuritySection />
-          <PretrainingPrerequisitesSection />
-          <PretrainingPowerShellSection />
-          <PretrainingModulesSection />
-          <PretrainingCheckpointsSection />
-          <PretrainingReadinessSection
-            readiness={readiness}
-            onOpenResetModal={() => setIsResetModalOpen(true)}
-          />
-          <PretrainingTroubleshootingSection />
-          <PretrainingRedactionSection />
-          <ResetProgressModal
+        {mode === 'pretraining' ? (
+          <div id="container-pretraining" className="mode-container active">
+            <PretrainingHero />
+            <PretrainingTargetSection />
+            <PretrainingGlossarySection />
+            <PretrainingSecuritySection />
+            <PretrainingPrerequisitesSection />
+            <PretrainingPowerShellSection />
+            <PretrainingModulesSection />
+            <PretrainingCheckpointsSection />
+            <PretrainingReadinessSection
+              readiness={readiness}
+              onOpenResetModal={() => setIsResetModalOpen(true)}
+            />
+            <PretrainingTroubleshootingSection />
+            <PretrainingRedactionSection />
+            <PretrainingReadinessReportSection />
+            <ResetProgressModal
             isOpen={isResetModalOpen}
             onClose={() => setIsResetModalOpen(false)}
             onConfirm={() => {
@@ -262,5 +267,6 @@ function CourseAiComponent() {
         onUnlocked={handleUnlocked}
       />
     </main>
-  )
+  </>
+)
 }

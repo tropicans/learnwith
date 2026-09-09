@@ -39,15 +39,15 @@
 
 ### Category 5: Readiness Report Generator & Export (PRE-RPT)
 
-- [ ] **PRE-RPT-01**: User dapat mengisi nama peserta dan instansi pada Form Laporan Kesiapan Peserta yang terisi otomatis dengan rekap checkpoint yang telah diselesaikan.
-- [ ] **PRE-RPT-02**: User dapat mengekspor laporan kesiapan ke clipboard dengan format siap kirim WhatsApp dan Telegram Markdown dalam 1 kali klik.
-- [ ] **PRE-RPT-03**: Tampilan cetak rapi (`@media print`) untuk mencetak atau menyimpan laporan kesiapan peserta sebagai PDF dokumen resmi.
+- [x] **PRE-RPT-01**: User dapat mengisi nama peserta dan instansi pada Form Laporan Kesiapan Peserta yang terisi otomatis dengan rekap checkpoint yang telah diselesaikan.
+- [x] **PRE-RPT-02**: User dapat mengekspor laporan kesiapan ke clipboard dengan format siap kirim WhatsApp dan Telegram Markdown dalam 1 kali klik.
+- [x] **PRE-RPT-03**: Tampilan cetak rapi (`@media print`) untuk mencetak atau menyimpan laporan kesiapan peserta sebagai PDF dokumen resmi.
 
 ### Category 6: Sidebar Navigation, Layout & Zero-Regression (PRE-NAV)
 
-- [ ] **PRE-NAV-01**: Sidebar navigasi menampilkan tautan kurikulum pre-training lengkap dengan indikator progres modul dan scrollspy / jump-to-section.
-- [ ] **PRE-NAV-02**: Mode switcher terintegrasi mulus antara `📋 Pra-Training` dan `🚀 Hari-H Kelas` via query parameter URL `?mode=pretraining` pada arsitektur TanStack Start.
-- [ ] **PRE-NAV-03**: Seluruh test suite (Node unit tests, Playwright E2E browser tests) lulus 100% tanpa regresi terhadap fungsionalitas Course 1, Course 2, maupun Frontpage Hub.
+- [x] **PRE-NAV-01**: Sidebar navigasi menampilkan tautan kurikulum pre-training lengkap dengan indikator progres modul dan scrollspy / jump-to-section.
+- [x] **PRE-NAV-02**: Mode switcher terintegrasi mulus antara `📋 Pra-Training` dan `🚀 Hari-H Kelas` via query parameter URL `?mode=pretraining` pada arsitektur TanStack Start.
+- [x] **PRE-NAV-03**: Seluruh test suite (Node unit tests, Playwright E2E browser tests) lulus 100% tanpa regresi terhadap fungsionalitas Course 1, Course 2, maupun Frontpage Hub.
 
 ---
 
@@ -83,9 +83,9 @@
 | PRE-TOOL-01 | Phase 27 | Complete | Troubleshooting live search & category filter |
 | PRE-TOOL-02 | Phase 27 | Complete | 10+ error resolution cards with copyable solutions |
 | PRE-TOOL-03 | Phase 27 | Complete | Secret token redaction helper tool |
-| PRE-RPT-01 | Phase 28 | Pending | Pre-filled Form Laporan Kesiapan Peserta |
-| PRE-RPT-02 | Phase 28 | Pending | 1-Click WhatsApp & Telegram Markdown clipboard exporter |
-| PRE-RPT-03 | Phase 28 | Pending | Print layout formatted for official document export |
-| PRE-NAV-01 | Phase 28 | Pending | Sidebar navigation with curriculum links & progress indicators |
-| PRE-NAV-02 | Phase 28 | Pending | Seamless mode switching between pretraining & live-class |
-| PRE-NAV-03 | Phase 28 | Pending | 100% test pass rate across Node unit & Playwright E2E suites |
+| PRE-RPT-01 | Phase 28 | Complete | Pre-filled Form Laporan Kesiapan Peserta |
+| PRE-RPT-02 | Phase 28 | Complete | 1-Click WhatsApp & Telegram Markdown clipboard exporter |
+| PRE-RPT-03 | Phase 28 | Complete | Print layout formatted for official document export |
+| PRE-NAV-01 | Phase 28 | Complete | Sidebar navigation with curriculum links & progress indicators |
+| PRE-NAV-02 | Phase 28 | Complete | Seamless mode switching between pretraining & live-class |
+| PRE-NAV-03 | Phase 28 | Complete | 100% test pass rate across Node unit & Playwright E2E suites |
