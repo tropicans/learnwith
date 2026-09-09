@@ -26,10 +26,10 @@
 
 ### Category 3: Checklist Engine, Checkpoints & Dynamic Readiness (PRE-CHK)
 
-- [ ] **PRE-CHK-01**: User dapat mencentang 13 item checklist langkah demi langkah yang tersebar di Modul 1–5 dengan penyimpanan persisten di browser localStorage (`learnwith_ai_checklist`).
-- [ ] **PRE-CHK-02**: User dapat memvalidasi 3 Checkpoint Gates (Checkpoint 1: Lingkungan Node.js, Checkpoint 2: 9Router & Kunci API, Checkpoint 3: Bot Telegram & Hermes Running) dengan kalkulasi otomatis status LULUS / BELUM LULUS.
-- [ ] **PRE-CHK-03**: User dapat melihat Status Kesiapan Peserta (Dynamic Readiness Badge & Summary) yang menghitung persentase kemajuan dan menampilkan status visual "SIAP WORKSHOP" atau "PERLU KLINIK PERSIAPAN".
-- [ ] **PRE-CHK-04**: User dapat mereset seluruh progres checklist dan checkpoint pre-training secara aman melalui modal konfirmasi reset.
+- [x] **PRE-CHK-01**: User dapat mencentang 13 item checklist langkah demi langkah yang tersebar di Modul 1–5 dengan penyimpanan persisten di browser localStorage (`learnwith_ai_checklist`).
+- [x] **PRE-CHK-02**: User dapat memvalidasi 3 Checkpoint Gates (Checkpoint 1: Lingkungan Node.js, Checkpoint 2: 9Router & Kunci API, Checkpoint 3: Bot Telegram & Hermes Running) dengan kalkulasi otomatis status LULUS / BELUM LULUS.
+- [x] **PRE-CHK-03**: User dapat melihat Status Kesiapan Peserta (Dynamic Readiness Badge & Summary) yang menghitung persentase kemajuan dan menampilkan status visual "SIAP WORKSHOP" atau "PERLU KLINIK PERSIAPAN".
+- [x] **PRE-CHK-04**: User dapat mereset seluruh progres checklist dan checkpoint pre-training secara aman melalui modal konfirmasi reset.
 
 ### Category 4: Troubleshooting Hub & Token Redaction (PRE-TOOL)
 
@@ -76,10 +76,10 @@
 | PRE-MOD-04 | Phase 25 | Complete | Module 4 accordion with Hermes Agent installation guide |
 | PRE-MOD-05 | Phase 25 | Complete | Module 5 accordion with final integration test flow |
 | PRE-MOD-06 | Phase 25 | Complete | 1-Click copy engine with feedback toast across all codeblocks |
-| PRE-CHK-01 | Phase 26 | Pending | 13-step checklist synced with localStorage persistence |
-| PRE-CHK-02 | Phase 26 | Pending | Checkpoints 1, 2, 3 verification gates auto-evaluated |
-| PRE-CHK-03 | Phase 26 | Pending | Dynamic readiness badge & summary calculation |
-| PRE-CHK-04 | Phase 26 | Pending | Safe progress reset modal |
+| PRE-CHK-01 | Phase 26 | Complete | 13-step checklist synced with localStorage persistence |
+| PRE-CHK-02 | Phase 26 | Complete | Checkpoints 1, 2, 3 verification gates auto-evaluated |
+| PRE-CHK-03 | Phase 26 | Complete | Dynamic readiness badge & summary calculation |
+| PRE-CHK-04 | Phase 26 | Complete | Safe progress reset modal |
 | PRE-TOOL-01 | Phase 27 | Pending | Troubleshooting live search & category filter |
 | PRE-TOOL-02 | Phase 27 | Pending | 10+ error resolution cards with copyable solutions |
 | PRE-TOOL-03 | Phase 27 | Pending | Secret token redaction helper tool |
