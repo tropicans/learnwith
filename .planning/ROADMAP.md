@@ -56,6 +56,11 @@ Plans:
 **Goal**: Mengintegrasikan sistem verifikasi mandiri berupa 13 checklist langkah, 3 checkpoint gates otomatis, sinkronisasi state persisten ke localStorage (`learnwith_ai_checklist`), dan status kesiapan peserta dinamis.  
 **Depends on**: Phase 25  
 **Requirements**: PRE-CHK-01, PRE-CHK-02, PRE-CHK-03, PRE-CHK-04  
+**Plans**: 2 plans
+
+Plans:
+- [x] 26-01: Pretraining state hook with 13 checklist IDs (usePretrainingState.ts), Checkpoint 1-3 gate cards (CheckpointGateCard.tsx, PretrainingCheckpointsSection.tsx), dynamic readiness section, and reset modal (completed 2026-09-09)
+- [x] 26-02: Wire interactive checkboxes, hero stats sync, route mounting in course.ai.tsx, and automated unit/regression test suite verification (completed 2026-09-09)
 
 **Success Criteria**:
 1. Peserta dapat mencentang 13 item checklist pada modul dan checklist island, dengan status tersimpan persisten di localStorage.
