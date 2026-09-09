@@ -17,6 +17,7 @@ export const participantTelemetrySchema = z.object({
   checkpoints: z.record(z.string(), checkpointStatusSchema),
   readinessStatus: readinessStatusSchema,
   quizScore: z.number().min(0).max(100).optional(),
+  taskChecklist: z.record(z.string(), z.boolean()).optional(),
   clientTimestamp: z.number(),
 })
 

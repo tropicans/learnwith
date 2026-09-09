@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import type { AdminUser } from '../../schemas/admin'
 import { adminLogoutFn } from '../../server/adminAuth'
+import { AdminDashboardView } from './AdminDashboardView'
 
 interface AdminShellProps {
   adminUser: AdminUser
@@ -137,54 +138,50 @@ export function AdminShell({ adminUser, onLogout, children }: AdminShellProps) {
       {/* Main Body */}
       <main className="admin-content-body">
         {children || (
-          <div className="admin-placeholder-card" id="admin-active-view">
-            <div className="admin-placeholder-icon" aria-hidden="true">
-              {activeTab === 'dashboard' && '📊'}
-              {activeTab === 'telemetry' && '👥'}
-              {activeTab === 'passkeys' && '🔑'}
-              {activeTab === 'troubleshooting' && '🛠️'}
-              {activeTab === 'settings' && '⚙️'}
-            </div>
-
-            <h2 className="admin-placeholder-title">
-              {activeTab === 'dashboard' && 'Dashboard Command Center Siap'}
-              {activeTab === 'telemetry' && 'Modul Peserta & Telemetri Real-Time'}
-              {activeTab === 'passkeys' && 'Manajemen Passkey Modul Dinas'}
-              {activeTab === 'troubleshooting' && 'Log Kendala & Export Laporan'}
-              {activeTab === 'settings' && 'Konfigurasi & Integrasi Platform'}
-            </h2>
-
-            <p className="admin-placeholder-desc">
-              {activeTab === 'dashboard' &&
-                'Autentikasi Master Admin dan perlindungan rute /admin telah aktif dengan verifikasi timing-safe dan enkripsi session cookie. Widget telemetri dan kontrol modul siap dihubungkan pada fase berikutnya.'}
-              {activeTab === 'telemetry' &&
-                'Fasilitas inspeksi kemajuan peserta, status checkpoint ASN, dan performa modul praktikum (Fase 30 & 31).'}
-              {activeTab === 'passkeys' &&
-                'Pembaruan dinamis passkey pelatihan BPSDM & Dinas tanpa henti layanan (Fase 32).'}
-              {activeTab === 'troubleshooting' &&
-                'Penyaringan insiden, troubleshooting ekspor WhatsApp/Telegram, dan pemulihan kendala (Fase 32).'}
-              {activeTab === 'settings' &&
-                'Konfigurasi environment server, kesiapan Google Workspace OAuth SSO, dan parameter operasional (Fase 33).'}
-            </p>
-
-            <div className="admin-quick-stats">
-              <div className="admin-stat-card">
-                <span className="admin-stat-label">Status Autentikasi</span>
-                <span className="admin-stat-value">Terverifikasi</span>
-                <span className="admin-stat-hint">Metode: Master Passkey SHA-256</span>
+          activeTab === 'dashboard' || activeTab === 'telemetry' ? (
+            <AdminDashboardView initialTab={activeTab} />
+          ) : (
+            <div className="admin-placeholder-card" id="admin-active-view">
+              <div className="admin-placeholder-icon" aria-hidden="true">
+                {activeTab === 'passkeys' && '🔑'}
+                {activeTab === 'troubleshooting' && '🛠️'}
+                {activeTab === 'settings' && '⚙️'}
               </div>
-              <div className="admin-stat-card">
-                <span className="admin-stat-label">Session Protection</span>
-                <span className="admin-stat-value">HttpOnly + Lax</span>
-                <span className="admin-stat-hint">Token Entropy: 256-bit Hex</span>
-              </div>
-              <div className="admin-stat-card">
-                <span className="admin-stat-label">Google OAuth Readiness</span>
-                <span className="admin-stat-value">Arsitektur Siap</span>
-                <span className="admin-stat-hint">Menunggu Client ID Enterprise</span>
+
+              <h2 className="admin-placeholder-title">
+                {activeTab === 'passkeys' && 'Manajemen Passkey Modul Dinas'}
+                {activeTab === 'troubleshooting' && 'Log Kendala & Export Laporan'}
+                {activeTab === 'settings' && 'Konfigurasi & Integrasi Platform'}
+              </h2>
+
+              <p className="admin-placeholder-desc">
+                {activeTab === 'passkeys' &&
+                  'Pembaruan dinamis passkey pelatihan BPSDM & Dinas tanpa henti layanan (Fase 32).'}
+                {activeTab === 'troubleshooting' &&
+                  'Penyaringan insiden, troubleshooting ekspor WhatsApp/Telegram, dan pemulihan kendala (Fase 32).'}
+                {activeTab === 'settings' &&
+                  'Konfigurasi environment server, kesiapan Google Workspace OAuth SSO, dan parameter operasional (Fase 33).'}
+              </p>
+
+              <div className="admin-quick-stats">
+                <div className="admin-stat-card">
+                  <span className="admin-stat-label">Status Autentikasi</span>
+                  <span className="admin-stat-value">Terverifikasi</span>
+                  <span className="admin-stat-hint">Metode: Master Passkey SHA-256</span>
+                </div>
+                <div className="admin-stat-card">
+                  <span className="admin-stat-label">Session Protection</span>
+                  <span className="admin-stat-value">HttpOnly + Lax</span>
+                  <span className="admin-stat-hint">Token Entropy: 256-bit Hex</span>
+                </div>
+                <div className="admin-stat-card">
+                  <span className="admin-stat-label">Google OAuth Readiness</span>
+                  <span className="admin-stat-value">Arsitektur Siap</span>
+                  <span className="admin-stat-hint">Menunggu Client ID Enterprise</span>
+                </div>
               </div>
             </div>
-          </div>
+          )
         )}
       </main>
     </div>
