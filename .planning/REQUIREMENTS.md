@@ -22,10 +22,10 @@
 
 ### Category 3: Participant Progress & Monitoring Dashboard (ADMIN-DASH)
 
-- [ ] **ADMIN-DASH-01**: Admin dapat memantau kartu ringkasan KPI agregat (Total Peserta Aktif, Tingkat Penyelesaian Checkpoint, Rata-rata Skor Kuis, Rasio Siap Workshop vs Perlu Klinik).
-- [ ] **ADMIN-DASH-02**: Admin dapat melihat tabel daftar peserta dengan filter kategori kursus (`ai` vs `word`), status kesiapan, pencarian instansi/nama, dan status aktivitas.
-- [ ] **ADMIN-DASH-03**: Admin dapat menginspeksi detail peserta (rincian checklist modul yang telah diselesaikan, riwayat checkpoint 1–3, dan nilai evaluasi kuis).
-- [ ] **ADMIN-DASH-04**: Admin dapat mengekspor seluruh data rekapitulasi progres dan kesiapan peserta ke format CSV dan JSON dalam 1-klik.
+- [x] **ADMIN-DASH-01**: Admin dapat memantau kartu ringkasan KPI agregat (Total Peserta Aktif, Tingkat Penyelesaian Checkpoint, Rata-rata Skor Kuis, Rasio Siap Workshop vs Perlu Klinik).
+- [x] **ADMIN-DASH-02**: Admin dapat melihat tabel daftar peserta dengan filter kategori kursus (`ai` vs `word`), status kesiapan, pencarian instansi/nama, dan status aktivitas.
+- [x] **ADMIN-DASH-03**: Admin dapat menginspeksi detail peserta (rincian checklist modul yang telah diselesaikan, riwayat checkpoint 1–3, dan nilai evaluasi kuis).
+- [x] **ADMIN-DASH-04**: Admin dapat mengekspor seluruh data rekapitulasi progres dan kesiapan peserta ke format CSV dan JSON dalam 1-klik.
 
 ### Category 4: Course Access & Passkey Management Console (ADMIN-PASS)
 
@@ -71,10 +71,10 @@
 | ADMIN-TELEM-01 | Phase 30 | Pending | Telemetry API endpoint test |
 | ADMIN-TELEM-02 | Phase 30 | Pending | Zod validation & server store test |
 | ADMIN-TELEM-03 | Phase 30 | Pending | Client background telemetry sync test |
-| ADMIN-DASH-01 | Phase 31 | Pending | Dashboard KPI cards rendered |
-| ADMIN-DASH-02 | Phase 31 | Pending | Participant table with filters rendered |
-| ADMIN-DASH-03 | Phase 31 | Pending | Participant detail inspector modal/drawer |
-| ADMIN-DASH-04 | Phase 31 | Pending | CSV and JSON export verification |
+| ADMIN-DASH-01 | Phase 31 | Complete | 31-VERIFICATION.md |
+| ADMIN-DASH-02 | Phase 31 | Complete | 31-VERIFICATION.md |
+| ADMIN-DASH-03 | Phase 31 | Complete | 31-VERIFICATION.md |
+| ADMIN-DASH-04 | Phase 31 | Complete | 31-VERIFICATION.md |
 | ADMIN-PASS-01 | Phase 32 | Pending | Course passkey monitor rendered |
 | ADMIN-PASS-02 | Phase 32 | Pending | Passkey update server function test |
 | ADMIN-PASS-03 | Phase 32 | Pending | Unlock attempt audit log rendered |

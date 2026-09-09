@@ -45,10 +45,11 @@
 ---
 
 ### Phase 31: Admin Command Center Dashboard & Participant Progress Monitoring
+**Status**: ✅ Complete (2/2 plans shipped, verified 2026-09-09)  
 **Goal**: Membangun antarmuka dashboard admin yang menampilkan ringkasan metrik agregat KPI, tabel peserta interaktif dengan pencarian dan filter, modal inspeksi detail peserta, dan fitur ekspor CSV/JSON 1-klik.  
 **Depends on**: Phase 30  
 **Requirements**: ADMIN-DASH-01, ADMIN-DASH-02, ADMIN-DASH-03, ADMIN-DASH-04  
-**Plans**: 2 plans  
+**Plans**: 2 plans (2 shipped)  
 
 **Success Criteria**:
 1. Dashboard admin menampilkan 4 kartu KPI agregat (Total Peserta, Penyelesaian Checkpoint, Rata-rata Skor Kuis, Rasio Siap Workshop).
