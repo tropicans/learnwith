@@ -5093,8 +5093,8 @@
     "semantic_hash": ""
   },
   ".planning/state.json": {
-    "mtime": 1788917968.0634043,
-    "ast_hash": "5b97e369e37cbaf9779cd055b34fca3d",
+    "mtime": 1788919514.5611773,
+    "ast_hash": "71375cb1751917674854b072dff6280f",
     "semantic_hash": ""
   },
   "assets/js/app.js": {
@@ -10368,33 +10368,28 @@
     "semantic_hash": ""
   },
   ".planning/MILESTONES.md": {
-    "mtime": 1788860139.2020843,
-    "ast_hash": "d21c97baaee84b65422fe5e400c34688",
+    "mtime": 1788919543.9739144,
+    "ast_hash": "e7073336a0d7cf3ed2df91f052585cb6",
     "semantic_hash": ""
   },
   ".planning/PROJECT.md": {
-    "mtime": 1788860712.814421,
-    "ast_hash": "d5165e8f242493f05f5e76deb7d1ff89",
-    "semantic_hash": ""
-  },
-  ".planning/REQUIREMENTS.md": {
-    "mtime": 1788917988.1243188,
-    "ast_hash": "de47e2372385d71137c87598bd5c84a4",
+    "mtime": 1788919537.7346315,
+    "ast_hash": "247109c0c31fb025a016d83fa6e47446",
     "semantic_hash": ""
   },
   ".planning/RETROSPECTIVE.md": {
-    "mtime": 1788860192.7618303,
-    "ast_hash": "4a45dfa97d11749b6b9198b825c931bc",
+    "mtime": 1788919576.1187046,
+    "ast_hash": "6b6ca2e1f3a4693e9bf10d5a566201ab",
     "semantic_hash": ""
   },
   ".planning/ROADMAP.md": {
-    "mtime": 1788917967.7501876,
-    "ast_hash": "a31013693e270e64c05ea5832aef8e9c",
+    "mtime": 1788919561.6260595,
+    "ast_hash": "34c69a5b193fb492f68e70457ba87b1b",
     "semantic_hash": ""
   },
   ".planning/STATE.md": {
-    "mtime": 1788917967.7512355,
-    "ast_hash": "c0f0c3827ae89197e0eb9872802d9168",
+    "mtime": 1788919581.5579755,
+    "ast_hash": "e06eab6e961459809cf670d701976faa",
     "semantic_hash": ""
   },
   ".planning/codebase/ARCHITECTURE.md": {
@@ -11993,31 +11988,6 @@
     "ast_hash": "a143923b3299d475a17b8b4600cf95eb",
     "semantic_hash": ""
   },
-  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-01-PLAN.md": {
-    "mtime": 1788860930.8866277,
-    "ast_hash": "ac1acda1655ef393f89eaf0ff22d20d2",
-    "semantic_hash": ""
-  },
-  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-01-SUMMARY.md": {
-    "mtime": 1788861115.093519,
-    "ast_hash": "45f537a33b640c5d76ad2661e6ef23d1",
-    "semantic_hash": ""
-  },
-  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-02-PLAN.md": {
-    "mtime": 1788860939.124741,
-    "ast_hash": "34f31b945a19a0a3d59c233b53be1af6",
-    "semantic_hash": ""
-  },
-  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-02-SUMMARY.md": {
-    "mtime": 1788861275.9289577,
-    "ast_hash": "65a63c83c48596267bca83e2563dc4b8",
-    "semantic_hash": ""
-  },
-  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-VERIFICATION.md": {
-    "mtime": 1788861292.5937018,
-    "ast_hash": "eacc0b9cdd47f00aa2f9927f61e04099",
-    "semantic_hash": ""
-  },
   "app/components/course/pretraining/CheckpointGateCard.tsx": {
     "mtime": 1788916762.655062,
     "ast_hash": "6a34c129c6482b15e7e92d13e7ee91ed",
@@ -12118,126 +12088,6 @@
     "ast_hash": "233dc7b8a795cd10dcafaf47ad6ae995",
     "semantic_hash": ""
   },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-PLAN.md": {
-    "mtime": 1788862121.425035,
-    "ast_hash": "6456b784c087c16744f55c9f9d180b21",
-    "semantic_hash": ""
-  },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-SUMMARY.md": {
-    "mtime": 1788914413.111865,
-    "ast_hash": "2b77c3a8e5fcb088cd80ffe596a47a43",
-    "semantic_hash": ""
-  },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-PLAN.md": {
-    "mtime": 1788862133.706971,
-    "ast_hash": "03ba9cb4a36138db6cef82d284e242b7",
-    "semantic_hash": ""
-  },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-SUMMARY.md": {
-    "mtime": 1788914586.228627,
-    "ast_hash": "ee5816b2a352f391f4ef6f32b5a56225",
-    "semantic_hash": ""
-  },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-PATTERNS.md": {
-    "mtime": 1788862020.4070945,
-    "ast_hash": "bf570140e74cce4258705d82da6dfa7c",
-    "semantic_hash": ""
-  },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-RESEARCH.md": {
-    "mtime": 1788861795.2839577,
-    "ast_hash": "d56700546990c1f7ed525434ddcef30f",
-    "semantic_hash": ""
-  },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-VALIDATION.md": {
-    "mtime": 1788861834.075649,
-    "ast_hash": "822d93048244b038d80f35265c305743",
-    "semantic_hash": ""
-  },
-  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-VERIFICATION.md": {
-    "mtime": 1788914696.8439152,
-    "ast_hash": "c4791dfbe0da1cf4cdc8a6fb6df7b34f",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-PLAN.md": {
-    "mtime": 1788916568.5392587,
-    "ast_hash": "ea735c16922ff4614f7b0d84aa594067",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-SUMMARY.md": {
-    "mtime": 1788916824.5598695,
-    "ast_hash": "9af0e10b3939a74320aeec984b8ad445",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-PLAN.md": {
-    "mtime": 1788916581.404803,
-    "ast_hash": "270463bb03339fce4dcc6e1e4493f834",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-SUMMARY.md": {
-    "mtime": 1788917007.0283132,
-    "ast_hash": "9301dce74bc9daa88c334d310d3b62dd",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-PATTERNS.md": {
-    "mtime": 1788916495.7957375,
-    "ast_hash": "1d7dcb6eb590495a74ac0c6e46c855ef",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-RESEARCH.md": {
-    "mtime": 1788916314.1132593,
-    "ast_hash": "f78db9af33b42df18850eb6369f50d6f",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VALIDATION.md": {
-    "mtime": 1788916340.0332253,
-    "ast_hash": "e2f65bfd0b606de440fe2f4ec8cd36bd",
-    "semantic_hash": ""
-  },
-  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VERIFICATION.md": {
-    "mtime": 1788917079.2083757,
-    "ast_hash": "801be4322138b163958fc3fc226b999b",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-PLAN.md": {
-    "mtime": 1788917598.3211746,
-    "ast_hash": "ec1c3d51508c735e44f3e71389b01b68",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-SUMMARY.md": {
-    "mtime": 1788917837.9215593,
-    "ast_hash": "a925844ebc3c8334f77d9295742a1d7b",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-PLAN.md": {
-    "mtime": 1788917612.122669,
-    "ast_hash": "45f0375ecb1b1b0e72b78f13f80defe7",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-SUMMARY.md": {
-    "mtime": 1788917927.246351,
-    "ast_hash": "59ab559dca4d4bd2bb25be9c016eb6ae",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-PATTERNS.md": {
-    "mtime": 1788917540.689384,
-    "ast_hash": "3756ccaa3bd6bf404e97c77d04878ad1",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-RESEARCH.md": {
-    "mtime": 1788917398.235416,
-    "ast_hash": "8a18c353a871c9f182f29a3a20f4153e",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VALIDATION.md": {
-    "mtime": 1788917433.9086113,
-    "ast_hash": "476244c2a66ab053238ce4d0ca686b14",
-    "semantic_hash": ""
-  },
-  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VERIFICATION.md": {
-    "mtime": 1788917958.4712336,
-    "ast_hash": "2f9c6e570dad8daaafe0a5fec572aa54",
-    "semantic_hash": ""
-  },
   "app/components/course/pretraining/PretrainingReadinessReportSection.tsx": {
     "mtime": 1788918495.4594657,
     "ast_hash": "a8e5536ea202b06333b4568e53a8d4e0",
@@ -12258,34 +12108,204 @@
     "ast_hash": "74f0a63f21e8f095a7c4a260058d20ec",
     "semantic_hash": ""
   },
-  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-PLAN.md": {
+  ".planning/milestones/v3.1-MILESTONE-AUDIT.md": {
+    "mtime": 1788918902.3258204,
+    "ast_hash": "cec46454cf3e737d6f8e2834e8885df1",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-REQUIREMENTS.md": {
+    "mtime": 1788919513.5863266,
+    "ast_hash": "89563c8717cab10d8354b7404b68d8af",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-ROADMAP.md": {
+    "mtime": 1788919513.5853312,
+    "ast_hash": "2af274828415ba77365a5fcc50f65423",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-01-PLAN.md": {
+    "mtime": 1788860930.8866277,
+    "ast_hash": "ac1acda1655ef393f89eaf0ff22d20d2",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-01-SUMMARY.md": {
+    "mtime": 1788861115.093519,
+    "ast_hash": "45f537a33b640c5d76ad2661e6ef23d1",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-02-PLAN.md": {
+    "mtime": 1788860939.124741,
+    "ast_hash": "34f31b945a19a0a3d59c233b53be1af6",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-02-SUMMARY.md": {
+    "mtime": 1788861275.9289577,
+    "ast_hash": "65a63c83c48596267bca83e2563dc4b8",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-VERIFICATION.md": {
+    "mtime": 1788861292.5937018,
+    "ast_hash": "eacc0b9cdd47f00aa2f9927f61e04099",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-PLAN.md": {
+    "mtime": 1788862121.425035,
+    "ast_hash": "6456b784c087c16744f55c9f9d180b21",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-SUMMARY.md": {
+    "mtime": 1788914413.111865,
+    "ast_hash": "2b77c3a8e5fcb088cd80ffe596a47a43",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-PLAN.md": {
+    "mtime": 1788862133.706971,
+    "ast_hash": "03ba9cb4a36138db6cef82d284e242b7",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-SUMMARY.md": {
+    "mtime": 1788914586.228627,
+    "ast_hash": "ee5816b2a352f391f4ef6f32b5a56225",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-PATTERNS.md": {
+    "mtime": 1788862020.4070945,
+    "ast_hash": "bf570140e74cce4258705d82da6dfa7c",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-RESEARCH.md": {
+    "mtime": 1788861795.2839577,
+    "ast_hash": "d56700546990c1f7ed525434ddcef30f",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-VALIDATION.md": {
+    "mtime": 1788861834.075649,
+    "ast_hash": "822d93048244b038d80f35265c305743",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-VERIFICATION.md": {
+    "mtime": 1788914696.8439152,
+    "ast_hash": "c4791dfbe0da1cf4cdc8a6fb6df7b34f",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-PLAN.md": {
+    "mtime": 1788916568.5392587,
+    "ast_hash": "ea735c16922ff4614f7b0d84aa594067",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-SUMMARY.md": {
+    "mtime": 1788916824.5598695,
+    "ast_hash": "9af0e10b3939a74320aeec984b8ad445",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-PLAN.md": {
+    "mtime": 1788916581.404803,
+    "ast_hash": "270463bb03339fce4dcc6e1e4493f834",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-SUMMARY.md": {
+    "mtime": 1788917007.0283132,
+    "ast_hash": "9301dce74bc9daa88c334d310d3b62dd",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-PATTERNS.md": {
+    "mtime": 1788916495.7957375,
+    "ast_hash": "1d7dcb6eb590495a74ac0c6e46c855ef",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-RESEARCH.md": {
+    "mtime": 1788916314.1132593,
+    "ast_hash": "f78db9af33b42df18850eb6369f50d6f",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VALIDATION.md": {
+    "mtime": 1788916340.0332253,
+    "ast_hash": "e2f65bfd0b606de440fe2f4ec8cd36bd",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VERIFICATION.md": {
+    "mtime": 1788917079.2083757,
+    "ast_hash": "801be4322138b163958fc3fc226b999b",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-PLAN.md": {
+    "mtime": 1788917598.3211746,
+    "ast_hash": "ec1c3d51508c735e44f3e71389b01b68",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-SUMMARY.md": {
+    "mtime": 1788917837.9215593,
+    "ast_hash": "a925844ebc3c8334f77d9295742a1d7b",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-PLAN.md": {
+    "mtime": 1788917612.122669,
+    "ast_hash": "45f0375ecb1b1b0e72b78f13f80defe7",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-SUMMARY.md": {
+    "mtime": 1788917927.246351,
+    "ast_hash": "59ab559dca4d4bd2bb25be9c016eb6ae",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-PATTERNS.md": {
+    "mtime": 1788917540.689384,
+    "ast_hash": "3756ccaa3bd6bf404e97c77d04878ad1",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-RESEARCH.md": {
+    "mtime": 1788917398.235416,
+    "ast_hash": "8a18c353a871c9f182f29a3a20f4153e",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VALIDATION.md": {
+    "mtime": 1788917433.9086113,
+    "ast_hash": "476244c2a66ab053238ce4d0ca686b14",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VERIFICATION.md": {
+    "mtime": 1788917958.4712336,
+    "ast_hash": "2f9c6e570dad8daaafe0a5fec572aa54",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-PLAN.md": {
     "mtime": 1788918271.3958163,
     "ast_hash": "7db5f04ca186a6178b0abae4aca59fc0",
     "semantic_hash": ""
   },
-  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-SUMMARY.md": {
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-SUMMARY.md": {
     "mtime": 1788918445.5231361,
     "ast_hash": "87361607a4b66a9ae8908d6900f7589f",
     "semantic_hash": ""
   },
-  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-02-PLAN.md": {
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-02-PLAN.md": {
     "mtime": 1788918277.9311895,
     "ast_hash": "413c260f229ccb4db272bc88f5918e8f",
     "semantic_hash": ""
   },
-  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-PATTERNS.md": {
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-02-SUMMARY.md": {
+    "mtime": 1788918544.4009464,
+    "ast_hash": "32618a9a3f70ee8b78dba87c64f10d8b",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-PATTERNS.md": {
     "mtime": 1788918242.9388206,
     "ast_hash": "c54dd66d95372068ce021e87037a235c",
     "semantic_hash": ""
   },
-  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-RESEARCH.md": {
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-RESEARCH.md": {
     "mtime": 1788918239.3510728,
     "ast_hash": "a31ff4ab1b863a0aa5bd7a4183a885f8",
     "semantic_hash": ""
   },
-  ".planning/phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-VALIDATION.md": {
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-VALIDATION.md": {
     "mtime": 1788918281.542705,
     "ast_hash": "6caaad29acc444a2f345ffcb040fa976",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-VERIFICATION.md": {
+    "mtime": 1788919429.7421262,
+    "ast_hash": "e325bb6e22c532e39bbdb8db19df8947",
     "semantic_hash": ""
   }
 }
