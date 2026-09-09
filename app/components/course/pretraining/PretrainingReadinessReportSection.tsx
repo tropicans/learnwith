@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { usePretrainingState } from '@/hooks/usePretrainingState'
 import { generateReportText } from '@/utils/reportGenerator'
 import { showToast } from '@/components/ui/Toast'
+import { ingestTroubleshootingLogFn } from '@/server/troubleshooting'
 
 export function PretrainingReadinessReportSection() {
   const { participantInfo, checkpoints, checklists, setParticipantInfo, readiness } =
@@ -10,6 +11,8 @@ export function PretrainingReadinessReportSection() {
   const [os, setOs] = useState('Windows 11')
   const [probStep, setProbStep] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
+  const [isReporting, setIsReporting] = useState(false)
+  const [reportedIncidentId, setReportedIncidentId] = useState<string | null>(null)
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setParticipantInfo('name', e.target.value)
@@ -57,6 +60,46 @@ export function PretrainingReadinessReportSection() {
   const handlePrint = () => {
     if (typeof window !== 'undefined') {
       window.print()
+    }
+  }
+
+  const hasErrorContent = Boolean(
+    errorMsg && errorMsg.trim() !== '' && errorMsg.trim().toLowerCase() !== 'nihil'
+  )
+
+  const handleCloudSyncReport = async () => {
+    if (!hasErrorContent) return
+    setIsReporting(true)
+    try {
+      const participantId = participantInfo.name
+        ? `usr-${encodeURIComponent(participantInfo.name.toLowerCase().replace(/\s+/g, '-'))}`
+        : 'usr-anonymous'
+
+      const result = await ingestTroubleshootingLogFn({
+        data: {
+          participantId,
+          participantName: participantInfo.name || 'Peserta Mandiri',
+          courseId: 'ai',
+          errorMsg: errorMsg.trim(),
+          problemStep: probStep.trim() || undefined,
+          os,
+        },
+      })
+
+      if (result && result.success) {
+        setReportedIncidentId(result.id)
+        showToast(
+          'Kendala berhasil dilaporkan ke Command Center instruktur! 🚀',
+          'success',
+          4000
+        )
+      } else {
+        showToast('Gagal mengirim laporan ke server. Silakan gunakan opsi WhatsApp.', 'warning', 3500)
+      }
+    } catch {
+      showToast('Gagal terhubung ke Command Center. Silakan salin ke WhatsApp.', 'danger', 3500)
+    } finally {
+      setIsReporting(false)
     }
   }
 
@@ -211,7 +254,27 @@ export function PretrainingReadinessReportSection() {
               {previewText}
             </pre>
 
-            <div className="report-btn-group">
+            <div className="report-btn-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {hasErrorContent && (
+                <button
+                  type="button"
+                  id="btn-sync-instructor-report"
+                  className="btn btn-primary"
+                  onClick={handleCloudSyncReport}
+                  disabled={isReporting || Boolean(reportedIncidentId)}
+                  style={{
+                    background: reportedIncidentId ? 'var(--color-success, #10b981)' : 'var(--accent-primary, #6366f1)',
+                    borderColor: reportedIncidentId ? 'var(--color-success, #10b981)' : 'var(--accent-primary, #6366f1)',
+                  }}
+                >
+                  <span>📡</span>{' '}
+                  {isReporting
+                    ? 'Mengirim Laporan...'
+                    : reportedIncidentId
+                      ? 'Tersinkron ke Instruktur ✓'
+                      : 'Laporkan ke Instruktur (Cloud Sync)'}
+                </button>
+              )}
               <button
                 type="button"
                 id="btn-copy-report"

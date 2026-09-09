@@ -3,6 +3,7 @@ import type { AdminUser } from '../../schemas/admin'
 import { adminLogoutFn } from '../../server/adminAuth'
 import { AdminDashboardView } from './AdminDashboardView'
 import { AdminPasskeyView } from './passkeys/AdminPasskeyView'
+import { AdminTroubleshootingView } from './troubleshooting/AdminTroubleshootingView'
 
 interface AdminShellProps {
   adminUser: AdminUser
@@ -143,23 +144,20 @@ export function AdminShell({ adminUser, onLogout, children }: AdminShellProps) {
             <AdminDashboardView initialTab={activeTab} />
           ) : activeTab === 'passkeys' ? (
             <AdminPasskeyView />
+          ) : activeTab === 'troubleshooting' ? (
+            <AdminTroubleshootingView />
           ) : (
             <div className="admin-placeholder-card" id="admin-active-view">
               <div className="admin-placeholder-icon" aria-hidden="true">
-                {activeTab === 'troubleshooting' && '🛠️'}
-                {activeTab === 'settings' && '⚙️'}
+                ⚙️
               </div>
 
               <h2 className="admin-placeholder-title">
-                {activeTab === 'troubleshooting' && 'Log Kendala & Export Laporan'}
-                {activeTab === 'settings' && 'Konfigurasi & Integrasi Platform'}
+                Konfigurasi & Integrasi Platform
               </h2>
 
               <p className="admin-placeholder-desc">
-                {activeTab === 'troubleshooting' &&
-                  'Penyaringan insiden, troubleshooting ekspor WhatsApp/Telegram, dan pemulihan kendala (Fase 32).'}
-                {activeTab === 'settings' &&
-                  'Konfigurasi environment server, kesiapan Google Workspace OAuth SSO, dan parameter operasional (Fase 33).'}
+                Konfigurasi environment server, kesiapan Google Workspace OAuth SSO, dan parameter operasional (Fase 33).
               </p>
 
               <div className="admin-quick-stats">

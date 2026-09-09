@@ -2505,5 +2505,274 @@
   opacity: 1;
 }
 
+/* ==========================================================================
+   Phase 32: Troubleshooting Audit Hub & Triage Console Styles
+   Requirements: ADMIN-LOG-01, ADMIN-LOG-02
+   ========================================================================== */
 
+.troubleshoot-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
 
+.troubleshoot-filter-toolbar {
+  background: var(--bg-surface, #161b22);
+  border: 1px solid var(--border-subtle, rgba(240, 246, 252, 0.1));
+  border-radius: var(--radius-lg, 12px);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.troubleshoot-table-wrap {
+  background: var(--bg-surface, #161b22);
+  border: 1px solid var(--border-subtle, rgba(240, 246, 252, 0.1));
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.troubleshoot-table th {
+  background: rgba(240, 246, 252, 0.04);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary, #8b949e);
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border-subtle, rgba(240, 246, 252, 0.1));
+}
+
+.troubleshoot-table td {
+  padding: 0.875rem 1rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-subtle, rgba(240, 246, 252, 0.06));
+}
+
+.troubleshoot-row:hover {
+  background: rgba(240, 246, 252, 0.02);
+}
+
+.troubleshoot-category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.category-port {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.category-ps {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fde68a;
+}
+
+.category-oauth {
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  color: #f87171;
+}
+
+.category-tg {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93c5fd;
+}
+
+.category-eperm {
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #d8b4fe;
+}
+
+.category-network {
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(14, 165, 233, 0.35);
+  color: #7dd3fc;
+}
+
+.category-other {
+  background: rgba(107, 114, 128, 0.15);
+  border: 1px solid rgba(107, 114, 128, 0.35);
+  color: #d1d5db;
+}
+
+/* Severity Badges */
+.troubleshoot-severity-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+}
+
+.severity-critical {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid #ef4444;
+  color: #f87171;
+}
+
+.severity-high {
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid #f59e0b;
+  color: #fcd34d;
+}
+
+.severity-medium {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid #3b82f6;
+  color: #93c5fd;
+}
+
+.severity-low {
+  background: rgba(107, 114, 128, 0.2);
+  border: 1px solid #6b7280;
+  color: #9ca3af;
+}
+
+/* Status Pills */
+.troubleshoot-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.status-open {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+.status-investigating {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+}
+
+.status-resolved {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.error-snippet-box {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-subtle, rgba(240, 246, 252, 0.08));
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  max-width: 440px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  color: #e2e8f0;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.btn-troubleshoot-inspect {
+  background: var(--accent-primary, #6366f1);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.btn-troubleshoot-inspect:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-troubleshoot-quick-resolve {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-troubleshoot-quick-resolve:hover {
+  background: #10b981;
+  color: #fff;
+}
+
+/* Detail Modal / Remediation Box */
+.remediation-command-box {
+  background: #0f172a;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  color: #38bdf8;
+  white-space: pre-wrap;
+  word-break: break-all;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.detail-meta-box {
+  background: rgba(240, 246, 252, 0.03);
+  border: 1px solid var(--border-subtle, rgba(240, 246, 252, 0.08));
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.detail-meta-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary, #8b949e);
+}
+
+.detail-meta-value {
+  font-size: 0.85rem;
+  color: var(--text-primary, #f0f6fc);
+}
+
+.instructor-notes-area {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-subtle, rgba(240, 246, 252, 0.15));
+  border-radius: 6px;
+  color: var(--text-primary, #f0f6fc);
+  padding: 0.6rem;
+  font-family: inherit;
+}
+
+.instructor-notes-area:focus {
+  border-color: var(--accent-primary, #6366f1);
+  outline: none;
+}
