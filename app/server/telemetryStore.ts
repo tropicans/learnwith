@@ -70,8 +70,10 @@ export function getParticipantById(id: string): ParticipantRecord | null {
 /**
  * Calculate aggregate KPI metrics across all participants.
  */
-export function getTelemetryStats(): TelemetryDashboardStats {
-  initSeedDataIfEmpty()
+export function getTelemetryStats(skipAutoSeed = false): TelemetryDashboardStats {
+  if (!skipAutoSeed) {
+    initSeedDataIfEmpty()
+  }
 
   const all = Array.from(participantRegistry.values())
   const totalParticipants = all.length

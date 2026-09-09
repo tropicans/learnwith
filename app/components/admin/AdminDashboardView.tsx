@@ -4,6 +4,8 @@ import { getParticipantTelemetryListFn } from '../../server/telemetry'
 import { DashboardKPIs } from './DashboardKPIs'
 import { ParticipantFilterToolbar } from './ParticipantFilterToolbar'
 import { ParticipantTable } from './ParticipantTable'
+import { ParticipantDetailModal } from './ParticipantDetailModal'
+import { ExportControls } from './ExportControls'
 
 export interface AdminDashboardViewProps {
   initialTab?: 'dashboard' | 'telemetry'
@@ -134,6 +136,18 @@ export function AdminDashboardView({ initialTab = 'dashboard' }: AdminDashboardV
             Pemantauan langsung progres modul, verifikasi checkpoint teknis, dan kesiapan praktikum peserta workshop.
           </p>
         </div>
+
+        {/* 1-Click Export Controls (ADMIN-DASH-04) */}
+        <ExportControls
+          participants={sortedParticipants}
+          stats={stats}
+          filter={{
+            courseId: courseFilter,
+            readiness: readinessFilter,
+            search: debouncedSearch.trim() || undefined,
+          }}
+          disabled={isLoading}
+        />
       </div>
 
       {/* Aggregate KPI Cards (ADMIN-DASH-01) */}
@@ -163,6 +177,13 @@ export function AdminDashboardView({ initialTab = 'dashboard' }: AdminDashboardV
         sortBy={sortBy}
         sortOrder={sortOrder}
         onSort={handleSort}
+      />
+
+      {/* Participant Detail Inspector Modal (ADMIN-DASH-03) */}
+      <ParticipantDetailModal
+        participant={selectedParticipant}
+        isOpen={Boolean(selectedParticipant)}
+        onClose={() => setSelectedParticipant(null)}
       />
     </div>
   )
