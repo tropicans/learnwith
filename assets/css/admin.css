@@ -2,17 +2,31 @@
 /* LearnWith Master Admin & Command Center Stylesheet */
 
 /* View-Admin Shell Overrides */
+.app-container.view-admin {
+  grid-template-columns: 1fr !important;
+  grid-template-areas:
+    "header"
+    "main" !important;
+}
+
 .app-container.view-admin .app-sidebar,
 .view-admin .app-sidebar,
+.app-container.view-admin .brand-breadcrumb-separator,
 .app-container.view-admin .header-course-switcher,
 .app-container.view-admin .header-mode-switcher,
+.app-container.view-admin #btn-mobile-menu,
+.view-admin .brand-breadcrumb-separator,
 .view-admin .header-course-switcher,
-.view-admin .header-mode-switcher {
+.view-admin .header-mode-switcher,
+.view-admin #btn-mobile-menu {
   display: none !important;
 }
 
 .app-container.view-admin .app-main,
-.view-admin .app-main {
+.view-admin .app-main,
+.app-container.view-admin .admin-canvas,
+.view-admin .admin-canvas {
+  grid-area: main;
   max-width: 100%;
   margin: 0;
   width: 100%;
