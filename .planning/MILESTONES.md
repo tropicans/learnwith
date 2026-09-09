@@ -1,5 +1,35 @@
 # Milestones
 
+## v3.1: Pre-Training Parity in TanStack Start
+
+**Shipped:** 2026-09-09
+**Status:** ✅ SHIPPED (verified_closeout)
+**Phases:** 24-28 (5 phases)
+**Plans:** 10 plans (10/10 completed)
+**Automated Tests:** 19 test files passing, 100/100 tests passed (0 failures) + TypeScript clean (0 errors)
+**Requirements:** 24/24 satisfied (100%)
+**Known verification overrides:** 0 newly acknowledged, 0 carried forward
+
+### Delivered
+
+Complete interactive feature parity for the Course 1 Pre-Training experience (`/course/ai?mode=pretraining`) rebuilt on TanStack Start and React 19, including modular foundation sections, accordion practical modules 1–5, 1-click copy engine with toast notifications, 13-step persistent checklist with 3 automated Pass/Fail checkpoint gates, dynamic readiness status badge, 15-issue troubleshooting hub, client-side secret token redaction workbench, pre-filled readiness report generator with WhatsApp/Telegram export, and print formatting.
+
+### Key Accomplishments
+
+1. **Foundation & Context Sections (Phase 24)**: Modularized React 19 components for Target & Alur (`sec-target`), Glosarium Interaktif (`sec-glosarium`, 8+ AI technical terms), Aturan Keamanan & Token Protection (`sec-security`), Alat & Persiapan Perangkat (`sec-prerequisites`), and Panduan Khusus PowerShell (`sec-powershell`).
+2. **Interactive Modules 1–5 & 1-Click Copy Engine (Phase 25)**: Replicated Modules 1–5 with collapsible accordion controls, callouts, and `CopyableCodeBlock` engine supporting dual clipboard fallback with animated toast feedback and zero whitespace corruption.
+3. **Checklist Engine & Checkpoint Validation Gates (Phase 26)**: Integrated 13 step-level interactive checklist tasks across modules, 3 automated Checkpoint Gates with regex validation for Telegram Bot token and User ID, dynamic readiness scoring (SIAP WORKSHOP vs PERLU KLINIK PERSIAPAN), and safe progress reset modal synced to `learnwith_ai_checklist` localStorage.
+4. **Troubleshooting Hub & Secret Redaction Assistant (Phase 27)**: Built 15 error resolution cards covering common runtime issues (`EADDRINUSE`, `401 Unauthorized`, `Execution_Policies`, `Telegram 409 Conflict`) with live search and category filters, paired with a client-side Secret Token Redaction Assistant to scrub tokens, API keys, and sensitive paths before sharing logs.
+5. **Readiness Report Generator & Sidebar Navigation Sync (Phase 28)**: Delivered Form Laporan Kesiapan Peserta with real-time state synchronization, 1-click WhatsApp and Telegram Markdown export, `@media print` clean document styling, synchronized curriculum sidebar with dynamic module and checkpoint badges, and 100% test pass rate with zero regression across existing courses.
+
+### Archive Reference
+
+- [Roadmap Archive](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v3.1-ROADMAP.md)
+- [Requirements Archive](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v3.1-REQUIREMENTS.md)
+- [Milestone Audit](file:///c:/Users/yudhiar/Downloads/AgenticAI/.planning/milestones/v3.1-MILESTONE-AUDIT.md)
+
+---
+
 ## v3.0 TanStack Start Full-Document SSR & File-Based Router Migration (Shipped: 2026-09-08)
 
 **Phases completed:** 5 phases, 15 plans, 8 tasks

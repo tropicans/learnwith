@@ -55,6 +55,31 @@ Migrated the entire interactive multi-course web platform to a type-safe full-st
 ### Key Lessons
 - Migrating an existing rich interactive client application to SSR is cleanest when stateful widgets are encapsulated into islands first, keeping document shells and routes declarative and server-rendered.
 
+## Milestone: v3.1 — Pre-Training Parity in TanStack Start
+
+**Shipped:** 2026-09-09
+**Phases:** 5 | **Plans:** 10 | **Requirements:** 24/24 (100%)
+
+### What Was Built
+Achieved 100% complete feature and visual parity for Course 1 Pre-Training on TanStack Start (`/course/ai?mode=pretraining`). Modularized React 19 architecture featuring Foundation sections (Target & Alur, Glosarium with 8+ AI terms, Aturan Keamanan, Alat & Persiapan, Panduan PowerShell), accordion-controlled Modules 1–5 with a zero-whitespace 1-click clipboard copy engine and visual toast alerts, a 13-step checklist engine with 3 automated Pass/Fail checkpoint validation gates, dynamic readiness status scoring (SIAP WORKSHOP vs PERLU KLINIK PERSIAPAN), a 15-issue troubleshooting hub with instant live search and category filtering, a client-side Secret Token Redaction Assistant to scrub credentials, Form Laporan Kesiapan Peserta with 1-click WhatsApp/Telegram export, `@media print` official document styling, and a synchronized curriculum sidebar with scrollspy and dynamic badges.
+
+### What Worked
+- **Data & Presentation Decoupling**: Separating data definitions (`pretrainingFoundation.ts`, `pretrainingModules.ts`, `pretrainingTroubleshooting.ts`) from React 19 presentation components ensured clean code boundaries, effortless testability, and zero hydration mismatches.
+- **Strict Backward-Compatible State Schema**: Preserving the existing `learnwith_ai_checklist` localStorage schema guaranteed that user progress from earlier versions was retained without data corruption.
+- **ReDoS-Safe Linear Token Redaction**: Designing ReDoS-safe linear regex patterns with explicit `lastIndex = 0` resets provided bulletproof protection for Telegram bot tokens, OpenAI/Gemini API keys, and sensitive paths.
+- **Wave-Based Execution with Continuous Verification**: Running 19 automated test suites after every plan caught regressions instantly and kept the entire test harness at 100% green throughout development.
+
+### What Was Inefficient
+- **YAML Frontmatter Omission in Phase 28 Verification**: A missing YAML frontmatter header in `28-VERIFICATION.md` prevented CLI parsing until manually reconciled with standard frontmatter format.
+
+### Patterns Established
+- **Modular Island Architecture**: Encapsulating reactive pre-training features into modular React 19 components mounted within a single container (`#container-pretraining`) under `/course/ai.tsx`.
+- **Dual-Method Clipboard Copying**: Using modern `navigator.clipboard.writeText` with transparent fallback to hidden textarea selection ensures copy buttons work across all browser security policies and iframe contexts.
+- **Multi-Channel Exporter Engine**: Structuring the report generator to cleanly produce plain text, WhatsApp formatted, and Telegram Markdown text from a single participant state snapshot.
+
+### Key Lessons
+- Rebuilding complex legacy SPA features in a modern SSR framework like TanStack Start is fastest and safest when guided by a 3-source verification matrix (Requirements, Phase Verification, and Automated Integration Tests).
+
 ---
 
 ## Cross-Milestone Trends
@@ -67,3 +92,5 @@ Migrated the entire interactive multi-course web platform to a type-safe full-st
 | v2.1 | 3 | 3 | 38 | 100% | 2026-09-07 |
 | v2.2 | 3 | 3 | 24 | 100% | 2026-09-07 |
 | v3.0 | 5 | 15 | 36 | 100% | 2026-09-08 |
+| v3.1 | 5 | 10 | 100 | 100% | 2026-09-09 |
+

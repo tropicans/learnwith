@@ -4,9 +4,9 @@
   "milestone": "v3.1 — Pre-Training Parity in TanStack Start",
   "phases": [],
   "next": {
-    "command": "/gsd-progress --next",
-    "label": "Advance to the next step (plan phase 28)",
-    "reason": "Phase 28 of 5 — needs a plan"
+    "command": "/gsd-progress",
+    "label": "Show progress",
+    "reason": "Unsure of state — showing progress"
   },
-  "updated_at": "2026-09-09T01:39:27.753Z"
+  "updated_at": "2026-09-09T02:05:14.290Z"
 }
