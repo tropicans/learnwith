@@ -8,9 +8,20 @@ A modern, responsive, and beginner-friendly web learning platform designed to gu
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current State: v3.1 Shipped (2026-09-09)
+## Current State: v3.2 In Progress (Started 2026-09-09)
 
-The platform is a production-hardened full-stack application running TanStack Start, React 19, Vinxi, and Nitro node-server in a multi-stage Docker container. Milestone v3.1 achieves 100% interactive Pre-Training feature parity (`/course/ai?mode=pretraining`) with modular React 19 components, 13 persistent checklist steps, 3 automated Pass/Fail checkpoint gates, 15-issue troubleshooting hub, client-side secret token redaction workbench, dynamic readiness scoring, pre-filled report generator with WhatsApp/Telegram exports, print formatting, and 100% test pass rate across 19 test suites.
+The platform is expanding beyond student/participant self-service into an instructor-grade operational command center. Milestone v3.2 delivers the `/admin` command center with Master Admin Passkey authentication (and Google OAuth login foundation), real-time participant progress & telemetry aggregation, course access passkey management, runtime troubleshooting diagnostics, and global platform banner/mode configuration.
+
+## Current Milestone: v3.2 Admin Command Center, Telemetry & Authentication
+
+**Goal:** Provide an instructor/admin command center to monitor participant progress in real time, manage course access passkeys, audit troubleshooting runtime logs, and configure global platform state with Master Admin Passkey protection and Google OAuth integration architecture.
+
+**Target features:**
+- Master Admin Authentication: Secure `/admin` route via `createServerFn` timing-safe hash validation and session state, with Google OAuth architecture/readiness.
+- Participant Progress & Telemetry Dashboard: Aggregated view of participant readiness, module progress, checkpoint passed/failed metrics, and Bab V evaluation results via internal server telemetry endpoint.
+- Course Access & Passkey Management: Admin control center to inspect and update workshop passkeys (e.g. Course 2 Pengolahan Kata), manage active training sessions, and revoke/rotate access codes.
+- Troubleshooting Hub Diagnostics: Searchable runtime error aggregation (Port 20128 conflicts, OAuth mismatches, PowerShell execution policies) reported by participants.
+- Global Platform Configuration: Admin controls to toggle workshop modes (Pre-training / Live Class), broadcast emergency/instructional banners, and configure training environment parameters.
 
 ## Previous Milestones
 
@@ -189,7 +200,11 @@ The platform is a production-hardened full-stack application running TanStack St
 
 ### Active
 
-*(To be defined in the next milestone via `/gsd-new-milestone`)*
+- [ ] Master Admin Authentication via `createServerFn` with timing-safe hash check & Google OAuth architecture (ADMIN-AUTH-01..03)
+- [ ] Internal Server Telemetry API for participant heartbeat, checkpoint status & evaluation ingest (ADMIN-TELEM-01..03)
+- [ ] Admin Command Center Dashboard with participant progress aggregation & metrics (ADMIN-DASH-01..03)
+- [ ] Workshop Access & Passkey Management Console for Course 2 & custom passkeys (ADMIN-PASS-01..02)
+- [ ] Global Platform Configuration & Banner Announcement Control Center (ADMIN-CFG-01..02)
 
 ### Out of Scope
 
@@ -239,4 +254,4 @@ This document evolves at phase transitions and milestone boundaries.
 - Interactive terminal simulator for dry-running CLI commands before local execution.
 
 ---
-*Last updated: 2026-09-09 after v3.1 milestone*
+*Last updated: 2026-09-09 — Milestone v3.2 started*
