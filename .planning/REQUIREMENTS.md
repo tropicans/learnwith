@@ -40,13 +40,13 @@
 
 ### Category 6: Global Platform Configuration & Banner Controls (ADMIN-CFG)
 
-- [ ] **ADMIN-CFG-01**: Admin dapat mengubah mode workshop (toggle Pre-training / Live Class) secara global dari antarmuka admin.
-- [ ] **ADMIN-CFG-02**: Admin dapat membuat dan menyiarkan Banner Pengumuman Global (instruksi darurat, link zoom, atau reminder jadwal kelas) yang tampil di seluruh halaman peserta.
+- [x] **ADMIN-CFG-01**: Admin dapat mengubah mode workshop (toggle Pre-training / Live Class) secara global dari antarmuka admin.
+- [x] **ADMIN-CFG-02**: Admin dapat membuat dan menyiarkan Banner Pengumuman Global (instruksi darurat, link zoom, atau reminder jadwal kelas) yang tampil di seluruh halaman peserta.
 
 ### Category 7: Quality Assurance & Zero-Regression (ADMIN-QA)
 
-- [ ] **ADMIN-QA-01**: Seluruh rute `/admin`, komponen dashboard, dan server functions memiliki test suite otomatis (unit test, server RPC test, schema validation test).
-- [ ] **ADMIN-QA-02**: Nol regresi terhadap fitur publik (`/`), rute workspace peserta (`/course/ai`, `/course/word`), dan seluruh test suite existing (116 tests) lulus 100%.
+- [x] **ADMIN-QA-01**: Seluruh rute `/admin`, komponen dashboard, dan server functions memiliki test suite otomatis (unit test, server RPC test, schema validation test).
+- [x] **ADMIN-QA-02**: Nol regresi terhadap fitur publik (`/`), rute workspace peserta (`/course/ai`, `/course/word`), dan seluruh test suite existing (237 tests) lulus 100%.
 
 ---
 
@@ -80,7 +80,7 @@
 | ADMIN-PASS-03 | Phase 32 | Complete | 32-VERIFICATION.md |
 | ADMIN-LOG-01 | Phase 32 | Complete | 32-VERIFICATION.md |
 | ADMIN-LOG-02 | Phase 32 | Complete | 32-VERIFICATION.md |
-| ADMIN-CFG-01 | Phase 33 | Pending | Workshop mode toggle server function |
-| ADMIN-CFG-02 | Phase 33 | Pending | Global announcement banner rendered on client |
-| ADMIN-QA-01 | Phase 29, 30, 33 | Pending | Automated test suite passing |
-| ADMIN-QA-02 | Phase 33 | Pending | 116 existing tests passing + 0 regressions |
+| ADMIN-CFG-01 | Phase 33 | Complete | 33-VERIFICATION.md |
+| ADMIN-CFG-02 | Phase 33 | Complete | 33-VERIFICATION.md |
+| ADMIN-QA-01 | Phase 29, 30, 33 | Complete | 33-VERIFICATION.md |
+| ADMIN-QA-02 | Phase 33 | Complete | 33-VERIFICATION.md |

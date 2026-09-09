@@ -74,15 +74,16 @@
 ---
 
 ### Phase 33: Global Platform Configuration, Announcement Banner & E2E Zero-Regression
+**Status**: ✅ Complete (2/2 plans shipped, verified 2026-09-09)  
 **Goal**: Mengimplementasikan kontrol konfigurasi platform global (toggle mode pretraining/live), Banner Pengumuman Siaran yang tampil di sisi peserta, dan eksekusi test suite komprehensif tanpa regresi.  
 **Depends on**: Phase 32  
 **Requirements**: ADMIN-CFG-01, ADMIN-CFG-02, ADMIN-QA-01, ADMIN-QA-02  
-**Plans**: 2 plans  
+**Plans**: 2 plans (2 shipped)  
 
 **Success Criteria**:
-1. Admin dapat menyalakan/mematikan mode workshop (Pre-training / Live Class) secara global.
-2. Banner Pengumuman Global yang diset admin langsung tampil di seluruh halaman peserta dengan opsi dismiss.
-3. Seluruh unit test rute admin lulus dan 100% test suite existing (`116/116`) lulus tanpa regresi.
+1. Admin dapat menyalakan/mematikan mode workshop (Pre-training / Live Class) secara global. (✅ Shipped)
+2. Banner Pengumuman Global yang diset admin langsung tampil di seluruh halaman peserta dengan opsi dismiss. (✅ Shipped)
+3. Seluruh unit test rute admin lulus dan 100% test suite existing (`237/237` tests across 27 suites) lulus tanpa regresi. (✅ Shipped)
 
 ---
 

@@ -4,9 +4,9 @@
   "milestone": "v3.2 — (Phases 29-33)",
   "phases": [],
   "next": {
-    "command": "/gsd-progress --next",
-    "label": "Advance to the next step (plan phase 33)",
-    "reason": "Phase 33 of 5 — needs a plan"
+    "command": "/gsd-new-milestone",
+    "label": "Start a new milestone",
+    "reason": "All phases complete — start a new milestone"
   },
-  "updated_at": "2026-09-09T05:50:39.895Z"
+  "updated_at": "2026-09-09T06:27:26.624Z"
 }
