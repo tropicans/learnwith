@@ -12,6 +12,11 @@ import { PretrainingSecuritySection } from '@/components/course/pretraining/Pret
 import { PretrainingPrerequisitesSection } from '@/components/course/pretraining/PretrainingPrerequisitesSection'
 import { PretrainingPowerShellSection } from '@/components/course/pretraining/PretrainingPowerShellSection'
 import { PretrainingModulesSection } from '@/components/course/pretraining/PretrainingModulesSection'
+import { PretrainingCheckpointsSection } from '@/components/course/pretraining/PretrainingCheckpointsSection'
+import { PretrainingReadinessSection } from '@/components/course/pretraining/PretrainingReadinessSection'
+import { ResetProgressModal } from '@/components/course/pretraining/ResetProgressModal'
+import { usePretrainingState } from '@/hooks/usePretrainingState'
+import { showToast } from '@/components/ui/Toast'
 
 export const Route = createFileRoute('/course/ai')({
   validateSearch: (search) => courseAiSearchSchema.parse(search),
@@ -41,8 +46,10 @@ export const Route = createFileRoute('/course/ai')({
 function CourseAiComponent() {
   const { mode } = Route.useSearch()
   const { course, deferredStats } = Route.useLoaderData()
+  const { readiness, resetState } = usePretrainingState()
   const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false)
   const [isUnlocked, setIsUnlocked] = useState(false)
+  const [isResetModalOpen, setIsResetModalOpen] = useState(false)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -86,6 +93,24 @@ function CourseAiComponent() {
           <PretrainingPrerequisitesSection />
           <PretrainingPowerShellSection />
           <PretrainingModulesSection />
+          <PretrainingCheckpointsSection />
+          <PretrainingReadinessSection
+            readiness={readiness}
+            onOpenResetModal={() => setIsResetModalOpen(true)}
+          />
+          <ResetProgressModal
+            isOpen={isResetModalOpen}
+            onClose={() => setIsResetModalOpen(false)}
+            onConfirm={() => {
+              resetState()
+              setIsResetModalOpen(false)
+              showToast(
+                'Semua progres dan verifikasi berhasil diatur ulang 🔄',
+                'info',
+                2500
+              )
+            }}
+          />
         </div>
       ) : (
         <section className="course-hero-header">

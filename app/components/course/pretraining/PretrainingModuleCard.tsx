@@ -7,12 +7,16 @@ export interface PretrainingModuleCardProps {
   module: PretrainingModule
   isExpanded: boolean
   onToggle: () => void
+  checklists?: Record<string, boolean>
+  onToggleChecklist?: (taskId: string) => void
 }
 
 export function PretrainingModuleCard({
   module,
   isExpanded,
   onToggle,
+  checklists = {},
+  onToggleChecklist = () => {},
 }: PretrainingModuleCardProps) {
   return (
     <section id={module.id} className="content-section">
@@ -189,12 +193,13 @@ export function PretrainingModuleCard({
               ))}
 
               {step.taskId && step.checklistLabel && (
-                <label className="step-checklist-action">
+                <label className={`step-checklist-action ${checklists[step.taskId] ? 'completed' : ''}`}>
                   <input
                     type="checkbox"
                     className="checklist-checkbox"
                     data-task-id={step.taskId}
-                    readOnly
+                    checked={!!checklists[step.taskId]}
+                    onChange={() => onToggleChecklist(step.taskId!)}
                   />
                   <span className="checklist-label">{step.checklistLabel}</span>
                 </label>

@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { PRETRAINING_MODULES } from '@/data/pretrainingModules'
 import { PretrainingModuleCard } from './PretrainingModuleCard'
 import { ToastContainer, showToast } from '@/components/ui/Toast'
+import { usePretrainingState } from '@/hooks/usePretrainingState'
 
 export function PretrainingModulesSection() {
+  const { state, toggleChecklist } = usePretrainingState()
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {}
     PRETRAINING_MODULES.forEach((mod) => {
@@ -67,6 +69,8 @@ export function PretrainingModulesSection() {
           module={mod}
           isExpanded={!!expandedModules[mod.id]}
           onToggle={() => toggleModule(mod.id)}
+          checklists={state.checklists}
+          onToggleChecklist={toggleChecklist}
         />
       ))}
     </div>

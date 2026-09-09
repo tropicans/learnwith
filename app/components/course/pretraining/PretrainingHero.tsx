@@ -1,6 +1,20 @@
 import { PRETRAINING_HERO_STATS } from '@/data/pretrainingFoundation'
+import { usePretrainingState } from '@/hooks/usePretrainingState'
 
 export function PretrainingHero() {
+  const { progress } = usePretrainingState()
+
+  const heroStats = PRETRAINING_HERO_STATS.map((stat, idx) => {
+    if (idx === 3) {
+      return {
+        ...stat,
+        value: `${progress.completedTasks}/${progress.totalTasks}`,
+        label: 'Langkah Selesai',
+      }
+    }
+    return stat
+  })
+
   return (
     <section className="main-hero">
       <div className="hero-tag">
@@ -14,7 +28,7 @@ export function PretrainingHero() {
       </p>
 
       <div className="hero-stats-grid">
-        {PRETRAINING_HERO_STATS.map((stat, idx) => (
+        {heroStats.map((stat, idx) => (
           <div key={idx} className="hero-stat-card">
             <div
               className="hero-stat-icon"
