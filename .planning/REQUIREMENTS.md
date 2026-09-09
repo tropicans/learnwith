@@ -33,9 +33,9 @@
 
 ### Category 4: Troubleshooting Hub & Token Redaction (PRE-TOOL)
 
-- [ ] **PRE-TOOL-01**: User dapat mencari solusi kendala teknis pre-training secara instan melalui input pencarian real-time dan tombol filter kategori (Node.js, 9Router, Telegram, Hermes, PowerShell).
-- [ ] **PRE-TOOL-02**: User dapat membaca 10+ kartu solusi error umum (seperti `EADDRINUSE`, `401 Unauthorized`, `Execution_Policies`, `Telegram 409 Conflict`) lengkap dengan deskripsi penyebab dan solusinya.
-- [ ] **PRE-TOOL-03**: User dapat menggunakan Tool Sensor Rahasia / Token Redaction Helper untuk mem-paste teks log/konfigurasi dan otomatis menyensor format token rahasia sebelum dibagikan.
+- [x] **PRE-TOOL-01**: User dapat mencari solusi kendala teknis pre-training secara instan melalui input pencarian real-time dan tombol filter kategori (Node.js, 9Router, Telegram, Hermes, PowerShell).
+- [x] **PRE-TOOL-02**: User dapat membaca 10+ kartu solusi error umum (seperti `EADDRINUSE`, `401 Unauthorized`, `Execution_Policies`, `Telegram 409 Conflict`) lengkap dengan deskripsi penyebab dan solusinya.
+- [x] **PRE-TOOL-03**: User dapat menggunakan Tool Sensor Rahasia / Token Redaction Helper untuk mem-paste teks log/konfigurasi dan otomatis menyensor format token rahasia sebelum dibagikan.
 
 ### Category 5: Readiness Report Generator & Export (PRE-RPT)
 
@@ -80,9 +80,9 @@
 | PRE-CHK-02 | Phase 26 | Complete | Checkpoints 1, 2, 3 verification gates auto-evaluated |
 | PRE-CHK-03 | Phase 26 | Complete | Dynamic readiness badge & summary calculation |
 | PRE-CHK-04 | Phase 26 | Complete | Safe progress reset modal |
-| PRE-TOOL-01 | Phase 27 | Pending | Troubleshooting live search & category filter |
-| PRE-TOOL-02 | Phase 27 | Pending | 10+ error resolution cards with copyable solutions |
-| PRE-TOOL-03 | Phase 27 | Pending | Secret token redaction helper tool |
+| PRE-TOOL-01 | Phase 27 | Complete | Troubleshooting live search & category filter |
+| PRE-TOOL-02 | Phase 27 | Complete | 10+ error resolution cards with copyable solutions |
+| PRE-TOOL-03 | Phase 27 | Complete | Secret token redaction helper tool |
 | PRE-RPT-01 | Phase 28 | Pending | Pre-filled Form Laporan Kesiapan Peserta |
 | PRE-RPT-02 | Phase 28 | Pending | 1-Click WhatsApp & Telegram Markdown clipboard exporter |
 | PRE-RPT-03 | Phase 28 | Pending | Print layout formatted for official document export |

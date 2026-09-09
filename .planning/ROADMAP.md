@@ -86,11 +86,11 @@ Plans:
 Plans:
 **Wave 1**
 
-- [ ] 27-01: Data layer (pretrainingTroubleshooting.ts), Redaction engine (redaction.ts), and comprehensive unit test suite (pretraining-troubleshooting.test.js)
+- [x] 27-01: Data layer (pretrainingTroubleshooting.ts), Redaction engine (redaction.ts), and comprehensive unit test suite (pretraining-troubleshooting.test.js)
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
-- [ ] 27-02: Presentation layer (TroubleshootingCard.tsx, PretrainingTroubleshootingSection.tsx, PretrainingRedactionSection.tsx), route mounting in course.ai.tsx, and regression verification
+- [x] 27-02: Presentation layer (TroubleshootingCard.tsx, PretrainingTroubleshootingSection.tsx, PretrainingRedactionSection.tsx), route mounting in course.ai.tsx, and regression verification
 
 **Success Criteria**:
 
