@@ -110,8 +110,11 @@ describe('Phase 22 Boundary Isolation Audit (SRV-02)', () => {
       'b99674726766354e30a414680548a5943f0ded595e286bec3355a016e87e362f',
       '4452077e60e86b8ee876b509f61b09b52a9261a9953c8965a3c03565e33d26aa',
       'ddf62f4013c59b111215312fb959629155a5b1dc5cf799f2053a8c2395c4511b',
+      '5e5dc93b4232b40fc465e93816ffed9075952c54d9c7536cded05ec4bb255fe3',
+      '942008f51ec6a93863750ebce5b3b0df36ca024b4238bfe4bb14798c87abf066',
       'AI_PASSKEY_HASH',
       'WORD_PASSKEY_HASH',
+      'ADMIN_PASSKEY_HASH',
     ];
 
     for (const filePath of clientFiles) {
