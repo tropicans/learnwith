@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import type { AdminUser } from '../../schemas/admin'
 import { adminLogoutFn } from '../../server/adminAuth'
 import { AdminDashboardView } from './AdminDashboardView'
+import { AdminPasskeyView } from './passkeys/AdminPasskeyView'
 
 interface AdminShellProps {
   adminUser: AdminUser
@@ -140,23 +141,21 @@ export function AdminShell({ adminUser, onLogout, children }: AdminShellProps) {
         {children || (
           activeTab === 'dashboard' || activeTab === 'telemetry' ? (
             <AdminDashboardView initialTab={activeTab} />
+          ) : activeTab === 'passkeys' ? (
+            <AdminPasskeyView />
           ) : (
             <div className="admin-placeholder-card" id="admin-active-view">
               <div className="admin-placeholder-icon" aria-hidden="true">
-                {activeTab === 'passkeys' && '🔑'}
                 {activeTab === 'troubleshooting' && '🛠️'}
                 {activeTab === 'settings' && '⚙️'}
               </div>
 
               <h2 className="admin-placeholder-title">
-                {activeTab === 'passkeys' && 'Manajemen Passkey Modul Dinas'}
                 {activeTab === 'troubleshooting' && 'Log Kendala & Export Laporan'}
                 {activeTab === 'settings' && 'Konfigurasi & Integrasi Platform'}
               </h2>
 
               <p className="admin-placeholder-desc">
-                {activeTab === 'passkeys' &&
-                  'Pembaruan dinamis passkey pelatihan BPSDM & Dinas tanpa henti layanan (Fase 32).'}
                 {activeTab === 'troubleshooting' &&
                   'Penyaringan insiden, troubleshooting ekspor WhatsApp/Telegram, dan pemulihan kendala (Fase 32).'}
                 {activeTab === 'settings' &&

@@ -1,22 +1,20 @@
 import { createServerFn } from '@tanstack/react-start'
 import { verifyPasskeyInputSchema, type VerifyPasskeyResult } from '@/schemas/serverFn'
-import { verifyPasskeyWithHash } from './config'
+import { verifyPasskeyWithStore } from './passkeyStore.ts'
 
 export const verifyInstructorPasskeyFn = createServerFn({ method: 'POST' })
   .validator((data: unknown) => verifyPasskeyInputSchema.parse(data))
   .handler(async ({ data }): Promise<VerifyPasskeyResult> => {
-    const isAuthorized = verifyPasskeyWithHash(data.courseId, data.passkey)
-
-    if (!isAuthorized) {
-      return {
-        success: false,
-        message: 'Passkey instruktur tidak valid atau salah.',
-      }
-    }
+    const result = verifyPasskeyWithStore(
+      data.courseId,
+      data.passkey,
+      data.clientId || 'anonymous'
+    )
 
     return {
-      success: true,
-      message: 'Sesi instruktur berhasil diverifikasi.',
-      unlockedAt: Date.now(),
+      success: result.success,
+      message: result.message,
+      unlockedAt: result.unlockedAt,
+      rateLimited: result.rateLimited,
     }
   })

@@ -3,6 +3,7 @@ import { z } from 'zod'
 export const verifyPasskeyInputSchema = z.object({
   courseId: z.enum(['ai', 'word']),
   passkey: z.string().trim().min(1, 'Passkey wajib diisi').max(100, 'Passkey terlalu panjang'),
+  clientId: z.string().optional(),
 })
 
 export type VerifyPasskeyInput = z.infer<typeof verifyPasskeyInputSchema>
@@ -11,6 +12,7 @@ export const verifyPasskeyResultSchema = z.object({
   success: z.boolean(),
   message: z.string(),
   unlockedAt: z.number().optional(),
+  rateLimited: z.boolean().optional(),
 })
 
 export type VerifyPasskeyResult = z.infer<typeof verifyPasskeyResultSchema>
