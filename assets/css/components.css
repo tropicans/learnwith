@@ -2693,3 +2693,108 @@ mark.search-highlight {
     color: #000000 !important;
   }
 }
+
+/* ==========================================================================
+   Global Announcement Banner (Phase 33 - ADMIN-CFG-02)
+   Top-level viewport banner positioned above .app-container
+   ========================================================================== */
+.global-announcement-banner {
+  width: 100%;
+  position: relative;
+  z-index: 9999;
+  font-family: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+.global-announcement-banner.announcement-info {
+  background: #eff6ff;
+  color: #1e40af;
+  border-bottom: 1px solid #bfdbfe;
+}
+
+.global-announcement-banner.announcement-warning {
+  background: #fffbeb;
+  color: #92400e;
+  border-bottom: 1px solid #fde68a;
+}
+
+.global-announcement-banner.announcement-alert {
+  background: #fef2f2;
+  color: #991b1b;
+  border-bottom: 1px solid #fecaca;
+  font-weight: 500;
+}
+
+.global-announcement-banner .banner-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+}
+
+.global-announcement-banner .banner-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.global-announcement-banner .banner-message {
+  flex: 1;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.global-announcement-banner .banner-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-decoration: none;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.06);
+  color: inherit;
+  transition: background 0.15s ease;
+}
+
+.global-announcement-banner .banner-link-btn:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.global-announcement-banner .banner-close-btn {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  opacity: 0.75;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.global-announcement-banner .banner-close-btn:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 640px) {
+  .global-announcement-banner .banner-inner {
+    flex-wrap: wrap;
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .global-announcement-banner .banner-message {
+    font-size: 0.8125rem;
+  }
+}

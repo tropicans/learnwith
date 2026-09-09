@@ -7,6 +7,7 @@ import {
 import { Meta, Scripts } from '@tanstack/react-start'
 import type { ReactNode } from 'react'
 import { Header } from '@/components/layout/Header'
+import { GlobalAnnouncementBanner } from '@/components/layout/GlobalAnnouncementBanner'
 import { NotFound } from '@/components/ui/NotFound'
 import { RouteErrorBoundary } from '@/components/ui/RouteErrorBoundary'
 
@@ -41,6 +42,7 @@ function RootComponent() {
 
   return (
     <RootDocument>
+      <GlobalAnnouncementBanner />
       <div className={`app-container ${isHome ? 'view-home' : ''} ${isAdmin ? 'view-admin' : ''}`}>
         <Header />
         <Outlet />

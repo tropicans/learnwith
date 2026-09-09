@@ -101,18 +101,27 @@ export function updateWorkshopMode(
 /**
  * Updates announcement banner and rotates banner ID to reset client dismissal cache.
  */
+let bannerCounter = 0
+
 export function updateAnnouncementBanner(
-  input: Omit<UpdateAnnouncementBannerInput, 'sessionToken'>,
+  input: {
+    enabled: boolean
+    message?: string
+    type?: AnnouncementBannerType
+    linkText?: string
+    linkUrl?: string
+  },
   updatedBy = 'master-admin'
 ): { success: boolean; banner: AnnouncementBanner; version: number } {
-  const newId = `banner_${Date.now()}`
+  bannerCounter += 1
+  const newId = `banner_${Date.now()}_${bannerCounter}`
   currentBanner = {
     id: newId,
     enabled: input.enabled,
-    message: input.message.trim(),
-    type: input.type,
-    linkText: input.linkText?.trim() || '',
-    linkUrl: input.linkUrl?.trim() || '',
+    message: input.message !== undefined ? input.message.trim() : currentBanner.message,
+    type: input.type || currentBanner.type,
+    linkText: input.linkText !== undefined ? input.linkText.trim() : currentBanner.linkText,
+    linkUrl: input.linkUrl !== undefined ? input.linkUrl.trim() : currentBanner.linkUrl,
     createdAt: currentBanner.createdAt,
     updatedAt: Date.now(),
     updatedBy,
