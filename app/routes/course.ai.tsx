@@ -11,6 +11,7 @@ import { PretrainingGlossarySection } from '@/components/course/pretraining/Pret
 import { PretrainingSecuritySection } from '@/components/course/pretraining/PretrainingSecuritySection'
 import { PretrainingPrerequisitesSection } from '@/components/course/pretraining/PretrainingPrerequisitesSection'
 import { PretrainingPowerShellSection } from '@/components/course/pretraining/PretrainingPowerShellSection'
+import { PretrainingModulesSection } from '@/components/course/pretraining/PretrainingModulesSection'
 
 export const Route = createFileRoute('/course/ai')({
   validateSearch: (search) => courseAiSearchSchema.parse(search),
@@ -84,6 +85,7 @@ function CourseAiComponent() {
           <PretrainingSecuritySection />
           <PretrainingPrerequisitesSection />
           <PretrainingPowerShellSection />
+          <PretrainingModulesSection />
         </div>
       ) : (
         <section className="course-hero-header">
