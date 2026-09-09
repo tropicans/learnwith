@@ -17,12 +17,12 @@
 
 ### Category 2: Interactive Modules 1–5 (PRE-MOD)
 
-- [ ] **PRE-MOD-01**: User dapat membuka/menutup accordion Modul 1 (Pemeriksaan & Instalasi Node.js) dengan panduan verifikasi versi node, nvm-windows, dan perintah `node -v` dengan 1-click copy.
-- [ ] **PRE-MOD-02**: User dapat berinteraksi dengan Modul 2 (Instalasi & Menjalankan 9Router) dengan copyable commands untuk proxy/router API lokal, konfigurasi port 20128/9000, dan instruksi pengujian curl.
-- [ ] **PRE-MOD-03**: User dapat mengikuti panduan langkah demi langkah Modul 3 (Pembuatan Bot Telegram & Telegram User ID) melalui @BotFather, token bot protection, dan pencarian User ID via @userinfobot.
-- [ ] **PRE-MOD-04**: User dapat mengikuti instruksi Modul 4 (Instalasi & Konfigurasi Hermes Agent) dengan perintah CLI, konfigurasi provider 9Router, dan uji coba Hermes.
-- [ ] **PRE-MOD-05**: User dapat mengikuti instruksi Modul 5 (Pengujian Integrasi Akhir & Uji Coba Chat) untuk memverifikasi alur interaksi live chat Telegram ke Hermes dan 9Router.
-- [ ] **PRE-MOD-06**: Tombol 1-Click Copy pada semua blok kode perintah modul dengan visual feedback tooltip/toast "Tersalin!" serta preserving syntax whitespace.
+- [x] **PRE-MOD-01**: User dapat membuka/menutup accordion Modul 1 (Pemeriksaan & Instalasi Node.js) dengan panduan verifikasi versi node, nvm-windows, dan perintah `node -v` dengan 1-click copy.
+- [x] **PRE-MOD-02**: User dapat berinteraksi dengan Modul 2 (Instalasi & Menjalankan 9Router) dengan copyable commands untuk proxy/router API lokal, konfigurasi port 20128/9000, dan instruksi pengujian curl.
+- [x] **PRE-MOD-03**: User dapat mengikuti panduan langkah demi langkah Modul 3 (Pembuatan Bot Telegram & Telegram User ID) melalui @BotFather, token bot protection, dan pencarian User ID via @userinfobot.
+- [x] **PRE-MOD-04**: User dapat mengikuti instruksi Modul 4 (Instalasi & Konfigurasi Hermes Agent) dengan perintah CLI, konfigurasi provider 9Router, dan uji coba Hermes.
+- [x] **PRE-MOD-05**: User dapat mengikuti instruksi Modul 5 (Pengujian Integrasi Akhir & Uji Coba Chat) untuk memverifikasi alur interaksi live chat Telegram ke Hermes dan 9Router.
+- [x] **PRE-MOD-06**: Tombol 1-Click Copy pada semua blok kode perintah modul dengan visual feedback tooltip/toast "Tersalin!" serta preserving syntax whitespace.
 
 ### Category 3: Checklist Engine, Checkpoints & Dynamic Readiness (PRE-CHK)
 
@@ -70,12 +70,12 @@
 | PRE-BASE-03 | Phase 24 | Complete | Security & secret warning callouts rendered |
 | PRE-BASE-04 | Phase 24 | Complete | Prerequisites & hardware requirements rendered |
 | PRE-BASE-05 | Phase 24 | Complete | PowerShell guide with copyable commands rendered |
-| PRE-MOD-01 | Phase 25 | Pending | Module 1 accordion with Node.js guide & 1-click copy |
-| PRE-MOD-02 | Phase 25 | Pending | Module 2 accordion with 9Router guide & curl testing |
-| PRE-MOD-03 | Phase 25 | Pending | Module 3 accordion with Telegram bot creation guide |
-| PRE-MOD-04 | Phase 25 | Pending | Module 4 accordion with Hermes Agent installation guide |
-| PRE-MOD-05 | Phase 25 | Pending | Module 5 accordion with final integration test flow |
-| PRE-MOD-06 | Phase 25 | Pending | 1-Click copy engine with feedback toast across all codeblocks |
+| PRE-MOD-01 | Phase 25 | Complete | Module 1 accordion with Node.js guide & 1-click copy |
+| PRE-MOD-02 | Phase 25 | Complete | Module 2 accordion with 9Router guide & curl testing |
+| PRE-MOD-03 | Phase 25 | Complete | Module 3 accordion with Telegram bot creation guide |
+| PRE-MOD-04 | Phase 25 | Complete | Module 4 accordion with Hermes Agent installation guide |
+| PRE-MOD-05 | Phase 25 | Complete | Module 5 accordion with final integration test flow |
+| PRE-MOD-06 | Phase 25 | Complete | 1-Click copy engine with feedback toast across all codeblocks |
 | PRE-CHK-01 | Phase 26 | Pending | 13-step checklist synced with localStorage persistence |
 | PRE-CHK-02 | Phase 26 | Pending | Checkpoints 1, 2, 3 verification gates auto-evaluated |
 | PRE-CHK-03 | Phase 26 | Pending | Dynamic readiness badge & summary calculation |
