@@ -14,11 +14,13 @@ describe('Phase 30 Server Telemetry Engine & Store Suite', () => {
   let telemetrySchemas
   let telemetryStore
   let telemetryServer
+  let telemetryClient
 
   before(async () => {
     telemetrySchemas = await import('../app/schemas/telemetry.ts')
     telemetryStore = await import('../app/server/telemetryStore.ts')
     telemetryServer = await import('../app/server/telemetry.ts')
+    telemetryClient = await import('../app/utils/telemetryClient.ts')
   })
 
   beforeEach(() => {
@@ -432,6 +434,127 @@ describe('Phase 30 Server Telemetry Engine & Store Suite', () => {
           `Telemetry schema must never accept sensitive field: ${field}`
         )
       }
+    })
+  })
+
+  describe('Suite 5: Background Telemetry Client Resilience (ADMIN-TELEM-03)', () => {
+    before(() => {
+      if (typeof global.window === 'undefined') {
+        global.window = {}
+      }
+      if (typeof global.localStorage === 'undefined' || !global.localStorage.getItem) {
+        global.localStorage = {
+          _data: {},
+          getItem(k) {
+            return Object.prototype.hasOwnProperty.call(this._data, k) ? this._data[k] : null
+          },
+          setItem(k, v) {
+            this._data[k] = String(v)
+          },
+          removeItem(k) {
+            delete this._data[k]
+          },
+          clear() {
+            this._data = {}
+          },
+        }
+      }
+    })
+
+    beforeEach(() => {
+      global.localStorage.clear()
+      telemetryClient.resetTelemetryClientForTesting()
+    })
+
+    it('generates and persists client ID across invocations', () => {
+      const id1 = telemetryClient.getOrCreateClientId()
+      assert.ok(id1.startsWith('usr-'), 'ID must start with usr- prefix')
+      assert.strictEqual(global.localStorage.getItem('learnwith_client_id'), id1)
+
+      const id2 = telemetryClient.getOrCreateClientId()
+      assert.strictEqual(id1, id2, 'Subsequent calls must return identical persistent ID')
+    })
+
+    it('coalesces rapid sendParticipantTelemetry calls and sends latest state', async () => {
+      const id = telemetryClient.getOrCreateClientId()
+
+      // Rapid successive updates
+      telemetryClient.sendParticipantTelemetry(
+        {
+          name: 'Peserta Uji',
+          agency: 'Bappeda',
+          courseId: 'ai',
+          progressPercent: 20,
+          completedTasks: 2,
+          totalTasks: 20,
+          checkpoints: { 'ai-cp-1': 'pending' },
+          readinessStatus: 'pending',
+        },
+        50
+      )
+
+      telemetryClient.sendParticipantTelemetry(
+        {
+          name: 'Peserta Uji',
+          agency: 'Bappeda',
+          courseId: 'ai',
+          progressPercent: 50,
+          completedTasks: 5,
+          totalTasks: 20,
+          checkpoints: { 'ai-cp-1': 'passed' },
+          readinessStatus: 'pending',
+        },
+        50
+      )
+
+      telemetryClient.sendParticipantTelemetry(
+        {
+          name: 'Peserta Uji',
+          agency: 'Bappeda',
+          courseId: 'ai',
+          progressPercent: 80,
+          completedTasks: 8,
+          totalTasks: 20,
+          checkpoints: { 'ai-cp-1': 'passed', 'ai-cp-2': 'passed' },
+          readinessStatus: 'ready',
+        },
+        50
+      )
+
+      // Immediately flush
+      await telemetryClient.flushTelemetryImmediately()
+
+      const record = telemetryStore.getParticipantById(id)
+      assert.ok(record, 'Record must be stored in telemetry registry')
+      assert.strictEqual(record.progressPercent, 80, 'Must record latest coalesced progress')
+      assert.strictEqual(record.readinessStatus, 'ready')
+      assert.strictEqual(record.completedTasks, 8)
+    })
+
+    it('flushes telemetry immediately without unhandled rejections or throwing', async () => {
+      const success = await telemetryClient.flushTelemetryImmediately({
+        name: 'Immediate Test',
+        agency: 'DKI',
+        courseId: 'word',
+        progressPercent: 100,
+        completedTasks: 28,
+        totalTasks: 28,
+        checkpoints: { 'word-cp-1': 'passed', 'word-cp-2': 'passed', 'word-cp-3': 'passed' },
+        readinessStatus: 'ready',
+        quizScore: 95,
+      })
+
+      assert.strictEqual(success, true)
+    })
+
+    it('verifies telemetryClient.ts adheres to secret quarantine', () => {
+      const clientPath = path.join(ROOT_DIR, 'app', 'utils', 'telemetryClient.ts')
+      const content = fs.readFileSync(clientPath, 'utf8')
+
+      assert.ok(!content.includes('config'), 'telemetryClient must not import config')
+      assert.ok(!content.includes('ADMIN_PASSKEY'), 'telemetryClient must not reference ADMIN_PASSKEY')
+      assert.ok(!content.includes('SESSION_SECRET'), 'telemetryClient must not reference SESSION_SECRET')
+      assert.ok(!content.includes('TELEGRAM_BOT_TOKEN'), 'telemetryClient must not reference TELEGRAM_BOT_TOKEN')
     })
   })
 })

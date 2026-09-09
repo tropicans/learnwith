@@ -5,6 +5,7 @@ import { getCourseWordData, getCourseStatsAsync, type CourseStats } from '@/data
 import { StatsSkeleton } from '@/components/ui/Skeleton'
 import { ChecklistIsland } from '@/components/course/ChecklistIsland'
 import { InstructorUnlockModal } from '@/components/course/InstructorUnlockModal'
+import { sendParticipantTelemetry } from '@/utils/telemetryClient'
 
 export const Route = createFileRoute('/course/word')({
   validateSearch: (search) => courseWordSearchSchema.parse(search),
@@ -40,6 +41,88 @@ function CourseWordComponent() {
     if (typeof window !== 'undefined') {
       const stored = sessionStorage.getItem('learnwith_word_unlocked') === 'true'
       setIsUnlocked(stored)
+    }
+  }, [])
+
+  // Non-blocking background telemetry sync for Course 2 (ADMIN-TELEM-03)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const syncWordTelemetry = () => {
+      try {
+        const rawState = localStorage.getItem('learnwith_word_state_v1')
+        const checklistState = localStorage.getItem('learnwith_word_checklist_state')
+
+        let completedTasks = 0
+        const totalTasks = 28
+        let checkpoints: Record<string, 'pending' | 'passed' | 'failed'> = {
+          'word-cp-1': 'pending',
+          'word-cp-2': 'pending',
+          'word-cp-3': 'pending',
+        }
+        let quizScore: number | undefined = undefined
+        let name = 'Peserta ASN'
+        let agency = 'Pemerintah Provinsi DKI Jakarta'
+
+        if (rawState) {
+          const parsed = JSON.parse(rawState)
+          if (parsed.participantInfo?.name) name = parsed.participantInfo.name
+          if (parsed.participantInfo?.unitKerja) agency = parsed.participantInfo.unitKerja
+          if (parsed.checkpoints) {
+            checkpoints = {
+              'word-cp-1': parsed.checkpoints['word-cp-1'] || 'pending',
+              'word-cp-2': parsed.checkpoints['word-cp-2'] || 'pending',
+              'word-cp-3': parsed.checkpoints['word-cp-3'] || 'pending',
+            }
+          }
+          if (parsed.checklists) {
+            completedTasks = Object.values(parsed.checklists).filter(Boolean).length
+          }
+          if (parsed.quiz?.score !== undefined) {
+            quizScore = Number(parsed.quiz.score)
+          }
+        } else if (checklistState) {
+          const parsedChecks = JSON.parse(checklistState)
+          completedTasks = Object.values(parsedChecks).filter(Boolean).length
+        }
+
+        const passedCps = Object.values(checkpoints).filter((c) => c === 'passed').length
+        const hasFailedCp = Object.values(checkpoints).some((c) => c === 'failed')
+
+        const taskWeight = totalTasks > 0 ? (completedTasks / totalTasks) * 60 : 0
+        const cpWeight = (passedCps / 3) * 40
+        const progressPercent = Math.min(100, Math.round(taskWeight + cpWeight))
+
+        let readinessStatus: 'ready' | 'clinic' | 'pending' = 'pending'
+        if (hasFailedCp) {
+          readinessStatus = 'clinic'
+        } else if (passedCps === 3 && progressPercent >= 80) {
+          readinessStatus = 'ready'
+        }
+
+        sendParticipantTelemetry({
+          name,
+          agency,
+          courseId: 'word',
+          progressPercent,
+          completedTasks,
+          totalTasks,
+          checkpoints,
+          readinessStatus,
+          quizScore,
+        })
+      } catch {
+        // Non-blocking telemetry
+      }
+    }
+
+    syncWordTelemetry()
+    window.addEventListener('storage', syncWordTelemetry)
+    window.addEventListener('word:stateChange', syncWordTelemetry)
+
+    return () => {
+      window.removeEventListener('storage', syncWordTelemetry)
+      window.removeEventListener('word:stateChange', syncWordTelemetry)
     }
   }, [])
 

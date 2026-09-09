@@ -36,6 +36,9 @@ function InteractiveChecklist({ courseId, modules }: InteractiveChecklistProps) 
       const next = { ...prev, [itemId]: !prev[itemId] }
       try {
         localStorage.setItem(storageKey, JSON.stringify(next))
+        if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function' && typeof CustomEvent !== 'undefined') {
+          window.dispatchEvent(new CustomEvent(`${courseId}:stateChange`))
+        }
       } catch {
         // quota exceeded or blocked
       }

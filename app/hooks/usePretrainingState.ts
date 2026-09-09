@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { sendParticipantTelemetry } from '../utils/telemetryClient.ts'
 
 export interface PretrainingState {
   checklists: Record<string, boolean>
@@ -83,12 +84,36 @@ let memoryState: PretrainingState = {
 let isInitialized = false
 const subscribers = new Set<() => void>()
 
+function dispatchAiTelemetry(currentState: PretrainingState) {
+  if (typeof window === 'undefined') return
+  try {
+    const progress = calculatePretrainingProgress(currentState)
+    const readiness = calculatePretrainingReadiness(progress, currentState.checkpoints)
+
+    sendParticipantTelemetry({
+      name: currentState.participantInfo.name?.trim() || 'Peserta AI',
+      agency: 'Peserta Mandiri',
+      courseId: 'ai',
+      progressPercent: progress.percentage,
+      completedTasks: progress.completedTasks,
+      totalTasks: progress.totalTasks,
+      checkpoints: currentState.checkpoints,
+      readinessStatus: readiness.status,
+    })
+  } catch {
+    // Non-blocking telemetry
+  }
+}
+
 function emitChange() {
   subscribers.forEach((subscriber) => subscriber())
   if (typeof window !== 'undefined') {
-    window.dispatchEvent(
-      new CustomEvent('pretraining:stateChange', { detail: memoryState })
-    )
+    if (typeof window.dispatchEvent === 'function' && typeof CustomEvent !== 'undefined') {
+      window.dispatchEvent(
+        new CustomEvent('pretraining:stateChange', { detail: memoryState })
+      )
+    }
+    dispatchAiTelemetry(memoryState)
   }
 }
 
