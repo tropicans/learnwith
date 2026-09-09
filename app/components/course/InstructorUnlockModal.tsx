@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { verifyInstructorPasskeyFn } from '@/server/auth'
+import { getOrCreateClientId } from '@/utils/telemetryClient'
 
 interface InstructorUnlockModalProps {
   courseId: 'ai' | 'word'
@@ -51,8 +52,9 @@ export function InstructorUnlockModal({
     setIsPending(true)
 
     try {
+      const clientId = getOrCreateClientId()
       const result = await verifyInstructorPasskeyFn({
-        data: { courseId, passkey: passkey.trim() },
+        data: { courseId, passkey: passkey.trim(), clientId },
       })
 
       if (result.success) {

@@ -3,6 +3,7 @@ import { usePretrainingState } from '@/hooks/usePretrainingState'
 import { generateReportText } from '@/utils/reportGenerator'
 import { showToast } from '@/components/ui/Toast'
 import { ingestTroubleshootingLogFn } from '@/server/troubleshooting'
+import { sanitizeLogText } from '@/utils/redaction'
 
 export function PretrainingReadinessReportSection() {
   const { participantInfo, checkpoints, checklists, setParticipantInfo, readiness } =
@@ -75,13 +76,16 @@ export function PretrainingReadinessReportSection() {
         ? `usr-${encodeURIComponent(participantInfo.name.toLowerCase().replace(/\s+/g, '-'))}`
         : 'usr-anonymous'
 
+      const sanitized = sanitizeLogText(errorMsg.trim()).sanitized
+      const sanitizedStep = probStep.trim() ? sanitizeLogText(probStep.trim()).sanitized : undefined
+
       const result = await ingestTroubleshootingLogFn({
         data: {
           participantId,
           participantName: participantInfo.name || 'Peserta Mandiri',
           courseId: 'ai',
-          errorMsg: errorMsg.trim(),
-          problemStep: probStep.trim() || undefined,
+          errorMsg: sanitized,
+          problemStep: sanitizedStep,
           os,
         },
       })

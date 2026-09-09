@@ -136,9 +136,10 @@ export function checkRateLimit(clientId: string): { isLimited: boolean; remainin
     return { isLimited: true, remainingCooldownMs: entry.cooldownUntil - now }
   }
 
-  // If cooldown passed, clear it and purge expired timestamps
+  // If cooldown passed, clear it and reset failures so client gets fresh attempt
   if (entry.cooldownUntil && now >= entry.cooldownUntil) {
     entry.cooldownUntil = undefined
+    entry.timestamps = []
   }
 
   // Filter timestamps to active sliding window
@@ -181,6 +182,13 @@ export function resetClientFailures(clientId: string): void {
  * Timing-safe passkey verification integrated with sliding-window rate limiter
  * and tamper-evident audit logging.
  */
+function addAuditLog(attempt: PasskeyUnlockAttempt) {
+  auditLogs.unshift(attempt)
+  if (auditLogs.length > 1000) {
+    auditLogs = auditLogs.slice(0, 1000)
+  }
+}
+
 export function verifyPasskeyWithStore(
   courseId: CourseId,
   candidate: string,
@@ -196,20 +204,19 @@ export function verifyPasskeyWithStore(
   const effectiveClientId = clientId && clientId.trim() ? clientId.trim() : 'anonymous'
   const record = activePasskeys[courseId]
 
-  if (!record) {
+  if (!record || record.status !== 'active') {
     return {
       success: false,
-      message: 'Modul pelatihan tidak ditemukan.',
+      message: `Passkey untuk kursus '${courseId}' tidak ditemukan atau tidak aktif.`,
     }
   }
 
-  // 1. Sliding-Window Rate Limit Check
+  // 1. Check Rate Limit
   const rateLimitStatus = checkRateLimit(effectiveClientId)
   if (rateLimitStatus.isLimited) {
-    const candidateHash = crypto
-      .createHash('sha256')
-      .update((candidate || '').trim().toLowerCase())
-      .digest('hex')
+    const candidateHash = candidate
+      ? crypto.createHash('sha256').update(candidate.trim().toLowerCase()).digest('hex')
+      : ''
 
     const attempt: PasskeyUnlockAttempt = {
       id: crypto.randomUUID(),
@@ -222,7 +229,7 @@ export function verifyPasskeyWithStore(
       failureReason: 'Rate limit exceeded (cooldown active)',
       rateLimited: true,
     }
-    auditLogs.unshift(attempt)
+    addAuditLog(attempt)
 
     return {
       success: false,
@@ -256,7 +263,7 @@ export function verifyPasskeyWithStore(
       success: true,
       attemptHashPrefix: candidateHash.substring(0, 8),
     }
-    auditLogs.unshift(attempt)
+    addAuditLog(attempt)
 
     return {
       success: true,
@@ -278,7 +285,7 @@ export function verifyPasskeyWithStore(
     failureReason: 'Passkey instruktur tidak valid.',
     rateLimited: failResult.isNowLimited,
   }
-  auditLogs.unshift(attempt)
+  addAuditLog(attempt)
 
   return {
     success: false,

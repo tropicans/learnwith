@@ -291,6 +291,9 @@ export function ingestTroubleshootingLog(
   }
 
   incidentsStore.unshift(record)
+  if (incidentsStore.length > 1000) {
+    incidentsStore = incidentsStore.slice(0, 1000)
+  }
   return record
 }
 
