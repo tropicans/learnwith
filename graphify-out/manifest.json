@@ -5093,8 +5093,8 @@
     "semantic_hash": ""
   },
   ".planning/state.json": {
-    "mtime": 1788858831.1885946,
-    "ast_hash": "a1d3f78edff59b7076bff3bd51c3feac",
+    "mtime": 1788917968.0634043,
+    "ast_hash": "5b97e369e37cbaf9779cd055b34fca3d",
     "semantic_hash": ""
   },
   "assets/js/app.js": {
@@ -10368,33 +10368,33 @@
     "semantic_hash": ""
   },
   ".planning/MILESTONES.md": {
-    "mtime": 1788768793.222996,
-    "ast_hash": "2febe7d47c92fad75e3c39a9c7beb177",
+    "mtime": 1788860139.2020843,
+    "ast_hash": "d21c97baaee84b65422fe5e400c34688",
     "semantic_hash": ""
   },
   ".planning/PROJECT.md": {
-    "mtime": 1788850623.922896,
-    "ast_hash": "a7edae4e58763b4c30fd42b26624a059",
+    "mtime": 1788860712.814421,
+    "ast_hash": "d5165e8f242493f05f5e76deb7d1ff89",
     "semantic_hash": ""
   },
   ".planning/REQUIREMENTS.md": {
-    "mtime": 1788858864.4505064,
-    "ast_hash": "fbc7de3aca01a0f54b31d582664a9671",
+    "mtime": 1788917988.1243188,
+    "ast_hash": "de47e2372385d71137c87598bd5c84a4",
     "semantic_hash": ""
   },
   ".planning/RETROSPECTIVE.md": {
-    "mtime": 1788397793.3515372,
-    "ast_hash": "20d15a5e66b51528edd9cb582ea890ea",
+    "mtime": 1788860192.7618303,
+    "ast_hash": "4a45dfa97d11749b6b9198b825c931bc",
     "semantic_hash": ""
   },
   ".planning/ROADMAP.md": {
-    "mtime": 1788858840.8997147,
-    "ast_hash": "9c1e58e3b565d2801304d896d017463a",
+    "mtime": 1788917967.7501876,
+    "ast_hash": "a31013693e270e64c05ea5832aef8e9c",
     "semantic_hash": ""
   },
   ".planning/STATE.md": {
-    "mtime": 1788858830.871037,
-    "ast_hash": "0b5102ccb000a0eaf110f0c2c5617b39",
+    "mtime": 1788917967.7512355,
+    "ast_hash": "c0f0c3827ae89197e0eb9872802d9168",
     "semantic_hash": ""
   },
   ".planning/codebase/ARCHITECTURE.md": {
@@ -10902,76 +10902,6 @@
     "ast_hash": "860dcc2a139f2ff5721eebc24bb7cd06",
     "semantic_hash": ""
   },
-  ".planning/quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-PLAN.md": {
-    "mtime": 1788399381.0197036,
-    "ast_hash": "58eb22f13f673468f9a81a0e2a35e7b3",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-SUMMARY.md": {
-    "mtime": 1788400386.1713088,
-    "ast_hash": "3a7be8e2dc12de6d944cea67cda189fc",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-VERIFICATION.md": {
-    "mtime": 1788400628.6986444,
-    "ast_hash": "5724becdae9f0c52125421b6a8d64301",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-PLAN.md": {
-    "mtime": 1788412452.08647,
-    "ast_hash": "efdaadf2d5a65c5e6a919202b93ae8d7",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-SUMMARY.md": {
-    "mtime": 1788414707.48814,
-    "ast_hash": "9eeb3814782c4052dda32216f7bd477a",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-VERIFICATION.md": {
-    "mtime": 1788414448.331642,
-    "ast_hash": "66499c5ba4e3ecb7d46452ed85713e75",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/260907-g9a-PLAN.md": {
-    "mtime": 1788756151.3625746,
-    "ast_hash": "511db39c0f80e79e59f04beee1ea49bd",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/260907-g9a-SUMMARY.md": {
-    "mtime": 1788756200.9215848,
-    "ast_hash": "775c0ae7d869260e11a4a51e527eb058",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260907-nlm-frontpage-default-html/PLAN.md": {
-    "mtime": 1788767527.2340672,
-    "ast_hash": "c505421048dc3b1ca90dbd85e7811f00",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260907-nlm-frontpage-default-html/SUMMARY.md": {
-    "mtime": 1788767590.4844544,
-    "ast_hash": "fb0773ac08b646bd5a6e78e2c9adc3eb",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-gra-graphify-antigravity-install/PLAN.md": {
-    "mtime": 1788850624.134618,
-    "ast_hash": "dcb4eb81a52d688ae791d8cb8438d5a2",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-gra-graphify-antigravity-install/SUMMARY.md": {
-    "mtime": 1788850624.1351516,
-    "ast_hash": "cf58d9c3f8e27d11501ee1f77b6a0360",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-uip-uipro-antigravity-init/PLAN.md": {
-    "mtime": 1788850624.1373606,
-    "ast_hash": "634e10f280b35f1b04fc659204180723",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-uip-uipro-antigravity-init/SUMMARY.md": {
-    "mtime": 1788850624.137918,
-    "ast_hash": "44afc21503d160d09ffd66e06834088a",
-    "semantic_hash": ""
-  },
   ".planning/v2.0-MILESTONE-AUDIT.md": {
     "mtime": 1788764733.5013363,
     "ast_hash": "9340965ad2da7a71a14d0b689ebffe88",
@@ -11031,26 +10961,6 @@
   "favicon.svg": {
     "mtime": 1788852531.2645059,
     "ast_hash": "0f949911ffdecccac80624f821f38bac",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-dck-dockerignore-test-runner-fix/PLAN.md": {
-    "mtime": 1788850624.132969,
-    "ast_hash": "5570266d2dd3e8eeb1ee56e97abce73a",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-dck-dockerignore-test-runner-fix/SUMMARY.md": {
-    "mtime": 1788850624.1334994,
-    "ast_hash": "1ccdfe55725edba7329968fadb1573f6",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-pga-postgresql-storage-architecture-analysis/PLAN.md": {
-    "mtime": 1788850624.1356819,
-    "ast_hash": "0f3f4eac805fd0ef45f99a28facd9ae0",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-pga-postgresql-storage-architecture-analysis/SUMMARY.md": {
-    "mtime": 1788850624.1362045,
-    "ast_hash": "c8129ffba843b374d4acd53858f8e551",
     "semantic_hash": ""
   },
   ".planning/graphs/.last-build-snapshot.json": {
@@ -11223,66 +11133,6 @@
     "ast_hash": "2e214d9abcd0b8e3d6e9a37bc5d93560",
     "semantic_hash": ""
   },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-01-PLAN.md": {
-    "mtime": 1788850624.1244583,
-    "ast_hash": "026c9294b804362b532d53c9e0dada34",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-01-SUMMARY.md": {
-    "mtime": 1788850624.1254642,
-    "ast_hash": "3ac78be31711d8f78a26e4a8853c43ae",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-02-PLAN.md": {
-    "mtime": 1788850624.1254642,
-    "ast_hash": "291cdd1dace83d354c139bd383496eab",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-02-SUMMARY.md": {
-    "mtime": 1788850624.1264648,
-    "ast_hash": "05879031a60d1226a6c32b78d6b82a9e",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-03-PLAN.md": {
-    "mtime": 1788850624.1274655,
-    "ast_hash": "eae287f3e1a2662ff8f510d286640a0d",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-03-SUMMARY.md": {
-    "mtime": 1788850980.531921,
-    "ast_hash": "854e81255d3da31d0363627b9220f978",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-CONTEXT.md": {
-    "mtime": 1788850624.1274655,
-    "ast_hash": "4e46f111b34b0446a336e1f14996a4ae",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-DISCUSSION-LOG.md": {
-    "mtime": 1788850624.1284654,
-    "ast_hash": "850858d45732c389aca2aca80c9883c1",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-PATTERNS.md": {
-    "mtime": 1788850624.129465,
-    "ast_hash": "212c64ccac5103d99447dddbd2634d5f",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-RESEARCH.md": {
-    "mtime": 1788850624.1304643,
-    "ast_hash": "783b291e0044779af1ee0d260df86719",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-VALIDATION.md": {
-    "mtime": 1788850624.1314676,
-    "ast_hash": "1cda02fc90bf43ca32561134de32c147",
-    "semantic_hash": ""
-  },
-  ".planning/phases/19-tanstack-start-full-stack-tooling-foundation/19-VERIFICATION.md": {
-    "mtime": 1788851033.4511786,
-    "ast_hash": "7d90f7794c6c1578e66e011630f4008b",
-    "semantic_hash": ""
-  },
   ".planning/research/ARCHITECTURE.md": {
     "mtime": 1788850624.1395452,
     "ast_hash": "37c9462bdb604b2ea88b7112c312be88",
@@ -11394,8 +11244,8 @@
     "semantic_hash": ""
   },
   "app/routes/course.ai.tsx": {
-    "mtime": 1788855505.7182486,
-    "ast_hash": "2edfd376cb8a14da5ba60320d3e37575",
+    "mtime": 1788917884.1968675,
+    "ast_hash": "3b1feb997b0e92659b8fa685e550e8f9",
     "semantic_hash": ""
   },
   "app/routes/course.word.tsx": {
@@ -11426,96 +11276,6 @@
   "scratch/render_preview.py": {
     "mtime": 1788852476.5425453,
     "ast_hash": "cc62a4b088bdbc8d24b70802769c284f",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-01-PLAN.md": {
-    "mtime": 1788851404.838828,
-    "ast_hash": "e9edbb221a14ac079703b0e044fb790a",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-01-SUMMARY.md": {
-    "mtime": 1788851691.9070165,
-    "ast_hash": "b46cb90a699fe252b8f2218aba93fa57",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-02-PLAN.md": {
-    "mtime": 1788851431.0464044,
-    "ast_hash": "1f3a22c824c99760845c6e64ef083d16",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-02-SUMMARY.md": {
-    "mtime": 1788851695.974365,
-    "ast_hash": "dc2b041fbeec20e639a321b699779d12",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-03-PLAN.md": {
-    "mtime": 1788851418.9966345,
-    "ast_hash": "8aaacac778e47275857be524fa51d0a1",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-03-SUMMARY.md": {
-    "mtime": 1788851700.7618704,
-    "ast_hash": "b19aa0975dcc80d6bbe38c8240350359",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-PATTERNS.md": {
-    "mtime": 1788851393.9378242,
-    "ast_hash": "6908d011f5f8836a583627cbd6d2ea4e",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-RESEARCH.md": {
-    "mtime": 1788851358.2559533,
-    "ast_hash": "bea4e55d2edbbe079ef2cdd11898b2d2",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-VALIDATION.md": {
-    "mtime": 1788851375.406189,
-    "ast_hash": "8085a64e73ec8048a5d98f2edd0339d2",
-    "semantic_hash": ""
-  },
-  ".planning/phases/20-file-based-routes-validated-search-params/20-VERIFICATION.md": {
-    "mtime": 1788851705.0031078,
-    "ast_hash": "4bb34feef91681a0949df4e506e76e62",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-01-PLAN.md": {
-    "mtime": 1788852189.6951716,
-    "ast_hash": "159af3d389367ad9722ad14294cdde51",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-02-PLAN.md": {
-    "mtime": 1788852198.6664345,
-    "ast_hash": "a2f9900594c28ac6626d591bba73522b",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-03-PLAN.md": {
-    "mtime": 1788852205.9004712,
-    "ast_hash": "e551133715aa993e3e53b567caaec899",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-PATTERNS.md": {
-    "mtime": 1788852162.2533505,
-    "ast_hash": "41a64967de8e2c3f5cd32e155c2cd9fb",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-RESEARCH.md": {
-    "mtime": 1788852115.9111521,
-    "ast_hash": "717648f92c620b8f63d3f569cbcd2f90",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-VALIDATION.md": {
-    "mtime": 1788852131.5186563,
-    "ast_hash": "da478a646090ce5636ebfabd5040d67f",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-k0z-ganti-logo-nya-menjadi-yang-terlampir/PLAN.md": {
-    "mtime": 1788852611.8258252,
-    "ast_hash": "1fa9b5de611f5d1ccbd7deb81e2fca00",
-    "semantic_hash": ""
-  },
-  ".planning/quick/260908-k0z-ganti-logo-nya-menjadi-yang-terlampir/SUMMARY.md": {
-    "mtime": 1788852617.4326997,
-    "ast_hash": "a03e6941f844623b69eece442c43acd6",
     "semantic_hash": ""
   },
   "scratch/preview.html": {
@@ -11678,11 +11438,6 @@
     "ast_hash": "f6c961c870101d2b63b572ec3222cf8b",
     "semantic_hash": ""
   },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-01-SUMMARY.md": {
-    "mtime": 1788852914.1270866,
-    "ast_hash": "90dac4dfc901f5a1cf2f134abadae9e3",
-    "semantic_hash": ""
-  },
   "app/components/course/InstructorUnlockModal.tsx": {
     "mtime": 1788855564.621262,
     "ast_hash": "24b36b35a9d04343465fea0ba1177478",
@@ -11723,71 +11478,6 @@
     "ast_hash": "7d5c16e30218de95078494627ea38d5c",
     "semantic_hash": ""
   },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-02-SUMMARY.md": {
-    "mtime": 1788853104.846933,
-    "ast_hash": "d1cfd645e9b1ca7535d8f993a63cddeb",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-03-SUMMARY.md": {
-    "mtime": 1788853198.6124818,
-    "ast_hash": "a0e453f4950cd2d939f07cb4831fe91e",
-    "semantic_hash": ""
-  },
-  ".planning/phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-VERIFICATION.md": {
-    "mtime": 1788853266.8890407,
-    "ast_hash": "e8cf9439d249ac79013334e4e7772f35",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-01-PLAN.md": {
-    "mtime": 1788855019.4496171,
-    "ast_hash": "f2a06b6e90a7af6bfd73d606158eba55",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-01-SUMMARY.md": {
-    "mtime": 1788855302.3701189,
-    "ast_hash": "8359fa543f27b265c0019aad4581e0a1",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-02-PLAN.md": {
-    "mtime": 1788855019.4506173,
-    "ast_hash": "e7ce3b1edcd64fb6ca373635d76d6f62",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-02-SUMMARY.md": {
-    "mtime": 1788855460.427781,
-    "ast_hash": "5cc463a313fe0effaec0ab472ffd6032",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-03-PLAN.md": {
-    "mtime": 1788855019.4506173,
-    "ast_hash": "c28a80dad46179f6b3e13d1afbb4f8d0",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-03-SUMMARY.md": {
-    "mtime": 1788855579.46526,
-    "ast_hash": "81a16e91af5ea662e552d99c91e50060",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-PATTERNS.md": {
-    "mtime": 1788854955.1541164,
-    "ast_hash": "4b74700068a417e8c487a4fd33b945cd",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-RESEARCH.md": {
-    "mtime": 1788854927.0178075,
-    "ast_hash": "b07959c842c597620dcac269832739e1",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-VALIDATION.md": {
-    "mtime": 1788854939.6670554,
-    "ast_hash": "3b9b4ecde3d4f617ab8c0a0f272e78f0",
-    "semantic_hash": ""
-  },
-  ".planning/phases/22-typed-server-functions-boundary-isolation/22-VERIFICATION.md": {
-    "mtime": 1788855610.2616873,
-    "ast_hash": "a0958b10a18ee4085ccd9673b686236a",
-    "semantic_hash": ""
-  },
   "app/components/ui/NotFound.tsx": {
     "mtime": 1788858226.9833777,
     "ast_hash": "291a47ae4caa44c623d065bd3d210a5b",
@@ -11821,66 +11511,6 @@
   "tests/docker-smoke.test.js": {
     "mtime": 1788858472.4540274,
     "ast_hash": "ac9a2634c2d4f360ab1d7e9a10a7ec75",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-01-PLAN.md": {
-    "mtime": 1788857872.3445084,
-    "ast_hash": "69e14ce02c6a6a78233bae6029476686",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-01-SUMMARY.md": {
-    "mtime": 1788858336.0101542,
-    "ast_hash": "6a7572370eaca8f80090bac6b24f19ae",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-02-PLAN.md": {
-    "mtime": 1788857885.0702577,
-    "ast_hash": "07e0389c39d439b9724e5127d04fb7f8",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-02-SUMMARY.md": {
-    "mtime": 1788858410.2486527,
-    "ast_hash": "ff350cc9233cbb70833533b56315cb11",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-03-PLAN.md": {
-    "mtime": 1788857904.2845287,
-    "ast_hash": "0deb772344f8a80627c3be9d5b50a558",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-03-SUMMARY.md": {
-    "mtime": 1788858789.1616192,
-    "ast_hash": "65678ba740136636caad5f6869ec125a",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-CONTEXT.md": {
-    "mtime": 1788856966.6849525,
-    "ast_hash": "e1dcff0c00e4984da8d09873434999d8",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-DISCUSSION-LOG.md": {
-    "mtime": 1788856966.6894722,
-    "ast_hash": "debaa41a2504cd774714165471c13186",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-PATTERNS.md": {
-    "mtime": 1788857714.9342353,
-    "ast_hash": "5cd1ca3f8855dbd5742d8cf122b75222",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-RESEARCH.md": {
-    "mtime": 1788857510.2660291,
-    "ast_hash": "f1d9289cfc642ba6416d8bb87e9f0647",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-VALIDATION.md": {
-    "mtime": 1788857911.924627,
-    "ast_hash": "8646e7c5e49d756320820676af53f90e",
-    "semantic_hash": ""
-  },
-  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-VERIFICATION.md": {
-    "mtime": 1788858818.4349556,
-    "ast_hash": "4ecb7b5d2e2f365967b213764754937c",
     "semantic_hash": ""
   },
   "public/assets/icons/favicon.svg": {
@@ -11926,6 +11556,686 @@
   "public/assets/neon-workshop-background.png": {
     "mtime": 1788489851.7667115,
     "ast_hash": "cc1281274cbec0e73ddefe5ef50e6cfd",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingGlossarySection.tsx": {
+    "mtime": 1788861085.7174377,
+    "ast_hash": "d9842f2b01d62c1b7eddd7bdc85b14c9",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingHero.tsx": {
+    "mtime": 1788916888.3278246,
+    "ast_hash": "c5a71dccdb2b79c8edb84c7a5763ead7",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingPowerShellSection.tsx": {
+    "mtime": 1788861099.544731,
+    "ast_hash": "88913eaacfb7c04b02d9b48d1b55fac8",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingPrerequisitesSection.tsx": {
+    "mtime": 1788861094.0754192,
+    "ast_hash": "b3c224c7aa4f52709e36265a32035cf6",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingSecuritySection.tsx": {
+    "mtime": 1788861090.1932418,
+    "ast_hash": "93466a41e8a21415065e0d198c545161",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingTargetSection.tsx": {
+    "mtime": 1788861082.487507,
+    "ast_hash": "d4b41e391acb5d57057fa2f45282544d",
+    "semantic_hash": ""
+  },
+  "app/data/pretrainingFoundation.ts": {
+    "mtime": 1788861044.138275,
+    "ast_hash": "0253e15795a57509eaf12568478f3a54",
+    "semantic_hash": ""
+  },
+  "tests/pretraining-foundation.test.js": {
+    "mtime": 1788861167.4072747,
+    "ast_hash": "8d2494568358d12a75a016bd7f6b14c7",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-MILESTONE-AUDIT.md": {
+    "mtime": 1788859217.3918798,
+    "ast_hash": "98e3ee7b8618e62d1f46816dadd4adc3",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-REQUIREMENTS.md": {
+    "mtime": 1788860139.1987247,
+    "ast_hash": "f2b610a296e6e5c57047589277d5f51e",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-ROADMAP.md": {
+    "mtime": 1788860139.196632,
+    "ast_hash": "9c1e58e3b565d2801304d896d017463a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-01-PLAN.md": {
+    "mtime": 1788850624.1244583,
+    "ast_hash": "026c9294b804362b532d53c9e0dada34",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-01-SUMMARY.md": {
+    "mtime": 1788850624.1254642,
+    "ast_hash": "3ac78be31711d8f78a26e4a8853c43ae",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-02-PLAN.md": {
+    "mtime": 1788850624.1254642,
+    "ast_hash": "291cdd1dace83d354c139bd383496eab",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-02-SUMMARY.md": {
+    "mtime": 1788850624.1264648,
+    "ast_hash": "05879031a60d1226a6c32b78d6b82a9e",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-03-PLAN.md": {
+    "mtime": 1788850624.1274655,
+    "ast_hash": "eae287f3e1a2662ff8f510d286640a0d",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-03-SUMMARY.md": {
+    "mtime": 1788850980.531921,
+    "ast_hash": "854e81255d3da31d0363627b9220f978",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-CONTEXT.md": {
+    "mtime": 1788850624.1274655,
+    "ast_hash": "4e46f111b34b0446a336e1f14996a4ae",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-DISCUSSION-LOG.md": {
+    "mtime": 1788850624.1284654,
+    "ast_hash": "850858d45732c389aca2aca80c9883c1",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-PATTERNS.md": {
+    "mtime": 1788850624.129465,
+    "ast_hash": "212c64ccac5103d99447dddbd2634d5f",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-RESEARCH.md": {
+    "mtime": 1788850624.1304643,
+    "ast_hash": "783b291e0044779af1ee0d260df86719",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-VALIDATION.md": {
+    "mtime": 1788850624.1314676,
+    "ast_hash": "1cda02fc90bf43ca32561134de32c147",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-VERIFICATION.md": {
+    "mtime": 1788851033.4511786,
+    "ast_hash": "7d90f7794c6c1578e66e011630f4008b",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-01-PLAN.md": {
+    "mtime": 1788851404.838828,
+    "ast_hash": "e9edbb221a14ac079703b0e044fb790a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-01-SUMMARY.md": {
+    "mtime": 1788851691.9070165,
+    "ast_hash": "b46cb90a699fe252b8f2218aba93fa57",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-02-PLAN.md": {
+    "mtime": 1788851431.0464044,
+    "ast_hash": "1f3a22c824c99760845c6e64ef083d16",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-02-SUMMARY.md": {
+    "mtime": 1788851695.974365,
+    "ast_hash": "dc2b041fbeec20e639a321b699779d12",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-03-PLAN.md": {
+    "mtime": 1788851418.9966345,
+    "ast_hash": "8aaacac778e47275857be524fa51d0a1",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-03-SUMMARY.md": {
+    "mtime": 1788851700.7618704,
+    "ast_hash": "b19aa0975dcc80d6bbe38c8240350359",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-PATTERNS.md": {
+    "mtime": 1788851393.9378242,
+    "ast_hash": "6908d011f5f8836a583627cbd6d2ea4e",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-RESEARCH.md": {
+    "mtime": 1788851358.2559533,
+    "ast_hash": "bea4e55d2edbbe079ef2cdd11898b2d2",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-VALIDATION.md": {
+    "mtime": 1788851375.406189,
+    "ast_hash": "8085a64e73ec8048a5d98f2edd0339d2",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-VERIFICATION.md": {
+    "mtime": 1788851705.0031078,
+    "ast_hash": "4bb34feef91681a0949df4e506e76e62",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-01-PLAN.md": {
+    "mtime": 1788852189.6951716,
+    "ast_hash": "159af3d389367ad9722ad14294cdde51",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-01-SUMMARY.md": {
+    "mtime": 1788852914.1270866,
+    "ast_hash": "90dac4dfc901f5a1cf2f134abadae9e3",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-02-PLAN.md": {
+    "mtime": 1788852198.6664345,
+    "ast_hash": "a2f9900594c28ac6626d591bba73522b",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-02-SUMMARY.md": {
+    "mtime": 1788853104.846933,
+    "ast_hash": "d1cfd645e9b1ca7535d8f993a63cddeb",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-03-PLAN.md": {
+    "mtime": 1788852205.9004712,
+    "ast_hash": "e551133715aa993e3e53b567caaec899",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-03-SUMMARY.md": {
+    "mtime": 1788853198.6124818,
+    "ast_hash": "a0e453f4950cd2d939f07cb4831fe91e",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-PATTERNS.md": {
+    "mtime": 1788852162.2533505,
+    "ast_hash": "41a64967de8e2c3f5cd32e155c2cd9fb",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-RESEARCH.md": {
+    "mtime": 1788852115.9111521,
+    "ast_hash": "717648f92c620b8f63d3f569cbcd2f90",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-VALIDATION.md": {
+    "mtime": 1788852131.5186563,
+    "ast_hash": "da478a646090ce5636ebfabd5040d67f",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-VERIFICATION.md": {
+    "mtime": 1788853266.8890407,
+    "ast_hash": "e8cf9439d249ac79013334e4e7772f35",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-01-PLAN.md": {
+    "mtime": 1788855019.4496171,
+    "ast_hash": "f2a06b6e90a7af6bfd73d606158eba55",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-01-SUMMARY.md": {
+    "mtime": 1788855302.3701189,
+    "ast_hash": "8359fa543f27b265c0019aad4581e0a1",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-02-PLAN.md": {
+    "mtime": 1788855019.4506173,
+    "ast_hash": "e7ce3b1edcd64fb6ca373635d76d6f62",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-02-SUMMARY.md": {
+    "mtime": 1788855460.427781,
+    "ast_hash": "5cc463a313fe0effaec0ab472ffd6032",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-03-PLAN.md": {
+    "mtime": 1788855019.4506173,
+    "ast_hash": "c28a80dad46179f6b3e13d1afbb4f8d0",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-03-SUMMARY.md": {
+    "mtime": 1788855579.46526,
+    "ast_hash": "81a16e91af5ea662e552d99c91e50060",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-PATTERNS.md": {
+    "mtime": 1788854955.1541164,
+    "ast_hash": "4b74700068a417e8c487a4fd33b945cd",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-RESEARCH.md": {
+    "mtime": 1788854927.0178075,
+    "ast_hash": "b07959c842c597620dcac269832739e1",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-VALIDATION.md": {
+    "mtime": 1788854939.6670554,
+    "ast_hash": "3b9b4ecde3d4f617ab8c0a0f272e78f0",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-VERIFICATION.md": {
+    "mtime": 1788855610.2616873,
+    "ast_hash": "a0958b10a18ee4085ccd9673b686236a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-01-PLAN.md": {
+    "mtime": 1788857872.3445084,
+    "ast_hash": "69e14ce02c6a6a78233bae6029476686",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-01-SUMMARY.md": {
+    "mtime": 1788858336.0101542,
+    "ast_hash": "6a7572370eaca8f80090bac6b24f19ae",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-02-PLAN.md": {
+    "mtime": 1788857885.0702577,
+    "ast_hash": "07e0389c39d439b9724e5127d04fb7f8",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-02-SUMMARY.md": {
+    "mtime": 1788858410.2486527,
+    "ast_hash": "ff350cc9233cbb70833533b56315cb11",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-03-PLAN.md": {
+    "mtime": 1788857904.2845287,
+    "ast_hash": "0deb772344f8a80627c3be9d5b50a558",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-03-SUMMARY.md": {
+    "mtime": 1788858789.1616192,
+    "ast_hash": "65678ba740136636caad5f6869ec125a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-CONTEXT.md": {
+    "mtime": 1788856966.6849525,
+    "ast_hash": "e1dcff0c00e4984da8d09873434999d8",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-DISCUSSION-LOG.md": {
+    "mtime": 1788856966.6894722,
+    "ast_hash": "debaa41a2504cd774714165471c13186",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-PATTERNS.md": {
+    "mtime": 1788857714.9342353,
+    "ast_hash": "5cd1ca3f8855dbd5742d8cf122b75222",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-RESEARCH.md": {
+    "mtime": 1788857510.2660291,
+    "ast_hash": "f1d9289cfc642ba6416d8bb87e9f0647",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-VALIDATION.md": {
+    "mtime": 1788857911.924627,
+    "ast_hash": "8646e7c5e49d756320820676af53f90e",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-VERIFICATION.md": {
+    "mtime": 1788858818.4349556,
+    "ast_hash": "4ecb7b5d2e2f365967b213764754937c",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-PLAN.md": {
+    "mtime": 1788399381.0197036,
+    "ast_hash": "58eb22f13f673468f9a81a0e2a35e7b3",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-SUMMARY.md": {
+    "mtime": 1788400386.1713088,
+    "ast_hash": "3a7be8e2dc12de6d944cea67cda189fc",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-VERIFICATION.md": {
+    "mtime": 1788400628.6986444,
+    "ast_hash": "5724becdae9f0c52125421b6a8d64301",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-PLAN.md": {
+    "mtime": 1788412452.08647,
+    "ast_hash": "efdaadf2d5a65c5e6a919202b93ae8d7",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-SUMMARY.md": {
+    "mtime": 1788414707.48814,
+    "ast_hash": "9eeb3814782c4052dda32216f7bd477a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-VERIFICATION.md": {
+    "mtime": 1788414448.331642,
+    "ast_hash": "66499c5ba4e3ecb7d46452ed85713e75",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/260907-g9a-PLAN.md": {
+    "mtime": 1788756151.3625746,
+    "ast_hash": "511db39c0f80e79e59f04beee1ea49bd",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/260907-g9a-SUMMARY.md": {
+    "mtime": 1788860070.174354,
+    "ast_hash": "38fc84218bdd02c5461d3f435b9b01ab",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/SUMMARY.md": {
+    "mtime": 1788860042.281217,
+    "ast_hash": "fa88ca9cc1ff30583a43de5910e97032",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260907-nlm-frontpage-default-html/PLAN.md": {
+    "mtime": 1788767527.2340672,
+    "ast_hash": "c505421048dc3b1ca90dbd85e7811f00",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260907-nlm-frontpage-default-html/SUMMARY.md": {
+    "mtime": 1788767590.4844544,
+    "ast_hash": "fb0773ac08b646bd5a6e78e2c9adc3eb",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-dck-dockerignore-test-runner-fix/PLAN.md": {
+    "mtime": 1788850624.132969,
+    "ast_hash": "5570266d2dd3e8eeb1ee56e97abce73a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-dck-dockerignore-test-runner-fix/SUMMARY.md": {
+    "mtime": 1788850624.1334994,
+    "ast_hash": "1ccdfe55725edba7329968fadb1573f6",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-gra-graphify-antigravity-install/PLAN.md": {
+    "mtime": 1788850624.134618,
+    "ast_hash": "dcb4eb81a52d688ae791d8cb8438d5a2",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-gra-graphify-antigravity-install/SUMMARY.md": {
+    "mtime": 1788850624.1351516,
+    "ast_hash": "cf58d9c3f8e27d11501ee1f77b6a0360",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-k0z-ganti-logo-nya-menjadi-yang-terlampir/PLAN.md": {
+    "mtime": 1788852611.8258252,
+    "ast_hash": "1fa9b5de611f5d1ccbd7deb81e2fca00",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-k0z-ganti-logo-nya-menjadi-yang-terlampir/SUMMARY.md": {
+    "mtime": 1788852617.4326997,
+    "ast_hash": "a03e6941f844623b69eece442c43acd6",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-pga-postgresql-storage-architecture-analysis/PLAN.md": {
+    "mtime": 1788850624.1356819,
+    "ast_hash": "0f3f4eac805fd0ef45f99a28facd9ae0",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-pga-postgresql-storage-architecture-analysis/SUMMARY.md": {
+    "mtime": 1788850624.1362045,
+    "ast_hash": "c8129ffba843b374d4acd53858f8e551",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-uip-uipro-antigravity-init/PLAN.md": {
+    "mtime": 1788850624.1373606,
+    "ast_hash": "634e10f280b35f1b04fc659204180723",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/260908-uip-uipro-antigravity-init/SUMMARY.md": {
+    "mtime": 1788850624.137918,
+    "ast_hash": "44afc21503d160d09ffd66e06834088a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.0-quick/README.md": {
+    "mtime": 1788860139.2365062,
+    "ast_hash": "a143923b3299d475a17b8b4600cf95eb",
+    "semantic_hash": ""
+  },
+  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-01-PLAN.md": {
+    "mtime": 1788860930.8866277,
+    "ast_hash": "ac1acda1655ef393f89eaf0ff22d20d2",
+    "semantic_hash": ""
+  },
+  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-01-SUMMARY.md": {
+    "mtime": 1788861115.093519,
+    "ast_hash": "45f537a33b640c5d76ad2661e6ef23d1",
+    "semantic_hash": ""
+  },
+  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-02-PLAN.md": {
+    "mtime": 1788860939.124741,
+    "ast_hash": "34f31b945a19a0a3d59c233b53be1af6",
+    "semantic_hash": ""
+  },
+  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-02-SUMMARY.md": {
+    "mtime": 1788861275.9289577,
+    "ast_hash": "65a63c83c48596267bca83e2563dc4b8",
+    "semantic_hash": ""
+  },
+  ".planning/phases/24-pre-training-foundation-sections-data-extraction/24-VERIFICATION.md": {
+    "mtime": 1788861292.5937018,
+    "ast_hash": "eacc0b9cdd47f00aa2f9927f61e04099",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/CheckpointGateCard.tsx": {
+    "mtime": 1788916762.655062,
+    "ast_hash": "6a34c129c6482b15e7e92d13e7ee91ed",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/CheckpointPreviewCard.tsx": {
+    "mtime": 1788914374.8530502,
+    "ast_hash": "ceef20ac5c525b4f625afff659301ca4",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/CopyableCodeBlock.tsx": {
+    "mtime": 1788914351.5277402,
+    "ast_hash": "9a7f85715ff3c9171a9e0d08dfdfb3e9",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/ModuleArchitectureFlow.tsx": {
+    "mtime": 1788914378.69661,
+    "ast_hash": "b0378f4c00c0af7da45ec52576b149fc",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingCheckpointsSection.tsx": {
+    "mtime": 1788916770.861816,
+    "ast_hash": "9f118f407b4a3fa3e70853d8b0c254df",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingModuleCard.tsx": {
+    "mtime": 1788916920.77331,
+    "ast_hash": "2bfa71e767ed4a98057a0c09d3cf145e",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingModulesSection.tsx": {
+    "mtime": 1788916883.6409006,
+    "ast_hash": "5b714d4026453654682c62518c6fef05",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingReadinessSection.tsx": {
+    "mtime": 1788916796.0697632,
+    "ast_hash": "9c006339d27c9892b0572ebce13fe719",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingRedactionSection.tsx": {
+    "mtime": 1788917876.402021,
+    "ast_hash": "65a1c3cb43f17bc0a1f0c08bdb1ccc14",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/PretrainingTroubleshootingSection.tsx": {
+    "mtime": 1788917868.7071657,
+    "ast_hash": "07144886a39ec2b2e64c50f47fa53762",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/ResetProgressModal.tsx": {
+    "mtime": 1788916801.2375019,
+    "ast_hash": "b545517281d8f1dcb5d762b6d25a7f51",
+    "semantic_hash": ""
+  },
+  "app/components/course/pretraining/TroubleshootingCard.tsx": {
+    "mtime": 1788917861.9600344,
+    "ast_hash": "c4a168e2a886511fb6f3c52db912c31a",
+    "semantic_hash": ""
+  },
+  "app/components/ui/Toast.tsx": {
+    "mtime": 1788914346.9087293,
+    "ast_hash": "f62bb9589f208f00cd8b893992b0d850",
+    "semantic_hash": ""
+  },
+  "app/data/pretrainingModules.ts": {
+    "mtime": 1788916703.2159932,
+    "ast_hash": "a9cb9548de3695e743d409fe14a343c7",
+    "semantic_hash": ""
+  },
+  "app/data/pretrainingTroubleshooting.ts": {
+    "mtime": 1788917794.5591514,
+    "ast_hash": "81bd1e3407974e7fc7ba0aabd773546f",
+    "semantic_hash": ""
+  },
+  "app/hooks/usePretrainingState.ts": {
+    "mtime": 1788916736.3439083,
+    "ast_hash": "3e685722d2ab5e4d5e695da6862b8424",
+    "semantic_hash": ""
+  },
+  "app/utils/redaction.ts": {
+    "mtime": 1788917802.2163796,
+    "ast_hash": "9083956ada80f76cf6f526e3f04c2509",
+    "semantic_hash": ""
+  },
+  "tests/pretraining-checklist.test.js": {
+    "mtime": 1788916969.0979023,
+    "ast_hash": "b11e332d0173b3ea71779365a0a2cb68",
+    "semantic_hash": ""
+  },
+  "tests/pretraining-modules.test.js": {
+    "mtime": 1788916704.9806037,
+    "ast_hash": "25e859894f0cadfddb224d3e49399729",
+    "semantic_hash": ""
+  },
+  "tests/pretraining-troubleshooting.test.js": {
+    "mtime": 1788917909.1958623,
+    "ast_hash": "233dc7b8a795cd10dcafaf47ad6ae995",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-PLAN.md": {
+    "mtime": 1788862121.425035,
+    "ast_hash": "6456b784c087c16744f55c9f9d180b21",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-SUMMARY.md": {
+    "mtime": 1788914413.111865,
+    "ast_hash": "2b77c3a8e5fcb088cd80ffe596a47a43",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-PLAN.md": {
+    "mtime": 1788862133.706971,
+    "ast_hash": "03ba9cb4a36138db6cef82d284e242b7",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-SUMMARY.md": {
+    "mtime": 1788914586.228627,
+    "ast_hash": "ee5816b2a352f391f4ef6f32b5a56225",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-PATTERNS.md": {
+    "mtime": 1788862020.4070945,
+    "ast_hash": "bf570140e74cce4258705d82da6dfa7c",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-RESEARCH.md": {
+    "mtime": 1788861795.2839577,
+    "ast_hash": "d56700546990c1f7ed525434ddcef30f",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-VALIDATION.md": {
+    "mtime": 1788861834.075649,
+    "ast_hash": "822d93048244b038d80f35265c305743",
+    "semantic_hash": ""
+  },
+  ".planning/phases/25-interactive-modules-1-5-1-click-copy-engine/25-VERIFICATION.md": {
+    "mtime": 1788914696.8439152,
+    "ast_hash": "c4791dfbe0da1cf4cdc8a6fb6df7b34f",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-PLAN.md": {
+    "mtime": 1788916568.5392587,
+    "ast_hash": "ea735c16922ff4614f7b0d84aa594067",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-SUMMARY.md": {
+    "mtime": 1788916824.5598695,
+    "ast_hash": "9af0e10b3939a74320aeec984b8ad445",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-PLAN.md": {
+    "mtime": 1788916581.404803,
+    "ast_hash": "270463bb03339fce4dcc6e1e4493f834",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-SUMMARY.md": {
+    "mtime": 1788917007.0283132,
+    "ast_hash": "9301dce74bc9daa88c334d310d3b62dd",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-PATTERNS.md": {
+    "mtime": 1788916495.7957375,
+    "ast_hash": "1d7dcb6eb590495a74ac0c6e46c855ef",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-RESEARCH.md": {
+    "mtime": 1788916314.1132593,
+    "ast_hash": "f78db9af33b42df18850eb6369f50d6f",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VALIDATION.md": {
+    "mtime": 1788916340.0332253,
+    "ast_hash": "e2f65bfd0b606de440fe2f4ec8cd36bd",
+    "semantic_hash": ""
+  },
+  ".planning/phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VERIFICATION.md": {
+    "mtime": 1788917079.2083757,
+    "ast_hash": "801be4322138b163958fc3fc226b999b",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-PLAN.md": {
+    "mtime": 1788917598.3211746,
+    "ast_hash": "ec1c3d51508c735e44f3e71389b01b68",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-SUMMARY.md": {
+    "mtime": 1788917837.9215593,
+    "ast_hash": "a925844ebc3c8334f77d9295742a1d7b",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-PLAN.md": {
+    "mtime": 1788917612.122669,
+    "ast_hash": "45f0375ecb1b1b0e72b78f13f80defe7",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-SUMMARY.md": {
+    "mtime": 1788917927.246351,
+    "ast_hash": "59ab559dca4d4bd2bb25be9c016eb6ae",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-PATTERNS.md": {
+    "mtime": 1788917540.689384,
+    "ast_hash": "3756ccaa3bd6bf404e97c77d04878ad1",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-RESEARCH.md": {
+    "mtime": 1788917398.235416,
+    "ast_hash": "8a18c353a871c9f182f29a3a20f4153e",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VALIDATION.md": {
+    "mtime": 1788917433.9086113,
+    "ast_hash": "476244c2a66ab053238ce4d0ca686b14",
+    "semantic_hash": ""
+  },
+  ".planning/phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VERIFICATION.md": {
+    "mtime": 1788917958.4712336,
+    "ast_hash": "2f9c6e570dad8daaafe0a5fec572aa54",
     "semantic_hash": ""
   }
 }

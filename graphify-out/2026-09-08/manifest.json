@@ -5093,8 +5093,8 @@
     "semantic_hash": ""
   },
   ".planning/state.json": {
-    "mtime": 1788855626.0589862,
-    "ast_hash": "4ac6a68cb3ca78b67d02dab6adb7b60b",
+    "mtime": 1788858831.1885946,
+    "ast_hash": "a1d3f78edff59b7076bff3bd51c3feac",
     "semantic_hash": ""
   },
   "assets/js/app.js": {
@@ -10378,8 +10378,8 @@
     "semantic_hash": ""
   },
   ".planning/REQUIREMENTS.md": {
-    "mtime": 1788855625.8012483,
-    "ast_hash": "1a7dd5dd1c1931f5c60f44b27e9832c0",
+    "mtime": 1788858864.4505064,
+    "ast_hash": "fbc7de3aca01a0f54b31d582664a9671",
     "semantic_hash": ""
   },
   ".planning/RETROSPECTIVE.md": {
@@ -10388,13 +10388,13 @@
     "semantic_hash": ""
   },
   ".planning/ROADMAP.md": {
-    "mtime": 1788855634.5099607,
-    "ast_hash": "2dab9a53b2b4a064d769600a01a2aa4c",
+    "mtime": 1788858840.8997147,
+    "ast_hash": "9c1e58e3b565d2801304d896d017463a",
     "semantic_hash": ""
   },
   ".planning/STATE.md": {
-    "mtime": 1788855641.5484216,
-    "ast_hash": "c982a5a1ef179d3b7d5e7fdcd5832868",
+    "mtime": 1788858830.871037,
+    "ast_hash": "0b5102ccb000a0eaf110f0c2c5617b39",
     "semantic_hash": ""
   },
   ".planning/codebase/ARCHITECTURE.md": {
@@ -11064,8 +11064,8 @@
     "semantic_hash": ""
   },
   "app.config.ts": {
-    "mtime": 1788850624.1450722,
-    "ast_hash": "60a9226d3ff512ca3772d5098bcb0a5b",
+    "mtime": 1788858429.1797776,
+    "ast_hash": "b0274ea7527abde097e2f3f4f0e705a3",
     "semantic_hash": ""
   },
   "app/client.tsx": {
@@ -11079,23 +11079,23 @@
     "semantic_hash": ""
   },
   "app/router.tsx": {
-    "mtime": 1788850624.1471634,
-    "ast_hash": "15a50f1be240dfa3c178d53de3f68195",
+    "mtime": 1788858250.2837543,
+    "ast_hash": "69ba835aba0043f0c5c05fc3ba44586d",
     "semantic_hash": ""
   },
   "app/routes/__root.tsx": {
-    "mtime": 1788852543.9853559,
-    "ast_hash": "f5051cd373346d69a3bd37402a4f08dd",
+    "mtime": 1788858238.3968277,
+    "ast_hash": "ae745a0743ba1b3b0c4e877751a420bf",
     "semantic_hash": ""
   },
   "app/routes/index.tsx": {
-    "mtime": 1788852793.5502622,
-    "ast_hash": "c10cb8728fc98482082894f435272502",
+    "mtime": 1788858275.549419,
+    "ast_hash": "826d88ffea0b92d2bd2709bde0f19b5e",
     "semantic_hash": ""
   },
   "app/ssr.tsx": {
-    "mtime": 1788850624.150172,
-    "ast_hash": "cb13bbb4bf8dc03647fc5eb3c032124c",
+    "mtime": 1788858282.294111,
+    "ast_hash": "ccb58de81b595cf88fe271a1eafec959",
     "semantic_hash": ""
   },
   "assets/package.json": {
@@ -11104,8 +11104,8 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1788850625.1550958,
-    "ast_hash": "270222049355bbe863bcfc0c1b12bca1",
+    "mtime": 1788858649.7645988,
+    "ast_hash": "acde226c78e9fdadbd5377ea625172b1",
     "semantic_hash": ""
   },
   "scratch/render_fresh_gallery.py": {
@@ -11309,8 +11309,8 @@
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1788850900.081104,
-    "ast_hash": "a769ae82d6856866ba231d1945bf8fb7",
+    "mtime": 1788858358.375327,
+    "ast_hash": "ca6bf210eb044502d0dcd2597063a65d",
     "semantic_hash": ""
   },
   "public/favicon.svg": {
@@ -11786,6 +11786,146 @@
   ".planning/phases/22-typed-server-functions-boundary-isolation/22-VERIFICATION.md": {
     "mtime": 1788855610.2616873,
     "ast_hash": "a0958b10a18ee4085ccd9673b686236a",
+    "semantic_hash": ""
+  },
+  "app/components/ui/NotFound.tsx": {
+    "mtime": 1788858226.9833777,
+    "ast_hash": "291a47ae4caa44c623d065bd3d210a5b",
+    "semantic_hash": ""
+  },
+  "app/components/ui/RouteErrorBoundary.tsx": {
+    "mtime": 1788858231.485534,
+    "ast_hash": "b54a102b53c9d55bf56afa1930bc08a6",
+    "semantic_hash": ""
+  },
+  "public/assets/js/app.js": {
+    "mtime": 1788772849.9868166,
+    "ast_hash": "2c9ba9a8268543e79db85036dbe529f6",
+    "semantic_hash": ""
+  },
+  "public/assets/js/search.js": {
+    "mtime": 1788763176.7089553,
+    "ast_hash": "9b2927bc80a6e4586544e6be4f5e5666",
+    "semantic_hash": ""
+  },
+  "public/assets/js/state.js": {
+    "mtime": 1788762875.3865483,
+    "ast_hash": "b91069a8a2ac21b5ae77d3352728b1df",
+    "semantic_hash": ""
+  },
+  "public/assets/package.json": {
+    "mtime": 1788850624.1521716,
+    "ast_hash": "df9ffc6aa3f78a5491736d441c4258a8",
+    "semantic_hash": ""
+  },
+  "tests/docker-smoke.test.js": {
+    "mtime": 1788858472.4540274,
+    "ast_hash": "ac9a2634c2d4f360ab1d7e9a10a7ec75",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-01-PLAN.md": {
+    "mtime": 1788857872.3445084,
+    "ast_hash": "69e14ce02c6a6a78233bae6029476686",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-01-SUMMARY.md": {
+    "mtime": 1788858336.0101542,
+    "ast_hash": "6a7572370eaca8f80090bac6b24f19ae",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-02-PLAN.md": {
+    "mtime": 1788857885.0702577,
+    "ast_hash": "07e0389c39d439b9724e5127d04fb7f8",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-02-SUMMARY.md": {
+    "mtime": 1788858410.2486527,
+    "ast_hash": "ff350cc9233cbb70833533b56315cb11",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-03-PLAN.md": {
+    "mtime": 1788857904.2845287,
+    "ast_hash": "0deb772344f8a80627c3be9d5b50a558",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-03-SUMMARY.md": {
+    "mtime": 1788858789.1616192,
+    "ast_hash": "65678ba740136636caad5f6869ec125a",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-CONTEXT.md": {
+    "mtime": 1788856966.6849525,
+    "ast_hash": "e1dcff0c00e4984da8d09873434999d8",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-DISCUSSION-LOG.md": {
+    "mtime": 1788856966.6894722,
+    "ast_hash": "debaa41a2504cd774714165471c13186",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-PATTERNS.md": {
+    "mtime": 1788857714.9342353,
+    "ast_hash": "5cd1ca3f8855dbd5742d8cf122b75222",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-RESEARCH.md": {
+    "mtime": 1788857510.2660291,
+    "ast_hash": "f1d9289cfc642ba6416d8bb87e9f0647",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-VALIDATION.md": {
+    "mtime": 1788857911.924627,
+    "ast_hash": "8646e7c5e49d756320820676af53f90e",
+    "semantic_hash": ""
+  },
+  ".planning/phases/23-route-level-ssr-optimization-production-docker-target/23-VERIFICATION.md": {
+    "mtime": 1788858818.4349556,
+    "ast_hash": "4ecb7b5d2e2f365967b213764754937c",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/favicon.svg": {
+    "mtime": 1788852531.2654989,
+    "ast_hash": "0f949911ffdecccac80624f821f38bac",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/learnwith-banner.png": {
+    "mtime": 1788852531.298881,
+    "ast_hash": "bd6df73b083e6ac65f47f2480831649e",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/learnwith-icon-192.png": {
+    "mtime": 1788852531.3058805,
+    "ast_hash": "a8282285041ea0f41ce6bbd0f7774f55",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/learnwith-icon-512.png": {
+    "mtime": 1788852531.3227992,
+    "ast_hash": "9a7f3945c55d8447ddf5d8accaa66d14",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/learnwith-logo-dark.png": {
+    "mtime": 1788852531.2847707,
+    "ast_hash": "d37d398a2fa529a1e8aa0748af9bfd9a",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/learnwith-logo-white.png": {
+    "mtime": 1788852531.2938714,
+    "ast_hash": "245a0b78cfd34240b6db78b135629862",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/learnwith-logo-white.svg": {
+    "mtime": 1788852531.2665005,
+    "ast_hash": "4dae76ffc96e753878eeb12eebe70f79",
+    "semantic_hash": ""
+  },
+  "public/assets/icons/learnwith-logo.svg": {
+    "mtime": 1788852531.2654989,
+    "ast_hash": "654b93c00c69ce48e393de6b13d1fe02",
+    "semantic_hash": ""
+  },
+  "public/assets/neon-workshop-background.png": {
+    "mtime": 1788489851.7667115,
+    "ast_hash": "cc1281274cbec0e73ddefe5ef50e6cfd",
     "semantic_hash": ""
   }
 }
