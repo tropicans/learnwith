@@ -14,6 +14,8 @@ import { PretrainingPowerShellSection } from '@/components/course/pretraining/Pr
 import { PretrainingModulesSection } from '@/components/course/pretraining/PretrainingModulesSection'
 import { PretrainingCheckpointsSection } from '@/components/course/pretraining/PretrainingCheckpointsSection'
 import { PretrainingReadinessSection } from '@/components/course/pretraining/PretrainingReadinessSection'
+import { PretrainingTroubleshootingSection } from '@/components/course/pretraining/PretrainingTroubleshootingSection'
+import { PretrainingRedactionSection } from '@/components/course/pretraining/PretrainingRedactionSection'
 import { ResetProgressModal } from '@/components/course/pretraining/ResetProgressModal'
 import { usePretrainingState } from '@/hooks/usePretrainingState'
 import { showToast } from '@/components/ui/Toast'
@@ -98,6 +100,8 @@ function CourseAiComponent() {
             readiness={readiness}
             onOpenResetModal={() => setIsResetModalOpen(true)}
           />
+          <PretrainingTroubleshootingSection />
+          <PretrainingRedactionSection />
           <ResetProgressModal
             isOpen={isResetModalOpen}
             onClose={() => setIsResetModalOpen(false)}

@@ -6,6 +6,8 @@
 
 const { describe, it, before } = require('node:test')
 const assert = require('node:assert/strict')
+const fs = require('node:fs')
+const path = require('node:path')
 
 describe('Phase 27 Troubleshooting Hub & Secret Redaction Engine Suite', () => {
   let troubleshootingModule
@@ -324,6 +326,161 @@ Header: Bearer secret-token-value-12345`
       assert.equal(res1.matchesCount, 1)
       assert.equal(res2.matchesCount, 1)
       assert.equal(res1.sanitized, res2.sanitized)
+    })
+  })
+
+  // =========================================================================
+  // SUITE 4: COMPONENT INTEGRITY & ROUTE MOUNTING (PRE-TOOL-01..03)
+  // =========================================================================
+  describe('Suite 4: Component Integrity & Route Mounting (PRE-TOOL-01..03)', () => {
+    it('verifies component files exist and export expected components', () => {
+      const compDir = path.resolve(
+        __dirname,
+        '../app/components/course/pretraining'
+      )
+      assert.ok(
+        fs.existsSync(path.join(compDir, 'TroubleshootingCard.tsx')),
+        'TroubleshootingCard.tsx must exist'
+      )
+      assert.ok(
+        fs.existsSync(
+          path.join(compDir, 'PretrainingTroubleshootingSection.tsx')
+        ),
+        'PretrainingTroubleshootingSection.tsx must exist'
+      )
+      assert.ok(
+        fs.existsSync(path.join(compDir, 'PretrainingRedactionSection.tsx')),
+        'PretrainingRedactionSection.tsx must exist'
+      )
+    })
+
+    it('verifies PretrainingTroubleshootingSection contains required DOM IDs and aria attributes', () => {
+      const compPath = path.resolve(
+        __dirname,
+        '../app/components/course/pretraining/PretrainingTroubleshootingSection.tsx'
+      )
+      const content = fs.readFileSync(compPath, 'utf8')
+      assert.ok(
+        content.includes('id="sec-troubleshooting"'),
+        'Must mount #sec-troubleshooting'
+      )
+      assert.ok(
+        content.includes('id="troubleshoot-search-input"'),
+        'Must contain #troubleshoot-search-input'
+      )
+      assert.ok(
+        content.includes('id="troubleshoot-filter-pills"'),
+        'Must contain #troubleshoot-filter-pills'
+      )
+      assert.ok(
+        content.includes('id="troubleshoot-cards-container"'),
+        'Must contain #troubleshoot-cards-container'
+      )
+      assert.ok(
+        content.includes("role=\"group\""),
+        'Must include role group for filter pills'
+      )
+      assert.ok(
+        content.includes('ArrowLeft') && content.includes('ArrowRight'),
+        'Must support keyboard navigation across category pills'
+      )
+    })
+
+    it('verifies PretrainingRedactionSection contains required workbench, textareas, and actions', () => {
+      const compPath = path.resolve(
+        __dirname,
+        '../app/components/course/pretraining/PretrainingRedactionSection.tsx'
+      )
+      const content = fs.readFileSync(compPath, 'utf8')
+      assert.ok(
+        content.includes('id="sec-redaction"'),
+        'Must mount #sec-redaction'
+      )
+      assert.ok(
+        content.includes('className="redaction-workbench"'),
+        'Must contain .redaction-workbench'
+      )
+      assert.ok(
+        content.includes('id="redaction-count-badge"'),
+        'Must contain #redaction-count-badge'
+      )
+      assert.ok(
+        content.includes('id="redaction-input"'),
+        'Must contain #redaction-input'
+      )
+      assert.ok(
+        content.includes('id="redaction-output"'),
+        'Must contain #redaction-output'
+      )
+      assert.ok(
+        content.includes('id="btn-trigger-redaction"'),
+        'Must contain #btn-trigger-redaction'
+      )
+      assert.ok(
+        content.includes('id="btn-copy-redacted"'),
+        'Must contain #btn-copy-redacted'
+      )
+      assert.ok(
+        content.includes('id="btn-clear-redaction"'),
+        'Must contain #btn-clear-redaction'
+      )
+      assert.ok(
+        content.includes('sanitizeLogText'),
+        'Must integrate sanitizeLogText'
+      )
+      assert.ok(
+        content.includes('copyToClipboard'),
+        'Must integrate copyToClipboard'
+      )
+    })
+
+    it('verifies app/routes/course.ai.tsx imports and mounts both sections beneath readiness', () => {
+      const routePath = path.resolve(__dirname, '../app/routes/course.ai.tsx')
+      const routeContent = fs.readFileSync(routePath, 'utf8')
+
+      assert.ok(
+        routeContent.includes('PretrainingTroubleshootingSection'),
+        'course.ai.tsx must import PretrainingTroubleshootingSection'
+      )
+      assert.ok(
+        routeContent.includes('PretrainingRedactionSection'),
+        'course.ai.tsx must import PretrainingRedactionSection'
+      )
+      assert.ok(
+        routeContent.includes('<PretrainingTroubleshootingSection />'),
+        'course.ai.tsx must mount <PretrainingTroubleshootingSection />'
+      )
+      assert.ok(
+        routeContent.includes('<PretrainingRedactionSection />'),
+        'course.ai.tsx must mount <PretrainingRedactionSection />'
+      )
+
+      const readinessIdx = routeContent.indexOf('<PretrainingReadinessSection')
+      const trblIdx = routeContent.indexOf(
+        '<PretrainingTroubleshootingSection />'
+      )
+      const redactIdx = routeContent.indexOf('<PretrainingRedactionSection />')
+      const resetIdx = routeContent.indexOf('<ResetProgressModal')
+
+      assert.ok(
+        readinessIdx !== -1 &&
+          trblIdx !== -1 &&
+          redactIdx !== -1 &&
+          resetIdx !== -1,
+        'All sections must exist in course.ai.tsx'
+      )
+      assert.ok(
+        readinessIdx < trblIdx,
+        'PretrainingTroubleshootingSection must be beneath PretrainingReadinessSection'
+      )
+      assert.ok(
+        trblIdx < redactIdx,
+        'PretrainingRedactionSection must be beneath PretrainingTroubleshootingSection'
+      )
+      assert.ok(
+        redactIdx < resetIdx,
+        'ResetProgressModal must be after PretrainingRedactionSection'
+      )
     })
   })
 })
