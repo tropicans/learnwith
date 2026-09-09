@@ -5093,8 +5093,8 @@
     "semantic_hash": ""
   },
   ".planning/state.json": {
-    "mtime": 1788919514.5611773,
-    "ast_hash": "71375cb1751917674854b072dff6280f",
+    "mtime": 1788936723.8949165,
+    "ast_hash": "ec2a3f5450fa3e803bd3d945ea0abc18",
     "semantic_hash": ""
   },
   "assets/js/app.js": {
@@ -10368,28 +10368,28 @@
     "semantic_hash": ""
   },
   ".planning/MILESTONES.md": {
-    "mtime": 1788919543.9739144,
+    "mtime": 1788936441.7163236,
     "ast_hash": "e7073336a0d7cf3ed2df91f052585cb6",
     "semantic_hash": ""
   },
   ".planning/PROJECT.md": {
-    "mtime": 1788925175.744086,
-    "ast_hash": "5ca40d156d5c60084856430da7e686fa",
+    "mtime": 1788936723.8653452,
+    "ast_hash": "055f049b3f606edcc2a2d99bde8386f2",
     "semantic_hash": ""
   },
   ".planning/RETROSPECTIVE.md": {
-    "mtime": 1788919576.1187046,
+    "mtime": 1788936441.7198894,
     "ast_hash": "6b6ca2e1f3a4693e9bf10d5a566201ab",
     "semantic_hash": ""
   },
   ".planning/ROADMAP.md": {
-    "mtime": 1788925972.540927,
-    "ast_hash": "9de9f41703a970cd42fb7de5906f7a64",
+    "mtime": 1788936723.868461,
+    "ast_hash": "e007bea0096978a147415f1fae10eb98",
     "semantic_hash": ""
   },
   ".planning/STATE.md": {
-    "mtime": 1788925965.6306064,
-    "ast_hash": "6d9f7490b8fedf2853294a6e51f09e20",
+    "mtime": 1788936723.8699746,
+    "ast_hash": "a0f50c50fe52ff7c4b935959ccc15796",
     "semantic_hash": ""
   },
   ".planning/codebase/ARCHITECTURE.md": {
@@ -10979,7 +10979,7 @@
     "semantic_hash": ""
   },
   "app/routeTree.gen.ts": {
-    "mtime": 1788925843.5585978,
+    "mtime": 1788936441.89116,
     "ast_hash": "78756491e7acb0f4f1186588bcc897aa",
     "semantic_hash": ""
   },
@@ -10989,12 +10989,12 @@
     "semantic_hash": ""
   },
   "app/routes/__root.tsx": {
-    "mtime": 1788925759.554007,
-    "ast_hash": "ec49b2320816403de46458db14adadea",
+    "mtime": 1788936723.9182,
+    "ast_hash": "656e5275c48f84e3a14f19411c1dd859",
     "semantic_hash": ""
   },
   "app/routes/index.tsx": {
-    "mtime": 1788922524.2307978,
+    "mtime": 1788936724.0707147,
     "ast_hash": "6f40df1191a1e70d1ac63a28d3831828",
     "semantic_hash": ""
   },
@@ -11059,7 +11059,7 @@
     "semantic_hash": ""
   },
   "tsconfig.json": {
-    "mtime": 1788918419.132627,
+    "mtime": 1788936441.9900086,
     "ast_hash": "8e4b130f688640459547d74b8456419e",
     "semantic_hash": ""
   },
@@ -11239,13 +11239,13 @@
     "semantic_hash": ""
   },
   "app/routes/course.ai.tsx": {
-    "mtime": 1788918485.8467834,
+    "mtime": 1788936441.8931694,
     "ast_hash": "6f53b3fcedcb45f4d525abc07d2c2c07",
     "semantic_hash": ""
   },
   "app/routes/course.word.tsx": {
-    "mtime": 1788855513.8666236,
-    "ast_hash": "c66dfb8c8c901dd2de70dd0e07b77234",
+    "mtime": 1788936567.621672,
+    "ast_hash": "18d38773bd3286c09751f3277627a60c",
     "semantic_hash": ""
   },
   "app/schemas/searchParams.ts": {
@@ -11424,8 +11424,8 @@
     "semantic_hash": ""
   },
   "app/components/course/ChecklistIsland.tsx": {
-    "mtime": 1788853000.1249185,
-    "ast_hash": "168dd0808cd384aa0cc7b5ed777b257b",
+    "mtime": 1788936567.6154199,
+    "ast_hash": "c7a175323e5d0810fd0b9d1f24aaeae1",
     "semantic_hash": ""
   },
   "app/components/ui/Skeleton.tsx": {
@@ -11434,22 +11434,22 @@
     "semantic_hash": ""
   },
   "app/components/course/InstructorUnlockModal.tsx": {
-    "mtime": 1788855564.621262,
-    "ast_hash": "24b36b35a9d04343465fea0ba1177478",
+    "mtime": 1788936723.9150453,
+    "ast_hash": "5647fa53dc22a08981d97a86b9de2443",
     "semantic_hash": ""
   },
   "app/schemas/serverFn.ts": {
-    "mtime": 1788855194.45736,
-    "ast_hash": "f931e1bea22af32b950581bceebbc750",
+    "mtime": 1788936723.919776,
+    "ast_hash": "a9e4f4533af9bca487a77d5976d01184",
     "semantic_hash": ""
   },
   "app/server/auth.ts": {
-    "mtime": 1788855424.991544,
-    "ast_hash": "2443d929930ec3249fb3bd4c97332b7f",
+    "mtime": 1788936723.9202988,
+    "ast_hash": "d719f2d6d5cbbe20024defc1652b7ed4",
     "semantic_hash": ""
   },
   "app/server/config.ts": {
-    "mtime": 1788925659.8023953,
+    "mtime": 1788936441.8971653,
     "ast_hash": "e0f3eda00aa167d1db6f279c8cdecac0",
     "semantic_hash": ""
   },
@@ -11464,7 +11464,7 @@
     "semantic_hash": ""
   },
   "tests/server-boundary-audit.test.js": {
-    "mtime": 1788925664.575863,
+    "mtime": 1788936441.9889982,
     "ast_hash": "75fc94571bb15125ca45784d2b54e462",
     "semantic_hash": ""
   },
@@ -11504,8 +11504,8 @@
     "semantic_hash": ""
   },
   "tests/docker-smoke.test.js": {
-    "mtime": 1788858472.4540274,
-    "ast_hash": "ac9a2634c2d4f360ab1d7e9a10a7ec75",
+    "mtime": 1788936567.6850467,
+    "ast_hash": "c02486645aa0c06be2093af485f086ba",
     "semantic_hash": ""
   },
   "public/assets/icons/favicon.svg": {
@@ -11554,757 +11554,757 @@
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingGlossarySection.tsx": {
-    "mtime": 1788861085.7174377,
+    "mtime": 1788936441.880514,
     "ast_hash": "d9842f2b01d62c1b7eddd7bdc85b14c9",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingHero.tsx": {
-    "mtime": 1788916888.3278246,
+    "mtime": 1788936441.880514,
     "ast_hash": "c5a71dccdb2b79c8edb84c7a5763ead7",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingPowerShellSection.tsx": {
-    "mtime": 1788861099.544731,
+    "mtime": 1788936441.8815124,
     "ast_hash": "88913eaacfb7c04b02d9b48d1b55fac8",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingPrerequisitesSection.tsx": {
-    "mtime": 1788861094.0754192,
+    "mtime": 1788936441.8825095,
     "ast_hash": "b3c224c7aa4f52709e36265a32035cf6",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingSecuritySection.tsx": {
-    "mtime": 1788861090.1932418,
+    "mtime": 1788936441.8850389,
     "ast_hash": "93466a41e8a21415065e0d198c545161",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingTargetSection.tsx": {
-    "mtime": 1788861082.487507,
+    "mtime": 1788936441.8870337,
     "ast_hash": "d4b41e391acb5d57057fa2f45282544d",
     "semantic_hash": ""
   },
   "app/data/pretrainingFoundation.ts": {
-    "mtime": 1788861044.138275,
+    "mtime": 1788936441.8885517,
     "ast_hash": "0253e15795a57509eaf12568478f3a54",
     "semantic_hash": ""
   },
   "tests/pretraining-foundation.test.js": {
-    "mtime": 1788861167.4072747,
+    "mtime": 1788936441.987003,
     "ast_hash": "8d2494568358d12a75a016bd7f6b14c7",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-MILESTONE-AUDIT.md": {
-    "mtime": 1788859217.3918798,
+    "mtime": 1788936441.7254145,
     "ast_hash": "98e3ee7b8618e62d1f46816dadd4adc3",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-REQUIREMENTS.md": {
-    "mtime": 1788860139.1987247,
+    "mtime": 1788936441.7264168,
     "ast_hash": "f2b610a296e6e5c57047589277d5f51e",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-ROADMAP.md": {
-    "mtime": 1788860139.196632,
+    "mtime": 1788936441.7264168,
     "ast_hash": "9c1e58e3b565d2801304d896d017463a",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-01-PLAN.md": {
-    "mtime": 1788850624.1244583,
+    "mtime": 1788936441.7294624,
     "ast_hash": "026c9294b804362b532d53c9e0dada34",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-01-SUMMARY.md": {
-    "mtime": 1788850624.1254642,
+    "mtime": 1788936441.7299876,
     "ast_hash": "3ac78be31711d8f78a26e4a8853c43ae",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-02-PLAN.md": {
-    "mtime": 1788850624.1254642,
+    "mtime": 1788936441.7309992,
     "ast_hash": "291cdd1dace83d354c139bd383496eab",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-02-SUMMARY.md": {
-    "mtime": 1788850624.1264648,
+    "mtime": 1788936441.7319987,
     "ast_hash": "05879031a60d1226a6c32b78d6b82a9e",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-03-PLAN.md": {
-    "mtime": 1788850624.1274655,
+    "mtime": 1788936441.7319987,
     "ast_hash": "eae287f3e1a2662ff8f510d286640a0d",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-03-SUMMARY.md": {
-    "mtime": 1788850980.531921,
+    "mtime": 1788936441.7319987,
     "ast_hash": "854e81255d3da31d0363627b9220f978",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-CONTEXT.md": {
-    "mtime": 1788850624.1274655,
+    "mtime": 1788936441.7340298,
     "ast_hash": "4e46f111b34b0446a336e1f14996a4ae",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-DISCUSSION-LOG.md": {
-    "mtime": 1788850624.1284654,
+    "mtime": 1788936441.7350366,
     "ast_hash": "850858d45732c389aca2aca80c9883c1",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-PATTERNS.md": {
-    "mtime": 1788850624.129465,
+    "mtime": 1788936441.736039,
     "ast_hash": "212c64ccac5103d99447dddbd2634d5f",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-RESEARCH.md": {
-    "mtime": 1788850624.1304643,
+    "mtime": 1788936441.736039,
     "ast_hash": "783b291e0044779af1ee0d260df86719",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-VALIDATION.md": {
-    "mtime": 1788850624.1314676,
+    "mtime": 1788936441.737348,
     "ast_hash": "1cda02fc90bf43ca32561134de32c147",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/19-tanstack-start-full-stack-tooling-foundation/19-VERIFICATION.md": {
-    "mtime": 1788851033.4511786,
+    "mtime": 1788936441.737941,
     "ast_hash": "7d90f7794c6c1578e66e011630f4008b",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-01-PLAN.md": {
-    "mtime": 1788851404.838828,
+    "mtime": 1788936441.7389476,
     "ast_hash": "e9edbb221a14ac079703b0e044fb790a",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-01-SUMMARY.md": {
-    "mtime": 1788851691.9070165,
+    "mtime": 1788936441.7389476,
     "ast_hash": "b46cb90a699fe252b8f2218aba93fa57",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-02-PLAN.md": {
-    "mtime": 1788851431.0464044,
+    "mtime": 1788936441.7436688,
     "ast_hash": "1f3a22c824c99760845c6e64ef083d16",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-02-SUMMARY.md": {
-    "mtime": 1788851695.974365,
+    "mtime": 1788936441.7451775,
     "ast_hash": "dc2b041fbeec20e639a321b699779d12",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-03-PLAN.md": {
-    "mtime": 1788851418.9966345,
+    "mtime": 1788936441.7461898,
     "ast_hash": "8aaacac778e47275857be524fa51d0a1",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-03-SUMMARY.md": {
-    "mtime": 1788851700.7618704,
+    "mtime": 1788936441.7467008,
     "ast_hash": "b19aa0975dcc80d6bbe38c8240350359",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-PATTERNS.md": {
-    "mtime": 1788851393.9378242,
+    "mtime": 1788936441.7477117,
     "ast_hash": "6908d011f5f8836a583627cbd6d2ea4e",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-RESEARCH.md": {
-    "mtime": 1788851358.2559533,
+    "mtime": 1788936441.7477117,
     "ast_hash": "bea4e55d2edbbe079ef2cdd11898b2d2",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-VALIDATION.md": {
-    "mtime": 1788851375.406189,
+    "mtime": 1788936441.7492187,
     "ast_hash": "8085a64e73ec8048a5d98f2edd0339d2",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/20-file-based-routes-validated-search-params/20-VERIFICATION.md": {
-    "mtime": 1788851705.0031078,
+    "mtime": 1788936441.7497332,
     "ast_hash": "4bb34feef91681a0949df4e506e76e62",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-01-PLAN.md": {
-    "mtime": 1788852189.6951716,
+    "mtime": 1788936441.7507427,
     "ast_hash": "159af3d389367ad9722ad14294cdde51",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-01-SUMMARY.md": {
-    "mtime": 1788852914.1270866,
+    "mtime": 1788936441.751739,
     "ast_hash": "90dac4dfc901f5a1cf2f134abadae9e3",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-02-PLAN.md": {
-    "mtime": 1788852198.6664345,
+    "mtime": 1788936441.7527418,
     "ast_hash": "a2f9900594c28ac6626d591bba73522b",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-02-SUMMARY.md": {
-    "mtime": 1788853104.846933,
+    "mtime": 1788936441.75425,
     "ast_hash": "d1cfd645e9b1ca7535d8f993a63cddeb",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-03-PLAN.md": {
-    "mtime": 1788852205.9004712,
+    "mtime": 1788936441.7552574,
     "ast_hash": "e551133715aa993e3e53b567caaec899",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-03-SUMMARY.md": {
-    "mtime": 1788853198.6124818,
+    "mtime": 1788936441.7552574,
     "ast_hash": "a0e453f4950cd2d939f07cb4831fe91e",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-PATTERNS.md": {
-    "mtime": 1788852162.2533505,
+    "mtime": 1788936441.7562573,
     "ast_hash": "41a64967de8e2c3f5cd32e155c2cd9fb",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-RESEARCH.md": {
-    "mtime": 1788852115.9111521,
+    "mtime": 1788936441.7572904,
     "ast_hash": "717648f92c620b8f63d3f569cbcd2f90",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-VALIDATION.md": {
-    "mtime": 1788852131.5186563,
+    "mtime": 1788936441.7578099,
     "ast_hash": "da478a646090ce5636ebfabd5040d67f",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/21-typed-route-loaders-full-document-ssr-progressive-streaming/21-VERIFICATION.md": {
-    "mtime": 1788853266.8890407,
+    "mtime": 1788936441.7578099,
     "ast_hash": "e8cf9439d249ac79013334e4e7772f35",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-01-PLAN.md": {
-    "mtime": 1788855019.4496171,
+    "mtime": 1788936441.7598238,
     "ast_hash": "f2a06b6e90a7af6bfd73d606158eba55",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-01-SUMMARY.md": {
-    "mtime": 1788855302.3701189,
+    "mtime": 1788936441.7598238,
     "ast_hash": "8359fa543f27b265c0019aad4581e0a1",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-02-PLAN.md": {
-    "mtime": 1788855019.4506173,
+    "mtime": 1788936441.7608917,
     "ast_hash": "e7ce3b1edcd64fb6ca373635d76d6f62",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-02-SUMMARY.md": {
-    "mtime": 1788855460.427781,
+    "mtime": 1788936441.7608917,
     "ast_hash": "5cc463a313fe0effaec0ab472ffd6032",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-03-PLAN.md": {
-    "mtime": 1788855019.4506173,
+    "mtime": 1788936441.7623973,
     "ast_hash": "c28a80dad46179f6b3e13d1afbb4f8d0",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-03-SUMMARY.md": {
-    "mtime": 1788855579.46526,
+    "mtime": 1788936441.7623973,
     "ast_hash": "81a16e91af5ea662e552d99c91e50060",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-PATTERNS.md": {
-    "mtime": 1788854955.1541164,
+    "mtime": 1788936441.763406,
     "ast_hash": "4b74700068a417e8c487a4fd33b945cd",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-RESEARCH.md": {
-    "mtime": 1788854927.0178075,
+    "mtime": 1788936441.7639143,
     "ast_hash": "b07959c842c597620dcac269832739e1",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-VALIDATION.md": {
-    "mtime": 1788854939.6670554,
+    "mtime": 1788936441.7639143,
     "ast_hash": "3b9b4ecde3d4f617ab8c0a0f272e78f0",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/22-typed-server-functions-boundary-isolation/22-VERIFICATION.md": {
-    "mtime": 1788855610.2616873,
+    "mtime": 1788936441.7639143,
     "ast_hash": "a0958b10a18ee4085ccd9673b686236a",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-01-PLAN.md": {
-    "mtime": 1788857872.3445084,
+    "mtime": 1788936441.765437,
     "ast_hash": "69e14ce02c6a6a78233bae6029476686",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-01-SUMMARY.md": {
-    "mtime": 1788858336.0101542,
+    "mtime": 1788936441.765437,
     "ast_hash": "6a7572370eaca8f80090bac6b24f19ae",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-02-PLAN.md": {
-    "mtime": 1788857885.0702577,
+    "mtime": 1788936441.767957,
     "ast_hash": "07e0389c39d439b9724e5127d04fb7f8",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-02-SUMMARY.md": {
-    "mtime": 1788858410.2486527,
+    "mtime": 1788936441.767957,
     "ast_hash": "ff350cc9233cbb70833533b56315cb11",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-03-PLAN.md": {
-    "mtime": 1788857904.2845287,
+    "mtime": 1788936441.7689562,
     "ast_hash": "0deb772344f8a80627c3be9d5b50a558",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-03-SUMMARY.md": {
-    "mtime": 1788858789.1616192,
+    "mtime": 1788936441.7689562,
     "ast_hash": "65678ba740136636caad5f6869ec125a",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-CONTEXT.md": {
-    "mtime": 1788856966.6849525,
+    "mtime": 1788936441.7689562,
     "ast_hash": "e1dcff0c00e4984da8d09873434999d8",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-DISCUSSION-LOG.md": {
-    "mtime": 1788856966.6894722,
+    "mtime": 1788936441.7704635,
     "ast_hash": "debaa41a2504cd774714165471c13186",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-PATTERNS.md": {
-    "mtime": 1788857714.9342353,
+    "mtime": 1788936441.7704635,
     "ast_hash": "5cd1ca3f8855dbd5742d8cf122b75222",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-RESEARCH.md": {
-    "mtime": 1788857510.2660291,
+    "mtime": 1788936441.7714734,
     "ast_hash": "f1d9289cfc642ba6416d8bb87e9f0647",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-VALIDATION.md": {
-    "mtime": 1788857911.924627,
+    "mtime": 1788936441.7714734,
     "ast_hash": "8646e7c5e49d756320820676af53f90e",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-phases/23-route-level-ssr-optimization-production-docker-target/23-VERIFICATION.md": {
-    "mtime": 1788858818.4349556,
+    "mtime": 1788936441.7714734,
     "ast_hash": "4ecb7b5d2e2f365967b213764754937c",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-PLAN.md": {
-    "mtime": 1788399381.0197036,
+    "mtime": 1788936441.7729826,
     "ast_hash": "58eb22f13f673468f9a81a0e2a35e7b3",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-SUMMARY.md": {
-    "mtime": 1788400386.1713088,
+    "mtime": 1788936441.7729826,
     "ast_hash": "3a7be8e2dc12de6d944cea67cda189fc",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260903-buq-fix-reviewed-search-dom-corruption-and-x/260903-buq-VERIFICATION.md": {
-    "mtime": 1788400628.6986444,
+    "mtime": 1788936441.7749865,
     "ast_hash": "5724becdae9f0c52125421b6a8d64301",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-PLAN.md": {
-    "mtime": 1788412452.08647,
+    "mtime": 1788936441.7769928,
     "ast_hash": "efdaadf2d5a65c5e6a919202b93ae8d7",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-SUMMARY.md": {
-    "mtime": 1788414707.48814,
+    "mtime": 1788936441.777985,
     "ast_hash": "9eeb3814782c4052dda32216f7bd477a",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260903-gsa-improve-smartphone-layout-from-ui-audit-/260903-gsa-VERIFICATION.md": {
-    "mtime": 1788414448.331642,
+    "mtime": 1788936441.778987,
     "ast_hash": "66499c5ba4e3ecb7d46452ed85713e75",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/260907-g9a-PLAN.md": {
-    "mtime": 1788756151.3625746,
+    "mtime": 1788936441.7799857,
     "ast_hash": "511db39c0f80e79e59f04beee1ea49bd",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/260907-g9a-SUMMARY.md": {
-    "mtime": 1788860070.174354,
+    "mtime": 1788936441.7799857,
     "ast_hash": "38fc84218bdd02c5461d3f435b9b01ab",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260907-g9a-nama-workshopnya-adalah-hands-on-agentic/SUMMARY.md": {
-    "mtime": 1788860042.281217,
+    "mtime": 1788936441.7819965,
     "ast_hash": "fa88ca9cc1ff30583a43de5910e97032",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260907-nlm-frontpage-default-html/PLAN.md": {
-    "mtime": 1788767527.2340672,
+    "mtime": 1788936441.7819965,
     "ast_hash": "c505421048dc3b1ca90dbd85e7811f00",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260907-nlm-frontpage-default-html/SUMMARY.md": {
-    "mtime": 1788767590.4844544,
+    "mtime": 1788936441.783502,
     "ast_hash": "fb0773ac08b646bd5a6e78e2c9adc3eb",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-dck-dockerignore-test-runner-fix/PLAN.md": {
-    "mtime": 1788850624.132969,
+    "mtime": 1788936441.7846456,
     "ast_hash": "5570266d2dd3e8eeb1ee56e97abce73a",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-dck-dockerignore-test-runner-fix/SUMMARY.md": {
-    "mtime": 1788850624.1334994,
+    "mtime": 1788936441.7846456,
     "ast_hash": "1ccdfe55725edba7329968fadb1573f6",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-gra-graphify-antigravity-install/PLAN.md": {
-    "mtime": 1788850624.134618,
+    "mtime": 1788936441.7861598,
     "ast_hash": "dcb4eb81a52d688ae791d8cb8438d5a2",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-gra-graphify-antigravity-install/SUMMARY.md": {
-    "mtime": 1788850624.1351516,
+    "mtime": 1788936441.7861598,
     "ast_hash": "cf58d9c3f8e27d11501ee1f77b6a0360",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-k0z-ganti-logo-nya-menjadi-yang-terlampir/PLAN.md": {
-    "mtime": 1788852611.8258252,
+    "mtime": 1788936441.7871692,
     "ast_hash": "1fa9b5de611f5d1ccbd7deb81e2fca00",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-k0z-ganti-logo-nya-menjadi-yang-terlampir/SUMMARY.md": {
-    "mtime": 1788852617.4326997,
+    "mtime": 1788936441.7871692,
     "ast_hash": "a03e6941f844623b69eece442c43acd6",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-pga-postgresql-storage-architecture-analysis/PLAN.md": {
-    "mtime": 1788850624.1356819,
+    "mtime": 1788936441.7886777,
     "ast_hash": "0f3f4eac805fd0ef45f99a28facd9ae0",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-pga-postgresql-storage-architecture-analysis/SUMMARY.md": {
-    "mtime": 1788850624.1362045,
+    "mtime": 1788936441.7886777,
     "ast_hash": "c8129ffba843b374d4acd53858f8e551",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-uip-uipro-antigravity-init/PLAN.md": {
-    "mtime": 1788850624.1373606,
+    "mtime": 1788936441.7896912,
     "ast_hash": "634e10f280b35f1b04fc659204180723",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/260908-uip-uipro-antigravity-init/SUMMARY.md": {
-    "mtime": 1788850624.137918,
+    "mtime": 1788936441.7896912,
     "ast_hash": "44afc21503d160d09ffd66e06834088a",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.0-quick/README.md": {
-    "mtime": 1788860139.2365062,
+    "mtime": 1788936441.7906868,
     "ast_hash": "a143923b3299d475a17b8b4600cf95eb",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/CheckpointGateCard.tsx": {
-    "mtime": 1788916762.655062,
+    "mtime": 1788936441.865496,
     "ast_hash": "6a34c129c6482b15e7e92d13e7ee91ed",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/CheckpointPreviewCard.tsx": {
-    "mtime": 1788914374.8530502,
+    "mtime": 1788936441.865496,
     "ast_hash": "ceef20ac5c525b4f625afff659301ca4",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/CopyableCodeBlock.tsx": {
-    "mtime": 1788914351.5277402,
+    "mtime": 1788936441.8785172,
     "ast_hash": "9a7f85715ff3c9171a9e0d08dfdfb3e9",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/ModuleArchitectureFlow.tsx": {
-    "mtime": 1788914378.69661,
+    "mtime": 1788936441.879515,
     "ast_hash": "b0378f4c00c0af7da45ec52576b149fc",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingCheckpointsSection.tsx": {
-    "mtime": 1788916770.861816,
+    "mtime": 1788936441.879515,
     "ast_hash": "9f118f407b4a3fa3e70853d8b0c254df",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingModuleCard.tsx": {
-    "mtime": 1788916920.77331,
+    "mtime": 1788936441.8815124,
     "ast_hash": "2bfa71e767ed4a98057a0c09d3cf145e",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingModulesSection.tsx": {
-    "mtime": 1788916883.6409006,
+    "mtime": 1788936441.8815124,
     "ast_hash": "5b714d4026453654682c62518c6fef05",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingReadinessSection.tsx": {
-    "mtime": 1788916796.0697632,
+    "mtime": 1788936441.88404,
     "ast_hash": "9c006339d27c9892b0572ebce13fe719",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingRedactionSection.tsx": {
-    "mtime": 1788917876.402021,
+    "mtime": 1788936441.88404,
     "ast_hash": "65a1c3cb43f17bc0a1f0c08bdb1ccc14",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingTroubleshootingSection.tsx": {
-    "mtime": 1788917868.7071657,
+    "mtime": 1788936441.8875425,
     "ast_hash": "07144886a39ec2b2e64c50f47fa53762",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/ResetProgressModal.tsx": {
-    "mtime": 1788916801.2375019,
+    "mtime": 1788936441.8875425,
     "ast_hash": "b545517281d8f1dcb5d762b6d25a7f51",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/TroubleshootingCard.tsx": {
-    "mtime": 1788917861.9600344,
+    "mtime": 1788936441.8875425,
     "ast_hash": "c4a168e2a886511fb6f3c52db912c31a",
     "semantic_hash": ""
   },
   "app/components/ui/Toast.tsx": {
-    "mtime": 1788914346.9087293,
+    "mtime": 1788936441.8885517,
     "ast_hash": "f62bb9589f208f00cd8b893992b0d850",
     "semantic_hash": ""
   },
   "app/data/pretrainingModules.ts": {
-    "mtime": 1788916703.2159932,
+    "mtime": 1788936441.8895545,
     "ast_hash": "a9cb9548de3695e743d409fe14a343c7",
     "semantic_hash": ""
   },
   "app/data/pretrainingTroubleshooting.ts": {
-    "mtime": 1788917794.5591514,
+    "mtime": 1788936441.8895545,
     "ast_hash": "81bd1e3407974e7fc7ba0aabd773546f",
     "semantic_hash": ""
   },
   "app/hooks/usePretrainingState.ts": {
-    "mtime": 1788918299.753047,
-    "ast_hash": "c748155ab61c7567ff82546f3ce57f46",
+    "mtime": 1788936567.6200788,
+    "ast_hash": "7a195b6d8aba5dbee8f050d5ce0d80bf",
     "semantic_hash": ""
   },
   "app/utils/redaction.ts": {
-    "mtime": 1788917802.2163796,
+    "mtime": 1788936441.9036837,
     "ast_hash": "9083956ada80f76cf6f526e3f04c2509",
     "semantic_hash": ""
   },
   "tests/pretraining-checklist.test.js": {
-    "mtime": 1788916969.0979023,
+    "mtime": 1788936441.987003,
     "ast_hash": "b11e332d0173b3ea71779365a0a2cb68",
     "semantic_hash": ""
   },
   "tests/pretraining-modules.test.js": {
-    "mtime": 1788916704.9806037,
+    "mtime": 1788936441.987003,
     "ast_hash": "25e859894f0cadfddb224d3e49399729",
     "semantic_hash": ""
   },
   "tests/pretraining-troubleshooting.test.js": {
-    "mtime": 1788917909.1958623,
+    "mtime": 1788936441.9880002,
     "ast_hash": "233dc7b8a795cd10dcafaf47ad6ae995",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingReadinessReportSection.tsx": {
-    "mtime": 1788918495.4594657,
-    "ast_hash": "a8e5536ea202b06333b4568e53a8d4e0",
+    "mtime": 1788936723.916049,
+    "ast_hash": "051f26a532220f7f31fc9b1faf191bed",
     "semantic_hash": ""
   },
   "app/components/course/pretraining/PretrainingSidebar.tsx": {
-    "mtime": 1788918465.4074466,
+    "mtime": 1788936441.8860352,
     "ast_hash": "5267ab5e9009b05fd3400d43257afe90",
     "semantic_hash": ""
   },
   "app/utils/reportGenerator.ts": {
-    "mtime": 1788918346.0139022,
+    "mtime": 1788936441.9046972,
     "ast_hash": "2afa7714be38211cadcc4d9f9070f75f",
     "semantic_hash": ""
   },
   "tests/pretraining-readiness-report.test.js": {
-    "mtime": 1788918506.9298022,
+    "mtime": 1788936441.9880002,
     "ast_hash": "74f0a63f21e8f095a7c4a260058d20ec",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-MILESTONE-AUDIT.md": {
-    "mtime": 1788918902.3258204,
+    "mtime": 1788936441.7906868,
     "ast_hash": "cec46454cf3e737d6f8e2834e8885df1",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-REQUIREMENTS.md": {
-    "mtime": 1788919513.5863266,
+    "mtime": 1788936441.791688,
     "ast_hash": "89563c8717cab10d8354b7404b68d8af",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-ROADMAP.md": {
-    "mtime": 1788919513.5853312,
+    "mtime": 1788936441.791688,
     "ast_hash": "2af274828415ba77365a5fcc50f65423",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-01-PLAN.md": {
-    "mtime": 1788860930.8866277,
+    "mtime": 1788936441.7926836,
     "ast_hash": "ac1acda1655ef393f89eaf0ff22d20d2",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-01-SUMMARY.md": {
-    "mtime": 1788861115.093519,
+    "mtime": 1788936441.7936876,
     "ast_hash": "45f537a33b640c5d76ad2661e6ef23d1",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-02-PLAN.md": {
-    "mtime": 1788860939.124741,
+    "mtime": 1788936441.7946832,
     "ast_hash": "34f31b945a19a0a3d59c233b53be1af6",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-02-SUMMARY.md": {
-    "mtime": 1788861275.9289577,
+    "mtime": 1788936441.7946832,
     "ast_hash": "65a63c83c48596267bca83e2563dc4b8",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/24-pre-training-foundation-sections-data-extraction/24-VERIFICATION.md": {
-    "mtime": 1788861292.5937018,
+    "mtime": 1788936441.7956843,
     "ast_hash": "eacc0b9cdd47f00aa2f9927f61e04099",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-PLAN.md": {
-    "mtime": 1788862121.425035,
+    "mtime": 1788936441.796685,
     "ast_hash": "6456b784c087c16744f55c9f9d180b21",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-01-SUMMARY.md": {
-    "mtime": 1788914413.111865,
+    "mtime": 1788936441.796685,
     "ast_hash": "2b77c3a8e5fcb088cd80ffe596a47a43",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-PLAN.md": {
-    "mtime": 1788862133.706971,
+    "mtime": 1788936441.7976837,
     "ast_hash": "03ba9cb4a36138db6cef82d284e242b7",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-02-SUMMARY.md": {
-    "mtime": 1788914586.228627,
+    "mtime": 1788936441.798683,
     "ast_hash": "ee5816b2a352f391f4ef6f32b5a56225",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-PATTERNS.md": {
-    "mtime": 1788862020.4070945,
+    "mtime": 1788936441.7992933,
     "ast_hash": "bf570140e74cce4258705d82da6dfa7c",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-RESEARCH.md": {
-    "mtime": 1788861795.2839577,
+    "mtime": 1788936441.7992933,
     "ast_hash": "d56700546990c1f7ed525434ddcef30f",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-VALIDATION.md": {
-    "mtime": 1788861834.075649,
+    "mtime": 1788936441.7992933,
     "ast_hash": "822d93048244b038d80f35265c305743",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/25-interactive-modules-1-5-1-click-copy-engine/25-VERIFICATION.md": {
-    "mtime": 1788914696.8439152,
+    "mtime": 1788936441.7992933,
     "ast_hash": "c4791dfbe0da1cf4cdc8a6fb6df7b34f",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-PLAN.md": {
-    "mtime": 1788916568.5392587,
+    "mtime": 1788936441.8017235,
     "ast_hash": "ea735c16922ff4614f7b0d84aa594067",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-01-SUMMARY.md": {
-    "mtime": 1788916824.5598695,
+    "mtime": 1788936441.8022287,
     "ast_hash": "9af0e10b3939a74320aeec984b8ad445",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-PLAN.md": {
-    "mtime": 1788916581.404803,
+    "mtime": 1788936441.8037562,
     "ast_hash": "270463bb03339fce4dcc6e1e4493f834",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-02-SUMMARY.md": {
-    "mtime": 1788917007.0283132,
+    "mtime": 1788936441.8037562,
     "ast_hash": "9301dce74bc9daa88c334d310d3b62dd",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-PATTERNS.md": {
-    "mtime": 1788916495.7957375,
+    "mtime": 1788936441.8047605,
     "ast_hash": "1d7dcb6eb590495a74ac0c6e46c855ef",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-RESEARCH.md": {
-    "mtime": 1788916314.1132593,
+    "mtime": 1788936441.8047605,
     "ast_hash": "f78db9af33b42df18850eb6369f50d6f",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VALIDATION.md": {
-    "mtime": 1788916340.0332253,
+    "mtime": 1788936441.8058727,
     "ast_hash": "e2f65bfd0b606de440fe2f4ec8cd36bd",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/26-checklist-engine-checkpoint-gates-dynamic-readiness/26-VERIFICATION.md": {
-    "mtime": 1788917079.2083757,
+    "mtime": 1788936441.8058727,
     "ast_hash": "801be4322138b163958fc3fc226b999b",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-PLAN.md": {
-    "mtime": 1788917598.3211746,
+    "mtime": 1788936441.80687,
     "ast_hash": "ec1c3d51508c735e44f3e71389b01b68",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-01-SUMMARY.md": {
-    "mtime": 1788917837.9215593,
+    "mtime": 1788936441.80687,
     "ast_hash": "a925844ebc3c8334f77d9295742a1d7b",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-PLAN.md": {
-    "mtime": 1788917612.122669,
+    "mtime": 1788936441.8088734,
     "ast_hash": "45f0375ecb1b1b0e72b78f13f80defe7",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-02-SUMMARY.md": {
-    "mtime": 1788917927.246351,
+    "mtime": 1788936441.8098743,
     "ast_hash": "59ab559dca4d4bd2bb25be9c016eb6ae",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-PATTERNS.md": {
-    "mtime": 1788917540.689384,
+    "mtime": 1788936441.8098743,
     "ast_hash": "3756ccaa3bd6bf404e97c77d04878ad1",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-RESEARCH.md": {
-    "mtime": 1788917398.235416,
+    "mtime": 1788936441.811392,
     "ast_hash": "8a18c353a871c9f182f29a3a20f4153e",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VALIDATION.md": {
-    "mtime": 1788917433.9086113,
+    "mtime": 1788936441.8117788,
     "ast_hash": "476244c2a66ab053238ce4d0ca686b14",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/27-troubleshooting-hub-secret-token-redaction-assistant/27-VERIFICATION.md": {
-    "mtime": 1788917958.4712336,
+    "mtime": 1788936441.812405,
     "ast_hash": "2f9c6e570dad8daaafe0a5fec572aa54",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-PLAN.md": {
-    "mtime": 1788918271.3958163,
+    "mtime": 1788936441.8133988,
     "ast_hash": "7db5f04ca186a6178b0abae4aca59fc0",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-01-SUMMARY.md": {
-    "mtime": 1788918445.5231361,
+    "mtime": 1788936441.8133988,
     "ast_hash": "87361607a4b66a9ae8908d6900f7589f",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-02-PLAN.md": {
-    "mtime": 1788918277.9311895,
+    "mtime": 1788936441.8153963,
     "ast_hash": "413c260f229ccb4db272bc88f5918e8f",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-02-SUMMARY.md": {
-    "mtime": 1788918544.4009464,
+    "mtime": 1788936441.8163972,
     "ast_hash": "32618a9a3f70ee8b78dba87c64f10d8b",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-PATTERNS.md": {
-    "mtime": 1788918242.9388206,
+    "mtime": 1788936441.8163972,
     "ast_hash": "c54dd66d95372068ce021e87037a235c",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-RESEARCH.md": {
-    "mtime": 1788918239.3510728,
+    "mtime": 1788936441.8163972,
     "ast_hash": "a31ff4ab1b863a0aa5bd7a4183a885f8",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-VALIDATION.md": {
-    "mtime": 1788918281.542705,
+    "mtime": 1788936441.8176286,
     "ast_hash": "6caaad29acc444a2f345ffcb040fa976",
     "semantic_hash": ""
   },
   ".planning/milestones/v3.1-phases/28-laporan-kesiapan-generator-sidebar-sync-e2e-zero-regression/28-VERIFICATION.md": {
-    "mtime": 1788919429.7421262,
+    "mtime": 1788936441.8176286,
     "ast_hash": "e325bb6e22c532e39bbdb8db19df8947",
     "semantic_hash": ""
   },
@@ -12454,83 +12454,463 @@
     "semantic_hash": ""
   },
   ".planning/REQUIREMENTS.md": {
-    "mtime": 1788925286.3254235,
-    "ast_hash": "48e4a66fcd3a182f0568538a8bd83f80",
+    "mtime": 1788936723.8668523,
+    "ast_hash": "1b21e2729e34e673c5e2680b937c5766",
     "semantic_hash": ""
   },
   ".planning/phases/29-master-admin-authentication-route-protection-google-oauth-ar/29-01-PLAN.md": {
-    "mtime": 1788925464.6770308,
+    "mtime": 1788936441.820629,
     "ast_hash": "c11287f7862a00b8c9b61dc61fa2fb06",
     "semantic_hash": ""
   },
   ".planning/phases/29-master-admin-authentication-route-protection-google-oauth-ar/29-02-PLAN.md": {
-    "mtime": 1788925474.973648,
+    "mtime": 1788936441.8231604,
     "ast_hash": "ae6e7edfe5d49fccd66ad2b4224bd680",
     "semantic_hash": ""
   },
   ".planning/phases/29-master-admin-authentication-route-protection-google-oauth-ar/29-RESEARCH.md": {
-    "mtime": 1788925446.355238,
+    "mtime": 1788936441.8231604,
     "ast_hash": "7661e82b6eec50e445f359f47f2c642d",
     "semantic_hash": ""
   },
   ".planning/phases/29-master-admin-authentication-route-protection-google-oauth-ar/29-VALIDATION.md": {
-    "mtime": 1788925451.7784004,
+    "mtime": 1788936441.8244548,
     "ast_hash": "8ebb1899fe25dff10054fb9a4047da3e",
     "semantic_hash": ""
   },
   "app/components/admin/AdminLoginGate.tsx": {
-    "mtime": 1788925779.7450814,
+    "mtime": 1788936441.851158,
     "ast_hash": "5e7965bc4a857adce102c585119970ea",
     "semantic_hash": ""
   },
   "app/components/admin/AdminShell.tsx": {
-    "mtime": 1788925791.5772884,
-    "ast_hash": "d40037cb1db9212e4050524d50f9778c",
+    "mtime": 1788936723.8959203,
+    "ast_hash": "01854b7b1e7cd00eb1f8e4a6c94435fd",
     "semantic_hash": ""
   },
   "app/components/admin/GoogleSignInButton.tsx": {
-    "mtime": 1788925770.3733172,
+    "mtime": 1788936441.8531582,
     "ast_hash": "858825b548a612c8d425411306185c76",
     "semantic_hash": ""
   },
   "app/routes/admin.tsx": {
-    "mtime": 1788925801.3738074,
+    "mtime": 1788936441.8921692,
     "ast_hash": "6c16dd184e5cc2716385506fad9cc20a",
     "semantic_hash": ""
   },
   "app/schemas/admin.ts": {
-    "mtime": 1788925596.785459,
+    "mtime": 1788936441.8941665,
     "ast_hash": "e75433215c08c69c2f29ba807a1a6f9d",
     "semantic_hash": ""
   },
   "app/server/adminAuth.ts": {
-    "mtime": 1788925619.8037019,
+    "mtime": 1788936441.896165,
     "ast_hash": "981189fd6c54e06dbf790da0f0caf95e",
     "semantic_hash": ""
   },
   "app/server/session.ts": {
-    "mtime": 1788925612.1343539,
-    "ast_hash": "e1d3b0f83b1a75cacc6b8f2521f047ce",
+    "mtime": 1788937338.5838149,
+    "ast_hash": "c638af662fcadd4b708aff9f8118d057",
     "semantic_hash": ""
   },
   "tests/admin-auth.test.js": {
-    "mtime": 1788925881.0585403,
+    "mtime": 1788936441.9824939,
     "ast_hash": "9c70947d76fd67d59cc9a5378f2f89d9",
     "semantic_hash": ""
   },
   ".planning/phases/29-master-admin-authentication-route-protection-google-oauth-ar/29-01-SUMMARY.md": {
-    "mtime": 1788925705.2176797,
+    "mtime": 1788936441.820629,
     "ast_hash": "fbfb12af8b4cccfcc64aaa58a0bff4ec",
     "semantic_hash": ""
   },
   ".planning/phases/29-master-admin-authentication-route-protection-google-oauth-ar/29-02-SUMMARY.md": {
-    "mtime": 1788925941.744487,
+    "mtime": 1788936441.8231604,
     "ast_hash": "626c61f0367cfbf71b4972571cb449d9",
     "semantic_hash": ""
   },
   ".planning/phases/29-master-admin-authentication-route-protection-google-oauth-ar/29-VERIFICATION.md": {
-    "mtime": 1788925958.6145222,
+    "mtime": 1788936567.5752022,
     "ast_hash": "80a025a79087f7fe1a174acd2534da40",
+    "semantic_hash": ""
+  },
+  "app/schemas/telemetry.ts": {
+    "mtime": 1788936702.3321314,
+    "ast_hash": "92c48f47ef3be269849e0db71c5f20b0",
+    "semantic_hash": ""
+  },
+  "app/server/telemetry.ts": {
+    "mtime": 1788936567.6285038,
+    "ast_hash": "4bb4c61220c41761ffb6afd1ed7d3098",
+    "semantic_hash": ""
+  },
+  "app/server/telemetryStore.ts": {
+    "mtime": 1788936702.3384864,
+    "ast_hash": "a7f95be3c8069a0aeea29ca50e273512",
+    "semantic_hash": ""
+  },
+  "app/utils/telemetryClient.ts": {
+    "mtime": 1788936567.6305823,
+    "ast_hash": "dca1bf1f0634cc797543aa2225119bd6",
+    "semantic_hash": ""
+  },
+  "tests/telemetry.test.js": {
+    "mtime": 1788936567.6863296,
+    "ast_hash": "5f6bb778a45b9d0eadbcef325e877801",
+    "semantic_hash": ""
+  },
+  ".planning/phases/30-server-telemetry-ingestion-api-participant-background-client/30-01-PLAN.md": {
+    "mtime": 1788936567.576269,
+    "ast_hash": "b276cf4a18e2bcf4f4ac182399c0d91d",
+    "semantic_hash": ""
+  },
+  ".planning/phases/30-server-telemetry-ingestion-api-participant-background-client/30-01-SUMMARY.md": {
+    "mtime": 1788936567.5768063,
+    "ast_hash": "2597a9e16754d63afdbc495f94d676f0",
+    "semantic_hash": ""
+  },
+  ".planning/phases/30-server-telemetry-ingestion-api-participant-background-client/30-02-PLAN.md": {
+    "mtime": 1788936567.5778866,
+    "ast_hash": "b8e69a6de4fd669a4e9cf66bc0becb70",
+    "semantic_hash": ""
+  },
+  ".planning/phases/30-server-telemetry-ingestion-api-participant-background-client/30-02-SUMMARY.md": {
+    "mtime": 1788936567.5784042,
+    "ast_hash": "bac8dd44d297452bdb71e0d8a4ad2e8f",
+    "semantic_hash": ""
+  },
+  ".planning/phases/30-server-telemetry-ingestion-api-participant-background-client/30-RESEARCH.md": {
+    "mtime": 1788936567.5789256,
+    "ast_hash": "cb4ae5e4b56137a102e1d0bf402b92fa",
+    "semantic_hash": ""
+  },
+  ".planning/phases/30-server-telemetry-ingestion-api-participant-background-client/30-VALIDATION.md": {
+    "mtime": 1788936567.5794666,
+    "ast_hash": "696455e8d8135a0e689781d8793913f2",
+    "semantic_hash": ""
+  },
+  ".planning/phases/30-server-telemetry-ingestion-api-participant-background-client/30-VERIFICATION.md": {
+    "mtime": 1788936567.5799882,
+    "ast_hash": "fdc960e2600a3b9116d515e19f2493b0",
+    "semantic_hash": ""
+  },
+  "app/components/admin/AdminDashboardView.tsx": {
+    "mtime": 1788936702.3026693,
+    "ast_hash": "991b63a040e858a7e30baabcdded22b7",
+    "semantic_hash": ""
+  },
+  "app/components/admin/DashboardKPIs.tsx": {
+    "mtime": 1788936702.305179,
+    "ast_hash": "96782a38fef41bde4c0740b961b1cc98",
+    "semantic_hash": ""
+  },
+  "app/components/admin/ExportControls.tsx": {
+    "mtime": 1788936702.306182,
+    "ast_hash": "ba09047e756217a7d6d6622f6ada54b1",
+    "semantic_hash": ""
+  },
+  "app/components/admin/ParticipantDetailModal.tsx": {
+    "mtime": 1788936702.306182,
+    "ast_hash": "f824ac13183132accd159008b32760af",
+    "semantic_hash": ""
+  },
+  "app/components/admin/ParticipantFilterToolbar.tsx": {
+    "mtime": 1788936702.3071785,
+    "ast_hash": "3ac89a385e7c93f4a1a26d38468879cb",
+    "semantic_hash": ""
+  },
+  "app/components/admin/ParticipantTable.tsx": {
+    "mtime": 1788936702.308181,
+    "ast_hash": "a52dccd2c743a275bbd932c8c8fcb1a7",
+    "semantic_hash": ""
+  },
+  "app/utils/adminExport.ts": {
+    "mtime": 1788936702.340493,
+    "ast_hash": "d42bb525641bc105f8a896a3031a4881",
+    "semantic_hash": ""
+  },
+  "tests/admin-dashboard.test.js": {
+    "mtime": 1788936702.3496501,
+    "ast_hash": "c1ff382f00d79b6de86e004635e08eff",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-01-PLAN.md": {
+    "mtime": 1788936567.5810232,
+    "ast_hash": "776c34ad9254e833a6feadcf855c8c30",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-01-SUMMARY.md": {
+    "mtime": 1788936702.2767515,
+    "ast_hash": "4692d32021870a9bab6d2a252d5610dc",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-02-PLAN.md": {
+    "mtime": 1788936567.5826075,
+    "ast_hash": "119726c64f2e9aa5a1d2d0d4c5cb2c4e",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-02-SUMMARY.md": {
+    "mtime": 1788936723.873486,
+    "ast_hash": "17c5659329fea09393aa35be21432ee4",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-RESEARCH.md": {
+    "mtime": 1788936567.5841925,
+    "ast_hash": "ca0b1b241d6b5cde79d1bbab4b514b3d",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-REVIEW.md": {
+    "mtime": 1788936723.8744946,
+    "ast_hash": "973d0a15db292b3cd89e28f5410ed849",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-VALIDATION.md": {
+    "mtime": 1788936567.5852382,
+    "ast_hash": "ea3097b83b34b0c72a6c2f4d04404522",
+    "semantic_hash": ""
+  },
+  ".planning/phases/31-admin-command-center-dashboard-participant-progress-monitori/31-VERIFICATION.md": {
+    "mtime": 1788936723.8744946,
+    "ast_hash": "6fbf2f42d8da2d98d3e369129aebef1b",
+    "semantic_hash": ""
+  },
+  "app/components/admin/passkeys/AdminPasskeyView.tsx": {
+    "mtime": 1788936723.8974333,
+    "ast_hash": "070e14d966723d5e8d4a59383fc35d97",
+    "semantic_hash": ""
+  },
+  "app/components/admin/passkeys/PasskeyAuditLogTable.tsx": {
+    "mtime": 1788936723.8974333,
+    "ast_hash": "372a55eb572722db735d65baaaee323f",
+    "semantic_hash": ""
+  },
+  "app/components/admin/passkeys/PasskeyHistoryTable.tsx": {
+    "mtime": 1788936723.9009078,
+    "ast_hash": "18072772b5f4f4538f6d769437236a29",
+    "semantic_hash": ""
+  },
+  "app/components/admin/passkeys/PasskeyRotateModal.tsx": {
+    "mtime": 1788936723.9019866,
+    "ast_hash": "2d80361d78eaabdf4601376c2d791161",
+    "semantic_hash": ""
+  },
+  "app/components/admin/passkeys/PasskeyStatusCards.tsx": {
+    "mtime": 1788936723.9019866,
+    "ast_hash": "7c306f5e3fd433c66e40a3a4b823336c",
+    "semantic_hash": ""
+  },
+  "app/components/admin/troubleshooting/AdminTroubleshootingView.tsx": {
+    "mtime": 1788936723.9095259,
+    "ast_hash": "3e5a304ecf461bd4af436a8a98ed3768",
+    "semantic_hash": ""
+  },
+  "app/components/admin/troubleshooting/TroubleshootingDetailModal.tsx": {
+    "mtime": 1788936723.9105275,
+    "ast_hash": "5134b732fa06e5a842c794c9cb1c7d6f",
+    "semantic_hash": ""
+  },
+  "app/components/admin/troubleshooting/TroubleshootingFilterToolbar.tsx": {
+    "mtime": 1788936723.9140484,
+    "ast_hash": "552e966b0d8c3c713ea67a3416c78755",
+    "semantic_hash": ""
+  },
+  "app/components/admin/troubleshooting/TroubleshootingKPIs.tsx": {
+    "mtime": 1788936723.9140484,
+    "ast_hash": "57b4fa4b3e7591918a7cbc6279d3fa4a",
+    "semantic_hash": ""
+  },
+  "app/components/admin/troubleshooting/TroubleshootingLogTable.tsx": {
+    "mtime": 1788936723.9150453,
+    "ast_hash": "913273c76bab8176722d3f0562078508",
+    "semantic_hash": ""
+  },
+  "app/schemas/passkey.ts": {
+    "mtime": 1788936723.918737,
+    "ast_hash": "37661156f9fc6f261dac26c6482f2b94",
+    "semantic_hash": ""
+  },
+  "app/schemas/troubleshooting.ts": {
+    "mtime": 1788936723.9202988,
+    "ast_hash": "8b6f13ee94b9c6e59f5aa286b248acfd",
+    "semantic_hash": ""
+  },
+  "app/server/passkey.ts": {
+    "mtime": 1788936723.9213073,
+    "ast_hash": "0dce6333df4a2b049564f398f4516763",
+    "semantic_hash": ""
+  },
+  "app/server/passkeyStore.ts": {
+    "mtime": 1788936723.9213073,
+    "ast_hash": "4508e09cd8f888bc1faf7f1b692f105a",
+    "semantic_hash": ""
+  },
+  "app/server/troubleshooting.ts": {
+    "mtime": 1788936723.924306,
+    "ast_hash": "d80ca0d00975895da51702cc4e9a0c0b",
+    "semantic_hash": ""
+  },
+  "app/server/troubleshootingStore.ts": {
+    "mtime": 1788936723.924306,
+    "ast_hash": "7477021a2066214eeb2ec747b74afff1",
+    "semantic_hash": ""
+  },
+  "tests/admin-passkey.test.js": {
+    "mtime": 1788936723.9322374,
+    "ast_hash": "1545fabf45c9962c410e8f48bfb50048",
+    "semantic_hash": ""
+  },
+  "tests/admin-troubleshooting.test.js": {
+    "mtime": 1788936723.9332898,
+    "ast_hash": "a4fedfb2a2d655d05741aaed20e06c1c",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-01-PLAN.md": {
+    "mtime": 1788936723.8765974,
+    "ast_hash": "d56df4e45c88a52f2ba8021fe527088f",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-01-SUMMARY.md": {
+    "mtime": 1788936723.8779738,
+    "ast_hash": "59be9981e79e4b2a27c738fe7d10dc97",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-02-PLAN.md": {
+    "mtime": 1788936723.881088,
+    "ast_hash": "b271ea9bddcd5f3c92eef99c1895d0db",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-02-SUMMARY.md": {
+    "mtime": 1788936723.8820932,
+    "ast_hash": "4f25f4bf022a93e65278de463af126a4",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-RESEARCH.md": {
+    "mtime": 1788936723.8820932,
+    "ast_hash": "a51158dd5d8330c08b0c555257f36ed0",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-REVIEW.md": {
+    "mtime": 1788936723.8843143,
+    "ast_hash": "e70b6e49d62523b51cc15ec44fd9a693",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-VALIDATION.md": {
+    "mtime": 1788936723.8843143,
+    "ast_hash": "6e818da77a422e3db85172a8773ae439",
+    "semantic_hash": ""
+  },
+  ".planning/phases/32-workshop-access-passkey-management-troubleshooting-audit-hub/32-VERIFICATION.md": {
+    "mtime": 1788936723.8858342,
+    "ast_hash": "bfba0061605fab855aba9a4ec2d7893b",
+    "semantic_hash": ""
+  },
+  "app/components/admin/settings/AdminSettingsView.tsx": {
+    "mtime": 1788936723.903515,
+    "ast_hash": "29f0d84ea332cc95e06e02817d4ef994",
+    "semantic_hash": ""
+  },
+  "app/components/admin/settings/AnnouncementBannerEditor.tsx": {
+    "mtime": 1788936723.904526,
+    "ast_hash": "275d39c29c822f03029450c31041c069",
+    "semantic_hash": ""
+  },
+  "app/components/admin/settings/PlatformReadinessCard.tsx": {
+    "mtime": 1788936723.9075286,
+    "ast_hash": "f56a934614c40f9a7d606dbfbc9503dd",
+    "semantic_hash": ""
+  },
+  "app/components/admin/settings/WorkshopModeCard.tsx": {
+    "mtime": 1788936723.9085243,
+    "ast_hash": "faa4fe0e635d783330851f7afa1e8fb8",
+    "semantic_hash": ""
+  },
+  "app/components/layout/GlobalAnnouncementBanner.tsx": {
+    "mtime": 1788936723.9170468,
+    "ast_hash": "23bc0c8055303fb0363a6d6bfc1b2d75",
+    "semantic_hash": ""
+  },
+  "app/schemas/platformConfig.ts": {
+    "mtime": 1788936723.919263,
+    "ast_hash": "4b0aa88c40dda3b1d45ed83c855547cb",
+    "semantic_hash": ""
+  },
+  "app/server/platform.ts": {
+    "mtime": 1788936723.9223063,
+    "ast_hash": "87f0fe59a2958db6656e99ddc24fe5bb",
+    "semantic_hash": ""
+  },
+  "app/server/platformStore.ts": {
+    "mtime": 1788936723.9233053,
+    "ast_hash": "b47f040f4ac015da1fc0e29f3ddb9613",
+    "semantic_hash": ""
+  },
+  "tests/admin-config.test.js": {
+    "mtime": 1788936723.9317098,
+    "ast_hash": "c38304285ae0f70152a034b3625c18d4",
+    "semantic_hash": ""
+  },
+  "tests/admin-platform.test.js": {
+    "mtime": 1788936723.9327612,
+    "ast_hash": "9de74142d5d30b5c2654392587312e58",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-01-PLAN.md": {
+    "mtime": 1788936723.8868432,
+    "ast_hash": "5dec9603136bf8fb82666830cc65e689",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-01-SUMMARY.md": {
+    "mtime": 1788936723.889868,
+    "ast_hash": "f571a3915290f0e60c5780b66a32e065",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-02-PLAN.md": {
+    "mtime": 1788936723.8908708,
+    "ast_hash": "04cd638899e7c1aa60303ea88c355ffc",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-02-SUMMARY.md": {
+    "mtime": 1788936723.8908708,
+    "ast_hash": "d956800a655652ff559adf17f0280c78",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-RESEARCH.md": {
+    "mtime": 1788936723.8923805,
+    "ast_hash": "21dacc9c959faa9a5fda43297e78f53a",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-REVIEW.md": {
+    "mtime": 1788936723.8923805,
+    "ast_hash": "03334999d9e9be60bdc4cfdf7fa51a8e",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-VALIDATION.md": {
+    "mtime": 1788936723.893397,
+    "ast_hash": "59a41b0f756dc0a67c7a91dad086621d",
+    "semantic_hash": ""
+  },
+  ".planning/phases/33-global-platform-configuration-announcement-banner-e2e-zero-regression/33-VERIFICATION.md": {
+    "mtime": 1788936723.8939068,
+    "ast_hash": "c613e7374c487013accce2167dda1a38",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.2-REQUIREMENTS.md": {
+    "mtime": 1788936723.8709826,
+    "ast_hash": "8ab50d95e21161a04751b0eeef070f5a",
+    "semantic_hash": ""
+  },
+  ".planning/milestones/v3.2-ROADMAP.md": {
+    "mtime": 1788936723.8719833,
+    "ast_hash": "d0a6adb26d69943c4c698cf0fe87af1a",
+    "semantic_hash": ""
+  },
+  ".planning/v3.2-MILESTONE-AUDIT.md": {
+    "mtime": 1788936723.8959203,
+    "ast_hash": "1b4dc61a7258d38d463f4ffb9ae8534f",
+    "semantic_hash": ""
+  },
+  "DESIGN-apple.md": {
+    "mtime": 1788935284.1385875,
+    "ast_hash": "9b1bde505a01daafb7e07263fe388bbe",
     "semantic_hash": ""
   }
 }

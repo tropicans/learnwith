@@ -113,16 +113,16 @@
   border: 1px solid var(--border-subtle);
 }
 
-/* --- Buttons & Action Controls --- */
+/* --- Buttons & Action Controls (Apple Restrained Precision) --- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.6rem 1.1rem;
+  padding: 0.65rem 1.25rem;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   border: 1px solid transparent;
   cursor: pointer;
   transition: all var(--transition-fast);
@@ -132,13 +132,13 @@
 }
 
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.95);
 }
 
 .btn-primary {
   background: var(--accent-primary);
   color: #ffffff;
-  box-shadow: var(--shadow-xs);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover {
@@ -2089,21 +2089,25 @@ mark.search-highlight {
   gap: 0.5rem;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
-  border-radius: 9999px;
+  border-radius: var(--radius-pill);
   padding: 0.35rem 0.85rem;
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   color: var(--text-primary);
   cursor: pointer;
-  box-shadow: var(--shadow-xs);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
 }
 
 .course-dropdown-btn:hover {
   background: var(--bg-surface-hover);
   border-color: var(--border-strong);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
+}
+
+.course-dropdown-btn:active {
+  transform: scale(0.95);
 }
 
 .course-dropdown-btn:focus-visible {
@@ -2116,9 +2120,11 @@ mark.search-highlight {
   top: calc(100% + 8px);
   left: 0;
   min-width: 300px;
-  background: var(--bg-surface);
+  background: var(--bg-glass-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
-  border-radius: 14px;
+  border-radius: var(--radius-lg);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
   padding: 0.5rem;
   list-style: none;

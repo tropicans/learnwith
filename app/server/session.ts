@@ -1,9 +1,12 @@
 import crypto from 'node:crypto'
 import {
-  getRequestHeader,
-  setResponseHeader,
-} from '@tanstack/react-start/server'
+  getRequestHeader as h3GetRequestHeader,
+  setResponseHeader as h3SetResponseHeader,
+} from 'h3'
 import type { AdminUser } from '../schemas/admin'
+
+const getRequestHeader = h3GetRequestHeader as unknown as (name: string) => string | undefined
+const setResponseHeader = h3SetResponseHeader as unknown as (name: string, value: string) => void
 
 export const SESSION_COOKIE_NAME = 'learnwith_admin_session'
 export const SESSION_TTL_SECONDS = 60 * 60 * 24 // 24 hours

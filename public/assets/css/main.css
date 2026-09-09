@@ -29,108 +29,120 @@ body {
 
 /* --- Design Tokens / Theme Variables --- */
 :root {
-  /* Light Theme (Clean Documentation & Dev Guide - Stripe / Tailwind / GitBook) */
+  /* Apple Restrained Precision Design System (DESIGN-apple.md) */
   --theme-mode: 'light';
   
-  --bg-body: #f8fafc;
-  --bg-canvas: #ffffff;
-  --bg-surface: #ffffff;
+  /* Canvases & Surfaces */
+  --bg-body: #f5f5f7;            /* canvas-parchment: Clean neutral backdrop */
+  --bg-canvas: #ffffff;          /* Pure Canvas */
+  --bg-surface: #ffffff;         /* Elevated surface */
   --bg-surface-elevated: #ffffff;
-  --bg-surface-subtle: #f1f5f9;
-  --bg-surface-hover: #f8fafc;
-  --bg-tertiary: #f1f5f9;
-  --bg-glass: rgba(255, 255, 255, 0.96);
-  --bg-glass-card: #ffffff;
-  --bg-terminal: #0f172a;
+  --bg-surface-subtle: #f5f5f7;
+  --bg-surface-pearl: #fafafc;   /* Surface pearl for cards */
+  --bg-surface-hover: #e8e8ed;
+  --bg-tertiary: #f5f5f7;
+  --bg-glass: rgba(255, 255, 255, 0.82);
+  --bg-glass-card: rgba(255, 255, 255, 0.92);
+  --bg-terminal: #1d1d1f;        /* Apple Ink dark canvas */
+  --bg-tile-dark: #1d1d1f;
 
-  --border-subtle: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --border-focus: #2563eb;
-  --border-glass: #e2e8f0;
+  /* Borders: Hairline 1px rgba(0, 0, 0, 0.08) */
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-strong: #d2d2d7;
+  --border-hairline: #e0e0e0;
+  --border-divider: #f0f0f0;
+  --border-focus: #0071e3;
+  --border-glass: rgba(0, 0, 0, 0.06);
 
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
+  /* Typography Colors */
+  --text-primary: #1d1d1f;       /* Apple Ink */
+  --text-secondary: #515154;     /* Secondary Body */
+  --text-muted: #86868b;         /* Muted Label */
   --text-inverse: #ffffff;
-  --text-code: #0284c7;
+  --text-code: #0066cc;
 
-  /* Accent Colors: Clean Cobalt Blue & Cyan */
-  --accent-primary: #2563eb;       /* Blue 600 */
-  --accent-primary-hover: #1d4ed8; /* Blue 700 */
-  --accent-primary-subtle: #eff6ff;
-  --accent-secondary: #0284c7;     /* Sky 600 */
+  /* Accent Colors: Signature Action Blue (#0066cc) */
+  --accent-primary: #0066cc;       /* Action Blue */
+  --accent-primary-hover: #0071e3; /* Focus/Hover Blue */
+  --accent-primary-active: #0077ed;
+  --accent-primary-subtle: #e8f2fc;
+  --accent-primary-on-dark: #2997ff;
+  --accent-secondary: #0071e3;
   
-  --color-success: #059669;        /* Emerald 600 */
-  --color-success-subtle: #ecfdf5;
-  --color-success-border: #a7f3d0;
-  --color-success-text: #065f46;
+  --color-success: #34c759;        /* Apple Green */
+  --color-success-subtle: #edfbf2;
+  --color-success-border: #b8f0ca;
+  --color-success-text: #1b7a37;
 
-  --color-warning: #d97706;        /* Amber 600 */
-  --color-warning-dark: #b45309;   /* Amber 700 */
-  --color-warning-subtle: #fffbeb;
-  --color-warning-border: #fde68a;
-  --color-warning-text: #92400e;
+  --color-warning: #ff9500;        /* Apple Amber */
+  --color-warning-dark: #b26800;
+  --color-warning-subtle: #fff8eb;
+  --color-warning-border: #fedcb2;
+  --color-warning-text: #8c5100;
 
-  --color-danger: #dc2626;         /* Red 600 */
-  --color-danger-subtle: #fef2f2;
-  --color-danger-border: #fecaca;
-  --color-danger-text: #991b1b;
+  --color-danger: #ff3b30;         /* Apple Red */
+  --color-danger-subtle: #fff2f1;
+  --color-danger-border: #ffc4c1;
+  --color-danger-text: #b31b14;
 
-  --color-info: #2563eb;           /* Blue 600 */
-  --color-info-subtle: #eff6ff;
+  --color-info: #0066cc;           /* Apple Blue */
+  --color-info-subtle: #edf5fd;
   --color-info-border: #bfdbfe;
-  --color-info-text: #1e40af;
+  --color-info-text: #005bb5;
 
   /* Typography Scale */
-  --font-size-xs: 0.75rem;     /* 12px */
-  --font-size-sm: 0.875rem;    /* 14px */
-  --font-size-md: 1rem;        /* 16px */
-  --font-size-base: 1rem;      /* 16px */
-  --font-size-lg: 1.125rem;    /* 18px */
-  --font-size-xl: 1.25rem;     /* 20px */
-  --font-size-2xl: 1.5rem;     /* 24px */
-  --font-size-3xl: 1.875rem;   /* 30px */
-  --font-size-4xl: 2.25rem;    /* 36px */
+  --font-size-xs: 0.75rem;     /* 12px - nav-link / fine-print */
+  --font-size-sm: 0.875rem;    /* 14px - caption */
+  --font-size-md: 1.0625rem;   /* 17px - Apple Universal Body */
+  --font-size-base: 1.0625rem; /* 17px */
+  --font-size-lg: 1.3125rem;   /* 21px - Apple Tagline */
+  --font-size-xl: 1.5rem;      /* 24px - Lead */
+  --font-size-2xl: 1.75rem;    /* 28px */
+  --font-size-3xl: 2.125rem;   /* 34px - Display MD */
+  --font-size-4xl: 2.5rem;     /* 40px - Display LG */
+  --font-size-hero: 3.5rem;    /* 56px - Hero Display */
 
   --font-weight-normal: 400;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-weight-bold: 600;     /* Apple favors 600 semibold over 700/800 */
+  --font-weight-extrabold: 700;
+  --font-family-primary: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', system-ui, sans-serif;
+  --font-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, 'JetBrains Mono', monospace;
 
   /* High-contrast filled action colors (white text, WCAG AA). */
-  --action-success: #047857;
-  --action-success-hover: #065f46;
-  --action-danger: #be123c;
-  --action-danger-hover: #9f1239;
+  --action-success: #34c759;
+  --action-success-hover: #2db34e;
+  --action-danger: #ff3b30;
+  --action-danger-hover: #e02d23;
 
-  /* Shadows: Clean, Subtle, Documentation-Grade */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  /* Shadows: Single Signature Product Shadow Philosophy */
+  --shadow-xs: none;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --shadow-product: 3px 5px 30px 0 rgba(0, 0, 0, 0.16);
   --shadow-glow: none;
 
-  /* Border Radii: Crisp Documentation (4px / 8px / 12px) */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 16px;
+  /* Border Radii: Apple Scale */
+  --radius-xs: 5px;            /* rounded.xs */
+  --radius-sm: 8px;            /* rounded.sm - utility buttons */
+  --radius-md: 11px;           /* rounded.md - pearl capsule */
+  --radius-lg: 18px;           /* rounded.lg - store/utility cards */
+  --radius-xl: 22px;
+  --radius-pill: 9999px;       /* Signature Apple Pill CTA */
   --radius-full: 9999px;
 
-  /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* Transitions & Apple Micro-Interactions */
+  --transition-fast: 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-base: 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-slow: 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
   --transition-theme: 200ms ease;
 
-  /* Header & Sidebar Dimensions */
-  --header-height: 64px;
+  /* Header & Navigation Dimensions */
+  --header-height: 48px;       /* Sleek Apple global nav height */
   --sidebar-width: 280px;
   --sidebar-collapsed-width: 72px;
 
@@ -221,13 +233,15 @@ body {
   position: relative;
 }
 
-/* --- App Header --- */
+/* --- App Header (Apple Restrained Precision Navigation) --- */
 .app-header {
   grid-area: header;
   position: sticky;
   top: 0;
   height: var(--header-height);
-  background: var(--bg-surface);
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
@@ -990,6 +1004,10 @@ body {
 .brand-home-link:hover {
   opacity: 0.85;
   transform: translateY(-1px);
+}
+
+.brand-home-link:active {
+  transform: scale(0.96);
 }
 
 /* Container Home */
