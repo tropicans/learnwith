@@ -104,10 +104,10 @@ describe('Phase 25 Interactive Pretraining Modules Suite (PRE-MOD-01..06)', () =
       assert.ok(mod3, 'Modul 3 must exist')
       assert.strictEqual(mod3.steps.length, 5, 'Modul 3 must contain exactly 5 steps')
 
-      const taskIds = mod3.steps.map((s) => s.taskId)
+      const taskIds = mod3.steps.map((s) => s.taskId).filter(Boolean)
       assert.deepStrictEqual(
         taskIds,
-        ['m3-start-botfather', 'm3-create-newbot', 'm3-save-token-secure', 'm3-start-chat', 'm3-get-userid'],
+        ['m3-start-botfather', 'm3-create-newbot', 'm3-save-token-secure', 'm3-get-userid'],
         'Modul 3 step task IDs must match expected progression'
       )
 

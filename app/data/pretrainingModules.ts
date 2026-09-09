@@ -441,9 +441,6 @@ export const PRETRAINING_MODULES: PretrainingModule[] = [
               'Setelah menekan Start, bot Anda belum akan membalas pesan. Hal ini sepenuhnya wajar dan normal karena aplikasi Hermes Agent belum dihubungkan ke bot Anda. Penyambungan bot ke Hermes akan dilakukan bersama instruktur saat kelas workshop.',
           },
         ],
-        taskId: 'm3-start-chat',
-        checklistLabel:
-          'Langkah D selesai: Membuka bot baru di Telegram dan menekan tombol Start',
       },
       {
         nodeId: 'E',
