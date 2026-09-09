@@ -29,14 +29,14 @@
 
 ### Category 4: Course Access & Passkey Management Console (ADMIN-PASS)
 
-- [ ] **ADMIN-PASS-01**: Admin dapat memantau status aktif passkey modul kedinasan (Course 2: Pengolahan Kata Tingkat Lanjut) beserta riwayat hash server.
-- [ ] **ADMIN-PASS-02**: Admin dapat memperbarui atau merotasi passkey workshop dinas secara dinamis melalui antarmuka admin yang terverifikasi.
-- [ ] **ADMIN-PASS-03**: Admin dapat melihat audit log percobaan unlock passkey (termasuk deteksi kegagalan berulang / rate limiting guard).
+- [x] **ADMIN-PASS-01**: Admin dapat memantau status aktif passkey modul kedinasan (Course 2: Pengolahan Kata Tingkat Lanjut) beserta riwayat hash server.
+- [x] **ADMIN-PASS-02**: Admin dapat memperbarui atau merotasi passkey workshop dinas secara dinamis melalui antarmuka admin yang terverifikasi.
+- [x] **ADMIN-PASS-03**: Admin dapat melihat audit log percobaan unlock passkey (termasuk deteksi kegagalan berulang / rate limiting guard).
 
 ### Category 5: Runtime Troubleshooting Hub & Incident Audit (ADMIN-LOG)
 
-- [ ] **ADMIN-LOG-01**: Admin dapat memantau agregasi kendala teknis dan log troubleshooting runtime yang dialami peserta (bentrok port 20128, error OAuth, kegagalan ExecutionPolicy PowerShell).
-- [ ] **ADMIN-LOG-02**: Admin dapat memfilter dan mencari log kendala berdasarkan kategori error dan frekuensi untuk memandu asistensi instruktur di kelas.
+- [x] **ADMIN-LOG-01**: Admin dapat memantau agregasi kendala teknis dan log troubleshooting runtime yang dialami peserta (bentrok port 20128, error OAuth, kegagalan ExecutionPolicy PowerShell).
+- [x] **ADMIN-LOG-02**: Admin dapat memfilter dan mencari log kendala berdasarkan kategori error dan frekuensi untuk memandu asistensi instruktur di kelas.
 
 ### Category 6: Global Platform Configuration & Banner Controls (ADMIN-CFG)
 
@@ -75,11 +75,11 @@
 | ADMIN-DASH-02 | Phase 31 | Complete | 31-VERIFICATION.md |
 | ADMIN-DASH-03 | Phase 31 | Complete | 31-VERIFICATION.md |
 | ADMIN-DASH-04 | Phase 31 | Complete | 31-VERIFICATION.md |
-| ADMIN-PASS-01 | Phase 32 | Pending | Course passkey monitor rendered |
-| ADMIN-PASS-02 | Phase 32 | Pending | Passkey update server function test |
-| ADMIN-PASS-03 | Phase 32 | Pending | Unlock attempt audit log rendered |
-| ADMIN-LOG-01 | Phase 32 | Pending | Runtime troubleshooting aggregation test |
-| ADMIN-LOG-02 | Phase 32 | Pending | Incident filter and search test |
+| ADMIN-PASS-01 | Phase 32 | Complete | 32-VERIFICATION.md |
+| ADMIN-PASS-02 | Phase 32 | Complete | 32-VERIFICATION.md |
+| ADMIN-PASS-03 | Phase 32 | Complete | 32-VERIFICATION.md |
+| ADMIN-LOG-01 | Phase 32 | Complete | 32-VERIFICATION.md |
+| ADMIN-LOG-02 | Phase 32 | Complete | 32-VERIFICATION.md |
 | ADMIN-CFG-01 | Phase 33 | Pending | Workshop mode toggle server function |
 | ADMIN-CFG-02 | Phase 33 | Pending | Global announcement banner rendered on client |
 | ADMIN-QA-01 | Phase 29, 30, 33 | Pending | Automated test suite passing |

@@ -60,15 +60,16 @@
 ---
 
 ### Phase 32: Workshop Access Passkey Management & Troubleshooting Audit Hub
+**Status**: ✅ Complete (2/2 plans shipped, verified 2026-09-09)  
 **Goal**: Membangun konsol manajemen kode akses passkey modul kedinasan (Course 2) dan pusat audit pencarian agregasi kendala troubleshooting runtime peserta.  
 **Depends on**: Phase 31  
 **Requirements**: ADMIN-PASS-01, ADMIN-PASS-02, ADMIN-PASS-03, ADMIN-LOG-01, ADMIN-LOG-02  
-**Plans**: 2 plans  
+**Plans**: 2 plans (2 shipped)  
 
 **Success Criteria**:
-1. Admin dapat melihat status aktif passkey workshop dinas dan merotasi/memperbarui passkey via server function terproteksi.
-2. Log percobaan unlock passkey tercatat dengan audit timestamp dan status (berhasil vs gagal).
-3. Admin dapat mencari dan memfilter isu runtime peserta (bentrok port 20128, error OAuth, execution policy PowerShell) untuk koordinasi asistensi kelas.
+1. Admin dapat melihat status aktif passkey workshop dinas dan merotasi/memperbarui passkey via server function terproteksi. (✅ Shipped)
+2. Log percobaan unlock passkey tercatat dengan audit timestamp dan status (berhasil vs gagal). (✅ Shipped)
+3. Admin dapat mencari dan memfilter isu runtime peserta (bentrok port 20128, error OAuth, execution policy PowerShell) untuk koordinasi asistensi kelas. (✅ Shipped)
 
 ---
 
