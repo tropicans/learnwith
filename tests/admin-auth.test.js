@@ -227,4 +227,75 @@ describe('Phase 29 Master Admin Authentication Engine Suite', () => {
       assert.match(content, /z\.object/, 'app/schemas/admin.ts must define Zod schemas');
     });
   });
+
+  describe('Suite 6: Route Component & Client Gate Integrity (ADMIN-AUTH-03)', () => {
+    it('verifies /admin route file exports Route with loader and meta tags', () => {
+      const routePath = path.join(ROOT_DIR, 'app', 'routes', 'admin.tsx');
+      assert.strictEqual(fs.existsSync(routePath), true, 'app/routes/admin.tsx must exist');
+
+      const content = fs.readFileSync(routePath, 'utf8');
+      assert.ok(content.includes("createFileRoute('/admin')"), 'Must define /admin route');
+      assert.ok(content.includes('adminCheckSessionFn'), 'Loader must check session via adminCheckSessionFn');
+      assert.ok(content.includes('adminGetAuthConfigFn'), 'Loader must fetch auth config via adminGetAuthConfigFn');
+      assert.ok(content.includes('AdminLoginGate'), 'Component must reference AdminLoginGate');
+      assert.ok(content.includes('AdminShell'), 'Component must reference AdminShell');
+    });
+
+    it('verifies AdminLoginGate component structure and element IDs', () => {
+      const gatePath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'AdminLoginGate.tsx');
+      assert.strictEqual(fs.existsSync(gatePath), true, 'AdminLoginGate.tsx must exist');
+
+      const content = fs.readFileSync(gatePath, 'utf8');
+      assert.ok(content.includes('id="admin-login-gate"'), 'Must have root container id');
+      assert.ok(content.includes('id="admin-passkey-input"'), 'Must have passkey input id');
+      assert.ok(content.includes('id="btn-admin-submit-login"'), 'Must have submit button id');
+      assert.ok(content.includes('type="password"'), 'Passkey input must be password type');
+      assert.ok(content.includes('adminLoginFn'), 'Must call adminLoginFn on submit');
+    });
+
+    it('verifies GoogleSignInButton readiness structure and badge', () => {
+      const googlePath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'GoogleSignInButton.tsx');
+      assert.strictEqual(fs.existsSync(googlePath), true, 'GoogleSignInButton.tsx must exist');
+
+      const content = fs.readFileSync(googlePath, 'utf8');
+      assert.ok(content.includes('id="btn-admin-google-signin"'), 'Must have Google button id');
+      assert.ok(content.includes('id="badge-google-readiness"'), 'Must have readiness badge id');
+      assert.ok(content.includes('Google Workspace'), 'Must display Google Workspace label');
+      assert.ok(content.includes('Siap Dikonfigurasi'), 'Must indicate readiness state');
+    });
+
+    it('verifies AdminShell navigation tabs and logout elements', () => {
+      const shellPath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'AdminShell.tsx');
+      assert.strictEqual(fs.existsSync(shellPath), true, 'AdminShell.tsx must exist');
+
+      const content = fs.readFileSync(shellPath, 'utf8');
+      assert.ok(content.includes('id="admin-shell-container"'), 'Must have shell container id');
+      assert.ok(content.includes('id="btn-admin-logout"'), 'Must have logout button id');
+      assert.ok(content.includes('id="tab-admin-dashboard"'), 'Must have dashboard tab id');
+      assert.ok(content.includes('id="tab-admin-telemetry"'), 'Must have telemetry tab id');
+      assert.ok(content.includes('id="tab-admin-passkeys"'), 'Must have passkeys tab id');
+      assert.ok(content.includes('id="tab-admin-troubleshooting"'), 'Must have troubleshooting tab id');
+      assert.ok(content.includes('id="tab-admin-settings"'), 'Must have settings tab id');
+      assert.ok(content.includes('adminLogoutFn'), 'Must call adminLogoutFn on logout');
+    });
+
+    it('verifies assets/css/admin.css exists and is mirrored to public/assets/css/admin.css', () => {
+      const srcCssPath = path.join(ROOT_DIR, 'assets', 'css', 'admin.css');
+      const pubCssPath = path.join(ROOT_DIR, 'public', 'assets', 'css', 'admin.css');
+
+      assert.strictEqual(fs.existsSync(srcCssPath), true, 'assets/css/admin.css must exist');
+      assert.strictEqual(fs.existsSync(pubCssPath), true, 'public/assets/css/admin.css must exist');
+
+      const srcContent = fs.readFileSync(srcCssPath, 'utf8');
+      const pubContent = fs.readFileSync(pubCssPath, 'utf8');
+      assert.strictEqual(srcContent, pubContent, 'Source and public stylesheets must be identical');
+      assert.ok(srcContent.includes('Authoritative Source: assets/css/admin.css'), 'Must have authoritative header');
+    });
+
+    it('verifies __root.tsx includes admin.css in head links', () => {
+      const rootPath = path.join(ROOT_DIR, 'app', 'routes', '__root.tsx');
+      const content = fs.readFileSync(rootPath, 'utf8');
+      assert.ok(content.includes('/assets/css/admin.css'), '__root.tsx must include admin.css link');
+    });
+  });
 });

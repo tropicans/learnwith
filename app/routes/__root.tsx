@@ -2,6 +2,7 @@ import {
   Outlet,
   ScrollRestoration,
   createRootRoute,
+  useRouterState,
 } from '@tanstack/react-router'
 import { Meta, Scripts } from '@tanstack/react-start'
 import type { ReactNode } from 'react'
@@ -24,6 +25,8 @@ export const Route = createRootRoute({
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap' },
       { rel: 'stylesheet', href: '/assets/css/main.css?v=2.2.0' },
       { rel: 'stylesheet', href: '/assets/css/components.css?v=2.2.0' },
+      { rel: 'stylesheet', href: '/assets/css/homepage.css?v=1.0.0' },
+      { rel: 'stylesheet', href: '/assets/css/admin.css?v=1.0.0' },
     ],
   }),
   notFoundComponent: NotFound,
@@ -32,9 +35,13 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const isHome = pathname === '/'
+  const isAdmin = pathname.startsWith('/admin')
+
   return (
     <RootDocument>
-      <div className="app-container">
+      <div className={`app-container ${isHome ? 'view-home' : ''} ${isAdmin ? 'view-admin' : ''}`}>
         <Header />
         <Outlet />
       </div>
