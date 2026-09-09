@@ -8,22 +8,26 @@ A modern, responsive, and beginner-friendly web learning platform designed to gu
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current State: v3.2 In Progress (Started 2026-09-09)
+## Current State: v3.2 Shipped (2026-09-09)
 
-The platform is expanding beyond student/participant self-service into an instructor-grade operational command center. Milestone v3.2 delivers the `/admin` command center with Master Admin Passkey authentication (and Google OAuth login foundation), real-time participant progress & telemetry aggregation, course access passkey management, runtime troubleshooting diagnostics, and global platform banner/mode configuration.
-
-## Current Milestone: v3.2 Admin Command Center, Telemetry & Authentication
-
-**Goal:** Provide an instructor/admin command center to monitor participant progress in real time, manage course access passkeys, audit troubleshooting runtime logs, and configure global platform state with Master Admin Passkey protection and Google OAuth integration architecture.
-
-**Target features:**
-- Master Admin Authentication: Secure `/admin` route via `createServerFn` timing-safe hash validation and session state, with Google OAuth architecture/readiness.
-- Participant Progress & Telemetry Dashboard: Aggregated view of participant readiness, module progress, checkpoint passed/failed metrics, and Bab V evaluation results via internal server telemetry endpoint.
-- Course Access & Passkey Management: Admin control center to inspect and update workshop passkeys (e.g. Course 2 Pengolahan Kata), manage active training sessions, and revoke/rotate access codes.
-- Troubleshooting Hub Diagnostics: Searchable runtime error aggregation (Port 20128 conflicts, OAuth mismatches, PowerShell execution policies) reported by participants.
-- Global Platform Configuration: Admin controls to toggle workshop modes (Pre-training / Live Class), broadcast emergency/instructional banners, and configure training environment parameters.
+The platform has grown from student/participant self-service into an instructor-grade operational command center. Milestone v3.2 delivered the `/admin` command center with Master Admin Passkey authentication (and Google OAuth login foundation), real-time participant progress & telemetry aggregation, course access passkey management, runtime troubleshooting diagnostics, and global platform banner/mode configuration.
 
 ## Previous Milestones
+
+<details>
+<summary>✅ v3.2 Complete (Admin Command Center, Telemetry & Authentication) - SHIPPED 2026-09-09</summary>
+
+- **Phases**: 29-33 (5 phases, 10 plans)
+- **Accomplishments**:
+  - Master Admin Authentication: Secure `/admin` route via `createServerFn` timing-safe hash comparison, session registry, and Google OAuth SSO readiness.
+  - Telemetry Ingestion API: Structured in-memory store with Zod schema validation, zero-division safety, and non-blocking client heartbeat background transmitter.
+  - Command Center Dashboard: 4 aggregate KPI metric cards, multi-criteria participant directory table, granular modal inspector with task checklist dossier, and 1-click RFC 4180 CSV/JSON export.
+  - Course Access & Passkey Management: Active passkey status monitoring, runtime dynamic passkey rotation without server restart, timing-safe verification, sliding-window rate limiting guard, and candidate-masked audit logs.
+  - Troubleshooting Hub: Auto-classification across 6 classroom failure types (Port 20128, PowerShell policy, OAuth, Telegram 409, EPERM, network), 1-click PowerShell remediation commands, and dual-layer secret redaction.
+  - Platform Configuration: Dynamic global workshop mode toggle (`pretraining` vs `live-class`) with audit tracking, and Global Announcement Banner mounted at the top-level viewport with smart dismissibility.
+  - Quality Assurance: Zero secret bundle leakage, zero regressions across `/`, `/course/ai`, `/course/word`, and 100% test pass rate (237/237 tests across 27 test files).
+
+</details>
 
 <details>
 <summary>✅ v3.1 Complete (Pre-Training Parity in TanStack Start) - SHIPPED 2026-09-09</summary>
