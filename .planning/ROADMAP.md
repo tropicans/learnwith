@@ -16,16 +16,17 @@
 ## Active Milestone: v3.2 (Phases 29-33)
 
 ### Phase 29: Master Admin Authentication, Route Protection & Google OAuth Architecture
+**Status**: ✅ Complete (2/2 plans shipped, verified 2026-09-09)  
 **Goal**: Mengimplementasikan sistem autentikasi admin di rute `/admin`, validasi timing-safe SHA-256 hash via `createServerFn`, session cookie/token management, proteksi logout, dan persiapan antarmuka arsitektur Google OAuth.  
 **Depends on**: Phase 28 (v3.1)  
 **Requirements**: ADMIN-AUTH-01, ADMIN-AUTH-02, ADMIN-AUTH-03, ADMIN-AUTH-04, ADMIN-QA-01  
-**Plans**: 2 plans  
+**Plans**: 2 plans (2 shipped)  
 
 **Success Criteria**:
-1. Rute `/admin` terlindungi; akses tanpa sesi yang valid menampilkan layar otentikasi Master Admin Passkey.
-2. Validasi kredensial dieksekusi di server via `createServerFn` dengan timing-safe hash comparison tanpa membocorkan hash ke bundle client.
-3. Tombol dan alur Google OAuth disiapkan (ready-state dengan parameter Client ID dan error handling terstruktur).
-4. Logout berhasil menghapus sesi admin dan me-redirect ke login screen.
+1. Rute `/admin` terlindungi; akses tanpa sesi yang valid menampilkan layar otentikasi Master Admin Passkey. (✅ Shipped)
+2. Validasi kredensial dieksekusi di server via `createServerFn` dengan timing-safe hash comparison tanpa membocorkan hash ke bundle client. (✅ Shipped)
+3. Tombol dan alur Google OAuth disiapkan (ready-state dengan parameter Client ID dan error handling terstruktur). (✅ Shipped)
+4. Logout berhasil menghapus sesi admin dan me-redirect ke login screen. (✅ Shipped)
 
 ---
 
