@@ -9,16 +9,16 @@
 
 ### Category 1: Admin Authentication & Security Gates (ADMIN-AUTH)
 
-- [ ] **ADMIN-AUTH-01**: Admin dapat mengakses rute `/admin` yang diproteksi oleh Master Admin Passkey login screen.
-- [ ] **ADMIN-AUTH-02**: Verifikasi kredensial admin dieksekusi melalui `createServerFn` dengan timing-safe SHA-256 hash comparison dan secure session token.
-- [ ] **ADMIN-AUTH-03**: Admin dapat melihat arsitektur & antarmuka login Google OAuth (Google Sign-In readiness) dengan konfigurasi Client ID dan alur callback terproteksi.
-- [ ] **ADMIN-AUTH-04**: Admin dapat melakukan logout untuk mengakhiri sesi autentikasi admin di browser secara aman.
+- [x] **ADMIN-AUTH-01**: Admin dapat mengakses rute `/admin` yang diproteksi oleh Master Admin Passkey login screen.
+- [x] **ADMIN-AUTH-02**: Verifikasi kredensial admin dieksekusi melalui `createServerFn` dengan timing-safe SHA-256 hash comparison dan secure session token.
+- [x] **ADMIN-AUTH-03**: Admin dapat melihat arsitektur & antarmuka login Google OAuth (Google Sign-In readiness) dengan konfigurasi Client ID dan alur callback terproteksi.
+- [x] **ADMIN-AUTH-04**: Admin dapat melakukan logout untuk mengakhiri sesi autentikasi admin di browser secara aman.
 
 ### Category 2: Server Telemetry Ingestion & API (ADMIN-TELEM)
 
-- [ ] **ADMIN-TELEM-01**: Endpoint server internal TanStack Start menerima payload heartbeat & progres peserta (nama, instansi, courseId, progres persen, status checkpoint, timestamp).
-- [ ] **ADMIN-TELEM-02**: Endpoint server memvalidasi schema payload telemetri dengan Zod dan menyimpannya ke server store terstruktur yang aman.
-- [ ] **ADMIN-TELEM-03**: Klien peserta (`/course/ai` dan `/course/word`) memiliki background telemetry client yang secara non-blocking mengirimkan pembaharuan progres saat checkpoint diverifikasi atau kuis diselesaikan.
+- [x] **ADMIN-TELEM-01**: Endpoint server internal TanStack Start menerima payload heartbeat & progres peserta (nama, instansi, courseId, progres persen, status checkpoint, timestamp).
+- [x] **ADMIN-TELEM-02**: Endpoint server memvalidasi schema payload telemetri dengan Zod dan menyimpannya ke server store terstruktur yang aman.
+- [x] **ADMIN-TELEM-03**: Klien peserta (`/course/ai` dan `/course/word`) memiliki background telemetry client yang secara non-blocking mengirimkan pembaharuan progres saat checkpoint diverifikasi atau kuis diselesaikan.
 
 ### Category 3: Participant Progress & Monitoring Dashboard (ADMIN-DASH)
 
@@ -64,13 +64,13 @@
 
 | Requirement | Phase | Status | Verification Evidence |
 |---|---|---|---|
-| ADMIN-AUTH-01 | Phase 29 | Pending | Route /admin login gate |
-| ADMIN-AUTH-02 | Phase 29 | Pending | Timing-safe server function test |
-| ADMIN-AUTH-03 | Phase 29 | Pending | Google OAuth readiness UI & state |
-| ADMIN-AUTH-04 | Phase 29 | Pending | Logout session destruction test |
-| ADMIN-TELEM-01 | Phase 30 | Pending | Telemetry API endpoint test |
-| ADMIN-TELEM-02 | Phase 30 | Pending | Zod validation & server store test |
-| ADMIN-TELEM-03 | Phase 30 | Pending | Client background telemetry sync test |
+| ADMIN-AUTH-01 | Phase 29 | Complete | 29-VERIFICATION.md |
+| ADMIN-AUTH-02 | Phase 29 | Complete | 29-VERIFICATION.md |
+| ADMIN-AUTH-03 | Phase 29 | Complete | 29-VERIFICATION.md |
+| ADMIN-AUTH-04 | Phase 29 | Complete | 29-VERIFICATION.md |
+| ADMIN-TELEM-01 | Phase 30 | Complete | 30-VERIFICATION.md |
+| ADMIN-TELEM-02 | Phase 30 | Complete | 30-VERIFICATION.md |
+| ADMIN-TELEM-03 | Phase 30 | Complete | 30-VERIFICATION.md |
 | ADMIN-DASH-01 | Phase 31 | Complete | 31-VERIFICATION.md |
 | ADMIN-DASH-02 | Phase 31 | Complete | 31-VERIFICATION.md |
 | ADMIN-DASH-03 | Phase 31 | Complete | 31-VERIFICATION.md |
