@@ -22,10 +22,12 @@
 **Plans**: 2 plans
 
 Plans:
+
 - [x] 24-01: Data extraction & typed data schema (pretrainingFoundation.ts) and modular React 19 foundation components (Hero, Target, Glosarium, Security, Prerequisites, PowerShell) (completed 2026-09-08)
 - [x] 24-02: Route integration in app/routes/course.ai.tsx, styling fidelity, and automated unit/regression test verification (completed 2026-09-08)
 
 **Success Criteria**:
+
 1. User dapat melihat Target & Alur Pre-Training dengan estimasi waktu dan tahapan visual di route `/course/ai?mode=pretraining`.
 2. Glosarium interaktif 10 istilah teknis AI tampil dengan kartu istilah dan badge penjelasan.
 3. Aturan Keamanan & Perlindungan Rahasia tampil dengan peringatan keras dan banner security.
@@ -41,10 +43,12 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+
 - [x] 25-01: Extract typed dataset (pretrainingModules.ts), 1-Click copy engine with fallback & toast (CopyableCodeBlock.tsx, Toast.tsx), and modular presentation components (PretrainingModuleCard, ModuleArchitectureFlow, CheckpointPreviewCard) (completed 2026-09-09)
 - [x] 25-02: Build master accordion section (PretrainingModulesSection.tsx), route integration in course.ai.tsx, and automated unit/regression test suite verification (completed 2026-09-09)
 
 **Success Criteria**:
+
 1. Seluruh Modul 1 sampai Modul 5 dapat dibuka/ditutup secara independen maupun via tombol "Buka Semua" / "Tutup Semua".
 2. Seluruh perintah CLI (PowerShell, npm, curl, git, hermes) memiliki tombol 1-Click Copy dengan feedback visual "Tersalin!" instan.
 3. Detail teknis (konfigurasi JSON 9Router, format prompt Hermes, allowlist Telegram) tersaji lengkap sesuai panduan resmi.
@@ -59,10 +63,12 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
+
 - [x] 26-01: Pretraining state hook with 13 checklist IDs (usePretrainingState.ts), Checkpoint 1-3 gate cards (CheckpointGateCard.tsx, PretrainingCheckpointsSection.tsx), dynamic readiness section, and reset modal (completed 2026-09-09)
 - [x] 26-02: Wire interactive checkboxes, hero stats sync, route mounting in course.ai.tsx, and automated unit/regression test suite verification (completed 2026-09-09)
 
 **Success Criteria**:
+
 1. Peserta dapat mencentang 13 item checklist pada modul dan checklist island, dengan status tersimpan persisten di localStorage.
 2. Checkpoint 1, 2, dan 3 menghitung kelulusan secara otomatis saat sub-item terpenuhi.
 3. Badge kesiapan ("SIAP WORKSHOP" vs "PERLU KLINIK PERSIAPAN") dan progress bar mengupdate persentase secara real-time.
@@ -75,8 +81,19 @@ Plans:
 **Goal**: Membangun Troubleshooting Hub pre-training dengan pencarian teks instan dan filter kategori (Node.js, 9Router, Telegram, Hermes, PowerShell) serta alat sensor token rahasia otomatis.  
 **Depends on**: Phase 26  
 **Requirements**: PRE-TOOL-01, PRE-TOOL-02, PRE-TOOL-03  
+**Plans**: 2 plans
+
+Plans:
+**Wave 1**
+
+- [ ] 27-01: Data layer (pretrainingTroubleshooting.ts), Redaction engine (redaction.ts), and comprehensive unit test suite (pretraining-troubleshooting.test.js)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 27-02: Presentation layer (TroubleshootingCard.tsx, PretrainingTroubleshootingSection.tsx, PretrainingRedactionSection.tsx), route mounting in course.ai.tsx, and regression verification
 
 **Success Criteria**:
+
 1. Troubleshooting hub menampilkan 10+ kartu solusi error umum pre-training yang dapat difilter secara instan via search input dan filter chips.
 2. Tool Sensor Token / Redaction Assistant dapat memproses teks masukan peserta dan menyensor token Telegram bot, Google Gemini API key, dan JWT/Bearer token sebelum disalin.
 3. Solusi error menyediakan perintah perbaikan langkah-demi-langkah dengan 1-click copy.
@@ -90,6 +107,7 @@ Plans:
 **Requirements**: PRE-RPT-01, PRE-RPT-02, PRE-RPT-03, PRE-NAV-01, PRE-NAV-02, PRE-NAV-03  
 
 **Success Criteria**:
+
 1. Form Laporan Kesiapan terisi otomatis dengan rekap checkpoint dan checklist peserta, serta dapat disalin ke format WhatsApp & Telegram dalam 1 klik.
 2. Halaman rapi saat dicetak (`Ctrl+P`) dengan layout khusus cetak dokumen dinas/peserta.
 3. Sidebar kiri menyinkronkan daftar tautan modul pre-training dengan indikator progres dan scrollspy navigasi aktif.
