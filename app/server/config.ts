@@ -16,6 +16,7 @@ export function getServerConfig() {
     adminPasskeyHash: process.env.ADMIN_PASSKEY_HASH || DEFAULT_ADMIN_PASSKEY_HASH,
     googleClientId: process.env.GOOGLE_CLIENT_ID || '',
     googleClientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+    googleAllowedEmail: process.env.GOOGLE_ALLOWED_EMAIL || 'tropicans@gmail.com',
     nodeEnv: process.env.NODE_ENV || 'development',
   }
 }

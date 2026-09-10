@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
-import { adminCheckSessionFn, adminGetAuthConfigFn } from '@/server/adminAuth'
+import { adminCheckSessionFn, adminGetAuthConfigFn, adminGoogleLoginFn } from '@/server/adminAuth'
 import type { AdminUser } from '@/schemas/admin'
 import { AdminLoginGate } from '@/components/admin/AdminLoginGate'
 import { AdminShell } from '@/components/admin/AdminShell'
@@ -30,6 +30,7 @@ export const Route = createFileRoute('/admin')({
 function AdminRouteComponent() {
   const { authenticated: initialAuthenticated, initialUser, authConfig } = Route.useLoaderData()
   const [currentUser, setCurrentUser] = useState<AdminUser | null>(initialUser)
+  const [oauthError, setOauthError] = useState<string | null>(null)
   const isAuthenticated = Boolean(currentUser)
 
   useEffect(() => {
@@ -37,6 +38,39 @@ function AdminRouteComponent() {
       setCurrentUser(initialUser)
     }
   }, [initialUser])
+
+  // Handle Google OAuth callback from URL hash (#access_token=... or #id_token=...)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    const hash = window.location.hash
+    if (!hash || (!hash.includes('access_token=') && !hash.includes('id_token='))) return
+
+    const params = new URLSearchParams(hash.replace(/^#/, ''))
+    const idToken = params.get('id_token')
+    const accessToken = params.get('access_token')
+    const token = idToken || accessToken
+
+    if (token) {
+      // Clear hash immediately for cleanliness and security
+      window.history.replaceState(null, '', window.location.pathname + window.location.search)
+
+      adminGoogleLoginFn({ data: { credentialToken: token } })
+        .then((res) => {
+          if (res.success && res.authenticatedAt) {
+            setCurrentUser({
+              role: 'admin',
+              authenticatedAt: res.authenticatedAt,
+              authMethod: 'google',
+            })
+          } else {
+            setOauthError(res.message || 'Login Google gagal.')
+          }
+        })
+        .catch((err) => {
+          setOauthError(err instanceof Error ? err.message : 'Gagal menghubungkan ke Google.')
+        })
+    }
+  }, [])
 
   const handleLoginSuccess = (user: AdminUser) => {
     setCurrentUser(user)
@@ -64,6 +98,8 @@ function AdminRouteComponent() {
         <AdminLoginGate
           onLoginSuccess={handleLoginSuccess}
           googleClientIdConfigured={authConfig.googleClientIdConfigured}
+          googleClientId={authConfig.googleClientId}
+          externalErrorMessage={oauthError}
         />
       )}
     </main>

@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: learnwith-app
     restart: unless-stopped
+    env_file:
+      - .env
     ports:
       - "${PORT:-3173}:3173"
     environment:

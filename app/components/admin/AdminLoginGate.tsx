@@ -6,16 +6,22 @@ import { GoogleSignInButton } from './GoogleSignInButton'
 interface AdminLoginGateProps {
   onLoginSuccess: (user: AdminUser) => void
   googleClientIdConfigured?: boolean
+  googleClientId?: string
+  externalErrorMessage?: string | null
 }
 
 export function AdminLoginGate({
   onLoginSuccess,
   googleClientIdConfigured = false,
+  googleClientId,
+  externalErrorMessage = null,
 }: AdminLoginGateProps) {
   const [passkey, setPasskey] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const activeError = errorMessage || externalErrorMessage
 
   // Detect and sync password manager autofill
   useEffect(() => {
@@ -88,14 +94,14 @@ export function AdminLoginGate({
           </p>
         </div>
 
-        {errorMessage && (
+        {activeError && (
           <div className="admin-alert admin-alert-error" role="alert" id="admin-login-error">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <circle cx="12" cy="12" r="10" />
               <line x1="12" y1="8" x2="12" y2="12" />
               <line x1="12" y1="16" x2="12.01" y2="16" />
             </svg>
-            <span>{errorMessage}</span>
+            <span>{activeError}</span>
           </div>
         )}
 
@@ -146,10 +152,22 @@ export function AdminLoginGate({
           <span>atau</span>
         </div>
 
-        <GoogleSignInButton
-          isConfigured={googleClientIdConfigured}
-          disabled={isLoading}
-        />
+        {(() => {
+          const redirectUri = typeof window !== 'undefined'
+            ? `${window.location.origin}/admin`
+            : 'http://localhost:3173/admin'
+          const authUrl = googleClientId
+            ? `https://accounts.google.com/o/oauth2/v2/auth?client_id=${encodeURIComponent(googleClientId)}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=token%20id_token&scope=${encodeURIComponent('email profile openid')}&nonce=${Date.now()}&prompt=select_account`
+            : undefined
+
+          return (
+            <GoogleSignInButton
+              isConfigured={googleClientIdConfigured}
+              authUrl={authUrl}
+              disabled={isLoading}
+            />
+          )
+        })()}
       </div>
     </div>
   )

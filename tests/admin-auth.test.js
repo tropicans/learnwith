@@ -190,6 +190,56 @@ describe('Phase 29 Master Admin Authentication Engine Suite', () => {
       });
       assert.strictEqual(configRes.success, true);
     });
+
+    it('validates googleLoginInputSchema and rejects empty tokens', () => {
+      const valid = adminSchemas.googleLoginInputSchema.safeParse({
+        credentialToken: 'ya29.a0AfH6SM...',
+      });
+      assert.strictEqual(valid.success, true);
+
+      const invalid = adminSchemas.googleLoginInputSchema.safeParse({
+        credentialToken: '',
+      });
+      assert.strictEqual(invalid.success, false);
+    });
+  });
+
+  describe('Suite 4.5: Google OAuth Email Restriction Engine', () => {
+    it('verifies server configuration specifies tropicans@gmail.com by default or via env', () => {
+      const config = serverConfig.getServerConfig();
+      const allowed = config.googleAllowedEmail
+        .split(',')
+        .map((e) => e.trim().toLowerCase());
+      assert.ok(allowed.includes('tropicans@gmail.com'), 'tropicans@gmail.com must be allowed');
+    });
+
+    it('enforces whitelist filtering logic for authorized vs unauthorized email addresses', () => {
+      const config = serverConfig.getServerConfig();
+      const allowedEmails = config.googleAllowedEmail
+        .split(',')
+        .map((e) => e.trim().toLowerCase())
+        .filter(Boolean);
+
+      const testEmailAuthorized = 'tropicans@gmail.com';
+      const testEmailUnauthorized = 'intruder@example.com';
+      const testEmailCaseInsensitive = 'TROPICANS@GMAIL.COM';
+
+      assert.strictEqual(
+        allowedEmails.includes(testEmailAuthorized.trim().toLowerCase()),
+        true,
+        'tropicans@gmail.com must be permitted'
+      );
+      assert.strictEqual(
+        allowedEmails.includes(testEmailCaseInsensitive.trim().toLowerCase()),
+        true,
+        'Case-insensitive comparison must succeed'
+      );
+      assert.strictEqual(
+        allowedEmails.includes(testEmailUnauthorized.trim().toLowerCase()),
+        false,
+        'Unauthorized emails must be blocked'
+      );
+    });
   });
 
   describe('Suite 5: Secret Quarantine & Client Boundary Integrity (ADMIN-AUTH-01, ADMIN-QA-01)', () => {

@@ -83,17 +83,98 @@ export const adminLogoutFn = createServerFn({ method: 'POST' })
   })
 
 /**
+ * Server function: Google OAuth Login / Token Verification
+ * Validates token with Google tokeninfo endpoint, establishes admin session cookie.
+ */
+export const adminGoogleLoginFn = createServerFn({ method: 'POST' })
+  .validator((data: unknown) => {
+    const { credentialToken } = (data as { credentialToken: string }) || {}
+    if (!credentialToken || typeof credentialToken !== 'string') {
+      throw new Error('Token Google tidak valid.')
+    }
+    return { credentialToken }
+  })
+  .handler(async ({ data }): Promise<AdminLoginResult> => {
+    const { credentialToken } = data
+
+    try {
+      // Validate token with Google tokeninfo endpoint or userinfo
+      let email: string | undefined
+
+      const idTokenRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(credentialToken)}`)
+      if (idTokenRes.ok) {
+        const data = await idTokenRes.json()
+        email = data.email
+      } else {
+        // Fallback: check as access_token via tokeninfo
+        const accessTokenRes = await fetch(`https://oauth2.googleapis.com/tokeninfo?access_token=${encodeURIComponent(credentialToken)}`)
+        if (accessTokenRes.ok) {
+          const data = await accessTokenRes.json()
+          email = data.email
+        } else {
+          // Fallback: check via userinfo endpoint with bearer authorization
+          const userinfoRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+            headers: { Authorization: `Bearer ${credentialToken}` },
+          })
+          if (userinfoRes.ok) {
+            const data = await userinfoRes.json()
+            email = data.email
+          }
+        }
+      }
+
+      if (!email) {
+        return {
+          success: false,
+          message: 'Verifikasi akun Google gagal. Token tidak valid atau tidak memiliki akses email.',
+        }
+      }
+
+      // Check allowed email whitelist
+      const config = getServerConfig()
+      const allowedEmails = config.googleAllowedEmail
+        ? config.googleAllowedEmail.split(',').map((e) => e.trim().toLowerCase()).filter(Boolean)
+        : ['tropicans@gmail.com']
+
+      if (!allowedEmails.includes(email.trim().toLowerCase())) {
+        return {
+          success: false,
+          message: `Akses ditolak. Email (${email}) tidak terdaftar sebagai Master Administrator. Hanya tropicans@gmail.com yang diizinkan.`,
+        }
+      }
+
+      const session = createAdminSession('google')
+      setSessionCookie(session.token)
+
+      return {
+        success: true,
+        message: 'Autentikasi Google Workspace berhasil.',
+        token: session.token,
+        authenticatedAt: session.createdAt,
+      }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Terjadi kegagalan jaringan saat verifikasi Google.'
+      return {
+        success: false,
+        message: msg,
+      }
+    }
+  })
+
+/**
  * Server function: Get Admin Auth Platform Configuration
  * Safely exposes Google OAuth readiness state and configured auth modes without leaking secrets.
  */
 export const adminGetAuthConfigFn = createServerFn({ method: 'GET' })
   .handler(async (): Promise<AdminAuthConfig> => {
     const config = getServerConfig()
-    const googleClientIdConfigured = Boolean(config.googleClientId && config.googleClientId.trim().length > 0)
+    const googleClientId = config.googleClientId?.trim() || undefined
+    const googleClientIdConfigured = Boolean(googleClientId)
 
     return {
-      googleAuthAvailable: false, // Architectural readiness, disabled by default until enterprise OAuth configured
+      googleAuthAvailable: googleClientIdConfigured,
       googleClientIdConfigured,
+      googleClientId,
       authModes: ['passkey', 'google'],
     }
   })

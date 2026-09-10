@@ -40,7 +40,14 @@ export type AdminLogoutResult = z.infer<typeof adminLogoutResultSchema>
 export const adminAuthConfigSchema = z.object({
   googleAuthAvailable: z.boolean(),
   googleClientIdConfigured: z.boolean(),
+  googleClientId: z.string().optional(),
   authModes: z.array(z.string()),
 })
 
 export type AdminAuthConfig = z.infer<typeof adminAuthConfigSchema>
+
+export const googleLoginInputSchema = z.object({
+  credentialToken: z.string().min(1, 'Token Google wajib diisi'),
+})
+
+export type GoogleLoginInput = z.infer<typeof googleLoginInputSchema>

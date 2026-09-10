@@ -52,6 +52,7 @@ None.
 
 | # | Description | Date | Commit | Status | Directory |
 |---|-------------|------|--------|--------|-----------|
+| 1 | Restrict Google login strictly to tropicans@gmail.com | 2026-09-10 | HEAD | complete | .planning/quick/20260910-google-login-whitelist |
 
 ## Session
 
