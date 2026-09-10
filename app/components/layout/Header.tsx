@@ -60,7 +60,7 @@ export function Header() {
 
         <Link to="/" search={{ filter: 'all' }} id="brand-home-link" className="brand-home-link" aria-label="Beranda LearnWith">
           <div className="header-brand-icon">
-            <img src="/favicon.svg?v=2.3.0" alt="LearnWith Logo" className="brand-logo-img" />
+            <img src="/favicon.svg?v=3.0.0" alt="LearnWith Logo" className="brand-logo-img" />
           </div>
           <div className="header-brand-platform">
             <span className="platform-logo-text">LearnWith</span>

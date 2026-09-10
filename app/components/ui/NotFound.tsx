@@ -27,7 +27,7 @@ export function NotFound() {
       >
         <div style={{ marginBottom: '1.25rem' }}>
           <img
-            src="/favicon.svg?v=2.3.0"
+            src="/favicon.svg?v=3.0.0"
             alt="LearnWith Logo"
             style={{ width: '56px', height: '56px', borderRadius: '12px' }}
           />
