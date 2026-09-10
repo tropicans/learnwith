@@ -54,7 +54,8 @@ function AdminRouteComponent() {
         gridArea: 'main',
         width: '100%',
         minHeight: 'calc(100vh - 48px)',
-        backgroundColor: 'var(--bg-terminal, #1d1d1f)',
+        backgroundColor: 'var(--bg-body, #f5f5f7)',
+        color: 'var(--text-primary, #1d1d1f)',
       }}
     >
       {isAuthenticated && currentUser ? (
