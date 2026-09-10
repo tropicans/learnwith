@@ -25,6 +25,19 @@ created: "2026-09-10"
 
 ---
 
+## Visual Hierarchy & Focal Points
+
+| Priority | Surface / Component | Visual Role & Treatment |
+|----------|---------------------|--------------------------|
+| 1. Primary Focal Point | KPI Metric Cards (`CourseLifecycleKPIs`) | Top visual anchor with high-contrast tallies (Total Kursus, Aktif, Tersembunyi, Diarsipkan, Dinonaktifkan) providing immediate status overview. |
+| 2. Secondary Focal Point | Course Status Cards (`CourseStatusCards`) | Elevated white tiles (`#ffffff`) with 16px border-radius, top accent borders (AI: `#5856d6`, Word: `#0066cc`), and prominent status badges (`Aktif`, `Tersembunyi`, `Diarsipkan`, `Dinonaktifkan`). |
+| 3. Action Controls | Action Button Groups | Context-aware 1-click action buttons (`Tampilkan Kursus`, `Sembunyikan Kursus`, `Arsipkan Kursus`, `Pulihkan Kursus`, `Nonaktifkan Kursus`) with clear semantic separation. |
+| 4. Navigation & Filtering | Filter Pills Toolbar (`CourseFilterToolbar`) | Secondary toolbar directly beneath KPIs with status filter pills and live search input field. |
+| 5. Supporting Audit Log | Transition History Table (`CourseLifecycleAuditTable`) | Supporting administrative table at the bottom documenting historical transitions with monospace timestamps and operator badges. |
+| 6. Guarded Modal | Soft-Deactivate Safety Dialog (`CourseDeleteModal`) | High-priority modal dialog with frosted backdrop (`rgba(0, 0, 0, 0.4)` + 5px blur), danger header badge, and typed confirmation guard. |
+
+---
+
 ## Spacing Scale
 
 Declared values (must be multiples of 4):
@@ -49,8 +62,8 @@ Exceptions: none
 |------|------|--------|-------------|
 | Body | 15px | 400 | 1.5 |
 | Label | 12px | 600 | 1.33 |
-| Heading | 20px | 700 | 1.2 |
-| Display | 28px | 700 | 1.15 |
+| Heading | 20px | 600 | 1.2 |
+| Display | 28px | 600 | 1.15 |
 
 ---
 
