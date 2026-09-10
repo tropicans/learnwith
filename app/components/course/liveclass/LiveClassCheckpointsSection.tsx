@@ -16,9 +16,9 @@ const CHECKPOINT_CRITERIA_MAP: Record<number, string[]> = {
     'Endpoint <code>/v1/chat/completions</code> mengembalikan respons JSON valid',
   ],
   7: [
-    'Package <code>hermes-agent-cli</code> terpasang secara global',
-    'Diagnostik <code>hermes doctor</code> berstatus <strong>ALL CHECKS PASSED [OK]</strong>',
-    'Direktori workspace <code>~/hermes-workspace</code> telah terinisialisasi',
+    'Hermes Agent terpasang via official installer <code>install.ps1</code>',
+    'Setup wizard (<code>hermes setup</code>) berhasil menghubungkan agen ke 9Router (port 20128)',
+    'Perintah <code>hermes config</code> menampilkan konfigurasi aktif tanpa kendala',
   ],
   8: [
     'File konfigurasi <code>hermes.json</code> terhubung ke gateway <code>http://localhost:20128/v1</code>',

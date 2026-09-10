@@ -88,10 +88,10 @@ const AI_LIVE_MODULES: CourseModule[] = [
   {
     id: 'm7',
     num: 7,
-    title: 'Hermes Agent Windows Native Engine',
-    subtitle: 'Instalasi hermes-cli, environment verification, dan system doctor',
-    estimatedMinutes: 30,
-    checkpoints: ['Hermes Doctor Report Passed'],
+    title: 'Hermes Agent Windows Native & Setup Wizard',
+    subtitle: 'Instalasi resmi Windows via PowerShell dan setup interaktif gateway 9Router',
+    estimatedMinutes: 25,
+    checkpoints: ['Hermes Agent Terpasang & Setup Selesai'],
   },
   {
     id: 'm8',
