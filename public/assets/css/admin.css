@@ -14,10 +14,12 @@
 .app-container.view-admin .brand-breadcrumb-separator,
 .app-container.view-admin .header-course-switcher,
 .app-container.view-admin .header-mode-switcher,
+.app-container.view-admin .header-search-container,
 .app-container.view-admin #btn-mobile-menu,
 .view-admin .brand-breadcrumb-separator,
 .view-admin .header-course-switcher,
 .view-admin .header-mode-switcher,
+.view-admin .header-search-container,
 .view-admin #btn-mobile-menu {
   display: none !important;
 }

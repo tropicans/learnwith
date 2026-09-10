@@ -991,6 +991,43 @@ body {
   display: none !important;
 }
 
+/* Full-Width Canvas when in Admin View */
+.app-container.view-admin {
+  grid-template-columns: 1fr !important;
+  grid-template-areas:
+    "header"
+    "main" !important;
+  background-color: var(--bg-terminal, #1d1d1f);
+}
+
+.app-container.view-admin .app-sidebar,
+.view-admin .app-sidebar,
+.app-container.view-admin .brand-breadcrumb-separator,
+.app-container.view-admin .header-course-switcher,
+.app-container.view-admin .header-mode-switcher,
+.app-container.view-admin .header-search-container,
+.app-container.view-admin #btn-mobile-menu,
+.view-admin .brand-breadcrumb-separator,
+.view-admin .header-course-switcher,
+.view-admin .header-mode-switcher,
+.view-admin .header-search-container,
+.view-admin #btn-mobile-menu {
+  display: none !important;
+}
+
+.app-container.view-admin .app-main,
+.view-admin .app-main,
+.app-container.view-admin .admin-canvas,
+.view-admin .admin-canvas {
+  grid-area: main !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+  min-height: calc(100vh - 48px);
+  background-color: var(--bg-terminal, #1d1d1f);
+}
+
 .brand-home-link {
   display: flex;
   align-items: center;

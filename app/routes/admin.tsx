@@ -47,7 +47,16 @@ function AdminRouteComponent() {
   }
 
   return (
-    <div className="admin-canvas" id="admin-main-canvas">
+    <main
+      className="admin-canvas app-main-admin"
+      id="admin-main-canvas"
+      style={{
+        gridArea: 'main',
+        width: '100%',
+        minHeight: 'calc(100vh - 48px)',
+        backgroundColor: 'var(--bg-terminal, #1d1d1f)',
+      }}
+    >
       {isAuthenticated && currentUser ? (
         <AdminShell adminUser={currentUser} onLogout={handleLogout} />
       ) : (
@@ -56,6 +65,6 @@ function AdminRouteComponent() {
           googleClientIdConfigured={authConfig.googleClientIdConfigured}
         />
       )}
-    </div>
+    </main>
   )
 }
