@@ -34,6 +34,40 @@ export interface CourseStats {
   lastUpdated: string
 }
 
+export interface CourseNavItem {
+  id: string
+  title: string
+  shortTitle?: string
+  desc: string
+  icon: string
+  path: string
+  searchParams?: Record<string, unknown>
+  isLocked?: boolean
+}
+
+export const COURSE_NAV_REGISTRY: Record<string, CourseNavItem> = {
+  ai: {
+    id: 'ai',
+    title: 'Hands-on Agentic AI',
+    shortTitle: 'Agentic AI',
+    desc: 'Hermes Agent & 9Router',
+    icon: '🤖',
+    path: '/course/ai',
+    searchParams: { mode: 'pretraining' },
+    isLocked: false,
+  },
+  word: {
+    id: 'word',
+    title: 'Pengolahan Kata Lanjut',
+    shortTitle: 'Word ASN',
+    desc: 'Modul Praktik ASN (Styles, TOC, Merge)',
+    icon: '📝',
+    path: '/course/word',
+    searchParams: {},
+    isLocked: true,
+  },
+}
+
 const AI_PRETRAINING_MODULES: CourseModule[] = [
   {
     id: 'm1',

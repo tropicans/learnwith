@@ -3852,4 +3852,28 @@ mark.search-highlight {
   color: var(--text-secondary);
   font-size: var(--font-size-sm, 0.875rem);
   margin: 1.5rem 0;
+}﻿
+
+/* ==========================================================================
+   PHASE 36: HEADER COURSE SWITCHER SYNC STYLES (COURSE-SYNC-02)
+   ========================================================================== */
+.switcher-unlisted-badge {
+  font-size: 0.675rem;
+  padding: 0.15rem 0.45rem;
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.switcher-empty-note {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--text-muted, #94a3b8);
+  font-style: italic;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  pointer-events: none;
+  background: var(--bg-surface-subtle, transparent);
+  border-top: 1px dashed var(--border-subtle);
 }

@@ -2,14 +2,17 @@ import {
   Outlet,
   ScrollRestoration,
   createRootRoute,
+  useRouter,
   useRouterState,
 } from '@tanstack/react-router'
 import { Meta, Scripts } from '@tanstack/react-start'
-import type { ReactNode } from 'react'
+import { type ReactNode, useEffect } from 'react'
 import { Header } from '@/components/layout/Header'
 import { GlobalAnnouncementBanner } from '@/components/layout/GlobalAnnouncementBanner'
 import { NotFound } from '@/components/ui/NotFound'
 import { RouteErrorBoundary } from '@/components/ui/RouteErrorBoundary'
+import { getPublicCourseStatusesFn } from '@/server/courseLifecycle'
+import { COURSE_STATUS_BROADCAST_CHANNEL } from '@/utils/courseBroadcast'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -31,15 +34,39 @@ export const Route = createRootRoute({
       { rel: 'stylesheet', href: '/assets/css/admin.css?v=1.2.0' },
     ],
   }),
+  loader: async () => {
+    try {
+      const courseStatuses = await getPublicCourseStatusesFn()
+      return { courseStatuses }
+    } catch {
+      return { courseStatuses: [] }
+    }
+  },
   notFoundComponent: NotFound,
   errorComponent: RouteErrorBoundary,
   component: RootComponent,
 })
 
 function RootComponent() {
+  const router = useRouter()
+  const loaderData = Route.useLoaderData()
+  const courseStatuses = loaderData?.courseStatuses ?? []
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const isHome = pathname === '/'
   const isAdmin = pathname.startsWith('/admin')
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('BroadcastChannel' in window)) return
+    const channel = new BroadcastChannel(COURSE_STATUS_BROADCAST_CHANNEL)
+    channel.onmessage = (event) => {
+      if (event.data?.type === 'STATUS_UPDATED') {
+        router.invalidate()
+      }
+    }
+    return () => {
+      channel.close()
+    }
+  }, [router])
 
   return (
     <RootDocument>
@@ -56,7 +83,7 @@ function RootComponent() {
         }}
       />
       <div className={`app-container ${isHome ? 'view-home' : ''} ${isAdmin ? 'view-admin' : ''}`}>
-        <Header />
+        <Header courseStatuses={courseStatuses} />
         <Outlet />
       </div>
     </RootDocument>

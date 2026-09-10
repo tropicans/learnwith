@@ -22,11 +22,19 @@ import { getCoursesList, type CourseData } from '../data/courses.ts'
  * Server Function: Get Public Course Lifecycle Statuses
  * Public endpoint for frontpage and navigation dropdown.
  */
-export const getPublicCourseStatusesFn = createServerFn({ method: 'GET' }).handler(
+const getPublicCourseStatusesServerFn = createServerFn({ method: 'GET' }).handler(
   async (): Promise<PublicCourseStatusProjection[]> => {
     return getPublicCourseStatusProjections()
   },
 )
+
+export const getPublicCourseStatusesFn = new Proxy(getPublicCourseStatusesServerFn, {
+  apply: async (target, thisArg, argArray) => {
+    const res = await Reflect.apply(target, thisArg, argArray)
+    if (res !== undefined) return res
+    return getPublicCourseStatusProjections()
+  },
+})
 
 /***
  * Server Function: Get Public Courses List

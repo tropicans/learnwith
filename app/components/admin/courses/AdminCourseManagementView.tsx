@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { useRouter } from '@tanstack/react-router'
 import type {
   CourseLifecycleAuditEntry,
   CourseLifecycleRecord,
@@ -9,6 +10,7 @@ import {
   adminUpdateCourseStatusFn,
 } from '../../../server/courseLifecycle'
 import { getClientAdminToken } from '../../../utils/adminToken'
+import { broadcastCourseStatusChange } from '../../../utils/courseBroadcast'
 import { showToast } from '../../ui/Toast'
 import { CourseLifecycleKPIs } from './CourseLifecycleKPIs'
 import { CourseStatusCards } from './CourseStatusCards'
@@ -23,6 +25,7 @@ interface AdminCourseManagementViewProps {
 export function AdminCourseManagementView({
   sessionToken,
 }: AdminCourseManagementViewProps = {}) {
+  const router = useRouter()
   const [records, setRecords] = useState<CourseLifecycleRecord[]>([])
   const [auditLog, setAuditLog] = useState<CourseLifecycleAuditEntry[]>([])
   const [isLoading, setIsLoading] = useState(true)
@@ -97,6 +100,8 @@ export function AdminCourseManagementView({
           sessionToken: activeToken,
         },
       })
+      router.invalidate()
+      broadcastCourseStatusChange(courseId, targetStatus)
       showToast(
         res?.message || `Status kursus "${courseId}" berhasil ${actionLabel}.`,
         'success',
@@ -122,6 +127,8 @@ export function AdminCourseManagementView({
           sessionToken: activeToken,
         },
       })
+      router.invalidate()
+      broadcastCourseStatusChange(courseId, 'archived')
       showToast('Kursus berhasil diarsipkan.', 'success')
       await fetchCourses(false)
     } catch (err: unknown) {
@@ -144,6 +151,8 @@ export function AdminCourseManagementView({
           sessionToken: activeToken,
         },
       })
+      router.invalidate()
+      broadcastCourseStatusChange(courseId, 'active')
       showToast('Kursus berhasil dipulihkan ke status aktif.', 'success')
       await fetchCourses(false)
     } catch (err: unknown) {
@@ -170,6 +179,8 @@ export function AdminCourseManagementView({
           sessionToken: activeToken,
         },
       })
+      router.invalidate()
+      broadcastCourseStatusChange(courseId, 'deleted')
       showToast(`Kursus ${courseTitle} berhasil dinonaktifkan.`, 'success')
       setCourseForDelete(null)
       await fetchCourses(false)

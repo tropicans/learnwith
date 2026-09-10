@@ -1,8 +1,13 @@
 import { Link, useRouterState } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
+import type { PublicCourseStatusProjection } from '@/schemas/courseLifecycle'
 import { CourseSwitcher } from './CourseSwitcher'
 
-export function Header() {
+interface HeaderProps {
+  courseStatuses?: PublicCourseStatusProjection[]
+}
+
+export function Header({ courseStatuses }: HeaderProps = {}) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const pathname = useRouterState({ select: (s) => s.location.pathname })
   const isCoursePage = pathname.startsWith('/course')
@@ -69,7 +74,7 @@ export function Header() {
         <span className="brand-breadcrumb-separator" aria-hidden="true">/</span>
 
         {/* Course Switcher Component */}
-        <CourseSwitcher />
+        <CourseSwitcher courseStatuses={courseStatuses} />
 
         {/* Accessible title for Screen Readers */}
         <h1 id="header-brand-title" className="sr-only">LearnWith Platform</h1>

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Automated Unit & Integration Tests for Phase 36:
  * Frontpage Catalog, Header Switcher & Direct Access Reactive Sync
  * Requirements: COURSE-MUTATE-03, COURSE-SYNC-01, COURSE-SYNC-02, COURSE-SYNC-03
@@ -125,6 +125,105 @@ describe('Phase 36 Course Lifecycle Reactive Sync Suite', () => {
       assert.ok(
         content.includes('Belum ada modul aktif di kategori ini'),
         'Must contain category empty notice text'
+      );
+    });
+  });
+
+  describe('COURSE-SYNC-02: Header Course Switcher Dynamic Sync', () => {
+    let coursesDataModule;
+    let broadcastModule;
+
+    before(async () => {
+      coursesDataModule = await import('../app/data/courses.ts');
+      broadcastModule = await import('../app/utils/courseBroadcast.ts');
+    });
+
+    it('exports COURSE_NAV_REGISTRY with typed items for ai and word', () => {
+      assert.ok(coursesDataModule.COURSE_NAV_REGISTRY, 'COURSE_NAV_REGISTRY must be exported');
+      assert.ok(coursesDataModule.COURSE_NAV_REGISTRY.ai, 'ai item must exist');
+      assert.ok(coursesDataModule.COURSE_NAV_REGISTRY.word, 'word item must exist');
+      assert.equal(coursesDataModule.COURSE_NAV_REGISTRY.ai.path, '/course/ai');
+      assert.equal(coursesDataModule.COURSE_NAV_REGISTRY.word.path, '/course/word');
+    });
+
+    it('exports broadcastCourseStatusChange and channel constant', () => {
+      assert.ok(broadcastModule.broadcastCourseStatusChange, 'broadcastCourseStatusChange must be exported');
+      assert.equal(
+        broadcastModule.COURSE_STATUS_BROADCAST_CHANNEL,
+        'learnwith:course_status_changed',
+        'Channel name must match contract'
+      );
+    });
+
+    it('verifies AdminCourseManagementView triggers router.invalidate and broadcastCourseStatusChange', () => {
+      const adminViewPath = path.join(
+        ROOT_DIR,
+        'app',
+        'components',
+        'admin',
+        'courses',
+        'AdminCourseManagementView.tsx'
+      );
+      assert.ok(fs.existsSync(adminViewPath), 'AdminCourseManagementView.tsx must exist');
+      const content = fs.readFileSync(adminViewPath, 'utf8');
+
+      assert.ok(content.includes('router.invalidate()'), 'Must call router.invalidate() on mutation');
+      assert.ok(
+        content.includes('broadcastCourseStatusChange'),
+        'Must call broadcastCourseStatusChange on mutation'
+      );
+    });
+
+    it('verifies __root.tsx loader fetches courseStatuses and subscribes to broadcast channel', () => {
+      const rootPath = path.join(ROOT_DIR, 'app', 'routes', '__root.tsx');
+      assert.ok(fs.existsSync(rootPath), '__root.tsx must exist');
+      const content = fs.readFileSync(rootPath, 'utf8');
+
+      assert.ok(
+        content.includes('getPublicCourseStatusesFn'),
+        '__root.tsx loader must call getPublicCourseStatusesFn'
+      );
+      assert.ok(
+        content.includes('COURSE_STATUS_BROADCAST_CHANNEL'),
+        '__root.tsx must listen to COURSE_STATUS_BROADCAST_CHANNEL'
+      );
+      assert.ok(
+        content.includes('<Header courseStatuses={courseStatuses} />'),
+        '__root.tsx must pass courseStatuses to Header'
+      );
+    });
+
+    it('verifies Header.tsx forwards courseStatuses to CourseSwitcher', () => {
+      const headerPath = path.join(ROOT_DIR, 'app', 'components', 'layout', 'Header.tsx');
+      assert.ok(fs.existsSync(headerPath), 'Header.tsx must exist');
+      const content = fs.readFileSync(headerPath, 'utf8');
+
+      assert.ok(
+        content.includes('courseStatuses'),
+        'Header.tsx must accept and pass courseStatuses'
+      );
+      assert.ok(
+        content.includes('<CourseSwitcher courseStatuses={courseStatuses} />'),
+        'Header.tsx must render CourseSwitcher with courseStatuses'
+      );
+    });
+
+    it('verifies CourseSwitcher.tsx dynamic active filtering, unlisted badge, and empty note', () => {
+      const switcherPath = path.join(ROOT_DIR, 'app', 'components', 'layout', 'CourseSwitcher.tsx');
+      assert.ok(fs.existsSync(switcherPath), 'CourseSwitcher.tsx must exist');
+      const content = fs.readFileSync(switcherPath, 'utf8');
+
+      assert.ok(
+        content.includes('COURSE_NAV_REGISTRY'),
+        'CourseSwitcher.tsx must import and use COURSE_NAV_REGISTRY'
+      );
+      assert.ok(
+        content.includes('switcher-unlisted-badge'),
+        'CourseSwitcher.tsx must render switcher-unlisted-badge for hidden direct visit'
+      );
+      assert.ok(
+        content.includes('course-dropdown-empty-note'),
+        'CourseSwitcher.tsx must contain element with id="course-dropdown-empty-note"'
       );
     });
   });
