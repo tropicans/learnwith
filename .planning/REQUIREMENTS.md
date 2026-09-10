@@ -9,9 +9,9 @@
 
 ### Category 1: Course Lifecycle State & Server Store (COURSE-STATUS)
 
-- [ ] **COURSE-STATUS-01**: System provides strongly-typed course lifecycle status model: `'active'` (show), `'hidden'` (hide), `'archived'` (archive), and `'deleted'` (soft-delete).
-- [ ] **COURSE-STATUS-02**: System provides an in-memory server course registry in `app/server/courseLifecycleStore.ts` initialized with existing curriculum (`ai` and `word`), retaining status, lastUpdated, updatedBy, and version.
-- [ ] **COURSE-STATUS-03**: Course status store validates mutations against valid state transitions (e.g. active <-> hidden, active <-> archived, archived <-> active, deleted <-> active restore).
+- [x] **COURSE-STATUS-01**: System provides strongly-typed course lifecycle status model: `'active'` (show), `'hidden'` (hide), `'archived'` (archive), and `'deleted'` (soft-delete).
+- [x] **COURSE-STATUS-02**: System provides an in-memory server course registry in `app/server/courseLifecycleStore.ts` initialized with existing curriculum (`ai` and `word`), retaining status, lastUpdated, updatedBy, and version.
+- [x] **COURSE-STATUS-03**: Course status store validates mutations against valid state transitions (e.g. active <-> hidden, active <-> archived, archived <-> active, deleted <-> active restore).
 
 ### Category 2: Admin Course Management Interface (COURSE-ADMIN)
 
@@ -22,8 +22,8 @@
 
 ### Category 3: Secure Server Functions & Mutations (COURSE-MUTATE)
 
-- [ ] **COURSE-MUTATE-01**: Server function `adminGetCoursesStatusFn` returns full course status registry for authenticated Master Admin sessions via `createServerFn`.
-- [ ] **COURSE-MUTATE-02**: Server function `adminUpdateCourseStatusFn` validates admin session token, executes status mutation, increments store version, and records audit trail.
+- [x] **COURSE-MUTATE-01**: Server function `adminGetCoursesStatusFn` (or `adminGetCoursesLifecycleFn`) returns full course status registry for authenticated Master Admin sessions via `createServerFn`.
+- [x] **COURSE-MUTATE-02**: Server function `adminUpdateCourseStatusFn` validates admin session token, executes status mutation, increments store version, and records audit trail.
 - [ ] **COURSE-MUTATE-03**: Public server function or loader `getPublicCoursesListFn` projects only non-deleted, non-archived courses for public consumption, excluding hidden courses from public listings while keeping them reachable via direct route.
 
 ### Category 4: Public Catalog & Navigation Reactive Synchronization (COURSE-SYNC)
@@ -43,11 +43,11 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| COURSE-STATUS-01 | Phase 34 | Pending |
-| COURSE-STATUS-02 | Phase 34 | Pending |
-| COURSE-STATUS-03 | Phase 34 | Pending |
-| COURSE-MUTATE-01 | Phase 34 | Pending |
-| COURSE-MUTATE-02 | Phase 34 | Pending |
+| COURSE-STATUS-01 | Phase 34 | Complete |
+| COURSE-STATUS-02 | Phase 34 | Complete |
+| COURSE-STATUS-03 | Phase 34 | Complete |
+| COURSE-MUTATE-01 | Phase 34 | Complete |
+| COURSE-MUTATE-02 | Phase 34 | Complete |
 | COURSE-ADMIN-01 | Phase 35 | Pending |
 | COURSE-ADMIN-02 | Phase 35 | Pending |
 | COURSE-ADMIN-03 | Phase 35 | Pending |

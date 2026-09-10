@@ -20,14 +20,14 @@
 
 | # | Phase | Goal | Requirements | Success Criteria |
 |---|-------|------|--------------|------------------|
-| 34 | Course Lifecycle Schema & Server Store Architecture | Define strongly-typed course status schema and server store with Master Admin RPCs | `COURSE-STATUS-01..03`, `COURSE-MUTATE-01..02` | 3 |
-| 35 | Admin Management UI & Action Controls | Build dedicated "Manajemen Kursus" view in AdminShell with Show/Hide/Archive/Delete buttons & confirmation modal | `COURSE-ADMIN-01..04` | 4 |
-| 36 | Frontpage Catalog & Header Switcher Reactive Sync | Filter public courses reactively on `/` and navigation switcher based on lifecycle status | `COURSE-SYNC-01..03`, `COURSE-MUTATE-03` | 3 |
-| 37 | End-to-End Verification & Zero-Regression Audit | Comprehensive unit, RPC, and integration tests verifying lifecycle transitions and zero regression | `COURSE-TEST-01..02` | 2 |
+| 34 | [x] Course Lifecycle Schema & Server Store Architecture | Define strongly-typed course status schema and server store with Master Admin RPCs | `COURSE-STATUS-01..03`, `COURSE-MUTATE-01..02` | 3/3 ✓ |
+| 35 | [ ] Admin Management UI & Action Controls | Build dedicated "Manajemen Kursus" view in AdminShell with Show/Hide/Archive/Delete buttons & confirmation modal | `COURSE-ADMIN-01..04` | 4 |
+| 36 | [ ] Frontpage Catalog & Header Switcher Reactive Sync | Filter public courses reactively on `/` and navigation switcher based on lifecycle status | `COURSE-SYNC-01..03`, `COURSE-MUTATE-03` | 3 |
+| 37 | [ ] End-to-End Verification & Zero-Regression Audit | Comprehensive unit, RPC, and integration tests verifying lifecycle transitions and zero regression | `COURSE-TEST-01..02` | 2 |
 
 ### Phase Details
 
-#### Phase 34: Course Lifecycle Schema & Server Store Architecture
+#### Phase 34: Course Lifecycle Schema & Server Store Architecture (Complete: 2026-09-10)
 - **Goal:** Establish typed course status model (`active`, `hidden`, `archived`, `deleted`) and server registry with Master Admin RPCs.
 - **Requirements:** `COURSE-STATUS-01`, `COURSE-STATUS-02`, `COURSE-STATUS-03`, `COURSE-MUTATE-01`, `COURSE-MUTATE-02`
 - **Success Criteria:**
