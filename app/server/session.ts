@@ -1,12 +1,32 @@
 import crypto from 'node:crypto'
-import {
-  getRequestHeader as h3GetRequestHeader,
-  setResponseHeader as h3SetResponseHeader,
-} from 'h3'
 import type { AdminUser } from '../schemas/admin'
 
-const getRequestHeader = h3GetRequestHeader as unknown as (name: string) => string | undefined
-const setResponseHeader = h3SetResponseHeader as unknown as (name: string, value: string) => void
+function safeSetResponseHeader(name: string, value: string): void {
+  if (typeof window !== 'undefined') return
+  try {
+    const pkg = 'h3'
+    const h3 = typeof require !== 'undefined' ? require(pkg) : null
+    if (h3 && typeof h3.setResponseHeader === 'function') {
+      h3.setResponseHeader(name, value)
+    }
+  } catch {
+    // Ignored in mock or non-Nitro environments
+  }
+}
+
+function safeGetRequestHeader(name: string): string | undefined {
+  if (typeof window !== 'undefined') return undefined
+  try {
+    const pkg = 'h3'
+    const h3 = typeof require !== 'undefined' ? require(pkg) : null
+    if (h3 && typeof h3.getRequestHeader === 'function') {
+      return h3.getRequestHeader(name)
+    }
+  } catch {
+    return undefined
+  }
+  return undefined
+}
 
 export const SESSION_COOKIE_NAME = 'learnwith_admin_session'
 export const SESSION_TTL_SECONDS = 60 * 60 * 24 // 24 hours
@@ -109,7 +129,7 @@ export function formatSessionCookie(
 export function setSessionCookie(token: string): string {
   const cookieValue = formatSessionCookie(token)
   try {
-    setResponseHeader('Set-Cookie', cookieValue)
+    safeSetResponseHeader('Set-Cookie', cookieValue)
   } catch {
     // Graceful fallback in non-H3 or mock test environments
   }
@@ -139,7 +159,7 @@ export function formatClearCookie(isSecure: boolean = process.env.NODE_ENV === '
 export function clearSessionCookie(): string {
   const cookieValue = formatClearCookie()
   try {
-    setResponseHeader('Set-Cookie', cookieValue)
+    safeSetResponseHeader('Set-Cookie', cookieValue)
   } catch {
     // Graceful fallback in non-H3 or mock test environments
   }
@@ -152,10 +172,13 @@ export function clearSessionCookie(): string {
 export function readSessionToken(explicitCookieHeader?: string): string | null {
   let header = explicitCookieHeader
   if (header === undefined) {
-    try {
-      header = getRequestHeader('cookie')
-    } catch {
-      header = undefined
+    header = safeGetRequestHeader('cookie')
+    if (header === undefined && typeof document !== 'undefined') {
+      try {
+        header = document.cookie
+      } catch {
+        header = undefined
+      }
     }
   }
 
