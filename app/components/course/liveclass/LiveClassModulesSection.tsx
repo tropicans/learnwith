@@ -15,7 +15,7 @@ export function LiveClassModulesSection({
   const storageKey = 'learnwith_ai_live_checklist_state'
   const [checkedTasks, setCheckedTasks] = useState<Record<string, boolean>>({})
 
-  // Module accordion expansion state
+  // Module accordion expansion state (default all open)
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {}
     LIVE_CLASS_MODULES.forEach((mod) => {
@@ -77,46 +77,55 @@ export function LiveClassModulesSection({
   }
 
   return (
-    <section id="sec-live-modules" className="live-modules-section">
-      <div className="live-section-header">
-        <div className="live-section-title-group">
-          <div className="live-section-icon" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 2 7 12 12 22 7 12 2" />
-              <polyline points="2 17 12 22 22 17" />
-              <polyline points="2 12 12 17 22 12" />
-            </svg>
+    <section id="sec-live-modules" className="content-section">
+      <div className="section-header">
+        <div className="section-title-wrap">
+          <div
+            className="section-badge-icon"
+            style={{
+              background: 'rgba(52, 211, 153, 0.12)',
+              color: 'var(--color-success)',
+              width: '36px',
+              height: '36px',
+              borderRadius: 'var(--radius-md)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '1.1rem',
+            }}
+          >
+            ⚡
           </div>
           <div>
-            <h2 className="live-section-title">Rangkaian Modul Praktik Hari-H (Hands-on Lab)</h2>
-            <p className="live-section-desc">
-              Panduan terminal langkah demi langkah dari Modul 6 hingga Modul 11. Lengkapi setiap checkpoint
-              untuk membuktikan keberhasilan operasional agen otonom.
+            <h3 className="section-title">Rangkaian Modul Praktik Hari-H (M6 s.d. M11)</h3>
+            <p className="section-desc">
+              Panduan terminal langkah demi langkah dari arsitektur router hingga otomasi kalender dinas.
             </p>
           </div>
         </div>
 
-        <div className="live-modules-controls">
+        {/* Global Expand/Collapse Module Controls matching Pra-Training */}
+        <div className="module-controls">
           <button
-            type="button"
+            id="btn-expand-all-modules"
             className="btn btn-sm btn-outline"
             onClick={handleExpandAll}
-            title="Buka semua panduan modul"
+            type="button"
           >
-            <span>Buka Semua</span>
+            <span>📖</span> Buka Semua Modul
           </button>
           <button
-            type="button"
+            id="btn-collapse-all-modules"
             className="btn btn-sm btn-outline"
             onClick={handleCollapseAll}
-            title="Tutup semua panduan modul"
+            type="button"
           >
-            <span>Tutup Semua</span>
+            <span>📁</span> Tutup Semua Modul
           </button>
         </div>
       </div>
 
-      <div className="live-modules-list">
+      <div id="dynamic-modules-container">
         {LIVE_CLASS_MODULES.map((module: LiveModule) => {
           const isExpanded = Boolean(expandedModules[module.id])
           const completedStepsCount = module.steps.filter((s) => s.taskId && checkedTasks[s.taskId]).length
@@ -124,16 +133,14 @@ export function LiveClassModulesSection({
           const isAllStepsDone = totalStepsCount > 0 && completedStepsCount === totalStepsCount
 
           return (
-            <article
+            <div
               key={module.id}
               id={module.id}
-              className={`live-module-card ${isExpanded ? 'is-expanded' : 'is-collapsed'} ${
-                isAllStepsDone ? 'is-completed' : ''
-              }`}
+              className={`module-card ${isExpanded ? 'active-module' : 'collapsed'}`}
             >
-              {/* Module Card Header */}
-              <header
-                className="live-module-header"
+              {/* Module Card Header matching Pra-Training */}
+              <div
+                className="module-header"
                 role="button"
                 tabIndex={0}
                 aria-expanded={isExpanded}
@@ -145,185 +152,143 @@ export function LiveClassModulesSection({
                   }
                 }}
               >
-                <div className="live-module-header-left">
-                  <div className="live-module-icon-pill">
-                    <span>{module.icon}</span>
+                <div className="module-header-main">
+                  <div className="module-icon-badge">{module.icon}</div>
+                  <div className="module-title-group">
+                    <h3>
+                      {module.title}
+                      {isAllStepsDone && <span style={{ color: 'var(--color-success)', fontSize: '1rem' }}>✓</span>}
+                    </h3>
+                    <p>{module.subtitle}</p>
                   </div>
-                  <div className="live-module-titles">
-                    <div className="live-module-meta-row">
-                      <span className={`badge badge-pill ${module.badgeClass}`}>
-                        {module.badgeLabel}
-                      </span>
-                      <span className="live-time-chip">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <circle cx="12" cy="12" r="10" />
-                          <polyline points="12 6 12 12 16 14" />
-                        </svg>
-                        <span>{module.estimatedMinutes} menit</span>
-                      </span>
-                      {isUnlocked && (
-                        <span className={`live-progress-chip ${isAllStepsDone ? 'chip-success' : ''}`}>
-                          {completedStepsCount}/{totalStepsCount} Tugas Selesai
+                </div>
+
+                <div className="module-header-meta">
+                  <span className={`badge badge-pill ${module.badgeClass}`}>
+                    {module.badgeLabel}
+                  </span>
+                  <span className="badge badge-pill badge-neutral">
+                    ⏱️ {module.estimatedMinutes} menit
+                  </span>
+                  {isUnlocked && (
+                    <span className={`badge badge-pill ${isAllStepsDone ? 'badge-success' : 'badge-neutral'}`}>
+                      {completedStepsCount}/{totalStepsCount} Tugas
+                    </span>
+                  )}
+                  <span className="module-chevron" aria-hidden="true">
+                    ▼
+                  </span>
+                </div>
+              </div>
+
+              {/* Module Body */}
+              <div className="module-body">
+                {!isUnlocked && (
+                  <div className="alert-box alert-warning" style={{ margin: '0 0 1.25rem 0' }}>
+                    <div className="alert-icon">🔒</div>
+                    <div className="alert-content">
+                      <h5>Materi Praktik Dilindungi Passkey Instruktur</h5>
+                      <p>
+                        Instruksi kode terminal PowerShell dan checklist mandiri untuk {module.title} terlindungi.
+                        Buka sesi menggunakan passkey kelas untuk mengeksekusi langkah-langkah di bawah ini.
+                      </p>
+                      <button
+                        type="button"
+                        className="btn btn-sm btn-primary"
+                        onClick={onOpenUnlockModal}
+                        style={{ marginTop: '0.6rem', display: 'inline-flex', alignItems: 'center', gap: '0.4rem' }}
+                      >
+                        <span>🔒</span> Buka Akses Instruktur
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {/* Steps Section */}
+                {module.steps.map((step) => {
+                  const isTaskDone = Boolean(step.taskId && checkedTasks[step.taskId])
+
+                  return (
+                    <div key={step.nodeId} className="step-section">
+                      <div className="step-section-node">{step.nodeId}</div>
+                      <div className="step-section-title">
+                        <span>{step.title}</span>
+                        <span className={`badge badge-pill ${step.badgeClass || 'badge-neutral'}`}>
+                          {step.badgeLabel}
                         </span>
+                      </div>
+
+                      <p className="card-body" style={{ margin: '0.5rem 0' }}>
+                        {step.description}
+                      </p>
+
+                      {step.command && (
+                        <div style={{ margin: '0.75rem 0' }}>
+                          {isUnlocked ? (
+                            <CopyableCodeBlock
+                              code={step.command}
+                              language={step.commandLanguage || 'PowerShell'}
+                              label={step.commandLanguage || 'PowerShell'}
+                            />
+                          ) : (
+                            <div
+                              style={{
+                                padding: '0.85rem 1rem',
+                                background: 'var(--bg-surface-subtle)',
+                                border: '1px dashed var(--border-subtle)',
+                                borderRadius: 'var(--radius-md)',
+                                color: 'var(--text-muted)',
+                                fontSize: 'var(--font-size-sm)',
+                                fontFamily: 'var(--font-family-mono, monospace)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                              }}
+                            >
+                              <span>🔒</span> Perintah CLI tersembunyi — Masukkan passkey instruktur untuk membuka
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {step.outputBadge && (
+                        <div className="command-output-badge" style={{ marginTop: '0.5rem' }}>
+                          <span>{step.outputBadge.label}</span> <code>{step.outputBadge.value}</code>
+                        </div>
+                      )}
+
+                      {step.taskId && isUnlocked && (
+                        <div className="checklist-group" style={{ marginTop: '0.85rem' }}>
+                          <label
+                            className="checklist-item"
+                            style={{
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.65rem',
+                              padding: '0.5rem 0.75rem',
+                              background: isTaskDone ? 'rgba(52, 211, 153, 0.08)' : 'transparent',
+                              borderRadius: 'var(--radius-sm)',
+                              border: isTaskDone ? '1px solid rgba(52, 211, 153, 0.25)' : '1px solid transparent',
+                            }}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isTaskDone}
+                              onChange={() => toggleChecklist(step.taskId)}
+                              style={{ width: '17px', height: '17px', cursor: 'pointer', accentColor: 'var(--accent-primary)' }}
+                            />
+                            <span className="checklist-label" style={{ fontSize: 'var(--font-size-sm)' }}>
+                              <strong>Tugas Mandiri:</strong> Verifikasi langkah {step.nodeId} berhasil dieksekusi di Windows PowerShell
+                            </span>
+                          </label>
+                        </div>
                       )}
                     </div>
-                    <h3 className="live-module-title">{module.title}</h3>
-                    <p className="live-module-subtitle">{module.subtitle}</p>
-                  </div>
-                </div>
-
-                <div className="live-module-header-right">
-                  <button
-                    type="button"
-                    className="live-chevron-btn"
-                    aria-label={isExpanded ? 'Tutup modul' : 'Buka modul'}
-                    tabIndex={-1}
-                  >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={{
-                        transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                        transition: 'transform 0.2s ease',
-                      }}
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  </button>
-                </div>
-              </header>
-
-              {/* Module Card Body */}
-              {isExpanded && (
-                <div className="live-module-body">
-                  {isUnlocked ? (
-                    <>
-                      {/* Checkpoint Target Callout */}
-                      <div className="live-checkpoint-callout">
-                        <div className="checkpoint-callout-icon" aria-hidden="true">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <circle cx="12" cy="12" r="10" />
-                            <circle cx="12" cy="12" r="6" />
-                            <circle cx="12" cy="12" r="2" />
-                          </svg>
-                        </div>
-                        <div className="checkpoint-callout-text">
-                          <strong>{module.checkpointTitle}</strong>
-                          <p>{module.checkpointDescription}</p>
-                        </div>
-                      </div>
-
-                      {/* Interactive Step Items */}
-                      <div className="live-steps-container">
-                        {module.steps.map((step, stepIdx) => {
-                          const isChecked = step.taskId ? Boolean(checkedTasks[step.taskId]) : false
-
-                          return (
-                            <div key={step.nodeId || stepIdx} className={`live-step-item ${isChecked ? 'step-checked' : ''}`}>
-                              <div className="live-step-header">
-                                <div className="live-step-node-badge">{step.nodeId}</div>
-                                <div className="live-step-title-group">
-                                  <h4 className="live-step-title">{step.title}</h4>
-                                  {step.badgeLabel && (
-                                    <span className={`badge badge-pill ${step.badgeClass || 'badge-neutral'}`}>
-                                      {step.badgeLabel}
-                                    </span>
-                                  )}
-                                </div>
-
-                                {step.taskId && (
-                                  <label className="live-step-check-label" title="Tandai tugas telah dikerjakan">
-                                    <input
-                                      type="checkbox"
-                                      checked={isChecked}
-                                      onChange={() => toggleChecklist(step.taskId)}
-                                      className="live-step-checkbox"
-                                    />
-                                    <span>Selesai</span>
-                                  </label>
-                                )}
-                              </div>
-
-                              <p className="live-step-desc">{step.description}</p>
-
-                              {step.instructions && step.instructions.length > 0 && (
-                                <ul className="live-step-instructions">
-                                  {step.instructions.map((inst, idx) => (
-                                    <li key={idx}>
-                                      <span className="inst-bullet">•</span>
-                                      <span>{inst}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              )}
-
-                              {step.command && (
-                                <CopyableCodeBlock
-                                  code={step.command}
-                                  language={step.commandLanguage || 'PowerShell'}
-                                  label={step.commandLanguage || 'PowerShell'}
-                                />
-                              )}
-
-                              {step.outputBadge && (
-                                <div className="live-output-badge">
-                                  <span className="output-label">{step.outputBadge.label}</span>
-                                  <code className="output-value">{step.outputBadge.value}</code>
-                                </div>
-                              )}
-                            </div>
-                          )
-                        })}
-                      </div>
-                    </>
-                  ) : (
-                    /* Locked Teaser State */
-                    <div className="live-module-locked-teaser">
-                      <div className="locked-teaser-icon" aria-hidden="true">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                      </div>
-                      <div className="locked-teaser-content">
-                        <h4>Instruksi Interaktif Modul {module.num} Terkunci</h4>
-                        <p>
-                          Objektif modul ini adalah {module.subtitle.toLowerCase()}. Buka kunci akses
-                          dengan passkey instruktur kelas untuk melihat perintah terminal dan alur kerja lengkap.
-                        </p>
-                        <div className="locked-teaser-steps-preview">
-                          <span className="preview-label">Langkah yang akan dipelajari:</span>
-                          <div className="preview-tags-row">
-                            {module.steps.map((s) => (
-                              <span key={s.nodeId} className="preview-step-pill">
-                                <strong>{s.nodeId}</strong>: {s.title}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={onOpenUnlockModal}
-                          className="btn btn-primary btn-sm locked-teaser-btn"
-                        >
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="m21 2-2 2m-1.5 1.5L14 9a5 5 0 1 0 3 3l3.5-3.5" />
-                            <circle cx="7.5" cy="16.5" r="2.5" />
-                          </svg>
-                          <span>Buka Akses Hari-H</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-            </article>
+                  )
+                })}
+              </div>
+            </div>
           )
         })}
       </div>

@@ -56,6 +56,7 @@ export function PretrainingSidebar({ currentMode = 'pretraining' }: PretrainingS
     const sectionIds = currentMode === 'live-class'
       ? [
           'sec-live-hero',
+          'sec-live-target',
           'sec-live-stats',
           'sec-module-6',
           'sec-module-7',
@@ -352,8 +353,17 @@ export function PretrainingSidebar({ currentMode = 'pretraining' }: PretrainingS
             className={`nav-link ${activeSection === 'sec-live-hero' ? 'active' : ''}`}
           >
             <div className="nav-link-content">
-              <span className="nav-link-icon">🎯</span>
+              <span className="nav-link-icon">🏠</span>
               <span>Ringkasan &amp; Gerbang</span>
+            </div>
+          </a>
+          <a
+            href="#sec-live-target"
+            className={`nav-link ${activeSection === 'sec-live-target' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">🎯</span>
+              <span>Target &amp; Alur Praktik</span>
             </div>
           </a>
           <a
