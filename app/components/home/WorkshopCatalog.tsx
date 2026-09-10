@@ -36,6 +36,7 @@ export function WorkshopCatalog({ courses, activeFilter }: WorkshopCatalogProps)
           <Link
             to="/"
             search={{ filter: 'all' }}
+            resetScroll={false}
             className={`catalog-chip ${activeFilter === 'all' ? 'active' : ''}`}
             role="tab"
             aria-selected={activeFilter === 'all'}
@@ -47,6 +48,7 @@ export function WorkshopCatalog({ courses, activeFilter }: WorkshopCatalogProps)
           <Link
             to="/"
             search={{ filter: 'ai' }}
+            resetScroll={false}
             className={`catalog-chip ${activeFilter === 'ai' ? 'active' : ''}`}
             role="tab"
             aria-selected={activeFilter === 'ai'}
@@ -58,6 +60,7 @@ export function WorkshopCatalog({ courses, activeFilter }: WorkshopCatalogProps)
           <Link
             to="/"
             search={{ filter: 'word' }}
+            resetScroll={false}
             className={`catalog-chip ${activeFilter === 'word' ? 'active' : ''}`}
             role="tab"
             aria-selected={activeFilter === 'word'}
