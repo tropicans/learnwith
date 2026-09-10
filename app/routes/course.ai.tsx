@@ -1,7 +1,10 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { courseAiSearchSchema } from '@/schemas/searchParams'
 import { getCourseAiData, getCourseStatsAsync } from '@/data/courses'
+import { getPublicCourseStatusesFn } from '@/server/courseLifecycle'
+import { CourseUnavailableNotice } from '@/components/course/CourseUnavailableNotice'
+import { UnlistedCourseBanner } from '@/components/course/UnlistedCourseBanner'
 import { InstructorUnlockModal } from '@/components/course/InstructorUnlockModal'
 import { PretrainingHero } from '@/components/course/pretraining/PretrainingHero'
 import { PretrainingTargetSection } from '@/components/course/pretraining/PretrainingTargetSection'
@@ -25,9 +28,15 @@ export const Route = createFileRoute('/course/ai')({
   validateSearch: (search) => courseAiSearchSchema.parse(search),
   loaderDeps: ({ search }) => ({ mode: search.mode }),
   loader: async ({ deps }) => {
-    const course = await getCourseAiData(deps.mode)
+    const [course, statuses] = await Promise.all([
+      getCourseAiData(deps.mode),
+      getPublicCourseStatusesFn().catch(() => []),
+    ])
+    const statusRecord = statuses.find((s) => s.id === 'ai')
+    const lifecycleStatus = statusRecord?.status ?? 'active'
     return {
       course,
+      lifecycleStatus,
       deferredStats: getCourseStatsAsync(course.id),
     }
   },
@@ -48,11 +57,21 @@ export const Route = createFileRoute('/course/ai')({
 
 function CourseAiComponent() {
   const { mode } = Route.useSearch()
-  const { course, deferredStats } = Route.useLoaderData()
+  const { course, lifecycleStatus, deferredStats } = Route.useLoaderData()
+  const initialStatusRef = useRef(lifecycleStatus)
+  const [isInFlightChanged, setIsInFlightChanged] = useState(false)
   const { readiness, resetState } = usePretrainingState()
   const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false)
   const [isUnlocked, setIsUnlocked] = useState(false)
   const [isResetModalOpen, setIsResetModalOpen] = useState(false)
+
+  useEffect(() => {
+    const wasAccessible = initialStatusRef.current === 'active' || initialStatusRef.current === 'hidden'
+    const isNowRestricted = lifecycleStatus === 'deleted' || lifecycleStatus === 'archived'
+    if (wasAccessible && isNowRestricted) {
+      setIsInFlightChanged(true)
+    }
+  }, [lifecycleStatus])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -77,10 +96,27 @@ function CourseAiComponent() {
     showToast('Sesi Hari-H dikunci kembali 🔒', 'info', 2000)
   }
 
+  if (initialStatusRef.current === 'deleted' || initialStatusRef.current === 'archived') {
+    return (
+      <CourseUnavailableNotice
+        status={initialStatusRef.current}
+        courseId="ai"
+        courseTitle={course.title}
+      />
+    )
+  }
+
   return (
     <>
       <PretrainingSidebar currentMode={mode} />
       <main className="app-main course-main" id="container-course-ai">
+        {isInFlightChanged && (
+          <UnlistedCourseBanner courseId="ai" isInFlight targetStatus={lifecycleStatus} />
+        )}
+        {initialStatusRef.current === 'hidden' && !isInFlightChanged && (
+          <UnlistedCourseBanner courseId="ai" />
+        )}
+
         <div className="course-mode-tabs">
           <Link
             to="/course/ai"

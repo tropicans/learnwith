@@ -8,7 +8,8 @@ import {
   IconActivity,
   IconArrowRight,
   IconLock,
-  IconSparkles
+  IconSparkles,
+  IconPackage
 } from './Icons'
 
 interface WorkshopCatalogProps {
@@ -74,7 +75,9 @@ export function WorkshopCatalog({ courses, activeFilter }: WorkshopCatalogProps)
       {/* Cards Grid or Friendly Empty States */}
       {courses.length === 0 ? (
         <div className="card catalog-empty-state-card" id="catalog-empty-state">
-          <div className="empty-state-icon" aria-hidden="true">📦</div>
+          <div className="empty-state-icon" aria-hidden="true">
+            <IconPackage width={44} height={44} />
+          </div>
           <h3 className="empty-state-title">Belum Ada Workshop Publik Aktif Saat Ini</h3>
           <p className="empty-state-desc">
             Semua modul pelatihan saat ini sedang dalam masa pemeliharaan kurikulum atau diarsipkan. Hubungi administrator jika Anda memerlukan akses khusus.

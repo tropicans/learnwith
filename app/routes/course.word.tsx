@@ -1,7 +1,10 @@
 import { createFileRoute, Await } from '@tanstack/react-router'
-import { Suspense, useState, useEffect } from 'react'
+import { Suspense, useState, useEffect, useRef } from 'react'
 import { courseWordSearchSchema } from '@/schemas/searchParams'
 import { getCourseWordData, getCourseStatsAsync, type CourseStats } from '@/data/courses'
+import { getPublicCourseStatusesFn } from '@/server/courseLifecycle'
+import { CourseUnavailableNotice } from '@/components/course/CourseUnavailableNotice'
+import { UnlistedCourseBanner } from '@/components/course/UnlistedCourseBanner'
 import { StatsSkeleton } from '@/components/ui/Skeleton'
 import { ChecklistIsland } from '@/components/course/ChecklistIsland'
 import { InstructorUnlockModal } from '@/components/course/InstructorUnlockModal'
@@ -10,9 +13,15 @@ import { sendParticipantTelemetry } from '@/utils/telemetryClient'
 export const Route = createFileRoute('/course/word')({
   validateSearch: (search) => courseWordSearchSchema.parse(search),
   loader: async () => {
-    const course = await getCourseWordData()
+    const [course, statuses] = await Promise.all([
+      getCourseWordData(),
+      getPublicCourseStatusesFn().catch(() => []),
+    ])
+    const statusRecord = statuses.find((s) => s.id === 'word')
+    const lifecycleStatus = statusRecord?.status ?? 'active'
     return {
       course,
+      lifecycleStatus,
       deferredStats: getCourseStatsAsync(course.id),
     }
   },
@@ -33,9 +42,19 @@ export const Route = createFileRoute('/course/word')({
 
 function CourseWordComponent() {
   const search = Route.useSearch()
-  const { course, deferredStats } = Route.useLoaderData()
+  const { course, lifecycleStatus, deferredStats } = Route.useLoaderData()
+  const initialStatusRef = useRef(lifecycleStatus)
+  const [isInFlightChanged, setIsInFlightChanged] = useState(false)
   const [isUnlockModalOpen, setIsUnlockModalOpen] = useState(false)
   const [isUnlocked, setIsUnlocked] = useState(false)
+
+  useEffect(() => {
+    const wasAccessible = initialStatusRef.current === 'active' || initialStatusRef.current === 'hidden'
+    const isNowRestricted = lifecycleStatus === 'deleted' || lifecycleStatus === 'archived'
+    if (wasAccessible && isNowRestricted) {
+      setIsInFlightChanged(true)
+    }
+  }, [lifecycleStatus])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -133,8 +152,25 @@ function CourseWordComponent() {
     }
   }
 
+  if (initialStatusRef.current === 'deleted' || initialStatusRef.current === 'archived') {
+    return (
+      <CourseUnavailableNotice
+        status={initialStatusRef.current}
+        courseId="word"
+        courseTitle={course.title}
+      />
+    )
+  }
+
   return (
     <main className="app-main course-main" id="container-course-word">
+      {isInFlightChanged && (
+        <UnlistedCourseBanner courseId="word" isInFlight targetStatus={lifecycleStatus} />
+      )}
+      {initialStatusRef.current === 'hidden' && !isInFlightChanged && (
+        <UnlistedCourseBanner courseId="word" />
+      )}
+
       <div className="course-header-banner">
         <div className="course-hero-badge">
           <span className="badge badge-pill badge-neutral">{course.badge}</span>

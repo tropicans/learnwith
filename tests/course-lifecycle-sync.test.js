@@ -228,6 +228,100 @@ describe('Phase 36 Course Lifecycle Reactive Sync Suite', () => {
     });
   });
 
+  describe('COURSE-SYNC-03: Direct Workspace Access UX & Passkey Preservation', () => {
+    it('verifies CourseUnavailableNotice.tsx handles deleted and archived states', () => {
+      const noticePath = path.join(
+        ROOT_DIR,
+        'app',
+        'components',
+        'course',
+        'CourseUnavailableNotice.tsx'
+      );
+      assert.ok(fs.existsSync(noticePath), 'CourseUnavailableNotice.tsx must exist');
+      const content = fs.readFileSync(noticePath, 'utf8');
+
+      assert.ok(
+        content.includes('course-unavailable-deleted'),
+        'Must contain id="course-unavailable-deleted"'
+      );
+      assert.ok(
+        content.includes('course-unavailable-archived'),
+        'Must contain id="course-unavailable-archived"'
+      );
+      assert.ok(
+        content.includes('btn-return-home'),
+        'Must contain id="btn-return-home" linking back to home'
+      );
+    });
+
+    it('verifies UnlistedCourseBanner.tsx handles unlisted access and in-flight advisory', () => {
+      const bannerPath = path.join(
+        ROOT_DIR,
+        'app',
+        'components',
+        'course',
+        'UnlistedCourseBanner.tsx'
+      );
+      assert.ok(fs.existsSync(bannerPath), 'UnlistedCourseBanner.tsx must exist');
+      const content = fs.readFileSync(bannerPath, 'utf8');
+
+      assert.ok(
+        content.includes('banner-unlisted-course'),
+        'Must contain id="banner-unlisted-course"'
+      );
+      assert.ok(
+        content.includes('banner-inflight-status'),
+        'Must contain id="banner-inflight-status"'
+      );
+    });
+
+    it('verifies app/routes/course.ai.tsx enforces lifecycle boundaries and in-flight protection', () => {
+      const aiPath = path.join(ROOT_DIR, 'app', 'routes', 'course.ai.tsx');
+      assert.ok(fs.existsSync(aiPath), 'course.ai.tsx must exist');
+      const content = fs.readFileSync(aiPath, 'utf8');
+
+      assert.ok(
+        content.includes('getPublicCourseStatusesFn'),
+        'course.ai.tsx loader must query getPublicCourseStatusesFn'
+      );
+      assert.ok(
+        content.includes('CourseUnavailableNotice'),
+        'course.ai.tsx must render CourseUnavailableNotice on deleted/archived'
+      );
+      assert.ok(
+        content.includes('UnlistedCourseBanner'),
+        'course.ai.tsx must render UnlistedCourseBanner on hidden or in-flight'
+      );
+    });
+
+    it('verifies app/routes/course.word.tsx preserves timing-safe passkey gate and enforces lifecycle boundaries', () => {
+      const wordPath = path.join(ROOT_DIR, 'app', 'routes', 'course.word.tsx');
+      assert.ok(fs.existsSync(wordPath), 'course.word.tsx must exist');
+      const content = fs.readFileSync(wordPath, 'utf8');
+
+      assert.ok(
+        content.includes('getPublicCourseStatusesFn'),
+        'course.word.tsx loader must query getPublicCourseStatusesFn'
+      );
+      assert.ok(
+        content.includes('CourseUnavailableNotice'),
+        'course.word.tsx must render CourseUnavailableNotice on deleted/archived'
+      );
+      assert.ok(
+        content.includes('UnlistedCourseBanner'),
+        'course.word.tsx must render UnlistedCourseBanner on hidden or in-flight'
+      );
+      assert.ok(
+        content.includes('InstructorUnlockModal') || content.includes('WordPasskeyModal'),
+        'course.word.tsx must preserve passkey modal gate'
+      );
+      assert.ok(
+        content.includes('isUnlocked'),
+        'course.word.tsx must check isUnlocked before exposing protected material'
+      );
+    });
+  });
+
   describe('CSS Mirror Integrity Check', () => {
     it('ensures assets/css/components.css and public/assets/css/components.css are byte-for-byte identical', () => {
       const assetCssPath = path.join(ROOT_DIR, 'assets', 'css', 'components.css');
