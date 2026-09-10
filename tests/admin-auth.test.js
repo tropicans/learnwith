@@ -297,10 +297,8 @@ describe('Phase 29 Master Admin Authentication Engine Suite', () => {
 
       const content = fs.readFileSync(gatePath, 'utf8');
       assert.ok(content.includes('id="admin-login-gate"'), 'Must have root container id');
-      assert.ok(content.includes('id="admin-passkey-input"'), 'Must have passkey input id');
-      assert.ok(content.includes('id="btn-admin-submit-login"'), 'Must have submit button id');
-      assert.ok(content.includes('type="password"'), 'Passkey input must be password type');
-      assert.ok(content.includes('adminLoginFn'), 'Must call adminLoginFn on submit');
+      assert.ok(content.includes('GoogleSignInButton'), 'Must render GoogleSignInButton');
+      assert.ok(content.includes('admin-login-oauth-section'), 'Must have oauth section container');
     });
 
     it('verifies GoogleSignInButton readiness structure and badge', () => {

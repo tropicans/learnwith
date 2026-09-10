@@ -196,7 +196,7 @@ export function AdminPasskeyView() {
           </div>
           <div className="kpi-body">
             <div className="kpi-value-row">
-              <span className="kpi-primary-val" style={{ color: '#86efac' }}>
+              <span className="kpi-primary-val" style={{ color: '#1b7a37' }}>
                 {stats.successAttempts}
               </span>
               <span className="kpi-unit">
@@ -214,7 +214,7 @@ export function AdminPasskeyView() {
           </div>
           <div className="kpi-body">
             <div className="kpi-value-row">
-              <span className="kpi-primary-val" style={{ color: '#fca5a5' }}>
+              <span className="kpi-primary-val" style={{ color: '#b31b14' }}>
                 {stats.failedAttempts}
               </span>
               <span className="kpi-unit">kali</span>
@@ -230,7 +230,7 @@ export function AdminPasskeyView() {
           </div>
           <div className="kpi-body">
             <div className="kpi-value-row">
-              <span className="kpi-primary-val" style={{ color: '#fcd34d' }}>
+              <span className="kpi-primary-val" style={{ color: '#8c5100' }}>
                 {stats.rateLimitedAttempts}
               </span>
               <span className="kpi-unit">dibatasi</span>

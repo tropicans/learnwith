@@ -222,8 +222,19 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.admin-divider span {
-  padding: 0 0.75rem;
+.admin-login-oauth-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.admin-login-hint {
+  font-size: 0.8125rem;
+  color: var(--text-secondary, #515154);
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
 }
 
 /* Google Sign-in Readiness Button */
@@ -2030,21 +2041,22 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 1.5rem;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-  transition: transform var(--transition-fast, 0.15s), border-color var(--transition-fast, 0.15s);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform var(--transition-fast, 0.15s), border-color var(--transition-fast, 0.15s), box-shadow var(--transition-fast, 0.15s);
 }
 
 .admin-passkey-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(56, 189, 248, 0.3);
+  border-color: rgba(0, 102, 204, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .admin-passkey-card.theme-word {
-  border-top: 3px solid #38bdf8;
+  border-top: 2px solid var(--accent-primary, #0066cc);
 }
 
 .admin-passkey-card.theme-ai {
-  border-top: 3px solid #a855f7;
+  border-top: 2px solid #5856d6;
 }
 
 .passkey-card-header {
@@ -2180,7 +2192,7 @@
   font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--accent-primary, #38bdf8);
+  color: var(--accent-primary, #0066cc);
 }
 
 .passkey-masked-hint {
@@ -2235,25 +2247,28 @@
 
 .btn-admin-rotate-passkey {
   width: 100%;
-  padding: 0.65rem 1rem;
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  border-radius: var(--radius-md, 8px);
-  color: var(--text-primary, #1d1d1f);
+  padding: 0.6875rem 1.25rem;
+  background: var(--accent-primary, #0066cc);
+  border: none;
+  border-radius: var(--radius-pill, 9999px);
+  color: #ffffff;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  transition: all var(--transition-fast, 0.15s);
+  transition: background var(--transition-fast, 0.15s), transform var(--transition-fast, 0.15s);
 }
 
 .btn-admin-rotate-passkey:hover {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(99, 102, 241, 0.25) 100%);
-  border-color: rgba(56, 189, 248, 0.5);
+  background: var(--accent-primary-hover, #0071e3);
   transform: translateY(-1px);
+}
+
+.btn-admin-rotate-passkey:active {
+  transform: scale(0.95);
 }
 
 /* Modal Warning Banner */
@@ -2304,7 +2319,7 @@
 .admin-static-display code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.875rem;
-  color: var(--accent-primary, #38bdf8);
+  color: var(--accent-primary, #0066cc);
 }
 
 .static-display-tag {
@@ -2343,12 +2358,12 @@
   display: inline-block;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
-  background: rgba(56, 189, 248, 0.12);
-  color: var(--accent-primary, #38bdf8);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  background: rgba(0, 102, 204, 0.08);
+  color: var(--accent-primary, #0066cc);
+  border: 1px solid rgba(0, 102, 204, 0.2);
 }
 
 .passkey-course-pill {
@@ -2361,15 +2376,15 @@
 }
 
 .passkey-course-pill.pill-word {
-  background: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(0, 102, 204, 0.1);
+  color: var(--accent-primary, #0066cc);
+  border: 1px solid rgba(0, 102, 204, 0.25);
 }
 
 .passkey-course-pill.pill-ai {
-  background: rgba(168, 85, 247, 0.15);
-  color: #c084fc;
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  background: rgba(88, 86, 214, 0.1);
+  color: #5856d6;
+  border: 1px solid rgba(88, 86, 214, 0.25);
 }
 
 .passkey-table-hash-group {
@@ -2476,11 +2491,12 @@
   color: var(--text-primary, #1d1d1f);
   font-size: 0.8125rem;
   outline: none;
-  transition: border-color var(--transition-fast, 0.15s);
+  transition: border-color var(--transition-fast, 0.15s), box-shadow var(--transition-fast, 0.15s);
 }
 
 .audit-search-input:focus {
-  border-color: var(--accent-primary, #38bdf8);
+  border-color: var(--accent-primary, #0066cc);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
 }
 
 .btn-clear-search {

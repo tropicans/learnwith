@@ -124,16 +124,153 @@ export function AdminDashboardView({ initialTab = 'dashboard' }: AdminDashboardV
     setSelectedParticipant(participant)
   }
 
+  // Calculate course breakdown for Dashboard Overview
+  const aiStats = useMemo(() => {
+    const list = participants.filter((p) => p.courseId === 'ai')
+    const ready = list.filter((p) => p.readinessStatus === 'ready').length
+    const clinic = list.filter((p) => p.readinessStatus === 'clinic').length
+    const avgProg = list.length > 0 ? Math.round(list.reduce((acc, p) => acc + p.progressPercent, 0) / list.length) : 0
+    return { count: list.length, ready, clinic, avgProg }
+  }, [participants])
+
+  const wordStats = useMemo(() => {
+    const list = participants.filter((p) => p.courseId === 'word')
+    const ready = list.filter((p) => p.readinessStatus === 'ready').length
+    const clinic = list.filter((p) => p.readinessStatus === 'clinic').length
+    const avgProg = list.length > 0 ? Math.round(list.reduce((acc, p) => acc + p.progressPercent, 0) / list.length) : 0
+    return { count: list.length, ready, clinic, avgProg }
+  }, [participants])
+
+  // TAB 1: DASHBOARD & MONITORING (Aggregates, KPIs, Overview, Refresh Controls)
+  if (initialTab === 'dashboard') {
+    return (
+      <div className="admin-dashboard-view" id="admin-dashboard-view">
+        <div className="admin-view-header">
+          <div className="admin-view-title-group">
+            <h2 className="admin-view-title">Pusat Kendali & Monitoring Pelatihan</h2>
+            <p className="admin-view-subtitle">
+              Ringkasan eksekutif metrik kehadiran peserta, tingkat kelulusan checkpoint, rata-rata evaluasi kuis, dan rasio kesiapan kelas.
+            </p>
+          </div>
+
+          <div className="admin-toolbar-controls">
+            <button
+              type="button"
+              id="btn-toggle-auto-refresh"
+              className={`admin-refresh-btn ${autoRefresh ? 'active' : ''}`}
+              onClick={() => setAutoRefresh((prev) => !prev)}
+              title={autoRefresh ? 'Matikan pembaruan otomatis (15s)' : 'Aktifkan pembaruan otomatis (15s)'}
+            >
+              <span
+                className={`admin-status-dot ${autoRefresh ? 'dot-active' : 'dot-idle'}`}
+                aria-hidden="true"
+              />
+              <span>{autoRefresh ? 'Auto (15s)' : 'Auto Off'}</span>
+            </button>
+
+            <button
+              type="button"
+              id="btn-manual-refresh"
+              className="admin-refresh-btn admin-btn-action"
+              onClick={() => fetchData(false)}
+              disabled={isRefreshing}
+              title="Segarkan data sekarang"
+            >
+              <svg
+                className={`refresh-icon ${isRefreshing ? 'spin' : ''}`}
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                aria-hidden="true"
+              >
+                <path d="M23 4v6h-6" />
+                <path d="M1 20v-6h6" />
+                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+              </svg>
+              <span>{isRefreshing ? 'Memuat...' : 'Segarkan'}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Aggregate KPI Cards (ADMIN-DASH-01) */}
+        <DashboardKPIs stats={stats} isLoading={isLoading} />
+
+        {/* Course Performance & Readiness Breakdown Cards */}
+        <div className="admin-overview-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem', marginTop: '0.5rem' }}>
+          {/* Kursus AI Agent Card */}
+          <div className="admin-kpi-card" style={{ background: '#ffffff' }}>
+            <div className="kpi-header">
+              <span className="kpi-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span>🤖</span> Kursus 1: AI Agent & Dev Local
+              </span>
+              <span className="kpi-status-badge kpi-badge-success">{aiStats.count} Peserta</span>
+            </div>
+            <div className="kpi-body" style={{ marginTop: '0.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+                <span style={{ color: 'var(--text-secondary)' }}>Rata-rata Progres Modul:</span>
+                <strong style={{ color: 'var(--text-primary)' }}>{aiStats.avgProg}%</strong>
+              </div>
+              <div className="kpi-progress-track" style={{ marginBottom: '1rem' }}>
+                <div className="kpi-progress-fill" style={{ width: `${aiStats.avgProg}%` }} />
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                <div style={{ background: 'rgba(34, 197, 94, 0.08)', padding: '0.625rem', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#1b7a37', fontWeight: 600 }}>Siap Workshop</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1b7a37' }}>{aiStats.ready}</div>
+                </div>
+                <div style={{ background: 'rgba(239, 68, 68, 0.08)', padding: '0.625rem', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#b31b14', fontWeight: 600 }}>Perlu Klinik</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#b31b14' }}>{aiStats.clinic}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Kursus Word ASN Card */}
+          <div className="admin-kpi-card" style={{ background: '#ffffff' }}>
+            <div className="kpi-header">
+              <span className="kpi-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span>📝</span> Kursus 2: Word ASN & Format Kedinasan
+              </span>
+              <span className="kpi-status-badge kpi-badge-success">{wordStats.count} Peserta</span>
+            </div>
+            <div className="kpi-body" style={{ marginTop: '0.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+                <span style={{ color: 'var(--text-secondary)' }}>Rata-rata Progres Modul:</span>
+                <strong style={{ color: 'var(--text-primary)' }}>{wordStats.avgProg}%</strong>
+              </div>
+              <div className="kpi-progress-track" style={{ marginBottom: '1rem' }}>
+                <div className="kpi-progress-fill" style={{ width: `${wordStats.avgProg}%` }} />
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                <div style={{ background: 'rgba(34, 197, 94, 0.08)', padding: '0.625rem', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#1b7a37', fontWeight: 600 }}>Siap Workshop</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#1b7a37' }}>{wordStats.ready}</div>
+                </div>
+                <div style={{ background: 'rgba(239, 68, 68, 0.08)', padding: '0.625rem', borderRadius: '8px' }}>
+                  <div style={{ fontSize: '0.75rem', color: '#b31b14', fontWeight: 600 }}>Perlu Klinik</div>
+                  <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#b31b14' }}>{wordStats.clinic}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // TAB 2: PESERTA & TELEMETRI (Directory, Filters, Full Table, Detail Inspector Modal, Export)
   return (
-    <div className="admin-dashboard-view" id="admin-dashboard-view">
-      {/* Dashboard View Header */}
+    <div className="admin-dashboard-view" id="admin-telemetry-view">
+      {/* Telemetry View Header */}
       <div className="admin-view-header">
         <div className="admin-view-title-group">
-          <h2 className="admin-view-title">
-            {initialTab === 'telemetry' ? 'Direktori & Telemetri Peserta' : 'Pusat Kendali Peserta & Pelatihan'}
-          </h2>
+          <h2 className="admin-view-title">Direktori & Telemetri Peserta</h2>
           <p className="admin-view-subtitle">
-            Pemantauan langsung progres modul, verifikasi checkpoint teknis, dan kesiapan praktikum peserta workshop.
+            Pencarian langsung peserta, inspeksi rincian checklist modul per bab, status kelulusan checkpoint 1–3, dan ekspor data rekapitulasi.
           </p>
         </div>
 
@@ -149,9 +286,6 @@ export function AdminDashboardView({ initialTab = 'dashboard' }: AdminDashboardV
           disabled={isLoading}
         />
       </div>
-
-      {/* Aggregate KPI Cards (ADMIN-DASH-01) */}
-      <DashboardKPIs stats={stats} isLoading={isLoading} />
 
       {/* Participant Filter & Search Toolbar (ADMIN-DASH-02) */}
       <ParticipantFilterToolbar
