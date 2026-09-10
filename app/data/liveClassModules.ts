@@ -12,6 +12,7 @@ export interface LiveStep {
   badgeLabel: string
   badgeClass?: string
   description: string
+  url?: string
   command?: string
   commandLanguage?: string
   outputBadge?: {
@@ -43,7 +44,7 @@ export const LIVE_CLASS_MODULES: LiveModule[] = [
     num: 6,
     title: '9Router Model Alignment & Routing Matrix',
     subtitle: 'Konfigurasi multi-model fallback, prioritas provider, dan penerbitan Virtual API Key',
-    estimatedMinutes: 25,
+    estimatedMinutes: 30,
     badgeLabel: 'Modul 6',
     badgeClass: 'badge-primary',
     icon: '⚡',
@@ -63,30 +64,31 @@ export const LIVE_CLASS_MODULES: LiveModule[] = [
           value: 'Listen (Port 20128 Aktif)',
         },
         taskId: 'm6-verify-port',
-        checklistLabel: 'Port 20128 9Router terverifikasi aktif (Listen)',
+        checklistLabel: 'Port 20128 9Router terverifikasi aktif (Listen) di Windows PowerShell',
       },
       {
         nodeId: '6B',
         title: 'Buka Web Dashboard 9Router & Terbitkan Virtual Key',
-        badgeLabel: 'Web UI',
-        badgeClass: 'badge-primary',
+        badgeLabel: 'Web 9Router',
+        badgeClass: 'badge-info',
         description: 'Buka peramban di alamat http://localhost:20128, navigasi ke tab API Keys, dan buat API Key baru dengan nama "Hermes-Agent-Key".',
-        command: 'Start-Process "http://localhost:20128"',
-        commandLanguage: 'PowerShell',
+        url: 'http://localhost:20128',
         instructions: [
+          'Buka peramban web dan akses <code>http://localhost:20128</code> (atau klik tautan tombol di atas).',
           'Klik menu <strong>API Keys</strong> di bilah navigasi kiri dashboard 9Router.',
           'Klik tombol <strong>+ Create New Key</strong> dan beri nama/label <code>Hermes-Agent-Key</code>.',
           'Salin virtual key yang terbit (diawali <code>sk-9r-...</code>) dan simpan di notepad aman untuk konfigurasi agen.',
         ],
         taskId: 'm6-create-key',
-        checklistLabel: 'Virtual API Key "Hermes-Agent-Key" berhasil diterbitkan',
+        checklistLabel: 'Virtual API Key "Hermes-Agent-Key" berhasil diterbitkan di web dashboard 9Router',
       },
       {
         nodeId: '6C',
-        title: 'Konfigurasi Provider & Setup Model LLM di Dashboard',
-        badgeLabel: 'Setup Model',
-        badgeClass: 'badge-primary',
-        description: 'Daftarkan provider AI dan aktifkan model bahasa (LLM) yang akan menjadi mesin kecerdasan agen Hermes Anda.',
+        title: 'Konfigurasi Provider & Setup Model LLM di Web 9Router',
+        badgeLabel: 'Web 9Router',
+        badgeClass: 'badge-info',
+        description: 'Daftarkan provider AI dan aktifkan model bahasa (LLM) di dashboard 9Router yang akan menjadi mesin kecerdasan agen Hermes Anda.',
+        url: 'http://localhost:20128',
         instructions: [
           'Navigasi ke menu <strong>Providers</strong> atau <strong>Models</strong> di dashboard 9Router.',
           'Pilih provider yang Anda miliki (misal: Google AI / Gemini API, Groq, OpenRouter, atau Ollama lokal).',
@@ -95,14 +97,15 @@ export const LIVE_CLASS_MODULES: LiveModule[] = [
           'Pastikan status model di dashboard menampilkan status aktif / siap melayani kueri.',
         ],
         taskId: 'm6-setup-models',
-        checklistLabel: 'Provider LLM dan model aktif berhasil dikonfigurasi di dashboard 9Router',
+        checklistLabel: 'Provider LLM dan model aktif berhasil dikonfigurasi di web dashboard 9Router',
       },
       {
         nodeId: '6D',
-        title: 'Konfigurasi Combos Matriks Fallback Routing',
-        badgeLabel: 'Setup Combos',
+        title: 'Konfigurasi Combos Matriks Fallback Routing di Web 9Router',
+        badgeLabel: 'Web 9Router',
         badgeClass: 'badge-warning',
-        description: 'Susun konfigurasi Combos di 9Router untuk menghubungkan model utama dengan model cadangan otomatis guna mencegah gangguan kuota (rate limit).',
+        description: 'Susun konfigurasi Combos di dashboard 9Router untuk menghubungkan model utama dengan model cadangan otomatis guna mencegah gangguan kuota (rate limit).',
+        url: 'http://localhost:20128',
         instructions: [
           'Navigasi ke menu <strong>Combos</strong> di dashboard 9Router.',
           'Klik tombol <strong>+ Create New Combo</strong> untuk membuat jalur perutean cerdas.',
@@ -111,7 +114,7 @@ export const LIVE_CLASS_MODULES: LiveModule[] = [
           'Simpan konfigurasi combo dan pastikan statusnya siap digunakan sebagai endpoint model.',
         ],
         taskId: 'm6-setup-combos',
-        checklistLabel: 'Routing Combo multi-model berhasil dibuat dan siap untuk failover otomatis',
+        checklistLabel: 'Matriks Routing Combos berhasil dibuat di web dashboard 9Router',
       },
       {
         nodeId: '6E',
@@ -127,7 +130,7 @@ export const LIVE_CLASS_MODULES: LiveModule[] = [
           'Pastikan service 9Router aktif di terminal latar belakang pada port 20128.',
         ],
         taskId: 'm6-test-curl',
-        checklistLabel: 'Uji chat completion 9Router berhasil mengembalikan respons JSON',
+        checklistLabel: 'Uji chat completion 9Router berhasil mengembalikan respons JSON di Windows PowerShell',
       },
     ],
   },

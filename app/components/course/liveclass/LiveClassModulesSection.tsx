@@ -222,6 +222,30 @@ export function LiveClassModulesSection({
                         {step.description}
                       </p>
 
+                      {step.url && (
+                        <div style={{ margin: '0.75rem 0' }}>
+                          <a
+                            href={step.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline btn-sm"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.5rem',
+                              padding: '0.5rem 0.85rem',
+                              color: 'var(--color-primary)',
+                              borderColor: 'var(--color-primary-subtle, #3b82f6)',
+                              textDecoration: 'none',
+                              fontWeight: 600,
+                              borderRadius: 'var(--radius-md)',
+                            }}
+                          >
+                            <span>🌐</span> Buka Dashboard Web 9Router: <code>{step.url}</code> ↗
+                          </a>
+                        </div>
+                      )}
+
                       {step.command && (
                         <div style={{ margin: '0.75rem 0' }}>
                           {isUnlocked ? (
@@ -287,7 +311,7 @@ export function LiveClassModulesSection({
                               style={{ width: '17px', height: '17px', cursor: 'pointer', accentColor: 'var(--accent-primary)' }}
                             />
                             <span className="checklist-label" style={{ fontSize: 'var(--font-size-sm)' }}>
-                              <strong>Tugas Mandiri:</strong> Verifikasi langkah {step.nodeId} berhasil dieksekusi di Windows PowerShell
+                              <strong>Tugas Mandiri:</strong> {step.checklistLabel || `Verifikasi langkah ${step.nodeId} selesai`}
                             </span>
                           </label>
                         </div>
