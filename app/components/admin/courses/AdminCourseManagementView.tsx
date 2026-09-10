@@ -8,6 +8,7 @@ import { getClientAdminToken } from '../../../utils/adminToken'
 import { showToast } from '../../ui/Toast'
 import { CourseLifecycleKPIs } from './CourseLifecycleKPIs'
 import { CourseStatusCards } from './CourseStatusCards'
+import { CourseFilterToolbar, type FilterStatusOption } from './CourseFilterToolbar'
 
 interface AdminCourseManagementViewProps {
   sessionToken?: string
@@ -22,6 +23,8 @@ export function AdminCourseManagementView({
   const [autoRefresh, setAutoRefresh] = useState(true)
   const [lastRefreshedAt, setLastRefreshedAt] = useState<number>(Date.now())
   const [mutatingCourseId, setMutatingCourseId] = useState<string | null>(null)
+  const [selectedStatus, setSelectedStatus] = useState<FilterStatusOption>('all')
+  const [searchQuery, setSearchQuery] = useState('')
 
   const fetchCourses = useCallback(
     async (showLoadingSpinner = false) => {
@@ -108,6 +111,40 @@ export function AdminCourseManagementView({
     }
   }
 
+  // Calculate status counts for filter pills
+  const statusCounts: Record<FilterStatusOption, number> = {
+    all: records.length,
+    active: records.filter((r) => r.status === 'active').length,
+    hidden: records.filter((r) => r.status === 'hidden').length,
+    archived: records.filter((r) => r.status === 'archived').length,
+    deleted: records.filter((r) => r.status === 'deleted').length,
+  }
+
+  // Filter courses by selectedStatus and searchQuery
+  const filteredCourses = records.filter((course) => {
+    // 1. Status Filter
+    if (selectedStatus !== 'all' && course.status !== selectedStatus) {
+      return false
+    }
+
+    // 2. Search Query Filter (title or id case-insensitive)
+    if (searchQuery.trim().length > 0) {
+      const q = searchQuery.toLowerCase().trim()
+      const titleMatch = course.title.toLowerCase().includes(q)
+      const idMatch = course.id.toLowerCase().includes(q)
+      if (!titleMatch && !idMatch) {
+        return false
+      }
+    }
+
+    return true
+  })
+
+  const handleResetFilters = () => {
+    setSelectedStatus('all')
+    setSearchQuery('')
+  }
+
   return (
     <div className="admin-courses-container" id="admin-courses-view">
       {/* View Header */}
@@ -168,10 +205,20 @@ export function AdminCourseManagementView({
       {/* Course Lifecycle KPIs */}
       <CourseLifecycleKPIs records={records} isLoading={isLoading} />
 
+      {/* Course Filter Toolbar */}
+      <CourseFilterToolbar
+        selectedStatus={selectedStatus}
+        onSelectStatus={setSelectedStatus}
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        counts={statusCounts}
+      />
+
       {/* Course Status Cards */}
       <CourseStatusCards
-        courses={records}
+        courses={filteredCourses}
         onToggleVisibility={handleToggleVisibility}
+        onResetFilters={handleResetFilters}
         mutatingCourseId={mutatingCourseId}
         isLoading={isLoading}
       />

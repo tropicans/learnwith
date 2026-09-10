@@ -7,6 +7,7 @@ import type {
 export interface CourseStatusCardsProps {
   courses: CourseLifecycleRecord[]
   onToggleVisibility: (courseId: string, currentStatus: CourseLifecycleStatus) => void
+  onResetFilters?: () => void
   mutatingCourseId?: string | null
   isLoading?: boolean
 }
@@ -14,6 +15,7 @@ export interface CourseStatusCardsProps {
 export function CourseStatusCards({
   courses,
   onToggleVisibility,
+  onResetFilters,
   mutatingCourseId = null,
   isLoading = false,
 }: CourseStatusCardsProps) {
@@ -98,6 +100,16 @@ export function CourseStatusCards({
           Tidak ada kursus yang cocok dengan filter status atau kata kunci pencarian yang dipilih.
           Coba pilih filter 'Semua Kursus' atau bersihkan kata kunci pencarian.
         </p>
+        {onResetFilters && (
+          <button
+            type="button"
+            className="btn-empty-reset"
+            id="btn-reset-course-filters"
+            onClick={onResetFilters}
+          >
+            <span>Reset Filter &amp; Pencarian</span>
+          </button>
+        )}
       </div>
     )
   }
