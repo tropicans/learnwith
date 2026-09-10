@@ -1,16 +1,16 @@
 # Graph Report - AgenticAI  (2026-09-10)
 
 ## Corpus Check
-- 2125 files · ~4,315,415 words
+- 2719 files · ~4,934,066 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 15434 nodes · 15025 edges · 2132 communities (1814 shown, 318 thin omitted)
-- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 32 edges (avg confidence: 0.79)
+- 18142 nodes · 17133 edges · 2722 communities (2307 shown, 415 thin omitted)
+- Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 14 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `14443b80`
+- Built from commit: `faab59ad`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -399,17 +399,386 @@
 - [[_COMMUNITY_Community 666|Community 666]]
 - [[_COMMUNITY_Community 667|Community 667]]
 - [[_COMMUNITY_Community 668|Community 668]]
+- [[_COMMUNITY_Community 670|Community 670]]
+- [[_COMMUNITY_Community 671|Community 671]]
+- [[_COMMUNITY_Community 672|Community 672]]
+- [[_COMMUNITY_Community 673|Community 673]]
+- [[_COMMUNITY_Community 674|Community 674]]
+- [[_COMMUNITY_Community 675|Community 675]]
+- [[_COMMUNITY_Community 676|Community 676]]
+- [[_COMMUNITY_Community 677|Community 677]]
+- [[_COMMUNITY_Community 678|Community 678]]
+- [[_COMMUNITY_Community 679|Community 679]]
+- [[_COMMUNITY_Community 680|Community 680]]
+- [[_COMMUNITY_Community 681|Community 681]]
+- [[_COMMUNITY_Community 682|Community 682]]
+- [[_COMMUNITY_Community 683|Community 683]]
+- [[_COMMUNITY_Community 684|Community 684]]
+- [[_COMMUNITY_Community 685|Community 685]]
+- [[_COMMUNITY_Community 686|Community 686]]
+- [[_COMMUNITY_Community 687|Community 687]]
+- [[_COMMUNITY_Community 688|Community 688]]
+- [[_COMMUNITY_Community 689|Community 689]]
+- [[_COMMUNITY_Community 690|Community 690]]
+- [[_COMMUNITY_Community 691|Community 691]]
+- [[_COMMUNITY_Community 692|Community 692]]
+- [[_COMMUNITY_Community 693|Community 693]]
+- [[_COMMUNITY_Community 694|Community 694]]
+- [[_COMMUNITY_Community 695|Community 695]]
+- [[_COMMUNITY_Community 696|Community 696]]
+- [[_COMMUNITY_Community 697|Community 697]]
 - [[_COMMUNITY_Milestones|Milestones]]
+- [[_COMMUNITY_Community 699|Community 699]]
+- [[_COMMUNITY_Community 700|Community 700]]
+- [[_COMMUNITY_Community 701|Community 701]]
+- [[_COMMUNITY_Community 702|Community 702]]
+- [[_COMMUNITY_Community 703|Community 703]]
+- [[_COMMUNITY_Community 704|Community 704]]
+- [[_COMMUNITY_Community 705|Community 705]]
+- [[_COMMUNITY_Community 706|Community 706]]
+- [[_COMMUNITY_Community 707|Community 707]]
+- [[_COMMUNITY_Community 708|Community 708]]
+- [[_COMMUNITY_Community 709|Community 709]]
+- [[_COMMUNITY_Community 710|Community 710]]
+- [[_COMMUNITY_Community 711|Community 711]]
+- [[_COMMUNITY_Community 712|Community 712]]
+- [[_COMMUNITY_Community 713|Community 713]]
+- [[_COMMUNITY_Community 714|Community 714]]
+- [[_COMMUNITY_Community 715|Community 715]]
+- [[_COMMUNITY_Community 716|Community 716]]
+- [[_COMMUNITY_Community 717|Community 717]]
+- [[_COMMUNITY_Community 718|Community 718]]
+- [[_COMMUNITY_Community 719|Community 719]]
+- [[_COMMUNITY_Community 720|Community 720]]
+- [[_COMMUNITY_Community 721|Community 721]]
+- [[_COMMUNITY_Community 722|Community 722]]
+- [[_COMMUNITY_Community 723|Community 723]]
+- [[_COMMUNITY_Community 724|Community 724]]
+- [[_COMMUNITY_Community 725|Community 725]]
 - [[_COMMUNITY_Panduan Praktik Kelas untuk Instruktur|Panduan Praktik Kelas untuk Instruktur]]
+- [[_COMMUNITY_Community 727|Community 727]]
+- [[_COMMUNITY_Community 728|Community 728]]
+- [[_COMMUNITY_Community 729|Community 729]]
+- [[_COMMUNITY_Community 730|Community 730]]
+- [[_COMMUNITY_Community 731|Community 731]]
+- [[_COMMUNITY_Community 732|Community 732]]
+- [[_COMMUNITY_Community 733|Community 733]]
+- [[_COMMUNITY_Community 734|Community 734]]
+- [[_COMMUNITY_Community 735|Community 735]]
+- [[_COMMUNITY_Community 736|Community 736]]
+- [[_COMMUNITY_Community 737|Community 737]]
+- [[_COMMUNITY_Community 738|Community 738]]
+- [[_COMMUNITY_Community 739|Community 739]]
+- [[_COMMUNITY_Community 740|Community 740]]
+- [[_COMMUNITY_Community 741|Community 741]]
 - [[_COMMUNITY_learnwith — Interactive Training Platform (Multi-Course)|learnwith — Interactive Training Platform (Multi-Course)]]
+- [[_COMMUNITY_Community 743|Community 743]]
+- [[_COMMUNITY_Community 744|Community 744]]
+- [[_COMMUNITY_Community 745|Community 745]]
+- [[_COMMUNITY_Community 746|Community 746]]
+- [[_COMMUNITY_Community 747|Community 747]]
+- [[_COMMUNITY_Community 748|Community 748]]
+- [[_COMMUNITY_Community 749|Community 749]]
+- [[_COMMUNITY_Community 750|Community 750]]
+- [[_COMMUNITY_Community 751|Community 751]]
+- [[_COMMUNITY_Community 752|Community 752]]
+- [[_COMMUNITY_Community 753|Community 753]]
+- [[_COMMUNITY_Community 754|Community 754]]
+- [[_COMMUNITY_Community 755|Community 755]]
+- [[_COMMUNITY_Community 756|Community 756]]
+- [[_COMMUNITY_Community 757|Community 757]]
+- [[_COMMUNITY_Community 758|Community 758]]
+- [[_COMMUNITY_Community 759|Community 759]]
+- [[_COMMUNITY_Community 760|Community 760]]
+- [[_COMMUNITY_Community 761|Community 761]]
+- [[_COMMUNITY_Community 762|Community 762]]
+- [[_COMMUNITY_Community 763|Community 763]]
+- [[_COMMUNITY_Community 764|Community 764]]
+- [[_COMMUNITY_Community 765|Community 765]]
+- [[_COMMUNITY_Community 766|Community 766]]
+- [[_COMMUNITY_Community 767|Community 767]]
+- [[_COMMUNITY_Community 768|Community 768]]
+- [[_COMMUNITY_Community 769|Community 769]]
+- [[_COMMUNITY_Community 770|Community 770]]
+- [[_COMMUNITY_Community 771|Community 771]]
+- [[_COMMUNITY_Community 772|Community 772]]
+- [[_COMMUNITY_Community 773|Community 773]]
+- [[_COMMUNITY_Community 774|Community 774]]
+- [[_COMMUNITY_Community 775|Community 775]]
+- [[_COMMUNITY_Community 776|Community 776]]
+- [[_COMMUNITY_Community 777|Community 777]]
+- [[_COMMUNITY_Community 778|Community 778]]
+- [[_COMMUNITY_Community 779|Community 779]]
+- [[_COMMUNITY_Community 780|Community 780]]
+- [[_COMMUNITY_Community 781|Community 781]]
+- [[_COMMUNITY_Community 782|Community 782]]
+- [[_COMMUNITY_Community 783|Community 783]]
+- [[_COMMUNITY_Community 784|Community 784]]
+- [[_COMMUNITY_Community 785|Community 785]]
+- [[_COMMUNITY_Community 786|Community 786]]
+- [[_COMMUNITY_Community 787|Community 787]]
+- [[_COMMUNITY_Community 788|Community 788]]
+- [[_COMMUNITY_Community 789|Community 789]]
+- [[_COMMUNITY_Community 790|Community 790]]
+- [[_COMMUNITY_Community 791|Community 791]]
+- [[_COMMUNITY_Community 792|Community 792]]
+- [[_COMMUNITY_Community 793|Community 793]]
+- [[_COMMUNITY_Community 794|Community 794]]
+- [[_COMMUNITY_Community 795|Community 795]]
+- [[_COMMUNITY_Community 796|Community 796]]
+- [[_COMMUNITY_Community 797|Community 797]]
+- [[_COMMUNITY_Community 798|Community 798]]
+- [[_COMMUNITY_Community 799|Community 799]]
+- [[_COMMUNITY_Community 800|Community 800]]
+- [[_COMMUNITY_Community 801|Community 801]]
+- [[_COMMUNITY_Community 802|Community 802]]
+- [[_COMMUNITY_Community 803|Community 803]]
+- [[_COMMUNITY_Community 804|Community 804]]
+- [[_COMMUNITY_Community 805|Community 805]]
+- [[_COMMUNITY_Community 806|Community 806]]
+- [[_COMMUNITY_Community 807|Community 807]]
+- [[_COMMUNITY_Community 808|Community 808]]
+- [[_COMMUNITY_Community 809|Community 809]]
+- [[_COMMUNITY_Community 810|Community 810]]
+- [[_COMMUNITY_Community 811|Community 811]]
+- [[_COMMUNITY_Community 812|Community 812]]
+- [[_COMMUNITY_Community 813|Community 813]]
+- [[_COMMUNITY_Community 814|Community 814]]
+- [[_COMMUNITY_Community 815|Community 815]]
+- [[_COMMUNITY_Community 816|Community 816]]
+- [[_COMMUNITY_Community 817|Community 817]]
+- [[_COMMUNITY_Community 818|Community 818]]
+- [[_COMMUNITY_Community 819|Community 819]]
+- [[_COMMUNITY_Community 820|Community 820]]
+- [[_COMMUNITY_Community 821|Community 821]]
+- [[_COMMUNITY_Community 822|Community 822]]
+- [[_COMMUNITY_Community 823|Community 823]]
+- [[_COMMUNITY_Community 824|Community 824]]
+- [[_COMMUNITY_Community 825|Community 825]]
+- [[_COMMUNITY_Community 826|Community 826]]
+- [[_COMMUNITY_Community 827|Community 827]]
+- [[_COMMUNITY_Community 828|Community 828]]
+- [[_COMMUNITY_Community 829|Community 829]]
+- [[_COMMUNITY_Community 830|Community 830]]
+- [[_COMMUNITY_Community 831|Community 831]]
+- [[_COMMUNITY_Community 832|Community 832]]
+- [[_COMMUNITY_Community 833|Community 833]]
+- [[_COMMUNITY_Community 834|Community 834]]
+- [[_COMMUNITY_Community 835|Community 835]]
+- [[_COMMUNITY_Community 836|Community 836]]
+- [[_COMMUNITY_Community 837|Community 837]]
+- [[_COMMUNITY_Community 838|Community 838]]
+- [[_COMMUNITY_Community 839|Community 839]]
+- [[_COMMUNITY_Community 840|Community 840]]
+- [[_COMMUNITY_Community 841|Community 841]]
+- [[_COMMUNITY_Community 842|Community 842]]
+- [[_COMMUNITY_Community 843|Community 843]]
+- [[_COMMUNITY_Community 844|Community 844]]
+- [[_COMMUNITY_Community 845|Community 845]]
+- [[_COMMUNITY_Community 846|Community 846]]
+- [[_COMMUNITY_Community 847|Community 847]]
+- [[_COMMUNITY_Community 848|Community 848]]
+- [[_COMMUNITY_Community 849|Community 849]]
+- [[_COMMUNITY_Community 850|Community 850]]
+- [[_COMMUNITY_Community 851|Community 851]]
+- [[_COMMUNITY_Community 852|Community 852]]
+- [[_COMMUNITY_Community 853|Community 853]]
+- [[_COMMUNITY_Community 854|Community 854]]
+- [[_COMMUNITY_Community 855|Community 855]]
+- [[_COMMUNITY_Community 856|Community 856]]
+- [[_COMMUNITY_Community 857|Community 857]]
+- [[_COMMUNITY_Community 858|Community 858]]
+- [[_COMMUNITY_Community 859|Community 859]]
+- [[_COMMUNITY_Community 860|Community 860]]
+- [[_COMMUNITY_Community 861|Community 861]]
+- [[_COMMUNITY_Community 862|Community 862]]
+- [[_COMMUNITY_Community 863|Community 863]]
+- [[_COMMUNITY_Community 864|Community 864]]
+- [[_COMMUNITY_Community 865|Community 865]]
+- [[_COMMUNITY_Community 866|Community 866]]
+- [[_COMMUNITY_Community 867|Community 867]]
+- [[_COMMUNITY_Community 868|Community 868]]
+- [[_COMMUNITY_Community 869|Community 869]]
+- [[_COMMUNITY_Community 870|Community 870]]
+- [[_COMMUNITY_Community 871|Community 871]]
+- [[_COMMUNITY_Community 872|Community 872]]
+- [[_COMMUNITY_Community 873|Community 873]]
+- [[_COMMUNITY_Community 874|Community 874]]
+- [[_COMMUNITY_Community 875|Community 875]]
+- [[_COMMUNITY_Community 876|Community 876]]
+- [[_COMMUNITY_Community 877|Community 877]]
+- [[_COMMUNITY_Community 878|Community 878]]
+- [[_COMMUNITY_Community 879|Community 879]]
+- [[_COMMUNITY_Community 880|Community 880]]
+- [[_COMMUNITY_Community 881|Community 881]]
+- [[_COMMUNITY_Community 882|Community 882]]
+- [[_COMMUNITY_Community 883|Community 883]]
+- [[_COMMUNITY_Community 884|Community 884]]
+- [[_COMMUNITY_Community 885|Community 885]]
 - [[_COMMUNITY_Rencana Pembelajaran Workshop|Rencana Pembelajaran Workshop]]
+- [[_COMMUNITY_Community 887|Community 887]]
+- [[_COMMUNITY_Community 888|Community 888]]
+- [[_COMMUNITY_Community 889|Community 889]]
+- [[_COMMUNITY_Community 890|Community 890]]
+- [[_COMMUNITY_Community 891|Community 891]]
+- [[_COMMUNITY_Community 892|Community 892]]
+- [[_COMMUNITY_Community 893|Community 893]]
+- [[_COMMUNITY_Community 894|Community 894]]
+- [[_COMMUNITY_Community 895|Community 895]]
+- [[_COMMUNITY_Community 896|Community 896]]
+- [[_COMMUNITY_Community 897|Community 897]]
+- [[_COMMUNITY_Community 898|Community 898]]
+- [[_COMMUNITY_Community 899|Community 899]]
+- [[_COMMUNITY_Community 900|Community 900]]
+- [[_COMMUNITY_Community 901|Community 901]]
+- [[_COMMUNITY_Community 902|Community 902]]
+- [[_COMMUNITY_Community 903|Community 903]]
+- [[_COMMUNITY_Community 904|Community 904]]
+- [[_COMMUNITY_Community 905|Community 905]]
+- [[_COMMUNITY_Community 906|Community 906]]
+- [[_COMMUNITY_Community 907|Community 907]]
+- [[_COMMUNITY_Community 908|Community 908]]
+- [[_COMMUNITY_Community 909|Community 909]]
+- [[_COMMUNITY_Community 910|Community 910]]
+- [[_COMMUNITY_Community 911|Community 911]]
+- [[_COMMUNITY_Community 912|Community 912]]
+- [[_COMMUNITY_Community 913|Community 913]]
+- [[_COMMUNITY_Community 914|Community 914]]
+- [[_COMMUNITY_Community 915|Community 915]]
+- [[_COMMUNITY_Community 916|Community 916]]
+- [[_COMMUNITY_Community 917|Community 917]]
+- [[_COMMUNITY_Community 918|Community 918]]
+- [[_COMMUNITY_Community 919|Community 919]]
+- [[_COMMUNITY_Community 920|Community 920]]
+- [[_COMMUNITY_Community 921|Community 921]]
+- [[_COMMUNITY_Community 922|Community 922]]
+- [[_COMMUNITY_Community 923|Community 923]]
+- [[_COMMUNITY_Community 924|Community 924]]
+- [[_COMMUNITY_Community 925|Community 925]]
+- [[_COMMUNITY_Community 926|Community 926]]
+- [[_COMMUNITY_Community 927|Community 927]]
+- [[_COMMUNITY_Community 928|Community 928]]
+- [[_COMMUNITY_Community 929|Community 929]]
+- [[_COMMUNITY_Community 930|Community 930]]
+- [[_COMMUNITY_Community 931|Community 931]]
+- [[_COMMUNITY_Community 932|Community 932]]
+- [[_COMMUNITY_Community 933|Community 933]]
+- [[_COMMUNITY_Community 934|Community 934]]
+- [[_COMMUNITY_Community 935|Community 935]]
+- [[_COMMUNITY_Community 936|Community 936]]
+- [[_COMMUNITY_Community 937|Community 937]]
+- [[_COMMUNITY_Community 938|Community 938]]
 - [[_COMMUNITY_Milestone v1.0 — Pre-Training Interactive Web App|Milestone: v1.0 — Pre-Training Interactive Web App]]
 - [[_COMMUNITY_Milestone v2.0 Audit Report Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut|Milestone v2.0 Audit Report: Multi-Course Platform & Modul Pengolahan Kata Tingkat Lanjut]]
+- [[_COMMUNITY_Community 941|Community 941]]
+- [[_COMMUNITY_Community 942|Community 942]]
+- [[_COMMUNITY_Community 943|Community 943]]
+- [[_COMMUNITY_Community 944|Community 944]]
+- [[_COMMUNITY_Community 945|Community 945]]
+- [[_COMMUNITY_Community 946|Community 946]]
+- [[_COMMUNITY_Community 947|Community 947]]
+- [[_COMMUNITY_Community 948|Community 948]]
+- [[_COMMUNITY_Community 949|Community 949]]
+- [[_COMMUNITY_Community 950|Community 950]]
+- [[_COMMUNITY_Community 951|Community 951]]
+- [[_COMMUNITY_Community 952|Community 952]]
+- [[_COMMUNITY_Community 953|Community 953]]
+- [[_COMMUNITY_Community 954|Community 954]]
+- [[_COMMUNITY_Community 955|Community 955]]
+- [[_COMMUNITY_Community 956|Community 956]]
+- [[_COMMUNITY_Community 957|Community 957]]
+- [[_COMMUNITY_Community 958|Community 958]]
+- [[_COMMUNITY_Community 959|Community 959]]
+- [[_COMMUNITY_Community 960|Community 960]]
+- [[_COMMUNITY_Community 961|Community 961]]
+- [[_COMMUNITY_Community 962|Community 962]]
+- [[_COMMUNITY_Community 963|Community 963]]
+- [[_COMMUNITY_Community 964|Community 964]]
+- [[_COMMUNITY_Community 965|Community 965]]
+- [[_COMMUNITY_Community 966|Community 966]]
+- [[_COMMUNITY_Community 967|Community 967]]
+- [[_COMMUNITY_Community 968|Community 968]]
+- [[_COMMUNITY_Community 969|Community 969]]
+- [[_COMMUNITY_Community 970|Community 970]]
+- [[_COMMUNITY_Community 971|Community 971]]
+- [[_COMMUNITY_Community 972|Community 972]]
+- [[_COMMUNITY_Community 973|Community 973]]
+- [[_COMMUNITY_Community 974|Community 974]]
+- [[_COMMUNITY_Community 975|Community 975]]
+- [[_COMMUNITY_Community 976|Community 976]]
+- [[_COMMUNITY_Community 977|Community 977]]
+- [[_COMMUNITY_Community 978|Community 978]]
+- [[_COMMUNITY_Community 979|Community 979]]
+- [[_COMMUNITY_Community 980|Community 980]]
+- [[_COMMUNITY_Community 981|Community 981]]
+- [[_COMMUNITY_Community 982|Community 982]]
+- [[_COMMUNITY_Community 983|Community 983]]
+- [[_COMMUNITY_Community 984|Community 984]]
+- [[_COMMUNITY_Community 985|Community 985]]
+- [[_COMMUNITY_Community 986|Community 986]]
+- [[_COMMUNITY_Community 987|Community 987]]
+- [[_COMMUNITY_Community 988|Community 988]]
+- [[_COMMUNITY_Community 989|Community 989]]
+- [[_COMMUNITY_Community 990|Community 990]]
+- [[_COMMUNITY_Community 991|Community 991]]
+- [[_COMMUNITY_Community 992|Community 992]]
+- [[_COMMUNITY_Community 993|Community 993]]
+- [[_COMMUNITY_Community 994|Community 994]]
+- [[_COMMUNITY_Community 995|Community 995]]
+- [[_COMMUNITY_Community 996|Community 996]]
+- [[_COMMUNITY_Community 997|Community 997]]
 - [[_COMMUNITY_.agentsgsd-corebinlibhealth-diagnostic-types.cjs|.agents/gsd-core/bin/lib/health-diagnostic-types.cjs]]
+- [[_COMMUNITY_Community 999|Community 999]]
+- [[_COMMUNITY_Community 1000|Community 1000]]
+- [[_COMMUNITY_Community 1001|Community 1001]]
+- [[_COMMUNITY_Community 1002|Community 1002]]
+- [[_COMMUNITY_Community 1003|Community 1003]]
+- [[_COMMUNITY_Community 1004|Community 1004]]
+- [[_COMMUNITY_Community 1005|Community 1005]]
+- [[_COMMUNITY_Community 1006|Community 1006]]
+- [[_COMMUNITY_Community 1007|Community 1007]]
+- [[_COMMUNITY_Community 1008|Community 1008]]
+- [[_COMMUNITY_Community 1009|Community 1009]]
+- [[_COMMUNITY_Community 1010|Community 1010]]
+- [[_COMMUNITY_Community 1011|Community 1011]]
+- [[_COMMUNITY_Community 1012|Community 1012]]
+- [[_COMMUNITY_Community 1013|Community 1013]]
+- [[_COMMUNITY_Community 1014|Community 1014]]
+- [[_COMMUNITY_Community 1015|Community 1015]]
+- [[_COMMUNITY_Community 1016|Community 1016]]
+- [[_COMMUNITY_Community 1017|Community 1017]]
+- [[_COMMUNITY_Community 1018|Community 1018]]
+- [[_COMMUNITY_Community 1019|Community 1019]]
+- [[_COMMUNITY_Community 1020|Community 1020]]
+- [[_COMMUNITY_Community 1021|Community 1021]]
+- [[_COMMUNITY_Community 1022|Community 1022]]
+- [[_COMMUNITY_Community 1023|Community 1023]]
+- [[_COMMUNITY_Community 1024|Community 1024]]
+- [[_COMMUNITY_Community 1025|Community 1025]]
+- [[_COMMUNITY_Community 1026|Community 1026]]
+- [[_COMMUNITY_Community 1027|Community 1027]]
+- [[_COMMUNITY_Community 1028|Community 1028]]
+- [[_COMMUNITY_Community 1029|Community 1029]]
+- [[_COMMUNITY_Community 1030|Community 1030]]
+- [[_COMMUNITY_Community 1031|Community 1031]]
+- [[_COMMUNITY_Community 1032|Community 1032]]
+- [[_COMMUNITY_Community 1033|Community 1033]]
 - [[_COMMUNITY_1. Accomplishments|1. Accomplishments]]
 - [[_COMMUNITY_2. Technical Approach|2. Technical Approach]]
 - [[_COMMUNITY_Project State|Project State]]
 - [[_COMMUNITY_.agentsgsd-corebinlibresolution.cjs|.agents/gsd-core/bin/lib/resolution.cjs]]
+- [[_COMMUNITY_Community 1276|Community 1276]]
+- [[_COMMUNITY_Community 1277|Community 1277]]
+- [[_COMMUNITY_Community 1278|Community 1278]]
+- [[_COMMUNITY_Community 1279|Community 1279]]
+- [[_COMMUNITY_Community 1280|Community 1280]]
+- [[_COMMUNITY_Community 1281|Community 1281]]
+- [[_COMMUNITY_Community 1282|Community 1282]]
+- [[_COMMUNITY_Community 1283|Community 1283]]
+- [[_COMMUNITY_Community 1284|Community 1284]]
+- [[_COMMUNITY_Community 1285|Community 1285]]
+- [[_COMMUNITY_Community 1286|Community 1286]]
+- [[_COMMUNITY_Community 1287|Community 1287]]
 - [[_COMMUNITY_18-01-PLAN|18-01-PLAN.md]]
 - [[_COMMUNITY_Community 1813|Community 1813]]
 - [[_COMMUNITY_Community 1814|Community 1814]]
@@ -429,7 +798,6 @@
 - [[_COMMUNITY_Community 1830|Community 1830]]
 - [[_COMMUNITY_Community 1831|Community 1831]]
 - [[_COMMUNITY_Community 1832|Community 1832]]
-- [[_COMMUNITY_Community 1833|Community 1833]]
 - [[_COMMUNITY_Community 1834|Community 1834]]
 - [[_COMMUNITY_Community 1835|Community 1835]]
 - [[_COMMUNITY_Community 1836|Community 1836]]
@@ -786,7 +1154,6 @@
 - [[_COMMUNITY_Community 2204|Community 2204]]
 - [[_COMMUNITY_Community 2205|Community 2205]]
 - [[_COMMUNITY_Community 2206|Community 2206]]
-- [[_COMMUNITY_Community 2207|Community 2207]]
 - [[_COMMUNITY_Community 2208|Community 2208]]
 - [[_COMMUNITY_Community 2209|Community 2209]]
 - [[_COMMUNITY_Community 2210|Community 2210]]
@@ -841,7 +1208,6 @@
 - [[_COMMUNITY_Community 2260|Community 2260]]
 - [[_COMMUNITY_Community 2261|Community 2261]]
 - [[_COMMUNITY_Community 2262|Community 2262]]
-- [[_COMMUNITY_Community 2263|Community 2263]]
 - [[_COMMUNITY_Community 2264|Community 2264]]
 - [[_COMMUNITY_Community 2265|Community 2265]]
 - [[_COMMUNITY_Community 2266|Community 2266]]
@@ -877,7 +1243,6 @@
 - [[_COMMUNITY_Community 2297|Community 2297]]
 - [[_COMMUNITY_Community 2298|Community 2298]]
 - [[_COMMUNITY_Community 2299|Community 2299]]
-- [[_COMMUNITY_Community 2300|Community 2300]]
 - [[_COMMUNITY_Community 2301|Community 2301]]
 - [[_COMMUNITY_Community 2302|Community 2302]]
 - [[_COMMUNITY_Community 2303|Community 2303]]
@@ -1091,7 +1456,6 @@
 - [[_COMMUNITY_Community 2514|Community 2514]]
 - [[_COMMUNITY_Community 2515|Community 2515]]
 - [[_COMMUNITY_Community 2516|Community 2516]]
-- [[_COMMUNITY_Community 2517|Community 2517]]
 - [[_COMMUNITY_Community 2518|Community 2518]]
 - [[_COMMUNITY_Community 2519|Community 2519]]
 - [[_COMMUNITY_Community 2520|Community 2520]]
@@ -1215,11 +1579,9 @@
 - [[_COMMUNITY_Community 2640|Community 2640]]
 - [[_COMMUNITY_Community 2641|Community 2641]]
 - [[_COMMUNITY_Community 2642|Community 2642]]
-- [[_COMMUNITY_Community 2643|Community 2643]]
 - [[_COMMUNITY_Community 2644|Community 2644]]
 - [[_COMMUNITY_Community 2645|Community 2645]]
 - [[_COMMUNITY_Community 2646|Community 2646]]
-- [[_COMMUNITY_Community 2647|Community 2647]]
 - [[_COMMUNITY_Community 2648|Community 2648]]
 - [[_COMMUNITY_Community 2649|Community 2649]]
 - [[_COMMUNITY_Community 2650|Community 2650]]
@@ -1296,7 +1658,6 @@
 - [[_COMMUNITY_Community 2721|Community 2721]]
 - [[_COMMUNITY_Community 2722|Community 2722]]
 - [[_COMMUNITY_Community 2723|Community 2723]]
-- [[_COMMUNITY_Community 2724|Community 2724]]
 - [[_COMMUNITY_Community 2725|Community 2725]]
 - [[_COMMUNITY_Community 2726|Community 2726]]
 - [[_COMMUNITY_Community 2727|Community 2727]]
@@ -1438,8 +1799,6 @@
 - [[_COMMUNITY_Community 2863|Community 2863]]
 - [[_COMMUNITY_Community 2864|Community 2864]]
 - [[_COMMUNITY_Community 2865|Community 2865]]
-- [[_COMMUNITY_Community 2867|Community 2867]]
-- [[_COMMUNITY_Community 2868|Community 2868]]
 - [[_COMMUNITY_Community 2869|Community 2869]]
 - [[_COMMUNITY_Community 2870|Community 2870]]
 - [[_COMMUNITY_Community 2871|Community 2871]]
@@ -1453,35 +1812,35 @@
 ## God Nodes (most connected - your core abstractions)
 1. `Communities (658 total, 66 thin omitted)` - 579 edges
 2. `pristine_hashes` - 496 edges
-3. `files` - 494 edges
-4. `allow()` - 42 edges
+3. `workflow` - 37 edges
+4. `workflow` - 37 edges
 5. `workflow` - 37 edges
-6. `workflow` - 37 edges
-7. `workflow` - 37 edges
+6. `agents` - 36 edges
+7. `agents` - 36 edges
 8. `agents` - 36 edges
-9. `agents` - 36 edges
-10. `agents` - 36 edges
+9. `StateManager` - 32 edges
+10. `StateManager` - 32 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `emitForceAddBlock()` --calls--> `deny()`  [INFERRED]
-  .agents/gsd-local-patches/hooks/gsd-workflow-guard.js → .agents/hooks/lib/hook-exit.js
-- `block()` --calls--> `deny()`  [INFERRED]
-  .agents/hooks/gsd-windsurf-pre-write.js → .agents/hooks/lib/hook-exit.js
-- `resolveIsolationState()` --calls--> `sentinelAppliesToDispatch()`  [INFERRED]
-  .agents/gsd-local-patches/hooks/gsd-agent-isolation-guard.js → .agents/hooks/lib/isolation-sentinel.js
-- `evaluateDispatch()` --calls--> `extractDispatchIdentifiers()`  [INFERRED]
-  .agents/gsd-local-patches/hooks/gsd-agent-isolation-guard.js → .agents/hooks/lib/isolation-sentinel.js
-- `resolveIsolationDecision()` --calls--> `extractDispatchIdentifiers()`  [INFERRED]
-  .agents/gsd-local-patches/hooks/gsd-cursor-subagent-start.js → .agents/hooks/lib/isolation-sentinel.js
+- `writeTestResults()` --calls--> `getTrunkVersion()`  [INFERRED]
+  .trunk/plugins/trunk/tests/parse/index.ts → .trunk/plugins/trunk/tests/utils/trunk_config.ts
+- `gradlePreCheck()` --calls--> `recurseLevels()`  [INFERRED]
+  .trunk/plugins/trunk/linters/detekt/detekt.test.ts → .trunk/plugins/trunk/tests/utils/index.ts
+- `testGenerator()` --calls--> `customLinterCheckTest()`  [INFERRED]
+  .trunk/plugins/trunk/linters/golangci-lint/golangci_lint.test.ts → .trunk/plugins/trunk/tests/index.ts
+- `Bar` --uses--> `Bar`  [INFERRED]
+  .trunk/plugins/trunk/linters/mypy/test_data/basic.py → .trunk/plugins/trunk/linters/mypy/test_data/source.py
+- `skipTestIfLambda()` --calls--> `skipCPUOS()`  [INFERRED]
+  .trunk/plugins/trunk/linters/scalafmt/scalafmt.test.ts → .trunk/plugins/trunk/tests/utils/index.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (2132 total, 318 thin omitted)
+## Communities (2722 total, 415 thin omitted)
 
 ### Community 0 - "output"
-Cohesion: 0.10
-Nodes (33): classifyGrepGlob(), CMD_PREFIXES, collectSubstitutions(), consumeHeredocBodies(), emitBlock(), expandBraces(), findParenClose(), findSecretRead() (+25 more)
+Cohesion: 0.04
+Nodes (49): File Location, After Checkpoint, Balance Research and Reasoning, Checkpoint Format, CHECKPOINT REACHED, Checkpoint Types, Combining Techniques, DEBUG COMPLETE (goal: find_and_fix) (+41 more)
 
 ### Community 1 - "gsd-local-patches/gsd-core/bin/lib/state.cjs"
 Cohesion: 0.09
@@ -1533,7 +1892,7 @@ Nodes (30): 10. Implementation Roadmap for Phase 25, 1. Executive Summary & Scop
 
 ### Community 13 - ".agents/gsd-core/bin/lib/roadmap-parser.cjs"
 Cohesion: 0.11
-Nodes (16): GlossaryTerm, HeroStat, PowerShellStep, PrerequisiteItem, PRETRAINING_GLOSSARY_TERMS, PRETRAINING_POWERSHELL_STEPS, PRETRAINING_PREREQUISITES, PRETRAINING_SECURITY_RULES (+8 more)
+Nodes (17): GlossaryTerm, HeroStat, PowerShellStep, PrerequisiteItem, PRETRAINING_GLOSSARY_TERMS, PRETRAINING_HERO_STATS, PRETRAINING_POWERSHELL_STEPS, PRETRAINING_PREREQUISITES (+9 more)
 
 ### Community 14 - ".agents/gsd-core/bin/lib/surface.cjs"
 Cohesion: 0.22
@@ -1668,12 +2027,12 @@ Cohesion: 0.50
 Nodes (3): Accomplishments, Performance, Phase 29 Plan 01: Master Admin Authentication Backend Engine Summary
 
 ### Community 47 - "gsd-local-patches/gsd-core/bin/lib/planning-snapshot.cjs"
-Cohesion: 0.19
-Nodes (12): PretrainingReadinessReportSection(), ingestTroubleshootingLogFn, classifyErrorLog(), ingestTroubleshootingLog(), REDACTION_RULES, RedactionRule, sanitizeLogText(), SanitizeResult (+4 more)
+Cohesion: 0.21
+Nodes (10): classifyErrorLog(), ingestTroubleshootingLog(), REDACTION_RULES, RedactionRule, sanitizeLogText(), SanitizeResult, generateReportText(), normalizeTelegramUsername() (+2 more)
 
 ### Community 48 - ".agents/gsd-core/bin/lib/prohibition-enforcement.cjs"
-Cohesion: 0.13
-Nodes (17): AlertType, ArchFlowArrow, ArchFlowNode, CheckpointPreview, ComparisonGrid, ModuleStep, PRETRAINING_MODULES, PretrainingModule (+9 more)
+Cohesion: 0.15
+Nodes (15): AlertType, ArchFlowArrow, ArchFlowNode, CheckpointPreview, ComparisonGrid, ModuleStep, PRETRAINING_MODULES, PretrainingModule (+7 more)
 
 ### Community 49 - "gsd-local-patches/gsd-core/bin/lib/frontmatter.cjs"
 Cohesion: 0.12
@@ -1681,7 +2040,7 @@ Nodes (16): 1. `app/data/pretrainingTroubleshooting.ts` (model / data, transform
 
 ### Community 50 - ".agents/gsd-core/bin/lib/verify.cjs"
 Cohesion: 0.09
-Nodes (26): PRETRAINING_HERO_STATS, calculatePretrainingProgress(), calculatePretrainingReadiness(), DEFAULT_PRETRAINING_STATE, dispatchAiTelemetry(), emitChange(), initPretrainingState(), loadStateFromStorage() (+18 more)
+Nodes (31): calculatePretrainingProgress(), calculatePretrainingReadiness(), DEFAULT_PRETRAINING_STATE, dispatchAiTelemetry(), emitChange(), initPretrainingState(), loadStateFromStorage(), memoryState (+23 more)
 
 ### Community 51 - ".agents/gsd-core/bin/lib/planning-inspect.cjs"
 Cohesion: 0.17
@@ -1696,8 +2055,8 @@ Cohesion: 0.12
 Nodes (15): 1. Data Model Completeness (`app/data/pretrainingModules.ts`), 2. 1-Click Copy Engine & Toast Notifications (`CopyableCodeBlock.tsx` & `Toast.tsx`), 3. Modular Presentation Components, 4. Master Accordion Controls (`PretrainingModulesSection.tsx`), 5. Route Integration (`app/routes/course.ai.tsx`), 6. Automated Test Suite (`tests/pretraining-modules.test.js`), Conclusion, Dedicated Suite (+7 more)
 
 ### Community 54 - ".agents/gsd-core/bin/lib/install-profiles.cjs"
-Cohesion: 0.00
-Nodes (494): files, gsd-core/bin/check-latest-version.cjs, gsd-core/bin/ensure-runtime-build.cjs, gsd-core/bin/gsd_run, gsd-core/bin/gsd-tools.cjs, gsd-core/bin/lib/active-workstream-store.cjs, gsd-core/bin/lib/adapter-declarative.cjs, gsd-core/bin/lib/adapter-imperative.cjs (+486 more)
+Cohesion: 0.05
+Nodes (43): 0. Git Branch Invariant, 10. Spawn gsd-plan-checker Agent, 11. Handle Checker Return, 11a. Filesystem Fallback (Checker), 12.5. Plan Bounce (Optional External Refinement), 12. Revision Loop (Max 3 Iterations), 13. Requirements Coverage Gate, 13a. Decision Coverage Gate (+35 more)
 
 ### Community 57 - ".agents/gsd-core/bin/lib/vendor/js-yaml.cjs"
 Cohesion: 0.20
@@ -1748,12 +2107,12 @@ Cohesion: 0.17
 Nodes (11): 1.1 Server Passkey Verification (`app/server/config.ts` & `app/server/auth.ts`), 1.2 Session Token & Cookie Management (`app/server/session.ts`), 1.3 TanStack Start Server Functions (`app/server/adminAuth.ts`), 1.4 Google OAuth Architecture & Readiness, 1.5 Route Structure (`app/routes/admin.tsx`), 1. Architectural Decisions & Patterns, 2.1 Automated Unit & Integration Tests (`tests/admin-auth.test.js`), 2. Validation Architecture (+3 more)
 
 ### Community 72 - "Community 72"
-Cohesion: 0.06
-Nodes (26): fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout (+18 more)
+Cohesion: 0.17
+Nodes (8): fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout
 
 ### Community 73 - "Community 73"
-Cohesion: 0.17
-Nodes (11): Category 1: Admin Authentication & Security Gates (ADMIN-AUTH), Category 2: Server Telemetry Ingestion & API (ADMIN-TELEM), Category 3: Participant Progress & Monitoring Dashboard (ADMIN-DASH), Category 4: Course Access & Passkey Management Console (ADMIN-PASS), Category 5: Runtime Troubleshooting Hub & Incident Audit (ADMIN-LOG), Category 6: Global Platform Configuration & Banner Controls (ADMIN-CFG), Category 7: Quality Assurance & Zero-Regression (ADMIN-QA), Out of Scope (+3 more)
+Cohesion: 0.20
+Nodes (9): Category 1: Course Lifecycle State & Server Store (COURSE-STATUS), Category 2: Admin Course Management Interface (COURSE-ADMIN), Category 3: Secure Server Functions & Mutations (COURSE-MUTATE), Category 4: Public Catalog & Navigation Reactive Synchronization (COURSE-SYNC), Category 5: Quality Assurance & Zero-Regression (COURSE-TEST), Out of Scope, Requirements Grouped by Category, Requirements: Milestone v3.3 Admin Course Lifecycle & Visibility Management (+1 more)
 
 ### Community 74 - "Community 74"
 Cohesion: 0.50
@@ -1821,7 +2180,7 @@ Nodes (4): assert, { describe, it, before, beforeEach }, fs, path
 
 ### Community 95 - "Community 95"
 Cohesion: 0.06
-Nodes (46): AdminDashboardViewProps, DEFAULT_STATS, DashboardKPIs(), DashboardKPIsProps, ExportControls(), ExportControlsProps, ParticipantDetailModal(), ParticipantDetailModalProps (+38 more)
+Nodes (45): AdminDashboardViewProps, DEFAULT_STATS, DashboardKPIs(), DashboardKPIsProps, ExportControls(), ExportControlsProps, ParticipantDetailModal(), ParticipantDetailModalProps (+37 more)
 
 ### Community 96 - "Community 96"
 Cohesion: 0.50
@@ -1864,8 +2223,8 @@ Cohesion: 0.40
 Nodes (4): assert, { describe, it, before }, fs, path
 
 ### Community 106 - "Community 106"
-Cohesion: 0.50
-Nodes (9): sonnet, sonnet, sonnet, sonnet, sonnet, sonnet, high, low (+1 more)
+Cohesion: 0.08
+Nodes (35): buildGitSegment(), CANONICAL_STATUSES, childProcess, compactModelName(), composeStatusline(), contextTokenSuffix(), deriveStateFreshness(), evaluateUpdateCache() (+27 more)
 
 ### Community 107 - "Community 107"
 Cohesion: 0.40
@@ -1908,8 +2267,8 @@ Cohesion: 0.25
 Nodes (7): 1.1 Backend Unit & Security Tests (`tests/admin-auth.test.js`), 1.2 Route & Client Verification, 1.3 Zero-Regression Invariant, 1. Automated Verification Gates, 2. Manual Verification Checklist, Overview, Phase 29 Validation Strategy: Master Admin Authentication, Route Protection & Google OAuth Architecture
 
 ### Community 129 - "gsd-local-patches/scripts/gen-loop-host-contract.cjs"
-Cohesion: 0.05
-Nodes (29): { allow }, stdinTimeout, { allow }, stdinTimeout, { allow }, fs, { resolveStatePath }, stdinTimeout (+21 more)
+Cohesion: 0.40
+Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
 
 ### Community 130 - "Community 130"
 Cohesion: 0.08
@@ -1932,8 +2291,8 @@ Cohesion: 0.06
 Nodes (12): Globe, NoDocstring, Globe, NoDocstring, Globe, NoDocstring, Globe, NoDocstring (+4 more)
 
 ### Community 135 - "Community 135"
-Cohesion: 0.17
-Nodes (14): DiagnosticsInput, diagnosticsInputSchema, DiagnosticsResult, diagnosticsResultSchema, VerifyPasskeyInput, verifyPasskeyInputSchema, VerifyPasskeyResult, verifyPasskeyResultSchema (+6 more)
+Cohesion: 0.14
+Nodes (16): InstructorUnlockModal(), InstructorUnlockModalProps, DiagnosticsInput, diagnosticsInputSchema, DiagnosticsResult, diagnosticsResultSchema, VerifyPasskeyInput, verifyPasskeyInputSchema (+8 more)
 
 ### Community 137 - "Community 137"
 Cohesion: 0.09
@@ -1944,8 +2303,8 @@ Cohesion: 0.25
 Nodes (7): Gate 1: Telemetry Schema & Payload Validation (ADMIN-TELEM-02), Gate 2: In-Memory Telemetry Store (ADMIN-TELEM-02), Gate 3: Server Functions RPC (ADMIN-TELEM-01), Gate 4: Non-Blocking Background Client & Course Integration (ADMIN-TELEM-03), Gate 5: Security & Zero Regression (ADMIN-QA-01, ADMIN-QA-02), Phase 30 Validation Plan: Server Telemetry Ingestion API & Participant Background Client, Test Coverage Gates
 
 ### Community 139 - "Community 139"
-Cohesion: 0.11
-Nodes (31): AdminPasskeyViewProps, PasskeyAuditLogTable(), PasskeyAuditLogTableProps, StatusFilter, PasskeyHistoryTable(), PasskeyHistoryTableProps, PasskeyRotateModal(), PasskeyRotateModalProps (+23 more)
+Cohesion: 0.10
+Nodes (32): AdminPasskeyView(), AdminPasskeyViewProps, PasskeyAuditLogTable(), PasskeyAuditLogTableProps, StatusFilter, PasskeyHistoryTable(), PasskeyHistoryTableProps, PasskeyRotateModal() (+24 more)
 
 ### Community 140 - "Community 140"
 Cohesion: 0.40
@@ -1984,8 +2343,8 @@ Cohesion: 0.04
 Nodes (46): 10. Membuat bot Telegram melalui BotFather, 11. Pemeriksaan akun Google, 12. Jika terjadi masalah, 13. Cara meminta bantuan, 14. Checklist akhir, 15. Form laporan kesiapan, 16. Referensi resmi, 1. Target pre-training (+38 more)
 
 ### Community 153 - "Community 153"
-Cohesion: 0.08
-Nodes (33): AdminDashboardView(), AdminLoginGate(), AdminLoginGateProps, AdminShell(), AdminShellProps, AdminTab, GoogleSignInButton(), GoogleSignInButtonProps (+25 more)
+Cohesion: 0.09
+Nodes (31): AdminDashboardView(), AdminLoginGate(), AdminLoginGateProps, AdminShell(), AdminShellProps, AdminTab, GoogleSignInButton(), GoogleSignInButtonProps (+23 more)
 
 ### Community 154 - "Community 154"
 Cohesion: 0.33
@@ -2012,8 +2371,8 @@ Cohesion: 0.15
 Nodes (15): { ensureRuntimeBuild, RuntimeBuildError }, evaluateDispatch(), EXECUTOR_SUBAGENT_TYPES, fs, { HOOK_ON_CRASH, allow, deny, crash }, os, parseHarnessFlag(), path (+7 more)
 
 ### Community 160 - "Community 160"
-Cohesion: 0.18
-Nodes (16): activePasskeys, addAuditLog(), auditLogs, checkRateLimit(), clearPasskeyStoreForTesting(), ClientFailureRecord, clientFailureTracker, createDefaultPasskeys() (+8 more)
+Cohesion: 0.05
+Nodes (36): Additional Commands, Capturing Ideas, Notes, and Todos, Common Workflows, Configuration, Core Workflow, Debugging, Diagnostics & Maintenance, Discovery & Specification (+28 more)
 
 ### Community 161 - "Community 161"
 Cohesion: 0.12
@@ -2040,15 +2399,15 @@ Cohesion: 0.25
 Nodes (7): Manual-Only Verifications, Per-Task Verification Map, Phase 33 — Validation Strategy, Sampling Rate, Test Infrastructure, Validation Sign-Off Checklist, Wave 0 Requirements
 
 ### Community 169 - "Phases"
-Cohesion: 0.40
-Nodes (4): Milestones, Next Milestone, Phases Archive, Roadmap: learnwith — Interactive Training Platform (Multi-Course)
+Cohesion: 0.20
+Nodes (9): Current Milestone: v3.3 Admin Course Lifecycle & Visibility Management, Milestones, Phase 34: Course Lifecycle Schema & Server Store Architecture (Complete: 2026-09-10), Phase 35: Admin Management UI & Action Controls, Phase 36: Frontpage Catalog & Header Switcher Reactive Sync, Phase 37: End-to-End Verification & Zero-Regression Audit, Phase Details, Phases Archive (+1 more)
 
 ### Community 170 - "Community 170"
 Cohesion: 0.25
 Nodes (7): Manual-Only Verifications, Per-Task Verification Map, Phase 32 — Validation Strategy, Sampling Rate, Test Infrastructure, Validation Sign-Off, Wave 0 Requirements
 
 ### Community 171 - "Community 171"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (20): LIVE_CLASS_MODULES, LiveModule, LiveStep, CHECKPOINT_CRITERIA_MAP, CheckpointStatus, LiveClassCheckpointsSection(), LiveClassCheckpointsSectionProps, LiveClassModulesSection() (+12 more)
 
 ### Community 172 - "Community 172"
@@ -2064,8 +2423,8 @@ Cohesion: 0.50
 Nodes (3): Artifacts Modified / Created, Objectives Accomplished, Phase 32 Plan 02: Troubleshooting Audit Hub & Triage Console Summary
 
 ### Community 175 - "Community 175"
-Cohesion: 0.50
-Nodes (9): opus, opus, opus, opus, opus, high, low, medium (+1 more)
+Cohesion: 0.10
+Nodes (33): classifyGrepGlob(), CMD_PREFIXES, collectSubstitutions(), consumeHeredocBodies(), emitBlock(), expandBraces(), findParenClose(), findSecretRead() (+25 more)
 
 ### Community 176 - "Community 176"
 Cohesion: 0.40
@@ -2088,8 +2447,8 @@ Cohesion: 0.08
 Nodes (23): bundleDependencies, devDependencies, caller, debug, eslint, fast-sort, jest, jest-specific-snapshot (+15 more)
 
 ### Community 181 - "Community 181"
-Cohesion: 0.50
-Nodes (4): zcode, haiku, opus, sonnet
+Cohesion: 0.17
+Nodes (17): activePasskeys, addAuditLog(), auditLogs, checkRateLimit(), clearPasskeyStoreForTesting(), ClientFailureRecord, clientFailureTracker, createDefaultPasskeys() (+9 more)
 
 ### Community 182 - "Community 182"
 Cohesion: 0.09
@@ -2113,7 +2472,7 @@ Nodes (4): assert, { describe, it }, fs, path
 
 ### Community 197 - "Community 197"
 Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, codebuddy
+Nodes (4): windsurf, haiku, opus, sonnet
 
 ### Community 198 - "Community 198"
 Cohesion: 0.16
@@ -2124,12 +2483,12 @@ Cohesion: 0.11
 Nodes (17): Autofix, CheckType, FailedVersion, FailureMode, FileIssue, LandingState, LintAction, LinterVersion (+9 more)
 
 ### Community 203 - "Community 203"
-Cohesion: 0.17
+Cohesion: 0.15
 Nodes (14): currentBranch(), failClosedBlockContext(), fs, { HOOK_ON_CRASH, allow, deny, crash }, isAgentBranch(), KIMI_TOOL_NAMES, normalizeKimiPayload(), path (+6 more)
 
 ### Community 204 - "Community 204"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, codebuddy
+Cohesion: 0.11
+Nodes (25): ALLOWED_STATUS_TRANSITIONS, CourseLifecycleAuditEntry, courseLifecycleAuditEntrySchema, CourseLifecycleRecord, courseLifecycleRecordSchema, CourseLifecycleStatus, courseLifecycleStatusSchema, isValidStatusTransition() (+17 more)
 
 ### Community 205 - "Community 205"
 Cohesion: 0.24
@@ -2360,28 +2719,28 @@ Cohesion: 0.10
 Nodes (5): add(), assert, querySelector(), querySelectorAll(), toggle()
 
 ### Community 267 - "Community 267"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, antigravity
+Cohesion: 0.10
+Nodes (33): classifyGrepGlob(), CMD_PREFIXES, collectSubstitutions(), consumeHeredocBodies(), emitBlock(), expandBraces(), findParenClose(), findSecretRead() (+25 more)
 
 ### Community 268 - "Community 268"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, codebuddy
+Cohesion: 0.06
+Nodes (34): Dimension 10: AGENTS.md Compliance, Binding Payload vs Advisory Remediation, Check 8f - Stated Failing Direction (#3172), Dimension 11: Research Resolution (#1602), Dimension 12: Pattern Compliance (#1861), Dimension 1: Requirement Coverage, Dimension 2: Task Completeness, Dimension 3: Dependency Correctness (+26 more)
 
 ### Community 269 - "Community 269"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, kimi
+Cohesion: 0.06
+Nodes (34): 100% Requirement Coverage, 1. Summary Checklist (under `## Phases`), 2. Detail Sections (under `## Phase Details`), 3. Progress Table, Anti-Enterprise, Coverage is Non-Negotiable, Deriving Phase Success Criteria, Deriving Phases from Requirements (+26 more)
 
 ### Community 270 - "Community 270"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, augment
+Cohesion: 0.06
+Nodes (33): 1. Communication Style, 2. Decision Speed, 3. Explanation Depth, 4. Debugging Approach, 5. UX Philosophy, 6. Vendor Philosophy, 7. Frustration Triggers, 8. Learning Style (+25 more)
 
 ### Community 271 - "Community 271"
 Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, kimi-code
+Nodes (4): haiku, opus, sonnet, antigravity
 
 ### Community 272 - "Community 272"
 Cohesion: 0.50
-Nodes (4): zcode, haiku, opus, sonnet
+Nodes (9): opus, opus, opus, opus, opus, high, low, medium (+1 more)
 
 ### Community 273 - "Community 273"
 Cohesion: 0.50
@@ -2464,8 +2823,8 @@ Cohesion: 0.08
 Nodes (25): haiku, opus, sonnet, haiku, opus, sonnet, haiku, opus (+17 more)
 
 ### Community 360 - ".agents/hooks/gsd-cursor-stop.js"
-Cohesion: 0.07
-Nodes (41): { ensureRuntimeBuild, RuntimeBuildError }, evaluateDispatch(), EXECUTOR_SUBAGENT_TYPES, fs, { HOOK_ON_CRASH, allow, deny, crash }, os, parseHarnessFlag(), path (+33 more)
+Cohesion: 0.14
+Nodes (16): { allow }, { ensureRuntimeBuild, RuntimeBuildError }, evaluateRootIsolation(), EXECUTOR_SUBAGENT_TYPES, fs, getWorkspaceRoots(), os, path (+8 more)
 
 ### Community 368 - "gsd-local-patches/gsd-core/bin/lib/decisions.cjs"
 Cohesion: 0.14
@@ -2520,16 +2879,16 @@ Cohesion: 0.05
 Nodes (36): Additional Commands, Capturing Ideas, Notes, and Todos, Common Workflows, Configuration, Core Workflow, Debugging, Diagnostics & Maintenance, Discovery & Specification (+28 more)
 
 ### Community 477 - "gsd-pristine/gsd-core/bin/lib/state-command-router.cjs"
-Cohesion: 0.04
-Nodes (43): fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout, fs, { HOOK_ON_CRASH, allow, crash }, os, path (+35 more)
+Cohesion: 0.20
+Nodes (6): fs, { HOOK_ON_CRASH, allow, crash }, os, path, { spawn }, stdinTimeout
 
 ### Community 478 - "constructor"
 Cohesion: 0.22
 Nodes (8): 1. Strongly-Typed Data Layer (`app/data/courses.ts`), 2. Route Loaders with Critical Data & Streaming Defer (`loader`), 3. Suspense & Skeleton Fallbacks (SSR-02), 4. Hydration Safety via `<ClientOnly>` (SSR-04), Executive Summary, File Classification & Architectural Boundaries, Pattern Blueprints, Phase 21: Typed Route Loaders, Full-Document SSR & Progressive Streaming - Pattern Map
 
 ### Community 481 - "ensureRuntimeBuild"
-Cohesion: 0.06
-Nodes (26): block(), { allow, deny }, block(), fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync } (+18 more)
+Cohesion: 0.17
+Nodes (6): CURATED_PATTERNS, fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
 
 ### Community 482 - "checkpoint-engine.test.js"
 Cohesion: 0.29
@@ -2561,7 +2920,7 @@ Nodes (27): bool, DesignSystemGenerator, _detect_page_type(), format_ascii_box()
 
 ### Community 561 - "gsd-local-patches/gsd-core/bin/lib/ui-safety-gate.cjs"
 Cohesion: 0.06
-Nodes (34): Check 8f - Stated Failing Direction (#3172), Dimension 10: GEMINI.md Compliance, Dimension 11: Research Resolution (#1602), Dimension 12: Pattern Compliance (#1861), Dimension 1: Requirement Coverage, Dimension 2: Task Completeness, Dimension 3: Dependency Correctness, Dimension 3b: Undeclared / Temporal Coupling (+26 more)
+Nodes (34): Binding Payload vs Advisory Remediation, Check 8f - Stated Failing Direction (#3172), Dimension 10: GEMINI.md Compliance, Dimension 11: Research Resolution (#1602), Dimension 12: Pattern Compliance (#1861), Dimension 1: Requirement Coverage, Dimension 2: Task Completeness, Dimension 3: Dependency Correctness (+26 more)
 
 ### Community 573 - "gsd-pristine/gsd-core/bin/lib/spec-section.cjs"
 Cohesion: 0.06
@@ -2592,32 +2951,1080 @@ Cohesion: 0.06
 Nodes (33): 1. Communication Style, 2. Decision Speed, 3. Explanation Depth, 4. Debugging Approach, 5. UX Philosophy, 6. Vendor Philosophy, 7. Frustration Triggers, 8. Learning Style (+25 more)
 
 ### Community 666 - "Community 666"
-Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, kimi-code
+Cohesion: 0.06
+Nodes (31): 1. System Classification, 1b. Domain Context, 2. Framework Decision, 3. Framework Quick Reference, 4. Implementation Guidance, 4b. AI Systems Best Practices, 5. Evaluation Strategy, 6. Guardrails (+23 more)
 
 ### Community 667 - "Community 667"
 Cohesion: 0.50
-Nodes (4): zcode, haiku, opus, sonnet
+Nodes (4): haiku, opus, sonnet, antigravity
 
 ### Community 668 - "Community 668"
 Cohesion: 0.50
-Nodes (4): haiku, opus, sonnet, augment
+Nodes (4): haiku, opus, sonnet, codebuddy
+
+### Community 670 - "Community 670"
+Cohesion: 0.07
+Nodes (22): AGENTS, COMMANDS, currentCwd, fs, getNamespaceConverter(), GSD_CORE, GSD_MANAGED_DIRS, gsdCorePluginExport (+14 more)
+
+### Community 671 - "Community 671"
+Cohesion: 0.07
+Nodes (28): Detect Test Infrastructure, Identify Wave 0 Gaps, Map Requirements to Tests, Package Legitimacy Gate, Quick Claim-Disposition Pass (`/gsd-explore`), Research Blocked, Research Complete, RESEARCH.md Structure (+20 more)
+
+### Community 672 - "Community 672"
+Cohesion: 0.07
+Nodes (27): Anti-Patterns, api-map.json -- API Surfaces, arch-decisions.json -- Architecture Summary, Completion Protocol, Config Gate, Context Quality Tiers, Core Principle, dependency-graph.json -- Dependency Chains (+19 more)
+
+### Community 673 - "Community 673"
+Cohesion: 0.07
+Nodes (26): 0. Initialize Milestone Context, 1. Determine Milestone Scope, 2. Read All Phase Verifications, 3. Spawn Integration Checker, 4. Collect Results, 5.5. Nyquist Compliance Discovery, 5. Check Requirements Coverage (3-Source Cross-Reference), 5a. Parse REQUIREMENTS.md Traceability Table (+18 more)
+
+### Community 674 - "Community 674"
+Cohesion: 0.08
+Nodes (25): Authentication Gates, Checkpoint Types, Context Budget for TDD, Context Section Rules, CRITICAL: Never Simplify User Decisions — Split Instead, CRITICAL: User Decision Fidelity, Frontmatter Fields, Gap Closure Mode (+17 more)
+
+### Community 675 - "Community 675"
+Cohesion: 0.08
+Nodes (24): API Route Stubs, Create VERIFICATION.md, Final Artifact Status, MVP Mode Verification, React Component Stubs, Return to Orchestrator, Step 0: Check for Previous Verification, Step 10: Structure Gap Output (If Gaps Found) (+16 more)
+
+### Community 676 - "Community 676"
+Cohesion: 0.08
+Nodes (24): Allowlist escape hatch, Bad — Asking human to automate, Bad — file-wide ban unsatisfiable against a sibling's real code, Bad — JSDoc sample echoes the forbidden literal, Bad — Mixing checkpoints with implementation, Bad — Reflexive SUMMARY chaining, Bad — Too many checkpoints, Checkpoint Anti-Patterns (+16 more)
+
+### Community 677 - "Community 677"
+Cohesion: 0.09
+Nodes (22): Building the Dependency Graph, Checkpoint Reached / Revision Complete, File Ownership for Parallel Execution, Gap Closure Return (artifact-based — #3440), Goal-Backward Worked Example, Granularity Calibration, Interface-First Task Ordering, Must-Haves Output Format (+14 more)
+
+### Community 678 - "Community 678"
+Cohesion: 0.09
+Nodes (22): Ambiguity Resolution, At Milestone Completion, Check Order, Cleanup, Creating Overrides, During Re-verification, Example VERIFICATION.md, Examples (+14 more)
+
+### Community 679 - "Community 679"
+Cohesion: 0.09
+Nodes (21): API Route Checklist, API Routes (Next.js App Router / Express / etc.), Automated Verification Approach, Component Checklist, Custom Hooks and Utilities, Database Schema (Prisma / Drizzle / SQL), Environment Variables and Configuration, Hook/Utility Checklist (+13 more)
+
+### Community 680 - "Community 680"
+Cohesion: 0.09
+Nodes (21): 2a. Git History, 2b. Planning State, 2c. Phase Artifacts, 2d. Session Reports, 2e. Git Worktree State, Abandoned Work Detection, Crash/Interruption Detection, Forensics Workflow (+13 more)
+
+### Community 681 - "Community 681"
+Cohesion: 0.15
+Nodes (16): { allow, deny }, basename(), CMD_PREFIXES, destructiveReason(), hasFlag(), indexOfCommandAfterPrefixes(), isDestructiveRmRf(), isDestructiveWindowsRmRf() (+8 more)
+
+### Community 682 - "Community 682"
+Cohesion: 0.13
+Nodes (14): CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, ExitError, findExitContractFlag(), getContractVersion(), HOOK_DENY_CODE, JSON_ERROR_MODE_KEY (+6 more)
+
+### Community 683 - "Community 683"
+Cohesion: 0.10
+Nodes (20): ARCHITECTURE.md, COMPARISON.md (comparison mode only), FEASIBILITY.md (feasibility mode only), FEATURES.md, PITFALLS.md, Research Blocked, Research Complete, Research Plan via Code Seam (+12 more)
+
+### Community 684 - "Community 684"
+Cohesion: 0.10
+Nodes (20): 6-Pillar Scoring (1-4 per pillar), Output: UI-REVIEW.md, Pillar 1: Copywriting, Pillar 2: Visuals, Pillar 3: Color, Pillar 4: Typography, Pillar 5: Spacing, Pillar 6: Experience Design (+12 more)
+
+### Community 685 - "Community 685"
+Cohesion: 0.10
+Nodes (20): Color, Component Inventory — Enumerate, Never Recall, Copywriting, Output: UI-SPEC.md, Registry (only if shadcn initialized), Revision Conflict, shadcn Initialization Gate, Spacing (+12 more)
+
+### Community 686 - "Community 686"
+Cohesion: 0.10
+Nodes (20): AI Evaluation Reference, Common Pitfalls, Core Concepts, Eval Tooling Guide, Evals in the Development Lifecycle, Evaluation Dimensions, Execute Phase (Instrument While Building), Model vs. Product Evaluation (+12 more)
+
+### Community 687 - "Community 687"
+Cohesion: 0.10
+Nodes (20): Automatable Quick Reference, ❌ BAD: Asking human to deploy / ✅ GOOD: the agent automates, ❌ BAD: Asking user to copy values between services, ❌ BAD: Asking user to run CLI commands, ❌ BAD: Asking user to start dev server, ❌ BAD: Too many checkpoints / ✅ GOOD: Single checkpoint, ❌ BAD: Vague verification / ✅ GOOD: Specific steps, checkpoint:decision (9%) (+12 more)
+
+### Community 688 - "Community 688"
+Cohesion: 0.13
+Nodes (14): CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, ExitError, findExitContractFlag(), getContractVersion(), HOOK_DENY_CODE, JSON_ERROR_MODE_KEY (+6 more)
+
+### Community 689 - "Community 689"
+Cohesion: 0.11
+Nodes (18): AI Framework Decision Matrix, Anti-Patterns, AutoGen / AG2 / Microsoft Agent Framework, By Model Commitment, By System Type, By Team Size and Stage, Combination Plays (Multi-Framework Stacks), CrewAI (+10 more)
+
+### Community 690 - "Community 690"
+Cohesion: 0.11
+Nodes (18): CONTEXT.md (per-phase), Core Artifacts, DISCUSSION-LOG.md (per-phase), Extended Artifacts, GSD Artifact Types, HANDOFF.json / .continue-here.md, METHODOLOGY.md, PLAN.md (per-plan) (+10 more)
+
+### Community 691 - "Community 691"
+Cohesion: 0.11
+Nodes (18): Anti-Patterns, Continuation Format, Core Structure, Don't: Command-only (no context), Don't: Fenced code blocks for commands, Don't: Missing /clear explanation, Don't: "Other options" language, Execute Final Plan in Phase (+10 more)
+
+### Community 692 - "Community 692"
+Cohesion: 0.11
+Nodes (18): Advisor Tool (Claude Code), Candidate pairings, Constraint: session-level only (today), Design Rationale, Dynamic Routing with Failure-Tier Escalation (#3024), Model Profiles, Per-Agent Overrides, Per-Phase-Type Model Map (#3023) (+10 more)
+
+### Community 693 - "Community 693"
+Cohesion: 0.11
+Nodes (18): Advanced Fields, Complete Field Reference, Core Fields, Example Configurations, Features Fields, Field Interactions, Git Fields, Hook Fields (+10 more)
+
+### Community 694 - "Community 694"
+Cohesion: 0.14
+Nodes (16): { allow }, { ensureRuntimeBuild, RuntimeBuildError }, evaluateRootIsolation(), EXECUTOR_SUBAGENT_TYPES, fs, getWorkspaceRoots(), os, path (+8 more)
+
+### Community 695 - "Community 695"
+Cohesion: 0.15
+Nodes (15): { ensureRuntimeBuild, RuntimeBuildError }, evaluateDispatch(), EXECUTOR_SUBAGENT_TYPES, fs, { HOOK_ON_CRASH, allow, deny, crash }, os, parseHarnessFlag(), path (+7 more)
+
+### Community 696 - "Community 696"
+Cohesion: 0.11
+Nodes (17): 5a: Deterministic verifier (binding gate, #2969), 5b: Hunk Verification Table review (advisory gate, #1999), Git-enhanced two-way merge, Option A: Pristine hash from backup-meta.json + git history (most reliable), Option B: Pristine snapshot directory, Option C: No baseline available (two-way fallback), Post-merge verification, Reapply Local Patches Workflow (+9 more)
+
+### Community 697 - "Community 697"
+Cohesion: 0.15
+Nodes (15): { ensureRuntimeBuild, RuntimeBuildError }, evaluateDispatch(), EXECUTOR_SUBAGENT_TYPES, fs, { HOOK_ON_CRASH, allow, deny, crash }, os, parseHarnessFlag(), path (+7 more)
 
 ### Community 698 - "Milestones"
-Cohesion: 0.11
-Nodes (22): Archive Reference, Archive Reference, Archive Reference, Archive Reference, Archive Reference, Delivered, Delivered, Delivered (+14 more)
+Cohesion: 0.10
+Nodes (26): Archive Reference, Archive Reference, Archive Reference, Archive Reference, Archive Reference, Archive Reference, Delivered, Delivered (+18 more)
+
+### Community 699 - "Community 699"
+Cohesion: 0.12
+Nodes (16): Gate Prompt Patterns, Pattern: action-routing, Pattern: approve-revise-abort, Pattern: context-handling, Pattern: depth-select, Pattern: gray-area-option, Pattern: multi-option-escalation, Pattern: multi-option-failure (+8 more)
+
+### Community 700 - "Community 700"
+Cohesion: 0.15
+Nodes (14): currentBranch(), failClosedBlockContext(), fs, { HOOK_ON_CRASH, allow, deny, crash }, isAgentBranch(), KIMI_TOOL_NAMES, normalizeKimiPayload(), path (+6 more)
+
+### Community 701 - "Community 701"
+Cohesion: 0.12
+Nodes (15): Async / Timing, Common Bug Patterns, Data Shape / API Contract, Environment / Config, Error Handling, How to Use This Checklist, Import / Module, Null / Undefined Access (+7 more)
+
+### Community 702 - "Community 702"
+Cohesion: 0.12
+Nodes (15): Commit Pattern for TDD Plans, Context Budget, End-of-Phase TDD Review Checkpoint, Error Handling, Executor Gate Validation, Fail-Fast Rules, Gate Definitions, Gate Enforcement Rules (+7 more)
+
+### Community 703 - "Community 703"
+Cohesion: 0.12
+Nodes (15): Check env var, Check env vars, Check env vars are set, File Template, Frontmatter Schema, Guidelines, Service-Specific Examples, Test email sending (replace with your test email) (+7 more)
+
+### Community 704 - "Community 704"
+Cohesion: 0.12
+Nodes (15): Analyze for Frontier Spikes, Analyze for Integration Spikes, Build Each Spike Sequentially, CHECKPOINT: Decision Required, CHECKPOINT: Decision Required, CHECKPOINT: Verification Required, For Each Spike:, Frontier Mode — Propose What to Spike Next (+7 more)
+
+### Community 705 - "Community 705"
+Cohesion: 0.12
+Nodes (14): cacheDir, cacheFile, child, cwd, fs, globalConfigDir, globalVersionFile, homeDir (+6 more)
+
+### Community 706 - "Community 706"
+Cohesion: 0.13
+Nodes (14): Composition with model_profile, Context Budget Rules, Context Budget Rules, Context Degradation Tiers, Context Degradation Warning Signs, Estimate Emission (#2631, ADR-2629), How to toggle, MCP Tool Schema Cost (Harness Concern) (+6 more)
+
+### Community 707 - "Community 707"
+Cohesion: 0.13
+Nodes (14): 10.5. Link Pending Todos to Roadmap Phases, 10. Create Roadmap, 11. Done, 1. Load Context, 2.5. Scan Planted Seeds, 2. Gather Milestone Goals, 3.5. Verify Milestone Understanding, 3. Determine Milestone Version (+6 more)
+
+### Community 708 - "Community 708"
+Cohesion: 0.14
+Nodes (13): complete, create, /gsd-workstreams, list, progress, resume, status, Step 1: Parse Subcommand (+5 more)
+
+### Community 709 - "Community 709"
+Cohesion: 0.14
+Nodes (13): Anti-Patterns, Context Section, Examples, File Template, Frontmatter Fields, Guidelines, Must-Haves (Goal-Backward Verification), Parallel vs Sequential (+5 more)
+
+### Community 710 - "Community 710"
+Cohesion: 0.14
+Nodes (13): Accomplishments, Add live `coverage:` entries (id/description/verification[]/human_judgment[/rationale]) to enable, coverage: (#1602) optional per-deliverable UAT-routing block — see templates/summary.md <coverage_guidance>., Decisions Made, deterministic UAT routing in verify-work; OMIT for legacy prose-only SUMMARYs. When coverage is, Deviations from Plan (Auto-fixed), Files Created/Modified, Issues Encountered (+5 more)
+
+### Community 711 - "Community 711"
+Cohesion: 0.14
+Nodes (13): 1. Setup, 2. Brownfield Offer, 2b. Prior Spike/Sketch Detection, 3. Deep Questioning, 4. Write PROJECT.md, 5.1. Sub-Repo Detection, 5.5. Resolve Model Profile, 5. Workflow Preferences (+5 more)
+
+### Community 712 - "Community 712"
+Cohesion: 0.14
+Nodes (13): 10. Present Final Status, 11. Commit (if configured), 12. Update State, 1. Initialize, 2. Parse and Validate Phase, 3. Check Prerequisites, 4. Check Existing UI-SPEC, 5. Spawn gsd-ui-researcher (+5 more)
+
+### Community 713 - "Community 713"
+Cohesion: 0.14
+Nodes (13): 0. Initialize, 1. Detect Input State, 2. Discovery, 2a. Read Phase Artifacts, 2b. Build Requirement-to-Task Map, 2c. Detect Test Infrastructure, 2d. Cross-Reference, 3. Gap Analysis (+5 more)
+
+### Community 714 - "Community 714"
+Cohesion: 0.14
+Nodes (10): ALL_PATTERNS, fs, { HOOK_ON_CRASH, allow, crash }, { INJECTION_PATTERNS, describePattern }, KIMI_TOOL_NAMES, MARKDOWN_LINK_PATTERNS, path, RULE_IDS (+2 more)
+
+### Community 715 - "Community 715"
+Cohesion: 0.14
+Nodes (13): complete, create, /gsd-workstreams, list, progress, resume, status, Step 1: Parse Subcommand (+5 more)
+
+### Community 716 - "Community 716"
+Cohesion: 0.15
+Nodes (12): API.md, ARCHITECTURE.md, CONFIGURATION.md, CONTRIBUTING.md, Custom Documentation (gap-detected), DEPLOYMENT.md, DEVELOPMENT.md, Doc Tooling Adaptation (+4 more)
+
+### Community 717 - "Community 717"
+Cohesion: 0.15
+Nodes (12): Auth gate handling, Bad checkpoint placement, Checkpoint Examples, Deviation Rule Examples, Edge Case Decision Guide, Executor Extended Examples, Good checkpoint placement, Rule 1 — Auto-fix bugs (+4 more)
+
+### Community 718 - "Community 718"
+Cohesion: 0.15
+Nodes (12): Case 1 — External service setup (`user_setup`), Case 2 — Prior-phase artifact dependency, Case 3 — Environment variable / runtime configuration, Executor behavior (assertion contract), Format, Out of scope, Plan-structure validation, Planner Preconditions — `<precondition>` Element (+4 more)
+
+### Community 719 - "Community 719"
+Cohesion: 0.15
+Nodes (12): Canon-referral (do not mint canon items), Generic mapping (requirements → checks → verifier), Inputs, Optional wired-check descriptor (deterministic locate + machine-proof, #1278 + #1346), Output schema, Prohibition-Probe — Spec-Completeness Must-NOT Reference, Resolution states, Two-stage protocol (recall → precision) (+4 more)
+
+### Community 720 - "Community 720"
+Cohesion: 0.15
+Nodes (12): Architecture Section, Conventions Section, Fallback Behavior, Marker Format, Profile Section (Placeholder Only), Project Section, Section Ordering, Section Templates (+4 more)
+
+### Community 721 - "Community 721"
+Cohesion: 0.15
+Nodes (12): Cost Observations, Cross-Milestone Trends, Cumulative Quality, Key Lessons, Milestone: v{version} — {name}, Patterns Established, Process Evolution, Project Retrospective (+4 more)
+
+### Community 722 - "Community 722"
+Cohesion: 0.15
+Nodes (12): 10. Validate AI-SPEC Completeness, 11. Commit, 12. Display Completion, 1. Initialize, 2. Parse and Validate Phase, 3. Check Prerequisites, 4. Check Existing AI-SPEC, 5. Spawn gsd-framework-selector (+4 more)
+
+### Community 723 - "Community 723"
+Cohesion: 0.15
+Nodes (12): 1. Render the Onboarding Projection, 2. Execute `next_action`, 3. Create Onboarding Summary, 4. Final Status, `complete-map-before-new-project`, /gsd-onboard Workflow, `ingest-docs`, `map-codebase` (+4 more)
+
+### Community 724 - "Community 724"
+Cohesion: 0.15
+Nodes (12): 1.5. Config Gate (feature disabled by default), 1. Parse and Normalize Arguments, 2. Initialize, 3. Validate Phase + Pre-flight Gate, 4. Initial Planning (if no plans exist), 5. Convergence Loop, 5a. Review (Spawn Agent), 5b. Extract unresolved counts from CYCLE_SUMMARY Contract (+4 more)
+
+### Community 725 - "Community 725"
+Cohesion: 0.15
+Nodes (12): 0. Initialize, 1. Detect Input State, 2. Discovery, 2a. Read Phase Artifacts, 2b. Read Summary Threat Flags, 2c. Build Threat Register, 3. Threat Classification, 4. Present Threat Plan (+4 more)
 
 ### Community 726 - "Panduan Praktik Kelas untuk Instruktur"
 Cohesion: 0.13
 Nodes (14): 1. Menyamakan 9Router, 2. Instalasi dan pemeriksaan Hermes di Windows, 3. Full Setup dan koneksi ke 9Router, 4. Telegram dengan allowlist, 5. Google Calendar dan OAuth, 6. Skenario uji dan bukti keberhasilan, 7. Troubleshooting cepat, 8. Operasional setelah workshop (+6 more)
 
+### Community 727 - "Community 727"
+Cohesion: 0.15
+Nodes (12): Auto-Group by Feature Area, Auto-Include All Spikes, Copy Source Files, Determine Output Skill Name, Gather Spike Inventory, Generate or Update CONVENTIONS.md, ▶ Next Up, Synthesize Reference Files (+4 more)
+
+### Community 728 - "Community 728"
+Cohesion: 0.17
+Nodes (8): fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout
+
+### Community 729 - "Community 729"
+Cohesion: 0.17
+Nodes (6): CURATED_PATTERNS, fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
+
+### Community 730 - "Community 730"
+Cohesion: 0.17
+Nodes (11): A second integration against the same need, API Coverage Gate (Full Coverage by Default — Opt Out, Never Opt In), Declaring "no external API integration" (#2365), Detector CLI, Seal-time outcomes, The coverage matrix format, The matrix persists, The problem this closes (+3 more)
+
+### Community 731 - "Community 731"
+Cohesion: 0.17
+Nodes (11): Binary Search / Divide and Conquer, Comment Out Everything, Debugger technique catalog, Delta Debugging, Differential Debugging, Follow the Indirection, Git Bisect, Minimal Reproduction (+3 more)
+
+### Community 732 - "Community 732"
+Cohesion: 0.17
+Nodes (11): API Design, Authentication, Caching, Dashboard, Database, Deployment, Domain-Aware Probing Patterns, File Upload/Storage (+3 more)
+
+### Community 733 - "Community 733"
+Cohesion: 0.17
+Nodes (11): Calibration-Derived Gap Patterns, Example 1: Blanket pass with no per-criterion evidence, Example 1: Thorough multi-level artifact verification with real gap discovery, Example 2: Correct FAILED classification with grep evidence, Example 2: File existence check without substance or wiring verification, Example 3: Catching missing wiring (calibration-derived gap pattern), Example 4: Catching missing config schema entries (calibration-derived gap pattern), Example 5: Distinguishing planning gaps from execution failures (+3 more)
+
+### Community 734 - "Community 734"
+Cohesion: 0.17
+Nodes (11): Anti-patterns to reject, Data, Interfaces, Paths, Reference, Rules, SPIDR Story Splitting Rules, Spike (+3 more)
+
+### Community 735 - "Community 735"
+Cohesion: 0.17
+Nodes (11): Anti-Patterns, Checkpoint Panels, Error Panel, Next Up Block, Progress Display, Separators and Banners, Spawning Indicators, Stage Banners (+3 more)
+
+### Community 736 - "Community 736"
+Cohesion: 0.17
+Nodes (11): Alternatives Considered, [Category 1], [Category 2], Code Examples, Discovery Template, File Template, Key Findings, Metadata (+3 more)
+
+### Community 737 - "Community 737"
+Cohesion: 0.17
+Nodes (11): Accomplishments, Add live `coverage:` entries (id/description/verification[]/human_judgment[/rationale]) to enable, coverage: (#1602) optional per-deliverable UAT-routing block — see templates/summary.md <coverage_guidance>., Decisions & Deviations, deterministic UAT routing in verify-work; OMIT for legacy prose-only SUMMARYs. When coverage is, Files Created/Modified, Next Phase Readiness, Performance (+3 more)
+
+### Community 738 - "Community 738"
+Cohesion: 0.17
+Nodes (11): Communication Style, Debugging Approach, Decision Speed, Developer Profile, Explanation Depth, Frustration Triggers, Learning Style, Profile Metadata (+3 more)
+
+### Community 739 - "Community 739"
+Cohesion: 0.17
+Nodes (11): Configuration, First-Run Behaviour, graduation.md — LEARNINGS.md Cross-Phase Graduation Helper, No-Op Conditions (silent skip), Step 1: Guard Checks, Step 2: Collect LEARNINGS.md Files, Step 3: Cluster by Lexical Similarity, Step 4: Check graduation_backlog in STATE.md (+3 more)
+
+### Community 740 - "Community 740"
+Cohesion: 0.17
+Nodes (11): 1. Initialize, 2. Dashboard (Refresh Point), 4. Handle Action, 5. Background Agent Completion, 6. Exit, Compound Action (background + inline), Discuss Phase N, Execute Phase N (+3 more)
+
+### Community 741 - "Community 741"
+Cohesion: 0.17
+Nodes (11): 10. Summary & Refresh Diff, 1. Initialize, 2. Consent Gate (ACTV-06), 3. Session Scan, 4a. Session Analysis Path, 4b. Questionnaire Path, 5. Split Resolution, 6. Profile Write (+3 more)
+
 ### Community 742 - "learnwith — Interactive Training Platform (Multi-Course)"
-Cohesion: 0.14
-Nodes (13): Active, Context, Core Value, Current State: v3.2 Shipped (2026-09-09), Evolution, Key Decisions, learnwith — Interactive Training Platform (Multi-Course), Next Milestone Goals (v3.2 / v4.0 Candidates) (+5 more)
+Cohesion: 0.13
+Nodes (14): Active, Context, Core Value, Current Milestone: v3.3 Admin Course Lifecycle & Visibility Management, Current State: v3.2 Shipped (2026-09-09), Evolution, Key Decisions, learnwith — Interactive Training Platform (Multi-Course) (+6 more)
+
+### Community 743 - "Community 743"
+Cohesion: 0.17
+Nodes (11): Analyze for Consistency Sketches, Analyze for Frontier Sketches, CHECKPOINT: Verification Required, For Each Sketch:, Frontier Mode — Propose What to Sketch Next, Get Alignment and Execute, Load Spike Context, Load the Sketch Landscape (+3 more)
+
+### Community 744 - "Community 744"
+Cohesion: 0.17
+Nodes (11): Auto-Group by Design Area, CHECKPOINT: Decision Required, Copy Source Files, Curate Sketches One-at-a-Time, Determine Output Skill Name, Gather Sketch Inventory, ▶ Next Up, Synthesize Reference Files (+3 more)
+
+### Community 745 - "Community 745"
+Cohesion: 0.24
+Nodes (11): { allow }, createDirLink(), dirLinkType(), ensureCanonicalPath(), fs, linkPointsAt(), MANAGED_SUBDIRS, os (+3 more)
+
+### Community 746 - "Community 746"
+Cohesion: 0.17
+Nodes (8): fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout
+
+### Community 747 - "Community 747"
+Cohesion: 0.17
+Nodes (6): CURATED_PATTERNS, fs, { HOOK_ON_CRASH, allow, deny, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
+
+### Community 748 - "Community 748"
+Cohesion: 0.17
+Nodes (11): C:/Users/yudhiar/Downloads/AgenticAI/.opencode/gsd-core/*, command, enabled, type, mcp, gsd, permission, external_directory (+3 more)
+
+### Community 749 - "Community 749"
+Cohesion: 0.18
+Nodes (7): { allow, deny }, fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout
+
+### Community 750 - "Community 750"
+Cohesion: 0.18
+Nodes (7): { allow, deny }, fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout
+
+### Community 751 - "Community 751"
+Cohesion: 0.18
+Nodes (10): 3a. ROOT CAUSE FOUND, 3b. TDD CHECKPOINT, 3c. DEBUG COMPLETE, 3d. CHECKPOINT REACHED, 3e. INVESTIGATION INCONCLUSIVE, 3f. FIX REJECTED BY GUARDRAIL, Step 1: Read Debug File, Step 2: Spawn gsd-debugger Agent (+2 more)
+
+### Community 752 - "Community 752"
+Cohesion: 0.18
+Nodes (10): Flow: Data Display, Flow: Form Submission, Flow: User Authentication, Required Context (provided by milestone auditor), Step 1: Build Export/Import Map, Step 2: Verify Export Usage, Step 3: Verify API Coverage, Step 4: Verify Auth Protection (+2 more)
+
+### Community 753 - "Community 753"
+Cohesion: 0.18
+Nodes (10): Step 1: Read Research Files, Step 2: Synthesize Executive Summary, Step 3: Extract Key Findings, Step 4: Derive Roadmap Implications, Step 5: Assess Confidence, Step 6: Write SUMMARY.md, Step 7: Commit All Research, Step 8: Return Summary (+2 more)
+
+### Community 754 - "Community 754"
+Cohesion: 0.18
+Nodes (10): Dimension 1: Copywriting, Dimension 2: Visuals, Dimension 3: Color, Dimension 4: Typography, Dimension 5: Spacing, Dimension 6: Registry Safety, Dimension 7: Inventory Provenance, Issues Found (+2 more)
+
+### Community 755 - "Community 755"
+Cohesion: 0.18
+Nodes (10): Bug-Taxonomy Classification + Strategy Routing, Relationship to the other disciplines, Scope boundary, Supersede, not append (Zawinski's Law), The concurrency checklist (suspected Concurrency class), The routing table (explicit, inspectable — Kernighan: no opaque heuristic), The SBFL rule is retroactive revocation, not proactive skip, The taxonomy (Phase 1.75 — classify before forming hypotheses) (+2 more)
+
+### Community 756 - "Community 756"
+Cohesion: 0.18
+Nodes (10): Escape hatch — documented technical debt, Fix-Acceptance Guardrail (Anti-Overfitting), FIX REJECTED BY GUARDRAIL, Graceful degradation (Gall's Law — each signal degrades onto the working agent), Per-signal results recorded to the debug file, Scope boundary (Zawinski's Law), Test provenance (security), The five signals (+2 more)
+
+### Community 757 - "Community 757"
+Cohesion: 0.18
+Nodes (10): Revision Mode — Planner Reference, Step 1: Load Existing Plans, Step 2.5: Constraint Re-check (before any edit), Step 2: Parse Checker Issues, Step 3: Revision Strategy, Step 4: Make Targeted Updates, Step 5: Validate Changes, Step 6: Commit (+2 more)
+
+### Community 758 - "Community 758"
+Cohesion: 0.18
+Nodes (10): 1. Pre-Mortem Analysis, 2. MECE Decomposition, 3. Constraint Analysis, 4. Reversibility Test, 5. Curse of Knowledge Counter, 6. Base Rate Neglect Counter, Conflict Resolution, Gap Closure Mode: Root-Cause Check (+2 more)
+
+### Community 759 - "Community 759"
+Cohesion: 0.18
+Nodes (10): Behavioral Rules, Context Budget Rules, Error Recovery Rules, File Reading Rules, GSD-Specific Rules, iOS / Apple Platform Rules, Questioning Anti-Patterns, State Management Anti-Patterns (+2 more)
+
+### Community 760 - "Community 760"
+Cohesion: 0.18
+Nodes (10): 1. User-flow walk-through (always first, always required), 2. Technical checks (only if section 1 passes), 3. Coverage check (always last, always required), Anti-patterns to reject under MVP mode, Compatibility with existing verify-work philosophy, Core rule, Generated UAT script structure under MVP mode, Output: VERIFICATION.md changes under MVP mode (+2 more)
+
+### Community 761 - "Community 761"
+Cohesion: 0.18
+Nodes (10): Checker Sign-Off, Color, Component Inventory, Copywriting Contract, Design System, Phase {N} — UI Design Contract, Registry Safety, Spacing Scale (+2 more)
+
+### Community 762 - "Community 762"
+Cohesion: 0.18
+Nodes (10): Milestone Summary Workflow, Step 1: Resolve Version, Step 2: Locate Artifacts, Step 3: Discover Phase Artifacts, Step 4: Gather Git Statistics, Step 5: Generate Summary Document, Step 6: Write and Commit, Step 7: Present Summary (+2 more)
+
+### Community 763 - "Community 763"
+Cohesion: 0.18
+Nodes (10): 1. Setup, 2. Parse Arguments, 3. Select Repos, 4. Select Strategy, 5. Validate, 6. Create Workspace, 7. Write WORKSPACE.md, 8. Initialize .planning/ (+2 more)
+
+### Community 764 - "Community 764"
+Cohesion: 0.18
+Nodes (10): Step 1: Initialize, Step 2: Scout Codebase, Step 3: First Ambiguity Assessment, Step 4: Socratic Interview Loop, Step 5.5: Edge-Completeness Probe, Step 5.6: Prohibition-Completeness Probe (must-NOT), Step 5: (covered inline — ambiguity scoring is per-round), Step 6: Generate SPEC.md (+2 more)
+
+### Community 765 - "Community 765"
+Cohesion: 0.18
+Nodes (7): { allow, deny }, fs, path, { reportIfUndetermined }, SPAWNOPT, { spawnSync }, stdinTimeout
+
+### Community 766 - "Community 766"
+Cohesion: 0.24
+Nodes (7): fs, path, readSentinel(), resolveSentinelRoot(), SENTINEL_RELATIVE_PATH, sentinelPath(), VALID_ISOLATION
+
+### Community 767 - "Community 767"
+Cohesion: 0.20
+Nodes (9): Anti-Patterns, MVP-Mode Node Rendering, Step 0 -- Banner, Step 1 -- Config Gate, Step 2 -- Parse Argument, Step 2a -- Query, Step 2b -- Status, Step 2c -- Diff (+1 more)
+
+### Community 768 - "Community 768"
+Cohesion: 0.20
+Nodes (9): disable \<cluster\>, enable \<cluster\>, Error handling, list / status, Mutation protocol, profile \<name\>, reset, runtimeConfigDir resolution (+1 more)
+
+### Community 769 - "Community 769"
+Cohesion: 0.20
+Nodes (9): Pattern Mapping Complete, PATTERNS.md Structure, Step 1: Receive Scope and Load Context, Step 2: Classify Files, Step 3: Find Closest Analogs, Step 4: Extract Patterns from Analogs, Step 5: Identify Shared Patterns, Step 6: Write PATTERNS.md (+1 more)
+
+### Community 770 - "Community 770"
+Cohesion: 0.20
+Nodes (9): 1. Blameless 5-Whys that BRANCHES (per Phase 2A RCA), 2. "Why wasn't this caught?", 3. The recurrence guard, Backward compatibility (additive — no format break), Knowledge-base entry: the two structured fields, Prevention / Blameless-Postmortem Output, Scope boundary (Zawinski's Law), The Prevention block (three blame-free components) (+1 more)
+
+### Community 771 - "Community 771"
+Cohesion: 0.20
+Nodes (9): 1. Branch, don't chain, 2. AND-gate check (Fault Tree Analysis), 3. Collapse, Backward compatibility, RCA Branching — Anti-Single-Cause Bias, Scope boundary (Zawinski's Law), The discipline, Why this exists (+1 more)
+
+### Community 772 - "Community 772"
+Cohesion: 0.20
+Nodes (9): Commit Routing, Configuration, Handoff (WIP), How It Works, Multi-Repo Workspace Support (sub_repos), Plan Completion (After All Tasks Done), Project Initialization (brief + roadmap together), Task Completion (During Plan Execution) (+1 more)
+
+### Community 773 - "Community 773"
+Cohesion: 0.20
+Nodes (9): Critical Rule: Never Use Package.swift as the Primary Build System for iOS Apps, iOS App Scaffold Reference, iOS Deployment Target Compatibility, Required Pattern: XcodeGen, Step 1 — Install XcodeGen (if not present), Step 2 — Create `project.yml`, Step 3 — Generate the .xcodeproj, Step 4 — Standard project layout (+1 more)
+
+### Community 774 - "Community 774"
+Cohesion: 0.20
+Nodes (9): After 3 Iterations, Conflict Return (REVISION_CONFLICT), Flow, Important Notes, Issue Count Tracking, Pattern: Check-Revise-Escalate (max 3 iterations), Re-spawn Prompt Structure, Revision Loop Pattern (+1 more)
+
+### Community 775 - "Community 775"
+Cohesion: 0.20
+Nodes (9): CLI Usage, Directory Structure, Overview, Pointer Lifecycle, Resolution Priority, Routing Propagation, Session Identity Resolution, Why session-scoped pointers exist (+1 more)
+
+### Community 776 - "Community 776"
+Cohesion: 0.20
+Nodes (9): File Template, Milestone Archive Template, Milestone Summary, Milestone v{{VERSION}}: {{MILESTONE_NAME}}, Overview, Phase 2.1: Critical Security Patch (INSERTED), Phase {{PHASE_NUM}}: {{PHASE_NAME}}, Phases (+1 more)
+
+### Community 777 - "Community 777"
+Cohesion: 0.20
+Nodes (9): Accomplishments, Add live `coverage:` entries to enable deterministic UAT routing in verify-work; OMIT for legacy, coverage: (#1602) optional per-deliverable UAT-routing block — see templates/summary.md <coverage_guidance>., Files Created/Modified, Next Phase Readiness, Performance, Phase [X]: [Name] Summary (Minimal), prose-only SUMMARYs. When coverage is uncertain, default human_judgment: true — never auto-skip the human. (+1 more)
+
+### Community 778 - "Community 778"
+Cohesion: 0.20
+Nodes (9): audit-milestone §5.5 distinguishes NOT-VALIDATED (draft) from PARTIAL (validated + nyquist_compliant: false) (#2117), Manual-Only Verifications, Per-Task Verification Map, Phase {N} — Validation Strategy, Sampling Rate, status lifecycle: draft (seeded by plan-phase) → validated (set by validate-phase §6), Test Infrastructure, Validation Sign-Off (+1 more)
+
+### Community 779 - "Community 779"
+Cohesion: 0.20
+Nodes (9): 1. Load ROADMAP.md, 2. Infer Likely File Modifications, 3. Detect Dependency Relationships, 4. Build Dependency Table, 5. Summarize Suggested Changes, 6. Confirm and Apply, Data Flow Detection, File Overlap Detection (+1 more)
+
+### Community 780 - "Community 780"
+Cohesion: 0.20
+Nodes (9): 0. Initialize Context, 1a. LIST subcommand, 1b. STATUS subcommand, 1c. CONTINUE subcommand, 1d. Check Active Sessions (SUBCMD=debug), 2. Gather Symptoms (if new issue, SUBCMD=debug), 3. Initial Session Setup (new session), 4. Session Management (delegated to gsd-debug-session-manager) (+1 more)
+
+### Community 781 - "Community 781"
+Cohesion: 0.20
+Nodes (9): 1. Parse and validate phase argument, 2. Validate phase exists and check status, 3. User story prompts, 4. SPIDR splitting check, 5. Update ROADMAP.md, 6. Verify the write, 7. Delegate to /gsd plan-phase, 8. Surface deferred phase splits (if any) (+1 more)
+
+### Community 782 - "Community 782"
+Cohesion: 0.20
+Nodes (9): Arguments, Limitations, Safety Rules, Step 1: Parse Arguments, Step 2: Resolve Skills Roots, Step 3: Compute Diff Per Destination, Step 4: Print Diff Report, Step 5: Execute (only when --apply) (+1 more)
+
+### Community 783 - "Community 783"
+Cohesion: 0.20
+Nodes (6): fs, { HOOK_ON_CRASH, allow, crash }, os, path, { spawn }, stdinTimeout
+
+### Community 784 - "Community 784"
+Cohesion: 0.24
+Nodes (7): ARGUMENT_TAKING_FLAGS, BOOLEAN_FLAGS, extractBranchArgument(), isGitSubcommand(), path, skipToSubcommand(), { tokenizeShellLike }
+
+### Community 785 - "Community 785"
+Cohesion: 0.24
+Nodes (7): fs, path, readSentinel(), resolveSentinelRoot(), SENTINEL_RELATIVE_PATH, sentinelPath(), VALID_ISOLATION
+
+### Community 786 - "Community 786"
+Cohesion: 0.20
+Nodes (9): Anti-Patterns, MVP-Mode Node Rendering, Step 0 -- Banner, Step 1 -- Config Gate, Step 2 -- Parse Argument, Step 2a -- Query, Step 2b -- Status, Step 2c -- Diff (+1 more)
+
+### Community 787 - "Community 787"
+Cohesion: 0.20
+Nodes (9): disable \<cluster\>, enable \<cluster\>, Error handling, list / status, Mutation protocol, profile \<name\>, reset, runtimeConfigDir resolution (+1 more)
+
+### Community 788 - "Community 788"
+Cohesion: 0.22
+Nodes (8): Advisory frontmatter, Convergence Evidence Gate (#3304), Definitions, Report section, The gate, The problem this closes, What this deliberately does NOT implement, Worked example (from the issue's reported incident)
+
+### Community 789 - "Community 789"
+Cohesion: 0.29
+Nodes (6): CourseAiSearchParams, courseAiSearchSchema, CourseWordSearchParams, courseWordSearchSchema, HomeSearchParams, homeSearchSchema
+
+### Community 790 - "Community 790"
+Cohesion: 0.22
+Nodes (8): 1. Shrinking-based repro minimization (input-space bugs), 2. Explicit oracle classification (before writing the assertion), 3. Boundary neighbors (around the fixed equivalence class), Regression-Test Hardening — Shrinking + Oracle + Boundaries, Scope boundary (Zawinski's Law), Why this exists, Why this matters for Phase 1A, Bound the property/shrink run (AGENTS.md gauntlet — unbounded subprocess)
+
+### Community 791 - "Community 791"
+Cohesion: 0.22
+Nodes (8): Bug-class gating (pairs with Phase 2B bug-taxonomy routing), Degradation (Gall's Law — optional step, degrades onto the working agent), Output — top-N shortlist seeded into the hypothesis space, Scope boundary (Zawinski's Law), Spectrum-Based Fault Localization (SBFL) Pre-filter, The Ochiai formula, When to run it (Phase 1.25 — after initial evidence, before hypothesis formation), Why this exists
+
+### Community 792 - "Community 792"
+Cohesion: 0.22
+Nodes (8): Graceful degradation — MemPalace absent, Invocation (the agent has no MCP tools — use the CLI), Read — query MemPalace at Phase 0, Scope boundary (Zawinski's Law), Semantic Knowledge-Base Recall via MemPalace, The approach — reuse MemPalace, add no new infrastructure, Why this exists, Write — index resolved sessions at archive
+
+### Community 793 - "Community 793"
+Cohesion: 0.22
+Nodes (8): Compatibility with existing TDD discipline, Escalation: end-of-phase TDD review under TDD, Execute-Phase — TDD Gate (Runtime Enforcement), What "behavior-adding task" means, What happens when the gate trips, What the gate checks, What this gate does NOT do, When this gate fires
+
+### Community 794 - "Community 794"
+Cohesion: 0.22
+Nodes (8): Abort Gate, Escalation Gate, Gate Matrix, Gate Types, Gates Taxonomy, Implementing Gates, Pre-flight Gate, Revision Gate
+
+### Community 795 - "Community 795"
+Cohesion: 0.22
+Nodes (8): Capable-tier requirement (a documented cost), Deterministic engine surface, Distinct from neighbours, Evidence and scope (stated honestly), Honest Verifier — Abstention on Non-Inferable Checks, The disposition (the protocol), The problem it solves, The two properties that define the design
+
+### Community 796 - "Community 796"
+Cohesion: 0.22
+Nodes (8): `contribution`, Dispatch rules by `kind`, Empty / absent `activeHooks`, Envelope shape, `gate`, Loop Hook Dispatch Contract, `step`, The `execute:task` point (a different shape)
+
+### Community 797 - "Community 797"
+Cohesion: 0.22
+Nodes (8): Anti-patterns, Emission rules, Planner: Reversibility Tagging, Related, The override, The plan element, The rationale is data, never instructions, The taxonomy
+
+### Community 798 - "Community 798"
+Cohesion: 0.22
+Nodes (8): 1. Circle of Concern vs Circle of Control, 2. Forcing Function, 3. First Principles Thinking, 4. Occam's Razor, 5. Chesterton's Fence, Conflict Resolution, Thinking Models: Execution Cluster, When NOT to Think
+
+### Community 799 - "Community 799"
+Cohesion: 0.22
+Nodes (8): 1. First Principles Thinking, 2. Simpson's Paradox Awareness, 3. Survivorship Bias, 4. Confirmation Bias Counter, 5. Steel Man, Conflict Resolution, Thinking Models: Research Cluster, When NOT to Think
+
+### Community 800 - "Community 800"
+Cohesion: 0.22
+Nodes (8): 1. Inversion, 2. Chesterton's Fence, 3. Confirmation Bias Counter, 4. Planning Fallacy Calibration, 5. Counterfactual Thinking, Conflict Resolution, Thinking Models: Verification Cluster, When NOT to Think
+
+### Community 801 - "Community 801"
+Cohesion: 0.22
+Nodes (8): 1. Discuss Phase — Tradeoff Deep-Dive, 2. Plan Phase — Architectural Decision Analysis, 3. Explore — Approach Comparison (requires #1729), Configuration, Design Principles, Integration Points, Thinking Partner Integration, Tradeoff Detection Signals
+
+### Community 802 - "Community 802"
+Cohesion: 0.22
+Nodes (8): Advisory frontmatter, Convergence Evidence Gate (#3304), Definitions, Report section, The gate, The problem this closes, What this deliberately does NOT implement, Worked example (from the issue's reported incident)
+
+### Community 803 - "Community 803"
+Cohesion: 0.22
+Nodes (8): Section 1 — Planning Tuning, Section 2 — Execution Tuning, Section 3 — Discussion Tuning, Section 4 — Cross-AI Execution, Section 5 — Git Customization, Section 6 — Runtime / Output, Section 7 — Runtime Model Tiers, Section 8 — Model Policy
+
+### Community 804 - "Community 804"
+Cohesion: 0.33
+Nodes (8): buildBannerOutput(), fs, main(), os, path, readCache(), recordFailureWarning(), shouldSuppressFailureWarning()
+
+### Community 805 - "Community 805"
+Cohesion: 0.25
+Nodes (5): { HOOK_ON_CRASH, allow, crash }, { INJECTION_PATTERNS, describePattern }, KIMI_TOOL_NAMES, path, stdinTimeout
+
+### Community 806 - "Community 806"
+Cohesion: 0.25
+Nodes (7): changeset/ — release-notes tooling, `cli.cjs extract`, Examples, Exit codes, Flags, Output shape, Version validation
+
+### Community 807 - "Community 807"
+Cohesion: 0.25
+Nodes (7): exit-codes.sh script, EXIT_DEGRADED, EXIT_HOOK_DENY, EXIT_INTERNAL, EXIT_NO_INPUT, EXIT_UNAVAILABLE, EXIT_USAGE
+
+### Community 808 - "Community 808"
+Cohesion: 0.25
+Nodes (7): ARCHITECTURE.md Template (arch focus), CONCERNS.md Template (concerns focus), CONVENTIONS.md Template (quality focus), INTEGRATIONS.md Template (tech focus), STACK.md Template (tech focus), STRUCTURE.md Template (arch focus), TESTING.md Template (quality focus)
+
+### Community 809 - "Community 809"
+Cohesion: 0.25
+Nodes (7): Agent Contracts, Agent Registry, Executor -> Verifier (via SUMMARY.md), Key Handoff Contracts, Marker Rules, Planner -> Executor (via PLAN.md), Workflow Regex Patterns
+
+### Community 810 - "Community 810"
+Cohesion: 0.25
+Nodes (7): Cognitive Biases to Avoid, Debugger Philosophy, Foundation Principles, Meta-Debugging: Your Own Code, Systematic Investigation Disciplines, User = Reporter, the agent = Investigator, When to Restart
+
+### Community 811 - "Community 811"
+Cohesion: 0.25
+Nodes (7): Example 1: All dimensions pass when verify commands are missing, Example 1: BLOCKER flagged for vague task action missing file and function names, Example 2: BLOCKER for same-wave file conflict between two plans, Example 2: False positive INFO for a correctly-sized plan, Negative Examples, Plan-Checker Few-Shot Examples, Positive Examples
+
+### Community 812 - "Community 812"
+Cohesion: 0.25
+Nodes (7): Check 8a — Automated Verify Presence, Check 8b — Feedback Latency Assessment, Check 8c — Sampling Continuity, Check 8d — Wave 0 Completeness, Check 8e — VALIDATION.md Existence (Gate), Dimension 8 — Nyquist Compliance (checks 8a–8e), Dimension 8 Output
+
+### Community 813 - "Community 813"
+Cohesion: 0.25
+Nodes (7): Compatibility with other modes, `end-of-phase` (default — issue #3309), `mid-flight` (opt-back-in — pre-#3309 behavior), Planner — Human Verification Mode, The tracer feedback gate (executor-side, #3299), The two modes, What is *not* affected
+
+### Community 814 - "Community 814"
+Cohesion: 0.25
+Nodes (7): Review Dispositions Ledger, Reviews Mode — Planner Reference, Step 1: Load REVIEWS.md, Step 2: Categorize Feedback, Step 3: Plan Fresh with Review Context, Step 4: Return, Step 5: Write the ledger into PLAN.md (#3806)
+
+### Community 815 - "Community 815"
+Cohesion: 0.25
+Nodes (7): Annotation Mode, Components, Implementation, Sketch Toolbar, Styling, Theme Switcher, Viewport Preview
+
+### Community 816 - "Community 816"
+Cohesion: 0.25
+Nodes (7): 1. Fault Tree Analysis, 2. Hypothesis-Driven Investigation, 3. Occam's Razor, 4. Counterfactual Thinking, Conflict Resolution, Thinking Models: Debug Cluster, When NOT to Think
+
+### Community 817 - "Community 817"
+Cohesion: 0.25
+Nodes (7): Accepted Risks Log, Phase {N} — Security, Security Audit Trail, Sign-Off, Threat Register, threats_open = count of OPEN threats at or above workflow.security_block_on severity (the blocking gate), Trust Boundaries
+
+### Community 818 - "Community 818"
+Cohesion: 0.25
+Nodes (7): Accumulated Context, Current Position, File Template, Performance Metrics, Project Reference, Session Continuity, State Template
+
+### Community 819 - "Community 819"
+Cohesion: 0.25
+Nodes (7): Add Backlog Item Workflow, Step 1: Read ROADMAP.md, Step 2: Find next backlog number, Step 3: Write ROADMAP entry, Step 4: Create the phase directory, Step 5: Commit, Step 6: Report
+
+### Community 820 - "Community 820"
+Cohesion: 0.25
+Nodes (7): 1. Initialize, 2. Discover Phases, 3. Execute Phase, 4. Iterate, 5. Lifecycle, 6. Handle Blocker, Smart Discuss
+
+### Community 821 - "Community 821"
+Cohesion: 0.25
+Nodes (7): Activation, Advisor mode — research-backed comparison tables, advisor_research step, Calibration tier, discuss_areas (advisor table-first flow), Non-technical owner detection, Scope creep handling (advisor mode)
+
+### Community 822 - "Community 822"
+Cohesion: 0.25
+Nodes (7): 0. Initialize, 1. Detect Input State, 2. Gather Context Paths, 3. Spawn gsd-eval-auditor, 4. Parse Auditor Result, 5. Display Summary, 6. Commit
+
+### Community 823 - "Community 823"
+Cohesion: 0.25
+Nodes (7): Disposition the findings before sharing (three-way: admit / refute / abstain), Step 1: Open the conversation, Step 2: Socratic conversation (2-5 exchanges), Step 3: Mid-conversation research offer (after 2-3 exchanges), Step 4: Crystallize outputs (after 3-6 exchanges), Step 5: Write selected outputs, Step 6: Close
+
+### Community 824 - "Community 824"
+Cohesion: 0.25
+Nodes (7): 0. Initialize, 1. Detect Input State, 2. Gather Context Paths, 3. Spawn gsd-ui-auditor, 4. Handle Return, 5. Commit (if configured), Automated UI Verification (when Playwright-MCP is available)
+
+### Community 825 - "Community 825"
+Cohesion: 0.25
+Nodes (5): fs, MANAGED_HOOKS, path, result, staleHooks
+
+### Community 826 - "Community 826"
+Cohesion: 0.25
+Nodes (5): { HOOK_ON_CRASH, allow, crash }, { INJECTION_PATTERNS, describePattern }, KIMI_TOOL_NAMES, path, stdinTimeout
+
+### Community 827 - "Community 827"
+Cohesion: 0.25
+Nodes (7): changeset/ — release-notes tooling, `cli.cjs extract`, Examples, Exit codes, Flags, Output shape, Version validation
+
+### Community 828 - "Community 828"
+Cohesion: 0.29
+Nodes (6): fs, { HOOK_ON_CRASH, allow, crash }, os, path, { spawn }, stdinTimeout
+
+### Community 829 - "Community 829"
+Cohesion: 0.29
+Nodes (5): { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, path, stdinTimeout, { INJECTION_PATTERNS }
+
+### Community 830 - "Community 830"
+Cohesion: 0.29
+Nodes (5): fs, { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
+
+### Community 831 - "Community 831"
+Cohesion: 0.29
+Nodes (5): fs, { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
+
+### Community 832 - "Community 832"
+Cohesion: 0.29
+Nodes (6): Anti-Patterns, Step 0 -- Banner, Step 1 -- Config Gate, Step 2 -- Resolve target, Step 3 -- File verbatim (idempotent), Step 4 -- Report
+
+### Community 833 - "Community 833"
+Cohesion: 0.29
+Nodes (6): Anti-Patterns, Step 0 -- Banner, Step 1 -- Config Gate, Step 2 -- Resolve wing, mode, and transport, Step 3 -- Retrieve (read-only), Step 4 -- Write MEMORY-RECALL.md
+
+### Community 834 - "Community 834"
+Cohesion: 0.29
+Nodes (6): Smart Discuss — Autonomous Mode, Sub-step 1: Load prior context, Sub-step 2: Scout Codebase, Sub-step 3: Analyze Phase and Generate Proposals, Sub-step 4: Present Proposals Per Area, Sub-step 5: Write CONTEXT.md
+
+### Community 835 - "Community 835"
+Cohesion: 0.29
+Nodes (6): Base divergence, Dispatch isolation gate (ADR-1239 / #2584), Re-record after every degrade, Resolve ISOLATION, Resolve the harness flag (harness-worktree only), Single-agent dispatch sites
+
+### Community 836 - "Community 836"
+Cohesion: 0.29
+Nodes (6): Anti-Patterns, Doc Conflict Engine, Report Format, Safety Gate, Severity Semantics, Workflow Responsibilities
+
+### Community 837 - "Community 837"
+Cohesion: 0.29
+Nodes (6): Lookup Table, Model Profile Resolution, Passing the model to a spawn, Profile semantics, Resolution Pattern, Usage
+
+### Community 838 - "Community 838"
+Cohesion: 0.29
+Nodes (6): Directory Lookup, Extraction, Manual Normalization (Legacy), Phase Argument Parsing, Using gsd-tools, Validation
+
+### Community 839 - "Community 839"
+Cohesion: 0.29
+Nodes (6): Graphify Auto-Update — Status Surfacing, How the planner surfaces it (zero new prompt content), Opt-in reminder, The status file, Why this design, Why this exists
+
+### Community 840 - "Community 840"
+Cohesion: 0.29
+Nodes (6): Acceptance Test for Your Plan, Anti-Patterns to Reject, Core Rule, Planner — Tracer-First Decomposition (Vertical Slices), Task Order Pattern, Walking Skeleton Mode (`WALKING_SKELETON=true`)
+
+### Community 841 - "Community 841"
+Cohesion: 0.29
+Nodes (6): Authority Limits — Constraint Examples, Four Source Types, Handling MISSING Items, Multi-Source Coverage Audit Format, Planner Source Audit & Authority Limits, What is NOT a Gap
+
+### Community 842 - "Community 842"
+Cohesion: 0.29
+Nodes (6): Configuration Scope Blindness, Deprecated Features, Known Pitfalls, Negative Claims Without Evidence, Pre-Submission Checklist, Single Source Reliance
+
+### Community 843 - "Community 843"
+Cohesion: 0.29
+Nodes (6): Config shape, Interaction with the convergence loop (#2398), Invocation, Resolution rules (single source), Reviewer Instances (#1517), REVIEWS.md contract
+
+### Community 844 - "Community 844"
+Cohesion: 0.29
+Nodes (6): Fake the Backend, Implementation, Making Sketches Feel Alive, Required Interactivity, State Cycling, Transitions
+
+### Community 845 - "Community 845"
+Cohesion: 0.29
+Nodes (6): Creating New Themes, Linking, Setup, Shared Theme System, Theme File Structure, Theme Switcher
+
+### Community 846 - "Community 846"
+Cohesion: 0.29
+Nodes (6): Marking the Winner, Multi-Variant HTML Patterns, Side-by-Side (for small variants), Synthesis Variants, Tab-Based Variants, Variant Count
+
+### Community 847 - "Community 847"
+Cohesion: 0.29
+Nodes (6): audit_test_quality (run after Step 7b, alongside anti-patterns), Backstop abstention — reporting contract (#3206, companion to agent Step 3 item 5b), identify_human_verification — infrastructure/foundation scoping (apply at Step 8), Lazy references, Verifier Phase Gates, verify_decisions — Decision Coverage Gate (run after Step 6, requirements coverage)
+
+### Community 848 - "Community 848"
+Cohesion: 0.29
+Nodes (6): Adding a New Canonical Artifact, GSD Canonical Artifact Registry, Milestone Archive (`.planning/milestones/`), Phase Subdirectory Artifacts (`.planning/phases/NN-name/`), `.planning/` Root Artifacts, Version-stamped artifacts (pattern: `vX.Y-*.md`)
+
+### Community 849 - "Community 849"
+Cohesion: 0.29
+Nodes (6): Authentication Gates, Deviation Rules, Documenting Deviations, Pre-commit Hook Failure Handling, Task Commit Protocol, TDD Execution
+
+### Community 850 - "Community 850"
+Cohesion: 0.29
+Nodes (6): Anti-Patterns, BLOCKER checks (any one prevents import):, Import Workflow, INFO checks (informational, no action needed):, Path A: MODE=plan (--from), WARNING checks (user confirmation required):
+
+### Community 851 - "Community 851"
+Cohesion: 0.29
+Nodes (6): 1. Setup, 2. Safety Checks, 3. Confirm Removal, 4. Clean Up Worktrees, 5. Delete Workspace Directory, 6. Report
+
+### Community 852 - "Community 852"
+Cohesion: 0.29
+Nodes (6): Focus-to-Document Mapping, Step 1: Parse arguments and resolve focus, Step 2: Check for existing documents, Step 3: Create output directory, Step 4: Spawn mapper agent, Step 5: Report
+
+### Community 853 - "Community 853"
+Cohesion: 0.29
+Nodes (6): Docs & Output, Execution, Features, Misc, Model & Pipeline, Planning
+
+### Community 854 - "Community 854"
+Cohesion: 0.29
+Nodes (5): fs, { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, path, stdinTimeout
+
+### Community 855 - "Community 855"
+Cohesion: 0.29
+Nodes (6): Anti-Patterns, Step 0 -- Banner, Step 1 -- Config Gate, Step 2 -- Resolve target, Step 3 -- File verbatim (idempotent), Step 4 -- Report
+
+### Community 856 - "Community 856"
+Cohesion: 0.29
+Nodes (6): Anti-Patterns, Step 0 -- Banner, Step 1 -- Config Gate, Step 2 -- Resolve wing, mode, and transport, Step 3 -- Retrieve (read-only), Step 4 -- Write MEMORY-RECALL.md
+
+### Community 857 - "Community 857"
+Cohesion: 0.33
+Nodes (5): `depends_on` — reference SIBLING items by `quick_id`, never invent one, `files_deleted` — only if your plan removes a file, `files_modified` — every path your plan's tasks will touch, Quick-Batch Mode — Planner Reference, What quick-batch mode does NOT need
+
+### Community 858 - "Community 858"
+Cohesion: 0.33
+Nodes (3): CODE_TO_NAME, EXIT_CODES, NAME_TO_CODE
+
+### Community 859 - "Community 859"
+Cohesion: 0.47
+Nodes (5): allow(), crash(), deny(), HOOK_ON_CRASH, { terminateNow }
+
+### Community 860 - "Community 860"
+Cohesion: 0.33
+Nodes (5): --text mode — plain-text overlay (no question), Activation, Effect, Empty-answer handling, Question rendering
+
+### Community 861 - "Community 861"
+Cohesion: 0.33
+Nodes (5): 3-Tier Verification, Intelligent Fix Application, Partial Failure Semantics, Robust REVIEW.md Parsing, Safe Per-Finding Rollback
+
+### Community 862 - "Community 862"
+Cohesion: 0.33
+Nodes (5): Distinguish "nothing to report" from "could not look", The profile lock is expected, not a defect, You are additive. You never block., You carry two browser families and no others, You never write outside the phase directory
+
+### Community 863 - "Community 863"
+Cohesion: 0.33
+Nodes (5): Gate, Hard rules, Report, Tasks (each independently best-effort), Wing / mode / transport
+
+### Community 864 - "Community 864"
+Cohesion: 0.33
+Nodes (5): Contents, Do not hand-edit, Two kinds of type twin, vendor/, Why
+
+### Community 865 - "Community 865"
+Cohesion: 0.33
+Nodes (5): Agent Skills Self-Load (Bootstrap), Notes, Steps, What self-load does and does not cover, When to run
+
+### Community 866 - "Community 866"
+Cohesion: 0.33
+Nodes (5): Decimal Phase Calculation, Directory Naming, Examples, Extract Values, Using gsd-tools
+
+### Community 867 - "Community 867"
+Cohesion: 0.33
+Nodes (5): Check 8f — Stated Failing Direction (#3172), Do not hand-reason this, Not in scope, Process — act on `severity` only, The contract
+
+### Community 868 - "Community 868"
+Cohesion: 0.33
+Nodes (5): Amend previous commit, Commit Message Patterns, Commit via CLI, Git Planning Commit, When to Skip
+
+### Community 869 - "Community 869"
+Cohesion: 0.33
+Nodes (5): Concept-to-file map, File map, Interactions worth knowing, MVP Concepts — index, Tests
+
+### Community 870 - "Community 870"
+Cohesion: 0.33
+Nodes (5): Chunked Mode Return Formats, Modes, outline-only, Resume Behaviour, single-plan
+
+### Community 871 - "Community 871"
+Cohesion: 0.33
+Nodes (5): For plans that CREATE new interfaces:, For plans that USE existing code:, Interface Context for Executors, When to include interfaces:, When to skip:
+
+### Community 872 - "Community 872"
+Cohesion: 0.33
+Nodes (5): `depends_on` — reference SIBLING items by `quick_id`, never invent one, `files_deleted` — only if your plan removes a file, `files_modified` — every path your plan's tasks will touch, Quick-Batch Mode — Planner Reference, What quick-batch mode does NOT need
+
+### Community 873 - "Community 873"
+Cohesion: 0.33
+Nodes (5): Codebase scout — map selection table, No-maps fallback, Output (internal `<codebase_context>`), Phase-type → recommended maps, Single-read rule
+
+### Community 874 - "Community 874"
+Cohesion: 0.33
+Nodes (5): 0. Gate — toggle + per-section absence (run first, in the orchestrator), A. Edge probe (deterministic) — run when `SPECLESS_FALLBACK=true` AND `EDGE_ABSENT=1`, B. Prohibition recall (LLM prose pass) — run when `PROHIB_ABSENT=1`, C. Authoring (the `<downstream_consumer>` else-branch), Spec-less Probe Fallback — protocol
+
+### Community 875 - "Community 875"
+Cohesion: 0.33
+Nodes (5): Closed / open boundary, Inputs, Relevance filter + resolution states, Taxonomy (8 categories), UI-Consideration Probe — Spec-Completeness Reference
+
+### Community 876 - "Community 876"
+Cohesion: 0.33
+Nodes (5): Pattern: API → Database, Pattern: Component → API, Pattern: Form → Handler, Pattern: State → Render, Verifier wiring and data-flow patterns
+
+### Community 877 - "Community 877"
+Cohesion: 0.33
+Nodes (5): Continuation, Debug Subagent Prompt Template, Placeholders, Template, Usage
+
+### Community 878 - "Community 878"
+Cohesion: 0.33
+Nodes (5): Continuation, Placeholders, Planner Subagent Prompt Template, Template, Usage
+
+### Community 879 - "Community 879"
+Cohesion: 0.33
+Nodes (5): File Template, Good Example, Guidelines, or, Research Template
+
+### Community 880 - "Community 880"
+Cohesion: 0.33
+Nodes (5): Argument parsing, --batch mode — grouped question batches, Effect on discuss_areas, Example batch, Philosophy
+
+### Community 881 - "Community 881"
+Cohesion: 0.33
+Nodes (5): Combination rules, Dispatch, --power mode — bulk question generation, async answering, Summary of flow, When to use
+
+### Community 882 - "Community 882"
+Cohesion: 0.33
+Nodes (5): Checkpoint gate rule (#3370), Contract, Per-plan executor routing (#1689), Resolution, Scope
+
+### Community 883 - "Community 883"
+Cohesion: 0.33
+Nodes (5): Common commands, GSD Core — Git. Ship. Done., Start here (3 commands), Update GSD, Want more?
+
+### Community 884 - "Community 884"
+Cohesion: 0.33
+Nodes (3): CODE_TO_NAME, EXIT_CODES, NAME_TO_CODE
+
+### Community 885 - "Community 885"
+Cohesion: 0.47
+Nodes (5): allow(), crash(), deny(), HOOK_ON_CRASH, { terminateNow }
 
 ### Community 886 - "Rencana Pembelajaran Workshop"
 Cohesion: 0.20
 Nodes (9): Evaluasi akhir, Form status akhir di chat atau formulir, Hands-on Agentic AI: Dari Chat ke Kalender — Praktik Deploy Hermes Agent & 9Router, Pengaturan Zoom yang disarankan, Prasyarat peserta, Rencana Pembelajaran Workshop, Rundown pembelajaran, Strategi pendampingan peserta pemula (+1 more)
+
+### Community 887 - "Community 887"
+Cohesion: 0.40
+Nodes (4): fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout
+
+### Community 888 - "Community 888"
+Cohesion: 0.40
+Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
+
+### Community 889 - "Community 889"
+Cohesion: 0.40
+Nodes (4): fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout
+
+### Community 890 - "Community 890"
+Cohesion: 0.40
+Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
+
+### Community 891 - "Community 891"
+Cohesion: 0.40
+Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
+
+### Community 892 - "Community 892"
+Cohesion: 0.40
+Nodes (4): LIST subcommand, RESUME subcommand, RUN subcommand (default), STATUS subcommand
+
+### Community 893 - "Community 893"
+Cohesion: 0.40
+Nodes (4): full_maturity, minimal_decisive, standard, Tool Priority
+
+### Community 894 - "Community 894"
+Cohesion: 0.40
+Nodes (4): Dev Context Profile, Focus Areas, Output Style, Verbosity
+
+### Community 895 - "Community 895"
+Cohesion: 0.40
+Nodes (4): Focus Areas, Output Style, Research Context Profile, Verbosity
+
+### Community 896 - "Community 896"
+Cohesion: 0.40
+Nodes (4): Focus Areas, Output Style, Review Context Profile, Verbosity
+
+### Community 897 - "Community 897"
+Cohesion: 0.40
+Nodes (4): Resolution, Runtime-Aware Subagent Dispatch (epic #2505 Phase 4 / #2508), Suffix → built-in map, Why not a hook?
+
+### Community 898 - "Community 898"
+Cohesion: 0.40
+Nodes (4): L1 — Opportunistic (default), L2 — Standard, L3 — Comprehensive, Security ASVS Levels
+
+### Community 899 - "Community 899"
+Cohesion: 0.40
+Nodes (4): Canonical format, How it lands in PLAN.md, How it lands in ROADMAP.md, User Story Template (MVP Mode)
+
+### Community 900 - "Community 900"
+Cohesion: 0.40
+Nodes (4): Absolute-path guard — step 0b (#3099), cwd-drift sentinel — step 0a (#3097), Worktree branch check (run once at spawn-time), Worktree Path Safety
+
+### Community 901 - "Community 901"
+Cohesion: 0.40
+Nodes (4): Core, Dev dependencies, Stack Research Template, Supporting
+
+### Community 902 - "Community 902"
+Cohesion: 0.40
+Nodes (4): Example, File Template, Guidelines, Verification Report Template
+
+### Community 903 - "Community 903"
+Cohesion: 0.40
+Nodes (4): --all mode — auto-select ALL gray areas, discuss interactively, Combination rules, Effect, Why this mode exists
+
+### Community 904 - "Community 904"
+Cohesion: 0.40
+Nodes (4): --analyze mode — trade-off tables before each question, Effect, Example, Sourcing the analysis
+
+### Community 905 - "Community 905"
+Cohesion: 0.40
+Nodes (4): --auto mode — fully autonomous discuss-phase, Combination rules, CRITICAL — Auto-mode pass cap, Effect across steps
+
+### Community 906 - "Community 906"
+Cohesion: 0.40
+Nodes (4): Conditional sections, CONTEXT.md template — for discuss-phase write_context step, Template body, Variable substitutions
+
+### Community 907 - "Community 907"
+Cohesion: 0.40
+Nodes (4): Executor isolation dispatch (ADR-1239 / #2584 Phase 3), harness-worktree — pass the host flag, orchestrator-worktree — GSD creates the worktree and spawns the executor, Resolve ISOLATION
+
+### Community 908 - "Community 908"
+Cohesion: 0.40
+Nodes (4): 1. Decisions, 2. Lessons, 3. Patterns, 4. Surprises
+
+### Community 909 - "Community 909"
+Cohesion: 0.40
+Nodes (4): fs, { HOOK_ON_CRASH, allow, crash }, path, stdinTimeout
+
+### Community 910 - "Community 910"
+Cohesion: 0.40
+Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
+
+### Community 911 - "Community 911"
+Cohesion: 0.40
+Nodes (4): { allow }, fs, { resolveStatePath }, stdinTimeout
+
+### Community 912 - "Community 912"
+Cohesion: 0.50
+Nodes (4): fs, path, resolveStatePath(), resolveWorkspaceRoot()
+
+### Community 913 - "Community 913"
+Cohesion: 0.40
+Nodes (4): LIST subcommand, RESUME subcommand, RUN subcommand (default), STATUS subcommand
+
+### Community 914 - "Community 914"
+Cohesion: 0.33
+Nodes (5): Gaps or Regressions, Phase 34 Verification Report: Course Lifecycle Schema & Server Store Architecture, Phase Goal, Requirements Coverage, Test Verification Evidence
+
+### Community 915 - "Community 915"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, augment
+
+### Community 916 - "Community 916"
+Cohesion: 0.50
+Nodes (3): Planner Coupling — Same-Wave Shared Mutable State, The rule, Why declare it up front
+
+### Community 917 - "Community 917"
+Cohesion: 0.50
+Nodes (3): Pre-dispatch check (MANDATORY), Resolution, TDD-applicability resolution (#4266/#4272)
+
+### Community 918 - "Community 918"
+Cohesion: 0.50
+Nodes (4): zcode, haiku, opus, sonnet
+
+### Community 919 - "Community 919"
+Cohesion: 0.40
+Nodes (4): Current System Analysis, Design Requirements for Phase 34, Executive Summary, Phase 34: Course Lifecycle Schema & Server Store Architecture - Research
+
+### Community 920 - "Community 920"
+Cohesion: 0.50
+Nodes (9): sonnet, sonnet, sonnet, sonnet, sonnet, sonnet, high, low (+1 more)
+
+### Community 921 - "Community 921"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, augment
+
+### Community 923 - "Community 923"
+Cohesion: 0.50
+Nodes (3): full_maturity, minimal_decisive, standard
+
+### Community 924 - "Community 924"
+Cohesion: 0.50
+Nodes (3): ESCALATE, GAPS FILLED, PARTIAL
+
+### Community 925 - "Community 925"
+Cohesion: 0.50
+Nodes (3): ESCALATE, OPEN_THREATS, SECURED
+
+### Community 926 - "Community 926"
+Cohesion: 0.50
+Nodes (3): Planner Coupling — Same-Wave Shared Mutable State, The rule, Why declare it up front
+
+### Community 927 - "Community 927"
+Cohesion: 0.50
+Nodes (3): Rules, Stated Failing Direction (#3172), Where the failing direction comes from
+
+### Community 928 - "Community 928"
+Cohesion: 0.50
+Nodes (3): Honest Reporting, Research is Investigation, Not Confirmation, the agent's Training as Hypothesis
+
+### Community 929 - "Community 929"
+Cohesion: 0.50
+Nodes (3): Behavioral Directives, Developer Preferences, Stack Preferences
+
+### Community 930 - "Community 930"
+Cohesion: 0.50
+Nodes (3): Discussion Log Template, Format, Rules
+
+### Community 931 - "Community 931"
+Cohesion: 0.50
+Nodes (3): Initial Roadmap (v1.0 Greenfield), Milestone-Grouped Roadmap (After v1.0 Ships), Roadmap Template
+
+### Community 932 - "Community 932"
+Cohesion: 0.50
+Nodes (3): auto_advance step (executed by the parent file), --chain mode — interactive discuss, then auto-advance, Effect
+
+### Community 933 - "Community 933"
+Cohesion: 0.50
+Nodes (3): DISCUSSION-LOG.md template — for discuss-phase git_commit step, Purpose, Template body
+
+### Community 934 - "Community 934"
+Cohesion: 0.50
+Nodes (3): Pre-dispatch check (MANDATORY), Resolution, TDD-applicability resolution (#4266/#4272)
+
+### Community 935 - "Community 935"
+Cohesion: 0.50
+Nodes (3): ISOLATED-RUN RECOVERY — FAIL SAFE (#1292), ORCHESTRATOR FAIL-CLOSED RULE (#48), Worktree Recovery Policy
+
+### Community 936 - "Community 936"
+Cohesion: 0.50
+Nodes (3): 8.5.1 Outline Phase (outline-only mode, ~2 min), 8.5.2 Per-Plan Tasks (single-plan mode, ~3-5 min each), 8.5. Chunked Planning Mode
 
 ### Community 939 - "Milestone: v1.0 — Pre-Training Interactive Web App"
 Cohesion: 0.10
@@ -2646,6 +4053,34 @@ Nodes (8): Current Position, Deferred Items, Milestone Summary, Operator Next St
 ### Community 1251 - ".agents/gsd-core/bin/lib/resolution.cjs"
 Cohesion: 0.06
 Nodes (33): 1. Communication Style, 2. Decision Speed, 3. Explanation Depth, 4. Debugging Approach, 5. UX Philosophy, 6. Vendor Philosophy, 7. Frustration Triggers, 8. Learning Style (+25 more)
+
+### Community 1277 - "Community 1277"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, kimi-code
+
+### Community 1278 - "Community 1278"
+Cohesion: 0.50
+Nodes (4): zcode, haiku, opus, sonnet
+
+### Community 1281 - "Community 1281"
+Cohesion: 0.50
+Nodes (3): Accomplishments, Phase 34 Plan 01 Summary: Course Lifecycle Schema & Server Store, Verification
+
+### Community 1282 - "Community 1282"
+Cohesion: 0.50
+Nodes (3): Accomplishments, Phase 34 Plan 02 Summary: Course Lifecycle Server Functions (RPCs), Verification
+
+### Community 1283 - "Community 1283"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, kimi
+
+### Community 1284 - "Community 1284"
+Cohesion: 0.50
+Nodes (4): haiku, opus, sonnet, codebuddy
+
+### Community 1285 - "Community 1285"
+Cohesion: 0.50
+Nodes (4): windsurf, haiku, opus, sonnet
 
 ### Community 1802 - "18-01-PLAN.md"
 Cohesion: 0.06
@@ -2723,10 +4158,6 @@ Nodes (26): 0. Initialize Milestone Context, 1. Determine Milestone Scope, 2. Re
 Cohesion: 0.07
 Nodes (26): 0. Initialize Milestone Context, 1. Determine Milestone Scope, 2. Read All Phase Verifications, 3. Spawn Integration Checker, 4. Collect Results, 5.5. Nyquist Compliance Discovery, 5. Check Requirements Coverage (3-Source Cross-Reference), 5a. Parse REQUIREMENTS.md Traceability Table (+18 more)
 
-### Community 1833 - "Community 1833"
-Cohesion: 0.09
-Nodes (17): CONTRACT_VERSION_KEY, exitCodeFor(), exitCodeRegistryModule, ExitError, findExitContractFlag(), getContractVersion(), HOOK_DENY_CODE, JSON_ERROR_MODE_KEY (+9 more)
-
 ### Community 1834 - "Community 1834"
 Cohesion: 0.08
 Nodes (25): Authentication Gates, Checkpoint Types, Context Budget for TDD, Context Section Rules, CRITICAL: Never Simplify User Decisions — Split Instead, CRITICAL: User Decision Fidelity, Frontmatter Fields, Gap Closure Mode (+17 more)
@@ -2768,8 +4199,8 @@ Cohesion: 0.08
 Nodes (24): agent_skills, brave_search, claude_md_path, _comment, commit_docs, context_window, exa_search, firecrawl (+16 more)
 
 ### Community 1844 - "Community 1844"
-Cohesion: 0.12
-Nodes (12): ALL_PATTERNS, fs, { HOOK_ON_CRASH, allow, crash }, KIMI_TOOL_NAMES, MARKDOWN_LINK_PATTERNS, path, RULE_IDS, stdinTimeout (+4 more)
+Cohesion: 0.14
+Nodes (10): ALL_PATTERNS, fs, { HOOK_ON_CRASH, allow, crash }, { INJECTION_PATTERNS, describePattern }, KIMI_TOOL_NAMES, MARKDOWN_LINK_PATTERNS, path, RULE_IDS (+2 more)
 
 ### Community 1845 - "Community 1845"
 Cohesion: 0.08
@@ -2824,7 +4255,7 @@ Cohesion: 0.09
 Nodes (21): 2a. Git History, 2b. Planning State, 2c. Phase Artifacts, 2d. Session Reports, 2e. Git Worktree State, Abandoned Work Detection, Crash/Interruption Detection, Forensics Workflow (+13 more)
 
 ### Community 1861 - "Community 1861"
-Cohesion: 0.16
+Cohesion: 0.15
 Nodes (16): { allow, deny }, basename(), CMD_PREFIXES, destructiveReason(), hasFlag(), indexOfCommandAfterPrefixes(), isDestructiveRmRf(), isDestructiveWindowsRmRf() (+8 more)
 
 ### Community 1862 - "Community 1862"
@@ -2832,12 +4263,12 @@ Cohesion: 0.09
 Nodes (21): API Route Checklist, API Routes (Next.js App Router / Express / etc.), Automated Verification Approach, Component Checklist, Custom Hooks and Utilities, Database Schema (Prisma / Drizzle / SQL), Environment Variables and Configuration, Hook/Utility Checklist (+13 more)
 
 ### Community 1863 - "Community 1863"
-Cohesion: 0.16
+Cohesion: 0.15
 Nodes (16): { allow, deny }, basename(), CMD_PREFIXES, destructiveReason(), hasFlag(), indexOfCommandAfterPrefixes(), isDestructiveRmRf(), isDestructiveWindowsRmRf() (+8 more)
 
 ### Community 1864 - "Community 1864"
-Cohesion: 0.07
-Nodes (35): ChecklistIsland(), ChecklistIslandProps, InteractiveChecklistProps, InstructorUnlockModal(), AI_LIVE_MODULES, AI_PRETRAINING_MODULES, COURSE_AI_BASE, COURSE_WORD_BASE (+27 more)
+Cohesion: 0.08
+Nodes (26): ChecklistIsland(), ChecklistIslandProps, InteractiveChecklistProps, AI_LIVE_MODULES, AI_PRETRAINING_MODULES, COURSE_AI_BASE, COURSE_WORD_BASE, CourseData (+18 more)
 
 ### Community 1865 - "Community 1865"
 Cohesion: 0.10
@@ -2849,7 +4280,7 @@ Nodes (20): 6-Pillar Scoring (1-4 per pillar), Output: UI-REVIEW.md, Pillar 1: C
 
 ### Community 1867 - "Community 1867"
 Cohesion: 0.10
-Nodes (20): Color, Component Inventory — Enumerate, Never Recall, Copywriting, Output: UI-SPEC.md, Registry (only if shadcn initialized), shadcn Initialization Gate, Spacing, Step 1: Load Context (+12 more)
+Nodes (20): Color, Component Inventory — Enumerate, Never Recall, Copywriting, Output: UI-SPEC.md, Registry (only if shadcn initialized), Revision Conflict, shadcn Initialization Gate, Spacing (+12 more)
 
 ### Community 1868 - "Community 1868"
 Cohesion: 0.10
@@ -3013,7 +4444,7 @@ Nodes (16): workflows, autonomous, code-review, complete-milestone, discuss-phas
 
 ### Community 1911 - "Community 1911"
 Cohesion: 0.15
-Nodes (15): currentBranch(), emitForceAddBlock(), failClosedBlockContext(), fs, { HOOK_ON_CRASH, allow, deny, crash }, isAgentBranch(), KIMI_TOOL_NAMES, normalizeKimiPayload() (+7 more)
+Nodes (14): currentBranch(), failClosedBlockContext(), fs, { HOOK_ON_CRASH, allow, deny, crash }, isAgentBranch(), KIMI_TOOL_NAMES, normalizeKimiPayload(), path (+6 more)
 
 ### Community 1912 - "Community 1912"
 Cohesion: 0.12
@@ -3505,7 +4936,7 @@ Nodes (10): Bounded subprocesses (GEMINI.md gauntlet), Escape hatch — document
 
 ### Community 2041 - "Community 2041"
 Cohesion: 0.18
-Nodes (10): Revision Mode — Planner Reference, Step 1: Load Existing Plans, Step 2: Parse Checker Issues, Step 3: Revision Strategy, Step 4: Make Targeted Updates, Step 5: Validate Changes, Step 6: Commit, Step 7: Return Revision Summary (+2 more)
+Nodes (10): Revision Mode — Planner Reference, Step 1: Load Existing Plans, Step 2.5: Constraint Re-check (before any edit), Step 2: Parse Checker Issues, Step 3: Revision Strategy, Step 4: Make Targeted Updates, Step 5: Validate Changes, Step 6: Commit (+2 more)
 
 ### Community 2042 - "Community 2042"
 Cohesion: 0.18
@@ -3665,7 +5096,7 @@ Nodes (9): Critical Rule: Never Use Package.swift as the Primary Build System fo
 
 ### Community 2083 - "Community 2083"
 Cohesion: 0.20
-Nodes (9): After 3 Iterations, Flow, Important Notes, Issue Count Tracking, Pattern: Check-Revise-Escalate (max 3 iterations), Re-spawn Prompt Structure, Revision Loop Pattern, Workflow-Specific Variations (+1 more)
+Nodes (9): After 3 Iterations, Conflict Return (REVISION_CONFLICT), Flow, Important Notes, Issue Count Tracking, Pattern: Check-Revise-Escalate (max 3 iterations), Re-spawn Prompt Structure, Revision Loop Pattern (+1 more)
 
 ### Community 2084 - "Community 2084"
 Cohesion: 0.20
@@ -3797,7 +5228,7 @@ Nodes (9): Anti-Patterns, MVP-Mode Node Rendering, Step 0 -- Banner, Step 1 -- C
 
 ### Community 2118 - "Community 2118"
 Cohesion: 0.20
-Nodes (9): disable \<cluster\>, enable \<cluster\>, Error handling, list / status, profile \<name\>, reset, runtimeConfigDir resolution, Sub-command routing (+1 more)
+Nodes (9): disable \<cluster\>, enable \<cluster\>, Error handling, list / status, Mutation protocol, profile \<name\>, reset, runtimeConfigDir resolution (+1 more)
 
 ### Community 2119 - "Community 2119"
 Cohesion: 0.20
@@ -3861,7 +5292,7 @@ Nodes (8): backstop, explicit, coverage, applicable, byVerification, resolved, u
 
 ### Community 2134 - "Community 2134"
 Cohesion: 0.22
-Nodes (8): Compatibility with existing TDD discipline, What "behavior-adding task" means, What happens when the gate trips, What the gate checks, What this gate does NOT do, When this gate fires, Escalation: end-of-phase TDD review under TDD, Execute-Phase — TDD Gate (Runtime Enforcement)
+Nodes (8): Compatibility with existing TDD discipline, Escalation: end-of-phase TDD review under TDD, Execute-Phase — TDD Gate (Runtime Enforcement), What "behavior-adding task" means, What happens when the gate trips, What the gate checks, What this gate does NOT do, When this gate fires
 
 ### Community 2135 - "Community 2135"
 Cohesion: 0.22
@@ -4151,10 +5582,6 @@ Nodes (8): Milestone Summary, Milestone v2.0: Multi-Course Platform & Modul Peng
 Cohesion: 0.22
 Nodes (8): 1. Critical CSS & Anti-Cache Architecture (CACHE), 2. Google NotebookLM-Inspired Top Bar & Course Selector (NLM-NAV), 3. Workspace De-duplication & Sidebar Streamlining (WORKSPACE), 4. Visual Hierarchy, Card Polishing & Content Alignment (POLISH), 5. Google NotebookLM Frontpage Hub & Seamless Navigation (HOME), Milestone v2.1 Requirements — Google NotebookLM-Inspired UI/UX Overhaul & Workspace Architecture, Requirements Traceability, Traceability Table
 
-### Community 2207 - "Community 2207"
-Cohesion: 0.22
-Nodes (8): Advisory frontmatter, Convergence Evidence Gate (#3304), Definitions, Report section, The gate, The problem this closes, What this deliberately does NOT implement, Worked example (from the issue's reported incident)
-
 ### Community 2208 - "Community 2208"
 Cohesion: 0.25
 Nodes (7): Manual-Only Verifications, Per-Task Verification Map, Phase 9 — Validation Strategy, Sampling Rate, Test Infrastructure, Validation Sign-Off, Wave 0 Requirements
@@ -4221,7 +5648,7 @@ Nodes (7): Compatibility with other modes, `end-of-phase` (default — issue #33
 
 ### Community 2225 - "Community 2225"
 Cohesion: 0.25
-Nodes (7): Reviews Mode — Planner Reference, Step 1: Load REVIEWS.md, Step 2: Categorize Feedback, Step 3: Plan Fresh with Review Context, Step 4: Return, Review Dispositions Ledger, Step 5: Write the ledger into PLAN.md (#3806)
+Nodes (7): Review Dispositions Ledger, Reviews Mode — Planner Reference, Step 1: Load REVIEWS.md, Step 2: Categorize Feedback, Step 3: Plan Fresh with Review Context, Step 4: Return, Step 5: Write the ledger into PLAN.md (#3806)
 
 ### Community 2226 - "Community 2226"
 Cohesion: 0.25
@@ -4371,10 +5798,6 @@ Nodes (7): Accumulated Context, Current Position, File Template, Performance Met
 Cohesion: 0.25
 Nodes (5): fs, MANAGED_HOOKS, path, result, staleHooks
 
-### Community 2263 - "Community 2263"
-Cohesion: 0.25
-Nodes (7): changeset/ — release-notes tooling, `cli.cjs extract`, Examples, Exit codes, Flags, Output shape, Version validation
-
 ### Community 2264 - "Community 2264"
 Cohesion: 0.25
 Nodes (7): Code Style, Coding Conventions, Error Handling, Function & Controller Design, Import & Export Organization, Logging, Naming Patterns
@@ -4514,10 +5937,6 @@ Nodes (6): Focus-to-Document Mapping, Step 1: Parse arguments and resolve focus,
 ### Community 2299 - "Community 2299"
 Cohesion: 0.29
 Nodes (6): Docs & Output, Execution, Features, Misc, Model & Pipeline, Planning
-
-### Community 2300 - "Community 2300"
-Cohesion: 0.29
-Nodes (6): manifestVersion, mode, runtime, scope, timestamp, version
 
 ### Community 2301 - "Community 2301"
 Cohesion: 0.29
@@ -5371,10 +6790,6 @@ Nodes (5): Checkpoint gate rule (#3370), Contract, Per-plan executor routing (#1
 Cohesion: 0.33
 Nodes (5): Mocking, Test File Organization, Test Framework, Test Types, Testing Patterns
 
-### Community 2517 - "Community 2517"
-Cohesion: 0.33
-Nodes (5): `depends_on` — reference SIBLING items by `quick_id`, never invent one, `files_deleted` — only if your plan removes a file, `files_modified` — every path your plan's tasks will touch, Quick-Batch Mode — Planner Reference, What quick-batch mode does NOT need
-
 ### Community 2518 - "Community 2518"
 Cohesion: 0.40
 Nodes (4): Artifacts Created, Key Verifications, Overview, Plan 01-01 Summary: Design System & Styling Layer
@@ -5855,10 +7270,6 @@ Nodes (3): Discussion Log Template, Format, Rules
 Cohesion: 0.50
 Nodes (3): Initial Roadmap (v1.0 Greenfield), Milestone-Grouped Roadmap (After v1.0 Ships), Roadmap Template
 
-### Community 2643 - "Community 2643"
-Cohesion: 0.50
-Nodes (3): Planner Coupling — Same-Wave Shared Mutable State, The rule, Why declare it up front
-
 ### Community 2644 - "Community 2644"
 Cohesion: 0.50
 Nodes (3): 1. Directory Tree Architecture, 2. Data Flow & Server Boundary Contract, TanStack Start System Architecture & Directory Layout
@@ -5870,10 +7281,6 @@ Nodes (3): 1. Table Stakes (Must-Have Capabilities), 2. Differentiators (Advance
 ### Community 2646 - "Community 2646"
 Cohesion: 0.50
 Nodes (3): Implications for Roadmap, Key Findings, Project Research Summary — TanStack Start Migration (Milestone v3.0)
-
-### Community 2647 - "Community 2647"
-Cohesion: 0.50
-Nodes (3): Pre-dispatch check (MANDATORY), Resolution, TDD-applicability resolution (#4266/#4272)
 
 ### Community 2662 - "Community 2662"
 Cohesion: 0.67
@@ -5944,23 +7351,23 @@ Cohesion: 0.50
 Nodes (3): Overview, Quick Plan: Ganti Logo LearnWith Menjadi Logo Resmi Baru, Tasks
 
 ## Knowledge Gaps
-- **10046 isolated node(s):** `bool`, `_comment`, `model_profile`, `commit_docs`, `parallelization` (+10041 more)
+- **11688 isolated node(s):** `bool`, `_comment`, `model_profile`, `commit_docs`, `parallelization` (+11683 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **318 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **415 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `pristine_hashes` connect `.agents/gsd-core/bin/lib/cjs-command-router-adapter.cjs` to `Community 2580`?**
-  _High betweenness centrality (0.003) - this node is a cross-community bridge._
-- **Why does `files` connect `.agents/gsd-core/bin/lib/install-profiles.cjs` to `Community 2300`?**
   _High betweenness centrality (0.001) - this node is a cross-community bridge._
 - **Why does `Communities (658 total, 66 thin omitted)` connect `gsd-local-patches/gsd-core/bin/lib/roadmap.cjs` to `Community 2073`?**
-  _High betweenness centrality (0.001) - this node is a cross-community bridge._
+  _High betweenness centrality (0.000) - this node is a cross-community bridge._
+- **Why does `agents` connect `Community 1819` to `Community 2432`, `Community 2433`, `Community 2434`, `Community 2435`, `Community 2436`, `Community 2437`, `Community 2438`, `Community 2439`, `Community 2440`, `Community 2441`, `Community 2442`, `Community 2443`, `Community 2444`, `Community 2445`, `Community 2446`, `Community 2447`, `Community 2448`, `.agents/gsd-core/bin/lib/milestone.cjs`, `quick-batch.cjs`, `.agents/gsd-core/bin/lib/verification.cjs`, `Community 2417`, `Community 2418`, `Community 2419`, `Community 2420`, `Community 2421`, `Community 2422`, `Community 2423`, `Community 2424`, `Community 2425`, `Community 2426`, `Community 2427`, `Community 2428`, `Community 2429`, `Community 2430`, `Community 2431`?**
+  _High betweenness centrality (0.000) - this node is a cross-community bridge._
 - **What connects `BM25 ranking algorithm for text search`, `Lowercase, split, remove punctuation, filter short words`, `Build BM25 index from documents` to the rest of the system?**
-  _10108 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _11750 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `output` be split into smaller, more focused modules?**
-  _Cohesion score 0.10476190476190476 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04 - nodes in this community are weakly interconnected._
 - **Should `gsd-local-patches/gsd-core/bin/lib/state.cjs` be split into smaller, more focused modules?**
   _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._
 - **Should `.agents/gsd-core/bin/lib/config.cjs` be split into smaller, more focused modules?**
