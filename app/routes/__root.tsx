@@ -43,6 +43,17 @@ function RootComponent() {
   return (
     <RootDocument>
       <GlobalAnnouncementBanner />
+      <div
+        id="drawer-backdrop"
+        className="drawer-backdrop"
+        aria-hidden="true"
+        onClick={() => {
+          if (typeof window !== 'undefined') {
+            document.getElementById('app-sidebar')?.classList.remove('open')
+            document.getElementById('drawer-backdrop')?.classList.remove('active')
+          }
+        }}
+      />
       <div className={`app-container ${isHome ? 'view-home' : ''} ${isAdmin ? 'view-admin' : ''}`}>
         <Header />
         <Outlet />
