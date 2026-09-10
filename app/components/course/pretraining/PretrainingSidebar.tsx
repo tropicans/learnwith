@@ -45,28 +45,45 @@ export function PretrainingSidebar({ currentMode = 'pretraining' }: PretrainingS
   const cp2 = getCheckpointBadge(checkpoints['cp-2'])
   const cp3 = getCheckpointBadge(checkpoints['cp-3'])
 
+  useEffect(() => {
+    setActiveSection(currentMode === 'live-class' ? 'sec-live-hero' : 'sec-target')
+  }, [currentMode])
+
   // Scrollspy to set active nav link
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const sectionIds = [
-      'sec-target',
-      'sec-glosarium',
-      'sec-security',
-      'sec-prerequisites',
-      'sec-powershell',
-      'sec-module-1',
-      'sec-module-2',
-      'sec-module-3',
-      'sec-module-4',
-      'sec-module-5',
-      'sec-checkpoint-1',
-      'sec-checkpoint-2',
-      'sec-checkpoint-3',
-      'sec-troubleshooting',
-      'sec-redaction',
-      'sec-readiness-report',
-    ]
+    const sectionIds = currentMode === 'live-class'
+      ? [
+          'sec-live-hero',
+          'sec-live-stats',
+          'sec-module-6',
+          'sec-module-7',
+          'sec-module-8',
+          'sec-module-9',
+          'sec-module-10',
+          'sec-module-11',
+          'sec-live-checkpoints',
+          'sec-live-checklist',
+        ]
+      : [
+          'sec-target',
+          'sec-glosarium',
+          'sec-security',
+          'sec-prerequisites',
+          'sec-powershell',
+          'sec-module-1',
+          'sec-module-2',
+          'sec-module-3',
+          'sec-module-4',
+          'sec-module-5',
+          'sec-checkpoint-1',
+          'sec-checkpoint-2',
+          'sec-checkpoint-3',
+          'sec-troubleshooting',
+          'sec-redaction',
+          'sec-readiness-report',
+        ]
 
     const handleScroll = () => {
       const scrollY = window.scrollY + 120
@@ -85,7 +102,7 @@ export function PretrainingSidebar({ currentMode = 'pretraining' }: PretrainingS
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [currentMode])
 
   return (
     <aside id="app-sidebar" className="app-sidebar" aria-label="Sidebar Navigasi Modul">
@@ -320,6 +337,120 @@ export function PretrainingSidebar({ currentMode = 'pretraining' }: PretrainingS
             <div className="nav-link-content">
               <span className="nav-link-icon">📋</span>
               <span>Laporan Kesiapan</span>
+            </div>
+          </a>
+        </nav>
+      </div>
+
+      {/* Mode Group 2: Navigasi Hari-H Kelas */}
+      <div id="nav-group-liveclass" className={`sidebar-nav-group ${currentMode === 'live-class' ? 'active' : ''}`}>
+        {/* Group 1: Informasi Sesi */}
+        <nav className="nav-group" aria-label="Navigasi Informasi Sesi Hari-H">
+          <div className="nav-group-title">Sesi Hari-H Praktik</div>
+          <a
+            href="#sec-live-hero"
+            className={`nav-link ${activeSection === 'sec-live-hero' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">🎯</span>
+              <span>Ringkasan &amp; Gerbang</span>
+            </div>
+          </a>
+          <a
+            href="#sec-live-stats"
+            className={`nav-link ${activeSection === 'sec-live-stats' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">📊</span>
+              <span>Telemetri Partisipasi</span>
+            </div>
+          </a>
+        </nav>
+
+        {/* Group 2: Modul Praktik Hari-H */}
+        <nav className="nav-group" aria-label="Navigasi Modul Praktik Hari-H">
+          <div className="nav-group-title">Modul Praktik Hari-H</div>
+          <a
+            href="#sec-module-6"
+            className={`nav-link ${activeSection === 'sec-module-6' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">⚡</span>
+              <span>Modul 6: 9Router Matrix</span>
+            </div>
+            <span className="badge badge-pill badge-neutral">CP-6</span>
+          </a>
+          <a
+            href="#sec-module-7"
+            className={`nav-link ${activeSection === 'sec-module-7' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">🤖</span>
+              <span>Modul 7: Hermes Engine</span>
+            </div>
+            <span className="badge badge-pill badge-neutral">CP-7</span>
+          </a>
+          <a
+            href="#sec-module-8"
+            className={`nav-link ${activeSection === 'sec-module-8' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">⚙️</span>
+              <span>Modul 8: Hermes Wizard</span>
+            </div>
+            <span className="badge badge-pill badge-neutral">CP-8</span>
+          </a>
+          <a
+            href="#sec-module-9"
+            className={`nav-link ${activeSection === 'sec-module-9' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">💬</span>
+              <span>Modul 9: Telegram Gateway</span>
+            </div>
+            <span className="badge badge-pill badge-neutral">CP-9</span>
+          </a>
+          <a
+            href="#sec-module-10"
+            className={`nav-link ${activeSection === 'sec-module-10' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">📅</span>
+              <span>Modul 10: Google Calendar</span>
+            </div>
+            <span className="badge badge-pill badge-neutral">CP-10</span>
+          </a>
+          <a
+            href="#sec-module-11"
+            className={`nav-link ${activeSection === 'sec-module-11' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">🚀</span>
+              <span>Modul 11: Operasional E2E</span>
+            </div>
+            <span className="badge badge-pill badge-neutral">CP-11</span>
+          </a>
+        </nav>
+
+        {/* Group 3: Checkpoint & Checklist */}
+        <nav className="nav-group" aria-label="Navigasi Checkpoint dan Checklist Hari-H">
+          <div className="nav-group-title">Evaluasi &amp; Checklist</div>
+          <a
+            href="#sec-live-checkpoints"
+            className={`nav-link ${activeSection === 'sec-live-checkpoints' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">🎯</span>
+              <span>6 Gerbang Checkpoint</span>
+            </div>
+          </a>
+          <a
+            href="#sec-live-checklist"
+            className={`nav-link ${activeSection === 'sec-live-checklist' ? 'active' : ''}`}
+          >
+            <div className="nav-link-content">
+              <span className="nav-link-icon">✅</span>
+              <span>Lembar Checklist Mandiri</span>
             </div>
           </a>
         </nav>

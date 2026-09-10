@@ -1,9 +1,7 @@
-import { createFileRoute, Link, Await } from '@tanstack/react-router'
-import { Suspense, useState, useEffect } from 'react'
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { useState, useEffect } from 'react'
 import { courseAiSearchSchema } from '@/schemas/searchParams'
-import { getCourseAiData, getCourseStatsAsync, type CourseStats } from '@/data/courses'
-import { StatsSkeleton } from '@/components/ui/Skeleton'
-import { ChecklistIsland } from '@/components/course/ChecklistIsland'
+import { getCourseAiData, getCourseStatsAsync } from '@/data/courses'
 import { InstructorUnlockModal } from '@/components/course/InstructorUnlockModal'
 import { PretrainingHero } from '@/components/course/pretraining/PretrainingHero'
 import { PretrainingTargetSection } from '@/components/course/pretraining/PretrainingTargetSection'
@@ -19,6 +17,7 @@ import { PretrainingRedactionSection } from '@/components/course/pretraining/Pre
 import { PretrainingReadinessReportSection } from '@/components/course/pretraining/PretrainingReadinessReportSection'
 import { PretrainingSidebar } from '@/components/course/pretraining/PretrainingSidebar'
 import { ResetProgressModal } from '@/components/course/pretraining/ResetProgressModal'
+import { LiveClassContainer } from '@/components/course/liveclass/LiveClassContainer'
 import { usePretrainingState } from '@/hooks/usePretrainingState'
 import { showToast } from '@/components/ui/Toast'
 
@@ -67,6 +66,15 @@ function CourseAiComponent() {
     if (typeof window !== 'undefined') {
       sessionStorage.setItem('live_class_unlocked', 'true')
     }
+    showToast('Akses Instruktur Terbuka! Selamat Datang.', 'success', 3000)
+  }
+
+  const handleRelock = () => {
+    setIsUnlocked(false)
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('live_class_unlocked')
+    }
+    showToast('Sesi Hari-H dikunci kembali 🔒', 'info', 2000)
   }
 
   return (
@@ -108,165 +116,37 @@ function CourseAiComponent() {
             <PretrainingRedactionSection />
             <PretrainingReadinessReportSection />
             <ResetProgressModal
-            isOpen={isResetModalOpen}
-            onClose={() => setIsResetModalOpen(false)}
-            onConfirm={() => {
-              resetState()
-              setIsResetModalOpen(false)
-              showToast(
-                'Semua progres dan verifikasi berhasil diatur ulang 🔄',
-                'info',
-                2500
-              )
-            }}
+              isOpen={isResetModalOpen}
+              onClose={() => setIsResetModalOpen(false)}
+              onConfirm={() => {
+                resetState()
+                setIsResetModalOpen(false)
+                showToast(
+                  'Semua progres dan verifikasi berhasil diatur ulang 🔄',
+                  'info',
+                  2500
+                )
+              }}
+            />
+          </div>
+        ) : (
+          <LiveClassContainer
+            course={course}
+            deferredStats={deferredStats}
+            isUnlocked={isUnlocked}
+            onOpenUnlockModal={() => setIsUnlockModalOpen(true)}
+            onRelock={handleRelock}
           />
-        </div>
-      ) : (
-        <section className="course-hero-header">
-          <div className="course-hero-badge">
-            <span className="badge badge-pill badge-success">{course.badge}</span>
-            <span className="course-session-pill">Mode Kelas Terbimbing</span>
-          </div>
-          <h2 className="course-title">{course.title}</h2>
-          <p className="course-subtitle">{course.subtitle}</p>
-          <p className="course-desc">{course.description}</p>
+        )}
 
-          <div style={{ marginTop: '1rem' }}>
-            {isUnlocked ? (
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.5rem 1rem',
-                  backgroundColor: '#f0fdf4',
-                  color: '#166534',
-                  borderRadius: '8px',
-                  border: '1px solid #bbf7d0',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                }}
-              >
-                ✅ Sesi Praktik Terbimbing Aktif & Terbuka
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setIsUnlockModalOpen(true)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  padding: '0.6rem 1.2rem',
-                  backgroundColor: '#2563eb',
-                  color: '#ffffff',
-                  borderRadius: '8px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontSize: '0.9rem',
-                  fontWeight: 600,
-                  boxShadow: '0 2px 4px rgba(37, 99, 235, 0.2)',
-                }}
-              >
-                🔒 Buka Akses Instruktur (Passkey)
-              </button>
-            )}
-          </div>
-        </section>
-      )}
-
-      {/* Progressive Streaming Section (SSR-02) */}
-      <section className="course-streaming-stats">
-        <Suspense fallback={<StatsSkeleton />}>
-          <Await promise={deferredStats}>
-            {(stats: CourseStats) => (
-              <div
-                className="course-stats-banner"
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-around',
-                  padding: '1rem 1.5rem',
-                  background: 'var(--bg-surface, #ffffff)',
-                  border: '1px solid var(--border-subtle, #e0e0e0)',
-                  borderRadius: 'var(--radius-md, 10px)',
-                  margin: '1.25rem 0',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span style={{ fontSize: '1.75rem' }}>👥</span>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted, #5f6368)' }}>
-                      Peserta Aktif Terdaftar
-                    </div>
-                    <strong style={{ fontSize: '1.15rem', color: 'var(--text-primary, #202124)' }}>
-                      {stats.activeParticipants} Orang
-                    </strong>
-                  </div>
-                </div>
-                <div style={{ height: '36px', width: '1px', background: 'var(--border-subtle, #e0e0e0)' }} />
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span style={{ fontSize: '1.75rem' }}>📈</span>
-                  <div>
-                    <div style={{ fontSize: '0.8rem', color: 'var(--text-muted, #5f6368)' }}>
-                      Tingkat Kelulusan Evaluasi
-                    </div>
-                    <strong style={{ fontSize: '1.15rem', color: 'var(--text-primary, #202124)' }}>
-                      {stats.completionRate}% Terverifikasi
-                    </strong>
-                  </div>
-                </div>
-              </div>
-            )}
-          </Await>
-        </Suspense>
-      </section>
-
-      {/* Curriculum Outline */}
-      <section className="course-syllabus-section">
-        <div className="syllabus-header">
-          <h3 className="section-title">Silabus & Rangkaian Modul Praktik</h3>
-          <span className="syllabus-meta">
-            {course.modulesCount} Modul • {course.checkpointsCount} Checkpoint Otomatis
-          </span>
-        </div>
-
-        <div className="modules-list">
-          {course.modules.map((m) => (
-            <div key={m.id} className="module-item-card" data-module-id={m.id}>
-              <div className="module-item-header">
-                <span className="module-badge">Modul {m.num}</span>
-                <h4 className="module-title">{m.title}</h4>
-                <span className="module-time">⏱️ {m.estimatedMinutes} menit</span>
-              </div>
-              <p className="module-desc">{m.subtitle}</p>
-              {m.checkpoints && m.checkpoints.length > 0 && (
-                <div className="module-checkpoints">
-                  {m.checkpoints.map((cp, idx) => (
-                    <span key={idx} className="checkpoint-tag">
-                      🎯 {cp}
-                    </span>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Hydration-Safe Client-Only Checklist Island (SSR-04) */}
-      <section className="course-island-section" style={{ marginTop: '2rem' }}>
-        <ChecklistIsland courseId={course.id} modules={course.modules} />
-      </section>
-
-      {/* Instructor Unlock Modal */}
-      <InstructorUnlockModal
-        courseId="ai"
-        isOpen={isUnlockModalOpen}
-        onClose={() => setIsUnlockModalOpen(false)}
-        onUnlocked={handleUnlocked}
-      />
-    </main>
-  </>
-)
+        {/* Instructor Unlock Modal */}
+        <InstructorUnlockModal
+          courseId="ai"
+          isOpen={isUnlockModalOpen}
+          onClose={() => setIsUnlockModalOpen(false)}
+          onUnlocked={handleUnlocked}
+        />
+      </main>
+    </>
+  )
 }
