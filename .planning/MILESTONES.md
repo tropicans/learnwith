@@ -1,5 +1,35 @@
 # Milestones
 
+## v3.2: Admin Command Center, Telemetry & Authentication
+
+**Shipped:** 2026-09-09  
+**Status:** ✅ SHIPPED (verified_closeout)  
+**Phases:** 29-33 (5 phases)  
+**Plans:** 10 plans (10/10 completed)  
+**Automated Tests:** 27 test files passing, 242/242 tests passed (0 failures) + TypeScript clean (0 errors)  
+**Requirements:** 20/20 satisfied (100%)  
+**Known verification overrides:** 0 newly acknowledged, 0 carried forward  
+
+### Delivered
+
+A secure, comprehensive administrative command center (`/admin`) protecting course management, real-time telemetry aggregation of workshop participants across courses, runtime troubleshooting incident tracking, dynamic passkey rotation for Course 2, and global platform configuration (workshop mode switch and top-level announcement banner).
+
+### Key Accomplishments
+
+1. **Master Admin Authentication (Phase 29)**: Secure `/admin` route via `createServerFn` timing-safe Web Crypto SHA-256 hash comparison, session token registry, and Google OAuth SSO readiness with single-domain whitelist.
+2. **Server Telemetry Ingestion (Phase 30)**: In-memory store with Zod schema validation, zero-division safety, non-blocking client heartbeat background transmitter on participant routes.
+3. **Command Center Dashboard (Phase 31)**: 4 aggregate KPI metric cards, multi-criteria participant directory table, granular modal inspector with task checklist dossier, and 1-click RFC 4180 CSV/JSON export.
+4. **Workshop Access & Passkey Management (Phase 32)**: Active passkey status monitoring, runtime dynamic passkey rotation without server restart, timing-safe verification, sliding-window rate limiting guard, and candidate-masked audit logs.
+5. **Troubleshooting Hub & Global Configuration (Phase 33)**: Auto-classification across 6 classroom failure types with 1-click PowerShell remediation commands, dynamic global workshop mode toggle, and Global Announcement Banner mounted at viewport top.
+6. **Quality Assurance**: Zero secret bundle leakage, zero regressions across `/`, `/course/ai`, `/course/word`, and 100% test pass rate (242/242 tests).
+
+### Archive Reference
+
+- [Roadmap Archive](file:///c:/Users/yudhiar\Downloads\AgenticAI\.planning\milestones\v3.2-ROADMAP.md)
+- [Requirements Archive](file:///c:/Users/yudhiar\Downloads\AgenticAI\.planning\milestones\v3.2-REQUIREMENTS.md)
+
+---
+
 ## v3.1: Pre-Training Parity in TanStack Start
 
 **Shipped:** 2026-09-09

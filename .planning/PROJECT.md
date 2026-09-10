@@ -12,6 +12,16 @@ Empower non-technical participants and government professionals to complete prac
 
 The platform has grown from student/participant self-service into an instructor-grade operational command center. Milestone v3.2 delivered the `/admin` command center with Master Admin Passkey authentication (and Google OAuth login foundation), real-time participant progress & telemetry aggregation, course access passkey management, runtime troubleshooting diagnostics, and global platform banner/mode configuration.
 
+## Current Milestone: v3.3 Admin Course Lifecycle & Visibility Management
+
+**Goal:** Provide administrators on `/admin` with full lifecycle and visibility control (`show`, `hide`, `archive`, `delete`) over workshop courses, synchronizing state reactively with public catalog and course switchers.
+
+**Target features:**
+- Centralized server course lifecycle store with typed statuses (`active`, `hidden`, `archived`, `deleted`).
+- Admin Command Center management interface with status action buttons, archive filters, and delete confirmation safeguards.
+- Secure server mutation functions (`createServerFn`) requiring authenticated Master Admin session.
+- Reactive catalog filtering on Frontpage (`/`) and header/sidebar course switcher dropdowns.
+
 ## Previous Milestones
 
 <details>
@@ -202,23 +212,32 @@ The platform has grown from student/participant self-service into an instructor-
 - ✓ Generator Form Laporan Kesiapan with WhatsApp, Telegram Markdown, & Print/PDF export (PRE-RPT-01..03) — v3.1
 - ✓ Curriculum Sidebar navigation with dynamic badges & mode switcher query sync (PRE-NAV-01..03) — v3.1
 
+- ✓ Master Admin Authentication via `createServerFn` with timing-safe hash check & Google OAuth architecture (ADMIN-AUTH-01..04) — v3.2
+- ✓ Internal Server Telemetry API for participant heartbeat, checkpoint status & evaluation ingest (ADMIN-TELEM-01..03) — v3.2
+- ✓ Admin Command Center Dashboard with participant progress aggregation, metrics & export (ADMIN-DASH-01..04) — v3.2
+- ✓ Workshop Access & Passkey Management Console for Course 2 with dynamic rotation & audit log (ADMIN-PASS-01..03) — v3.2
+- ✓ Runtime Troubleshooting Hub & Incident Auto-Classification for 6 error types (ADMIN-LOG-01..02) — v3.2
+- ✓ Global Platform Configuration (mode switch) & Top-level Announcement Banner (ADMIN-CFG-01..02) — v3.2
+- ✓ Comprehensive Admin automated test suite with zero secret leakage & zero legacy regressions (ADMIN-QA-01..02) — v3.2
+
 ### Active
 
-- [ ] Master Admin Authentication via `createServerFn` with timing-safe hash check & Google OAuth architecture (ADMIN-AUTH-01..03)
-- [ ] Internal Server Telemetry API for participant heartbeat, checkpoint status & evaluation ingest (ADMIN-TELEM-01..03)
-- [ ] Admin Command Center Dashboard with participant progress aggregation & metrics (ADMIN-DASH-01..03)
-- [ ] Workshop Access & Passkey Management Console for Course 2 & custom passkeys (ADMIN-PASS-01..02)
-- [ ] Global Platform Configuration & Banner Announcement Control Center (ADMIN-CFG-01..02)
+- [ ] Centralized Course Lifecycle State Store with typed schema for course status (`active`, `hidden`, `archived`, `deleted`) (COURSE-STATUS-01..03)
+- [ ] Admin Management UI tab/sub-panel with interactive status toggles (`Show`, `Hide`, `Archive`, `Delete`) and confirmation safety dialogs (COURSE-ADMIN-01..04)
+- [ ] Secure Server Functions (`createServerFn`) to mutate course status with Master Admin session verification and audit logging (COURSE-MUTATE-01..03)
+- [ ] Public Frontpage (`/`) and Navigation Header Course Switcher reactive filtering based on live course visibility state (COURSE-SYNC-01..03)
+- [ ] Automated unit, RPC, and E2E regression test suite verifying status transitions, public catalog hiding, and zero regression (COURSE-TEST-01..02)
 
 ### Out of Scope
 
+- Hard deleting course content files or curriculum assets from the disk/repository (all deletes are soft-delete deactivations with safety guard).
 - Automated remote installation on user's machine (security risk; users must run commands themselves).
 - Storing participant OAuth client secrets or bot tokens in `localStorage` (credentials must remain in participant's local environment).
 - Heavy external UI component libraries that increase bundle size and degrade first paint performance.
 
 ## Context
 
-Shipped v3.1 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server. 19 test suites passing (100/100 tests passed, 0 failures, 0 TypeScript errors). Milestone v3.1 achieved 100% feature parity for Pre-Training mode on `/course/ai?mode=pretraining`. Ready for next milestone.
+Shipped v3.2 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server. 27 test suites passing (242/242 tests passed, 0 failures, 0 TypeScript errors). Milestone v3.3 introduces full Course Lifecycle and Visibility management (`show`, `hide`, `archive`, `delete`) in the `/admin` Command Center with live synchronization to the public Frontpage and Course Switcher.
 
 ## Key Decisions
 
@@ -231,6 +250,8 @@ Shipped v3.1 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server
 - ✓ **Server Functions Boundary Isolation**: `createServerFn` with secrets quarantined in `app/server/` (Rationale: Zero server secrets in client bundle, AST-level test verification) — *Outcome: Good*
 - ✓ **Production Containerization**: Multi-stage Dockerfile with tini PID 1, non-root user `node`, standalone Nitro server (Rationale: Secure, reproducible, production-ready runtime on Port 3173) — *Outcome: Good*
 - ✓ **Component Porting Strategy**: Pure React 19 client/island components inside `app/components/course/pretraining/` and integrated into `app/routes/course.ai.tsx` preserving original styling, persistence schemas, and test parity — *Outcome: Good (v3.1)*
+- ✓ **Admin Master Authentication**: Timing-safe Web Crypto SHA-256 hash matching with session token registry and single-domain Google OAuth SSO whitelist (`tropicans@gmail.com`) — *Outcome: Good (v3.2)*
+- ✓ **Course Lifecycle State Architecture**: In-memory server course registry initialized from `app/data/courses.ts` with status states (`active` [show], `hidden` [hide], `archived` [archive], `deleted` [soft-delete]) exposed via typed server functions — *Outcome: In Progress (v3.3)*
 
 ## Evolution
 
@@ -249,7 +270,7 @@ This document evolves at phase transitions and milestone boundaries.
 3. Audit Out of Scope — reasons still valid?
 4. Update Context with current state
 
-## Next Milestone Goals (v3.2 / v4.0 Candidates)
+## Next Milestone Goals (v3.4 / v4.0 Candidates)
 
 - Live Class Mode (`?mode=live-class`) Full Parity in TanStack Start (Modul 6-11, Checkpoints 4-9, In-Class Report).
 - PostgreSQL database integration for centralized multi-device participant progress and synchronized evaluation submissions.
@@ -258,4 +279,4 @@ This document evolves at phase transitions and milestone boundaries.
 - Interactive terminal simulator for dry-running CLI commands before local execution.
 
 ---
-*Last updated: 2026-09-09 — Milestone v3.2 started*
+*Last updated: 2026-09-10 — Milestone v3.3 started*

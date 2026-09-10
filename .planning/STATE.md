@@ -1,37 +1,33 @@
 ---
 gsd_state_version: "1.0"
-milestone: v3.2
-milestone_name: (Phases 29-33)
-current_phase: 33
-status: completed
-stopped_at: Phase 33 complete — all phases complete
-last_updated: "2026-09-09T06:27:26.516Z"
-last_activity: 2026-09-09
-last_activity_desc: Phase 33 complete
-state_head: 8a22ae93993162e314596d7cb81b6884ded5f1b0
+milestone: v3.3
+milestone_name: Admin Course Lifecycle & Visibility Management
+status: planning
+last_updated: "2026-09-10T08:21:40.785Z"
+last_activity: 2026-09-10
 progress:
-  total_phases: 5
-  completed_phases: 3
-  total_plans: 10
-  completed_plans: 10
-  percent: 60
+  total_phases: 4
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: `.planning/PROJECT.md` (updated 2026-09-09 for milestone v3.2)
+See: `.planning/PROJECT.md` (updated 2026-09-10 for milestone v3.3)
 
 **Core value:** Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
-**Current focus:** Phase 32 — Workshop Access Passkey Management & Troubleshooting Audit Hub
+**Current focus:** Phase 34 — Course Lifecycle Schema & Server Store Architecture
 
 ## Current Position
 
-Phase: 33
-Plan: Not started
-Status: All phases complete
-Last activity: 2026-09-09 — Phase 33 complete
+Phase: Not started (defining requirements)
+Plan: —
+Status: Defining requirements
+Last activity: 2026-09-10 — Milestone v3.3 started
 
 ## Milestone Summary
 
@@ -42,7 +38,8 @@ Last activity: 2026-09-09 — Phase 33 complete
 - **Delivered**: Milestone v2.2 complete (Phases 16-18, SEC-01 through SEC-09).
 - **Delivered**: Milestone v3.0 complete (Phases 19-23, FOUND-01 to DEPLOY-04).
 - **Delivered**: Milestone v3.1 complete (Phases 24-28, PRE-BASE-01 to PRE-NAV-03).
-- **Verification**: 19 test files passing (100/100 tests passed, 0 failures), TypeScript typecheck 0 errors.
+- **Delivered**: Milestone v3.2 complete (Phases 29-33, ADMIN-AUTH-01 to ADMIN-QA-02).
+- **Verification**: 27 test files passing (242/242 tests passed, 0 failures), TypeScript typecheck 0 errors.
 
 ## Deferred Items
 
@@ -57,10 +54,10 @@ None.
 
 ## Session
 
-**Last session:** 2026-09-08T08:43:00.875Z
+**Last session:** 2026-09-10T15:21:00.000Z
 **Stopped at:** Phase 33 complete — all phases complete
-**Resume file:** .planning/phases/23-route-level-ssr-optimization-production-docker-target/23-CONTEXT.md
+**Resume file:** .planning/STATE.md
 
 ## Operator Next Steps
 
-- Plan Phase 29 with /gsd-plan-phase 29 (or discuss approach via /gsd-discuss-phase 29)
+- Plan Phase 34 with /gsd-plan-phase 34 (or discuss approach via /gsd-discuss-phase 34)

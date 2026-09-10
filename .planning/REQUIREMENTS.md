@@ -1,86 +1,68 @@
-# Requirements: Milestone v3.2 Admin Command Center, Telemetry & Authentication
+# Requirements: Milestone v3.3 Admin Course Lifecycle & Visibility Management
 
-**Milestone:** v3.2  
-**Status:** In Progress  
+**Milestone:** v3.3  
+**Status:** In Planning  
 
 ---
 
 ## Requirements Grouped by Category
 
-### Category 1: Admin Authentication & Security Gates (ADMIN-AUTH)
+### Category 1: Course Lifecycle State & Server Store (COURSE-STATUS)
 
-- [x] **ADMIN-AUTH-01**: Admin dapat mengakses rute `/admin` yang diproteksi oleh Master Admin Passkey login screen.
-- [x] **ADMIN-AUTH-02**: Verifikasi kredensial admin dieksekusi melalui `createServerFn` dengan timing-safe SHA-256 hash comparison dan secure session token.
-- [x] **ADMIN-AUTH-03**: Admin dapat melihat arsitektur & antarmuka login Google OAuth (Google Sign-In readiness) dengan konfigurasi Client ID dan alur callback terproteksi.
-- [x] **ADMIN-AUTH-04**: Admin dapat melakukan logout untuk mengakhiri sesi autentikasi admin di browser secara aman.
+- [ ] **COURSE-STATUS-01**: System provides strongly-typed course lifecycle status model: `'active'` (show), `'hidden'` (hide), `'archived'` (archive), and `'deleted'` (soft-delete).
+- [ ] **COURSE-STATUS-02**: System provides an in-memory server course registry in `app/server/courseLifecycleStore.ts` initialized with existing curriculum (`ai` and `word`), retaining status, lastUpdated, updatedBy, and version.
+- [ ] **COURSE-STATUS-03**: Course status store validates mutations against valid state transitions (e.g. active <-> hidden, active <-> archived, archived <-> active, deleted <-> active restore).
 
-### Category 2: Server Telemetry Ingestion & API (ADMIN-TELEM)
+### Category 2: Admin Course Management Interface (COURSE-ADMIN)
 
-- [x] **ADMIN-TELEM-01**: Endpoint server internal TanStack Start menerima payload heartbeat & progres peserta (nama, instansi, courseId, progres persen, status checkpoint, timestamp).
-- [x] **ADMIN-TELEM-02**: Endpoint server memvalidasi schema payload telemetri dengan Zod dan menyimpannya ke server store terstruktur yang aman.
-- [x] **ADMIN-TELEM-03**: Klien peserta (`/course/ai` dan `/course/word`) memiliki background telemetry client yang secara non-blocking mengirimkan pembaharuan progres saat checkpoint diverifikasi atau kuis diselesaikan.
+- [ ] **COURSE-ADMIN-01**: Admin Command Center (`/admin`) features a dedicated "Manajemen Kursus" view/tab in `AdminShell` displaying all courses with their current status badge, metadata, and quick stats.
+- [ ] **COURSE-ADMIN-02**: Admin can toggle course visibility with 1-click `Tampilkan` (Show) / `Sembunyikan` (Hide) action buttons with instant visual feedback.
+- [ ] **COURSE-ADMIN-03**: Admin can archive/restore a course with `Arsipkan` (Archive) / `Pulihkan` (Restore) action buttons and dedicated status filter tabs (`Semua`, `Aktif`, `Tersembunyi`, `Diarsipkan`).
+- [ ] **COURSE-ADMIN-04**: Admin can soft-delete a course with `Hapus` (Delete) trigger that requires explicit user confirmation in a safety modal before deactivation.
 
-### Category 3: Participant Progress & Monitoring Dashboard (ADMIN-DASH)
+### Category 3: Secure Server Functions & Mutations (COURSE-MUTATE)
 
-- [x] **ADMIN-DASH-01**: Admin dapat memantau kartu ringkasan KPI agregat (Total Peserta Aktif, Tingkat Penyelesaian Checkpoint, Rata-rata Skor Kuis, Rasio Siap Workshop vs Perlu Klinik).
-- [x] **ADMIN-DASH-02**: Admin dapat melihat tabel daftar peserta dengan filter kategori kursus (`ai` vs `word`), status kesiapan, pencarian instansi/nama, dan status aktivitas.
-- [x] **ADMIN-DASH-03**: Admin dapat menginspeksi detail peserta (rincian checklist modul yang telah diselesaikan, riwayat checkpoint 1–3, dan nilai evaluasi kuis).
-- [x] **ADMIN-DASH-04**: Admin dapat mengekspor seluruh data rekapitulasi progres dan kesiapan peserta ke format CSV dan JSON dalam 1-klik.
+- [ ] **COURSE-MUTATE-01**: Server function `adminGetCoursesStatusFn` returns full course status registry for authenticated Master Admin sessions via `createServerFn`.
+- [ ] **COURSE-MUTATE-02**: Server function `adminUpdateCourseStatusFn` validates admin session token, executes status mutation, increments store version, and records audit trail.
+- [ ] **COURSE-MUTATE-03**: Public server function or loader `getPublicCoursesListFn` projects only non-deleted, non-archived courses for public consumption, excluding hidden courses from public listings while keeping them reachable via direct route.
 
-### Category 4: Course Access & Passkey Management Console (ADMIN-PASS)
+### Category 4: Public Catalog & Navigation Reactive Synchronization (COURSE-SYNC)
 
-- [x] **ADMIN-PASS-01**: Admin dapat memantau status aktif passkey modul kedinasan (Course 2: Pengolahan Kata Tingkat Lanjut) beserta riwayat hash server.
-- [x] **ADMIN-PASS-02**: Admin dapat memperbarui atau merotasi passkey workshop dinas secara dinamis melalui antarmuka admin yang terverifikasi.
-- [x] **ADMIN-PASS-03**: Admin dapat melihat audit log percobaan unlock passkey (termasuk deteksi kegagalan berulang / rate limiting guard).
+- [ ] **COURSE-SYNC-01**: Frontpage Hub (`/`) reactively filters workshop cards: displays only `active` courses; omits `hidden`, `archived`, and `deleted` courses.
+- [ ] **COURSE-SYNC-02**: Global header course dropdown / course switcher displays only `active` courses for normal navigation.
+- [ ] **COURSE-SYNC-03**: Direct workspace access (`/course/ai`, `/course/word`) for `hidden` courses remains functional when accessed directly (with passkey requirement intact if applicable), while `deleted` courses render an informative inactive/archived notice.
 
-### Category 5: Runtime Troubleshooting Hub & Incident Audit (ADMIN-LOG)
+### Category 5: Quality Assurance & Zero-Regression (COURSE-TEST)
 
-- [x] **ADMIN-LOG-01**: Admin dapat memantau agregasi kendala teknis dan log troubleshooting runtime yang dialami peserta (bentrok port 20128, error OAuth, kegagalan ExecutionPolicy PowerShell).
-- [x] **ADMIN-LOG-02**: Admin dapat memfilter dan mencari log kendala berdasarkan kategori error dan frekuensi untuk memandu asistensi instruktur di kelas.
-
-### Category 6: Global Platform Configuration & Banner Controls (ADMIN-CFG)
-
-- [x] **ADMIN-CFG-01**: Admin dapat mengubah mode workshop (toggle Pre-training / Live Class) secara global dari antarmuka admin.
-- [x] **ADMIN-CFG-02**: Admin dapat membuat dan menyiarkan Banner Pengumuman Global (instruksi darurat, link zoom, atau reminder jadwal kelas) yang tampil di seluruh halaman peserta.
-
-### Category 7: Quality Assurance & Zero-Regression (ADMIN-QA)
-
-- [x] **ADMIN-QA-01**: Seluruh rute `/admin`, komponen dashboard, dan server functions memiliki test suite otomatis (unit test, server RPC test, schema validation test).
-- [x] **ADMIN-QA-02**: Nol regresi terhadap fitur publik (`/`), rute workspace peserta (`/course/ai`, `/course/word`), dan seluruh test suite existing (237 tests) lulus 100%.
-
----
-
-## Out of Scope
-
-- Mengirim atau menyimpan data kredensial rahasia peserta (seperti API key bot Telegram atau OAuth secret) ke server admin.
-- Database eksternal yang memerlukan instalasi database server terpisah yang rumit untuk demo lokal (menggunakan lightweight server store terisolasi).
-- Fitur administrasi multi-tenant yang membutuhkan sistem billing / payment gateway.
+- [ ] **COURSE-TEST-01**: Automated test suites verify course lifecycle state transitions, store immutability, server mutation RPCs, and admin session authorization guards.
+- [ ] **COURSE-TEST-02**: Zero regression across public workshop workflows, passkey gates, participant telemetry, and existing 242 unit/integration tests.
 
 ---
 
 ## Traceability Matrix
 
-*(Akan dipetakan dan diperbarui oleh Roadmap setelah pemetaan fase selesai)*
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| COURSE-STATUS-01 | Phase 34 | Pending |
+| COURSE-STATUS-02 | Phase 34 | Pending |
+| COURSE-STATUS-03 | Phase 34 | Pending |
+| COURSE-MUTATE-01 | Phase 34 | Pending |
+| COURSE-MUTATE-02 | Phase 34 | Pending |
+| COURSE-ADMIN-01 | Phase 35 | Pending |
+| COURSE-ADMIN-02 | Phase 35 | Pending |
+| COURSE-ADMIN-03 | Phase 35 | Pending |
+| COURSE-ADMIN-04 | Phase 35 | Pending |
+| COURSE-SYNC-01 | Phase 36 | Pending |
+| COURSE-SYNC-02 | Phase 36 | Pending |
+| COURSE-SYNC-03 | Phase 36 | Pending |
+| COURSE-MUTATE-03 | Phase 36 | Pending |
+| COURSE-TEST-01 | Phase 37 | Pending |
+| COURSE-TEST-02 | Phase 37 | Pending |
 
-| Requirement | Phase | Status | Verification Evidence |
-|---|---|---|---|
-| ADMIN-AUTH-01 | Phase 29 | Complete | 29-VERIFICATION.md |
-| ADMIN-AUTH-02 | Phase 29 | Complete | 29-VERIFICATION.md |
-| ADMIN-AUTH-03 | Phase 29 | Complete | 29-VERIFICATION.md |
-| ADMIN-AUTH-04 | Phase 29 | Complete | 29-VERIFICATION.md |
-| ADMIN-TELEM-01 | Phase 30 | Complete | 30-VERIFICATION.md |
-| ADMIN-TELEM-02 | Phase 30 | Complete | 30-VERIFICATION.md |
-| ADMIN-TELEM-03 | Phase 30 | Complete | 30-VERIFICATION.md |
-| ADMIN-DASH-01 | Phase 31 | Complete | 31-VERIFICATION.md |
-| ADMIN-DASH-02 | Phase 31 | Complete | 31-VERIFICATION.md |
-| ADMIN-DASH-03 | Phase 31 | Complete | 31-VERIFICATION.md |
-| ADMIN-DASH-04 | Phase 31 | Complete | 31-VERIFICATION.md |
-| ADMIN-PASS-01 | Phase 32 | Complete | 32-VERIFICATION.md |
-| ADMIN-PASS-02 | Phase 32 | Complete | 32-VERIFICATION.md |
-| ADMIN-PASS-03 | Phase 32 | Complete | 32-VERIFICATION.md |
-| ADMIN-LOG-01 | Phase 32 | Complete | 32-VERIFICATION.md |
-| ADMIN-LOG-02 | Phase 32 | Complete | 32-VERIFICATION.md |
-| ADMIN-CFG-01 | Phase 33 | Complete | 33-VERIFICATION.md |
-| ADMIN-CFG-02 | Phase 33 | Complete | 33-VERIFICATION.md |
-| ADMIN-QA-01 | Phase 29, 30, 33 | Complete | 33-VERIFICATION.md |
-| ADMIN-QA-02 | Phase 33 | Complete | 33-VERIFICATION.md |
+---
+
+## Out of Scope
+
+- Hard deleting course content files or curriculum assets from the disk/repository (all deletes are soft-delete deactivations with safety guard).
+- Dynamic runtime creation of completely new course markdown curricula from the web interface (reserved for future CMS milestone).
+- Modifying course lesson content or checkpoint configurations inside this lifecycle visibility scope.

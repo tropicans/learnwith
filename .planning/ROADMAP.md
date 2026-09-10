@@ -13,9 +13,51 @@
 
 ---
 
-## Next Milestone
+## Current Milestone: v3.3 Admin Course Lifecycle & Visibility Management
 
-*Run `/gsd-new-milestone` to initialize the next development milestone.*
+**Phases:** 34–37 (4 phases)  
+**Requirements mapped:** 15/15 (100% covered)  
+
+| # | Phase | Goal | Requirements | Success Criteria |
+|---|-------|------|--------------|------------------|
+| 34 | Course Lifecycle Schema & Server Store Architecture | Define strongly-typed course status schema and server store with Master Admin RPCs | `COURSE-STATUS-01..03`, `COURSE-MUTATE-01..02` | 3 |
+| 35 | Admin Management UI & Action Controls | Build dedicated "Manajemen Kursus" view in AdminShell with Show/Hide/Archive/Delete buttons & confirmation modal | `COURSE-ADMIN-01..04` | 4 |
+| 36 | Frontpage Catalog & Header Switcher Reactive Sync | Filter public courses reactively on `/` and navigation switcher based on lifecycle status | `COURSE-SYNC-01..03`, `COURSE-MUTATE-03` | 3 |
+| 37 | End-to-End Verification & Zero-Regression Audit | Comprehensive unit, RPC, and integration tests verifying lifecycle transitions and zero regression | `COURSE-TEST-01..02` | 2 |
+
+### Phase Details
+
+#### Phase 34: Course Lifecycle Schema & Server Store Architecture
+- **Goal:** Establish typed course status model (`active`, `hidden`, `archived`, `deleted`) and server registry with Master Admin RPCs.
+- **Requirements:** `COURSE-STATUS-01`, `COURSE-STATUS-02`, `COURSE-STATUS-03`, `COURSE-MUTATE-01`, `COURSE-MUTATE-02`
+- **Success Criteria:**
+  1. `CourseStatus` enum/schema defined with transition validation.
+  2. `courseLifecycleStore.ts` manages in-memory course registry with mutation audit log.
+  3. `adminGetCoursesStatusFn` and `adminUpdateCourseStatusFn` enforce Master Admin auth token.
+
+#### Phase 35: Admin Management UI & Action Controls
+- **Goal:** Create dedicated course management tab in Admin Command Center with status action buttons and delete safety guard.
+- **Requirements:** `COURSE-ADMIN-01`, `COURSE-ADMIN-02`, `COURSE-ADMIN-03`, `COURSE-ADMIN-04`
+- **Success Criteria:**
+  1. Tab "Manajemen Kursus" rendered in `AdminShell` alongside existing tabs.
+  2. Action buttons `Tampilkan` (Show), `Sembunyikan` (Hide), and `Arsipkan` (Archive) toggle course state with instant feedback.
+  3. Status filter tabs (`Semua`, `Aktif`, `Tersembunyi`, `Diarsipkan`) allow quick list inspection.
+  4. Confirmation modal prevents accidental soft-deletion.
+
+#### Phase 36: Frontpage Catalog & Header Switcher Reactive Sync
+- **Goal:** Ensure Frontpage Hub (`/`) and navigation course switchers reactively reflect live course visibility.
+- **Requirements:** `COURSE-SYNC-01`, `COURSE-SYNC-02`, `COURSE-SYNC-03`, `COURSE-MUTATE-03`
+- **Success Criteria:**
+  1. `getCoursesList()` / loader consumes lifecycle state: only `active` courses appear on `/`.
+  2. Global header switcher omits hidden, archived, and deleted courses from navigation.
+  3. Direct URLs for hidden courses remain accessible, while deleted courses show appropriate notice.
+
+#### Phase 37: End-to-End Verification & Zero-Regression Audit
+- **Goal:** Validate all course lifecycle actions, state transitions, security boundaries, and zero regression across the platform.
+- **Requirements:** `COURSE-TEST-01`, `COURSE-TEST-02`
+- **Success Criteria:**
+  1. Unit and RPC tests verify all status transitions, invalid transition rejections, and unauthorized mutation denials.
+  2. 100% test suite pass rate (242+ tests) with zero regression on `/`, `/course/ai`, `/course/word`, and `/admin`.
 
 ---
 
