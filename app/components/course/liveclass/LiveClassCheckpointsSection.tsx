@@ -20,7 +20,7 @@ const CHECKPOINT_CRITERIA_MAP: Record<number, string[]> = {
   7: [
     'Hermes Agent terpasang via official installer <code>install.ps1</code>',
     'Setup wizard (<code>hermes setup</code>) berhasil menghubungkan agen ke 9Router (port 20128)',
-    'Perintah <code>hermes config</code> menampilkan konfigurasi aktif tanpa kendala',
+    'Perintah <code>hermes doctor</code> menampilkan status kesiapan aktif tanpa kendala',
   ],
   8: [
     'File konfigurasi <code>hermes.json</code> terhubung ke gateway <code>http://localhost:20128/v1</code>',
@@ -29,8 +29,8 @@ const CHECKPOINT_CRITERIA_MAP: Record<number, string[]> = {
   ],
   9: [
     'Bot Telegram terdaftar di BotFather dan token tersimpan aman di <code>.env</code>',
-    'Webhook 2-arah berhasil terhubung dan memproses pesan masuk',
-    'Perintah <code>/status</code> pada aplikasi Telegram dibalas otomatis oleh Hermes Agent',
+    'Koneksi Long Polling lokal terhubung dan memproses pesan masuk',
+    'Allowlist numerik aktif membatasi akses hanya untuk Telegram User ID Anda',
   ],
   10: [
     'File kredensial <code>credentials.json</code> terpasang dari Google Cloud Console',
