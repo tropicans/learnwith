@@ -12,7 +12,7 @@ type CheckpointStatus = 'pending' | 'passed' | 'failed'
 const CHECKPOINT_CRITERIA_MAP: Record<number, string[]> = {
   6: [
     'Layanan 9Router aktif listening pada port <code>20128</code>',
-    'Virtual API Key lokal (misal: <code>sk-9r-local</code>) berhasil diterbitkan',
+    'Virtual API Key lokal (misal: <code>sk-9r-...</code>) berhasil diterbitkan',
     'Endpoint <code>/v1/chat/completions</code> mengembalikan respons JSON valid',
   ],
   7: [

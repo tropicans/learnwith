@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { LIVE_CLASS_MODULES, type LiveModule } from '@/data/liveClassModules'
 import { CopyableCodeBlock } from '../pretraining/CopyableCodeBlock'
 import { showToast } from '@/components/ui/Toast'
@@ -249,6 +249,14 @@ export function LiveClassModulesSection({
                             </div>
                           )}
                         </div>
+                      )}
+
+                      {step.instructions && step.instructions.length > 0 && (
+                        <ol className="step-instruction-list">
+                          {step.instructions.map((inst, idx) => (
+                            <li key={idx} dangerouslySetInnerHTML={{ __html: inst }} />
+                          ))}
+                        </ol>
                       )}
 
                       {step.outputBadge && (
