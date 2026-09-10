@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import type { AdminUser } from '../../schemas/admin'
 import { adminLogoutFn } from '../../server/adminAuth'
 import { AdminDashboardView } from './AdminDashboardView'
+import { AdminCourseManagementView } from './courses/AdminCourseManagementView'
 import { AdminPasskeyView } from './passkeys/AdminPasskeyView'
 import { AdminTroubleshootingView } from './troubleshooting/AdminTroubleshootingView'
 import { AdminSettingsView } from './settings/AdminSettingsView'
@@ -12,7 +13,7 @@ interface AdminShellProps {
   children?: React.ReactNode
 }
 
-type AdminTab = 'dashboard' | 'telemetry' | 'passkeys' | 'troubleshooting' | 'settings'
+type AdminTab = 'dashboard' | 'telemetry' | 'courses' | 'passkeys' | 'troubleshooting' | 'settings'
 
 export function AdminShell({ adminUser, onLogout, children }: AdminShellProps) {
   const [activeTab, setActiveTab] = useState<AdminTab>('dashboard')
@@ -120,6 +121,20 @@ export function AdminShell({ adminUser, onLogout, children }: AdminShellProps) {
 
           <button
             type="button"
+            className={`admin-nav-tab ${activeTab === 'courses' ? 'active' : ''}`}
+            onClick={() => setActiveTab('courses')}
+            id="tab-admin-courses"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+              <path d="M6 6h10" />
+              <path d="M6 10h10" />
+            </svg>
+            <span>Manajemen Kursus</span>
+          </button>
+
+          <button
+            type="button"
             className={`admin-nav-tab ${activeTab === 'passkeys' ? 'active' : ''}`}
             onClick={() => setActiveTab('passkeys')}
             id="tab-admin-passkeys"
@@ -172,6 +187,8 @@ export function AdminShell({ adminUser, onLogout, children }: AdminShellProps) {
         {children || (
           activeTab === 'dashboard' || activeTab === 'telemetry' ? (
             <AdminDashboardView initialTab={activeTab} />
+          ) : activeTab === 'courses' ? (
+            <AdminCourseManagementView sessionToken={adminUser.token} />
           ) : activeTab === 'passkeys' ? (
             <AdminPasskeyView sessionToken={adminUser.token} />
           ) : activeTab === 'troubleshooting' ? (
