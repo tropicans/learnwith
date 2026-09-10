@@ -19,6 +19,7 @@ export const adminUserSchema = z.object({
   role: z.literal('admin'),
   authenticatedAt: z.number(),
   authMethod: z.enum(['passkey', 'google']),
+  token: z.string().optional(),
 })
 
 export type AdminUser = z.infer<typeof adminUserSchema>
@@ -26,6 +27,7 @@ export type AdminUser = z.infer<typeof adminUserSchema>
 export const adminSessionResultSchema = z.object({
   authenticated: z.boolean(),
   adminUser: adminUserSchema.optional(),
+  token: z.string().optional(),
 })
 
 export type AdminSessionResult = z.infer<typeof adminSessionResultSchema>

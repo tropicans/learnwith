@@ -14,8 +14,13 @@ import { TroubleshootingFilterToolbar } from './TroubleshootingFilterToolbar'
 import { TroubleshootingLogTable } from './TroubleshootingLogTable'
 import { TroubleshootingDetailModal } from './TroubleshootingDetailModal'
 import { showToast } from '../../ui/Toast'
+import { getClientAdminToken } from '../../../utils/adminToken'
 
-export function AdminTroubleshootingView() {
+interface AdminTroubleshootingViewProps {
+  sessionToken?: string
+}
+
+export function AdminTroubleshootingView({ sessionToken }: AdminTroubleshootingViewProps = {}) {
   const [incidents, setIncidents] = useState<TroubleshootingLogRecord[]>([])
   const [stats, setStats] = useState<TroubleshootingStats | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -41,9 +46,11 @@ export function AdminTroubleshootingView() {
         setIsLoading(true)
       }
       try {
+        const activeToken = sessionToken || getClientAdminToken()
         const res = await getTroubleshootingLogsFn({
           data: {
             ...filter,
+            sessionToken: activeToken,
           },
         })
         if (res) {
@@ -60,7 +67,7 @@ export function AdminTroubleshootingView() {
         }
       }
     },
-    [filter]
+    [filter, sessionToken]
   )
 
   // Fetch whenever filters change
@@ -100,11 +107,13 @@ export function AdminTroubleshootingView() {
 
   const handleQuickResolve = async (incidentId: string) => {
     try {
+      const activeToken = sessionToken || getClientAdminToken()
       const res = await updateTroubleshootingLogStatusFn({
         data: {
           id: incidentId,
           status: 'resolved',
           instructorNotes: 'Ditandai selesai via quick resolve.',
+          sessionToken: activeToken,
         },
       })
       if (res && res.success) {
@@ -123,11 +132,13 @@ export function AdminTroubleshootingView() {
   ) => {
     setIsSaving(true)
     try {
+      const activeToken = sessionToken || getClientAdminToken()
       const res = await updateTroubleshootingLogStatusFn({
         data: {
           id: incidentId,
           status,
           instructorNotes: notes,
+          sessionToken: activeToken,
         },
       })
       if (res && res.success) {

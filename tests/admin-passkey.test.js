@@ -370,5 +370,16 @@ describe('Phase 32 Workshop Access Passkey Management Suite', () => {
       assert.strictEqual(rotateResult.success, true)
       assert.strictEqual(rotateResult.version, 2)
     })
+
+    it('authenticates Google Workspace admin session and returns token property', () => {
+      const session = sessionModule.createAdminSession('google')
+      assert.ok(session.token)
+
+      const user = passkeyServer.assertAdminAuthorized(session.token)
+      assert.ok(user)
+      assert.strictEqual(user.role, 'admin')
+      assert.strictEqual(user.authMethod, 'google')
+      assert.strictEqual(user.token, session.token)
+    })
   })
 })

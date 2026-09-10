@@ -48,8 +48,14 @@ export const adminLoginFn = createServerFn({ method: 'POST' })
  * Reads session cookie from incoming request and returns authentication status.
  */
 export const adminCheckSessionFn = createServerFn({ method: 'GET' })
-  .handler(async (): Promise<AdminSessionResult> => {
-    const token = readSessionToken()
+  .validator((data?: unknown) => {
+    if (data && typeof data === 'object' && 'sessionToken' in (data as any)) {
+      return data as { sessionToken?: string }
+    }
+    return undefined
+  })
+  .handler(async ({ data }): Promise<AdminSessionResult> => {
+    const token = data?.sessionToken || readSessionToken()
     const adminUser = validateAdminSession(token)
 
     if (!adminUser) {
@@ -61,6 +67,7 @@ export const adminCheckSessionFn = createServerFn({ method: 'GET' })
     return {
       authenticated: true,
       adminUser,
+      token: adminUser.token || token || undefined,
     }
   })
 

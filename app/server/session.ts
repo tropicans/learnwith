@@ -89,6 +89,7 @@ export function validateAdminSession(token: string | null | undefined): AdminUse
     role: 'admin',
     authenticatedAt: session.createdAt,
     authMethod: session.authMethod,
+    token: session.token,
   }
 }
 

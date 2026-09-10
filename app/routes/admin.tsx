@@ -4,6 +4,11 @@ import { adminCheckSessionFn, adminGetAuthConfigFn, adminGoogleLoginFn } from '@
 import type { AdminUser } from '@/schemas/admin'
 import { AdminLoginGate } from '@/components/admin/AdminLoginGate'
 import { AdminShell } from '@/components/admin/AdminShell'
+import {
+  getClientAdminToken,
+  setClientAdminToken,
+  clearClientAdminToken,
+} from '@/utils/adminToken'
 
 export const Route = createFileRoute('/admin')({
   loader: async () => {
@@ -35,9 +40,41 @@ function AdminRouteComponent() {
 
   useEffect(() => {
     if (initialUser) {
+      if (initialUser.token) {
+        setClientAdminToken(initialUser.token)
+      }
       setCurrentUser(initialUser)
+    } else {
+      // Re-hydrate from sessionStorage if token is present
+      const storedToken = getClientAdminToken()
+      if (storedToken) {
+        adminCheckSessionFn({ data: { sessionToken: storedToken } })
+          .then((res) => {
+            if (res.authenticated && res.adminUser) {
+              setCurrentUser({
+                ...res.adminUser,
+                token: storedToken,
+              })
+            } else {
+              clearClientAdminToken()
+            }
+          })
+          .catch(() => {
+            // Ignore offline errors
+          })
+      }
     }
   }, [initialUser])
+
+  // Hydrate token onto currentUser if missing
+  useEffect(() => {
+    if (currentUser && !currentUser.token) {
+      const storedToken = getClientAdminToken()
+      if (storedToken) {
+        setCurrentUser((prev) => (prev ? { ...prev, token: storedToken } : null))
+      }
+    }
+  }, [currentUser])
 
   // Handle Google OAuth callback from URL hash (#access_token=... or #id_token=...)
   useEffect(() => {
@@ -57,10 +94,14 @@ function AdminRouteComponent() {
       adminGoogleLoginFn({ data: { credentialToken: token } })
         .then((res) => {
           if (res.success && res.authenticatedAt) {
+            if (res.token) {
+              setClientAdminToken(res.token)
+            }
             setCurrentUser({
               role: 'admin',
               authenticatedAt: res.authenticatedAt,
               authMethod: 'google',
+              token: res.token,
             })
           } else {
             setOauthError(res.message || 'Login Google gagal.')
@@ -73,10 +114,14 @@ function AdminRouteComponent() {
   }, [])
 
   const handleLoginSuccess = (user: AdminUser) => {
+    if (user.token) {
+      setClientAdminToken(user.token)
+    }
     setCurrentUser(user)
   }
 
   const handleLogout = () => {
+    clearClientAdminToken()
     setCurrentUser(null)
   }
 

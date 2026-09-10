@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react'
 import type { CourseId, CoursePasskeyRecord, RotatePasskeyResult } from '../../../schemas/passkey'
 import { adminRotatePasskeyFn } from '../../../server/passkey'
 
+import { getClientAdminToken } from '../../../utils/adminToken'
+
 interface PasskeyRotateModalProps {
   isOpen: boolean
   courseId: CourseId | null
   currentRecord?: CoursePasskeyRecord
+  sessionToken?: string
   onClose: () => void
   onSuccess: (result: RotatePasskeyResult) => void
 }
@@ -14,6 +17,7 @@ export function PasskeyRotateModal({
   isOpen,
   courseId,
   currentRecord,
+  sessionToken,
   onClose,
   onSuccess,
 }: PasskeyRotateModalProps) {
@@ -63,11 +67,13 @@ export function PasskeyRotateModal({
     setErrorMessage(null)
 
     try {
+      const activeToken = sessionToken || getClientAdminToken()
       const result = await adminRotatePasskeyFn({
         data: {
           courseId,
           newPasskey: newPasskey.trim(),
           reason: reason.trim() || undefined,
+          sessionToken: activeToken,
         },
       })
 

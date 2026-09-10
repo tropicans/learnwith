@@ -173,11 +173,11 @@ export function AdminShell({ adminUser, onLogout, children }: AdminShellProps) {
           activeTab === 'dashboard' || activeTab === 'telemetry' ? (
             <AdminDashboardView initialTab={activeTab} />
           ) : activeTab === 'passkeys' ? (
-            <AdminPasskeyView />
+            <AdminPasskeyView sessionToken={adminUser.token} />
           ) : activeTab === 'troubleshooting' ? (
-            <AdminTroubleshootingView />
+            <AdminTroubleshootingView sessionToken={adminUser.token} />
           ) : (
-            <AdminSettingsView />
+            <AdminSettingsView sessionToken={adminUser.token} />
           )
         )}
       </main>

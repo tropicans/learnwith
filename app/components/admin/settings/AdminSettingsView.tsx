@@ -12,8 +12,13 @@ import {
 import { WorkshopModeCard } from './WorkshopModeCard.tsx'
 import { AnnouncementBannerEditor } from './AnnouncementBannerEditor.tsx'
 import { PlatformReadinessCard } from './PlatformReadinessCard.tsx'
+import { getClientAdminToken } from '../../../utils/adminToken'
 
-export function AdminSettingsView() {
+interface AdminSettingsViewProps {
+  sessionToken?: string
+}
+
+export function AdminSettingsView({ sessionToken }: AdminSettingsViewProps = {}) {
   const [config, setConfig] = useState<AdminPlatformConfig | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -37,7 +42,10 @@ export function AdminSettingsView() {
     if (showLoading) setIsLoading(true)
     setError(null)
     try {
-      const data = await adminGetPlatformConfigFn()
+      const activeToken = sessionToken || getClientAdminToken()
+      const data = await adminGetPlatformConfigFn({
+        data: activeToken ? { sessionToken: activeToken } : undefined,
+      })
       setConfig(data)
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : 'Gagal memuat konfigurasi platform dari server.'
@@ -45,7 +53,7 @@ export function AdminSettingsView() {
     } finally {
       setIsLoading(false)
     }
-  }, [])
+  }, [sessionToken])
 
   useEffect(() => {
     fetchConfig(true)
@@ -54,8 +62,9 @@ export function AdminSettingsView() {
   const handleUpdateWorkshopMode = async (mode: WorkshopMode, reason?: string) => {
     setIsUpdatingMode(true)
     try {
+      const activeToken = sessionToken || getClientAdminToken()
       const res = await adminUpdateWorkshopModeFn({
-        data: { mode, reason },
+        data: { mode, reason, sessionToken: activeToken },
       })
       setNotification({
         type: 'success',
@@ -78,8 +87,9 @@ export function AdminSettingsView() {
   ) => {
     setIsUpdatingBanner(true)
     try {
+      const activeToken = sessionToken || getClientAdminToken()
       const res = await adminUpdateAnnouncementBannerFn({
-        data: input,
+        data: { ...input, sessionToken: activeToken },
       })
       setNotification({
         type: 'success',

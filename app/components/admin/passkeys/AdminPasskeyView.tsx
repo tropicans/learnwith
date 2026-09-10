@@ -10,7 +10,13 @@ import { PasskeyRotateModal } from './PasskeyRotateModal'
 import { PasskeyHistoryTable } from './PasskeyHistoryTable'
 import { PasskeyAuditLogTable } from './PasskeyAuditLogTable'
 
-export function AdminPasskeyView() {
+import { getClientAdminToken } from '../../../utils/adminToken'
+
+interface AdminPasskeyViewProps {
+  sessionToken?: string
+}
+
+export function AdminPasskeyView({ sessionToken }: AdminPasskeyViewProps = {}) {
   const [data, setData] = useState<PasskeyStatusResponse | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -31,7 +37,10 @@ export function AdminPasskeyView() {
     setError(null)
 
     try {
-      const response = await adminGetPasskeyStatusFn()
+      const activeToken = sessionToken || getClientAdminToken()
+      const response = await adminGetPasskeyStatusFn({
+        data: activeToken ? { sessionToken: activeToken } : undefined,
+      })
       setData(response)
       setLastRefreshedAt(Date.now())
     } catch (err: unknown) {
@@ -40,7 +49,7 @@ export function AdminPasskeyView() {
     } finally {
       setIsLoading(false)
     }
-  }, [])
+  }, [sessionToken])
 
   useEffect(() => {
     fetchStatus(true)
@@ -271,6 +280,7 @@ export function AdminPasskeyView() {
           isOpen={Boolean(rotatingCourseId)}
           courseId={rotatingCourseId}
           currentRecord={data.passkeys[rotatingCourseId]}
+          sessionToken={sessionToken || getClientAdminToken()}
           onClose={handleCloseRotate}
           onSuccess={handleRotateSuccess}
         />
