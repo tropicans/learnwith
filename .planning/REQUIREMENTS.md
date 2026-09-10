@@ -15,10 +15,10 @@
 
 ### Category 2: Admin Course Management Interface (COURSE-ADMIN)
 
-- [ ] **COURSE-ADMIN-01**: Admin Command Center (`/admin`) features a dedicated "Manajemen Kursus" view/tab in `AdminShell` displaying all courses with their current status badge, metadata, and quick stats.
-- [ ] **COURSE-ADMIN-02**: Admin can toggle course visibility with 1-click `Tampilkan` (Show) / `Sembunyikan` (Hide) action buttons with instant visual feedback.
-- [ ] **COURSE-ADMIN-03**: Admin can archive/restore a course with `Arsipkan` (Archive) / `Pulihkan` (Restore) action buttons and dedicated status filter tabs (`Semua`, `Aktif`, `Tersembunyi`, `Diarsipkan`).
-- [ ] **COURSE-ADMIN-04**: Admin can soft-delete a course with `Hapus` (Delete) trigger that requires explicit user confirmation in a safety modal before deactivation.
+- [x] **COURSE-ADMIN-01**: Admin Command Center (`/admin`) features a dedicated "Manajemen Kursus" view/tab in `AdminShell` displaying all courses with their current status badge, metadata, and quick stats.
+- [x] **COURSE-ADMIN-02**: Admin can toggle course visibility with 1-click `Tampilkan` (Show) / `Sembunyikan` (Hide) action buttons with instant visual feedback.
+- [x] **COURSE-ADMIN-03**: Admin can archive/restore a course with `Arsipkan` (Archive) / `Pulihkan` (Restore) action buttons and dedicated status filter tabs (`Semua`, `Aktif`, `Tersembunyi`, `Diarsipkan`).
+- [x] **COURSE-ADMIN-04**: Admin can soft-delete a course with `Hapus` (Delete) trigger that requires explicit user confirmation in a safety modal before deactivation.
 
 ### Category 3: Secure Server Functions & Mutations (COURSE-MUTATE)
 
@@ -48,10 +48,10 @@
 | COURSE-STATUS-03 | Phase 34 | Complete |
 | COURSE-MUTATE-01 | Phase 34 | Complete |
 | COURSE-MUTATE-02 | Phase 34 | Complete |
-| COURSE-ADMIN-01 | Phase 35 | Pending |
-| COURSE-ADMIN-02 | Phase 35 | Pending |
-| COURSE-ADMIN-03 | Phase 35 | Pending |
-| COURSE-ADMIN-04 | Phase 35 | Pending |
+| COURSE-ADMIN-01 | Phase 35 | Complete |
+| COURSE-ADMIN-02 | Phase 35 | Complete |
+| COURSE-ADMIN-03 | Phase 35 | Complete |
+| COURSE-ADMIN-04 | Phase 35 | Complete |
 | COURSE-SYNC-01 | Phase 36 | Pending |
 | COURSE-SYNC-02 | Phase 36 | Pending |
 | COURSE-SYNC-03 | Phase 36 | Pending |

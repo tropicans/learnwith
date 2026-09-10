@@ -2,20 +2,20 @@
 gsd_state_version: "1.0"
 milestone: v3.3
 milestone_name: Admin Course Lifecycle & Visibility Management
-current_phase: 35
-current_phase_name: Admin Management UI & Action Controls
-status: executing
-stopped_at: Phase 35 planning complete and verified
-last_updated: "2026-09-10T09:12:00.000Z"
+current_phase: 36
+current_phase_name: Frontpage Catalog & Header Switcher Reactive Sync
+status: planning
+stopped_at: Phase 35 complete, ready to plan Phase 36
+last_updated: "2026-09-10T09:14:27.445Z"
 last_activity: 2026-09-10
-last_activity_desc: Phase 35 Plan 02 complete
-state_head: 8024787
+last_activity_desc: Phase 35 complete, transitioned to Phase 36
+state_head: 6b1b575ce845c327ac09633c03c1d29f3887eed4
 progress:
   total_phases: 4
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 4
-  completed_plans: 3
-  percent: 25
+  completed_plans: 4
+  percent: 50
 ---
 
 # Project State
@@ -25,14 +25,14 @@ progress:
 See: `.planning/PROJECT.md` (updated 2026-09-10 for milestone v3.3)
 
 **Core value:** Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
-**Current focus:** Phase 35 — Admin Management UI & Action Controls
+**Current focus:** Phase 36 — Frontpage Catalog & Header Switcher Reactive Sync
 
 ## Current Position
 
-Phase: 35 (Admin Management UI & Action Controls) — EXECUTING
-Plan: 1 of 2
-Status: Executing Phase 35
-Last activity: 2026-09-10 — Phase 35 execution started
+Phase: 36 — Frontpage Catalog & Header Switcher Reactive Sync
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-09-10 — Phase 35 complete, transitioned to Phase 36
 
 ## Milestone Summary
 
@@ -45,7 +45,8 @@ Last activity: 2026-09-10 — Phase 35 execution started
 - **Delivered**: Milestone v3.1 complete (Phases 24-28, PRE-BASE-01 to PRE-NAV-03).
 - **Delivered**: Milestone v3.2 complete (Phases 29-33, ADMIN-AUTH-01 to ADMIN-QA-02).
 - **Delivered**: Phase 34 complete (COURSE-STATUS-01..03, COURSE-MUTATE-01..02).
-- **Verification**: 30 test files passing (252/252 tests passed, 0 failures), TypeScript typecheck 0 errors.
+- **Delivered**: Phase 35 complete (COURSE-ADMIN-01..04).
+- **Verification**: 31 test files passing (262/262 tests passed, 0 failures), TypeScript typecheck 0 errors.
 
 ## Deferred Items
 
@@ -61,7 +62,7 @@ None.
 ## Session
 
 **Last session:** 2026-09-10T15:59:00.000Z
-**Stopped at:** Phase 35 planning complete and verified
+**Stopped at:** Phase 35 complete, ready to plan Phase 36
 **Resume file:** .planning/phases/35-admin-management-ui-action-controls/35-01-PLAN.md
 
 ## Operator Next Steps
