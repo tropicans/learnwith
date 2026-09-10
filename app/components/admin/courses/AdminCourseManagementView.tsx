@@ -14,6 +14,7 @@ import { CourseLifecycleKPIs } from './CourseLifecycleKPIs'
 import { CourseStatusCards } from './CourseStatusCards'
 import { CourseFilterToolbar, type FilterStatusOption } from './CourseFilterToolbar'
 import { CourseLifecycleAuditTable } from './CourseLifecycleAuditTable'
+import { CourseDeleteModal } from './CourseDeleteModal'
 
 interface AdminCourseManagementViewProps {
   sessionToken?: string
@@ -31,6 +32,8 @@ export function AdminCourseManagementView({
   const [mutatingCourseId, setMutatingCourseId] = useState<string | null>(null)
   const [selectedStatus, setSelectedStatus] = useState<FilterStatusOption>('all')
   const [searchQuery, setSearchQuery] = useState('')
+  const [courseForDelete, setCourseForDelete] = useState<CourseLifecycleRecord | null>(null)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const fetchCourses = useCallback(
     async (showLoadingSpinner = false) => {
@@ -149,6 +152,34 @@ export function AdminCourseManagementView({
       showToast(msg, 'danger')
     } finally {
       setMutatingCourseId(null)
+    }
+  }
+
+  const handleConfirmDelete = async (courseId: string, reason?: string) => {
+    setIsDeleting(true)
+    try {
+      const activeToken = sessionToken || getClientAdminToken()
+      const targetCourse = records.find((c) => c.id === courseId)
+      const courseTitle = targetCourse ? targetCourse.title : courseId
+
+      await adminUpdateCourseStatusFn({
+        data: {
+          courseId,
+          targetStatus: 'deleted',
+          reason,
+          sessionToken: activeToken,
+        },
+      })
+      showToast(`Kursus ${courseTitle} berhasil dinonaktifkan.`, 'success')
+      setCourseForDelete(null)
+      await fetchCourses(false)
+    } catch (err: unknown) {
+      const msg =
+        err instanceof Error ? err.message : 'Gagal menonaktifkan kursus.'
+      showToast(msg, 'danger')
+      throw err
+    } finally {
+      setIsDeleting(false)
     }
   }
 
@@ -273,6 +304,7 @@ export function AdminCourseManagementView({
         onToggleVisibility={handleToggleVisibility}
         onArchive={handleArchiveCourse}
         onRestore={handleRestoreCourse}
+        onDeleteTrigger={(course) => setCourseForDelete(course)}
         onResetFilters={handleResetFilters}
         mutatingCourseId={mutatingCourseId}
         isLoading={isLoading}
@@ -280,6 +312,15 @@ export function AdminCourseManagementView({
 
       {/* Course Lifecycle Audit Table */}
       <CourseLifecycleAuditTable auditLog={auditLog} isLoading={isLoading} />
+
+      {/* Guarded Soft-Delete Confirmation Modal */}
+      <CourseDeleteModal
+        isOpen={courseForDelete !== null}
+        course={courseForDelete}
+        onClose={() => setCourseForDelete(null)}
+        onConfirm={handleConfirmDelete}
+        isSubmitting={isDeleting}
+      />
     </div>
   )
 }

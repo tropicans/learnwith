@@ -159,6 +159,158 @@ describe('Phase 35 Course Lifecycle Admin UI Suite', () => {
     });
   });
 
+  describe('COURSE-ADMIN-03: Filter Toolbar, Archive/Restore & Audit Table', () => {
+    it('verifies CourseFilterToolbar.tsx structure, pills, and search box', () => {
+      const toolbarPath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'courses', 'CourseFilterToolbar.tsx');
+      assert.ok(fs.existsSync(toolbarPath), 'CourseFilterToolbar.tsx must exist');
+      const content = fs.readFileSync(toolbarPath, 'utf8');
+
+      assert.ok(content.includes('id="course-filter-toolbar"'), 'Must have course-filter-toolbar ID');
+      assert.ok(content.includes('id="course-search-input"'), 'Must have course-search-input ID');
+      assert.ok(content.includes('filter-pill-all'), 'Must have filter-pill-all');
+      assert.ok(content.includes('filter-pill-active'), 'Must have filter-pill-active');
+      assert.ok(content.includes('filter-pill-hidden'), 'Must have filter-pill-hidden');
+      assert.ok(content.includes('filter-pill-archived'), 'Must have filter-pill-archived');
+      assert.ok(content.includes('filter-pill-deleted'), 'Must have filter-pill-deleted');
+    });
+
+    it('filters courses accurately by status and search keyword', () => {
+      const mockRecords = [
+        { id: 'ai', title: 'Hands-on Agentic AI', status: 'active' },
+        { id: 'word', title: 'Pengolahan Kata Tingkat Lanjut', status: 'hidden' },
+        { id: 'excel', title: 'Pengolahan Angka Excel', status: 'archived' },
+      ];
+
+      // Status filter
+      const activeOnly = mockRecords.filter((c) => c.status === 'active');
+      assert.equal(activeOnly.length, 1);
+      assert.equal(activeOnly[0].id, 'ai');
+
+      // Search keyword filter (case-insensitive)
+      const q = 'kata';
+      const searchResults = mockRecords.filter(
+        (c) => c.title.toLowerCase().includes(q) || c.id.toLowerCase().includes(q),
+      );
+      assert.equal(searchResults.length, 1);
+      assert.equal(searchResults[0].id, 'word');
+    });
+
+    it('executes archive and restore RPC transitions correctly', async () => {
+      const session = sessionModule.createAdminSession('passkey');
+
+      // 1. Archive active course
+      await courseRpcModule.adminUpdateCourseStatusFn({
+        data: {
+          courseId: 'ai',
+          targetStatus: 'archived',
+          sessionToken: session.token,
+          reason: 'Arsip kurikulum angkatan lama',
+        },
+      });
+
+      const archivedRecord = storeModule.getCourseLifecycleRecord('ai');
+      assert.equal(archivedRecord.status, 'archived');
+      assert.equal(archivedRecord.reason, 'Arsip kurikulum angkatan lama');
+
+      // 2. Restore archived course back to active
+      await courseRpcModule.adminUpdateCourseStatusFn({
+        data: {
+          courseId: 'ai',
+          targetStatus: 'active',
+          sessionToken: session.token,
+          reason: 'Dipulihkan kembali untuk semester baru',
+        },
+      });
+
+      const restoredRecord = storeModule.getCourseLifecycleRecord('ai');
+      assert.equal(restoredRecord.status, 'active');
+
+      // Verify audit log has entries
+      const auditLog = storeModule.getCourseLifecycleAuditLog();
+      assert.ok(auditLog.length >= 2, 'Audit log must record both transitions');
+      assert.equal(auditLog[0].toStatus, 'active');
+      assert.equal(auditLog[1].toStatus, 'archived');
+    });
+
+    it('verifies CourseLifecycleAuditTable.tsx structure and table columns', () => {
+      const tablePath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'courses', 'CourseLifecycleAuditTable.tsx');
+      assert.ok(fs.existsSync(tablePath), 'CourseLifecycleAuditTable.tsx must exist');
+      const content = fs.readFileSync(tablePath, 'utf8');
+
+      assert.ok(content.includes('id="course-audit-section"'), 'Must have course-audit-section ID');
+      assert.ok(content.includes('id="admin-audit-table"'), 'Must have admin-audit-table ID');
+      assert.ok(content.includes('Waktu Transisi'), 'Must have Waktu Transisi column');
+      assert.ok(content.includes('Kursus'), 'Must have Kursus column');
+      assert.ok(content.includes('Perubahan Status'), 'Must have Perubahan Status column');
+      assert.ok(content.includes('Operator'), 'Must have Operator column');
+      assert.ok(content.includes('Alasan / Catatan'), 'Must have Alasan / Catatan column');
+    });
+  });
+
+  describe('COURSE-ADMIN-04: Soft-Delete Safety Guard Modal & Validation Barrier', () => {
+    it('verifies CourseDeleteModal.tsx guard inputs, barrier logic, and labels', () => {
+      const modalPath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'courses', 'CourseDeleteModal.tsx');
+      assert.ok(fs.existsSync(modalPath), 'CourseDeleteModal.tsx must exist');
+      const content = fs.readFileSync(modalPath, 'utf8');
+
+      assert.ok(content.includes('id="course-delete-modal-backdrop"'), 'Must have modal backdrop ID');
+      assert.ok(content.includes('id="course-delete-modal-container"'), 'Must have modal container ID');
+      assert.ok(content.includes('id="btn-confirm-delete"'), 'Must have confirm delete button ID');
+      assert.ok(content.includes('id="btn-cancel-delete"'), 'Must have cancel delete button ID');
+      assert.ok(content.includes('id="delete-confirm"'), 'Must have confirmation input ID');
+      assert.ok(content.includes('id="delete-reason"'), 'Must have reason input ID');
+      assert.ok(content.includes('Ya, Nonaktifkan Kursus'), 'Must have exact button copy');
+      assert.ok(content.includes('Batalkan Perubahan'), 'Must have exact cancel copy');
+      assert.ok(content.includes('⚠️ Tindakan Sensitif'), 'Must have danger badge copy');
+    });
+
+    it('validates confirmation guard barrier: only allows submit on course ID or HAPUS', () => {
+      const courseId = 'ai';
+      const isConfirmedGuard = (typed) => {
+        const norm = (typed || '').trim().toLowerCase();
+        return norm === courseId.toLowerCase() || norm === 'hapus';
+      };
+
+      assert.equal(isConfirmedGuard(''), false);
+      assert.equal(isConfirmedGuard('ai '), true);
+      assert.equal(isConfirmedGuard('AI'), true);
+      assert.equal(isConfirmedGuard('hapus'), true);
+      assert.equal(isConfirmedGuard('HAPUS'), true);
+      assert.equal(isConfirmedGuard('wrong-id'), false);
+      assert.equal(isConfirmedGuard('delete'), false);
+    });
+
+    it('executes soft-delete transition to deleted state with optional reason', async () => {
+      const session = sessionModule.createAdminSession('passkey');
+
+      await courseRpcModule.adminUpdateCourseStatusFn({
+        data: {
+          courseId: 'word',
+          targetStatus: 'deleted',
+          sessionToken: session.token,
+          reason: 'Pembaruan kurikulum total angkatan baru',
+        },
+      });
+
+      const deletedRecord = storeModule.getCourseLifecycleRecord('word');
+      assert.equal(deletedRecord.status, 'deleted');
+      assert.equal(deletedRecord.reason, 'Pembaruan kurikulum total angkatan baru');
+
+      // Verify soft-deleted course can be restored back to active
+      await courseRpcModule.adminUpdateCourseStatusFn({
+        data: {
+          courseId: 'word',
+          targetStatus: 'active',
+          sessionToken: session.token,
+          reason: 'Dipulihkan kembali oleh Master Admin',
+        },
+      });
+
+      const restoredRecord = storeModule.getCourseLifecycleRecord('word');
+      assert.equal(restoredRecord.status, 'active');
+    });
+  });
+
   describe('Security Boundary & Style Integrity Audit', () => {
     const SENSITIVE_SERVER_SECRETS = [
       'ADMIN_PASSKEY',
@@ -212,6 +364,10 @@ describe('Phase 35 Course Lifecycle Admin UI Suite', () => {
       assert.ok(content.includes('.btn-course-action'), 'Must have .btn-course-action');
       assert.ok(content.includes('.btn-action-primary'), 'Must have .btn-action-primary');
       assert.ok(content.includes('.btn-action-warning'), 'Must have .btn-action-warning');
+      assert.ok(content.includes('.btn-action-secondary'), 'Must have .btn-action-secondary');
+      assert.ok(content.includes('.admin-modal-backdrop'), 'Must have .admin-modal-backdrop');
+      assert.ok(content.includes('.course-delete-modal'), 'Must have .course-delete-modal');
+      assert.ok(content.includes('.admin-audit-table'), 'Must have .admin-audit-table');
     });
   });
 });

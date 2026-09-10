@@ -4037,5 +4037,224 @@
   color: #c7c7cc;
 }
 
+/* ==========================================================================
+   Guarded Safety Confirmation Modal (COURSE-ADMIN-04)
+   ========================================================================== */
+.admin-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 16px;
+  animation: modal-fade-in 0.2s ease-out;
+}
+
+.admin-modal-container {
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: modal-pop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-delete-modal {
+  border-top: 4px solid #ff3b30;
+}
+
+.admin-modal-header {
+  padding: 24px 24px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-header-danger {
+  background: linear-gradient(180deg, rgba(255, 59, 48, 0.04) 0%, transparent 100%);
+}
+
+.modal-danger-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  background: rgba(255, 59, 48, 0.12);
+  color: #d70015;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-modal-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0;
+}
+
+.admin-modal-body {
+  padding: 0 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-warning-text {
+  font-size: 14px;
+  color: #515154;
+  line-height: 1.5;
+  margin: 0;
+  padding: 12px 14px;
+  background: #fdf2f2;
+  border-left: 3px solid #ff3b30;
+  border-radius: 4px;
+}
+
+.modal-warning-text code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 12px;
+}
+
+.modal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.modal-label code {
+  background: rgba(0, 0, 0, 0.06);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: #ffffff;
+  font-size: 14px;
+  color: #1d1d1f;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.modal-input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+}
+
+.input-confirm-guard {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.input-confirm-guard:focus {
+  border-color: #ff3b30;
+  box-shadow: 0 0 0 3px rgba(255, 59, 48, 0.15);
+}
+
+.modal-char-count {
+  font-size: 11px;
+  color: #86868b;
+  align-self: flex-end;
+}
+
+.modal-alert-error {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fdf2f2;
+  border: 1px solid rgba(255, 59, 48, 0.2);
+  color: #d70015;
+  font-size: 13px;
+}
+
+.admin-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.btn-modal-cancel {
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #f5f5f7;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #515154;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-modal-cancel:hover:not(:disabled) {
+  background: #e5e5ea;
+  color: #1d1d1f;
+}
+
+.btn-modal-danger {
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #ff3b30;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-modal-danger:hover:not(:disabled) {
+  background: #d70015;
+}
+
+.btn-modal-danger:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
 
 
