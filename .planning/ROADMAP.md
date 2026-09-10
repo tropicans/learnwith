@@ -44,7 +44,7 @@
   3. Status filter tabs (`Semua`, `Aktif`, `Tersembunyi`, `Diarsipkan`) allow quick list inspection.
   4. Confirmation modal prevents accidental soft-deletion.
 
-#### Phase 36: Frontpage Catalog & Header Switcher Reactive Sync
+#### Phase 36: Frontpage Catalog & Header Switcher Reactive Sync (Complete: 2026-09-10)
 - **Goal:** Ensure Frontpage Hub (`/`) and navigation course switchers reactively reflect live course visibility.
 - **Requirements:** `COURSE-SYNC-01`, `COURSE-SYNC-02`, `COURSE-SYNC-03`, `COURSE-MUTATE-03`
 - **Success Criteria:**
