@@ -10969,8 +10969,8 @@
     "semantic_hash": ""
   },
   "app.config.ts": {
-    "mtime": 1788858429.1797776,
-    "ast_hash": "b0274ea7527abde097e2f3f4f0e705a3",
+    "mtime": 1788937550.74475,
+    "ast_hash": "7b262d4c0e987aa5a6480f05dbdce6e3",
     "semantic_hash": ""
   },
   "app/client.tsx": {
@@ -10989,8 +10989,8 @@
     "semantic_hash": ""
   },
   "app/routes/__root.tsx": {
-    "mtime": 1788936723.9182,
-    "ast_hash": "656e5275c48f84e3a14f19411c1dd859",
+    "mtime": 1789003356.637815,
+    "ast_hash": "f2527d3af3561f8319f9f5c927d49c3e",
     "semantic_hash": ""
   },
   "app/routes/index.tsx": {
@@ -12479,13 +12479,13 @@
     "semantic_hash": ""
   },
   "app/components/admin/AdminLoginGate.tsx": {
-    "mtime": 1788936441.851158,
-    "ast_hash": "5e7965bc4a857adce102c585119970ea",
+    "mtime": 1789003212.5672421,
+    "ast_hash": "93642f434f748979276cc19ba7aa0a6b",
     "semantic_hash": ""
   },
   "app/components/admin/AdminShell.tsx": {
-    "mtime": 1788936723.8959203,
-    "ast_hash": "01854b7b1e7cd00eb1f8e4a6c94435fd",
+    "mtime": 1789003220.9327111,
+    "ast_hash": "e540d552d26b6dc0bedb4af7182468bc",
     "semantic_hash": ""
   },
   "app/components/admin/GoogleSignInButton.tsx": {
@@ -12494,8 +12494,8 @@
     "semantic_hash": ""
   },
   "app/routes/admin.tsx": {
-    "mtime": 1788936441.8921692,
-    "ast_hash": "6c16dd184e5cc2716385506fad9cc20a",
+    "mtime": 1789003224.1026998,
+    "ast_hash": "abf237848d8955eb17fda9feb5b962bf",
     "semantic_hash": ""
   },
   "app/schemas/admin.ts": {

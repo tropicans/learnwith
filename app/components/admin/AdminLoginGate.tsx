@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { adminLoginFn } from '../../server/adminAuth'
 import type { AdminUser } from '../../schemas/admin'
 import { GoogleSignInButton } from './GoogleSignInButton'
@@ -15,10 +15,34 @@ export function AdminLoginGate({
   const [passkey, setPasskey] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Detect and sync password manager autofill
+  useEffect(() => {
+    const syncAutofill = () => {
+      if (inputRef.current?.value && inputRef.current.value !== passkey) {
+        setPasskey(inputRef.current.value)
+      }
+    }
+    const timer1 = setTimeout(syncAutofill, 200)
+    const timer2 = setTimeout(syncAutofill, 600)
+    const timer3 = setTimeout(syncAutofill, 1200)
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
+      clearTimeout(timer3)
+    }
+  }, [passkey])
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!passkey.trim()) {
+    const form = e.currentTarget
+    const formData = new FormData(form)
+    const formVal = (formData.get('passkey') as string) || ''
+    const domVal = inputRef.current?.value || ''
+    const effectivePasskey = (formVal || domVal || passkey).trim()
+
+    if (!effectivePasskey) {
       setErrorMessage('Silakan masukkan Master Passkey Admin.')
       return
     }
@@ -28,7 +52,7 @@ export function AdminLoginGate({
 
     try {
       const result = await adminLoginFn({
-        data: { passkey },
+        data: { passkey: effectivePasskey },
       })
 
       if (result.success && result.authenticatedAt) {
@@ -82,6 +106,7 @@ export function AdminLoginGate({
             </label>
             <div className="admin-input-wrapper">
               <input
+                ref={inputRef}
                 id="admin-passkey-input"
                 name="passkey"
                 type="password"
@@ -89,6 +114,7 @@ export function AdminLoginGate({
                 placeholder="Masukkan Master Passkey Admin..."
                 value={passkey}
                 onChange={(e) => setPasskey(e.target.value)}
+                onInput={(e) => setPasskey(e.currentTarget.value)}
                 disabled={isLoading}
                 autoComplete="current-password"
                 autoFocus
@@ -100,7 +126,7 @@ export function AdminLoginGate({
             type="submit"
             id="btn-admin-submit-login"
             className="btn-admin-submit"
-            disabled={isLoading || !passkey.trim()}
+            disabled={isLoading}
           >
             {isLoading ? (
               <span>Memverifikasi...</span>
