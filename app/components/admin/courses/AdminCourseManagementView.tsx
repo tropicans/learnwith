@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import type { CourseLifecycleRecord, CourseLifecycleStatus } from '../../../schemas/courseLifecycle'
+import type {
+  CourseLifecycleAuditEntry,
+  CourseLifecycleRecord,
+  CourseLifecycleStatus,
+} from '../../../schemas/courseLifecycle'
 import {
   adminGetCoursesLifecycleFn,
   adminUpdateCourseStatusFn,
@@ -9,6 +13,7 @@ import { showToast } from '../../ui/Toast'
 import { CourseLifecycleKPIs } from './CourseLifecycleKPIs'
 import { CourseStatusCards } from './CourseStatusCards'
 import { CourseFilterToolbar, type FilterStatusOption } from './CourseFilterToolbar'
+import { CourseLifecycleAuditTable } from './CourseLifecycleAuditTable'
 
 interface AdminCourseManagementViewProps {
   sessionToken?: string
@@ -18,6 +23,7 @@ export function AdminCourseManagementView({
   sessionToken,
 }: AdminCourseManagementViewProps = {}) {
   const [records, setRecords] = useState<CourseLifecycleRecord[]>([])
+  const [auditLog, setAuditLog] = useState<CourseLifecycleAuditEntry[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [autoRefresh, setAutoRefresh] = useState(true)
@@ -40,6 +46,9 @@ export function AdminCourseManagementView({
         })
         if (response && response.courses) {
           setRecords(response.courses)
+        }
+        if (response && response.auditLog) {
+          setAuditLog(response.auditLog)
         }
         setLastRefreshedAt(Date.now())
       } catch (err: unknown) {
@@ -93,6 +102,50 @@ export function AdminCourseManagementView({
     } catch (err: unknown) {
       const msg =
         err instanceof Error ? err.message : 'Gagal memperbarui visibilitas kursus.'
+      showToast(msg, 'danger')
+    } finally {
+      setMutatingCourseId(null)
+    }
+  }
+
+  const handleArchiveCourse = async (courseId: string) => {
+    setMutatingCourseId(courseId)
+    try {
+      const activeToken = sessionToken || getClientAdminToken()
+      await adminUpdateCourseStatusFn({
+        data: {
+          courseId,
+          targetStatus: 'archived',
+          sessionToken: activeToken,
+        },
+      })
+      showToast('Kursus berhasil diarsipkan.', 'success')
+      await fetchCourses(false)
+    } catch (err: unknown) {
+      const msg =
+        err instanceof Error ? err.message : 'Gagal mengarsipkan kursus.'
+      showToast(msg, 'danger')
+    } finally {
+      setMutatingCourseId(null)
+    }
+  }
+
+  const handleRestoreCourse = async (courseId: string) => {
+    setMutatingCourseId(courseId)
+    try {
+      const activeToken = sessionToken || getClientAdminToken()
+      await adminUpdateCourseStatusFn({
+        data: {
+          courseId,
+          targetStatus: 'active',
+          sessionToken: activeToken,
+        },
+      })
+      showToast('Kursus berhasil dipulihkan ke status aktif.', 'success')
+      await fetchCourses(false)
+    } catch (err: unknown) {
+      const msg =
+        err instanceof Error ? err.message : 'Gagal memulihkan status kursus.'
       showToast(msg, 'danger')
     } finally {
       setMutatingCourseId(null)
@@ -218,10 +271,15 @@ export function AdminCourseManagementView({
       <CourseStatusCards
         courses={filteredCourses}
         onToggleVisibility={handleToggleVisibility}
+        onArchive={handleArchiveCourse}
+        onRestore={handleRestoreCourse}
         onResetFilters={handleResetFilters}
         mutatingCourseId={mutatingCourseId}
         isLoading={isLoading}
       />
+
+      {/* Course Lifecycle Audit Table */}
+      <CourseLifecycleAuditTable auditLog={auditLog} isLoading={isLoading} />
     </div>
   )
 }

@@ -7,6 +7,9 @@ import type {
 export interface CourseStatusCardsProps {
   courses: CourseLifecycleRecord[]
   onToggleVisibility: (courseId: string, currentStatus: CourseLifecycleStatus) => void
+  onArchive?: (courseId: string) => void
+  onRestore?: (courseId: string) => void
+  onDeleteTrigger?: (course: CourseLifecycleRecord) => void
   onResetFilters?: () => void
   mutatingCourseId?: string | null
   isLoading?: boolean
@@ -15,6 +18,9 @@ export interface CourseStatusCardsProps {
 export function CourseStatusCards({
   courses,
   onToggleVisibility,
+  onArchive,
+  onRestore,
+  onDeleteTrigger,
   onResetFilters,
   mutatingCourseId = null,
   isLoading = false,
@@ -166,50 +172,184 @@ export function CourseStatusCards({
 
             {/* Action Buttons Group */}
             <div className="course-card-actions">
+              {/* Active status: Sembunyikan, Arsipkan, Nonaktifkan */}
               {course.status === 'active' && (
-                <button
-                  type="button"
-                  className="btn-course-action btn-action-warning"
-                  id={`btn-hide-course-${course.id}`}
-                  onClick={() => onToggleVisibility(course.id, 'active')}
-                  disabled={isMutating || isLoading}
-                  title={`Sembunyikan kursus ${course.title} dari katalog publik`}
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                    <line x1="1" y1="1" x2="23" y2="23" />
-                  </svg>
-                  <span>{isMutating ? 'Menyimpan...' : 'Sembunyikan Kursus'}</span>
-                </button>
+                <>
+                  <button
+                    type="button"
+                    className="btn-course-action btn-action-warning"
+                    id={`btn-hide-course-${course.id}`}
+                    onClick={() => onToggleVisibility(course.id, 'active')}
+                    disabled={isMutating || isLoading}
+                    title={`Sembunyikan kursus ${course.title} dari katalog publik`}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                      <line x1="1" y1="1" x2="23" y2="23" />
+                    </svg>
+                    <span>{isMutating ? 'Menyimpan...' : 'Sembunyikan Kursus'}</span>
+                  </button>
+
+                  {onArchive && (
+                    <button
+                      type="button"
+                      className="btn-course-action btn-action-secondary"
+                      id={`btn-archive-course-${course.id}`}
+                      onClick={() => onArchive(course.id)}
+                      disabled={isMutating || isLoading}
+                      title={`Arsipkan kursus ${course.title}`}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="21 8 21 21 3 21 3 8" />
+                        <rect x="1" y="3" width="22" height="5" />
+                        <line x1="10" y1="12" x2="14" y2="12" />
+                      </svg>
+                      <span>Arsipkan Kursus</span>
+                    </button>
+                  )}
+
+                  {onDeleteTrigger && (
+                    <button
+                      type="button"
+                      className="btn-course-action btn-action-danger"
+                      id={`btn-delete-course-${course.id}`}
+                      onClick={() => onDeleteTrigger(course)}
+                      disabled={isMutating || isLoading}
+                      title={`Nonaktifkan kursus ${course.title}`}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="3 6 5 6 21 6" />
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                        <line x1="10" y1="11" x2="10" y2="17" />
+                        <line x1="14" y1="11" x2="14" y2="17" />
+                      </svg>
+                      <span>Nonaktifkan Kursus</span>
+                    </button>
+                  )}
+                </>
               )}
 
+              {/* Hidden status: Tampilkan, Arsipkan, Nonaktifkan */}
               {course.status === 'hidden' && (
-                <button
-                  type="button"
-                  className="btn-course-action btn-action-primary"
-                  id={`btn-show-course-${course.id}`}
-                  onClick={() => onToggleVisibility(course.id, 'hidden')}
-                  disabled={isMutating || isLoading}
-                  title={`Tampilkan kursus ${course.title} ke katalog publik`}
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                    <circle cx="12" cy="12" r="3" />
-                  </svg>
-                  <span>{isMutating ? 'Menyimpan...' : 'Tampilkan Kursus'}</span>
-                </button>
+                <>
+                  <button
+                    type="button"
+                    className="btn-course-action btn-action-primary"
+                    id={`btn-show-course-${course.id}`}
+                    onClick={() => onToggleVisibility(course.id, 'hidden')}
+                    disabled={isMutating || isLoading}
+                    title={`Tampilkan kursus ${course.title} ke katalog publik`}
+                  >
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span>{isMutating ? 'Menyimpan...' : 'Tampilkan Kursus'}</span>
+                  </button>
+
+                  {onArchive && (
+                    <button
+                      type="button"
+                      className="btn-course-action btn-action-secondary"
+                      id={`btn-archive-course-${course.id}`}
+                      onClick={() => onArchive(course.id)}
+                      disabled={isMutating || isLoading}
+                      title={`Arsipkan kursus ${course.title}`}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="21 8 21 21 3 21 3 8" />
+                        <rect x="1" y="3" width="22" height="5" />
+                        <line x1="10" y1="12" x2="14" y2="12" />
+                      </svg>
+                      <span>Arsipkan Kursus</span>
+                    </button>
+                  )}
+
+                  {onDeleteTrigger && (
+                    <button
+                      type="button"
+                      className="btn-course-action btn-action-danger"
+                      id={`btn-delete-course-${course.id}`}
+                      onClick={() => onDeleteTrigger(course)}
+                      disabled={isMutating || isLoading}
+                      title={`Nonaktifkan kursus ${course.title}`}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="3 6 5 6 21 6" />
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                        <line x1="10" y1="11" x2="10" y2="17" />
+                        <line x1="14" y1="11" x2="14" y2="17" />
+                      </svg>
+                      <span>Nonaktifkan Kursus</span>
+                    </button>
+                  )}
+                </>
               )}
 
+              {/* Archived status: Pulihkan Kursus, Nonaktifkan Kursus */}
               {course.status === 'archived' && (
-                <span className="course-action-status-note">
-                  Modul diarsipkan. Gunakan filter tab untuk mengelola pemulihan.
-                </span>
+                <>
+                  {onRestore && (
+                    <button
+                      type="button"
+                      className="btn-course-action btn-action-primary"
+                      id={`btn-restore-course-${course.id}`}
+                      onClick={() => onRestore(course.id)}
+                      disabled={isMutating || isLoading}
+                      title={`Pulihkan kursus ${course.title} ke status aktif`}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="1 4 1 10 7 10" />
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+                      </svg>
+                      <span>Pulihkan Kursus</span>
+                    </button>
+                  )}
+
+                  {onDeleteTrigger && (
+                    <button
+                      type="button"
+                      className="btn-course-action btn-action-danger"
+                      id={`btn-delete-course-${course.id}`}
+                      onClick={() => onDeleteTrigger(course)}
+                      disabled={isMutating || isLoading}
+                      title={`Nonaktifkan kursus ${course.title}`}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="3 6 5 6 21 6" />
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                        <line x1="10" y1="11" x2="10" y2="17" />
+                        <line x1="14" y1="11" x2="14" y2="17" />
+                      </svg>
+                      <span>Nonaktifkan Kursus</span>
+                    </button>
+                  )}
+                </>
               )}
 
+              {/* Deleted status: Pulihkan Kursus */}
               {course.status === 'deleted' && (
-                <span className="course-action-status-note status-deleted-note">
-                  Modul dinonaktifkan dari sistem.
-                </span>
+                <>
+                  {onRestore && (
+                    <button
+                      type="button"
+                      className="btn-course-action btn-action-primary"
+                      id={`btn-restore-course-${course.id}`}
+                      onClick={() => onRestore(course.id)}
+                      disabled={isMutating || isLoading}
+                      title={`Pulihkan kursus ${course.title} ke status aktif`}
+                    >
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <polyline points="1 4 1 10 7 10" />
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+                      </svg>
+                      <span>Pulihkan Kursus</span>
+                    </button>
+                  )}
+                  <span className="course-action-status-note status-deleted-note">
+                    Modul dinonaktifkan dari sistem.
+                  </span>
+                </>
               )}
             </div>
           </div>

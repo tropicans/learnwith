@@ -3662,6 +3662,17 @@
   background: #d70015;
 }
 
+.btn-action-secondary {
+  background: #f5f5f7;
+  color: #1d1d1f;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.btn-action-secondary:hover:not(:disabled) {
+  background: #e5e5ea;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
 .course-action-status-note {
   font-size: 12px;
   color: #86868b;
@@ -3843,5 +3854,188 @@
   color: #1d1d1f;
   background: rgba(0, 0, 0, 0.05);
 }
+
+/* ==========================================================================
+   Course Lifecycle Audit Table (COURSE-ADMIN-03)
+   ========================================================================== */
+.admin-audit-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.admin-audit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-audit-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 4px 0;
+}
+
+.admin-audit-subtitle {
+  font-size: 13px;
+  color: #86868b;
+  margin: 0;
+}
+
+.admin-audit-count-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #515154;
+}
+
+.admin-audit-table-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.admin-audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.admin-audit-table th {
+  padding: 12px 16px;
+  background: #f5f5f7;
+  font-weight: 600;
+  color: #515154;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.admin-audit-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  vertical-align: middle;
+  color: #1d1d1f;
+}
+
+.admin-audit-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-audit-table tbody tr:hover {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.audit-table-empty {
+  text-align: center;
+  padding: 36px 16px !important;
+  color: #86868b;
+  font-style: italic;
+}
+
+.audit-mono {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 12px;
+  color: #515154;
+}
+
+.audit-id-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: rgba(0, 102, 204, 0.08);
+  color: #0066cc;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+}
+
+.audit-transition-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.audit-arrow {
+  color: #86868b;
+  font-weight: 600;
+}
+
+.audit-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.audit-status-badge.status-active {
+  background: rgba(52, 199, 89, 0.12);
+  color: #248a3d;
+}
+
+.audit-status-badge.status-active .status-dot {
+  background: #34c759;
+}
+
+.audit-status-badge.status-hidden {
+  background: rgba(255, 149, 0, 0.12);
+  color: #b26a00;
+}
+
+.audit-status-badge.status-hidden .status-dot {
+  background: #ff9500;
+}
+
+.audit-status-badge.status-archived {
+  background: rgba(142, 142, 147, 0.15);
+  color: #636366;
+}
+
+.audit-status-badge.status-archived .status-dot {
+  background: #8e8e93;
+}
+
+.audit-status-badge.status-deleted {
+  background: rgba(255, 59, 48, 0.12);
+  color: #d70015;
+}
+
+.audit-status-badge.status-deleted .status-dot {
+  background: #ff3b30;
+}
+
+.audit-operator-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f5f5f7;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 11px;
+  color: #1d1d1f;
+}
+
+.audit-reason-text {
+  font-size: 12px;
+  color: #515154;
+  word-break: break-word;
+}
+
+.audit-reason-muted {
+  color: #c7c7cc;
+}
+
 
 
