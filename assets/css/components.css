@@ -3789,4 +3789,67 @@ mark.search-highlight {
     width: 100%;
     justify-content: center;
   }
+}﻿
+
+/* ==========================================================================
+   PHASE 36: FRONTPAGE CATALOG & EMPTY STATE STYLES (COURSE-SYNC-01)
+   ========================================================================== */
+.catalog-empty-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 2rem;
+  background: var(--bg-surface);
+  border: 1px dashed var(--border-subtle);
+  border-radius: 16px;
+  margin: 1.5rem 0;
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.empty-state-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.empty-state-title {
+  font-size: var(--font-size-lg, 1.25rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-desc {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 480px;
+}
+
+.empty-state-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  border-radius: var(--radius-md, 8px);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.catalog-category-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--bg-surface-subtle, var(--bg-surface));
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm, 0.875rem);
+  margin: 1.5rem 0;
 }

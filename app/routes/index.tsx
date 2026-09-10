@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { homeSearchSchema } from '@/schemas/searchParams'
-import { getCoursesList } from '@/data/courses'
+import { getPublicCoursesListFn } from '@/server/courseLifecycle'
 import { HeroSection } from '@/components/home/HeroSection'
 import { StandardsStrip } from '@/components/home/StandardsStrip'
 import { BentoValuePillars } from '@/components/home/BentoValuePillars'
@@ -13,7 +13,7 @@ import { ClosingCtaBanner } from '@/components/home/ClosingCtaBanner'
 export const Route = createFileRoute('/')({
   validateSearch: (search) => homeSearchSchema.parse(search),
   loader: async () => {
-    const courses = await getCoursesList()
+    const courses = await getPublicCoursesListFn()
     return { courses }
   },
   head: () => ({

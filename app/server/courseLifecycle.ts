@@ -16,6 +16,8 @@ import {
 } from './courseLifecycleStore.ts'
 import { assertAdminAuthorized } from './platform.ts'
 
+import { getCoursesList, type CourseData } from '../data/courses.ts'
+
 /***
  * Server Function: Get Public Course Lifecycle Statuses
  * Public endpoint for frontpage and navigation dropdown.
@@ -25,6 +27,30 @@ export const getPublicCourseStatusesFn = createServerFn({ method: 'GET' }).handl
     return getPublicCourseStatusProjections()
   },
 )
+
+/***
+ * Server Function: Get Public Courses List
+ * Returns active-only courses for frontpage catalog discovery (COURSE-MUTATE-03).
+ */
+const getPublicCoursesListServerFn = createServerFn({ method: 'GET' }).handler(
+  async (): Promise<CourseData[]> => {
+    const fullList = await getCoursesList()
+    const records = getCourseLifecycleRecords()
+    const statusMap = new Map(records.map((r) => [r.id, r.status]))
+    return fullList.filter((course) => (statusMap.get(course.id) ?? 'active') === 'active')
+  },
+)
+
+export const getPublicCoursesListFn = new Proxy(getPublicCoursesListServerFn, {
+  apply: async (target, thisArg, argArray) => {
+    const res = await Reflect.apply(target, thisArg, argArray)
+    if (res !== undefined) return res
+    const fullList = await getCoursesList()
+    const records = getCourseLifecycleRecords()
+    const statusMap = new Map(records.map((r) => [r.id, r.status]))
+    return fullList.filter((course) => (statusMap.get(course.id) ?? 'active') === 'active')
+  },
+})
 
 /***
  * Server Function: Get Course Lifecycle for Admin
