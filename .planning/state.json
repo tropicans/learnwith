@@ -1,12 +1,12 @@
 {
   "contract": "1.0.0",
   "flavor": "core",
-  "milestone": "v3.3",
+  "milestone": "v3.3 — Admin Course Lifecycle & Visibility Management",
   "phases": [],
   "next": {
-    "command": "/gsd-discuss-phase",
-    "label": "Discuss the first phase",
-    "reason": "Project initialized — plan your first phase"
+    "command": "/gsd-progress --next",
+    "label": "Advance to the next step (plan phase 36)",
+    "reason": "Phase 36 of 4 — needs a plan"
   },
-  "updated_at": "2026-09-10T08:21:40.791Z"
+  "updated_at": "2026-09-10T09:14:27.529Z"
 }

@@ -67,4 +67,4 @@ None.
 
 ## Operator Next Steps
 
-- Execute Phase 35 with `/gsd-execute-phase 35`
+- Plan Phase 36 with `/gsd-plan-phase 36`
