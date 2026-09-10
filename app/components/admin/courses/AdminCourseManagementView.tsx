@@ -6,6 +6,8 @@ import {
 } from '../../../server/courseLifecycle'
 import { getClientAdminToken } from '../../../utils/adminToken'
 import { showToast } from '../../ui/Toast'
+import { CourseLifecycleKPIs } from './CourseLifecycleKPIs'
+import { CourseStatusCards } from './CourseStatusCards'
 
 interface AdminCourseManagementViewProps {
   sessionToken?: string
@@ -162,6 +164,17 @@ export function AdminCourseManagementView({
           </button>
         </div>
       )}
+
+      {/* Course Lifecycle KPIs */}
+      <CourseLifecycleKPIs records={records} isLoading={isLoading} />
+
+      {/* Course Status Cards */}
+      <CourseStatusCards
+        courses={records}
+        onToggleVisibility={handleToggleVisibility}
+        mutatingCourseId={mutatingCourseId}
+        isLoading={isLoading}
+      />
     </div>
   )
 }

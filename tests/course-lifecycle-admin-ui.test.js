@@ -66,6 +66,19 @@ describe('Phase 35 Course Lifecycle Admin UI Suite', () => {
       assert.equal(kpis.deleted, 1);
     });
 
+    it('verifies CourseLifecycleKPIs.tsx structure and card IDs', () => {
+      const kpiPath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'courses', 'CourseLifecycleKPIs.tsx');
+      assert.ok(fs.existsSync(kpiPath), 'CourseLifecycleKPIs.tsx must exist');
+      const content = fs.readFileSync(kpiPath, 'utf8');
+
+      assert.ok(content.includes('id="kpi-total-courses"'), 'Must have total courses KPI id');
+      assert.ok(content.includes('id="kpi-active-courses"'), 'Must have active courses KPI id');
+      assert.ok(content.includes('id="kpi-hidden-courses"'), 'Must have hidden courses KPI id');
+      assert.ok(content.includes('id="kpi-archived-courses"'), 'Must have archived courses KPI id');
+      assert.ok(content.includes('id="kpi-deleted-courses"'), 'Must have deleted courses KPI id');
+      assert.ok(content.includes('calculateCourseKPIs'), 'Must export calculateCourseKPIs');
+    });
+
     it('verifies default store lifecycle records reflect in initial KPI calculations', () => {
       const records = storeModule.getCourseLifecycleRecords();
       assert.equal(records.length, 2);
@@ -133,6 +146,17 @@ describe('Phase 35 Course Lifecycle Admin UI Suite', () => {
         });
       }, /UNAUTHORIZED/);
     });
+
+    it('verifies CourseStatusCards.tsx structure and visibility toggle buttons', () => {
+      const cardsPath = path.join(ROOT_DIR, 'app', 'components', 'admin', 'courses', 'CourseStatusCards.tsx');
+      assert.ok(fs.existsSync(cardsPath), 'CourseStatusCards.tsx must exist');
+      const content = fs.readFileSync(cardsPath, 'utf8');
+
+      assert.ok(content.includes('id="admin-course-cards-grid"'), 'Must have cards grid id');
+      assert.ok(content.includes('Sembunyikan Kursus'), 'Must have Sembunyikan Kursus button text');
+      assert.ok(content.includes('Tampilkan Kursus'), 'Must have Tampilkan Kursus button text');
+      assert.ok(content.includes('course-status-pill'), 'Must include course-status-pill');
+    });
   });
 
   describe('Security Boundary & Style Integrity Audit', () => {
@@ -174,6 +198,20 @@ describe('Phase 35 Course Lifecycle Admin UI Suite', () => {
 
       assert.strictEqual(srcContent, pubContent, 'Source and public stylesheets must be identical');
       assert.ok(srcContent.includes('Authoritative Source: assets/css/admin.css'), 'Must have authoritative header');
+    });
+
+    it('verifies admin course management styles are defined in admin.css', () => {
+      const srcCssPath = path.join(ROOT_DIR, 'assets', 'css', 'admin.css');
+      const content = fs.readFileSync(srcCssPath, 'utf8');
+
+      assert.ok(content.includes('.admin-courses-container'), 'Must have .admin-courses-container');
+      assert.ok(content.includes('.admin-course-cards-grid'), 'Must have .admin-course-cards-grid');
+      assert.ok(content.includes('.admin-course-card'), 'Must have .admin-course-card');
+      assert.ok(content.includes('.course-status-pill.status-active'), 'Must have .course-status-pill.status-active');
+      assert.ok(content.includes('.course-status-pill.status-hidden'), 'Must have .course-status-pill.status-hidden');
+      assert.ok(content.includes('.btn-course-action'), 'Must have .btn-course-action');
+      assert.ok(content.includes('.btn-action-primary'), 'Must have .btn-action-primary');
+      assert.ok(content.includes('.btn-action-warning'), 'Must have .btn-action-warning');
     });
   });
 });

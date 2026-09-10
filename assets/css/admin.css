@@ -3366,3 +3366,342 @@
   color: var(--text-secondary, #515154);
   line-height: 1.35;
 }
+
+/* ==========================================================================
+   Phase 35: Admin Course Lifecycle & Visibility Management Styles
+   ========================================================================== */
+
+.admin-courses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.admin-course-kpi-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.text-success {
+  color: #34c759 !important;
+}
+
+.text-warning {
+  color: #ff9500 !important;
+}
+
+.text-danger {
+  color: #ff3b30 !important;
+}
+
+.text-muted {
+  color: #8e8e93 !important;
+}
+
+/* Course Cards Grid */
+.admin-course-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 24px;
+}
+
+.admin-course-card {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-course-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.admin-course-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #0066cc;
+}
+
+.admin-course-card.theme-ai::before {
+  background: #5856d6;
+}
+
+.admin-course-card.theme-word::before {
+  background: #0066cc;
+}
+
+/* Card Header */
+.course-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.course-card-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.course-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.theme-ai .course-card-icon {
+  background: rgba(88, 86, 214, 0.12);
+  color: #5856d6;
+}
+
+.theme-word .course-card-icon {
+  background: rgba(0, 102, 204, 0.12);
+  color: #0066cc;
+}
+
+.course-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 6px 0;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+.course-card-id-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #86868b;
+}
+
+.course-card-badge-wrap {
+  flex-shrink: 0;
+}
+
+/* Status Badges / Pills */
+.course-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.course-status-pill .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.course-status-pill.status-active {
+  background: rgba(52, 199, 89, 0.12);
+  color: #248a3d;
+}
+
+.course-status-pill.status-active .status-dot {
+  background: #34c759;
+}
+
+.course-status-pill.status-hidden {
+  background: rgba(255, 149, 0, 0.12);
+  color: #b26a00;
+}
+
+.course-status-pill.status-hidden .status-dot {
+  background: #ff9500;
+}
+
+.course-status-pill.status-archived {
+  background: rgba(142, 142, 147, 0.12);
+  color: #636366;
+}
+
+.course-status-pill.status-archived .status-dot {
+  background: #8e8e93;
+}
+
+.course-status-pill.status-deleted {
+  background: rgba(255, 59, 48, 0.12);
+  color: #d70015;
+}
+
+.course-status-pill.status-deleted .status-dot {
+  background: #ff3b30;
+}
+
+/* Card Body & Metadata */
+.course-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.course-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  color: #86868b;
+  line-height: 1.5;
+}
+
+.course-operator-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.04);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 11px;
+  color: #1d1d1f;
+}
+
+.course-card-reason {
+  font-size: 12px;
+  color: #636366;
+  background: #f5f5f7;
+  padding: 8px 12px;
+  border-radius: 8px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.reason-label {
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+/* Action Buttons Group */
+.course-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 12px;
+}
+
+.btn-course-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-course-action:active {
+  transform: scale(0.98);
+}
+
+.btn-course-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-action-primary {
+  background: #0066cc;
+  color: #ffffff;
+}
+
+.btn-action-primary:hover:not(:disabled) {
+  background: #0052a3;
+}
+
+.btn-action-warning {
+  background: rgba(255, 149, 0, 0.12);
+  color: #b26a00;
+  border: 1px solid rgba(255, 149, 0, 0.24);
+}
+
+.btn-action-warning:hover:not(:disabled) {
+  background: rgba(255, 149, 0, 0.2);
+}
+
+.btn-action-danger {
+  background: #ff3b30;
+  color: #ffffff;
+}
+
+.btn-action-danger:hover:not(:disabled) {
+  background: #d70015;
+}
+
+.course-action-status-note {
+  font-size: 12px;
+  color: #86868b;
+  font-style: italic;
+}
+
+.status-deleted-note {
+  color: #ff3b30;
+}
+
+/* Empty State */
+.admin-courses-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px dashed rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.admin-courses-empty .empty-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.admin-courses-empty .empty-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 8px 0;
+}
+
+.admin-courses-empty .empty-body {
+  font-size: 14px;
+  color: #86868b;
+  max-width: 440px;
+  margin: 0;
+  line-height: 1.5;
+}
+
