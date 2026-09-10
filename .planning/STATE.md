@@ -5,17 +5,17 @@ milestone_name: Admin Course Lifecycle & Visibility Management
 current_phase: 36
 current_phase_name: Frontpage Catalog & Header Switcher Reactive Sync
 status: planning
-stopped_at: Phase 35 complete, ready to plan Phase 36
-last_updated: "2026-09-10T09:14:27.445Z"
+stopped_at: Phase 36 context gathered
+last_updated: "2026-09-10T09:59:01.896Z"
 last_activity: 2026-09-10
 last_activity_desc: Phase 35 complete, transitioned to Phase 36
-state_head: 6b1b575ce845c327ac09633c03c1d29f3887eed4
+state_head: 44d50bf81798062d809642380724ae6bf48926ef
 progress:
   total_phases: 4
-  completed_phases: 2
+  completed_phases: 1
   total_plans: 4
   completed_plans: 4
-  percent: 50
+  percent: 25
 ---
 
 # Project State
@@ -61,9 +61,9 @@ None.
 
 ## Session
 
-**Last session:** 2026-09-10T15:59:00.000Z
-**Stopped at:** Phase 35 complete, ready to plan Phase 36
-**Resume file:** .planning/phases/35-admin-management-ui-action-controls/35-01-PLAN.md
+**Last session:** 2026-09-10T09:59:01.759Z
+**Stopped at:** Phase 36 context gathered
+**Resume file:** .planning/phases/36-frontpage-catalog-header-switcher-reactive-sync/36-CONTEXT.md
 
 ## Operator Next Steps
 
