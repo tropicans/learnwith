@@ -153,4 +153,26 @@ describe('Phase 34 Course Lifecycle State Store Suite', () => {
       isAvailable: false,
     });
   });
+
+  it('COURSE-STATUS-02: guarantees store immutability by returning defensive copies', () => {
+    const ai = storeModule.getCourseLifecycleRecord('ai');
+    assert.equal(ai.status, 'active');
+    ai.status = 'deleted';
+    ai.title = 'Tampered Title';
+
+    const freshAi = storeModule.getCourseLifecycleRecord('ai');
+    assert.equal(freshAi.status, 'active');
+    assert.equal(freshAi.title, 'Hands-on Agentic AI: Dari Chat ke Kalender');
+
+    const records = storeModule.getCourseLifecycleRecords();
+    records[0].status = 'archived';
+    const freshRecords = storeModule.getCourseLifecycleRecords();
+    assert.equal(freshRecords[0].status, 'active');
+
+    storeModule.updateCourseLifecycleStatus('ai', 'hidden', 'admin', 'Test reason');
+    const audit = storeModule.getCourseLifecycleAuditLog();
+    audit[0].reason = 'Tampered reason';
+    const freshAudit = storeModule.getCourseLifecycleAuditLog();
+    assert.equal(freshAudit[0].reason, 'Test reason');
+  });
 });

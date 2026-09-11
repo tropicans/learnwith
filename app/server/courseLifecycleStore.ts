@@ -43,12 +43,13 @@ initDefaults()
 
 /*** Get all course records */
 export function getCourseLifecycleRecords(): CourseLifecycleRecord[] {
-  return Array.from(courseStore.values())
+  return Array.from(courseStore.values()).map((rec) => ({ ...rec }))
 }
 
 /*** Get single course record by ID */
 export function getCourseLifecycleRecord(courseId: string): CourseLifecycleRecord | undefined {
-  return courseStore.get(courseId)
+  const rec = courseStore.get(courseId)
+  return rec ? { ...rec } : undefined
 }
 
 /*** Get current store version counter */
@@ -58,7 +59,7 @@ export function getCourseStoreVersion(): number {
 
 /*** Get audit log */
 export function getCourseLifecycleAuditLog(): CourseLifecycleAuditEntry[] {
-  return [...auditLog]
+  return auditLog.map((entry) => ({ ...entry }))
 }
 
 /*** Update course status */
