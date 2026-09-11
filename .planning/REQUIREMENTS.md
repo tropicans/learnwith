@@ -1,7 +1,7 @@
 # Requirements: Milestone v3.3 Admin Course Lifecycle & Visibility Management
 
 **Milestone:** v3.3  
-**Status:** In Planning  
+**Status:** Complete  
 
 ---
 
