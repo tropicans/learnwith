@@ -1,5 +1,34 @@
 # Milestones
 
+## v3.3 Admin Course Lifecycle & Visibility Management (Shipped: 2026-09-11)
+
+**Shipped:** 2026-09-11  
+**Status:** ✅ SHIPPED (verified_closeout)  
+**Phases:** 34-37 (4 phases)  
+**Plans:** 9 plans (9/9 completed)  
+**Automated Tests:** 33 test files passing, 303/303 tests passed (0 failures) + TypeScript clean (0 errors)  
+**Requirements:** 15/15 satisfied (100%)  
+**Known verification overrides:** 0 newly acknowledged, 0 carried forward  
+
+### Delivered
+
+Complete administrative course lifecycle management and dynamic visibility synchronization across LearnWith. Administrators can show, hide, archive, and soft-delete courses from the Admin Command Center with real-time KPI feedback, two-factor safety confirmation, and automatic reactive catalog updates on the public frontpage and global header navigation.
+
+### Key Accomplishments
+
+1. **Course Lifecycle Schema & Store Architecture (Phase 34)**: Strongly-typed course status model (`active`, `hidden`, `archived`, `deleted`) with transition matrix validation and thread-safe in-memory store in `app/server/courseLifecycleStore.ts` guarded by Master Admin session verification.
+2. **Admin Management UI & Action Controls (Phase 35)**: Dedicated "Manajemen Kursus" view in `AdminShell.tsx` with 5-status KPI metric cards, 1-click visibility toggles (`Tampilkan` / `Sembunyikan`), filter pills, live search, audit log table, and two-factor typed safety confirmation modal for soft deletion.
+3. **Frontpage Catalog & Header Switcher Reactive Sync (Phase 36)**: Server RPC filtering via `getPublicCoursesListFn` ensuring only active courses are listed on `/`, multi-tab sync via `BroadcastChannel` (`learnwith:course_status_changed`), global navigation header switcher updates, unlisted course access with `UnlistedCourseBanner`, and passkey preservation on direct route `/course/word`.
+4. **End-to-End Verification & Zero-Regression Audit (Phase 37)**: Defensive copy store immutability hardening (COURSE-TEST-01), exhaustive 4x4 state transition matrix tests, ASVS L1 authorization/schema validation, and platform-wide zero-regression audit across 303 test cases.
+
+### Archive Reference
+
+- [Roadmap Archive](milestones/v3.3-ROADMAP.md)
+- [Requirements Archive](milestones/v3.3-REQUIREMENTS.md)
+- [Milestone Audit](milestones/v3.3-MILESTONE-AUDIT.md)
+
+---
+
 ## v3.2: Admin Command Center, Telemetry & Authentication
 
 **Shipped:** 2026-09-09  

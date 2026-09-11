@@ -80,6 +80,31 @@ Achieved 100% complete feature and visual parity for Course 1 Pre-Training on Ta
 ### Key Lessons
 - Rebuilding complex legacy SPA features in a modern SSR framework like TanStack Start is fastest and safest when guided by a 3-source verification matrix (Requirements, Phase Verification, and Automated Integration Tests).
 
+## Milestone: v3.3 — Admin Course Lifecycle & Visibility Management
+
+**Shipped:** 2026-09-11
+**Phases:** 4 | **Plans:** 9 | **Requirements:** 15/15 (100%)
+
+### What Was Built
+Complete administrative course lifecycle management and visibility synchronization across the platform. Built strongly-typed course status schema and in-memory store (`courseLifecycleStore.ts`) with Master Admin RPCs, dedicated "Manajemen Kursus" view in `AdminShell` with 5-status KPI metric cards, 1-click visibility toggles (`Tampilkan` / `Sembunyikan`), filter tabs, search, audit trail table, and a two-factor typed confirmation modal for soft deletions. Synchronized public frontpage catalog (`WorkshopCatalog.tsx`) and global header course dropdown reactively via TanStack Start server RPCs and multi-tab `BroadcastChannel` (`learnwith:course_status_changed`). Maintained passkey verification on direct visits to `/course/word` while providing unlisted banners and graceful unavailable notices.
+
+### What Worked
+- **Layered Store & Defensive Copying**: Encapsulating the in-memory course registry with defensive object copies on all getters (`{ ...rec }` and shallow-cloned audit logs) completely eliminated external reference mutation and memory tampering risks.
+- **Exhaustive 4x4 State Transition Matrix**: Defining and validating all 16 pairwise status transitions in automated test suites ensured illegal states (such as reviving soft-deleted courses directly to hidden without restore) are strictly rejected.
+- **Two-Factor Safety Confirmation Barrier**: Requiring explicit typed confirmation (course ID or `HAPUS`) in `CourseDeleteModal` before activating the deactivation button prevented accidental workshop downtime.
+- **Cross-Window Reactivity via BroadcastChannel**: Combining TanStack Start loader invalidation with `learnwith:course_status_changed` allowed multi-tab administrative visibility changes to propagate across open tabs instantly.
+
+### What Was Inefficient
+- **Initial Verification Report Frontmatter**: Phase 34 and Phase 36 initial verification markdown files required frontmatter reconciliation for automated tool consumption.
+
+### Patterns Established
+- **Defensive Immutability on Global Stores**: Always clone internal records and audit arrays prior to returning from singleton server stores.
+- **Unlisted Course UX Protection**: Retain direct route access for hidden workshops with visible banner cues (`UnlistedCourseBanner`) without breaking existing bookmarking or student links.
+- **Multi-Tab Sync Contract**: Pairing client mutation handlers with BroadcastChannel triggers and root route `router.invalidate()` ensures seamless state synchronization across tabs without WebSocket complexity.
+
+### Key Lessons
+- Managing course visibility requires a dual-channel design: public catalog discovery filtering vs. direct-route unlisted access preservation.
+
 ---
 
 ## Cross-Milestone Trends
@@ -93,4 +118,6 @@ Achieved 100% complete feature and visual parity for Course 1 Pre-Training on Ta
 | v2.2 | 3 | 3 | 24 | 100% | 2026-09-07 |
 | v3.0 | 5 | 15 | 36 | 100% | 2026-09-08 |
 | v3.1 | 5 | 10 | 100 | 100% | 2026-09-09 |
+| v3.2 | 5 | 10 | 242 | 100% | 2026-09-09 |
+| v3.3 | 4 | 9 | 303 | 100% | 2026-09-11 |
 

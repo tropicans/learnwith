@@ -8,21 +8,27 @@ A modern, responsive, and beginner-friendly web learning platform designed to gu
 ## Core Value
 Empower non-technical participants and government professionals to complete practical computer and AI workflows independently, safely, and without anxiety through clear visual guidance, interactive checklists, automated evaluation quizzes, and instant readiness & completion reporting.
 
-## Current State: v3.2 Shipped (2026-09-09)
+## Current State: v3.3 Shipped (2026-09-11)
 
-The platform has grown from student/participant self-service into an instructor-grade operational command center. Milestone v3.2 delivered the `/admin` command center with Master Admin Passkey authentication (and Google OAuth login foundation), real-time participant progress & telemetry aggregation, course access passkey management, runtime troubleshooting diagnostics, and global platform banner/mode configuration.
+The platform has grown from student/participant self-service into an instructor-grade operational command center. Milestone v3.3 delivered full Course Lifecycle and Visibility management (`show`, `hide`, `archive`, `delete`) in the `/admin` Command Center with live synchronization to the public Frontpage and Course Switcher, maintaining 100% zero-regression across all 303 platform tests.
 
-## Current Milestone: v3.3 Admin Course Lifecycle & Visibility Management
+## Current Focus: Planning Next Milestone
 
-**Goal:** Provide administrators on `/admin` with full lifecycle and visibility control (`show`, `hide`, `archive`, `delete`) over workshop courses, synchronizing state reactively with public catalog and course switchers.
-
-**Target features:**
-- Centralized server course lifecycle store with typed statuses (`active`, `hidden`, `archived`, `deleted`).
-- Admin Command Center management interface with status action buttons, archive filters, and delete confirmation safeguards.
-- Secure server mutation functions (`createServerFn`) requiring authenticated Master Admin session.
-- Reactive catalog filtering on Frontpage (`/`) and header/sidebar course switcher dropdowns.
+Following the completion of Milestone v3.3, all course lifecycle features and multi-course management workflows are fully deployed and verified. Next milestone scope is ready to be planned via `/gsd-new-milestone`.
 
 ## Previous Milestones
+
+<details>
+<summary>✅ v3.3 Complete (Admin Course Lifecycle & Visibility Management) - SHIPPED 2026-09-11</summary>
+
+- **Phases**: 34-37 (4 phases, 9 plans)
+- **Accomplishments**:
+  - Course Lifecycle Schema & Store Architecture: Typed status model (`active`, `hidden`, `archived`, `deleted`) and thread-safe in-memory store in `app/server/courseLifecycleStore.ts` with Master Admin RPCs.
+  - Admin Management UI: Dedicated "Manajemen Kursus" view in `AdminShell` with 5-status KPI metric cards, 1-click visibility toggles, filter pills, live search, audit log table, and two-factor safety confirmation modal.
+  - Public Catalog & Switcher Reactive Sync: Public course filtering via `getPublicCoursesListFn` on `/`, cross-window `BroadcastChannel` updates, global header switcher synchronization, unlisted course access with `UnlistedCourseBanner`, and passkey preservation on direct route `/course/word`.
+  - Quality Assurance & Zero-Regression: Defensive copy immutability hardening, 4x4 state transition matrix tests, ASVS L1 authorization enforcement, and 100% test pass rate across 33 test files (303/303 tests passed, 0 failures).
+
+</details>
 
 <details>
 <summary>✅ v3.2 Complete (Admin Command Center, Telemetry & Authentication) - SHIPPED 2026-09-09</summary>
@@ -139,6 +145,21 @@ The platform has grown from student/participant self-service into an instructor-
 ## Requirements
 
 ### Validated
+- ✓ Strongly-typed course lifecycle status model: active, hidden, archived, deleted (COURSE-STATUS-01) — v3.3
+- ✓ In-memory server course registry in `courseLifecycleStore.ts` with versioning (COURSE-STATUS-02) — v3.3
+- ✓ Course status store validates mutations against state transitions (COURSE-STATUS-03) — v3.3
+- ✓ Server function `adminGetCoursesLifecycleFn` for authenticated Master Admin (COURSE-MUTATE-01) — v3.3
+- ✓ Server function `adminUpdateCourseStatusFn` with audit trail & session check (COURSE-MUTATE-02) — v3.3
+- ✓ Admin Command Center dedicated "Manajemen Kursus" view in `AdminShell` (COURSE-ADMIN-01) — v3.3
+- ✓ 1-click `Tampilkan` / `Sembunyikan` visibility toggles with instant feedback (COURSE-ADMIN-02) — v3.3
+- ✓ Admin `Arsipkan` / `Pulihkan` action buttons and status filter tabs (COURSE-ADMIN-03) — v3.3
+- ✓ Soft-delete course trigger with two-factor safety confirmation modal (COURSE-ADMIN-04) — v3.3
+- ✓ Frontpage Hub (`/`) reactively filters workshop cards to active courses only (COURSE-SYNC-01) — v3.3
+- ✓ Global header course dropdown switcher displays only active courses (COURSE-SYNC-02) — v3.3
+- ✓ Direct workspace route access for hidden courses preserves passkey gate; deleted shows notice (COURSE-SYNC-03) — v3.3
+- ✓ Public server function `getPublicCoursesListFn` projects only active courses (COURSE-MUTATE-03) — v3.3
+- ✓ Automated test suites verify state transitions, immutability, mutation RPCs, and auth (COURSE-TEST-01) — v3.3
+- ✓ Zero regression across public workshops, passkey gates, telemetry, and platform tests (COURSE-TEST-02) — v3.3
 - ✓ Modern responsive layout, sidebar navigation, theme toggle (UI-01) — v1.0
 - ✓ Real-time search and filter through steps and glossary (UI-02) — v1.0
 - ✓ Visual indicators for completed steps and readiness % (UI-03) — v1.0
@@ -222,11 +243,7 @@ The platform has grown from student/participant self-service into an instructor-
 
 ### Active
 
-- [ ] Centralized Course Lifecycle State Store with typed schema for course status (`active`, `hidden`, `archived`, `deleted`) (COURSE-STATUS-01..03)
-- [ ] Admin Management UI tab/sub-panel with interactive status toggles (`Show`, `Hide`, `Archive`, `Delete`) and confirmation safety dialogs (COURSE-ADMIN-01..04)
-- [ ] Secure Server Functions (`createServerFn`) to mutate course status with Master Admin session verification and audit logging (COURSE-MUTATE-01..03)
-- [ ] Public Frontpage (`/`) and Navigation Header Course Switcher reactive filtering based on live course visibility state (COURSE-SYNC-01..03)
-- [ ] Automated unit, RPC, and E2E regression test suite verifying status transitions, public catalog hiding, and zero regression (COURSE-TEST-01..02)
+(None currently active — run `/gsd-new-milestone` to plan next requirements)
 
 ### Out of Scope
 
@@ -237,7 +254,7 @@ The platform has grown from student/participant self-service into an instructor-
 
 ## Context
 
-Shipped v3.2 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server. 27 test suites passing (242/242 tests passed, 0 failures, 0 TypeScript errors). Milestone v3.3 introduces full Course Lifecycle and Visibility management (`show`, `hide`, `archive`, `delete`) in the `/admin` Command Center with live synchronization to the public Frontpage and Course Switcher.
+Shipped v3.3 with full Course Lifecycle & Visibility Management, Master Admin Command Center, TanStack Start full-document SSR, and React 19. 33 test suites passing (303/303 tests passed, 0 failures, 0 TypeScript errors).
 
 ## Key Decisions
 
@@ -251,7 +268,7 @@ Shipped v3.2 with TanStack Start, React 19, Vinxi, Vite 6, and Nitro node-server
 - ✓ **Production Containerization**: Multi-stage Dockerfile with tini PID 1, non-root user `node`, standalone Nitro server (Rationale: Secure, reproducible, production-ready runtime on Port 3173) — *Outcome: Good*
 - ✓ **Component Porting Strategy**: Pure React 19 client/island components inside `app/components/course/pretraining/` and integrated into `app/routes/course.ai.tsx` preserving original styling, persistence schemas, and test parity — *Outcome: Good (v3.1)*
 - ✓ **Admin Master Authentication**: Timing-safe Web Crypto SHA-256 hash matching with session token registry and single-domain Google OAuth SSO whitelist (`tropicans@gmail.com`) — *Outcome: Good (v3.2)*
-- ✓ **Course Lifecycle State Architecture**: In-memory server course registry initialized from `app/data/courses.ts` with status states (`active` [show], `hidden` [hide], `archived` [archive], `deleted` [soft-delete]) exposed via typed server functions — *Outcome: In Progress (v3.3)*
+- ✓ **Course Lifecycle State Architecture**: In-memory server course registry initialized from `app/data/courses.ts` with status states (`active` [show], `hidden` [hide], `archived` [archive], `deleted` [soft-delete]) exposed via typed server functions — *Outcome: Good (v3.3)*
 
 ## Evolution
 
@@ -279,4 +296,4 @@ This document evolves at phase transitions and milestone boundaries.
 - Interactive terminal simulator for dry-running CLI commands before local execution.
 
 ---
-*Last updated: 2026-09-10 — Milestone v3.3 started*
+*Last updated: 2026-09-11 — after v3.3 milestone*

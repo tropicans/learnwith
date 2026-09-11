@@ -4,9 +4,9 @@
   "milestone": "v3.3 — Admin Course Lifecycle & Visibility Management",
   "phases": [],
   "next": {
-    "command": "/gsd-progress --next",
-    "label": "Advance to the next step",
-    "reason": "Phase 36 of 4 · 25% · executing"
+    "command": "/gsd-progress",
+    "label": "Show progress",
+    "reason": "Unsure of state — showing progress"
   },
-  "updated_at": "2026-09-10T10:11:05.042Z"
+  "updated_at": "2026-09-11T00:39:49.891Z"
 }
