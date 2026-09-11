@@ -31,7 +31,7 @@ export const Route = createRootRoute({
       { rel: 'stylesheet', href: '/assets/css/main.css?v=2.5.0' },
       { rel: 'stylesheet', href: '/assets/css/components.css?v=2.5.0' },
       { rel: 'stylesheet', href: '/assets/css/homepage.css?v=1.0.1' },
-      { rel: 'stylesheet', href: '/assets/css/admin.css?v=1.2.0' },
+      { rel: 'stylesheet', href: '/assets/css/admin.css?v=1.3.0' },
     ],
   }),
   loader: async () => {
