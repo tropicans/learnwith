@@ -6,7 +6,8 @@ services:
     container_name: learnwith-app
     restart: unless-stopped
     env_file:
-      - .env
+      - path: .env
+        required: false
     ports:
       - "${PORT:-3173}:3173"
     environment:

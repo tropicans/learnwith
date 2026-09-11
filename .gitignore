@@ -9,3 +9,5 @@ Thumbs.db
 .output/
 .vinxi/
 graphify-out/
+.env*
+!.env.example
