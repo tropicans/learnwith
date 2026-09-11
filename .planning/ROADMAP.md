@@ -22,8 +22,8 @@
 |---|-------|------|--------------|------------------|
 | 34 | [x] Course Lifecycle Schema & Server Store Architecture | Define strongly-typed course status schema and server store with Master Admin RPCs | `COURSE-STATUS-01..03`, `COURSE-MUTATE-01..02` | 3/3 ✓ |
 | 35 | [x] Admin Management UI & Action Controls | Build dedicated "Manajemen Kursus" view in AdminShell with Show/Hide/Archive/Delete buttons & confirmation modal | `COURSE-ADMIN-01..04` | 4/4 ✓ |
-| 36 | [ ] Frontpage Catalog & Header Switcher Reactive Sync | Filter public courses reactively on `/` and navigation switcher based on lifecycle status | `COURSE-SYNC-01..03`, `COURSE-MUTATE-03` | 3 |
-| 37 | [ ] End-to-End Verification & Zero-Regression Audit | Comprehensive unit, RPC, and integration tests verifying lifecycle transitions and zero regression | `COURSE-TEST-01..02` | 2 |
+| 36 | [x] Frontpage Catalog & Header Switcher Reactive Sync | Filter public courses reactively on `/` and navigation switcher based on lifecycle status | `COURSE-SYNC-01..03`, `COURSE-MUTATE-03` | 3/3 ✓ |
+| 37 | [x] End-to-End Verification & Zero-Regression Audit | Comprehensive unit, RPC, and integration tests verifying lifecycle transitions and zero regression | `COURSE-TEST-01..02` | 2/2 ✓ |
 
 ### Phase Details
 
@@ -52,12 +52,12 @@
   2. Global header switcher omits hidden, archived, and deleted courses from navigation.
   3. Direct URLs for hidden courses remain accessible, while deleted courses show appropriate notice.
 
-#### Phase 37: End-to-End Verification & Zero-Regression Audit
+#### Phase 37: End-to-End Verification & Zero-Regression Audit (Complete: 2026-09-10)
 - **Goal:** Validate all course lifecycle actions, state transitions, security boundaries, and zero regression across the platform.
 - **Requirements:** `COURSE-TEST-01`, `COURSE-TEST-02`
 - **Success Criteria:**
   1. Unit and RPC tests verify all status transitions, invalid transition rejections, and unauthorized mutation denials.
-  2. 100% test suite pass rate (242+ tests) with zero regression on `/`, `/course/ai`, `/course/word`, and `/admin`.
+  2. 100% test suite pass rate (303 tests across 33 suites) with zero regression on `/`, `/course/ai`, `/course/word`, and `/admin`.
 
 ---
 
