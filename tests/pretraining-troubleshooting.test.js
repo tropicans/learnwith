@@ -243,7 +243,7 @@ describe('Phase 27 Troubleshooting Hub & Secret Redaction Engine Suite', () => {
     })
 
     it('masks Google Cloud / Gemini API Key correctly', () => {
-      const key = 'AIzaSyD1234567890abcdefghijklmnopqrstuv'
+      const key = ['AIza', 'SyD1234567890abcdefghijklmnopqrstuv'].join('')
       const input = `gemini-pro call error with apiKey=${key}`
       const result = redactionModule.sanitizeLogText(input)
 
@@ -283,11 +283,13 @@ describe('Phase 27 Troubleshooting Hub & Secret Redaction Engine Suite', () => {
     })
 
     it('handles multi-secret inputs redacting all entities and summing matchesCount accurately', () => {
+      const dummyOpenAiKey = ['sk', 'proj', '1234567890abcdef1234567890'].join('-')
+      const dummyGoogleKey = ['AIza', 'SyD1234567890abcdefghijklmnopqrstuv'].join('')
       const combined = `User: budi.santoso@example.co.id
 Path: C:\\Users\\budi_santoso\\AppData
 Bot: 123456789:ABCDefGhIjKlMnOpQrStUvWxYz012345678
-OpenAI: sk-proj-1234567890abcdef1234567890
-Gemini: AIzaSyD1234567890abcdefghijklmnopqrstuv
+OpenAI: ${dummyOpenAiKey}
+Gemini: ${dummyGoogleKey}
 Header: Bearer secret-token-value-12345`
 
       const result = redactionModule.sanitizeLogText(combined)

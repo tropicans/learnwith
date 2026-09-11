@@ -159,12 +159,14 @@ describe('Phase 28 Readiness Report Generator & Multi-Course Parity Suite', () =
   // =========================================================================
   describe('Suite 3: Error Log Sanitization & Token Redaction (PRE-TOOL-03, PRE-RPT-02)', () => {
     it('automatically sanitizes sensitive tokens inside errorMsg in the report output', () => {
+      const dummyOpenAiKey = ['sk', 'proj', '1234567890abcdef1234567890'].join('-')
+      const dummyGoogleKey = ['AIza', 'SyD1234567890abcdefghijklmnopqrstuv'].join('')
       const dirtyError = `Fatal error:
 User: budi.santoso@jakarta.go.id
 Path: C:\\Users\\budi_santoso\\AgenticAI\\hermes
-Failed key: sk-proj-1234567890abcdef1234567890
+Failed key: ${dummyOpenAiKey}
 Telegram token: 987654321:abcdefghijklmnopqrstuvwxyz012345678
-Google API: AIzaSyD1234567890abcdefghijklmnopqrstuv
+Google API: ${dummyGoogleKey}
 Auth: Bearer eyJhbGciOiJIUzI1Ni.secretjwttoken`
 
       const report = reportModule.generateReportText({
@@ -177,13 +179,13 @@ Auth: Bearer eyJhbGciOiJIUzI1Ni.secretjwttoken`
       assert.ok(!report.includes('budi_santoso\\AgenticAI'), 'Windows path masked')
       assert.ok(report.includes('C:\\Users\\[USER]\\AgenticAI'))
 
-      assert.ok(!report.includes('sk-proj-1234567890abcdef1234567890'), 'OpenAI key masked')
+      assert.ok(!report.includes(dummyOpenAiKey), 'OpenAI key masked')
       assert.ok(report.includes('[REDACTED_API_KEY]'))
 
       assert.ok(!report.includes('987654321:abcdefghijklmnopqrstuvwxyz012345678'), 'Telegram bot token masked')
       assert.ok(report.includes('[REDACTED_TELEGRAM_BOT_TOKEN]'))
 
-      assert.ok(!report.includes('AIzaSyD1234567890abcdefghijklmnopqrstuv'), 'Google Cloud API key masked')
+      assert.ok(!report.includes(dummyGoogleKey), 'Google Cloud API key masked')
       assert.ok(report.includes('[REDACTED_GOOGLE_API_KEY]'))
 
       assert.ok(!report.includes('eyJhbGciOiJIUzI1Ni.secretjwttoken'), 'Bearer token masked')

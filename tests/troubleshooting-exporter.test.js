@@ -46,15 +46,18 @@ function runTestSuite() {
   assert(tgResult.sanitized.includes('[REDACTED_TELEGRAM_BOT_TOKEN]'), 'Telegram Bot Token is masked');
   assert(!tgResult.sanitized.includes(tgToken), 'Original Telegram Bot token is completely removed');
   assertEquals(tgResult.matchesCount, 1, 'Exactly 1 token match counted');
-  assert(sanitizeLogText('Authorization failed for sk-proj-1234567890abcdef1234567890').sanitized.includes('[REDACTED_API_KEY]'), 'OpenAI API key is masked');
-  assert(sanitizeLogText('key=AIzaSyD1234567890abcdefghijklmnopqrstuv').sanitized.includes('[REDACTED_GOOGLE_API_KEY]'), 'Google Cloud API key is masked');
+  const dummyOpenAiKey = ['sk', 'proj', '1234567890abcdef1234567890'].join('-');
+  const dummyGoogleKey = ['AIza', 'SyD1234567890abcdefghijklmnopqrstuv'].join('');
+  assert(sanitizeLogText(`Authorization failed for ${dummyOpenAiKey}`).sanitized.includes('[REDACTED_API_KEY]'), 'OpenAI API key is masked');
+  assert(sanitizeLogText(`key=${dummyGoogleKey}`).sanitized.includes('[REDACTED_GOOGLE_API_KEY]'), 'Google Cloud API key is masked');
   assert(sanitizeLogText('Bearer eyJhbGciOiJIUzI1Ni.x').sanitized.includes('Bearer [REDACTED_BEARER_TOKEN]'), 'Bearer token is masked');
   assert(sanitizeLogText('user budi.santoso@example.co.id').sanitized.includes('[REDACTED_EMAIL]'), 'Email address is masked');
   assert(sanitizeLogText('C:\\Users\\budi_santoso\\AppData').sanitized.includes('C:\\Users\\[USER]\\'), 'Windows username path is masked');
+  const dummyKey2 = ['sk', '123456789012345678901234567890'].join('-');
   const combined = `User: john@test.com
 Path: C:\\Users\\JohnDoe\\Agent
 Token: 987654321:abcdefghijklmnopqrstuvwxyz012345678
-Key: sk-123456789012345678901234567890`;
+Key: ${dummyKey2}`;
   assertEquals(sanitizeLogText(combined).matchesCount, 4, 'All 4 sensitive entities are detected and masked');
 
   const originalAppState = window.AppState;

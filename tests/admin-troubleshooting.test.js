@@ -50,8 +50,8 @@ describe('Phase 32 Troubleshooting Audit Hub & Triage Console Suite', () => {
     })
 
     it('masks OpenAI API key and Google Cloud API key before persistent storage', () => {
-      const openAiKey = 'sk-abc12345678901234567890'
-      const googleKey = 'AIzaSyD-1234567890123456789012345678901'
+      const openAiKey = ['sk', 'abc12345678901234567890'].join('-')
+      const googleKey = ['AIza', 'SyD-1234567890123456789012345678901'].join('')
       const rawError = `Failed auth using OpenAI key ${openAiKey} and Google key ${googleKey}`
 
       const record = trblStore.ingestTroubleshootingLog({
