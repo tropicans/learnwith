@@ -3,6 +3,7 @@ import { homeSearchSchema } from '@/schemas/searchParams'
 import { getPublicCoursesListFn } from '@/server/courseLifecycle'
 import { HeroSection } from '@/components/home/HeroSection'
 import { StandardsStrip } from '@/components/home/StandardsStrip'
+import { PartnerMarquee } from '@/components/home/PartnerMarquee'
 import { BentoValuePillars } from '@/components/home/BentoValuePillars'
 import { WorkshopCatalog } from '@/components/home/WorkshopCatalog'
 import { HowItWorksSection } from '@/components/home/HowItWorksSection'
@@ -43,6 +44,7 @@ function HomeComponent() {
     <main className="app-main home-main" id="container-home">
       <HeroSection />
       <StandardsStrip />
+      <PartnerMarquee />
       <BentoValuePillars />
       <WorkshopCatalog courses={courses} activeFilter={filter} />
       <HowItWorksSection />

@@ -1222,6 +1222,16 @@ body {
   grid-template-areas:
     "header"
     "main" !important;
+  background-color: #050e10;
+  color: #f8fafc;
+}
+
+.app-container.view-home .app-header {
+  background: rgba(5, 14, 16, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .app-container.view-home .app-sidebar,
@@ -1231,10 +1241,12 @@ body {
 
 .app-container.view-home .app-main,
 .view-home .app-main {
-  max-width: min(1500px, 92vw);
+  max-width: 1540px;
   margin: 0 auto;
   width: 100%;
-  padding: 2.5rem 2rem 5rem;
+  padding: 0 1.5rem 6rem;
+  background-color: #050e10;
+  color: #f8fafc;
 }
 
 .app-container.view-home .brand-breadcrumb-separator,
