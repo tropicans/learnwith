@@ -80,21 +80,8 @@ export function LiveClassModulesSection({
     <section id="sec-live-modules" className="content-section">
       <div className="section-header">
         <div className="section-title-wrap">
-          <div
-            className="section-badge-icon"
-            style={{
-              background: 'rgba(52, 211, 153, 0.12)',
-              color: 'var(--color-success)',
-              width: '36px',
-              height: '36px',
-              borderRadius: 'var(--radius-md)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-            }}
-          >
-            ⚡
+          <div className="section-badge-num">
+            <span>⚡</span>
           </div>
           <div>
             <h3 className="section-title">Rangkaian Modul Praktik Hari-H (M6 s.d. M11)</h3>
@@ -157,7 +144,7 @@ export function LiveClassModulesSection({
                   <div className="module-title-group">
                     <h3>
                       {module.title}
-                      {isAllStepsDone && <span style={{ color: 'var(--color-success)', fontSize: '1rem' }}>✓</span>}
+                      {isAllStepsDone && <span style={{ color: 'var(--lw-status-success, #10b981)', fontSize: '1rem', marginLeft: '0.4rem' }}>✓</span>}
                     </h3>
                     <p>{module.subtitle}</p>
                   </div>
@@ -228,18 +215,7 @@ export function LiveClassModulesSection({
                             href={step.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-outline btn-sm"
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.5rem',
-                              padding: '0.5rem 0.85rem',
-                              color: 'var(--color-primary)',
-                              borderColor: 'var(--color-primary-subtle, #3b82f6)',
-                              textDecoration: 'none',
-                              fontWeight: 600,
-                              borderRadius: 'var(--radius-md)',
-                            }}
+                            className="btn btn-outline btn-sm live-external-btn"
                           >
                             <span>🌐</span> Buka Dashboard Web 9Router: <code>{step.url}</code> ↗
                           </a>
@@ -255,20 +231,7 @@ export function LiveClassModulesSection({
                               label={step.commandLanguage || 'PowerShell'}
                             />
                           ) : (
-                            <div
-                              style={{
-                                padding: '0.85rem 1rem',
-                                background: 'var(--bg-surface-subtle)',
-                                border: '1px dashed var(--border-subtle)',
-                                borderRadius: 'var(--radius-md)',
-                                color: 'var(--text-muted)',
-                                fontSize: 'var(--font-size-sm)',
-                                fontFamily: 'var(--font-family-mono, monospace)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                              }}
-                            >
+                            <div className="live-locked-command-placeholder">
                               <span>🔒</span> Perintah CLI tersembunyi — Masukkan passkey instruktur untuk membuka
                             </div>
                           )}
@@ -292,25 +255,15 @@ export function LiveClassModulesSection({
                       {step.taskId && isUnlocked && (
                         <div className="checklist-group" style={{ marginTop: '0.85rem' }}>
                           <label
-                            className="checklist-item"
-                            style={{
-                              cursor: 'pointer',
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '0.65rem',
-                              padding: '0.5rem 0.75rem',
-                              background: isTaskDone ? 'rgba(52, 211, 153, 0.08)' : 'transparent',
-                              borderRadius: 'var(--radius-sm)',
-                              border: isTaskDone ? '1px solid rgba(52, 211, 153, 0.25)' : '1px solid transparent',
-                            }}
+                            className={`checklist-item live-task-item ${isTaskDone ? 'completed' : ''}`}
                           >
                             <input
                               type="checkbox"
                               checked={isTaskDone}
                               onChange={() => toggleChecklist(step.taskId)}
-                              style={{ width: '17px', height: '17px', cursor: 'pointer', accentColor: 'var(--accent-primary)' }}
+                              className="checklist-checkbox"
                             />
-                            <span className="checklist-label" style={{ fontSize: 'var(--font-size-sm)' }}>
+                            <span className="checklist-label">
                               <strong>Tugas Mandiri:</strong> {step.checklistLabel || `Verifikasi langkah ${step.nodeId} selesai`}
                             </span>
                           </label>

@@ -84,21 +84,8 @@ export function LiveClassCheckpointsSection({
     <section id="sec-live-checkpoints" className="content-section">
       <div className="section-header">
         <div className="section-title-wrap">
-          <div
-            className="section-badge-icon"
-            style={{
-              background: 'rgba(251, 191, 36, 0.12)',
-              color: 'var(--color-warning)',
-              width: '36px',
-              height: '36px',
-              borderRadius: 'var(--radius-md)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-            }}
-          >
-            📍
+          <div className="section-badge-num">
+            <span>📍</span>
           </div>
           <div>
             <h3 className="section-title">Gerbang Checkpoint Praktik Hari-H (CP-6 s.d. CP-11)</h3>
@@ -130,7 +117,7 @@ export function LiveClassCheckpointsSection({
         </div>
       )}
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div className="live-checkpoints-list">
         {LIVE_CLASS_MODULES.map((mod) => {
           const cpKey = `cp-${mod.num}`
           const status = statuses[cpKey] || 'pending'
@@ -138,41 +125,31 @@ export function LiveClassCheckpointsSection({
 
           const statusBadge =
             status === 'passed' ? (
-              <span className="badge badge-pill badge-success">✓ Lolos</span>
+              <span className="badge badge-pill badge-status-passed">
+                <span className="status-dot" /> Lolos
+              </span>
             ) : status === 'failed' ? (
-              <span className="badge badge-pill badge-danger">✕ Kendala</span>
+              <span className="badge badge-pill badge-status-failed">
+                <span className="status-dot" /> Kendala
+              </span>
             ) : (
-              <span className="badge badge-pill badge-warning">Pending</span>
+              <span className="badge badge-pill badge-status-pending">
+                <span className="status-dot" /> Pending
+              </span>
             )
 
           return (
             <div
               key={cpKey}
               id={`card-${cpKey}`}
-              className={`checkpoint-gate-card ${status !== 'pending' ? status : ''}`}
+              className={`checkpoint-gate-card ${status}`}
             >
               <div className="checkpoint-header-row">
                 <div className="checkpoint-title-wrap">
                   <div className="checkpoint-badge-icon">{mod.num}</div>
                   <div>
-                    <h4
-                      style={{
-                        fontSize: 'var(--font-size-base)',
-                        fontWeight: 'var(--font-weight-bold)',
-                        color: 'var(--text-primary)',
-                        marginBottom: '0.15rem',
-                      }}
-                    >
-                      {mod.checkpointTitle}
-                    </h4>
-                    <span
-                      style={{
-                        fontSize: 'var(--font-size-xs)',
-                        color: 'var(--text-muted)',
-                      }}
-                    >
-                      Verifikasi ketercapaian Modul {mod.num}
-                    </span>
+                    <h4>{mod.checkpointTitle}</h4>
+                    <span>Verifikasi ketercapaian Modul {mod.num}</span>
                   </div>
                 </div>
                 {statusBadge}
@@ -187,8 +164,8 @@ export function LiveClassCheckpointsSection({
                   <div key={idx} className="checklist-item" style={{ cursor: 'default' }}>
                     <span
                       style={{
-                        fontSize: '1.1rem',
-                        color: 'var(--color-success)',
+                        fontSize: '1rem',
+                        color: 'var(--lw-status-success, #10b981)',
                         fontWeight: 'bold',
                       }}
                     >
@@ -206,21 +183,21 @@ export function LiveClassCheckpointsSection({
                 <div className="cp-action-btn-group">
                   <button
                     type="button"
-                    className="btn btn-success btn-cp-action"
+                    className={`btn btn-cp-action btn-cp-pass ${status === 'passed' ? 'active' : ''}`}
                     onClick={() => handleStatusChange(cpKey, 'passed')}
                   >
                     <span>✓</span> Lolos Verifikasi
                   </button>
                   <button
                     type="button"
-                    className="btn btn-outline-danger btn-cp-action"
+                    className={`btn btn-cp-action btn-cp-fail ${status === 'failed' ? 'active' : ''}`}
                     onClick={() => handleStatusChange(cpKey, 'failed')}
                   >
                     <span>✕</span> Ada Kendala (Gagal)
                   </button>
                   <button
                     type="button"
-                    className="btn btn-secondary btn-cp-action btn-sm"
+                    className={`btn btn-cp-action btn-cp-reset ${status === 'pending' ? 'active' : ''}`}
                     onClick={() => handleStatusChange(cpKey, 'pending')}
                   >
                     <span>↺</span> Reset Status

@@ -24,7 +24,7 @@ export function LiveClassHero({ isUnlocked, onOpenUnlockModal, onRelock }: LiveC
         <div className="hero-stat-card">
           <div
             className="hero-stat-icon"
-            style={{ background: 'var(--accent-primary-subtle)', color: 'var(--accent-primary)' }}
+            style={{ background: 'rgba(168, 85, 247, 0.12)', color: 'var(--lw-accent-violet-400, #c084fc)' }}
           >
             ⏱️
           </div>
@@ -37,7 +37,7 @@ export function LiveClassHero({ isUnlocked, onOpenUnlockModal, onRelock }: LiveC
         <div className="hero-stat-card">
           <div
             className="hero-stat-icon"
-            style={{ background: 'rgba(52, 211, 153, 0.12)', color: 'var(--color-success)' }}
+            style={{ background: 'rgba(16, 185, 129, 0.12)', color: 'var(--lw-status-success, #10b981)' }}
           >
             🧩
           </div>
@@ -50,7 +50,7 @@ export function LiveClassHero({ isUnlocked, onOpenUnlockModal, onRelock }: LiveC
         <div className="hero-stat-card">
           <div
             className="hero-stat-icon"
-            style={{ background: 'rgba(251, 191, 36, 0.12)', color: 'var(--color-warning)' }}
+            style={{ background: 'rgba(245, 158, 11, 0.12)', color: 'var(--lw-status-warning, #f59e0b)' }}
           >
             🎯
           </div>
@@ -64,8 +64,8 @@ export function LiveClassHero({ isUnlocked, onOpenUnlockModal, onRelock }: LiveC
           <div
             className="hero-stat-icon"
             style={{
-              background: isUnlocked ? 'rgba(52, 211, 153, 0.12)' : 'rgba(239, 68, 68, 0.12)',
-              color: isUnlocked ? 'var(--color-success)' : 'var(--color-danger)',
+              background: isUnlocked ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)',
+              color: isUnlocked ? 'var(--lw-status-success, #10b981)' : 'var(--lw-status-danger, #ef4444)',
             }}
           >
             {isUnlocked ? '🔓' : '🔒'}
@@ -80,7 +80,7 @@ export function LiveClassHero({ isUnlocked, onOpenUnlockModal, onRelock }: LiveC
       {/* Dynamic Access Gate Banner (Matches Pra-Training alert box style) */}
       {!isUnlocked ? (
         <div
-          className="alert-box alert-info"
+          className="alert-box alert-warning live-gate-banner"
           style={{
             marginTop: '1.5rem',
             display: 'flex',
@@ -113,7 +113,7 @@ export function LiveClassHero({ isUnlocked, onOpenUnlockModal, onRelock }: LiveC
         </div>
       ) : (
         <div
-          className="alert-box alert-success"
+          className="alert-box alert-success live-gate-banner"
           style={{
             marginTop: '1.5rem',
             display: 'flex',

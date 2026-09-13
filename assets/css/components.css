@@ -7276,6 +7276,331 @@ mark.search-highlight {
   }
 }
 
+/* ==========================================================================
+   WAVE 6 — COURSE AI LIVE CLASSROOM (HARI-H PRAKTIK) OBSIDIAN DESIGN SYSTEM
+   Scoped to .course-main #container-liveclass to prevent cross-course pollution
+   ========================================================================== */
+
+/* --- Live Class Mode Container Layout --- */
+.course-main #container-liveclass {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Hero Banner Gate Overrides --- */
+.course-main #container-liveclass .live-gate-banner {
+  border-radius: var(--lw-radius-xl, 20px);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--lw-shadow-card, 0 8px 32px -8px rgba(0, 0, 0, 0.5));
+  border: 1px solid var(--lw-border-hairline, rgba(255, 255, 255, 0.08));
+}
+
+.course-main #container-liveclass .live-gate-banner.alert-warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 4px solid var(--lw-status-warning, #f59e0b);
+}
+
+.course-main #container-liveclass .live-gate-banner.alert-success {
+  background: rgba(16, 185, 129, 0.08);
+  border-left: 4px solid var(--lw-status-success, #10b981);
+}
+
+.course-main #container-liveclass .live-gate-banner .btn-primary {
+  background: linear-gradient(135deg, var(--lw-accent-violet-500, #8b5cf6), #7c3aed);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #ffffff;
+  min-height: 44px;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--lw-radius-md, 10px);
+  font-weight: 600;
+  box-shadow: 0 4px 16px -2px rgba(139, 92, 246, 0.35);
+  cursor: pointer;
+  transition: all var(--lw-duration-fast, 150ms) ease;
+}
+
+.course-main #container-liveclass .live-gate-banner .btn-primary:hover {
+  background: linear-gradient(135deg, #9333ea, #6d28d9);
+  box-shadow: 0 6px 22px -2px rgba(139, 92, 246, 0.5);
+  transform: translateY(-1px);
+}
+
+.course-main #container-liveclass .live-gate-banner .btn-primary:focus-visible {
+  outline: 2px solid var(--lw-accent-violet-400, #c084fc);
+  outline-offset: 2px;
+}
+
+/* --- Section 1: Live Class Target Section --- */
+.course-main #sec-live-target .card {
+  background: var(--lw-bg-surface-1, #12121a);
+  border: 1px solid var(--lw-border-hairline, rgba(255, 255, 255, 0.08));
+  border-radius: var(--lw-radius-xl, 20px);
+  box-shadow: var(--lw-shadow-card, 0 8px 32px -8px rgba(0, 0, 0, 0.5));
+}
+
+/* --- Section 2: Live Telemetry Grid --- */
+.course-main #container-liveclass .live-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.course-main #container-liveclass .live-stat-card {
+  background: var(--lw-bg-surface-1, #12121a);
+  border: 1px solid var(--lw-border-hairline, rgba(255, 255, 255, 0.08));
+  border-radius: var(--lw-radius-xl, 20px);
+  padding: 1.35rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: var(--lw-shadow-card, 0 8px 32px -8px rgba(0, 0, 0, 0.5));
+  transition: transform var(--lw-duration-fast, 150ms) ease, border-color var(--lw-duration-fast, 150ms) ease, box-shadow var(--lw-duration-fast, 150ms) ease;
+}
+
+.course-main #container-liveclass .live-stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.65);
+}
+
+.course-main #container-liveclass .live-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-main #container-liveclass .live-stat-icon-box {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--lw-radius-md, 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.course-main #container-liveclass .live-stat-icon-box.blue {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.course-main #container-liveclass .live-stat-icon-box.green {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.course-main #container-liveclass .live-stat-icon-box.purple {
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--lw-accent-violet-400, #c084fc);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+.course-main #container-liveclass .live-stat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--lw-radius-full, 9999px);
+  font-family: var(--lw-font-mono, 'JetBrains Mono', monospace);
+  font-size: var(--lw-text-xs, 0.725rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.course-main #container-liveclass .live-stat-badge.live {
+  background: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.course-main #container-liveclass .live-stat-badge.target {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.course-main #container-liveclass .live-stat-badge.system {
+  background: rgba(168, 85, 247, 0.12);
+  color: var(--lw-accent-violet-400, #c084fc);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.course-main #container-liveclass .live-stat-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--lw-status-success, #10b981);
+  box-shadow: 0 0 6px var(--lw-status-success, #10b981);
+  display: inline-block;
+  animation: liveDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.course-main #container-liveclass .live-stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.course-main #container-liveclass .live-stat-label {
+  font-size: var(--lw-text-xs, 0.75rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--lw-text-muted, #94a3b8);
+}
+
+.course-main #container-liveclass .live-stat-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.course-main #container-liveclass .live-stat-value {
+  font-family: var(--lw-font-display, 'Plus Jakarta Sans', 'Inter', sans-serif);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--lw-text-primary, #f8fafc);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.course-main #container-liveclass .live-stat-unit-badge {
+  font-size: var(--lw-text-xs, 0.75rem);
+  font-family: var(--lw-font-mono, 'JetBrains Mono', monospace);
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--lw-radius-sm, 6px);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--lw-text-secondary, #cbd5e1);
+  border: 1px solid var(--lw-border-hairline, rgba(255, 255, 255, 0.08));
+}
+
+.course-main #container-liveclass .live-stat-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: var(--lw-text-xs, 0.75rem);
+  color: var(--lw-text-muted, #94a3b8);
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--lw-border-hairline, rgba(255, 255, 255, 0.06));
+  margin-top: auto;
+}
+
+/* --- Section 3: Live Modules M6 s.d. M11 --- */
+.course-main #container-liveclass .live-external-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.95rem;
+  min-height: 44px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  color: var(--lw-accent-violet-400, #c084fc);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--lw-text-sm, 0.875rem);
+  border-radius: var(--lw-radius-md, 10px);
+  transition: all var(--lw-duration-fast, 150ms) ease;
+}
+
+.course-main #container-liveclass .live-external-btn:hover {
+  background: rgba(168, 85, 247, 0.16);
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.course-main #container-liveclass .live-external-btn:focus-visible {
+  outline: 2px solid var(--lw-accent-violet-400, #c084fc);
+  outline-offset: 2px;
+}
+
+.course-main #container-liveclass .live-locked-command-placeholder {
+  padding: 0.85rem 1.15rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--lw-border-subtle, rgba(255, 255, 255, 0.12));
+  border-radius: var(--lw-radius-md, 10px);
+  color: var(--lw-text-muted, #94a3b8);
+  font-size: var(--lw-text-sm, 0.875rem);
+  font-family: var(--lw-font-mono, 'JetBrains Mono', monospace);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.course-main #container-liveclass .live-task-item {
+  min-height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.95rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--lw-border-hairline, rgba(255, 255, 255, 0.07));
+  border-radius: var(--lw-radius-md, 10px);
+  transition: all var(--lw-duration-fast, 150ms) ease;
+}
+
+.course-main #container-liveclass .live-task-item:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(168, 85, 247, 0.25);
+}
+
+.course-main #container-liveclass .live-task-item.completed {
+  background: rgba(16, 185, 129, 0.06);
+  border-color: rgba(16, 185, 129, 0.28);
+}
+
+/* --- Section 4: Live Checkpoints CP-6 s.d. CP-11 --- */
+.course-main #container-liveclass .live-checkpoints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.course-main #container-liveclass .checkpoint-gate-card {
+  margin: 0;
+}
+
+/* --- Responsive Layout for Live Class --- */
+@media (max-width: 1024px) {
+  .course-main #container-liveclass .live-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .course-main #container-liveclass .live-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .course-main #container-liveclass .live-gate-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .course-main #container-liveclass .live-gate-banner .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .course-main #container-liveclass .cp-action-btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .course-main #container-liveclass .btn-cp-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* --- Reduced Motion Accessibility Override --- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import type { CourseData, CourseStats } from '@/data/courses'
 import { LiveClassHero } from './LiveClassHero'
 import { LiveClassTargetSection } from './LiveClassTargetSection'
@@ -45,24 +45,11 @@ export function LiveClassContainer({
       />
 
       {/* Checklist Island Section matching Pra-Training */}
-      <section id="sec-live-checklist" className="content-section" style={{ marginTop: '3rem' }}>
+      <section id="sec-live-checklist" className="content-section">
         <div className="section-header">
           <div className="section-title-wrap">
-            <div
-              className="section-badge-icon"
-              style={{
-                background: 'rgba(59, 130, 246, 0.12)',
-                color: 'var(--accent-primary)',
-                width: '36px',
-                height: '36px',
-                borderRadius: 'var(--radius-md)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.1rem',
-              }}
-            >
-              📝
+            <div className="section-badge-num">
+              <span>📝</span>
             </div>
             <div>
               <h3 className="section-title">Lembar Checklist Mandiri Peserta Hari-H</h3>
