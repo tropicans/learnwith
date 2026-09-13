@@ -53,38 +53,19 @@ export function ResetProgressModal({
         }
       }}
     >
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
-          <h3
-            id="modal-reset-title"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: 'var(--color-danger)',
-              fontSize: 'var(--font-size-lg)',
-              fontWeight: 'var(--font-weight-bold)',
-              margin: 0,
-            }}
-          >
-            <span>⚠️</span> Atur Ulang Semua Progres?
+      <div className="modal-content modal-reset-content" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header modal-reset-header">
+          <h3 id="modal-reset-title" className="modal-reset-title">
+            <span className="modal-reset-icon">⚠️</span> Atur Ulang Semua Progres?
           </h3>
         </div>
 
-        <div
-          className="modal-body"
-          style={{
-            margin: '1.25rem 0',
-            color: 'var(--text-secondary)',
-            lineHeight: 1.6,
-            fontSize: 'var(--font-size-sm)',
-          }}
-        >
-          <p>
+        <div className="modal-body modal-reset-body">
+          <p className="modal-reset-lead">
             Tindakan ini akan <strong>menghapus seluruh progres</strong> yang
             tersimpan di browser Anda, termasuk:
           </p>
-          <ul style={{ margin: '0.75rem 0 0.75rem 1.25rem' }}>
+          <ul className="modal-reset-list">
             <li>
               Semua tanda centang langkah persiapan dan modul praktik (13 langkah).
             </li>
@@ -93,40 +74,21 @@ export function ResetProgressModal({
               Data identitas peserta, versi Node.js, dan Telegram User ID.
             </li>
           </ul>
-          <div
-            className="alert-box alert-danger"
-            style={{ margin: '1rem 0 0 0', padding: '0.75rem 1rem' }}
-          >
+          <div className="alert-box alert-danger modal-reset-alert">
             <div className="alert-icon">🛑</div>
             <div className="alert-content">
-              <p
-                style={{
-                  fontSize: 'var(--font-size-xs)',
-                  fontWeight: 600,
-                  margin: 0,
-                }}
-              >
+              <p className="modal-reset-alert-text">
                 Peringatan: Data yang telah direset tidak dapat dipulihkan kembali.
               </p>
             </div>
           </div>
         </div>
 
-        <div
-          className="modal-footer"
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            gap: '0.75rem',
-            marginTop: '1.5rem',
-            borderTop: '1px solid var(--border-subtle)',
-            paddingTop: '1rem',
-          }}
-        >
+        <div className="modal-footer modal-reset-footer">
           <button
             type="button"
             id="btn-cancel-reset"
-            className="btn btn-secondary"
+            className="btn btn-secondary btn-modal-cancel"
             onClick={onClose}
           >
             Batal
@@ -135,7 +97,7 @@ export function ResetProgressModal({
             ref={confirmBtnRef}
             type="button"
             id="btn-confirm-reset"
-            className="btn btn-danger"
+            className="btn btn-danger btn-modal-confirm"
             onClick={onConfirm}
             autoFocus
           >

@@ -111,20 +111,7 @@ export function PretrainingReadinessReportSection() {
     <section id="sec-readiness-report" className="content-section">
       <div className="section-header">
         <div className="section-title-wrap">
-          <div
-            className="section-badge-icon"
-            style={{
-              background: 'var(--accent-primary-subtle)',
-              color: 'var(--accent-primary)',
-              width: 36,
-              height: 36,
-              borderRadius: 'var(--radius-md)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-            }}
-          >
+          <div className="section-badge-icon report-header-badge">
             📋
           </div>
           <div>
@@ -137,18 +124,23 @@ export function PretrainingReadinessReportSection() {
       </div>
 
       <div className="report-workbench">
+        <div className="report-workbench-header">
+          <div className="report-workbench-title-wrap">
+            <span className="report-workbench-icon">📋</span>
+            <strong className="report-workbench-heading">
+              Audit Session Report // Pre-Training Readiness
+            </strong>
+          </div>
+          <span className="badge badge-pill badge-neutral report-format-badge">
+            <span className="report-status-dot"></span> Sesuai Format Resmi
+          </span>
+        </div>
+
         <div className="report-grid">
           {/* Left: Editable Form Pane */}
           <div className="report-form-pane">
-            <h4
-              style={{
-                fontSize: 'var(--font-size-sm)',
-                fontWeight: 'var(--font-weight-bold)',
-                color: 'var(--text-primary)',
-                marginBottom: '0.25rem',
-              }}
-            >
-              ✏️ Lengkapi Data Pelaporan:
+            <h4 className="report-pane-heading">
+              <span>✏️</span> Lengkapi Data Pelaporan:
             </h4>
 
             <div className="form-group">
@@ -172,8 +164,7 @@ export function PretrainingReadinessReportSection() {
               </label>
               <select
                 id="select-report-os"
-                className="form-input"
-                style={{ cursor: 'pointer' }}
+                className="form-input report-os-select"
                 value={os}
                 onChange={(e) => setOs(e.target.value)}
               >
@@ -205,25 +196,17 @@ export function PretrainingReadinessReportSection() {
               </label>
               <textarea
                 id="input-report-error-msg"
-                className="form-input"
-                style={{
-                  height: 90,
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: 'var(--font-size-xs)',
-                }}
+                className="form-input report-error-textarea"
                 placeholder="Jika ada kendala, tempel ringkasan pesan error di sini (token/kunci akan disensor otomatis)..."
                 value={errorMsg}
                 onChange={(e) => setErrorMsg(e.target.value)}
               />
             </div>
 
-            <div
-              className="alert-box alert-info"
-              style={{ marginTop: '0.5rem', padding: '0.75rem 1rem' }}
-            >
+            <div className="alert-box alert-info report-alert-box">
               <div className="alert-icon">💡</div>
               <div className="alert-content">
-                <p style={{ fontSize: 'var(--font-size-xs)' }}>
+                <p className="report-alert-text">
                   Status Checkpoint 1, 2, 3 dan Google Cloud otomatis diambil dari progres yang Anda centang di atas.
                 </p>
               </div>
@@ -232,25 +215,12 @@ export function PretrainingReadinessReportSection() {
 
           {/* Right: Live Output Preview Pane */}
           <div className="report-preview-pane">
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              <h4
-                style={{
-                  fontSize: 'var(--font-size-sm)',
-                  fontWeight: 'var(--font-weight-bold)',
-                  color: 'var(--text-primary)',
-                  margin: 0,
-                }}
-              >
-                📄 Pratinjau Teks Laporan:
+            <div className="report-preview-header">
+              <h4 className="report-pane-heading">
+                <span>📄</span> Pratinjau Teks Laporan:
               </h4>
-              <span className="badge badge-pill badge-neutral">
-                Sesuai Format Resmi
+              <span className="report-preview-status-pill">
+                Live Output
               </span>
             </div>
 
@@ -258,18 +228,14 @@ export function PretrainingReadinessReportSection() {
               {previewText}
             </pre>
 
-            <div className="report-btn-group" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div className="report-btn-group">
               {hasErrorContent && (
                 <button
                   type="button"
                   id="btn-sync-instructor-report"
-                  className="btn btn-primary"
+                  className={`btn btn-primary btn-sync-report ${reportedIncidentId ? 'is-synced' : ''}`}
                   onClick={handleCloudSyncReport}
                   disabled={isReporting || Boolean(reportedIncidentId)}
-                  style={{
-                    background: reportedIncidentId ? 'var(--color-success, #10b981)' : 'var(--accent-primary, #6366f1)',
-                    borderColor: reportedIncidentId ? 'var(--color-success, #10b981)' : 'var(--accent-primary, #6366f1)',
-                  }}
                 >
                   <span>📡</span>{' '}
                   {isReporting
@@ -282,7 +248,7 @@ export function PretrainingReadinessReportSection() {
               <button
                 type="button"
                 id="btn-copy-report"
-                className="btn btn-success"
+                className="btn btn-success btn-copy-report"
                 onClick={handleCopy}
               >
                 <span>📋</span> Salin Laporan (WhatsApp / Telegram)
@@ -290,7 +256,7 @@ export function PretrainingReadinessReportSection() {
               <button
                 type="button"
                 id="btn-print-report"
-                className="btn btn-secondary"
+                className="btn btn-secondary btn-print-report"
                 onClick={handlePrint}
               >
                 <span>🖨️</span> Cetak Laporan / PDF
