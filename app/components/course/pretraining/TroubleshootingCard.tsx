@@ -43,7 +43,7 @@ export function TroubleshootingCard({ item }: TroubleshootingCardProps) {
       </ol>
 
       {item.codeBlock && (
-        <div style={{ marginTop: '0.75rem' }}>
+        <div className="trouble-code-wrap">
           <CopyableCodeBlock
             code={item.codeBlock.code}
             language={item.codeBlock.language}

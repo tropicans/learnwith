@@ -92,20 +92,7 @@ export function PretrainingRedactionSection() {
     <section id="sec-redaction" className="content-section">
       <div className="section-header">
         <div className="section-title-wrap">
-          <div
-            className="section-badge-icon"
-            style={{
-              background: 'var(--color-success-subtle)',
-              color: 'var(--color-success)',
-              width: '36px',
-              height: '36px',
-              borderRadius: 'var(--radius-md)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-            }}
-          >
+          <div className="section-badge-icon redaction-header-badge">
             🛡️
           </div>
           <div>
@@ -121,24 +108,10 @@ export function PretrainingRedactionSection() {
       </div>
 
       <div className="redaction-workbench">
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '0.75rem',
-            marginBottom: '1rem',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.2rem' }}>🔒</span>
-            <strong
-              style={{
-                fontSize: 'var(--font-size-sm)',
-                color: 'var(--text-primary)',
-              }}
-            >
+        <div className="redaction-workbench-header">
+          <div className="redaction-workbench-title-wrap">
+            <span className="redaction-workbench-icon">🔒</span>
+            <strong className="redaction-workbench-heading">
               Editor Privasi & Penyamaran Kredensial
             </strong>
           </div>
@@ -150,7 +123,7 @@ export function PretrainingRedactionSection() {
           <div className="redaction-col">
             <div className="redaction-col-header">
               <span>Teks Mentah / Pesan Error:</span>
-              <span style={{ color: 'var(--text-muted)' }}>Tempel di sini</span>
+              <span className="redaction-col-hint">Tempel di sini</span>
             </div>
             <textarea
               id="redaction-input"
@@ -167,7 +140,7 @@ export function PretrainingRedactionSection() {
           <div className="redaction-col">
             <div className="redaction-col-header">
               <span>Hasil Setelah Disensor (Aman Dibagikan):</span>
-              <span style={{ color: 'var(--color-success)' }}>
+              <span className="redaction-col-status">
                 Otomatis terlindungi
               </span>
             </div>
@@ -193,7 +166,7 @@ export function PretrainingRedactionSection() {
             <span className="redaction-pill">✓ Direktori User Windows</span>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <div className="redaction-actions-group">
             <button
               type="button"
               id="btn-trigger-redaction"

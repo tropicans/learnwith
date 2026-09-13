@@ -63,20 +63,7 @@ export function PretrainingTroubleshootingSection() {
     <section id="sec-troubleshooting" className="content-section">
       <div className="section-header">
         <div className="section-title-wrap">
-          <div
-            className="section-badge-icon"
-            style={{
-              background: 'var(--color-warning-subtle)',
-              color: 'var(--color-warning)',
-              width: '36px',
-              height: '36px',
-              borderRadius: 'var(--radius-md)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '1.1rem',
-            }}
-          >
+          <div className="section-badge-icon troubleshoot-header-badge">
             🔧
           </div>
           <div>
@@ -93,7 +80,7 @@ export function PretrainingTroubleshootingSection() {
 
       {/* Troubleshooting Search & Category Filter Toolbar */}
       <div className="troubleshoot-toolbar">
-        <div className="troubleshoot-search-wrap" style={{ position: 'relative' }}>
+        <div className="troubleshoot-search-wrap">
           <span className="troubleshoot-search-icon">🔍</span>
           <input
             type="search"
@@ -108,19 +95,8 @@ export function PretrainingTroubleshootingSection() {
           {searchQuery && (
             <button
               type="button"
+              className="troubleshoot-search-clear"
               onClick={handleClearSearch}
-              style={{
-                position: 'absolute',
-                right: '12px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--text-muted)',
-                cursor: 'pointer',
-                fontSize: '1rem',
-                padding: '4px',
-              }}
               aria-label="Hapus pencarian"
             >
               ✕
@@ -159,16 +135,7 @@ export function PretrainingTroubleshootingSection() {
       </div>
 
       {/* Result Count Indicator */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          margin: '0.75rem 0',
-          fontSize: 'var(--font-size-xs)',
-          color: 'var(--text-secondary)',
-        }}
-      >
+      <div className="troubleshoot-count-indicator">
         <span>
           Menampilkan <strong>{filteredItems.length}</strong> solusi kendala
           {selectedCategory !== 'all' && (
@@ -196,41 +163,17 @@ export function PretrainingTroubleshootingSection() {
 
       {/* Empty State when no cards match */}
       {filteredItems.length === 0 && (
-        <div
-          style={{
-            textAlign: 'center',
-            padding: '2.5rem 1.5rem',
-            background: 'var(--bg-surface)',
-            border: '1px dashed var(--border-subtle)',
-            borderRadius: 'var(--radius-xl)',
-            margin: '1.5rem 0',
-          }}
-        >
-          <div style={{ fontSize: '2.2rem', marginBottom: '0.75rem' }}>🔍</div>
-          <h4
-            style={{
-              fontSize: 'var(--font-size-base)',
-              fontWeight: 'var(--font-weight-bold)',
-              color: 'var(--text-primary)',
-              marginBottom: '0.5rem',
-            }}
-          >
+        <div className="troubleshoot-empty-state">
+          <div className="empty-state-icon">🔍</div>
+          <h4 className="empty-state-heading">
             Tidak Ditemukan Solusi yang Cocok
           </h4>
-          <p
-            style={{
-              fontSize: 'var(--font-size-sm)',
-              color: 'var(--text-secondary)',
-              maxWidth: '520px',
-              margin: '0 auto 1.25rem',
-              lineHeight: 1.6,
-            }}
-          >
+          <p className="empty-state-desc">
             Tidak ada kendala yang cocok dengan kata kunci{' '}
             <strong>"{searchQuery}"</strong>. Coba periksa ejaan, gunakan kata
             kunci yang lebih umum, atau beralih ke kategori lain.
           </p>
-          <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center' }}>
+          <div className="empty-state-action">
             <button
               type="button"
               className="btn btn-secondary btn-sm"

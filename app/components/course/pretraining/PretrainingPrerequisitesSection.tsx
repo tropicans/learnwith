@@ -48,7 +48,7 @@ export function PretrainingPrerequisitesSection() {
             </p>
           </div>
         </div>
-        <div style={{ fontSize: '0.85rem', color: 'var(--text-muted, #64748b)' }}>
+        <div className="section-counter-badge">
           {isClient ? `${completedCount}/${PRETRAINING_PREREQUISITES.length} Siap` : '7 Prasyarat'}
         </div>
       </div>

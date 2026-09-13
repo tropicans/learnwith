@@ -24,21 +24,13 @@ export function PretrainingGlossarySection() {
         </div>
       </div>
 
-      <div style={{ marginBottom: '1rem' }}>
+      <div style={{ marginBottom: '1.25rem' }}>
         <input
           type="search"
           placeholder="🔍 Cari istilah teknis (misal: Token, 9Router, BotFather)..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            width: '100%',
-            maxWidth: '480px',
-            padding: '0.6rem 1rem',
-            borderRadius: 'var(--radius-md, 8px)',
-            border: '1px solid var(--border-subtle, #e2e8f0)',
-            background: 'var(--bg-surface, #ffffff)',
-            fontSize: '0.9rem',
-          }}
+          className="glossary-search-input"
         />
       </div>
 
@@ -52,7 +44,7 @@ export function PretrainingGlossarySection() {
           </div>
         ))}
         {filteredTerms.length === 0 && (
-          <p style={{ color: 'var(--text-muted, #64748b)', padding: '1rem' }}>
+          <p className="glossary-empty-msg">
             Tidak ditemukan istilah yang cocok dengan "{searchTerm}".
           </p>
         )}

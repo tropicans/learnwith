@@ -7,7 +7,7 @@ export interface CheckpointPreviewCardProps {
 export function CheckpointPreviewCard({ checkpoint }: CheckpointPreviewCardProps) {
   return (
     <div
-      className="card card-glass"
+      className="card card-glass checkpoint-preview-card"
       style={{ borderLeft: '4px solid var(--color-success)', marginTop: '1rem' }}
     >
       <div className="card-header">

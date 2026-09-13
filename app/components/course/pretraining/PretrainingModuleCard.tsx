@@ -139,11 +139,7 @@ export function PretrainingModuleCard({
                     </p>
                   </div>
                   <div
-                    className="comparison-box"
-                    style={{
-                      borderColor: 'var(--accent-primary)',
-                      background: 'rgba(79, 70, 229, 0.05)',
-                    }}
+                    className="comparison-box comparison-box-highlight"
                   >
                     <h5>{step.comparisonGrid.box2.title}</h5>
                     <div className="comparison-value">

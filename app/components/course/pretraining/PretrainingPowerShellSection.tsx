@@ -48,15 +48,7 @@ export function PretrainingPowerShellSection() {
                       <button
                         type="button"
                         onClick={() => handleCopy('PowerShell', 'step2')}
-                        style={{
-                          marginLeft: '0.5rem',
-                          padding: '0.2rem 0.5rem',
-                          fontSize: '0.75rem',
-                          borderRadius: '4px',
-                          border: '1px solid var(--border-subtle, #cbd5e1)',
-                          background: 'var(--bg-surface, #ffffff)',
-                          cursor: 'pointer',
-                        }}
+                        className="powershell-copy-btn"
                       >
                         {copyFeedback === 'step2' ? '✅ Tersalin' : '📋 Salin Kata'}
                       </button>

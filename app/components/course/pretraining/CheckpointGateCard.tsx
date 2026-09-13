@@ -25,22 +25,22 @@ export function CheckpointGateCard({
 }: CheckpointGateCardProps) {
   const statusBadge =
     status === 'passed' ? (
-      <span id={`status-card-${id}`} className="badge badge-pill badge-success">
-        ✓ Lolos
+      <span id={`status-card-${id}`} className="badge badge-pill badge-status-passed">
+        <span className="status-dot"></span> ✓ Lolos Verifikasi
       </span>
     ) : status === 'failed' ? (
-      <span id={`status-card-${id}`} className="badge badge-pill badge-danger">
-        ✕ Kendala
+      <span id={`status-card-${id}`} className="badge badge-pill badge-status-failed">
+        <span className="status-dot"></span> ✕ Ada Kendala
       </span>
     ) : (
-      <span id={`status-card-${id}`} className="badge badge-pill badge-warning">
-        Pending
+      <span id={`status-card-${id}`} className="badge badge-pill badge-status-pending">
+        <span className="status-dot"></span> Menunggu Praktik
       </span>
     )
 
   return (
     <div
-      className={`checkpoint-gate-card ${status !== 'pending' ? status : ''}`}
+      className={`checkpoint-gate-card ${status !== 'pending' ? status : 'pending'}`}
       id={`card-${id}`}
     >
       <div className="checkpoint-header-row">
@@ -100,7 +100,7 @@ export function CheckpointGateCard({
       <div className="cp-action-btn-group">
         <button
           type="button"
-          className="btn btn-success btn-cp-action"
+          className={`btn btn-cp-action btn-cp-pass ${status === 'passed' ? 'active' : ''}`}
           data-checkpoint={id}
           data-status="passed"
           onClick={() => onStatusChange('passed')}
@@ -109,7 +109,7 @@ export function CheckpointGateCard({
         </button>
         <button
           type="button"
-          className="btn btn-outline-danger btn-cp-action"
+          className={`btn btn-cp-action btn-cp-fail ${status === 'failed' ? 'active' : ''}`}
           data-checkpoint={id}
           data-status="failed"
           onClick={() => onStatusChange('failed')}
@@ -118,7 +118,7 @@ export function CheckpointGateCard({
         </button>
         <button
           type="button"
-          className="btn btn-secondary btn-cp-action btn-sm"
+          className={`btn btn-cp-action btn-cp-reset ${status === 'pending' ? 'active' : ''}`}
           data-checkpoint={id}
           data-status="pending"
           onClick={() => onStatusChange('pending')}

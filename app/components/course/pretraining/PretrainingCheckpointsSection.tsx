@@ -67,20 +67,7 @@ export function PretrainingCheckpointsSection({
       <section id="sec-checkpoint-1" className="content-section">
         <div className="section-header">
           <div className="section-title-wrap">
-            <div
-              className="section-badge-icon"
-              style={{
-                background: 'var(--accent-primary-subtle)',
-                color: 'var(--accent-primary)',
-                width: '36px',
-                height: '36px',
-                borderRadius: 'var(--radius-md)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.1rem',
-              }}
-            >
+            <div className="section-badge-icon cp-header-badge">
               📍
             </div>
             <div>
@@ -132,20 +119,7 @@ export function PretrainingCheckpointsSection({
       <section id="sec-checkpoint-2" className="content-section">
         <div className="section-header">
           <div className="section-title-wrap">
-            <div
-              className="section-badge-icon"
-              style={{
-                background: 'var(--accent-primary-subtle)',
-                color: 'var(--accent-primary)',
-                width: '36px',
-                height: '36px',
-                borderRadius: 'var(--radius-md)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.1rem',
-              }}
-            >
+            <div className="section-badge-icon cp-header-badge">
               📍
             </div>
             <div>
@@ -180,20 +154,7 @@ export function PretrainingCheckpointsSection({
       <section id="sec-checkpoint-3" className="content-section">
         <div className="section-header">
           <div className="section-title-wrap">
-            <div
-              className="section-badge-icon"
-              style={{
-                background: 'var(--accent-primary-subtle)',
-                color: 'var(--accent-primary)',
-                width: '36px',
-                height: '36px',
-                borderRadius: 'var(--radius-md)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '1.1rem',
-              }}
-            >
+            <div className="section-badge-icon cp-header-badge">
               📍
             </div>
             <div>
@@ -223,23 +184,8 @@ export function PretrainingCheckpointsSection({
           onStatusChange={(status) => handleCheckpointChange('cp-3', status)}
         >
           {/* Participant Input Form with Validators */}
-          <div
-            style={{
-              background: 'var(--bg-surface-elevated)',
-              padding: '1.25rem',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--border-subtle)',
-              margin: '1.25rem 0',
-            }}
-          >
-            <h5
-              style={{
-                fontSize: 'var(--font-size-sm)',
-                fontWeight: 'var(--font-weight-bold)',
-                marginBottom: '0.75rem',
-                color: 'var(--text-primary)',
-              }}
-            >
+          <div className="cp-participant-form">
+            <h5 className="cp-form-title">
               📝 Formulir Data Verifikasi Checkpoint 3:
             </h5>
 
